@@ -346,8 +346,18 @@ Market-Data-Collector/
 ├── deploy/  # Deployment configurations
 │   ├── docker/
 │   │   ├── .dockerignore
+│   │   ├── docker-compose.override.yml
 │   │   ├── docker-compose.yml
 │   │   └── Dockerfile
+│   ├── k8s/
+│   │   ├── configmap.yaml
+│   │   ├── deployment.yaml
+│   │   ├── kustomization.yaml
+│   │   ├── namespace.yaml
+│   │   ├── pvc.yaml
+│   │   ├── secret.yaml
+│   │   ├── service.yaml
+│   │   └── serviceaccount.yaml
 │   ├── monitoring/
 │   │   ├── grafana/
 │   │   │   └── provisioning/
@@ -1145,7 +1155,6 @@ Market-Data-Collector/
 │   ├── MarketDataCollector.Ui.Shared/
 │   │   ├── Endpoints/
 │   │   │   ├── AdminEndpoints.cs
-│   │   │   ├── AlignmentEndpoints.cs
 │   │   │   ├── AnalyticsEndpoints.cs
 │   │   │   ├── ApiKeyMiddleware.cs
 │   │   │   ├── BackfillEndpoints.cs
@@ -1162,7 +1171,6 @@ Market-Data-Collector/
 │   │   │   ├── HealthEndpoints.cs
 │   │   │   ├── HistoricalEndpoints.cs
 │   │   │   ├── IBEndpoints.cs
-│   │   │   ├── IndexEndpoints.cs
 │   │   │   ├── IngestionJobEndpoints.cs
 │   │   │   ├── LeanEndpoints.cs
 │   │   │   ├── LiveDataEndpoints.cs
@@ -1172,7 +1180,6 @@ Market-Data-Collector/
 │   │   │   ├── PathValidation.cs
 │   │   │   ├── ProviderEndpoints.cs
 │   │   │   ├── ProviderExtendedEndpoints.cs
-│   │   │   ├── QualityDropsEndpoints.cs
 │   │   │   ├── ReplayEndpoints.cs
 │   │   │   ├── SamplingEndpoints.cs
 │   │   │   ├── StatusEndpoints.cs
