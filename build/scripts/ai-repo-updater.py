@@ -368,6 +368,9 @@ def audit_docs(root: Path, report: AuditReport) -> None:
             rel = str(path.relative_to(root))
             text = path.read_text(encoding="utf-8", errors="replace")
             headings = set(re.findall(r"^##\s+(.+)", text, re.MULTILINE))
+            # Also recognise bold-metadata style: **Status:** Accepted
+            if re.search(r"^\*\*Status:\*\*", text, re.MULTILINE):
+                headings.add("Status")
             missing = required_sections - headings
             if missing:
                 report.add(Finding(
