@@ -174,6 +174,29 @@ public sealed class DataSourceRegistryTests
         act.Should().Throw<ArgumentNullException>();
     }
 
+
+
+    [Fact]
+    public void RegisterModules_LegacyProviderModuleInterface_InvokesRegister()
+    {
+        var registry = new DataSourceRegistry();
+        var services = new ServiceCollection();
+
+        registry.RegisterModules(services, typeof(LegacyProviderModule).Assembly);
+
+        services.Should().ContainSingle(d => d.ServiceType == typeof(LegacyMarkerService));
+    }
+
+    [Fact]
+    public void RegisterModules_AdapterProviderModuleInterface_InvokesRegister()
+    {
+        var registry = new DataSourceRegistry();
+        var services = new ServiceCollection();
+
+        registry.RegisterModules(services, typeof(AdapterProviderModule).Assembly);
+
+        services.Should().ContainSingle(d => d.ServiceType == typeof(AdapterMarkerService));
+    }
     [Fact]
     public void RegisterModules_SystemAssembly_DoesNotThrow()
     {
@@ -187,3 +210,24 @@ public sealed class DataSourceRegistryTests
 
     #endregion
 }
+
+
+file sealed class LegacyMarkerService;
+file sealed class AdapterMarkerService;
+
+file sealed class LegacyProviderModule : MarketDataCollector.Infrastructure.Providers.IProviderModule
+{
+    public void Register(IServiceCollection services, DataSourceRegistry registry)
+    {
+        services.AddSingleton<LegacyMarkerService>();
+    }
+}
+
+file sealed class AdapterProviderModule : MarketDataCollector.Infrastructure.Adapters.Core.IProviderModule
+{
+    public void Register(IServiceCollection services, DataSourceRegistry registry)
+    {
+        services.AddSingleton<AdapterMarkerService>();
+    }
+}
+
