@@ -8,6 +8,8 @@ namespace MarketDataCollector.Infrastructure.DataSources;
 /// </summary>
 public sealed class DataSourceRegistry
 {
+    private const string LegacyProviderModuleInterfaceName = "MarketDataCollector.Infrastructure.Providers.IProviderModule";
+
     private readonly List<DataSourceMetadata> _sources = new();
 
     /// <summary>
@@ -77,17 +79,46 @@ public sealed class DataSourceRegistry
                     continue;
                 }
 
-                if (!typeof(MarketDataCollector.Infrastructure.Adapters.Core.IProviderModule).IsAssignableFrom(type))
+                var isAdapterModule = typeof(MarketDataCollector.Infrastructure.Adapters.Core.IProviderModule).IsAssignableFrom(type);
+                var isLegacyModule = ImplementsLegacyProviderModuleInterface(type);
+
+                if (!isAdapterModule && !isLegacyModule)
                 {
                     continue;
                 }
 
-                if (Activator.CreateInstance(type) is MarketDataCollector.Infrastructure.Adapters.Core.IProviderModule module)
+                if (Activator.CreateInstance(type) is not { } moduleInstance)
+                {
+                    continue;
+                }
+
+                if (isAdapterModule && moduleInstance is MarketDataCollector.Infrastructure.Adapters.Core.IProviderModule module)
                 {
                     module.Register(services, this);
+                    continue;
+                }
+
+                if (isLegacyModule)
+                {
+                    InvokeModuleRegisterMethod(moduleInstance, services);
                 }
             }
         }
+    }
+
+    private static bool ImplementsLegacyProviderModuleInterface(Type type) =>
+        type.GetInterfaces().Any(i => string.Equals(i.FullName, LegacyProviderModuleInterfaceName, StringComparison.Ordinal));
+
+    private void InvokeModuleRegisterMethod(object moduleInstance, IServiceCollection services)
+    {
+        var registerMethod = moduleInstance.GetType().GetMethod(
+            "Register",
+            BindingFlags.Public | BindingFlags.Instance,
+            binder: null,
+            types: [typeof(IServiceCollection), typeof(DataSourceRegistry)],
+            modifiers: null);
+
+        registerMethod?.Invoke(moduleInstance, [services, this]);
     }
 
     private static IEnumerable<Type> GetLoadableTypes(Assembly assembly)
