@@ -368,8 +368,18 @@ public sealed class EventPipeline : IMarketEventPublisher, IAsyncDisposable, IFl
     /// Waits for the consumer to process all currently-queued events, then forces
     /// an immediate flush of buffered data to storage.
     /// </summary>
+    /// <remarks>
+    /// If events were dropped due to backpressure during the flush window, a warning
+    /// is logged. The flush still writes all events that <em>were</em> consumed to
+    /// storage — it does not suppress the flush because of drops — but callers should
+    /// treat the warning as an indication that the result set is incomplete.
+    /// </remarks>
     public async Task FlushAsync(CancellationToken ct = default)
     {
+        // Capture the drop baseline so we can report new drops that occurred
+        // during this flush window (indicates data loss the caller may not expect).
+        var droppedAtStart = Interlocked.Read(ref _droppedCount);
+
         // Wait for the consumer to process all currently-queued events.
         // In DropOldest mode the channel silently discards events, so
         // consumed + dropped may never reach published. Fall back to
@@ -403,6 +413,17 @@ public sealed class EventPipeline : IMarketEventPublisher, IAsyncDisposable, IFl
 
         await _sink.FlushAsync(ct).ConfigureAwait(false);
         Interlocked.Exchange(ref _lastFlushTimestamp, Stopwatch.GetTimestamp());
+
+        // Warn callers if events were dropped during this flush window so they
+        // understand that the returned flush is not a full-fidelity confirmation.
+        var newDrops = Interlocked.Read(ref _droppedCount) - droppedAtStart;
+        if (newDrops > 0)
+        {
+            _logger.LogWarning(
+                "FlushAsync completed but {DroppedCount} event(s) were dropped due to backpressure during this flush window and are NOT in storage. " +
+                "Consider increasing pipeline capacity or reducing event rate.",
+                newDrops);
+        }
     }
 
     /// <summary>
