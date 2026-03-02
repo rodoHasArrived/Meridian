@@ -888,6 +888,50 @@ Market-Data-Collector/
 │   │   ├── Interop.fs
 │   │   └── MarketDataCollector.FSharp.fsproj
 │   ├── MarketDataCollector.Infrastructure/
+│   │   ├── Adapters/  # Provider adapters (grouped by provider, nautilus_trader-style)
+│   │   │   ├── Alpaca/
+│   │   │   │   ├── AlpacaMarketDataClient.cs
+│   │   │   │   ├── AlpacaHistoricalDataProvider.cs
+│   │   │   │   └── AlpacaSymbolSearchProviderRefactored.cs
+│   │   │   ├── InteractiveBrokers/
+│   │   │   │   ├── IBMarketDataClient.cs
+│   │   │   │   ├── IBHistoricalDataProvider.cs
+│   │   │   │   ├── IBSimulationClient.cs
+│   │   │   │   └── ... (connection managers, callbacks)
+│   │   │   ├── Polygon/
+│   │   │   │   ├── PolygonMarketDataClient.cs
+│   │   │   │   ├── PolygonHistoricalDataProvider.cs
+│   │   │   │   └── PolygonSymbolSearchProvider.cs
+│   │   │   ├── NYSE/
+│   │   │   │   └── ... (streaming data source)
+│   │   │   ├── StockSharp/
+│   │   │   │   ├── StockSharpMarketDataClient.cs
+│   │   │   │   ├── StockSharpHistoricalDataProvider.cs
+│   │   │   │   ├── StockSharpSymbolSearchProvider.cs
+│   │   │   │   └── Converters/
+│   │   │   ├── Finnhub/
+│   │   │   │   ├── FinnhubHistoricalDataProvider.cs
+│   │   │   │   └── FinnhubSymbolSearchProviderRefactored.cs
+│   │   │   ├── Tiingo/
+│   │   │   ├── Stooq/
+│   │   │   ├── YahooFinance/
+│   │   │   ├── AlphaVantage/
+│   │   │   ├── NasdaqDataLink/
+│   │   │   ├── OpenFigi/
+│   │   │   ├── Failover/
+│   │   │   │   └── ... (failover coordination)
+│   │   │   └── Core/  # Shared adapter infrastructure
+│   │   │       ├── ProviderFactory.cs
+│   │   │       ├── ProviderRegistry.cs
+│   │   │       ├── WebSocketProviderBase.cs
+│   │   │       ├── BaseHistoricalDataProvider.cs
+│   │   │       ├── CompositeHistoricalDataProvider.cs
+│   │   │       ├── IHistoricalDataProvider.cs
+│   │   │       ├── ISymbolSearchProvider.cs
+│   │   │       ├── Backfill/
+│   │   │       ├── RateLimiting/
+│   │   │       ├── SymbolResolution/
+│   │   │       └── GapAnalysis/
 │   │   ├── Contracts/
 │   │   │   ├── ContractVerificationExtensions.cs
 │   │   │   └── ContractVerificationService.cs
@@ -897,17 +941,6 @@ Market-Data-Collector/
 │   │   ├── Http/
 │   │   │   ├── HttpClientConfiguration.cs
 │   │   │   └── SharedResiliencePolicies.cs
-│   │   ├── Providers/
-│   │   │   ├── Backfill/
-│   │   │   │   ...
-│   │   │   ├── Core/
-│   │   │   │   ...
-│   │   │   ├── Historical/
-│   │   │   │   ...
-│   │   │   ├── Streaming/
-│   │   │   │   ...
-│   │   │   └── SymbolSearch/
-│   │   │       ...
 │   │   ├── Resilience/
 │   │   │   ├── HttpResiliencePolicy.cs
 │   │   │   ├── WebSocketConnectionConfig.cs
@@ -1360,9 +1393,9 @@ Market-Data-Collector/
 │   │   │   └── Models/
 │   │   │       ...
 │   │   ├── Infrastructure/
-│   │   │   ├── DataSources/
+│   │   │   ├── Adapters/  # Provider adapter tests
 │   │   │   │   ...
-│   │   │   ├── Providers/
+│   │   │   ├── DataSources/
 │   │   │   │   ...
 │   │   │   ├── Resilience/
 │   │   │   │   ...
@@ -1604,7 +1637,7 @@ public interface IMarketDataClient : IAsyncDisposable
 ```
 
 ### IHistoricalDataProvider (Backfill)
-Location: `src/MarketDataCollector/Infrastructure/Providers/Backfill/IHistoricalDataProvider.cs`
+Location: `src/MarketDataCollector.Infrastructure/Adapters/Core/IHistoricalDataProvider.cs`
 
 ```csharp
 [ImplementsAdr("ADR-001", "Core historical data provider contract")]
@@ -1855,7 +1888,7 @@ dotnet test tests/MarketDataCollector.FSharp.Tests
 | `tests/MarketDataCollector.Tests/Domain/Collectors/` | Domain collector tests | 4 |
 | `tests/MarketDataCollector.Tests/Domain/Models/` | Domain model tests | 12 |
 | `tests/MarketDataCollector.Tests/Infrastructure/DataSources/` | Data source tests | 1 |
-| `tests/MarketDataCollector.Tests/Infrastructure/Providers/` | Provider-specific tests | 12 |
+| `tests/MarketDataCollector.Tests/Infrastructure/Providers/` | Provider/adapter tests | 12 |
 | `tests/MarketDataCollector.Tests/Infrastructure/Resilience/` | Resilience tests | 2 |
 | `tests/MarketDataCollector.Tests/Infrastructure/Shared/` | Shared infra tests | 2 |
 | `tests/MarketDataCollector.Tests/Integration/` | End-to-end & endpoint tests | 23 |
@@ -2021,9 +2054,9 @@ _logger.LogInformation($"Received {bars.Count} bars for {symbol}");
 | `EventPipeline` | `Application/Pipeline/` | Bounded channel event routing |
 | `JsonlStorageSink` | `Storage/Sinks/` | JSONL file persistence |
 | `ParquetStorageSink` | `Storage/Sinks/` | Parquet file persistence |
-| `AlpacaMarketDataClient` | `Infrastructure/Providers/Alpaca/` | Alpaca WebSocket client |
-| `CompositeHistoricalDataProvider` | `Infrastructure/Providers/Backfill/` | Multi-provider backfill with fallback |
-| `BackfillWorkerService` | `Infrastructure/Providers/Backfill/` | Background backfill service |
+| `AlpacaMarketDataClient` | `Infrastructure/Adapters/Alpaca/` | Alpaca WebSocket client |
+| `CompositeHistoricalDataProvider` | `Infrastructure/Adapters/Core/` | Multi-provider backfill with fallback |
+| `BackfillWorkerService` | `Infrastructure/Adapters/Core/Backfill/` | Background backfill service |
 | `DataQualityMonitoringService` | `Application/Monitoring/DataQuality/` | Data quality monitoring |
 | `GracefulShutdownService` | `Application/Services/` | Graceful shutdown handling |
 | `ConfigurationWizard` | `Application/Services/` | Interactive configuration setup |
@@ -2080,7 +2113,7 @@ data/
 ## Common Tasks
 
 ### Adding a New Data Provider
-1. Create client class in `src/MarketDataCollector/Infrastructure/Providers/{ProviderName}/`
+1. Create client class in `src/MarketDataCollector.Infrastructure/Adapters/{ProviderName}/`
 2. Implement `IMarketDataClient` interface
 3. Add `[DataSource("provider-name")]` attribute
 4. Add `[ImplementsAdr("ADR-001", "reason")]` attribute
@@ -2091,7 +2124,7 @@ data/
 See `docs/development/provider-implementation.md` for detailed patterns.
 
 ### Adding a New Historical Provider
-1. Create provider in `src/MarketDataCollector/Infrastructure/Providers/Backfill/`
+1. Create provider in `src/MarketDataCollector.Infrastructure/Adapters/{ProviderName}/`
 2. Implement `IHistoricalDataProvider`
 3. Add `[ImplementsAdr]` attributes
 4. Register in `CompositeHistoricalDataProvider`

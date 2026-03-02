@@ -1626,7 +1626,7 @@ When in doubt, refer to the extensive documentation in the `docs/` directory, pa
 → Add test first in `tests/MarketDataCollector.Tests/`, then fix
 
 **Working with providers?**
-→ Look in `src/MarketDataCollector/Infrastructure/Providers/`
+→ Look in `src/MarketDataCollector/Infrastructure/Adapters/`
 
 **Storage changes?**
 → Check `src/MarketDataCollector/Storage/`
