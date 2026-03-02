@@ -294,6 +294,7 @@ def main() -> int:
             )
             print(f"[dry-run] {' '.join(issue_cmd)}")
     else:
+        stopped_on_failure = False
         for name in selected:
             extra_args: List[str] = []
             if name == "scan-todos" and args.auto_create_todos:
@@ -306,33 +307,40 @@ def main() -> int:
 
             if result.status != "success" and not args.continue_on_error:
                 print("Stopping due to failure. Use --continue-on-error to continue.", file=sys.stderr)
+                stopped_on_failure = True
                 break
 
         if args.auto_create_todos and "scan-todos" in selected:
-            scan_result = next((result for result in results if result.name == "scan-todos"), None)
-            if scan_result is None or scan_result.status != "success":
-                print("Skipping create-todo-issues because scan-todos did not succeed.", file=sys.stderr)
+            if stopped_on_failure and not args.continue_on_error:
+                print(
+                    "Skipping create-todo-issues because an earlier script failed and --continue-on-error was not set.",
+                    file=sys.stderr,
+                )
             else:
-                issue_args: List[str] = [
-                    "--scan-json",
-                    TODO_SCAN_JSON_PATH,
-                    "--max-issues",
-                    str(args.todo_max_issues),
-                    "--output-json",
-                    "docs/status/todo-issue-creation-summary.json",
-                ]
-                if args.todo_repo:
-                    issue_args.extend(["--repo", args.todo_repo])
-                if args.todo_token:
-                    issue_args.extend(["--token", args.todo_token])
+                scan_result = next((result for result in results if result.name == "scan-todos"), None)
+                if scan_result is None or scan_result.status != "success":
+                    print("Skipping create-todo-issues because scan-todos did not succeed.", file=sys.stderr)
+                else:
+                    issue_args: List[str] = [
+                        "--scan-json",
+                        TODO_SCAN_JSON_PATH,
+                        "--max-issues",
+                        str(args.todo_max_issues),
+                        "--output-json",
+                        "docs/status/todo-issue-creation-summary.json",
+                    ]
+                    if args.todo_repo:
+                        issue_args.extend(["--repo", args.todo_repo])
+                    if args.todo_token:
+                        issue_args.extend(["--token", args.todo_token])
 
-                print("Running create-todo-issues...")
-                todo_result = run_script_with_args("create-todo-issues", root, extra_args=issue_args)
-                results.append(todo_result)
-                print(f" -> {todo_result.status} ({todo_result.duration_seconds:.3f}s)")
+                    print("Running create-todo-issues...")
+                    todo_result = run_script_with_args("create-todo-issues", root, extra_args=issue_args)
+                    results.append(todo_result)
+                    print(f" -> {todo_result.status} ({todo_result.duration_seconds:.3f}s)")
 
-                if todo_result.status != "success" and not args.continue_on_error:
-                    print("Stopping due to failure. Use --continue-on-error to continue.", file=sys.stderr)
+                    if todo_result.status != "success" and not args.continue_on_error:
+                        print("Stopping due to failure. Use --continue-on-error to continue.", file=sys.stderr)
 
     if args.summary_output:
         write_markdown_summary(Path(args.summary_output), results, args.dry_run)
