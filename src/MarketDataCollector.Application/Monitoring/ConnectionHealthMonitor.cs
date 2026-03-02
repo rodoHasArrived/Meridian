@@ -409,6 +409,29 @@ public sealed class ConnectionHealthMonitor : IConnectionHealthMonitor, IDisposa
         {
             kvp.Value.UpdateStatistics();
         }
+
+        // Evict connections that have been disconnected and had no activity for
+        // longer than the heartbeat timeout. This prevents unbounded dictionary
+        // growth when connections are not explicitly unregistered.
+        var staleThreshold = TimeSpan.FromSeconds(_config.HeartbeatTimeoutSeconds * 2);
+        var toRemove = new List<string>();
+        foreach (var kvp in _connections)
+        {
+            var conn = kvp.Value;
+            if (!conn.IsConnected &&
+                (DateTimeOffset.UtcNow - conn.LastActivityTime) > staleThreshold)
+            {
+                toRemove.Add(kvp.Key);
+            }
+        }
+
+        foreach (var key in toRemove)
+        {
+            if (_connections.TryRemove(key, out _))
+            {
+                _log.Debug("Evicted stale disconnected connection {ConnectionId} from health monitor", key);
+            }
+        }
     }
 
     public void Dispose()

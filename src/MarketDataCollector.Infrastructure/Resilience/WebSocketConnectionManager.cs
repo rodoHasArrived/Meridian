@@ -38,6 +38,7 @@ public sealed class WebSocketConnectionManager : IAsyncDisposable
     // Reconnection gating - prevents reconnection storms
     private volatile bool _isReconnecting;
     private readonly SemaphoreSlim _reconnectGate = new(1, 1);
+    private readonly SemaphoreSlim _connectLock = new(1, 1);
     private int _reconnectAttempts;
 
     /// <summary>
@@ -98,6 +99,8 @@ public sealed class WebSocketConnectionManager : IAsyncDisposable
 
     /// <summary>
     /// Connects to the specified WebSocket endpoint with resilience.
+    /// A semaphore ensures only one concurrent connection attempt proceeds at a time,
+    /// preventing duplicate connections from concurrent callers.
     /// </summary>
     /// <param name="uri">The WebSocket URI to connect to.</param>
     /// <param name="configureSocket">Optional action to configure the ClientWebSocket before connecting.</param>
@@ -113,39 +116,54 @@ public sealed class WebSocketConnectionManager : IAsyncDisposable
             return;
         }
 
-        _log.Information("Connecting to {Provider} WebSocket at {Uri}", _providerName, uri);
-
-        await _resiliencePipeline.ExecuteAsync(async token =>
+        await _connectLock.WaitAsync(ct).ConfigureAwait(false);
+        try
         {
-            _connectionCts = CancellationTokenSource.CreateLinkedTokenSource(token);
-            _webSocket = new ClientWebSocket();
-
-            // Allow provider-specific configuration (headers, options, etc.)
-            configureSocket?.Invoke(_webSocket);
-
-            try
+            // Re-check after acquiring the lock — another thread may have connected first.
+            if (IsConnected)
             {
-                await _webSocket.ConnectAsync(uri, token).ConfigureAwait(false);
-                _log.Information("Successfully connected to {Provider} WebSocket", _providerName);
-                _reconnectAttempts = 0;
-                StateChanged?.Invoke(WebSocketState.Open);
+                _log.Debug("{Provider} WebSocket connected by concurrent caller, skipping", _providerName);
+                return;
             }
-            catch (Exception ex)
-            {
-                _log.Warning(ex, "Connection attempt to {Provider} WebSocket failed. Will retry per policy.", _providerName);
-                CleanupFailedConnection();
-                throw;
-            }
-        }, ct).ConfigureAwait(false);
 
-        // Start heartbeat monitoring after successful connection
-        if (_webSocket != null)
+            _log.Information("Connecting to {Provider} WebSocket at {Uri}", _providerName, uri);
+
+            await _resiliencePipeline.ExecuteAsync(async token =>
+            {
+                _connectionCts = CancellationTokenSource.CreateLinkedTokenSource(token);
+                _webSocket = new ClientWebSocket();
+
+                // Allow provider-specific configuration (headers, options, etc.)
+                configureSocket?.Invoke(_webSocket);
+
+                try
+                {
+                    await _webSocket.ConnectAsync(uri, token).ConfigureAwait(false);
+                    _log.Information("Successfully connected to {Provider} WebSocket", _providerName);
+                    _reconnectAttempts = 0;
+                    StateChanged?.Invoke(WebSocketState.Open);
+                }
+                catch (Exception ex)
+                {
+                    _log.Warning(ex, "Connection attempt to {Provider} WebSocket failed. Will retry per policy.", _providerName);
+                    CleanupFailedConnection();
+                    throw;
+                }
+            }, ct).ConfigureAwait(false);
+
+            // Start heartbeat monitoring after successful connection
+            if (_webSocket != null)
+            {
+                _heartbeat = new WebSocketHeartbeat(
+                    _webSocket,
+                    _config.HeartbeatInterval,
+                    _config.HeartbeatTimeout);
+                _heartbeat.ConnectionLost += OnConnectionLostAsync;
+            }
+        }
+        finally
         {
-            _heartbeat = new WebSocketHeartbeat(
-                _webSocket,
-                _config.HeartbeatInterval,
-                _config.HeartbeatTimeout);
-            _heartbeat.ConnectionLost += OnConnectionLostAsync;
+            _connectLock.Release();
         }
     }
 
@@ -343,6 +361,7 @@ public sealed class WebSocketConnectionManager : IAsyncDisposable
     {
         await DisconnectAsync().ConfigureAwait(false);
         _reconnectGate.Dispose();
+        _connectLock.Dispose();
     }
 
     #region Private Methods
@@ -360,6 +379,7 @@ public sealed class WebSocketConnectionManager : IAsyncDisposable
             {
                 messageBuilder.Clear();
                 WebSocketReceiveResult result;
+                var oversized = false;
 
                 do
                 {
@@ -372,9 +392,26 @@ public sealed class WebSocketConnectionManager : IAsyncDisposable
                         return;
                     }
 
-                    messageBuilder.Append(Encoding.UTF8.GetString(buffer, 0, result.Count));
+                    // Guard against unbounded message accumulation: if the assembled
+                    // message has already exceeded the configured limit, continue
+                    // draining frames but discard the content.
+                    if (!oversized)
+                    {
+                        messageBuilder.Append(Encoding.UTF8.GetString(buffer, 0, result.Count));
+
+                        if (messageBuilder.Length > _config.MaxMessageSizeBytes)
+                        {
+                            _log.Warning(
+                                "{Provider} WebSocket message exceeds max size {MaxBytes} bytes — discarding",
+                                _providerName, _config.MaxMessageSizeBytes);
+                            messageBuilder.Clear();
+                            oversized = true;
+                        }
+                    }
                 }
                 while (!result.EndOfMessage);
+
+                if (oversized) continue;
 
                 var message = messageBuilder.ToString();
                 if (!string.IsNullOrWhiteSpace(message))
