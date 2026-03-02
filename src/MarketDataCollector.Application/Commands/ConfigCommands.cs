@@ -64,7 +64,7 @@ internal sealed class ConfigCommands : ICliCommand
 
         if (CliArguments.HasFlag(args, "--preset"))
         {
-            return await RunApplyPreset(args);
+            return RunApplyPreset(args);
         }
 
         return CliResult.Fail(ErrorCode.Unknown);
