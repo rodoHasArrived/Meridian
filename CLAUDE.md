@@ -398,6 +398,7 @@ Market-Data-Collector/
 │   │   ├── deterministic-canonicalization.md
 │   │   ├── domains.md
 │   │   ├── layer-boundaries.md
+│   │   ├── nautilus-inspired-restructuring-proposal.md
 │   │   ├── overview.md
 │   │   ├── provider-management.md
 │   │   ├── storage-design.md
@@ -888,50 +889,35 @@ Market-Data-Collector/
 │   │   ├── Interop.fs
 │   │   └── MarketDataCollector.FSharp.fsproj
 │   ├── MarketDataCollector.Infrastructure/
-│   │   ├── Adapters/  # Provider adapters (grouped by provider, nautilus_trader-style)
+│   │   ├── Adapters/
 │   │   │   ├── Alpaca/
-│   │   │   │   ├── AlpacaMarketDataClient.cs
-│   │   │   │   ├── AlpacaHistoricalDataProvider.cs
-│   │   │   │   └── AlpacaSymbolSearchProviderRefactored.cs
-│   │   │   ├── InteractiveBrokers/
-│   │   │   │   ├── IBMarketDataClient.cs
-│   │   │   │   ├── IBHistoricalDataProvider.cs
-│   │   │   │   ├── IBSimulationClient.cs
-│   │   │   │   └── ... (connection managers, callbacks)
-│   │   │   ├── Polygon/
-│   │   │   │   ├── PolygonMarketDataClient.cs
-│   │   │   │   ├── PolygonHistoricalDataProvider.cs
-│   │   │   │   └── PolygonSymbolSearchProvider.cs
-│   │   │   ├── NYSE/
-│   │   │   │   └── ... (streaming data source)
-│   │   │   ├── StockSharp/
-│   │   │   │   ├── StockSharpMarketDataClient.cs
-│   │   │   │   ├── StockSharpHistoricalDataProvider.cs
-│   │   │   │   ├── StockSharpSymbolSearchProvider.cs
-│   │   │   │   └── Converters/
-│   │   │   ├── Finnhub/
-│   │   │   │   ├── FinnhubHistoricalDataProvider.cs
-│   │   │   │   └── FinnhubSymbolSearchProviderRefactored.cs
-│   │   │   ├── Tiingo/
-│   │   │   ├── Stooq/
-│   │   │   ├── YahooFinance/
+│   │   │   │   ...
 │   │   │   ├── AlphaVantage/
-│   │   │   ├── NasdaqDataLink/
-│   │   │   ├── OpenFigi/
+│   │   │   │   ...
+│   │   │   ├── Core/
+│   │   │   │   ...
 │   │   │   ├── Failover/
-│   │   │   │   └── ... (failover coordination)
-│   │   │   └── Core/  # Shared adapter infrastructure
-│   │   │       ├── ProviderFactory.cs
-│   │   │       ├── ProviderRegistry.cs
-│   │   │       ├── WebSocketProviderBase.cs
-│   │   │       ├── BaseHistoricalDataProvider.cs
-│   │   │       ├── CompositeHistoricalDataProvider.cs
-│   │   │       ├── IHistoricalDataProvider.cs
-│   │   │       ├── ISymbolSearchProvider.cs
-│   │   │       ├── Backfill/
-│   │   │       ├── RateLimiting/
-│   │   │       ├── SymbolResolution/
-│   │   │       └── GapAnalysis/
+│   │   │   │   ...
+│   │   │   ├── Finnhub/
+│   │   │   │   ...
+│   │   │   ├── InteractiveBrokers/
+│   │   │   │   ...
+│   │   │   ├── NasdaqDataLink/
+│   │   │   │   ...
+│   │   │   ├── NYSE/
+│   │   │   │   ...
+│   │   │   ├── OpenFigi/
+│   │   │   │   ...
+│   │   │   ├── Polygon/
+│   │   │   │   ...
+│   │   │   ├── StockSharp/
+│   │   │   │   ...
+│   │   │   ├── Stooq/
+│   │   │   │   ...
+│   │   │   ├── Tiingo/
+│   │   │   │   ...
+│   │   │   └── YahooFinance/
+│   │   │       ...
 │   │   ├── Contracts/
 │   │   │   ├── ContractVerificationExtensions.cs
 │   │   │   └── ContractVerificationService.cs
@@ -1393,9 +1379,9 @@ Market-Data-Collector/
 │   │   │   └── Models/
 │   │   │       ...
 │   │   ├── Infrastructure/
-│   │   │   ├── Adapters/  # Provider adapter tests
-│   │   │   │   ...
 │   │   │   ├── DataSources/
+│   │   │   │   ...
+│   │   │   ├── Providers/
 │   │   │   │   ...
 │   │   │   ├── Resilience/
 │   │   │   │   ...
