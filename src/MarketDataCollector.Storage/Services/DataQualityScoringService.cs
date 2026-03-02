@@ -276,7 +276,7 @@ public sealed class DataQualityScoringService : IDataQualityScoringService
             var errorRate = (double)(gaps + outOfOrder) / total;
             return Math.Clamp(1.0 - (errorRate * 10), 0.0, 1.0);
         }
-        catch (IOException)
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
             return 0.5; // Unknown quality on file read failure
         }
