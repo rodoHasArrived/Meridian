@@ -94,7 +94,13 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
             TrackIntegrity(evt);
             _publisher.TryPublish(MarketEvent.DepthIntegrity(update.Timestamp, symbol, evt));
 
-            _publisher.TryPublish(MarketEvent.ResyncRequested(update.Timestamp, symbol, evt.Description, update.StreamId, update.Venue));
+            _publisher.TryPublish(MarketEvent.ResyncRequested(
+                update.Timestamp,
+                symbol,
+                evt.Description,
+                sequenceNumber: update.SequenceNumber,
+                streamId: update.StreamId,
+                venue: update.Venue));
             return;
         }
 
