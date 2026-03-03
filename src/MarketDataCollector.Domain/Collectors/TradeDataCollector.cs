@@ -313,8 +313,6 @@ public sealed class TradeDataCollector
                     AddToRollingWindow(rollingWindow, trade);
 
                 TrimRollingWindows(trade.Timestamp);
-
-                if (_isStale) _isStale = false;
             }
         }
 
