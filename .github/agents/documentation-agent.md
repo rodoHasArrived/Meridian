@@ -1008,6 +1008,7 @@ Market-Data-Collector/
 │   │   │   ├── AdminEndpoints.cs
 │   │   │   ├── AnalyticsEndpoints.cs
 │   │   │   ├── ApiKeyMiddleware.cs
+│   │   │   ├── AuthEndpoints.cs
 │   │   │   ├── BackfillEndpoints.cs
 │   │   │   ├── BackfillScheduleEndpoints.cs
 │   │   │   ├── CalendarEndpoints.cs
@@ -1025,6 +1026,7 @@ Market-Data-Collector/
 │   │   │   ├── IngestionJobEndpoints.cs
 │   │   │   ├── LeanEndpoints.cs
 │   │   │   ├── LiveDataEndpoints.cs
+│   │   │   ├── LoginSessionMiddleware.cs
 │   │   │   ├── MaintenanceScheduleEndpoints.cs
 │   │   │   ├── MessagingEndpoints.cs
 │   │   │   ├── OptionsEndpoints.cs
@@ -1045,8 +1047,10 @@ Market-Data-Collector/
 │   │   │   └── ConfigStore.cs
 │   │   ├── DtoExtensions.cs
 │   │   ├── HtmlTemplateGenerator.cs
+│   │   ├── HtmlTemplateGenerator.Login.cs
 │   │   ├── HtmlTemplateGenerator.Scripts.cs
 │   │   ├── HtmlTemplateGenerator.Styles.cs
+│   │   ├── LoginSessionService.cs
 │   │   └── MarketDataCollector.Ui.Shared.csproj
 │   └── MarketDataCollector.Wpf/
 │       ├── Contracts/
