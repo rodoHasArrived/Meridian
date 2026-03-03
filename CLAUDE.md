@@ -1428,6 +1428,7 @@ Market-Data-Collector/
 │   │   │   ├── DataLineageServiceTests.cs
 │   │   │   ├── DataQualityScoringServiceTests.cs
 │   │   │   ├── DataValidatorTests.cs
+│   │   │   ├── EventBufferTests.cs
 │   │   │   ├── FilePermissionsServiceTests.cs
 │   │   │   ├── JsonlBatchWriteTests.cs
 │   │   │   ├── LifecyclePolicyEngineTests.cs
