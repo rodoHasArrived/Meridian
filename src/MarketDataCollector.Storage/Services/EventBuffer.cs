@@ -198,6 +198,7 @@ public class EventBuffer<T> : IDisposable where T : class
         lock (_lock)
         {
             _active.Clear();
+            _count = 0;
         }
 
         GC.SuppressFinalize(this);

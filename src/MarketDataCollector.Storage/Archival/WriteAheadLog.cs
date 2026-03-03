@@ -211,7 +211,10 @@ public sealed class WriteAheadLog : IAsyncDisposable
 
         if (_options.SyncMode != WalSyncMode.NoSync)
         {
-            await _currentWalFile.FlushAsync(ct);
+            // Use flushToDisk: true to ensure data reaches physical disk (fsync).
+            // FileOptions.WriteThrough is not reliably honoured on Linux, so an
+            // explicit flush-to-disk is required for crash-safe durability.
+            _currentWalFile.Flush(flushToDisk: true);
         }
 
         _uncommittedRecords = 0;

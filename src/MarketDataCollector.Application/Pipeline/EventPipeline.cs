@@ -24,8 +24,9 @@ namespace MarketDataCollector.Application.Pipeline;
 /// persisted to the WAL before being written to the primary storage sink. On startup,
 /// <see cref="RecoverAsync"/> replays any uncommitted WAL records to the sink, preventing
 /// data loss from crashes. The consumer writes each event to the WAL, then to the sink,
-/// and commits the WAL after each batch is flushed. For callers using
-/// <see cref="PublishAsync"/>, the WAL write occurs at publish time for full durability.
+/// and commits the WAL after each batch is flushed. Both <see cref="TryPublish"/> and
+/// <see cref="PublishAsync"/> defer WAL writes to the consumer to ensure each event is
+/// recorded exactly once, preventing duplicate records during recovery.
 /// </remarks>
 public sealed class EventPipeline : IMarketEventPublisher, IBackpressureSignal, IAsyncDisposable, IFlushable
 {
@@ -351,16 +352,11 @@ public sealed class EventPipeline : IMarketEventPublisher, IBackpressureSignal, 
 
     /// <summary>
     /// Publishes an event to the pipeline, waiting if necessary.
-    /// When WAL is enabled, the event is written to the WAL before being queued,
-    /// providing full durability for the async publish path.
+    /// When WAL is enabled, the WAL write is performed by the consumer task
+    /// to avoid duplicate records during recovery.
     /// </summary>
     public async ValueTask PublishAsync(MarketEvent evt, CancellationToken ct = default)
     {
-        if (_wal != null)
-        {
-            await _wal.AppendAsync(evt, evt.Type.ToString(), ct).ConfigureAwait(false);
-        }
-
         await _channel.Writer.WriteAsync(evt, ct).ConfigureAwait(false);
         Interlocked.Increment(ref _publishedCount);
         if (_metricsEnabled)
@@ -470,39 +466,45 @@ public sealed class EventPipeline : IMarketEventPublisher, IBackpressureSignal, 
                 _consumerBusy = true;
                 var startTs = Stopwatch.GetTimestamp();
 
-                // Drain up to _batchSize events from the channel
-                batchBuffer.Clear();
-                while (batchBuffer.Count < _batchSize && _channel.Reader.TryRead(out var evt))
+                try
                 {
-                    batchBuffer.Add(evt);
-                }
-
-                long maxWalSequence = _lastCommittedWalSequence;
-
-                // Write each event: WAL first (if enabled), then sink
-                for (var i = 0; i < batchBuffer.Count; i++)
-                {
-                    var evt = batchBuffer[i];
-
-                    if (_wal != null)
+                    // Drain up to _batchSize events from the channel
+                    batchBuffer.Clear();
+                    while (batchBuffer.Count < _batchSize && _channel.Reader.TryRead(out var evt))
                     {
-                        var walRecord = await _wal.AppendAsync(evt, evt.Type.ToString(), _cts.Token).ConfigureAwait(false);
-                        maxWalSequence = Math.Max(maxWalSequence, walRecord.Sequence);
+                        batchBuffer.Add(evt);
                     }
 
-                    await _sink.AppendAsync(evt, _cts.Token).ConfigureAwait(false);
-                }
+                    long maxWalSequence = _lastCommittedWalSequence;
 
-                // Commit the WAL batch after all events are written to the sink
-                if (_wal != null && maxWalSequence > _lastCommittedWalSequence)
+                    // Write each event: WAL first (if enabled), then sink
+                    for (var i = 0; i < batchBuffer.Count; i++)
+                    {
+                        var evt = batchBuffer[i];
+
+                        if (_wal != null)
+                        {
+                            var walRecord = await _wal.AppendAsync(evt, evt.Type.ToString(), _cts.Token).ConfigureAwait(false);
+                            maxWalSequence = Math.Max(maxWalSequence, walRecord.Sequence);
+                        }
+
+                        await _sink.AppendAsync(evt, _cts.Token).ConfigureAwait(false);
+                    }
+
+                    // Commit the WAL batch after all events are written to the sink
+                    if (_wal != null && maxWalSequence > _lastCommittedWalSequence)
+                    {
+                        await _sink.FlushAsync(_cts.Token).ConfigureAwait(false);
+                        await _wal.CommitAsync(maxWalSequence, _cts.Token).ConfigureAwait(false);
+                        _lastCommittedWalSequence = maxWalSequence;
+                    }
+
+                    Interlocked.Add(ref _consumedCount, batchBuffer.Count);
+                }
+                finally
                 {
-                    await _sink.FlushAsync(_cts.Token).ConfigureAwait(false);
-                    await _wal.CommitAsync(maxWalSequence, _cts.Token).ConfigureAwait(false);
-                    _lastCommittedWalSequence = maxWalSequence;
+                    _consumerBusy = false;
                 }
-
-                Interlocked.Add(ref _consumedCount, batchBuffer.Count);
-                _consumerBusy = false;
 
                 // Track processing time amortized across the batch
                 var elapsedNs = (long)(HighResolutionTimestamp.GetElapsedNanoseconds(startTs));
