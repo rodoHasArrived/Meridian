@@ -286,7 +286,7 @@ public sealed class PolygonMarketDataClient : IMarketDataClient
             _isAuthenticated = true;
 
             // Start receive loop
-            _receiveLoop = Task.Run(() => ReceiveLoopAsync(_cts.Token), CancellationToken.None);
+            _receiveLoop = ReceiveLoopAsync(_cts.Token);
 
             _publisher.TryPublish(MarketEvent.Heartbeat(DateTimeOffset.UtcNow, source: "Polygon"));
 

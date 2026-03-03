@@ -57,7 +57,7 @@ public sealed class OAuthTokenRefreshService : IAsyncDisposable
         if (_refreshLoop != null) return;
 
         _cts = new CancellationTokenSource();
-        _refreshLoop = Task.Run(() => RefreshLoopAsync(_cts.Token), _cts.Token);
+        _refreshLoop = RefreshLoopAsync(_cts.Token);
         _log.Information("OAuth token refresh service started");
     }
 
