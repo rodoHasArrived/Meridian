@@ -1,6 +1,6 @@
 # Repository Structure
 
-> Auto-generated on 2026-03-03 07:34:01 UTC
+> Auto-generated on 2026-03-03 21:19:07 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -323,9 +323,12 @@ Market-Data-Collector/
 │   │   ├── docfx.json
 │   │   └── README.md
 │   ├── evaluations/
+│   │   ├── 2026-03-brainstorm-next-frontier.md
 │   │   ├── data-quality-monitoring-evaluation.md
 │   │   ├── desktop-end-user-improvements-shortlist.md
 │   │   ├── desktop-end-user-improvements.md
+│   │   ├── high-impact-improvement-brainstorm-2026-03.md
+│   │   ├── high-impact-improvements-brainstorm.md
 │   │   ├── high-value-low-cost-improvements-brainstorm.md
 │   │   ├── historical-data-providers-evaluation.md
 │   │   ├── ingestion-orchestration-evaluation.md
@@ -1035,6 +1038,7 @@ Market-Data-Collector/
 │       │   └── INavigationService.cs
 │       ├── Models/
 │       │   ├── AppConfig.cs
+│       │   ├── DashboardModels.cs
 │       │   └── StorageDisplayModels.cs
 │       ├── Services/
 │       │   ├── AdminMaintenanceService.cs
@@ -1072,7 +1076,8 @@ Market-Data-Collector/
 │       │   ├── AppStyles.xaml
 │       │   └── IconResources.xaml
 │       ├── ViewModels/
-│       │   └── BindableBase.cs
+│       │   ├── BindableBase.cs
+│       │   └── DashboardViewModel.cs
 │       ├── Views/
 │       │   ├── ActivityLogPage.xaml
 │       │   ├── ActivityLogPage.xaml.cs
