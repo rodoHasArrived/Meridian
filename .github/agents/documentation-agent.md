@@ -107,12 +107,17 @@ Market-Data-Collector/
 │   ├── TEST_MATRIX_FIX_SUMMARY.md
 │   └── WORKFLOW_IMPROVEMENTS.md
 ├── benchmarks/  # Performance benchmarks
-│   └── MarketDataCollector.Benchmarks/
-│       ├── EventPipelineBenchmarks.cs
-│       ├── IndicatorBenchmarks.cs
-│       ├── JsonSerializationBenchmarks.cs
-│       ├── MarketDataCollector.Benchmarks.csproj
-│       └── Program.cs
+│   ├── MarketDataCollector.Benchmarks/
+│   │   ├── CollectorBenchmarks.cs
+│   │   ├── EndToEndPipelineBenchmarks.cs
+│   │   ├── EventPipelineBenchmarks.cs
+│   │   ├── IndicatorBenchmarks.cs
+│   │   ├── JsonSerializationBenchmarks.cs
+│   │   ├── MarketDataCollector.Benchmarks.csproj
+│   │   ├── Program.cs
+│   │   └── StorageSinkBenchmarks.cs
+│   ├── BOTTLENECK_REPORT.md
+│   └── run-bottleneck-benchmarks.sh
 ├── build/
 │   ├── dotnet/
 │   │   ├── DocGenerator/
@@ -471,6 +476,7 @@ Market-Data-Collector/
 │   │   └── UiServer.cs
 │   ├── MarketDataCollector.Application/
 │   │   ├── Backfill/
+│   │   │   ├── BackfillCostEstimator.cs
 │   │   │   ├── BackfillRequest.cs
 │   │   │   ├── BackfillResult.cs
 │   │   │   ├── BackfillStatusStore.cs
@@ -536,6 +542,7 @@ Market-Data-Collector/
 │   │   │   │   ...
 │   │   │   ├── BackpressureAlertService.cs
 │   │   │   ├── BadTickFilter.cs
+│   │   │   ├── CircuitBreakerStatusService.cs
 │   │   │   ├── ClockSkewEstimator.cs
 │   │   │   ├── ConnectionHealthMonitor.cs
 │   │   │   ├── ConnectionStatusWebhook.cs
@@ -888,6 +895,7 @@ Market-Data-Collector/
 │   │   │   ├── MetadataTagService.cs
 │   │   │   ├── ParquetConversionService.cs
 │   │   │   ├── QuotaEnforcementService.cs
+│   │   │   ├── RetentionComplianceReporter.cs
 │   │   │   ├── SourceRegistry.cs
 │   │   │   ├── StorageCatalogService.cs
 │   │   │   ├── StorageChecksumService.cs
@@ -996,6 +1004,7 @@ Market-Data-Collector/
 │   │   │   ├── SchemaService.cs
 │   │   │   ├── SchemaServiceBase.cs
 │   │   │   ├── SearchService.cs
+│   │   │   ├── SettingsConfigurationService.cs
 │   │   │   ├── SetupWizardService.cs
 │   │   │   ├── SmartRecommendationsService.cs
 │   │   │   ├── StatusServiceBase.cs
@@ -1045,6 +1054,7 @@ Market-Data-Collector/
 │   │   │   ├── ProviderEndpoints.cs
 │   │   │   ├── ProviderExtendedEndpoints.cs
 │   │   │   ├── ReplayEndpoints.cs
+│   │   │   ├── ResilienceEndpoints.cs
 │   │   │   ├── SamplingEndpoints.cs
 │   │   │   ├── StatusEndpoints.cs
 │   │   │   ├── StorageEndpoints.cs
@@ -1112,6 +1122,8 @@ Market-Data-Collector/
 │       ├── Views/
 │       │   ├── ActivityLogPage.xaml
 │       │   ├── ActivityLogPage.xaml.cs
+│       │   ├── AddProviderWizardPage.xaml
+│       │   ├── AddProviderWizardPage.xaml.cs
 │       │   ├── AdminMaintenancePage.xaml
 │       │   ├── AdminMaintenancePage.xaml.cs
 │       │   ├── AdvancedAnalyticsPage.xaml

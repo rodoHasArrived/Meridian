@@ -347,8 +347,8 @@ public sealed class CompositeSink : IStorageSink
         private int _consecutiveFailures;
         private long _totalFailures;
         private long _circuitBreakCount;
-        private long _lastFailureTimeTicks; // UTC ticks — Volatile requires primitive types
-        private long _circuitResetTimeTicks; // UTC ticks — Volatile requires primitive types
+        private long _lastFailureTimeTicks;   // UTC ticks of DateTimeOffset
+        private long _circuitResetTimeTicks;  // UTC ticks of DateTimeOffset
 
         /// <summary>True if the circuit is already in the tripped/open state (prevents duplicate log entries).</summary>
         private int _wasTripped; // 0 = not tripped, 1 = tripped
@@ -356,29 +356,41 @@ public sealed class CompositeSink : IStorageSink
         public int ConsecutiveFailures => Volatile.Read(ref _consecutiveFailures);
         public long TotalFailures => Interlocked.Read(ref _totalFailures);
         public long CircuitBreakCount => Interlocked.Read(ref _circuitBreakCount);
-        public DateTimeOffset LastFailureTime => new DateTimeOffset(Volatile.Read(ref _lastFailureTimeTicks), TimeSpan.Zero);
-        public DateTimeOffset CircuitResetTime => new DateTimeOffset(Volatile.Read(ref _circuitResetTimeTicks), TimeSpan.Zero);
+        public DateTimeOffset LastFailureTime => new DateTimeOffset(Interlocked.Read(ref _lastFailureTimeTicks), TimeSpan.Zero);
+        public DateTimeOffset CircuitResetTime => new DateTimeOffset(Interlocked.Read(ref _circuitResetTimeTicks), TimeSpan.Zero);
         public bool WasAlreadyTripped => Volatile.Read(ref _wasTripped) == 1;
 
         public void RecordFailure(DateTimeOffset now)
         {
             Interlocked.Increment(ref _consecutiveFailures);
             Interlocked.Increment(ref _totalFailures);
-            Volatile.Write(ref _lastFailureTimeTicks, now.UtcTicks);
+            Interlocked.Exchange(ref _lastFailureTimeTicks, now.UtcTicks);
         }
 
         public void RecordSuccess()
         {
             Volatile.Write(ref _consecutiveFailures, 0);
             Volatile.Write(ref _wasTripped, 0);
-            Volatile.Write(ref _circuitResetTimeTicks, DateTimeOffset.MinValue.UtcTicks);
+            Interlocked.Exchange(ref _circuitResetTimeTicks, DateTimeOffset.MinValue.UtcTicks);
         }
 
         public void TripCircuit(DateTimeOffset resetTime)
         {
-            Volatile.Write(ref _circuitResetTimeTicks, resetTime.UtcTicks);
+            Interlocked.Exchange(ref _circuitResetTimeTicks, resetTime.UtcTicks);
             Volatile.Write(ref _wasTripped, 1);
             Interlocked.Increment(ref _circuitBreakCount);
+        }
+
+
+        private static DateTimeOffset ReadUtcTicks(ref long utcTicks)
+        {
+            var ticks = Interlocked.Read(ref utcTicks);
+            return new DateTimeOffset(ticks, TimeSpan.Zero);
+        }
+
+        private static void WriteUtcTicks(ref long utcTicks, DateTimeOffset value)
+        {
+            Interlocked.Exchange(ref utcTicks, value.UtcTicks);
         }
 
         /// <summary>
