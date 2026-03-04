@@ -22,6 +22,11 @@ from pathlib import Path
 from typing import Dict, Iterable, List, Sequence
 
 
+# Path constants for JSON output coordination
+TODO_SCAN_JSON_PATH = "docs/status/todo-scan-results.json"
+TODO_ISSUE_SUMMARY_PATH = "docs/status/todo-issue-creation-summary.json"
+
+
 @dataclass
 class ScriptResult:
     """Execution result for a single documentation automation script."""
@@ -76,13 +81,32 @@ SCRIPT_CONFIG: Dict[str, Dict[str, Sequence[str] | str]] = {
         "args": ["--rules", "build/rules/doc-rules.yaml", "--output", "docs/status/rules-report.md"],
         "output": "docs/status/rules-report.md",
     },
+    "validate-api-docs": {
+        "script": "validate-api-docs.py",
+        "args": ["--output", "docs/status/api-docs-report.md"],
+        "output": "docs/status/api-docs-report.md",
+    },
+    "generate-dependency-graph": {
+        "script": "generate-dependency-graph.py",
+        "args": ["--output", "docs/generated/project-dependencies.md", "--format", "markdown"],
+        "output": "docs/generated/project-dependencies.md",
+    },
+    "sync-readme-badges": {
+        "script": "sync-readme-badges.py",
+        "args": ["--output", "docs/status/badge-sync-report.md"],
+        "output": "docs/status/badge-sync-report.md",
+    },
+    "generate-metrics-dashboard": {
+        "script": "generate-metrics-dashboard.py",
+        "args": ["--output", "docs/status/metrics-dashboard.md"],
+        "output": "docs/status/metrics-dashboard.md",
+    },
     "create-todo-issues": {
         "script": "create-todo-issues.py",
-        "args": ["--scan-json", "docs/status/todo-scan-results.json"],
+        "args": ["--scan-json", TODO_SCAN_JSON_PATH, "--output-json", TODO_ISSUE_SUMMARY_PATH],
+        "output": TODO_ISSUE_SUMMARY_PATH,
     },
 }
-
-TODO_SCAN_JSON_PATH = "docs/status/todo-scan-results.json"
 
 PROFILE_CONFIG: Dict[str, List[str]] = {
     "quick": ["scan-todos", "validate-examples", "repair-links"],
@@ -102,6 +126,10 @@ PROFILE_CONFIG: Dict[str, List[str]] = {
         "generate-coverage",
         "generate-changelog",
         "rules-engine",
+        "validate-api-docs",
+        "generate-dependency-graph",
+        "sync-readme-badges",
+        "generate-metrics-dashboard",
     ],
 }
 
@@ -167,6 +195,13 @@ def resolve_selected_scripts(args: argparse.Namespace) -> List[str]:
     unknown = [name for name in selected if name not in SCRIPT_CONFIG]
     if unknown:
         raise ValueError(f"Unknown script names: {', '.join(unknown)}")
+    
+    # Validation: --auto-create-todos requires scan-todos
+    if args.auto_create_todos and "scan-todos" not in selected:
+        raise ValueError(
+            "--auto-create-todos requires scan-todos to be in the selected scripts. "
+            "Either add scan-todos to --scripts or use a profile that includes it."
+        )
 
     return selected
 
@@ -189,7 +224,7 @@ def run_script_with_args(name: str, root: Path, extra_args: Sequence[str] | None
         status = "failed"
         stderr = proc.stderr.strip()
         stdout = proc.stdout.strip()
-        error = stderr or stdout or f"Script exited with non-zero status (exit code {proc.returncode})"
+        error = stderr or stdout or "Script exited with non-zero status"
 
     return ScriptResult(
         name=name,
@@ -200,6 +235,10 @@ def run_script_with_args(name: str, root: Path, extra_args: Sequence[str] | None
         output_file=str(config.get("output")) if config.get("output") else None,
         error=error,
     )
+
+
+def run_script(name: str, root: Path) -> ScriptResult:
+    return run_script_with_args(name, root, extra_args=None)
 
 
 def write_markdown_summary(path: Path, results: Iterable[ScriptResult], dry_run: bool) -> None:
@@ -244,10 +283,6 @@ def main() -> int:
 
     print(f"Selected scripts ({len(selected)}): {', '.join(selected)}")
 
-    if args.auto_create_todos and "scan-todos" not in selected:
-        print("Error: --auto-create-todos requires scan-todos to be selected.", file=sys.stderr)
-        return 2
-
     results: List[ScriptResult] = []
 
     if args.dry_run:
@@ -255,6 +290,7 @@ def main() -> int:
             config = SCRIPT_CONFIG[name]
             script_path = root / "build" / "scripts" / "docs" / str(config["script"])
             command = ["python3", str(script_path), *[str(arg) for arg in config.get("args", [])]]
+            # For scan-todos, add JSON output if --auto-create-todos is set
             if name == "scan-todos" and args.auto_create_todos:
                 command.extend(["--json-output", TODO_SCAN_JSON_PATH])
             results.append(
@@ -275,10 +311,10 @@ def main() -> int:
                 str(root / "build" / "scripts" / "docs" / "create-todo-issues.py"),
                 "--scan-json",
                 TODO_SCAN_JSON_PATH,
+                "--output-json",
+                TODO_ISSUE_SUMMARY_PATH,
                 "--max-issues",
                 str(args.todo_max_issues),
-                "--output-json",
-                "docs/status/todo-issue-creation-summary.json",
                 "--dry-run",
             ]
             if args.todo_repo:
@@ -290,11 +326,12 @@ def main() -> int:
                     return_code=0,
                     duration_seconds=0.0,
                     status="planned",
+                    output_file=TODO_ISSUE_SUMMARY_PATH,
                 )
             )
             print(f"[dry-run] {' '.join(issue_cmd)}")
     else:
-        stopped_on_failure = False
+        scan_todos_succeeded = True
         for name in selected:
             extra_args: List[str] = []
             if name == "scan-todos" and args.auto_create_todos:
@@ -305,42 +342,43 @@ def main() -> int:
             results.append(result)
             print(f" -> {result.status} ({result.duration_seconds:.3f}s)")
 
+            # Track if scan-todos failed
+            if name == "scan-todos" and result.status != "success":
+                scan_todos_succeeded = False
+
             if result.status != "success" and not args.continue_on_error:
                 print("Stopping due to failure. Use --continue-on-error to continue.", file=sys.stderr)
-                stopped_on_failure = True
                 break
 
+        # Only create issues if scan-todos succeeded
         if args.auto_create_todos and "scan-todos" in selected:
-            if stopped_on_failure and not args.continue_on_error:
-                print(
-                    "Skipping create-todo-issues because an earlier script failed and --continue-on-error was not set.",
-                    file=sys.stderr,
+            if not scan_todos_succeeded:
+                print("Skipping create-todo-issues because scan-todos failed.", file=sys.stderr)
+                results.append(
+                    ScriptResult(
+                        name="create-todo-issues",
+                        command=["(skipped)"],
+                        return_code=-1,
+                        duration_seconds=0.0,
+                        status="skipped",
+                        error="scan-todos prerequisite failed",
+                    )
                 )
             else:
-                scan_result = next((result for result in results if result.name == "scan-todos"), None)
-                if scan_result is None or scan_result.status != "success":
-                    print("Skipping create-todo-issues because scan-todos did not succeed.", file=sys.stderr)
-                else:
-                    issue_args: List[str] = [
-                        "--scan-json",
-                        TODO_SCAN_JSON_PATH,
-                        "--max-issues",
-                        str(args.todo_max_issues),
-                        "--output-json",
-                        "docs/status/todo-issue-creation-summary.json",
-                    ]
-                    if args.todo_repo:
-                        issue_args.extend(["--repo", args.todo_repo])
-                    if args.todo_token:
-                        issue_args.extend(["--token", args.todo_token])
+                # Build additional args beyond SCRIPT_CONFIG defaults
+                issue_args: List[str] = ["--max-issues", str(args.todo_max_issues)]
+                if args.todo_repo:
+                    issue_args.extend(["--repo", args.todo_repo])
+                if args.todo_token:
+                    issue_args.extend(["--token", args.todo_token])
 
-                    print("Running create-todo-issues...")
-                    todo_result = run_script_with_args("create-todo-issues", root, extra_args=issue_args)
-                    results.append(todo_result)
-                    print(f" -> {todo_result.status} ({todo_result.duration_seconds:.3f}s)")
+                print("Running create-todo-issues...")
+                todo_result = run_script_with_args("create-todo-issues", root, extra_args=issue_args)
+                results.append(todo_result)
+                print(f" -> {todo_result.status} ({todo_result.duration_seconds:.3f}s)")
 
-                    if todo_result.status != "success" and not args.continue_on_error:
-                        print("Stopping due to failure. Use --continue-on-error to continue.", file=sys.stderr)
+                if todo_result.status != "success" and not args.continue_on_error:
+                    print("Stopping due to failure. Use --continue-on-error to continue.", file=sys.stderr)
 
     if args.summary_output:
         write_markdown_summary(Path(args.summary_output), results, args.dry_run)

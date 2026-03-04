@@ -35,8 +35,8 @@ public sealed class WalEventPipelineTests : IAsyncDisposable
                     Directory.Delete(_walDir, recursive: true);
                 return;
             }
-            catch (IOException) when (attempt < 4) { await Task.Delay(100); }
-            catch (UnauthorizedAccessException) when (attempt < 4) { await Task.Delay(100); }
+            catch (IOException) when (attempt < 4) { await Task.Delay(20); }
+            catch (UnauthorizedAccessException) when (attempt < 4) { await Task.Delay(20); }
         }
     }
 
@@ -92,7 +92,10 @@ public sealed class WalEventPipelineTests : IAsyncDisposable
     [Fact]
     public async Task TryPublish_WithWal_MultipleEvents_AllConsumedAndCommitted()
     {
-        var wal = new WriteAheadLog(_walDir, new WalOptions { SyncMode = WalSyncMode.EveryWrite });
+        // Use NoSync to avoid 50 sequential file flushes in the consumer which
+        // can exceed the wait timeout on busy CI runners (especially Windows).
+        // Single-event EveryWrite behavior is covered by TryPublish_WithWal_EventIsWrittenToWalAndSink.
+        var wal = new WriteAheadLog(_walDir, new WalOptions { SyncMode = WalSyncMode.NoSync });
         await wal.InitializeAsync();
 
         await using var sink = new MockWalSink();
@@ -103,14 +106,15 @@ public sealed class WalEventPipelineTests : IAsyncDisposable
             pipeline.TryPublish(CreateTradeEvent($"SYM{i}"));
         }
 
-        await WaitForConsumption(sink, expectedCount: 50);
+        // FlushAsync waits for the consumer to drain all queued events
+        await pipeline.FlushAsync(CancellationToken.None);
 
         sink.ReceivedEvents.Should().HaveCount(50);
         pipeline.ConsumedCount.Should().Be(50);
     }
 
     [Fact]
-    public async Task PublishAsync_WithWal_EventWrittenToWalAtPublishTime()
+    public async Task PublishAsync_WithWal_EventWrittenToWalByConsumer()
     {
         var wal = new WriteAheadLog(_walDir, new WalOptions { SyncMode = WalSyncMode.EveryWrite });
         await wal.InitializeAsync();
@@ -361,7 +365,7 @@ public sealed class WalEventPipelineTests : IAsyncDisposable
         var sw = System.Diagnostics.Stopwatch.StartNew();
         while (sink.ReceivedEvents.Count < expectedCount && sw.ElapsedMilliseconds < timeoutMs)
         {
-            await Task.Delay(10);
+            await Task.Delay(1);
         }
     }
 

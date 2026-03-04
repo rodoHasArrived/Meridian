@@ -9,26 +9,11 @@ namespace MarketDataCollector.Ui.Services;
 /// </summary>
 public sealed class OAuthRefreshService : IDisposable
 {
-    private static OAuthRefreshService? _instance;
-    private static readonly object _lock = new();
-
+    private static readonly Lazy<OAuthRefreshService> _instance = new(() => new OAuthRefreshService());
     /// <summary>
     /// Gets the singleton instance of the OAuth refresh service.
     /// </summary>
-    public static OAuthRefreshService Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                lock (_lock)
-                {
-                    _instance ??= new OAuthRefreshService();
-                }
-            }
-            return _instance;
-        }
-    }
+    public static OAuthRefreshService Instance => _instance.Value;
 
     private readonly CredentialService _credentialService;
     private readonly System.Timers.Timer _refreshTimer;
@@ -89,7 +74,7 @@ public sealed class OAuthRefreshService : IDisposable
         _expirationCheckTimer.Start();
 
         // Perform initial check
-        Task.Run(CheckAndRefreshTokensAsync);
+        _ = CheckAndRefreshTokensAsync();
     }
 
     /// <summary>
@@ -301,7 +286,7 @@ public sealed class OAuthRefreshService : IDisposable
 /// <summary>
 /// Status information for an OAuth token.
 /// </summary>
-public class OAuthTokenStatus
+public sealed class OAuthTokenStatus
 {
     public string ProviderId { get; set; } = string.Empty;
     public string DisplayName { get; set; } = string.Empty;
@@ -346,7 +331,7 @@ public class OAuthTokenStatus
 /// <summary>
 /// Event args for successful token refresh.
 /// </summary>
-public class TokenRefreshEventArgs : EventArgs
+public sealed class TokenRefreshEventArgs : EventArgs
 {
     public string ProviderId { get; }
     public DateTime RefreshedAt { get; }
@@ -361,7 +346,7 @@ public class TokenRefreshEventArgs : EventArgs
 /// <summary>
 /// Event args for failed token refresh.
 /// </summary>
-public class TokenRefreshFailedEventArgs : EventArgs
+public sealed class TokenRefreshFailedEventArgs : EventArgs
 {
     public string ProviderId { get; }
     public string ErrorMessage { get; }
@@ -376,7 +361,7 @@ public class TokenRefreshFailedEventArgs : EventArgs
 /// <summary>
 /// Event args for token expiration warning.
 /// </summary>
-public class TokenExpirationWarningEventArgs : EventArgs
+public sealed class TokenExpirationWarningEventArgs : EventArgs
 {
     public string ProviderId { get; }
     public DateTime ExpiresAt { get; }

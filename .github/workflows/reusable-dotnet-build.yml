@@ -1,12 +1,26 @@
 # Reusable .NET Build and Test Workflow
 # Called by other workflows to perform standard build/test operations
 # Reduces duplication and ensures consistent build configuration
+#
+# Usage:
+#   jobs:
+#     build:
+#       uses: ./.github/workflows/reusable-dotnet-build.yml
+#       with:
+#         collect-coverage: true
+#         cache-suffix: my-workflow
+#       secrets: inherit
 
 name: Reusable .NET Build
 
 on:
   workflow_call:
     inputs:
+      runs-on:
+        description: 'Runner OS (e.g. ubuntu-latest, windows-latest, macos-latest)'
+        required: false
+        type: string
+        default: 'ubuntu-latest'
       dotnet-version:
         description: '.NET SDK version'
         required: false
@@ -27,6 +41,11 @@ on:
         required: false
         type: boolean
         default: false
+      fetch-depth:
+        description: 'Git fetch depth (0 for full history)'
+        required: false
+        type: number
+        default: 1
       cache-suffix:
         description: 'Cache key suffix for isolation'
         required: false
@@ -42,6 +61,11 @@ on:
         required: false
         type: string
         default: 'build-output'
+      timeout-minutes:
+        description: 'Job timeout in minutes'
+        required: false
+        type: number
+        default: 15
     outputs:
       build-result:
         description: 'Build result (success/failure)'
@@ -50,34 +74,23 @@ on:
 jobs:
   build:
     name: Build & Test
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
+    runs-on: ${{ inputs.runs-on }}
+    timeout-minutes: ${{ inputs.timeout-minutes }}
     outputs:
       result: ${{ steps.build.outcome }}
+
+    env:
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      DOTNET_GENERATE_ASPNET_CERTIFICATE: false
+      DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION: 1
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Emit run context
-        shell: bash
-        run: |
-          {
-            echo "## Reusable Build Run Context"
-            echo ""
-            echo "- Workflow: ${{ github.workflow }}"
-            echo "- Job: ${{ github.job }}"
-            echo "- Run ID: ${{ github.run_id }}"
-            echo "- Run attempt: ${{ github.run_attempt }}"
-            echo "- Ref: ${{ github.ref }}"
-            echo "- SHA: ${{ github.sha }}"
-            echo "- Actor: ${{ github.actor }}"
-            echo "- Runner OS: ${{ runner.os }}"
-            echo "- .NET version input: ${{ inputs.dotnet-version }}"
-            echo "- Configuration input: ${{ inputs.configuration }}"
-            echo "- Run tests: ${{ inputs.run-tests }}"
-            echo "- Collect coverage: ${{ inputs.collect-coverage }}"
-          } >> "$GITHUB_STEP_SUMMARY"
+        with:
+          fetch-depth: ${{ inputs.fetch-depth }}
 
       - name: Setup .NET with Cache
         uses: ./.github/actions/setup-dotnet-cache
@@ -86,49 +99,36 @@ jobs:
           cache-suffix: ${{ inputs.cache-suffix }}
 
       - name: Restore dependencies
-        run: |
-          dotnet --info
-          dotnet restore MarketDataCollector.sln /p:EnableWindowsTargeting=true /bl:./artifacts/restore.binlog
+        run: dotnet restore MarketDataCollector.sln -p:EnableWindowsTargeting=true --verbosity minimal
 
       - name: Build
         id: build
+        shell: bash
         run: |
-          dotnet build MarketDataCollector.sln \
-            -c ${{ inputs.configuration }} \
-            --no-restore \
-            /p:EnableWindowsTargeting=true \
-            /bl:./artifacts/build.binlog
+          dotnet build MarketDataCollector.sln -c ${{ inputs.configuration }} --no-restore -p:EnableWindowsTargeting=true --verbosity minimal
 
       - name: Run tests
         if: inputs.run-tests
+        shell: bash
+        env:
+          MSYS_NO_PATHCONV: 1
         run: |
           dotnet test MarketDataCollector.sln \
             -c ${{ inputs.configuration }} \
             --no-build \
-            /p:EnableWindowsTargeting=true \
-            --verbosity normal \
+            -p:EnableWindowsTargeting=true \
+            --verbosity minimal \
             --logger "trx;LogFileName=test-results.trx" \
             --results-directory ./artifacts/test-results \
-            ${{ inputs.collect-coverage && '--collect:"XPlat Code Coverage" --results-directory ./coverage' || '' }}
-
-      - name: Summarize diagnostics
-        if: always()
-        shell: bash
-        run: |
-          {
-            echo ""
-            echo "## Diagnostics Artifacts"
-            echo "- MSBuild restore binary log: ./artifacts/restore.binlog"
-            echo "- MSBuild build binary log: ./artifacts/build.binlog"
-            echo "- Test results (TRX): ./artifacts/test-results"
-            echo "- Coverage directory: ./coverage (if enabled)"
-          } >> "$GITHUB_STEP_SUMMARY"
+            --filter "Category!=Integration" \
+            --blame-hang-timeout 60s \
+            ${{ inputs.collect-coverage && '--collect:"XPlat Code Coverage"' || '' }}
 
       - name: Upload coverage
         if: inputs.collect-coverage && success()
         uses: codecov/codecov-action@v5.5.2
         with:
-          directory: ./coverage
+          directory: ./artifacts/test-results
           fail_ci_if_error: false
           token: ${{ secrets.CODECOV_TOKEN }}
 
@@ -142,23 +142,12 @@ jobs:
             !src/**/bin/${{ inputs.configuration }}/**/ref/
           retention-days: 7
 
-      - name: Upload diagnostics artifacts
-        if: always()
+      - name: Upload diagnostics on failure
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: diagnostics-${{ inputs.cache-suffix || 'default' }}
           path: |
-            ./artifacts/*.binlog
             ./artifacts/test-results/**/*.trx
-            ./coverage/
-          retention-days: 14
-
-      - name: Upload test results on failure
-        if: failure() && inputs.run-tests
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-failure-${{ inputs.cache-suffix || 'default' }}
-          path: |
-            **/*.trx
-            ./coverage/
+            ./artifacts/test-results/**/coverage.cobertura.xml
           retention-days: 7

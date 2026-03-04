@@ -11,7 +11,9 @@ namespace MarketDataCollector.Tests.Integration.EndpointTests;
 /// Integration tests for configuration API endpoints.
 /// Tests GET/POST/DELETE operations on /api/config/*.
 /// </summary>
-public sealed class ConfigEndpointTests : IClassFixture<EndpointTestFixture>
+[Trait("Category", "Integration")]
+[Collection("Endpoint")]
+public sealed class ConfigEndpointTests
 {
     private readonly HttpClient _client;
     private static readonly JsonSerializerOptions JsonOptions = new() { PropertyNameCaseInsensitive = true };

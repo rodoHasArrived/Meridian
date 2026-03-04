@@ -13,11 +13,10 @@ namespace MarketDataCollector.Ui.Services;
 /// </summary>
 public sealed class ApiClientService : IDisposable
 {
-    private static ApiClientService? _instance;
-    private static readonly object _lock = new();
-
+    private static readonly Lazy<ApiClientService> _instance = new(() => new ApiClientService());
     private HttpClient _httpClient;
     private HttpClient? _backfillHttpClient;
+    private readonly object _backfillClientLock = new();
     private string _baseUrl;
     private int _timeoutSeconds;
     private int _backfillTimeoutMinutes;
@@ -30,20 +29,7 @@ public sealed class ApiClientService : IDisposable
     /// <summary>
     /// Gets the singleton instance of the ApiClientService.
     /// </summary>
-    public static ApiClientService Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                lock (_lock)
-                {
-                    _instance ??= new ApiClientService();
-                }
-            }
-            return _instance;
-        }
-    }
+    public static ApiClientService Instance => _instance.Value;
 
     private ApiClientService()
     {
@@ -88,14 +74,23 @@ public sealed class ApiClientService : IDisposable
 
         var urlChanged = !string.Equals(_baseUrl, newUrl, StringComparison.OrdinalIgnoreCase);
         var timeoutChanged = _timeoutSeconds != newTimeout;
+        var backfillTimeoutChanged = _backfillTimeoutMinutes != newBackfillTimeout;
 
-        if (urlChanged || timeoutChanged)
+        if (urlChanged || timeoutChanged || backfillTimeoutChanged)
         {
             var oldUrl = _baseUrl;
             _baseUrl = newUrl.TrimEnd('/');
             _timeoutSeconds = newTimeout;
             _backfillTimeoutMinutes = newBackfillTimeout;
             _uiApiClient.UpdateBaseUrl(_baseUrl);
+
+            lock (_backfillClientLock)
+            {
+                if (_backfillHttpClient != null)
+                {
+                    _backfillHttpClient.Timeout = TimeSpan.FromMinutes(_backfillTimeoutMinutes);
+                }
+            }
 
             // Recreate HTTP client with new timeout
             var oldClient = _httpClient;
@@ -143,7 +138,7 @@ public sealed class ApiClientService : IDisposable
     {
         if (_backfillHttpClient == null)
         {
-            lock (_lock)
+            lock (_backfillClientLock)
             {
                 if (_backfillHttpClient == null)
                 {

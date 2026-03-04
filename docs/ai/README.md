@@ -11,12 +11,16 @@ Located in `claude/`:
 - **[CLAUDE.fsharp.md](claude/CLAUDE.fsharp.md)** - F# domain library guide
 - **[CLAUDE.testing.md](claude/CLAUDE.testing.md)** - Testing guide
 - **[CLAUDE.actions.md](claude/CLAUDE.actions.md)** - GitHub Actions/CI guide
+- **[CLAUDE.repo-updater.md](claude/CLAUDE.repo-updater.md)** - AI Repository Updater script guide
 
 ## Copilot Guides
 
-Located in `copilot/`:
+Located in `copilot/` and `.github/`:
 
-- **[instructions.md](copilot/instructions.md)** - GitHub Copilot instructions
+- **[instructions.md](copilot/instructions.md)** - Extended GitHub Copilot instructions
+- **[.github/copilot-instructions.md](../../.github/copilot-instructions.md)** - Repository-wide coding-agent instructions
+- **[.github/instructions/](../../.github/instructions/)** - Path-specific coding-agent instruction files
+- **[.github/workflows/copilot-setup-steps.yml](../../.github/workflows/copilot-setup-steps.yml)** - Pre-install/build setup for Copilot environments
 
 ## Root Guide
 

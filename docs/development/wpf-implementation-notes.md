@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes the WPF desktop application implementation added as part of PR #598, which provides an alternative desktop UI alongside the existing UWP application.
+This document describes the WPF desktop application implementation, which is the sole desktop UI for Market Data Collector.
 
 ## Implementation Scope
 
@@ -150,8 +150,7 @@ All critical issues identified in the code review have been addressed:
 #### Near-Term
 1. Replace HTTP polling with WebSocket/SignalR for real-time updates
 2. Implement connection to backend Market Data Collector service
-3. Add comprehensive unit tests for services
-4. Implement actual configuration persistence (currently stub)
+3. Implement actual configuration persistence (currently stub)
 
 #### Long-Term
 1. Consider Blazor Hybrid for cross-platform compatibility
@@ -159,27 +158,22 @@ All critical issues identified in the code review have been addressed:
 3. Implement offline-first architecture with sync
 4. Add multi-user collaboration features
 
-### Comparison with UWP Application
-
-| Feature | UWP (WinUI 3) | WPF |
-|---------|---------------|-----|
-| Windows Version | Windows 10+ | Windows 7+ |
-| XAML Compiler | Restrictive (no ProjectReference) | Standard .NET |
-| Build Complexity | Complex (Windows App SDK) | Simple |
-| Package Format | MSIX | MSIX or traditional installer |
-| Architecture Support | x86, x64, ARM64 | x86, x64, ARM64 |
-| Theme Support | Native Windows 11 | Custom implementation |
-| Cross-Platform | Windows-only | Windows-only |
-| Maturity | Newer (2020+) | Mature (2006+) |
-
 ### Documentation
 
 Related documentation:
 - **Evaluation**: `docs/evaluations/desktop-ui-alternatives-evaluation.md`
-- **UWP Roadmap**: `docs/guides/uwp-development-roadmap.md`
-- **UWP Checklist**: `docs/guides/uwp-release-checklist.md`
+- **Migration History**: [UWP to WPF Migration](../archived/uwp-to-wpf-migration.md) (archived)
 
 ### Testing
+
+#### Unit Tests (272 tests)
+
+Desktop services have comprehensive unit test coverage across two projects:
+
+- **MarketDataCollector.Wpf.Tests** (101 tests): NavigationService, ConfigService, StatusService, ConnectionService, WpfDataQualityService
+- **MarketDataCollector.Ui.Tests** (171 tests): ApiClient, Backfill, Charting, FixtureData, FormValidation, SystemHealth, Watchlist, collections, and more
+
+Run tests with `make test-desktop-services`. See [Desktop Testing Guide](./desktop-testing-guide.md) for details.
 
 #### Manual Testing Checklist
 - [ ] Application launches successfully
@@ -190,13 +184,6 @@ Related documentation:
 - [ ] Settings page shows configuration path
 - [ ] Graceful shutdown completes within timeout
 - [ ] Background services start and stop correctly
-
-#### Unit Testing (Planned)
-- [ ] NavigationService tests
-- [ ] ConfigService tests
-- [ ] StatusService tests
-- [ ] ConnectionService tests
-- [ ] KeyboardShortcutService tests
 
 ### Contributing
 
@@ -235,5 +222,23 @@ MIT License - Same as parent project
 
 ---
 
-**Last Updated**: 2026-02-02
-**Status**: Implementation Complete, Ready for Testing
+**Last Updated**: 2026-02-13
+**Status**: Implementation Complete, Documentation Expanded
+
+---
+
+## Related Documentation
+
+- **Desktop Development:**
+  - [Desktop Testing Guide](./desktop-testing-guide.md) - Comprehensive testing procedures
+  - [Desktop Platform Improvements](./desktop-platform-improvements-implementation-guide.md) - Full improvement roadmap
+  - [Desktop Improvements - Executive Summary](./desktop-improvements-executive-summary.md) - Impact analysis
+  - [Desktop Support Policy](./policies/desktop-support-policy.md) - Contribution requirements
+
+- **Architecture:**
+  - [Desktop Architecture Layers](../architecture/desktop-layers.md) - Layer boundaries
+  - [UI Fixture Mode Guide](./ui-fixture-mode-guide.md) - Offline development
+  - [Repository Organization Guide](./repository-organization-guide.md) - Code structure
+
+- **Planning:**
+  - [Project Roadmap](../status/ROADMAP.md) - Desktop roadmap items

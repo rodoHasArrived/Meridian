@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -14,28 +15,14 @@ namespace MarketDataCollector.Ui.Services;
 /// </summary>
 public sealed class ProviderHealthService : IDisposable
 {
-    private static ProviderHealthService? _instance;
-    private static readonly object _lock = new();
+    private static readonly Lazy<ProviderHealthService> _instance = new(() => new ProviderHealthService());
     private readonly ApiClientService _apiClient;
     private readonly Timer _updateTimer;
-    private readonly Dictionary<string, ProviderHealthData> _providerHealth = new();
-    private readonly Dictionary<string, List<HealthHistoryPoint>> _healthHistory = new();
+    private readonly ConcurrentDictionary<string, ProviderHealthData> _providerHealth = new();
+    private readonly ConcurrentDictionary<string, List<HealthHistoryPoint>> _healthHistory = new();
     private bool _disposed;
 
-    public static ProviderHealthService Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                lock (_lock)
-                {
-                    _instance ??= new ProviderHealthService();
-                }
-            }
-            return _instance;
-        }
-    }
+    public static ProviderHealthService Instance => _instance.Value;
 
     private ProviderHealthService()
     {
@@ -73,6 +60,8 @@ public sealed class ProviderHealthService : IDisposable
 
     private async void OnTimerElapsed(object? sender, ElapsedEventArgs e)
     {
+        if (_disposed) return;
+
         try
         {
             await RefreshHealthDataAsync();
@@ -110,7 +99,10 @@ public sealed class ProviderHealthService : IDisposable
         if (_healthHistory.TryGetValue(providerId, out var history))
         {
             var cutoff = DateTime.UtcNow - duration;
-            return history.Where(h => h.Timestamp >= cutoff).ToList();
+            lock (history)
+            {
+                return history.Where(h => h.Timestamp >= cutoff).ToList();
+            }
         }
         return new List<HealthHistoryPoint>();
     }
@@ -170,11 +162,11 @@ public sealed class ProviderHealthService : IDisposable
     /// <summary>
     /// Compares health metrics across providers.
     /// </summary>
-    public async Task<ProviderComparison> CompareProvidersAsync(CancellationToken ct = default)
+    public async Task<ProviderHealthComparison> CompareProvidersAsync(CancellationToken ct = default)
     {
         var healthData = await GetAllProviderHealthAsync(ct);
 
-        return new ProviderComparison
+        return new ProviderHealthComparison
         {
             Providers = healthData,
             BestOverall = healthData.OrderByDescending(p => p.OverallScore).FirstOrDefault()?.ProviderId,
@@ -220,22 +212,22 @@ public sealed class ProviderHealthService : IDisposable
                 _providerHealth[provider.ProviderId] = healthData;
 
                 // Update history
-                if (!_healthHistory.ContainsKey(provider.ProviderId))
+                var history = _healthHistory.GetOrAdd(provider.ProviderId, _ => new List<HealthHistoryPoint>());
+
+                lock (history)
                 {
-                    _healthHistory[provider.ProviderId] = new List<HealthHistoryPoint>();
+                    history.Add(new HealthHistoryPoint
+                    {
+                        Timestamp = DateTime.UtcNow,
+                        OverallScore = healthData.OverallScore,
+                        LatencyMs = provider.AverageLatencyMs,
+                        CompletenessPercent = provider.DataCompletenessPercent
+                    });
+
+                    // Keep only last 24 hours
+                    var cutoff = DateTime.UtcNow.AddHours(-24);
+                    history.RemoveAll(h => h.Timestamp < cutoff);
                 }
-
-                _healthHistory[provider.ProviderId].Add(new HealthHistoryPoint
-                {
-                    Timestamp = DateTime.UtcNow,
-                    OverallScore = healthData.OverallScore,
-                    LatencyMs = provider.AverageLatencyMs,
-                    CompletenessPercent = provider.DataCompletenessPercent
-                });
-
-                // Keep only last 24 hours
-                var cutoff = DateTime.UtcNow.AddHours(-24);
-                _healthHistory[provider.ProviderId].RemoveAll(h => h.Timestamp < cutoff);
 
                 // Check for alerts
                 CheckHealthAlerts(healthData);
@@ -304,14 +296,14 @@ public sealed class ProviderHealthService : IDisposable
             _providerHealth[id] = healthData;
 
             // Update history with some variation
-            if (!_healthHistory.ContainsKey(id))
+            var history = _healthHistory.GetOrAdd(id, _ =>
             {
-                _healthHistory[id] = new List<HealthHistoryPoint>();
+                var list = new List<HealthHistoryPoint>();
                 // Generate historical data
                 var rnd = new Random();
                 for (int i = 24; i >= 0; i--)
                 {
-                    _healthHistory[id].Add(new HealthHistoryPoint
+                    list.Add(new HealthHistoryPoint
                     {
                         Timestamp = DateTime.UtcNow.AddHours(-i),
                         OverallScore = healthData.OverallScore + rnd.Next(-5, 6),
@@ -319,18 +311,22 @@ public sealed class ProviderHealthService : IDisposable
                         CompletenessPercent = Math.Min(100, completeness + rnd.Next(-2, 2))
                     });
                 }
-            }
-
-            _healthHistory[id].Add(new HealthHistoryPoint
-            {
-                Timestamp = DateTime.UtcNow,
-                OverallScore = healthData.OverallScore,
-                LatencyMs = latency,
-                CompletenessPercent = completeness
+                return list;
             });
 
-            var cutoff = DateTime.UtcNow.AddHours(-24);
-            _healthHistory[id].RemoveAll(h => h.Timestamp < cutoff);
+            lock (history)
+            {
+                history.Add(new HealthHistoryPoint
+                {
+                    Timestamp = DateTime.UtcNow,
+                    OverallScore = healthData.OverallScore,
+                    LatencyMs = latency,
+                    CompletenessPercent = completeness
+                });
+
+                var cutoff = DateTime.UtcNow.AddHours(-24);
+                history.RemoveAll(h => h.Timestamp < cutoff);
+            }
         }
     }
 
@@ -423,8 +419,9 @@ public sealed class ProviderHealthService : IDisposable
     public void Dispose()
     {
         if (_disposed) return;
-        _disposed = true;
+        _disposed = true; // Set before stopping so in-flight callbacks exit early
         _updateTimer.Stop();
+        _updateTimer.Elapsed -= OnTimerElapsed;
         _updateTimer.Dispose();
     }
 }
@@ -516,7 +513,10 @@ public sealed class FailoverThresholds
     public bool AutoFailoverEnabled { get; set; } = true;
 }
 
-public sealed class ProviderComparison
+// NOTE: ProviderComparison is defined in AdvancedAnalyticsModels.cs for cross-provider comparison
+// ProviderHealthComparison below is for overall provider ranking
+
+public sealed class ProviderHealthComparison
 {
     public List<ProviderHealthData> Providers { get; set; } = new();
     public string? BestOverall { get; set; }

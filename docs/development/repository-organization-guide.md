@@ -1,7 +1,7 @@
 # Repository Organization Guide
 
 **Version:** 1.0  
-**Last Updated:** 2026-02-12  
+**Last Updated:** 2026-02-13  
 **Audience:** Developers, Contributors, Maintainers
 
 This guide establishes conventions for organizing code, documentation, and assets in the Market Data Collector repository. Following these patterns ensures consistency, maintainability, and ease of navigation.
@@ -38,8 +38,7 @@ This guide establishes conventions for organizing code, documentation, and asset
 ```
 ┌─────────────────────────────────────────────────────┐
 │  Presentation Layer (UI Projects)                   │
-│  - MarketDataCollector.Wpf                          │
-│  - MarketDataCollector.Uwp                          │
+│  - MarketDataCollector.Wpf (Desktop)                │
 │  - MarketDataCollector.Ui (Web UI)                  │
 ├─────────────────────────────────────────────────────┤
 │  UI Services Layer                                  │
@@ -109,7 +108,6 @@ src/
 ├── MarketDataCollector.Ui/                 # Web UI entry point
 ├── MarketDataCollector.Ui.Services/        # Shared UI services (desktop + web)
 ├── MarketDataCollector.Ui.Shared/          # Web-specific UI components
-├── MarketDataCollector.Uwp/                # UWP desktop application
 └── MarketDataCollector.Wpf/                # WPF desktop application
 ```
 
@@ -179,7 +177,7 @@ Each project can reference projects below it in the layer hierarchy:
 | **Application** | Domain, Infrastructure, Storage, Core, Contracts, FSharp, ProviderSdk |
 | **Ui.Services** | Contracts, Core |
 | **Ui.Shared** | Application, Ui.Services, Contracts, Core |
-| **Wpf / Uwp** | Ui.Services, Contracts |
+| **Wpf** | Ui.Services, Contracts |
 | **Domain** | Contracts, Core |
 | **Infrastructure** | Domain, Core, Contracts, ProviderSdk, FSharp |
 | **Storage** | Domain, Core, Contracts |
@@ -245,7 +243,7 @@ ProjectName/
 All provider implementations follow this structure:
 
 ```
-Infrastructure/Providers/
+Infrastructure/Adapters/
 ├── Core/                           # Shared provider infrastructure
 │   ├── ProviderBase.cs
 │   └── ProviderHelpers.cs
@@ -506,14 +504,13 @@ src/MarketDataCollector.Wpf/
 ❌ **Problem:** Same interface defined in multiple projects
 ```
 Wpf/Services/IConfigService.cs
-Uwp/Contracts/IConfigService.cs
 Ui.Services/Contracts/IConfigService.cs
 ```
 
 ✅ **Solution:** Keep one canonical definition in shared location
 ```
 Ui.Services/Contracts/IConfigService.cs  (✓ canonical)
-Delete from Wpf and Uwp, update using directives
+Delete from Wpf, update using directives
 ```
 
 ### Pitfall 2: Ambiguous Class Names
@@ -603,10 +600,10 @@ When adding new code, ask these questions:
 | Shared DTO | `Contracts/` | `MarketDataCollector.Contracts` |
 | Domain model | `Contracts/Domain/Models/` | `MarketDataCollector.Contracts` |
 | Business logic | `Domain/` | `MarketDataCollector.Domain` |
-| Provider implementation | `Infrastructure/Providers/` | `MarketDataCollector.Infrastructure` |
+| Provider implementation | `Infrastructure/Adapters/` | `MarketDataCollector.Infrastructure` |
 | HTTP API endpoint | `Application/Http/Endpoints/` | `MarketDataCollector.Application` |
 | UI service (desktop+web) | `Ui.Services/Services/` | `MarketDataCollector.Ui.Services` |
-| Platform-specific UI logic | `Wpf/` or `Uwp/` | Respective projects |
+| Platform-specific UI logic | `Wpf/` | `MarketDataCollector.Wpf` |
 | Configuration model | `Core/Config/` | `MarketDataCollector.Core` |
 | Shared utility | `Core/Utilities/` | `MarketDataCollector.Core` |
 | Custom exception | `Core/Exceptions/` | `MarketDataCollector.Core` |
@@ -618,7 +615,7 @@ Follow this structure:
 
 1. **Create provider folder:**
    ```
-   Infrastructure/Providers/{Category}/{ProviderName}/
+   Infrastructure/Adapters/{Category}/{ProviderName}/
    ```
 
 2. **Implement required interface:**
@@ -639,7 +636,7 @@ Follow this structure:
 
 5. **Add tests:**
    ```
-   tests/MarketDataCollector.Tests/Infrastructure/Providers/{Provider}Tests.cs
+   tests/MarketDataCollector.Tests/Infrastructure/Adapters/{Provider}Tests.cs
    ```
 
 6. **Document setup:**
@@ -727,3 +724,26 @@ This guide should evolve as the repository grows. To suggest improvements:
 ---
 
 *This guide is maintained by the core team and updated with each significant repository reorganization.*
+
+---
+
+## Related Documentation
+
+- **Planning and Cleanup:**
+  - [Repository Cleanup Action Plan](./repository-cleanup-action-plan.md) - Technical debt reduction plan
+  - [Refactor Map](./refactor-map.md) - Safe refactoring procedures
+  - [Project Roadmap](../status/ROADMAP.md) - Project timeline and phases
+
+- **Implementation Guides:**
+  - [Provider Implementation Guide](./provider-implementation.md) - Adding data providers
+  - [Desktop Platform Improvements](./desktop-platform-improvements-implementation-guide.md) - Desktop development
+  - [WPF Implementation Notes](./wpf-implementation-notes.md) - WPF architecture
+
+- **Architecture:**
+  - [Architecture Overview](../architecture/overview.md) - System architecture
+  - [ADR Index](../adr/README.md) - Architectural decisions
+  - [Project Boundaries](../architecture/layer-boundaries.md) - Layer dependencies
+
+- **Contributing:**
+  - [Documentation Contribution Guide](./documentation-contribution-guide.md) - Contributing to docs
+  - [Central Package Management](./central-package-management.md) - NuGet conventions

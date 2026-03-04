@@ -35,11 +35,11 @@ public class JsonlBatchWriteTests : IDisposable
             }
             catch (IOException) when (attempt < 4)
             {
-                Thread.Sleep(50);
+                Thread.Sleep(10);
             }
             catch (UnauthorizedAccessException) when (attempt < 4)
             {
-                Thread.Sleep(50);
+                Thread.Sleep(10);
             }
         }
     }
@@ -273,13 +273,16 @@ public class JsonlBatchWriteTests : IDisposable
         var batchOptions = new JsonlBatchOptions { BatchSize = 5, Enabled = true, FlushInterval = TimeSpan.FromMinutes(5) };
         var options = new StorageOptions { RootPath = _testRoot };
         var policy = new TestStoragePolicy(_testRoot);
-        await using var sink = new JsonlStorageSink(options, policy, batchOptions);
+        var sink = new JsonlStorageSink(options, policy, batchOptions);
 
         // Act
         for (int i = 0; i < 5; i++)
         {
             await sink.AppendAsync(CreateTestEvent("AAPL", i));
         }
+
+        // Dispose sink to release file handles before reading on Windows
+        await sink.DisposeAsync();
 
         // Assert
         var files = Directory.GetFiles(_testRoot, "*.jsonl", SearchOption.AllDirectories);

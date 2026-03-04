@@ -6,8 +6,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using MarketDataCollector.Contracts.Archive;
-using MarketDataCollector.Wpf.Services;
+using MarketDataCollector.Ui.Services;
+using WpfServices = MarketDataCollector.Wpf.Services;
 
+using MarketDataCollector.Wpf.Services;
 namespace MarketDataCollector.Wpf.Views;
 
 /// <summary>
@@ -15,17 +17,19 @@ namespace MarketDataCollector.Wpf.Views;
 /// </summary>
 public sealed partial class ArchiveHealthPage : Page
 {
-    private readonly ArchiveHealthService _healthService;
-    private readonly SchemaService _schemaService;
+    private readonly WpfServices.ArchiveHealthService _healthService;
+    private readonly WpfServices.SchemaService _schemaService;
     private readonly ObservableCollection<IssueDisplayItem> _issues;
     private readonly ObservableCollection<string> _recommendations;
 
-    public ArchiveHealthPage()
+    public ArchiveHealthPage(
+        WpfServices.ArchiveHealthService healthService,
+        WpfServices.SchemaService schemaService)
     {
         InitializeComponent();
 
-        _healthService = ArchiveHealthService.Instance;
-        _schemaService = SchemaService.Instance;
+        _healthService = healthService;
+        _schemaService = schemaService;
         _issues = new ObservableCollection<IssueDisplayItem>();
         _recommendations = new ObservableCollection<string>();
 
@@ -107,9 +111,9 @@ public sealed partial class ArchiveHealthPage : Page
         if (status.StorageHealthInfo != null)
         {
             var storage = status.StorageHealthInfo;
-            TotalCapacityText.Text = FormatBytes(storage.TotalCapacity);
-            UsedSpaceText.Text = FormatBytes(storage.TotalCapacity - storage.FreeSpace);
-            FreeSpaceText.Text = FormatBytes(storage.FreeSpace);
+            TotalCapacityText.Text = FormatHelpers.FormatBytes(storage.TotalCapacity);
+            UsedSpaceText.Text = FormatHelpers.FormatBytes(storage.TotalCapacity - storage.FreeSpace);
+            FreeSpaceText.Text = FormatHelpers.FormatBytes(storage.FreeSpace);
             DaysUntilFullText.Text = storage.DaysUntilFull?.ToString() ?? "--";
             DriveTypeText.Text = $"Drive Type: {storage.DriveType}";
 
@@ -374,18 +378,6 @@ public sealed partial class ArchiveHealthPage : Page
         });
     }
 
-    private static string FormatBytes(long bytes)
-    {
-        string[] sizes = { "B", "KB", "MB", "GB", "TB" };
-        double len = bytes;
-        int order = 0;
-        while (len >= 1024 && order < sizes.Length - 1)
-        {
-            order++;
-            len /= 1024;
-        }
-        return $"{len:F1} {sizes[order]}";
-    }
 }
 
 public sealed class IssueDisplayItem

@@ -1,8 +1,9 @@
 using System.Net.Http;
-using MarketDataCollector.Infrastructure.Providers.Backfill;
+using System.Net;
+using MarketDataCollector.Infrastructure.Adapters.Core;
 using Xunit;
 
-namespace MarketDataCollector.Tests.Infrastructure.Providers;
+namespace MarketDataCollector.Tests.Infrastructure.Adapters;
 
 /// <summary>
 /// Unit tests for Retry-After header parsing in BackfillWorkerService.
@@ -68,6 +69,43 @@ public sealed class BackfillRetryAfterTests
     {
         var ex = new Exception("Retry-After: invalid");
         var result = BackfillWorkerService.TryExtractRetryAfter(ex);
+        Assert.Null(result);
+    }
+
+    [Fact]
+    public void TryExtractRetryAfter_FromExceptionDataKey_Extracts()
+    {
+        var ex = new Exception("HTTP 429 Too Many Requests");
+        ex.Data["Retry-After"] = "75";
+
+        var result = BackfillWorkerService.TryExtractRetryAfter(ex);
+
+        Assert.NotNull(result);
+        Assert.Equal(75, result.Value.TotalSeconds, 1);
+    }
+
+    [Fact]
+    public void TryExtractRetryAfter_FromExceptionDataResponse_Extracts()
+    {
+        using var response = new HttpResponseMessage(HttpStatusCode.TooManyRequests);
+        response.Headers.RetryAfter = new System.Net.Http.Headers.RetryConditionHeaderValue(TimeSpan.FromSeconds(42));
+
+        var ex = new Exception("HTTP 429 Too Many Requests");
+        ex.Data["Response"] = response;
+
+        var result = BackfillWorkerService.TryExtractRetryAfter(ex);
+
+        Assert.NotNull(result);
+        Assert.Equal(42, result.Value.TotalSeconds, 1);
+    }
+
+    [Fact]
+    public void TryExtractRetryAfter_HttpRequestExceptionStatusCode429_WithoutMessageHeader_ReturnsNull()
+    {
+        var ex = new HttpRequestException("Too many requests", null, HttpStatusCode.TooManyRequests);
+
+        var result = BackfillWorkerService.TryExtractRetryAfter(ex);
+
         Assert.Null(result);
     }
 }

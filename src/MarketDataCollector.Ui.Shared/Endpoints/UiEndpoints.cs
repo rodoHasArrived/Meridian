@@ -36,7 +36,7 @@ public static class UiEndpoints
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(c =>
         {
-            c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+            c.SwaggerDoc("v1", new Microsoft.OpenApi.OpenApiInfo
             {
                 Title = "Market Data Collector API",
                 Version = "v1",
@@ -46,6 +46,7 @@ public static class UiEndpoints
 
         var app = builder.Build();
         app.UseApiKeyAuthentication();
+        app.UseLoginSessionAuthentication();
         app.UseRateLimiter();
 
         // Enable Swagger UI in development mode
@@ -72,6 +73,7 @@ public static class UiEndpoints
         builder.Services.AddUiSharedServices(statusHandlers, configPath);
         var app = builder.Build();
         app.UseApiKeyAuthentication();
+        app.UseLoginSessionAuthentication();
         app.UseRateLimiter();
         app.MapUiEndpointsWithStatus(statusHandlers);
         return app;
@@ -92,6 +94,9 @@ public static class UiEndpoints
         // Use the centralized composition root (registers core services)
         var options = CompositionOptions.WebDashboard with { ConfigPath = configPath };
         services.AddMarketDataServices(options);
+
+        // Register session-based authentication service
+        services.AddSingleton<LoginSessionService>();
 
         // Replace core BackfillCoordinator with UI-extended version that includes PreviewAsync
         // The Ui.Shared.Services.BackfillCoordinator wraps the core and adds preview functionality
@@ -118,6 +123,9 @@ public static class UiEndpoints
         // Use the centralized composition root (registers core services)
         var options = CompositionOptions.WebDashboard with { ConfigPath = configPath };
         services.AddMarketDataServices(options);
+
+        // Register session-based authentication service
+        services.AddSingleton<LoginSessionService>();
 
         // Replace core BackfillCoordinator with UI-extended version that includes PreviewAsync
         services.AddSingleton<MarketDataCollector.Ui.Shared.Services.BackfillCoordinator>(sp =>
@@ -191,7 +199,19 @@ public static class UiEndpoints
         app.MapProviderExtendedEndpoints(jsonOptions);
         app.MapIndexEndpoints(jsonOptions);
 
-        app.MapStubEndpoints();
+        // Canonicalization parity dashboard (Phase 2) endpoints are mapped elsewhere to avoid duplicate registrations.
+
+        // Trading calendar endpoints
+        app.MapCalendarEndpoints(jsonOptions);
+
+        // Historical data query endpoints (Phase 9A.1)
+        app.MapHistoricalEndpoints(jsonOptions);
+
+        // Checkpoint and ingestion job endpoints (P0)
+        app.MapCheckpointEndpoints(jsonOptions);
+
+        // Options / Derivatives endpoints
+        app.MapOptionsEndpoints(jsonOptions);
 
         // Map quality drops endpoints (C3/#16)
         var auditTrail = app.Services.GetService<DroppedEventAuditTrail>();
@@ -210,6 +230,9 @@ public static class UiEndpoints
         {
             app.MapSlaEndpoints(slaMonitor);
         }
+
+        // Authentication endpoints (login page, login API, logout API)
+        app.MapAuthEndpoints();
 
         return app;
     }
@@ -260,7 +283,17 @@ public static class UiEndpoints
         app.MapProviderExtendedEndpoints(jsonOptions);
         app.MapIndexEndpoints(jsonOptions);
 
-        app.MapStubEndpoints();
+        // Canonicalization parity dashboard (Phase 2)
+        app.MapCanonicalizationEndpoints(jsonOptions);
+
+        // Trading calendar endpoints
+        app.MapCalendarEndpoints(jsonOptions);
+
+        // Historical data query endpoints (Phase 9A.1)
+        app.MapHistoricalEndpoints(jsonOptions);
+
+        // Checkpoint and ingestion job endpoints (P0)
+        app.MapCheckpointEndpoints(jsonOptions);
 
         // Map quality drops endpoints (C3/#16 - DroppedEventAuditTrail exposure)
         var auditTrail = app.Services.GetService<DroppedEventAuditTrail>();
@@ -279,6 +312,9 @@ public static class UiEndpoints
         {
             app.MapSlaEndpoints(slaMonitor);
         }
+
+        // Authentication endpoints (login page, login API, logout API)
+        app.MapAuthEndpoints();
 
         return app;
     }

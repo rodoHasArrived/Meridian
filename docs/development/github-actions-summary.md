@@ -2,7 +2,7 @@
 
 This document provides a quick reference for all GitHub Actions workflows in the Market Data Collector repository.
 
-**Last Updated:** 2026-02-06
+**Last Updated:** 2026-02-13
 **Total Workflows:** 17 (consolidated from 25 original files)
 **Authoritative Reference:** [`.github/workflows/README.md`](../../.github/workflows/README.md)
 
@@ -18,7 +18,7 @@ This document provides a quick reference for all GitHub Actions workflows in the
 | Pull Request Checks | `pr-checks.yml` | PRs to main/develop | Format, build, test, coverage, AI review |
 | Docker | `docker.yml` | Manual dispatch | Multi-arch Docker images, optional GHCR push |
 | Release Management | `release.yml` | Manual dispatch | Semver validation, changelog, tag, GitHub release |
-| Desktop Builds | `desktop-builds.yml` | Push/PRs (desktop paths), manual | Consolidated UWP + WPF builds with selective targeting |
+| Desktop Builds | `desktop-builds.yml` | Push/PRs (desktop paths), manual | WPF desktop builds with selective targeting |
 | Reusable .NET Build | `reusable-dotnet-build.yml` | Called by other workflows | Shared build/test steps |
 
 ### Code Quality & Security (3 workflows)

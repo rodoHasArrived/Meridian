@@ -2,8 +2,8 @@
 
 ## Market Data Collector — Backfill Provider Assessment
 
-**Date:** 2026-02-03
-**Status:** Evaluation Complete
+**Date:** 2026-02-20
+**Status:** Updated (Polygon.io documentation refresh)
 **Author:** Architecture Review
 
 ---
@@ -12,7 +12,7 @@
 
 This document evaluates the 10 historical data providers integrated into the Market Data Collector system for backfill operations. The evaluation assesses data quality, coverage, rate limits, cost, and reliability to guide provider selection and fallback chain configuration.
 
-**Key Finding:** The current multi-provider architecture with `CompositeHistoricalDataProvider` is well-designed. Alpaca and Polygon should be primary providers for professional use cases, with Stooq and Yahoo Finance as free-tier fallbacks. The priority-based fallback chain provides excellent resilience.
+**Key Finding:** The current multi-provider architecture with `CompositeHistoricalDataProvider` remains well-designed. Alpaca and Polygon should be primary providers for professional use cases, with Stooq and Yahoo Finance as free-tier fallbacks. Polygon remains the preferred provider for high-quality US tick data, but plan/rate-limit assumptions should be validated against Polygon's current docs before final production sizing.
 
 ---
 
@@ -94,7 +94,7 @@ This document evaluates the 10 historical data providers integrated into the Mar
 - Pagination: 10,000 bars per request
 
 **Implementation Quality:**
-- Location: `Infrastructure/Providers/Historical/Alpaca/`
+- Location: `Infrastructure/Adapters/Alpaca/`
 - Error handling: Comprehensive with retry logic
 - Rate limit tracking: Integrated with `ProviderRateLimitTracker`
 
@@ -103,6 +103,11 @@ This document evaluates the 10 historical data providers integrated into the Mar
 ### Provider 2: Polygon.io
 
 **Recommendation:** Primary provider for professional-grade tick data
+
+**Documentation Status (Refreshed):**
+- Polygon's documentation is currently served under the Massive branding (`massive.com/docs`) while Polygon API references and SDK naming are still used in many integration contexts.
+- Endpoint availability, recency entitlements, and rate limits are plan-specific and can change; engineering should rely on the live docs at implementation time rather than hard-coded values in this evaluation.
+- Validation date for this section: **2026-02-20**.
 
 **Best Use Cases:**
 - Tick-level trade and quote data
@@ -132,8 +137,8 @@ This document evaluates the 10 historical data providers integrated into the Mar
 
 | Weakness | Detail |
 |----------|--------|
-| Cost | Professional plans expensive ($199-$799/month) |
-| Free tier limits | Only 5 API calls/minute on free tier |
+| Cost | Professional usage can become expensive as data depth and request volume increase |
+| Free tier limits | Free/basic plans are restrictive for sustained backfill workloads |
 | US focus | Limited international coverage |
 | Complexity | More complex API than alternatives |
 
@@ -150,13 +155,12 @@ This document evaluates the 10 historical data providers integrated into the Mar
 | Consistency | ★★★★★ | Reliable delivery |
 
 **Rate Limits:**
-- Free: 5 requests/minute
-- Starter: 100 requests/minute
-- Developer: Unlimited
-- Advanced: Unlimited with priority
+- Plan-dependent and entitlement-dependent (must be verified in live docs before rollout)
+- Use conservative throttling defaults in backfill jobs until account-specific limits are confirmed
+- Re-check limits whenever subscription tier changes
 
 **Implementation Quality:**
-- Location: `Infrastructure/Providers/Historical/Polygon/`
+- Location: `Infrastructure/Adapters/Polygon/`
 - Features: Aggregates, trades, quotes, reference data
 - Circuit breaker: Polly-based resilience
 
@@ -216,7 +220,7 @@ This document evaluates the 10 historical data providers integrated into the Mar
 - Concurrent: 3 historical data connections max
 
 **Implementation Quality:**
-- Location: `Infrastructure/Providers/Historical/InteractiveBrokers/`
+- Location: `Infrastructure/Adapters/InteractiveBrokers/`
 - Connection: TWS/Gateway via IBApi
 - Pacing: Implemented with adaptive throttling
 
@@ -276,7 +280,7 @@ This document evaluates the 10 historical data providers integrated into the Mar
 - Commercial: Higher limits
 
 **Implementation Quality:**
-- Location: `Infrastructure/Providers/Historical/Tiingo/`
+- Location: `Infrastructure/Adapters/Tiingo/`
 - Clean implementation with proper error handling
 
 ---
@@ -337,7 +341,7 @@ This document evaluates the 10 historical data providers integrated into the Mar
 - Can be blocked without warning
 
 **Implementation Quality:**
-- Location: `Infrastructure/Providers/Historical/YahooFinance/`
+- Location: `Infrastructure/Adapters/YahooFinance/`
 - Defensive implementation with fallback handling
 
 ---
@@ -398,7 +402,7 @@ This document evaluates the 10 historical data providers integrated into the Mar
 - No official documentation
 
 **Implementation Quality:**
-- Location: `Infrastructure/Providers/Historical/Stooq/`
+- Location: `Infrastructure/Adapters/Stooq/`
 - CSV parsing with robust error handling
 
 ---
@@ -455,7 +459,7 @@ This document evaluates the 10 historical data providers integrated into the Mar
 - Premium: Higher limits
 
 **Implementation Quality:**
-- Location: `Infrastructure/Providers/Historical/Finnhub/`
+- Location: `Infrastructure/Adapters/Finnhub/`
 - Well-structured with rate limit handling
 
 ---
@@ -512,7 +516,7 @@ This document evaluates the 10 historical data providers integrated into the Mar
 - Premium: 75 calls/minute
 
 **Implementation Quality:**
-- Location: `Infrastructure/Providers/Historical/AlphaVantage/`
+- Location: `Infrastructure/Adapters/AlphaVantage/`
 - Basic implementation, suitable for fallback
 
 ---
@@ -570,7 +574,7 @@ This document evaluates the 10 historical data providers integrated into the Mar
 - Premium: Based on subscription
 
 **Implementation Quality:**
-- Location: `Infrastructure/Providers/Historical/NasdaqDataLink/`
+- Location: `Infrastructure/Adapters/NasdaqDataLink/`
 - Supports multiple dataset types
 
 ---
@@ -628,7 +632,7 @@ This document evaluates the 10 historical data providers integrated into the Mar
 - Framework handles rate limiting per connector
 
 **Implementation Quality:**
-- Location: `Infrastructure/Providers/Historical/StockSharp/`
+- Location: `Infrastructure/Adapters/StockSharp/`
 - Leverages StockSharp.Algo library
 
 ---
@@ -640,7 +644,7 @@ This document evaluates the 10 historical data providers integrated into the Mar
 | Provider | Quality | Coverage | Free Tier | Rate Limits | Reliability | Recommended Priority |
 |----------|---------|----------|-----------|-------------|-------------|---------------------|
 | Alpaca | ★★★★★ | US Only | Excellent | 200/min | ★★★★★ | 1 (Primary) |
-| Polygon | ★★★★★ | US + Crypto | Poor | 5/min | ★★★★★ | 2 (Professional) |
+| Polygon | ★★★★★ | US + Crypto | Poor | Plan-dependent | ★★★★★ | 2 (Professional) |
 | IB | ★★★★★ | Global | Good | Complex | ★★★★☆ | 3 (Multi-asset) |
 | Tiingo | ★★★★☆ | US | Good | 500/hr | ★★★★☆ | 4 (Daily bars) |
 | Stooq | ★★★★☆ | Global | Excellent | Low | ★★★☆☆ | 5 (International) |
@@ -683,12 +687,13 @@ The current `CompositeHistoricalDataProvider` implementation is well-designed:
 
 **Current Configuration (from codebase):**
 ```csharp
-// Priority order in registration
-services.AddHistoricalDataProvider<AlpacaHistoricalDataProvider>(priority: 1);
-services.AddHistoricalDataProvider<PolygonHistoricalDataProvider>(priority: 2);
-services.AddHistoricalDataProvider<TiingoHistoricalDataProvider>(priority: 3);
-services.AddHistoricalDataProvider<StooqHistoricalDataProvider>(priority: 4);
-services.AddHistoricalDataProvider<YahooFinanceHistoricalDataProvider>(priority: 5);
+// Backfill providers are created in ProviderFactory and ordered by provider.Priority
+AlpacaHistoricalDataProvider       // default priority: 5
+PolygonHistoricalDataProvider      // default priority: 12
+TiingoHistoricalDataProvider       // default priority: 15
+FinnhubHistoricalDataProvider      // default priority: 18
+StooqHistoricalDataProvider        // default priority: 20
+YahooFinanceHistoricalDataProvider // default priority: 22 (last-resort fallback)
 ```
 
 ### Gap Analysis Integration
@@ -706,7 +711,7 @@ The `GapAnalyzer` service integrates well with backfill:
 ### For Production Deployments
 
 1. **Establish Alpaca account** as primary provider (free, reliable, good limits)
-2. **Consider Polygon subscription** for tick-level data needs
+2. **Consider Polygon subscription** for tick-level data needs, and validate current plan entitlements in the live docs before scaling
 3. **Configure IB connection** if multi-asset or international coverage needed
 4. **Enable Tiingo** as reliable free-tier backup
 5. **Keep Yahoo Finance** as last-resort fallback only
@@ -720,7 +725,7 @@ The `GapAnalyzer` service integrates well with backfill:
 
 ### For Professional/Institutional Use
 
-1. **Polygon** professional tier (institutional-grade data)
+1. **Polygon** professional tier (institutional-grade data; confirm current recency + rate-limit entitlements)
 2. **Interactive Brokers** for global coverage
 3. **Nasdaq Data Link** for specialized datasets
 4. **Alpaca** for redundancy
@@ -772,4 +777,4 @@ The current implementation handles the complexity of 10 providers well through t
 
 ---
 
-*Evaluation Date: 2026-02-03*
+*Evaluation Date: 2026-02-20 (Polygon documentation refresh)*

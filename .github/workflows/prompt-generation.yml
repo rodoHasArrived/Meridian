@@ -52,7 +52,7 @@ permissions:
   actions: read
 
 concurrency:
-  group: prompt-generation-${{ github.ref }}
+  group: prompt-generation-${{ github.workflow }}-${{ github.event_name == 'workflow_run' && github.event.workflow_run.id || github.ref }}
   cancel-in-progress: true
 
 defaults:
@@ -73,6 +73,9 @@ jobs:
     if: |
       github.event_name == 'workflow_dispatch' ||
       (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'failure')
+
+    env:
+      HAS_MODELS_TOKEN: ${{ secrets.MODELS_GITHUB_TOKEN != '' }}
 
     outputs:
       has_changes: ${{ steps.check-changes.outputs.has_changes }}
@@ -118,22 +121,44 @@ jobs:
           echo "run_id=${RUN_ID:-0}" >> "$GITHUB_OUTPUT"
           echo "Resolved workflow: $WORKFLOW (run: ${RUN_ID:-0})"
 
+      - name: Validate workflow target
+        run: |
+          set -euo pipefail
+
+          WORKFLOW_NAME="${{ steps.resolve.outputs.workflow }}"
+
+          # Ensure the workflow input is a plain file name from .github/workflows.
+          if [[ "$WORKFLOW_NAME" == *"/"* || "$WORKFLOW_NAME" == *".."* || "$WORKFLOW_NAME" != *.yml ]]; then
+            echo "::error::Invalid workflow name '$WORKFLOW_NAME'. Provide a .yml file name from .github/workflows/."
+            exit 1
+          fi
+
+          WORKFLOW_FILE=".github/workflows/$WORKFLOW_NAME"
+          if [ ! -f "$WORKFLOW_FILE" ]; then
+            echo "::error::Workflow file '$WORKFLOW_FILE' does not exist."
+            exit 1
+          fi
+
+          echo "Validated target workflow file: $WORKFLOW_FILE"
+
       - name: Read existing prompts
         id: existing
         run: |
           set -euo pipefail
-          COUNT=$(ls -1 .github/prompts/*.prompt.yml 2>/dev/null | wc -l)
+
+          shopt -s nullglob
+          PROMPT_FILES=(.github/prompts/*.prompt.yml)
+          COUNT=${#PROMPT_FILES[@]}
+
           echo "count=$COUNT" >> "$GITHUB_OUTPUT"
           echo "Found $COUNT existing prompts"
 
           # List them for context
           echo "### Existing Prompts" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          for f in .github/prompts/*.prompt.yml; do
-            if [ -f "$f" ]; then
-              name=$(head -1 "$f" | sed 's/^name:\s*//')
-              echo "- \`$(basename "$f")\`: $name" >> "$GITHUB_STEP_SUMMARY"
-            fi
+          for f in "${PROMPT_FILES[@]}"; do
+            name=$(awk -F': ' '$1 == "name" {print $2; exit}' "$f")
+            echo "- \`$(basename "$f")\`: ${name:-unknown}" >> "$GITHUB_STEP_SUMMARY"
           done
           echo "" >> "$GITHUB_STEP_SUMMARY"
 
@@ -167,6 +192,28 @@ jobs:
             echo "total_generated=0" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Build changed prompt summary
+        id: changed-prompts
+        if: always()
+        run: |
+          set -euo pipefail
+
+          {
+            echo "rows<<EOF"
+
+            if [ -d .github/prompts ]; then
+              shopt -s nullglob
+              for f in .github/prompts/*.prompt.yml; do
+                if git diff --name-only -- "$f" | grep -q .; then
+                  name=$(awk -F': ' '$1 == "name" {print $2; exit}' "$f")
+                  echo "| \`$(basename "$f")\` | ${name:-unknown} |"
+                fi
+              done
+            fi
+
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
       - name: Append generation log to summary
         if: always()
         run: |
@@ -185,10 +232,12 @@ jobs:
         id: ai-refine
         if: |
           steps.generate.outputs.total_generated > 0 &&
-          (github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'failure')
+          (github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'failure') &&
+          env.HAS_MODELS_TOKEN == 'true'
         continue-on-error: true
         uses: actions/ai-inference@v1
         with:
+          token: ${{ secrets.MODELS_GITHUB_TOKEN }}
           model: gpt-4o-mini
           max-tokens: 2000
           prompt: |
@@ -205,6 +254,14 @@ jobs:
             Generation results:
             ${{ steps.generate.outputs.total_generated }} prompts generated
             for workflow: ${{ steps.resolve.outputs.workflow }}
+
+
+      - name: Note skipped AI review
+        if: always() && steps.generate.outputs.total_generated > 0 && env.HAS_MODELS_TOKEN != 'true'
+        run: |
+          echo "### AI Prompt Quality Review" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Skipped: set \`MODELS_GITHUB_TOKEN\` to enable \`actions/ai-inference\` prompt-quality analysis without using the default workflow token." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Append AI review to summary
         if: always() && steps.ai-refine.outputs.response != ''
@@ -239,6 +296,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: prompt-generation-results
+          if-no-files-found: warn
           path: |
             prompt-generation-results.json
             prompt-generation.log
@@ -291,10 +349,7 @@ jobs:
 
             | File | Purpose |
             |------|---------|
-            $(git diff --staged --name-only -- .github/prompts/ | while read f; do
-              name=$(head -1 "$f" 2>/dev/null | sed 's/^name:\s*//' || echo "unknown")
-              echo "| \`$(basename "$f")\` | $name |"
-            done)
+            ${{ steps.changed-prompts.outputs.rows }}
 
             ### How to Use
 
@@ -315,17 +370,27 @@ jobs:
       - name: Direct commit fallback
         if: |
           steps.check-changes.outputs.has_changes == 'true' &&
-          (steps.create-pr.outcome == 'failure' || steps.create-pr.outcome == 'skipped')
+          (steps.create-pr.outcome == 'failure' ||
+            (
+              steps.create-pr.outcome == 'skipped' &&
+              github.event_name == 'workflow_run'
+            ))
         run: |
           set -euo pipefail
-          echo "::warning::PR creation failed or skipped. Committing directly."
+          echo "::warning::PR creation failed or skipped. Checking if direct commit is needed."
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git add .github/prompts/
-          git commit -m "docs: auto-generate prompts from ${{ steps.resolve.outputs.workflow }} results [skip ci]"
 
+          # Only commit if there are staged changes
+          if git diff --staged --quiet; then
+            echo "::notice::No changes to commit on main branch. Changes may have been pushed to a branch already."
+            exit 0
+          fi
+
+          git commit -m "docs: auto-generate prompts from ${{ steps.resolve.outputs.workflow }} results [skip ci]"
           git pull --rebase origin ${{ github.ref_name }} || true
           git push
 

@@ -1,6 +1,6 @@
 # GitHub Workflows Overview
 
-> Auto-generated on 2026-02-12 09:09:33 UTC
+> Auto-generated on 2026-03-04 05:46:32 UTC
 
 This document provides an overview of all GitHub Actions workflows in the repository.
 
@@ -11,10 +11,13 @@ This document provides an overview of all GitHub Actions workflows in the reposi
 | Benchmark Performance | `benchmark.yml` | push, PR, manual |
 | Build Observability | `build-observability.yml` | push, PR, manual |
 | Build and Release | `dotnet-desktop.yml` | push, PR, manual |
+| Close Duplicate and Stale Auto-Generated Issues | `close-duplicate-issues.yml` | manual, scheduled |
 | Code Quality | `code-quality.yml` | push, PR, manual |
+| Copilot Setup Steps | `copilot-setup-steps.yml` | manual |
 | Desktop Builds | `desktop-builds.yml` | push, PR, manual |
 | Docker | `docker.yml` | push, PR, manual |
 | Documentation Automation | `documentation.yml` | push, PR, manual, scheduled |
+| Export Project Artifact | `export-project-artifact.yml` | manual |
 | Labeling | `labeling.yml` | PR, manual |
 | Mark Stale Issues and PRs | `stale.yml` | manual, scheduled |
 | Nightly Testing | `nightly.yml` | manual, scheduled |
@@ -27,6 +30,7 @@ This document provides an overview of all GitHub Actions workflows in the reposi
 | Test Matrix | `test-matrix.yml` | push, PR, manual |
 | Ticker Data Collection | `ticker-data-collection.yml` | manual |
 | Update Diagram Artifacts | `update-diagrams.yml` | push, manual |
+| Update UML Diagram Artifacts | `update-uml-diagrams.yml` | push, manual |
 | Validate Workflows | `validate-workflows.yml` | PR, manual |
 
 ## Workflow Categories
@@ -50,7 +54,7 @@ This document provides an overview of all GitHub Actions workflows in the reposi
 
 ## Workflow Count
 
-- **Total workflows:** 20
+- **Total workflows:** 24
 
 ---
 

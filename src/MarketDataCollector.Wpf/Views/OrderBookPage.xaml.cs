@@ -12,6 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using MarketDataCollector.Wpf.Contracts;
 using MarketDataCollector.Wpf.Services;
+using WpfServices = MarketDataCollector.Wpf.Services;
 using Timer = System.Timers.Timer;
 
 namespace MarketDataCollector.Wpf.Views;
@@ -32,26 +33,37 @@ public partial class OrderBookPage : Page
     private string _selectedSymbol = string.Empty;
     private int _depthLevels = 10;
 
-    public OrderBookPage()
+    private readonly StatusService _statusService;
+    private readonly ConnectionService _connectionService;
+    private readonly WpfServices.LoggingService _loggingService;
+
+    public OrderBookPage(
+        StatusService statusService,
+        ConnectionService connectionService,
+        WpfServices.LoggingService loggingService)
     {
         InitializeComponent();
+
+        _statusService = statusService;
+        _connectionService = connectionService;
+        _loggingService = loggingService;
 
         BidsControl.ItemsSource = _bids;
         AsksControl.ItemsSource = _asks;
         RecentTradesControl.ItemsSource = _recentTrades;
 
         // Get base URL from StatusService
-        _baseUrl = StatusService.Instance.BaseUrl;
+        _baseUrl = _statusService.BaseUrl;
 
         // Subscribe to connection events
-        ConnectionService.Instance.StateChanged += OnConnectionStateChanged;
+        _connectionService.StateChanged += OnConnectionStateChanged;
 
         Unloaded += OnPageUnloaded;
     }
 
     private void OnPageUnloaded(object sender, RoutedEventArgs e)
     {
-        ConnectionService.Instance.StateChanged -= OnConnectionStateChanged;
+        _connectionService.StateChanged -= OnConnectionStateChanged;
         _refreshTimer?.Stop();
         _refreshTimer?.Dispose();
         _cts?.Cancel();
@@ -76,7 +88,7 @@ public partial class OrderBookPage : Page
 
     private void UpdateConnectionStatus()
     {
-        var state = ConnectionService.Instance.State;
+        var state = _connectionService.State;
 
         ConnectionStatusText.Text = state switch
         {
@@ -100,7 +112,7 @@ public partial class OrderBookPage : Page
             _cts?.Cancel();
             _cts = new CancellationTokenSource();
 
-            var status = await StatusService.Instance.GetStatusAsync(_cts.Token);
+            var status = await _statusService.GetStatusAsync(_cts.Token);
             if (status != null)
             {
                 _availableSymbols.Clear();
@@ -118,7 +130,7 @@ public partial class OrderBookPage : Page
         }
         catch (Exception ex)
         {
-            LoggingService.Instance.LogError("Failed to load symbols", ex);
+            _loggingService.LogError("Failed to load symbols", ex);
         }
     }
 
@@ -170,7 +182,7 @@ public partial class OrderBookPage : Page
         }
         catch (Exception ex)
         {
-            LoggingService.Instance.LogError("Failed to refresh order book", ex);
+            _loggingService.LogError("Failed to refresh order book", ex);
         }
     }
 
@@ -474,7 +486,7 @@ public partial class OrderBookPage : Page
 /// <summary>
 /// Model for order book level display.
 /// </summary>
-public class OrderBookDisplayLevel
+public sealed class OrderBookDisplayLevel
 {
     public decimal RawPrice { get; set; }
     public string Price { get; set; } = string.Empty;
@@ -488,7 +500,7 @@ public class OrderBookDisplayLevel
 /// <summary>
 /// Model for recent trade display.
 /// </summary>
-public class RecentTradeModel
+public sealed class RecentTradeModel
 {
     public string Time { get; set; } = string.Empty;
     public string Price { get; set; } = string.Empty;

@@ -11,6 +11,8 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using MarketDataCollector.Contracts.Credentials;
+using HttpClientFactoryProvider = MarketDataCollector.Ui.Services.HttpClientFactoryProvider;
+using HttpClientNames = MarketDataCollector.Ui.Services.HttpClientNames;
 
 namespace MarketDataCollector.Wpf.Services;
 
@@ -102,7 +104,6 @@ public sealed class CredentialExpirationEventArgs : EventArgs
 
 /// <summary>
 /// Service for secure credential management using DPAPI-encrypted file storage.
-/// WPF replacement for UWP's Windows.Security.Credentials.PasswordVault.
 /// Enhanced with OAuth support, expiration tracking, and credential testing capabilities.
 /// </summary>
 public sealed class CredentialService : IDisposable
@@ -895,8 +896,9 @@ public sealed class CredentialService : IDisposable
             await UpdateMetadataAsync(resource, m => m.RefreshFailureCount++);
             return false;
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            System.Diagnostics.Debug.WriteLine($"OAuth refresh failed for {resource}: {ex.Message}");
             await UpdateMetadataAsync(resource, m => m.RefreshFailureCount++);
             return false;
         }

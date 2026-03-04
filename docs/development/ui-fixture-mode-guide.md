@@ -2,7 +2,7 @@
 
 ## Overview
 
-The UI Fixture Mode enables desktop developers to work on the WPF and UWP applications without requiring a running backend service. This significantly improves the development experience by:
+The UI Fixture Mode enables desktop developers to work on the WPF application without requiring a running backend service. This significantly improves the development experience by:
 
 - **Enabling offline development** - No need for network connectivity
 - **Deterministic testing** - Same data every time for reproducible debugging
@@ -16,7 +16,7 @@ The fixture mode is built around the `FixtureDataService` singleton that provide
 ```
 ┌─────────────────────────────────────────────┐
 │          Desktop Application                │
-│         (WPF / UWP)                         │
+│              (WPF)                           │
 └─────────────────┬───────────────────────────┘
                   │
                   │ Fixture Mode: ON
@@ -204,23 +204,6 @@ private void EnableFixtureMode()
         "Fixture Mode", 
         "Running with mock data (offline mode)"
     );
-}
-```
-
-**UWP (App.xaml.cs):**
-
-```csharp
-protected override void OnLaunched(LaunchActivatedEventArgs e)
-{
-    // Check for fixture mode
-    var useFixture = Environment.GetEnvironmentVariable("MDC_FIXTURE_MODE") == "1";
-
-    if (useFixture)
-    {
-        EnableFixtureMode();
-    }
-
-    // Continue with normal initialization...
 }
 ```
 
@@ -423,4 +406,21 @@ After implementing basic fixture mode:
 
 **Status**: ✅ Implemented  
 **Version**: 1.0  
-**Last Updated**: 2026-02-11
+**Last Updated**: 2026-02-13
+
+---
+
+## Related Documentation
+
+- **Desktop Development:**
+  - [Desktop Testing Guide](./desktop-testing-guide.md) - Complete testing procedures and fixture usage
+  - [WPF Implementation Notes](./wpf-implementation-notes.md) - WPF architecture and patterns
+  - [Desktop Platform Improvements](./desktop-platform-improvements-implementation-guide.md) - Improvement roadmap
+
+- **Testing and Quality:**
+  - [Test Project README](../../tests/MarketDataCollector.Ui.Tests/README.md) - Test coverage details
+  - [Desktop Support Policy](./policies/desktop-support-policy.md) - Required validation checks
+
+- **Architecture:**
+  - [Desktop Architecture Layers](../architecture/desktop-layers.md) - Layer boundaries and dependencies
+  - [Repository Organization Guide](./repository-organization-guide.md) - Code structure conventions

@@ -86,7 +86,7 @@ public sealed class ConfigStore
     /// </summary>
     public AppConfig Load() => LoadConfig(ConfigPath);
 
-    public async Task SaveAsync(AppConfig cfg)
+    public async Task SaveAsync(AppConfig cfg, CancellationToken ct = default)
     {
         try
         {
@@ -96,7 +96,7 @@ public sealed class ConfigStore
             {
                 Directory.CreateDirectory(dir);
             }
-            await File.WriteAllTextAsync(ConfigPath, json);
+            await File.WriteAllTextAsync(ConfigPath, json, ct);
         }
         catch (Exception ex)
         {
@@ -111,7 +111,11 @@ public sealed class ConfigStore
             var statusPath = GetStatusPath();
             return File.Exists(statusPath) ? File.ReadAllText(statusPath) : null;
         }
-        catch
+        catch (IOException)
+        {
+            return null;
+        }
+        catch (UnauthorizedAccessException)
         {
             return null;
         }
@@ -167,7 +171,15 @@ public sealed class ConfigStore
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
             });
         }
-        catch
+        catch (IOException)
+        {
+            return null;
+        }
+        catch (UnauthorizedAccessException)
+        {
+            return null;
+        }
+        catch (JsonException)
         {
             return null;
         }

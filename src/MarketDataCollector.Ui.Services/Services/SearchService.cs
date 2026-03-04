@@ -7,29 +7,14 @@ namespace MarketDataCollector.Ui.Services;
 /// </summary>
 public sealed class SearchService
 {
-    private static SearchService? _instance;
-    private static readonly object _lock = new();
-
+    private static readonly Lazy<SearchService> _instance = new(() => new SearchService());
     private readonly ConfigService _configService;
     private readonly WatchlistService _watchlistService;
 
     /// <summary>
     /// Gets the singleton instance of the SearchService.
     /// </summary>
-    public static SearchService Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                lock (_lock)
-                {
-                    _instance ??= new SearchService();
-                }
-            }
-            return _instance;
-        }
-    }
+    public static SearchService Instance => _instance.Value;
 
     private SearchService()
     {
@@ -365,7 +350,7 @@ public sealed class SearchService
 /// <summary>
 /// Options for search behavior.
 /// </summary>
-public class SearchOptions
+public sealed class SearchOptions
 {
     public bool SearchSymbols { get; set; } = true;
     public bool SearchProviders { get; set; } = true;
@@ -378,7 +363,7 @@ public class SearchOptions
 /// <summary>
 /// Search results container.
 /// </summary>
-public class SearchResults
+public sealed class SearchResults
 {
     public string Query { get; set; } = string.Empty;
     public List<SearchResultItem> Symbols { get; } = new();
@@ -396,7 +381,7 @@ public class SearchResults
 /// <summary>
 /// Individual search result.
 /// </summary>
-public class SearchResultItem
+public sealed class SearchResultItem
 {
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
@@ -408,7 +393,7 @@ public class SearchResultItem
 /// <summary>
 /// Search suggestion for autocomplete.
 /// </summary>
-public class SearchSuggestion
+public sealed class SearchSuggestion
 {
     public string Text { get; set; } = string.Empty;
     public string Category { get; set; } = string.Empty;
@@ -419,7 +404,7 @@ public class SearchSuggestion
 /// <summary>
 /// Navigation page info for search.
 /// </summary>
-public class NavigationPage
+public sealed class NavigationPage
 {
     public string Name { get; }
     public string Tag { get; }

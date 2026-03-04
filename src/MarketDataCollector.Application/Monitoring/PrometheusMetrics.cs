@@ -1,3 +1,5 @@
+using System.Collections.Concurrent;
+using MarketDataCollector.Application.Canonicalization;
 using MarketDataCollector.Application.Subscriptions.Models;
 using System.Threading;
 using Prometheus;
@@ -14,9 +16,66 @@ namespace MarketDataCollector.Application.Monitoring;
 /// - _total suffix for counters
 /// - Descriptive help text
 /// - Appropriate metric types (Counter, Gauge, Histogram)
+///
+/// Cardinality guards: Symbol-labeled metrics are gated by a configurable
+/// allowlist. Symbols not in the allowlist are aggregated under "__other__".
+/// This prevents metric explosion with dynamic/large symbol universes.
 /// </summary>
 public static class PrometheusMetrics
 {
+    /// <summary>
+    /// Maximum number of symbols allowed as metric labels before aggregation kicks in.
+    /// </summary>
+    private static int _maxSymbolLabels = 100;
+
+    /// <summary>
+    /// Tracks which symbols have been admitted to labeled metrics.
+    /// Once the cap is reached, new symbols go to "__other__".
+    /// </summary>
+    private static readonly ConcurrentDictionary<string, byte> _admittedSymbols = new(StringComparer.OrdinalIgnoreCase);
+
+    private const string OtherSymbolLabel = "__other__";
+
+    /// <summary>
+    /// Configures the maximum number of distinct symbol labels allowed in metrics.
+    /// Symbols beyond this limit are aggregated under "__other__".
+    /// </summary>
+    public static void SetMaxSymbolLabels(int max)
+    {
+        _maxSymbolLabels = Math.Max(1, max);
+    }
+
+    /// <summary>
+    /// Pre-admits specific symbols to the metrics label set.
+    /// Call during startup for known monitored symbols.
+    /// </summary>
+    public static void AdmitSymbol(string symbol)
+    {
+        if (_admittedSymbols.Count < _maxSymbolLabels)
+        {
+            _admittedSymbols.TryAdd(symbol, 0);
+        }
+    }
+
+    /// <summary>
+    /// Returns the symbol label to use for metrics. If the symbol is admitted,
+    /// returns it directly. Otherwise returns "__other__" to prevent cardinality explosion.
+    /// </summary>
+    private static string GetSymbolLabel(string symbol)
+    {
+        if (_admittedSymbols.ContainsKey(symbol))
+            return symbol;
+
+        // Try to admit if under cap
+        if (_admittedSymbols.Count < _maxSymbolLabels)
+        {
+            _admittedSymbols.TryAdd(symbol, 0);
+            return symbol;
+        }
+
+        return OtherSymbolLabel;
+    }
+
     // Event counters
     private static readonly Counter PublishedEvents = Prometheus.Metrics.CreateCounter(
         "mdc_events_published_total",
@@ -189,6 +248,21 @@ public static class PrometheusMetrics
             Buckets = new double[] { 100, 500, 1000, 5000, 10000, 30000, 60000, 120000, 300000 }
         });
 
+    // WAL recovery metrics
+    private static readonly Counter WalRecoveryEventsTotal = Prometheus.Metrics.CreateCounter(
+        "mdc_wal_recovery_events_total",
+        "Total number of events recovered from WAL on startup");
+
+    private static readonly Gauge WalRecoveryDurationSeconds = Prometheus.Metrics.CreateGauge(
+        "mdc_wal_recovery_duration_seconds",
+        "Duration of WAL recovery on startup in seconds");
+
+    // Provider reconnection metrics (labeled by provider and outcome)
+    private static readonly Counter ProviderReconnectionAttemptsTotal = Prometheus.Metrics.CreateCounter(
+        "mdc_provider_reconnection_attempts_total",
+        "Total reconnection attempts per provider and outcome",
+        new CounterConfiguration { LabelNames = new[] { "provider", "outcome" } });
+
     // Migration diagnostics counters (Phase 0 — temporary observability for migration)
     private static readonly Counter MigrationStreamingFactoryHits = Prometheus.Metrics.CreateCounter(
         "mdc_migration_streaming_factory_hits_total",
@@ -217,6 +291,36 @@ public static class PrometheusMetrics
     private static readonly Gauge MigrationStreamingFactoriesRegistered = Prometheus.Metrics.CreateGauge(
         "mdc_migration_streaming_factories_registered",
         "Total streaming factories registered (migration diagnostics)");
+
+    // Canonicalization metrics (Phase 2)
+    private static readonly Counter CanonicalizationEventsTotal = Prometheus.Metrics.CreateCounter(
+        "mdc_canonicalization_events_total",
+        "Total number of events processed through canonicalization");
+
+    private static readonly Counter CanonicalizationSkippedTotal = Prometheus.Metrics.CreateCounter(
+        "mdc_canonicalization_skipped_total",
+        "Total number of events skipped by canonicalization (non-pilot or heartbeat)");
+
+    private static readonly Counter CanonicalizationUnresolvedTotal = Prometheus.Metrics.CreateCounter(
+        "mdc_canonicalization_unresolved_total",
+        "Total number of events with unresolved canonical symbols");
+
+    private static readonly Counter CanonicalizationDualWritesTotal = Prometheus.Metrics.CreateCounter(
+        "mdc_canonicalization_dual_writes_total",
+        "Total number of events dual-written (raw + canonical) during Phase 2 validation");
+
+    private static readonly Histogram CanonicalizationDurationSeconds = Prometheus.Metrics.CreateHistogram(
+        "mdc_canonicalization_duration_seconds",
+        "Canonicalization processing time per event",
+        new HistogramConfiguration
+        {
+            // Microsecond-level buckets (in seconds): 1µs to 1ms
+            Buckets = new double[] { 0.000001, 0.000005, 0.00001, 0.000025, 0.00005, 0.0001, 0.00025, 0.0005, 0.001 }
+        });
+
+    private static readonly Gauge CanonicalizationVersionActive = Prometheus.Metrics.CreateGauge(
+        "mdc_canonicalization_version_active",
+        "Currently active canonicalization mapping version");
 
     // Symbol-level metrics (with labels)
     private static readonly Counter TradesBySymbol = Prometheus.Metrics.CreateCounter(
@@ -307,16 +411,22 @@ public static class PrometheusMetrics
         MigrationReconnectFailures.IncTo(migrationSnapshot.ReconnectFailures);
         MigrationProvidersRegistered.Set(migrationSnapshot.ProvidersRegistered);
         MigrationStreamingFactoriesRegistered.Set(migrationSnapshot.StreamingFactoriesRegistered);
+
+        // Update canonicalization metrics
+        var canonSnapshot = Canonicalization.CanonicalizationMetrics.GetSnapshot();
+        CanonicalizationVersionActive.Set(canonSnapshot.ActiveVersion);
     }
 
     /// <summary>
     /// Records a trade event with symbol and venue labels.
+    /// Uses cardinality guard to prevent label explosion with many symbols.
     /// </summary>
     public static void RecordTrade(string symbol, string venue, decimal price, int size)
     {
-        TradesBySymbol.WithLabels(symbol, venue).Inc();
-        LastTradePrice.WithLabels(symbol).Set((double)price);
-        TradeSizeDistribution.WithLabels(symbol).Observe(size);
+        var safeSymbol = GetSymbolLabel(symbol);
+        TradesBySymbol.WithLabels(safeSymbol, venue).Inc();
+        LastTradePrice.WithLabels(safeSymbol).Set((double)price);
+        TradeSizeDistribution.WithLabels(safeSymbol).Observe(size);
     }
 
     /// <summary>
@@ -338,14 +448,35 @@ public static class PrometheusMetrics
         SlaHealthySymbols.Set(snapshot.HealthySymbols);
         SlaViolationSymbols.Set(snapshot.ViolationSymbols);
 
-        // Record per-symbol freshness
+        // Record per-symbol freshness (with cardinality guard)
         foreach (var status in snapshot.SymbolStatuses)
         {
             if (status.FreshnessMs < double.MaxValue)
             {
-                SlaFreshnessMs.WithLabels(status.Symbol).Observe(status.FreshnessMs);
+                var safeSymbol = GetSymbolLabel(status.Symbol);
+                SlaFreshnessMs.WithLabels(safeSymbol).Observe(status.FreshnessMs);
             }
         }
+    }
+
+    /// <summary>
+    /// Records a provider reconnection attempt with outcome.
+    /// </summary>
+    /// <param name="provider">Provider name (e.g., "Alpaca", "Polygon").</param>
+    /// <param name="success">Whether the reconnection attempt succeeded.</param>
+    public static void RecordReconnectionAttempt(string provider, bool success)
+    {
+        var outcome = success ? "success" : "failure";
+        ProviderReconnectionAttemptsTotal.WithLabels(provider, outcome).Inc();
+    }
+
+    /// <summary>
+    /// Records WAL recovery metrics after startup recovery completes.
+    /// </summary>
+    public static void RecordWalRecovery(long recoveredEvents, double durationSeconds)
+    {
+        WalRecoveryEventsTotal.IncTo(recoveredEvents);
+        WalRecoveryDurationSeconds.Set(durationSeconds);
     }
 
     /// <summary>
@@ -353,7 +484,29 @@ public static class PrometheusMetrics
     /// </summary>
     public static void RecordSlaFreshness(string symbol, double freshnessMs)
     {
-        SlaFreshnessMs.WithLabels(symbol).Observe(freshnessMs);
+        var safeSymbol = GetSymbolLabel(symbol);
+        SlaFreshnessMs.WithLabels(safeSymbol).Observe(freshnessMs);
+    }
+
+    /// <summary>
+    /// Updates canonicalization metrics from a <see cref="CanonicalizationMetricsSnapshot"/>.
+    /// Called periodically by the metrics updater.
+    /// </summary>
+    public static void UpdateCanonicalizationMetrics(
+        CanonicalizationMetricsSnapshot snapshot,
+        int activeVersion)
+    {
+        CanonicalizationEventsTotal.IncTo(snapshot.Canonicalized);
+        CanonicalizationSkippedTotal.IncTo(snapshot.Skipped);
+        CanonicalizationUnresolvedTotal.IncTo(snapshot.Unresolved);
+        CanonicalizationDualWritesTotal.IncTo(snapshot.DualWrites);
+        CanonicalizationVersionActive.Set(activeVersion);
+
+        // Record average duration as a histogram observation if available
+        if (snapshot.AverageDurationUs > 0)
+        {
+            CanonicalizationDurationSeconds.Observe(snapshot.AverageDurationUs / 1_000_000);
+        }
     }
 
     /// <summary>
@@ -361,6 +514,17 @@ public static class PrometheusMetrics
     /// Use this with Prometheus.MetricServer or ASP.NET Core middleware.
     /// </summary>
     public static CollectorRegistry Registry => Prometheus.Metrics.DefaultRegistry;
+}
+
+/// <summary>
+/// <see cref="IReconnectionMetrics"/> implementation that delegates to
+/// <see cref="PrometheusMetrics.RecordReconnectionAttempt"/>.
+/// Registered as a singleton in DI by the composition root.
+/// </summary>
+public sealed class PrometheusReconnectionMetrics : IReconnectionMetrics
+{
+    public void RecordAttempt(string provider, bool success)
+        => PrometheusMetrics.RecordReconnectionAttempt(provider, success);
 }
 
 /// <summary>

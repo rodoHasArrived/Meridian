@@ -12,9 +12,7 @@ namespace MarketDataCollector.Ui.Services;
 /// </summary>
 public sealed class SmartRecommendationsService
 {
-    private static SmartRecommendationsService? _instance;
-    private static readonly object _lock = new();
-
+    private static readonly Lazy<SmartRecommendationsService> _instance = new(() => new SmartRecommendationsService());
     private readonly DataCompletenessService _completenessService;
     private readonly StorageAnalyticsService _storageService;
     private readonly ConfigService _configService;
@@ -22,20 +20,7 @@ public sealed class SmartRecommendationsService
     /// <summary>
     /// Gets the singleton instance.
     /// </summary>
-    public static SmartRecommendationsService Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                lock (_lock)
-                {
-                    _instance ??= new SmartRecommendationsService();
-                }
-            }
-            return _instance;
-        }
-    }
+    public static SmartRecommendationsService Instance => _instance.Value;
 
     private SmartRecommendationsService()
     {
@@ -296,7 +281,7 @@ public sealed class SmartRecommendationsService
         return issues;
     }
 
-    private async Task<List<InsightMessage>> GetInsightsAsync(
+    private Task<List<InsightMessage>> GetInsightsAsync(
         AppConfig? config,
         StorageAnalytics? analytics,
         CancellationToken ct)
@@ -403,7 +388,7 @@ public sealed class SmartRecommendationsService
             System.Diagnostics.Debug.WriteLine($"[SmartRecommendations] Error generating insights: {ex.Message}");
         }
 
-        return insights;
+        return Task.FromResult(insights);
     }
 
     // Helper methods that query actual data from services
@@ -578,7 +563,7 @@ public sealed class SmartRecommendationsService
 /// <summary>
 /// Container for all backfill recommendations.
 /// </summary>
-public class BackfillRecommendations
+public sealed class BackfillRecommendations
 {
     public DateTime GeneratedAt { get; set; } = DateTime.UtcNow;
     public bool IsStale { get; set; }
@@ -593,7 +578,7 @@ public class BackfillRecommendations
 /// <summary>
 /// A quick one-click action recommendation.
 /// </summary>
-public class QuickAction
+public sealed class QuickAction
 {
     public string Id { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
@@ -621,7 +606,7 @@ public enum QuickActionType
 /// <summary>
 /// A suggested backfill operation.
 /// </summary>
-public class SuggestedBackfill
+public sealed class SuggestedBackfill
 {
     public string Id { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
@@ -635,7 +620,7 @@ public class SuggestedBackfill
 /// <summary>
 /// A data quality issue.
 /// </summary>
-public class DataQualityIssue
+public sealed class DataQualityIssue
 {
     public string Id { get; set; } = string.Empty;
     public IssueSeverity Severity { get; set; }
@@ -659,7 +644,7 @@ public enum IssueSeverity
 /// <summary>
 /// An insight message.
 /// </summary>
-public class InsightMessage
+public sealed class InsightMessage
 {
     public InsightType Type { get; set; }
     public string Title { get; set; } = string.Empty;

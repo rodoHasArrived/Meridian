@@ -2,7 +2,7 @@ using System.Text.Json;
 using MarketDataCollector.Application.Config;
 using MarketDataCollector.Application.Services;
 using MarketDataCollector.Contracts.Api;
-using MarketDataCollector.Infrastructure.Providers.Core;
+using MarketDataCollector.Infrastructure.Adapters.Core;
 using MarketDataCollector.Storage;
 using MarketDataCollector.Ui.Shared.Services;
 using Microsoft.AspNetCore.Builder;
@@ -205,9 +205,9 @@ public static class DiagnosticsEndpoints
             return Results.Json(new
             {
                 provider = providerName,
-                found = provider.Name is not null,
-                isEnabled = provider.IsEnabled,
-                reachable = provider.IsEnabled,
+                found = provider is not null,
+                isEnabled = provider?.IsEnabled ?? false,
+                reachable = provider?.IsEnabled ?? false,
                 timestamp = DateTimeOffset.UtcNow
             }, jsonOptions);
         })

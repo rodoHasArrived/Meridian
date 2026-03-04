@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace MarketDataCollector.Ui.Services.Collections;
 
@@ -145,13 +146,13 @@ public sealed class CircularBuffer<T> : IEnumerable<T>
     /// Offset 0 returns the newest, offset 1 returns the second newest, etc.
     /// </summary>
     /// <param name="offsetFromNewest">Offset from the newest element (0 = newest).</param>
-    /// <param name="value">When this method returns, contains the element if successful.</param>
+    /// <param name="value">When this method returns, contains the element if successful; otherwise, the default value for the type.</param>
     /// <returns>True if the element exists at the specified offset; otherwise, false.</returns>
-    public bool TryGetFromNewest(int offsetFromNewest, out T? value)
+    public bool TryGetFromNewest(int offsetFromNewest, [MaybeNullWhen(false)] out T value)
     {
         if (offsetFromNewest < 0 || offsetFromNewest >= _count)
         {
-            value = default;
+            value = default!;
             return false;
         }
 
@@ -268,5 +269,34 @@ public static class CircularBufferExtensions
         var newest = buffer[buffer.Count - 1];
         var previous = buffer[buffer.Count - 2];
         return (newest - previous) / intervalSeconds;
+    }
+
+    /// <summary>
+    /// Calculates the percentage change between two values at specified offsets from the newest element.
+    /// </summary>
+    /// <param name="buffer">The buffer to calculate percentage change for.</param>
+    /// <param name="fromOffset">Offset of the base value from newest (1 = second newest).</param>
+    /// <param name="toOffset">Offset of the comparison value from newest (0 = newest).</param>
+    /// <returns>The percentage change, or null if division by zero or insufficient data.</returns>
+    /// <remarks>
+    /// Formula: ((toValue - fromValue) / fromValue) * 100
+    /// Returns null if fromValue is zero to avoid division by zero.
+    /// </remarks>
+    public static double? CalculatePercentageChange(this CircularBuffer<double> buffer, int fromOffset, int toOffset)
+    {
+        // Using standard Try pattern with out var - no nullable inference issues
+        if (!buffer.TryGetFromNewest(fromOffset, out var fromValue) || 
+            !buffer.TryGetFromNewest(toOffset, out var toValue))
+        {
+            return null;
+        }
+
+        // Avoid division by zero
+        if (Math.Abs(fromValue) < double.Epsilon)
+        {
+            return null;
+        }
+
+        return ((toValue - fromValue) / fromValue) * 100.0;
     }
 }

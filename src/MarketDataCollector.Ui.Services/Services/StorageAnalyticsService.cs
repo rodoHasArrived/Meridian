@@ -11,29 +11,14 @@ namespace MarketDataCollector.Ui.Services;
 /// </summary>
 public sealed class StorageAnalyticsService
 {
-    private static StorageAnalyticsService? _instance;
-    private static readonly object _lock = new();
-
+    private static readonly Lazy<StorageAnalyticsService> _instance = new(() => new StorageAnalyticsService());
     private readonly ConfigService _configService;
     private readonly NotificationService _notificationService;
     private StorageAnalytics? _cachedAnalytics;
     private DateTime _lastAnalysisTime;
     private readonly TimeSpan _cacheExpiration = TimeSpan.FromMinutes(5);
 
-    public static StorageAnalyticsService Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                lock (_lock)
-                {
-                    _instance ??= new StorageAnalyticsService();
-                }
-            }
-            return _instance;
-        }
-    }
+    public static StorageAnalyticsService Instance => _instance.Value;
 
     private StorageAnalyticsService()
     {
@@ -413,18 +398,7 @@ public sealed class StorageAnalyticsService
     /// <summary>
     /// Formats bytes into human-readable string.
     /// </summary>
-    public static string FormatBytes(long bytes)
-    {
-        string[] sizes = { "B", "KB", "MB", "GB", "TB" };
-        double len = bytes;
-        int order = 0;
-        while (len >= 1024 && order < sizes.Length - 1)
-        {
-            order++;
-            len /= 1024;
-        }
-        return $"{len:F1} {sizes[order]}";
-    }
+    public static string FormatBytes(long bytes) => FormatHelpers.FormatBytes(bytes);
 
     /// <summary>
     /// Event raised when analytics are updated.
@@ -435,7 +409,7 @@ public sealed class StorageAnalyticsService
 /// <summary>
 /// Storage analytics data.
 /// </summary>
-public class StorageAnalytics
+public sealed class StorageAnalytics
 {
     public DateTime? LastUpdated { get; set; }
     public long TotalSizeBytes { get; set; }
@@ -458,7 +432,7 @@ public class StorageAnalytics
 /// Per-symbol storage analytics information.
 /// Used internally by StorageAnalyticsService for analytics calculations.
 /// </summary>
-public class SymbolAnalyticsInfo
+public sealed class SymbolAnalyticsInfo
 {
     public string Symbol { get; set; } = string.Empty;
     public long SizeBytes { get; set; }
@@ -471,7 +445,7 @@ public class SymbolAnalyticsInfo
 /// <summary>
 /// Storage analytics event args.
 /// </summary>
-public class StorageAnalyticsEventArgs : EventArgs
+public sealed class StorageAnalyticsEventArgs : EventArgs
 {
     public StorageAnalytics? Analytics { get; set; }
 }
@@ -479,7 +453,7 @@ public class StorageAnalyticsEventArgs : EventArgs
 /// <summary>
 /// Drive storage information.
 /// </summary>
-public class DriveStorageInfo
+public sealed class DriveStorageInfo
 {
     public string DriveName { get; set; } = string.Empty;
     public long TotalBytes { get; set; }

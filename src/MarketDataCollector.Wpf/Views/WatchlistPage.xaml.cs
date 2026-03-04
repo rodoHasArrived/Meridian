@@ -8,24 +8,36 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Microsoft.Win32;
+using MarketDataCollector.Wpf.Contracts;
+using MarketDataCollector.Wpf.Services;
 using WpfServices = MarketDataCollector.Wpf.Services;
 
 namespace MarketDataCollector.Wpf.Views;
 
 /// <summary>
-/// Watchlist management page for creating, editing, and organizing symbol watchlists.
+/// WpfServices.Watchlist management page for creating, editing, and organizing symbol watchlists.
 /// </summary>
 public partial class WatchlistPage : Page
 {
     private readonly WpfServices.WatchlistService _watchlistService;
+    private readonly WpfServices.LoggingService _loggingService;
+    private readonly WpfServices.NotificationService _notificationService;
+    private readonly WpfServices.NavigationService _navigationService;
     private readonly ObservableCollection<WatchlistDisplayModel> _watchlists = new();
     private readonly ObservableCollection<WatchlistDisplayModel> _filteredWatchlists = new();
     private CancellationTokenSource? _loadCts;
 
-    public WatchlistPage()
+    public WatchlistPage(
+        WpfServices.WatchlistService watchlistService,
+        WpfServices.LoggingService loggingService,
+        WpfServices.NotificationService notificationService,
+        WpfServices.NavigationService navigationService)
     {
         InitializeComponent();
-        _watchlistService = WpfServices.WatchlistService.Instance;
+        _watchlistService = watchlistService;
+        _loggingService = loggingService;
+        _notificationService = notificationService;
+        _navigationService = navigationService;
         WatchlistsContainer.ItemsSource = _filteredWatchlists;
 
         _watchlistService.WatchlistsChanged += OnWatchlistsChanged;
@@ -39,7 +51,7 @@ public partial class WatchlistPage : Page
         _loadCts?.Dispose();
     }
 
-    private void OnWatchlistsChanged(object? sender, WatchlistsChangedEventArgs e)
+    private void OnWatchlistsChanged(object? sender, WpfServices.WatchlistsChangedEventArgs e)
     {
         Dispatcher.Invoke(() => LoadWatchlistsAsync());
     }
@@ -83,7 +95,7 @@ public partial class WatchlistPage : Page
         }
         catch (Exception ex)
         {
-            LoggingService.Instance.LogError("Failed to load watchlists", ex);
+            _loggingService.LogError("Failed to load watchlists", ex);
         }
     }
 
@@ -134,7 +146,7 @@ public partial class WatchlistPage : Page
                 symbols,
                 dialog.SelectedColor);
 
-            NotificationService.Instance.ShowNotification(
+            _notificationService.ShowNotification(
                 "Watchlist Created",
                 $"Created watchlist '{watchlist.Name}' with {symbols.Length} symbols.",
                 NotificationType.Success);
@@ -143,8 +155,8 @@ public partial class WatchlistPage : Page
         }
         catch (Exception ex)
         {
-            LoggingService.Instance.LogError("Failed to create watchlist", ex);
-            NotificationService.Instance.ShowNotification(
+            _loggingService.LogError("Failed to create watchlist", ex);
+            _notificationService.ShowNotification(
                 "Error",
                 "Failed to create watchlist. Please try again.",
                 NotificationType.Error);
@@ -168,7 +180,7 @@ public partial class WatchlistPage : Page
 
             if (watchlist != null)
             {
-                NotificationService.Instance.ShowNotification(
+                _notificationService.ShowNotification(
                     "Watchlist Imported",
                     $"Imported watchlist '{watchlist.Name}'.",
                     NotificationType.Success);
@@ -177,7 +189,7 @@ public partial class WatchlistPage : Page
             }
             else
             {
-                NotificationService.Instance.ShowNotification(
+                _notificationService.ShowNotification(
                     "Import Failed",
                     "The file does not contain a valid watchlist.",
                     NotificationType.Error);
@@ -185,8 +197,8 @@ public partial class WatchlistPage : Page
         }
         catch (Exception ex)
         {
-            LoggingService.Instance.LogError("Failed to import watchlist", ex);
-            NotificationService.Instance.ShowNotification(
+            _loggingService.LogError("Failed to import watchlist", ex);
+            _notificationService.ShowNotification(
                 "Error",
                 "Failed to import watchlist. Please try again.",
                 NotificationType.Error);
@@ -202,7 +214,7 @@ public partial class WatchlistPage : Page
             var watchlist = await _watchlistService.GetWatchlistAsync(watchlistId);
             if (watchlist == null)
             {
-                NotificationService.Instance.ShowNotification(
+                _notificationService.ShowNotification(
                     "Watchlist Not Found",
                     "The selected watchlist could not be found.",
                     NotificationType.Error);
@@ -210,17 +222,17 @@ public partial class WatchlistPage : Page
             }
 
             // Navigate to symbols page with this watchlist loaded
-            MarketDataCollector.Wpf.Services.NavigationService.Instance.NavigateTo(typeof(SymbolsPage), watchlist);
+            _navigationService.NavigateTo(typeof(SymbolsPage), watchlist);
 
-            NotificationService.Instance.ShowNotification(
+            _notificationService.ShowNotification(
                 "Watchlist Loaded",
                 $"Loaded '{watchlist.Name}' with {watchlist.Symbols.Count} symbols.",
                 NotificationType.Success);
         }
         catch (Exception ex)
         {
-            LoggingService.Instance.LogError("Failed to load watchlist", ex);
-            NotificationService.Instance.ShowNotification(
+            _loggingService.LogError("Failed to load watchlist", ex);
+            _notificationService.ShowNotification(
                 "Error",
                 "Failed to load watchlist. Please try again.",
                 NotificationType.Error);
@@ -250,7 +262,7 @@ public partial class WatchlistPage : Page
                 if (result == MessageBoxResult.Yes)
                 {
                     await _watchlistService.DeleteWatchlistAsync(watchlistId);
-                    NotificationService.Instance.ShowNotification(
+                    _notificationService.ShowNotification(
                         "Watchlist Deleted",
                         $"Deleted watchlist '{watchlist.Name}'.",
                         NotificationType.Success);
@@ -281,7 +293,7 @@ public partial class WatchlistPage : Page
                 if (toAdd.Length > 0)
                     await _watchlistService.AddSymbolsAsync(watchlistId, toAdd);
 
-                NotificationService.Instance.ShowNotification(
+                _notificationService.ShowNotification(
                     "Watchlist Updated",
                     $"Updated watchlist '{dialog.WatchlistName}'.",
                     NotificationType.Success);
@@ -291,8 +303,8 @@ public partial class WatchlistPage : Page
         }
         catch (Exception ex)
         {
-            LoggingService.Instance.LogError("Failed to edit watchlist", ex);
-            NotificationService.Instance.ShowNotification(
+            _loggingService.LogError("Failed to edit watchlist", ex);
+            _notificationService.ShowNotification(
                 "Error",
                 "Failed to edit watchlist. Please try again.",
                 NotificationType.Error);
@@ -310,7 +322,7 @@ public partial class WatchlistPage : Page
 
             await _watchlistService.UpdateWatchlistAsync(watchlistId, isPinned: !watchlist.IsPinned);
 
-            NotificationService.Instance.ShowNotification(
+            _notificationService.ShowNotification(
                 watchlist.IsPinned ? "Unpinned" : "Pinned",
                 $"Watchlist '{watchlist.Name}' {(watchlist.IsPinned ? "unpinned" : "pinned")}.",
                 NotificationType.Info);
@@ -319,7 +331,7 @@ public partial class WatchlistPage : Page
         }
         catch (Exception ex)
         {
-            LoggingService.Instance.LogError("Failed to toggle pin", ex);
+            _loggingService.LogError("Failed to toggle pin", ex);
         }
     }
 
@@ -367,7 +379,7 @@ public partial class WatchlistPage : Page
             if (dialog.ShowDialog() == true)
             {
                 await System.IO.File.WriteAllTextAsync(dialog.FileName, json);
-                NotificationService.Instance.ShowNotification(
+                _notificationService.ShowNotification(
                     "Watchlist Exported",
                     $"Exported '{watchlist.Name}' to {System.IO.Path.GetFileName(dialog.FileName)}.",
                     NotificationType.Success);
@@ -375,8 +387,8 @@ public partial class WatchlistPage : Page
         }
         catch (Exception ex)
         {
-            LoggingService.Instance.LogError("Failed to export watchlist", ex);
-            NotificationService.Instance.ShowNotification(
+            _loggingService.LogError("Failed to export watchlist", ex);
+            _notificationService.ShowNotification(
                 "Error",
                 "Failed to export watchlist.",
                 NotificationType.Error);
@@ -395,7 +407,7 @@ public partial class WatchlistPage : Page
                 watchlist.Symbols,
                 watchlist.Color);
 
-            NotificationService.Instance.ShowNotification(
+            _notificationService.ShowNotification(
                 "Watchlist Duplicated",
                 $"Created copy of '{watchlist.Name}'.",
                 NotificationType.Success);
@@ -404,8 +416,8 @@ public partial class WatchlistPage : Page
         }
         catch (Exception ex)
         {
-            LoggingService.Instance.LogError("Failed to duplicate watchlist", ex);
-            NotificationService.Instance.ShowNotification(
+            _loggingService.LogError("Failed to duplicate watchlist", ex);
+            _notificationService.ShowNotification(
                 "Error",
                 "Failed to duplicate watchlist.",
                 NotificationType.Error);
@@ -428,7 +440,7 @@ public partial class WatchlistPage : Page
             if (result == MessageBoxResult.Yes)
             {
                 await _watchlistService.DeleteWatchlistAsync(watchlistId);
-                NotificationService.Instance.ShowNotification(
+                _notificationService.ShowNotification(
                     "Watchlist Deleted",
                     $"Deleted '{watchlist.Name}'.",
                     NotificationType.Success);
@@ -438,8 +450,8 @@ public partial class WatchlistPage : Page
         }
         catch (Exception ex)
         {
-            LoggingService.Instance.LogError("Failed to delete watchlist", ex);
-            NotificationService.Instance.ShowNotification(
+            _loggingService.LogError("Failed to delete watchlist", ex);
+            _notificationService.ShowNotification(
                 "Error",
                 "Failed to delete watchlist.",
                 NotificationType.Error);
@@ -475,7 +487,7 @@ public partial class WatchlistPage : Page
 /// <summary>
 /// Display model for watchlist cards.
 /// </summary>
-public class WatchlistDisplayModel
+public sealed class WatchlistDisplayModel
 {
     public string Id { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
@@ -490,7 +502,7 @@ public class WatchlistDisplayModel
 /// <summary>
 /// Dialog for creating a new watchlist.
 /// </summary>
-public class CreateWatchlistDialog : Window
+public sealed class CreateWatchlistDialog : Window
 {
     private readonly TextBox _nameBox;
     private readonly TextBox _symbolsBox;
@@ -644,7 +656,7 @@ public class CreateWatchlistDialog : Window
 /// <summary>
 /// Dialog for editing an existing watchlist.
 /// </summary>
-public class EditWatchlistDialog : Window
+public sealed class EditWatchlistDialog : Window
 {
     private readonly TextBox _nameBox;
     private readonly TextBox _symbolsBox;

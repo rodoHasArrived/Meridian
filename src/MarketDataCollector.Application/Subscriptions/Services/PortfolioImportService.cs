@@ -244,13 +244,9 @@ public sealed class PortfolioImportService
         {
             using var request = new HttpRequestMessage(HttpMethod.Get, $"{clientPortalUrl}/v1/api/portfolio/accounts");
 
-            var handler = new HttpClientHandler
-            {
-                ServerCertificateCustomValidationCallback = (msg, cert, chain, errors) => true
-            };
-
-            using var client = new HttpClient(handler);
-            var response = await client.SendAsync(request, ct);
+            // Use the named IB Client Portal client configured with SSL bypass for self-signed certs
+            var ibClient = HttpClientFactoryProvider.CreateClient(HttpClientNames.IBClientPortal);
+            var response = await ibClient.SendAsync(request, ct);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -272,7 +268,7 @@ public sealed class PortfolioImportService
             using var posRequest = new HttpRequestMessage(HttpMethod.Get,
                 $"{clientPortalUrl}/v1/api/portfolio/{accountId}/positions/0");
 
-            var posResponse = await client.SendAsync(posRequest, ct);
+            var posResponse = await ibClient.SendAsync(posRequest, ct);
             var ibPositions = await posResponse.Content.ReadFromJsonAsync<IbPosition[]>(
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true }, ct);
 

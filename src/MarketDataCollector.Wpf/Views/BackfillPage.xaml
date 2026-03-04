@@ -6,7 +6,8 @@
       mc:Ignorable="d"
       d:DesignHeight="900" d:DesignWidth="1400"
       Background="{DynamicResource ConsoleBackgroundDarkBrush}"
-      Loaded="OnPageLoaded">
+      Loaded="OnPageLoaded"
+      Unloaded="OnPageUnloaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -159,7 +160,10 @@
                 <!-- Provider Selection -->
                 <Border Style="{StaticResource CardStyle}" Margin="0,0,0,24">
                     <StackPanel>
-                        <TextBlock Text="Data Provider" Style="{StaticResource CardHeaderStyle}" Margin="0,0,0,16" />
+                        <TextBlock Text="Data Provider Workflow" Style="{StaticResource CardHeaderStyle}" Margin="0,0,0,8" />
+                        <TextBlock Text="Set your provider fallback order and desired data granularity before running a backfill."
+                                   Foreground="{StaticResource ConsoleTextMutedBrush}"
+                                   Margin="0,0,0,16" />
 
                         <Grid Margin="0,0,0,16">
                             <Grid.ColumnDefinitions>
@@ -206,6 +210,84 @@
                                        FontSize="12"
                                        VerticalAlignment="Center" />
                         </StackPanel>
+
+                        <Separator Margin="0,16,0,16" />
+
+                        <TextBlock Text="Provider Priority (Fallback Order)" Style="{StaticResource FormLabelStyle}" Margin="0,0,0,8" />
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="12" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="12" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Primary"
+                                       Foreground="{StaticResource ConsoleTextMutedBrush}"
+                                       FontSize="11" Margin="0,0,0,4" />
+                            <TextBlock Grid.Row="0" Grid.Column="2" Text="Secondary"
+                                       Foreground="{StaticResource ConsoleTextMutedBrush}"
+                                       FontSize="11" Margin="0,0,0,4" />
+                            <TextBlock Grid.Row="0" Grid.Column="4" Text="Tertiary"
+                                       Foreground="{StaticResource ConsoleTextMutedBrush}"
+                                       FontSize="11" Margin="0,0,0,4" />
+
+                            <ComboBox x:Name="PrimaryProviderCombo"
+                                      Grid.Row="1" Grid.Column="0"
+                                      Style="{StaticResource FormComboBoxStyle}"
+                                      SelectionChanged="ProviderPriority_SelectionChanged">
+                                <ComboBoxItem Content="Yahoo Finance" Tag="yahoo" IsSelected="True" />
+                                <ComboBoxItem Content="Stooq" Tag="stooq" />
+                                <ComboBoxItem Content="Nasdaq Data Link" Tag="nasdaq" />
+                            </ComboBox>
+
+                            <ComboBox x:Name="SecondaryProviderCombo"
+                                      Grid.Row="1" Grid.Column="2"
+                                      Style="{StaticResource FormComboBoxStyle}"
+                                      SelectionChanged="ProviderPriority_SelectionChanged">
+                                <ComboBoxItem Content="Stooq" Tag="stooq" IsSelected="True" />
+                                <ComboBoxItem Content="Yahoo Finance" Tag="yahoo" />
+                                <ComboBoxItem Content="Nasdaq Data Link" Tag="nasdaq" />
+                                <ComboBoxItem Content="No fallback" Tag="none" />
+                            </ComboBox>
+
+                            <ComboBox x:Name="TertiaryProviderCombo"
+                                      Grid.Row="1" Grid.Column="4"
+                                      Style="{StaticResource FormComboBoxStyle}"
+                                      SelectionChanged="ProviderPriority_SelectionChanged">
+                                <ComboBoxItem Content="Nasdaq Data Link" Tag="nasdaq" IsSelected="True" />
+                                <ComboBoxItem Content="Yahoo Finance" Tag="yahoo" />
+                                <ComboBoxItem Content="Stooq" Tag="stooq" />
+                                <ComboBoxItem Content="No fallback" Tag="none" />
+                            </ComboBox>
+                        </Grid>
+
+                        <TextBlock x:Name="ProviderPrioritySummaryText"
+                                   Text="Priority: Yahoo Finance → Stooq → Nasdaq Data Link"
+                                   Foreground="{StaticResource ConsoleTextSecondaryBrush}"
+                                   FontSize="12" />
+
+                        <Separator Margin="0,16,0,16" />
+
+                        <TextBlock Text="Data Granularity" Style="{StaticResource FormLabelStyle}" Margin="0,0,0,8" />
+                        <ComboBox x:Name="GranularityCombo"
+                                  Style="{StaticResource FormComboBoxStyle}"
+                                  SelectionChanged="GranularityCombo_SelectionChanged"
+                                  Margin="0,0,0,8">
+                            <ComboBoxItem Content="Daily (EOD)" Tag="Daily" IsSelected="True" />
+                            <ComboBoxItem Content="Hourly" Tag="Hourly" />
+                            <ComboBoxItem Content="15 Minute" Tag="15Min" />
+                            <ComboBoxItem Content="1 Minute" Tag="1Min" />
+                        </ComboBox>
+                        <TextBlock x:Name="GranularityHintText"
+                                   Text="Daily is recommended for broad symbol lists and long history windows."
+                                   Foreground="{StaticResource ConsoleTextMutedBrush}"
+                                   FontSize="12" />
                     </StackPanel>
                 </Border>
 
@@ -225,7 +307,8 @@
                                 <TextBlock Text="From Date (UTC)" Style="{StaticResource FormLabelStyle}" Margin="0,0,0,4" />
                                 <DatePicker x:Name="FromDatePicker"
                                             Background="{StaticResource ConsoleBackgroundMediumBrush}"
-                                            Foreground="{StaticResource ConsoleTextPrimaryBrush}" />
+                                            Foreground="{StaticResource ConsoleTextPrimaryBrush}"
+                                            SelectedDateChanged="DatePicker_SelectedDateChanged" />
                                 <TextBlock x:Name="FromDateValidationError"
                                            FontSize="12"
                                            Foreground="{StaticResource ErrorColorBrush}"
@@ -237,7 +320,8 @@
                                 <TextBlock Text="To Date (UTC)" Style="{StaticResource FormLabelStyle}" Margin="0,0,0,4" />
                                 <DatePicker x:Name="ToDatePicker"
                                             Background="{StaticResource ConsoleBackgroundMediumBrush}"
-                                            Foreground="{StaticResource ConsoleTextPrimaryBrush}" />
+                                            Foreground="{StaticResource ConsoleTextPrimaryBrush}"
+                                            SelectedDateChanged="DatePicker_SelectedDateChanged" />
                                 <TextBlock x:Name="ToDateValidationError"
                                            FontSize="12"
                                            Foreground="{StaticResource ErrorColorBrush}"
@@ -257,7 +341,118 @@
                                     Click="LastYear_Click" Margin="0,0,8,8" />
                             <Button Content="Last 5 Years" Style="{StaticResource GhostButtonStyle}"
                                     Click="Last5Years_Click" Margin="0,0,8,8" />
+                            <Button Content="Smart Range"
+                                    Style="{StaticResource SecondaryButtonStyle}"
+                                    Click="ApplySmartRange_Click"
+                                    Margin="0,0,8,8" />
                         </WrapPanel>
+
+                        <TextBlock x:Name="DateRangeHintText"
+                                   Text="Smart range uses symbol count + granularity to keep request sizes practical."
+                                   Foreground="{StaticResource ConsoleTextMutedBrush}"
+                                   FontSize="12"
+                                   Margin="0,8,0,0" />
+                    </StackPanel>
+                </Border>
+
+                <!-- Gap Analysis Preview -->
+                <Border x:Name="GapAnalysisCard" Style="{StaticResource CardStyle}" Margin="0,0,0,24">
+                    <StackPanel>
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                <TextBlock Text="{StaticResource IconWarning}"
+                                           FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                           FontSize="18"
+                                           Foreground="{StaticResource WarningColorBrush}"
+                                           VerticalAlignment="Center" />
+                                <TextBlock Text="Gap Analysis"
+                                           Style="{StaticResource CardHeaderStyle}"
+                                           Margin="8,0,0,0" />
+                            </StackPanel>
+
+                            <Button Grid.Column="2" Content="Scan for Gaps"
+                                    Style="{StaticResource SecondaryButtonStyle}"
+                                    Click="ScanGaps_Click" />
+                        </Grid>
+
+                        <TextBlock x:Name="GapAnalysisSummaryText"
+                                   Text="Click 'Scan for Gaps' to check your selected symbols for missing data."
+                                   Foreground="{StaticResource ConsoleTextMutedBrush}"
+                                   Margin="0,0,0,12" TextWrapping="Wrap" />
+
+                        <ListView x:Name="GapAnalysisList"
+                                  Background="Transparent"
+                                  BorderThickness="0"
+                                  MaxHeight="220"
+                                  Visibility="Collapsed">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,4" MinHeight="28">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="80" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="70" />
+                                            <ColumnDefinition Width="90" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Symbol}"
+                                                   FontWeight="SemiBold" FontFamily="Consolas"
+                                                   Foreground="{StaticResource ConsoleTextPrimaryBrush}"
+                                                   VerticalAlignment="Center" />
+                                        <!-- Gap timeline bar -->
+                                        <Grid Grid.Column="1" Margin="8,4" Height="16">
+                                            <Border Background="{StaticResource ConsoleBackgroundMediumBrush}"
+                                                    CornerRadius="3" />
+                                            <Border Background="{Binding CoverageBrush}"
+                                                    CornerRadius="3"
+                                                    HorizontalAlignment="Left"
+                                                    Width="{Binding CoverageWidth}">
+                                                <Border.Effect>
+                                                    <DropShadowEffect ShadowDepth="0" BlurRadius="4"
+                                                                      Color="{StaticResource ConsoleAccentGreen}" Opacity="0.4" />
+                                                </Border.Effect>
+                                            </Border>
+                                        </Grid>
+                                        <TextBlock Grid.Column="2" Text="{Binding CoverageText}"
+                                                   HorizontalAlignment="Right" FontFamily="Consolas"
+                                                   Foreground="{StaticResource ConsoleTextSecondaryBrush}"
+                                                   FontSize="11"
+                                                   VerticalAlignment="Center" />
+                                        <Border Grid.Column="3" HorizontalAlignment="Right"
+                                                Background="{StaticResource ConsoleAccentOrangeAlpha10Brush}"
+                                                CornerRadius="8" Padding="8,2" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding GapDaysText}"
+                                                       Foreground="{StaticResource WarningColorBrush}"
+                                                       FontSize="11" FontWeight="SemiBold" />
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <Border x:Name="GapActionPanel" Visibility="Collapsed"
+                                Background="{StaticResource ConsoleBackgroundLightBrush}"
+                                CornerRadius="6" Padding="12,10" Margin="0,12,0,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Content="Auto-Fill Gaps Only"
+                                        Style="{StaticResource PrimaryButtonStyle}"
+                                        Click="AutoFillGaps_Click" />
+                                <TextBlock x:Name="GapActionHintText" Grid.Column="1"
+                                           Text=""
+                                           Foreground="{StaticResource ConsoleTextMutedBrush}"
+                                           FontSize="12" Margin="12,0,0,0"
+                                           VerticalAlignment="Center" TextWrapping="Wrap" />
+                            </Grid>
+                        </Border>
                     </StackPanel>
                 </Border>
 
@@ -635,6 +830,81 @@
                                 Click="SaveSchedule_Click"
                                 HorizontalAlignment="Stretch"
                                 Margin="0,16,0,0" />
+                    </StackPanel>
+                </Border>
+
+                <!-- Resumable Jobs (Checkpoint Recovery) -->
+                <Border x:Name="ResumableJobsCard" Style="{StaticResource CardStyle}" Margin="0,0,0,16">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                            <TextBlock Text="&#xE7C1;"
+                                       FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                       FontSize="16"
+                                       Foreground="{StaticResource WarningColorBrush}"
+                                       VerticalAlignment="Center" />
+                            <TextBlock Text="Resumable Jobs"
+                                       FontWeight="SemiBold"
+                                       Foreground="{StaticResource ConsoleTextPrimaryBrush}"
+                                       Margin="8,0,0,0"
+                                       VerticalAlignment="Center" />
+                        </StackPanel>
+
+                        <ListView x:Name="ResumableJobsList"
+                                  Background="Transparent"
+                                  BorderThickness="0"
+                                  MaxHeight="200">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="#1EFFCA28" CornerRadius="4" Padding="12,8" Margin="0,2">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Provider}"
+                                                               FontWeight="SemiBold"
+                                                               Foreground="{StaticResource ConsoleTextPrimaryBrush}" />
+                                                    <TextBlock Text=" — "
+                                                               Foreground="{StaticResource ConsoleTextMutedBrush}" />
+                                                    <TextBlock Text="{Binding Status}"
+                                                               Foreground="{StaticResource WarningColorBrush}" />
+                                                </StackPanel>
+                                                <TextBlock Text="{Binding SymbolsSummary}"
+                                                           Foreground="{StaticResource ConsoleTextSecondaryBrush}"
+                                                           FontSize="11" />
+                                                <TextBlock Foreground="{StaticResource ConsoleTextMutedBrush}" FontSize="10">
+                                                    <Run Text="{Binding DateRange}" />
+                                                    <Run Text=" | " />
+                                                    <Run Text="{Binding CreatedAt}" />
+                                                </TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                                <Button Content="Resume"
+                                                        Style="{StaticResource PrimaryButtonStyle}"
+                                                        FontSize="11"
+                                                        Padding="12,4"
+                                                        Click="ResumeJob_Click"
+                                                        Tag="{Binding}"
+                                                        Margin="0,0,4,0" />
+                                                <Button Content="Dismiss"
+                                                        Style="{StaticResource GhostButtonStyle}"
+                                                        FontSize="11"
+                                                        Padding="8,4"
+                                                        Click="DismissJob_Click"
+                                                        Tag="{Binding}" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <TextBlock x:Name="NoResumableJobsText"
+                                   Text="No interrupted jobs to resume"
+                                   Foreground="{StaticResource ConsoleTextMutedBrush}"
+                                   FontSize="12" />
                     </StackPanel>
                 </Border>
 

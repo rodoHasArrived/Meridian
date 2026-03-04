@@ -20,7 +20,7 @@ public static class StatusEndpoints
     /// </summary>
     public static void MapStatusEndpoints(this WebApplication app, StatusEndpointHandlers handlers, JsonSerializerOptions jsonOptions)
     {
-        // Health check endpoint - comprehensive health status (#19: OpenAPI annotations)
+        // Health check endpoint - comprehensive health status (D7: OpenAPI typed annotations)
         app.MapGet(UiApiRoutes.Health, () =>
         {
             var response = handlers.GetHealthCheck();
@@ -29,13 +29,28 @@ public static class StatusEndpoints
         })
         .WithName("GetHealth")
         .WithTags("Health")
-        .Produces(200)
+        .WithDescription("Returns comprehensive health status including provider connectivity and storage health.")
+        .Produces<HealthCheckResponse>(200)
+        .Produces(503);
+
+        // Alias: /api/health → /health (for backward compatibility with tests)
+        app.MapGet("/api/health", () =>
+        {
+            var response = handlers.GetHealthCheck();
+            var statusCode = handlers.GetHealthStatusCode(response);
+            return Results.Json(response, jsonOptions, statusCode: statusCode);
+        })
+        .WithName("GetHealthApi")
+        .WithTags("Health")
+        .WithDescription("Alias for /health endpoint for backward compatibility.")
+        .Produces<HealthCheckResponse>(200)
         .Produces(503);
 
         // Kubernetes-style health endpoints
         app.MapGet("/healthz", () => Results.Ok("healthy"))
             .WithName("GetHealthz")
             .WithTags("Health")
+            .WithDescription("Kubernetes-style liveness probe returning 200 if the process is running.")
             .Produces(200);
 
         // Readiness probe
@@ -46,6 +61,7 @@ public static class StatusEndpoints
         })
         .WithName("GetReady")
         .WithTags("Health")
+        .WithDescription("Readiness probe returning 200 when the service is ready to accept requests, or 503 if not.")
         .Produces(200)
         .Produces(503);
 
@@ -73,9 +89,10 @@ public static class StatusEndpoints
         })
         .WithName("GetMetrics")
         .WithTags("Monitoring")
+        .WithDescription("Returns Prometheus-format metrics for scraping by monitoring systems.")
         .Produces(200);
 
-        // Full status endpoint
+        // Full status endpoint (D7: OpenAPI typed annotations)
         app.MapGet(UiApiRoutes.Status, () =>
         {
             var response = handlers.GetStatus();
@@ -83,7 +100,8 @@ public static class StatusEndpoints
         })
         .WithName("GetStatus")
         .WithTags("Status")
-        .Produces(200);
+        .WithDescription("Returns full system status including connection state, metrics, and symbol information.")
+        .Produces<StatusResponse>(200);
 
         // Errors endpoint with optional filtering
         app.MapGet(UiApiRoutes.Errors, (int? count, string? level, string? symbol) =>
@@ -93,7 +111,8 @@ public static class StatusEndpoints
         })
         .WithName("GetErrors")
         .WithTags("Status")
-        .Produces(200);
+        .WithDescription("Returns recent error entries with optional filtering by count, severity level, and symbol.")
+        .Produces<ErrorsResponseDto>(200);
 
         // Backpressure status
         app.MapGet(UiApiRoutes.Backpressure, () =>
@@ -103,7 +122,8 @@ public static class StatusEndpoints
         })
         .WithName("GetBackpressure")
         .WithTags("Status")
-        .Produces(200);
+        .WithDescription("Returns current backpressure status including queue utilization and drop rates.")
+        .Produces<BackpressureStatusDto>(200);
 
         // Provider latency
         app.MapGet(UiApiRoutes.ProvidersLatency, () =>
@@ -117,7 +137,8 @@ public static class StatusEndpoints
         })
         .WithName("GetProviderLatency")
         .WithTags("Monitoring")
-        .Produces(200);
+        .WithDescription("Returns latency statistics for all providers including average, min, max, and percentiles.")
+        .Produces<ProviderLatencySummaryDto>(200);
 
         // Connection health
         app.MapGet(UiApiRoutes.Connections, () =>
@@ -131,7 +152,8 @@ public static class StatusEndpoints
         })
         .WithName("GetConnections")
         .WithTags("Monitoring")
-        .Produces(200);
+        .WithDescription("Returns connection health snapshot for all active provider connections.")
+        .Produces<ConnectionHealthSnapshotDto>(200);
 
         // Detailed health (async)
         app.MapGet(UiApiRoutes.HealthDetailed, async () =>
@@ -153,6 +175,30 @@ public static class StatusEndpoints
         })
         .WithName("GetDetailedHealth")
         .WithTags("Health")
+        .Produces(200)
+        .Produces(503);
+
+        // Alias: /api/health/detailed → /health/detailed (for backward compatibility with tests)
+        app.MapGet("/api/health/detailed", async () =>
+        {
+            var (report, error) = await handlers.GetDetailedHealthAsync();
+            if (error != null || report is null)
+            {
+                return Results.Json(new { error = error ?? "Health report unavailable" }, jsonOptions, statusCode: 501);
+            }
+
+            var statusCode = report.Status switch
+            {
+                DetailedHealthStatus.Healthy => 200,
+                DetailedHealthStatus.Degraded => 200,
+                DetailedHealthStatus.Unhealthy => 503,
+                _ => 200
+            };
+            return Results.Json(report, jsonOptions, statusCode: statusCode);
+        })
+        .WithName("GetDetailedHealthApi")
+        .WithTags("Health")
+        .WithDescription("Alias for /health/detailed endpoint for backward compatibility.")
         .Produces(200)
         .Produces(503);
 

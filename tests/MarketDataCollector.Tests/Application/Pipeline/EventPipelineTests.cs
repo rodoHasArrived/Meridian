@@ -180,7 +180,7 @@ public class EventPipelineTests : IAsyncLifetime
         avgTime.Should().BeGreaterThan(0);
     }
 
-    [Fact(Skip = "Timing-sensitive test that is flaky in CI - the consumer may drain the queue before utilization can be measured")]
+    [Fact(Skip = "QueueUtilization measures the channel count which is 0 once the consumer dequeues; reliable measurement requires intrusive pipeline changes")]
     public async Task QueueUtilization_ReflectsQueueFill()
     {
         // Arrange - Create pipeline with small capacity
@@ -214,7 +214,7 @@ public class EventPipelineTests : IAsyncLifetime
         var sw = System.Diagnostics.Stopwatch.StartNew();
         while (pipeline.ConsumedCount < 1 && sw.ElapsedMilliseconds < 2000)
         {
-            await Task.Delay(10);
+            await Task.Delay(1);
         }
 
         // Assert - Peak should have been recorded when events were queued
@@ -249,7 +249,7 @@ public class EventPipelineTests : IAsyncLifetime
         var targetCount = 15; // capacity + small buffer for in-flight processing
         while (sink.ReceivedEvents.Count < targetCount && stopwatch.Elapsed < TimeSpan.FromSeconds(2))
         {
-            await Task.Delay(50);
+            await Task.Delay(1);
         }
         await pipeline.FlushAsync();
 
@@ -265,31 +265,47 @@ public class EventPipelineTests : IAsyncLifetime
         highSymbolCount.Should().BeGreaterThan(0, "should have received some of the latest events (SYM90+)");
     }
 
-    [Fact(Skip = "Timing-sensitive test that is flaky in CI - the consumer drains the channel too quickly")]
+    [Fact]
     public async Task TryPublish_WhenQueueFull_DropWriteMode_ReturnsFalse()
     {
-        // Arrange - Small capacity with very slow consumer to guarantee queue stays full
-        await using var sink = new MockStorageSink { ProcessingDelay = TimeSpan.FromMilliseconds(5000) };
+        // Arrange - Use a blocking sink so the consumer stalls and the queue fills up.
+        var releaseConsumer = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+        await using var sink = new BlockingStorageSink(releaseConsumer.Task);
         await using var pipeline = new EventPipeline(
             sink,
             capacity: 5,
             fullMode: BoundedChannelFullMode.DropWrite,
             enablePeriodicFlush: false);
 
-        // Overfill the queue - publish many more than capacity
-        // With a 5-second processing delay, the consumer won't drain any during this burst
+        // Publish one event to trigger the consumer.
+        pipeline.TryPublish(CreateTradeEvent("SPY"));
+
+        // Wait until the consumer has started and is blocked on the first event.
+        // NOTE: the consumer drains the entire batch from the channel before processing,
+        // so the channel is empty once the consumer is blocked.
+        await sink.WaitForFirstBlockAsync(TimeSpan.FromSeconds(2));
+
+        // Re-fill the channel to capacity now that the consumer is blocked and cannot drain it.
+        for (int i = 0; i < 5; i++)
+        {
+            pipeline.TryPublish(CreateTradeEvent("SPY"));
+        }
+
+        // Publish additional events to overflow the now-full queue.
         var dropCount = 0;
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 10; i++)
         {
             if (!pipeline.TryPublish(CreateTradeEvent("SPY")))
                 dropCount++;
         }
 
-        // Assert - With capacity=5 and 20 publishes against a 5s consumer,
-        // at least some should have been dropped
+        // Assert - At least some additional publishes must have been rejected.
         pipeline.DroppedCount.Should().BeGreaterThan(0,
             "DropWrite mode should reject events when the channel is full");
-        await Task.CompletedTask;
+        dropCount.Should().BeGreaterThan(0, "TryPublish should return false for rejected events");
+
+        // Cleanup
+        releaseConsumer.TrySetResult(true);
     }
 
     #endregion
@@ -314,7 +330,7 @@ public class EventPipelineTests : IAsyncLifetime
     public async Task TimeSinceLastFlush_UpdatesAfterFlush()
     {
         // Arrange
-        await Task.Delay(50);
+        await Task.Delay(5);
         var timeBefore = _pipeline.TimeSinceLastFlush;
 
         // Act
@@ -338,8 +354,8 @@ public class EventPipelineTests : IAsyncLifetime
 
         pipeline.TryPublish(CreateTradeEvent("SPY"));
 
-        // Act - Wait for periodic flush
-        await Task.Delay(200);
+        // Act - Wait for periodic flush (generous margin for CI runners)
+        await Task.Delay(300);
 
         // Assert
         sink.FlushCount.Should().BeGreaterThanOrEqualTo(1);
@@ -388,7 +404,7 @@ public class EventPipelineTests : IAsyncLifetime
         _pipeline.Complete();
 
         // Wait for pipeline to drain
-        await Task.Delay(100);
+        await Task.Delay(5);
 
         // Assert - Further publishes may fail
         // The channel is marked complete
@@ -425,7 +441,7 @@ public class EventPipelineTests : IAsyncLifetime
         }
 
         // Give consumer time to start processing before disposal
-        await Task.Delay(100);
+        await Task.Delay(5);
 
         // Act
         await pipeline.DisposeAsync();
@@ -444,15 +460,17 @@ public class EventPipelineTests : IAsyncLifetime
         // Arrange - Use a sink whose flush blocks until its CancellationToken is cancelled.
         // Before the fix, the pipeline passed CancellationToken.None to the final flush,
         // meaning it would hang indefinitely. After the fix, a timeout token is used.
+        // Use a short finalFlushTimeout (1s) so the test completes quickly.
         await using var sink = new CancellationAwareSlowFlushSink();
-        var pipeline = new EventPipeline(sink, capacity: 100, enablePeriodicFlush: false);
+        var pipeline = new EventPipeline(sink, capacity: 100, enablePeriodicFlush: false,
+            finalFlushTimeout: TimeSpan.FromSeconds(1));
 
         pipeline.TryPublish(CreateTradeEvent("SPY"));
-        await Task.Delay(50); // Let consumer process the event
+        await Task.Delay(5); // Let consumer process the event
 
-        // Act - Dispose should not hang; the final flush will be cancelled by FinalFlushTimeout
+        // Act - Dispose should not hang; the final flush will be cancelled by finalFlushTimeout
         var disposeTask = pipeline.DisposeAsync().AsTask();
-        var completed = await Task.WhenAny(disposeTask, Task.Delay(TimeSpan.FromSeconds(45)));
+        var completed = await Task.WhenAny(disposeTask, Task.Delay(TimeSpan.FromSeconds(3)));
 
         // Assert - Disposal must complete (not hang indefinitely)
         completed.Should().Be(disposeTask,
@@ -467,7 +485,7 @@ public class EventPipelineTests : IAsyncLifetime
         var pipeline = new EventPipeline(sink, capacity: 100, enablePeriodicFlush: false);
 
         pipeline.TryPublish(CreateTradeEvent("SPY"));
-        await Task.Delay(50); // Let consumer process
+        await Task.Delay(5); // Let consumer process
 
         // Act
         await pipeline.DisposeAsync();
@@ -483,27 +501,36 @@ public class EventPipelineTests : IAsyncLifetime
 
     #region Cancellation Tests
 
-    [Fact(Skip = "Timing-sensitive test that is flaky in CI - the consumer drains the channel too quickly")]
+    [Fact]
     public async Task PublishAsync_WithCancellation_ThrowsWhenCancelled()
     {
-        // Arrange - Use slow consumer and small capacity to force backpressure
-        await using var sink = new MockStorageSink { ProcessingDelay = TimeSpan.FromMilliseconds(100) };
-        // Use Wait mode with capacity=2 so we can fill it and block on the third write
+        // Arrange - Use a blocking sink and Wait mode so PublishAsync blocks on the third write.
+        var releaseConsumer = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+        await using var sink = new BlockingStorageSink(releaseConsumer.Task);
         await using var pipeline = new EventPipeline(sink, capacity: 2, fullMode: BoundedChannelFullMode.Wait, enablePeriodicFlush: false);
 
-        // Fill the channel completely (2 items)
+        // Publish one event to trigger the consumer.
+        pipeline.TryPublish(CreateTradeEvent("SPY"));
+
+        // Wait until the consumer has started and is blocked on the first event.
+        // NOTE: the consumer drains the entire batch from the channel before processing,
+        // so the channel is empty once the consumer is blocked.
+        await sink.WaitForFirstBlockAsync(TimeSpan.FromSeconds(2));
+
+        // Re-fill the channel to capacity (2 items) now that the consumer is blocked.
         pipeline.TryPublish(CreateTradeEvent("SPY"));
         pipeline.TryPublish(CreateTradeEvent("MSFT"));
 
-        // Wait a bit for consumer to start processing (but not finish due to delay)
-        await Task.Delay(20);
+        // The channel is now full. A further PublishAsync must block because the channel
+        // is full in Wait mode, and the cancellation token fires after 200 ms.
+        using var cts = new CancellationTokenSource(TimeSpan.FromMilliseconds(200));
 
-        // Use a short cancellation timeout - the third publish should block since channel is full
-        using var cts = new CancellationTokenSource(50);
-
-        // Act & Assert - Third publish should block since channel is full and consumer is slow
+        // Act & Assert
         await Assert.ThrowsAnyAsync<OperationCanceledException>(
             async () => await pipeline.PublishAsync(CreateTradeEvent("AAPL"), cts.Token));
+
+        // Cleanup
+        releaseConsumer.TrySetResult(true);
     }
 
     #endregion
@@ -523,7 +550,7 @@ public class EventPipelineTests : IAsyncLifetime
             pipeline.TryPublish(CreateTradeEvent($"SYM{i}"));
         }
 
-        await Task.Delay(200);
+        await Task.Delay(10);
 
         // Assert - Pipeline should still be alive and processing
         // At least some events should have been processed before the throw
@@ -553,7 +580,7 @@ public class EventPipelineTests : IAsyncLifetime
         // Wait for all to be consumed
         while (pipeline.ConsumedCount < eventCount && sw.ElapsedMilliseconds < 5000)
         {
-            await Task.Delay(10);
+            await Task.Delay(1);
         }
 
         sw.Stop();
@@ -604,7 +631,7 @@ public class EventPipelineTests : IAsyncLifetime
         var sw = System.Diagnostics.Stopwatch.StartNew();
         while (_mockSink.ReceivedEvents.Count < expectedCount && sw.ElapsedMilliseconds < timeoutMs)
         {
-            await Task.Delay(10);
+            await Task.Delay(1);
         }
     }
 
@@ -706,6 +733,44 @@ internal sealed class TokenCapturingSink : IStorageSink
         LastFlushToken = ct;
         return Task.CompletedTask;
     }
+
+    public ValueTask DisposeAsync() => ValueTask.CompletedTask;
+}
+
+/// <summary>
+/// Mock sink that blocks each <see cref="AppendAsync"/> call until an external
+/// <see cref="Task"/> is completed. This gives tests deterministic control over
+/// when the pipeline consumer can proceed, avoiding all timing-dependent behaviour.
+/// </summary>
+internal sealed class BlockingStorageSink : IStorageSink
+{
+    private readonly Task _releaseSignal;
+    private readonly TaskCompletionSource<bool> _firstBlockReached =
+        new(TaskCreationOptions.RunContinuationsAsynchronously);
+
+    public BlockingStorageSink(Task releaseSignal)
+    {
+        _releaseSignal = releaseSignal;
+    }
+
+    /// <summary>
+    /// Waits until the consumer has entered the blocking sink for the first time.
+    /// </summary>
+    public Task WaitForFirstBlockAsync(TimeSpan timeout)
+    {
+        return Task.WhenAny(_firstBlockReached.Task, Task.Delay(timeout));
+    }
+
+    public async ValueTask AppendAsync(MarketEvent evt, CancellationToken ct = default)
+    {
+        // Signal that the consumer has arrived
+        _firstBlockReached.TrySetResult(true);
+
+        // Block until released or cancelled
+        await _releaseSignal.WaitAsync(ct).ConfigureAwait(false);
+    }
+
+    public Task FlushAsync(CancellationToken ct = default) => Task.CompletedTask;
 
     public ValueTask DisposeAsync() => ValueTask.CompletedTask;
 }

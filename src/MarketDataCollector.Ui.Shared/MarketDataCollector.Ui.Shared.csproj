@@ -13,6 +13,7 @@
     <Product>Market Data Collector UI Shared</Product>
     <Copyright>Copyright 2024 MarketDataCollector Team</Copyright>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
   </PropertyGroup>
 
   <!-- Web/ASP.NET Core dependencies for endpoint mapping -->
@@ -29,7 +30,8 @@
 
   <!-- Project references -->
   <ItemGroup>
-    <ProjectReference Include="..\MarketDataCollector\MarketDataCollector.csproj" />
     <ProjectReference Include="..\MarketDataCollector.Contracts\MarketDataCollector.Contracts.csproj" />
+    <ProjectReference Include="..\MarketDataCollector.Application\MarketDataCollector.Application.csproj" />
+    <ProjectReference Include="..\MarketDataCollector.Storage\MarketDataCollector.Storage.csproj" />
   </ItemGroup>
 </Project>

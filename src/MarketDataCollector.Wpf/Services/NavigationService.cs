@@ -1,47 +1,46 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
+using Microsoft.Extensions.DependencyInjection;
+using MarketDataCollector.Ui.Services.Contracts;
+using MarketDataCollector.Ui.Services.Services;
 using MarketDataCollector.Wpf.Contracts;
 using MarketDataCollector.Wpf.Views;
 
 namespace MarketDataCollector.Wpf.Services;
 
 /// <summary>
-/// Service for managing navigation throughout the application.
-/// Provides centralized navigation with history tracking and breadcrumb support.
-/// Uses WPF's System.Windows.Controls.Frame for navigation.
-/// Implements <see cref="INavigationService"/> for testability.
+/// WPF-specific navigation service that extends <see cref="NavigationServiceBase"/> with
+/// WPF Frame navigation and DI-aware page creation.
+/// Implements <see cref="INavigationService"/> with singleton pattern.
+/// Phase 6C.2: Shared base class extracts page registry, history tracking, and breadcrumb logic.
 /// </summary>
-public sealed class NavigationService : INavigationService
+public sealed class NavigationService : NavigationServiceBase, INavigationService
 {
-    private static NavigationService? _instance;
-    private static readonly object _lock = new();
+    private static readonly Lazy<NavigationService> _instance = new(() => new NavigationService());
 
     private Frame? _frame;
-    private readonly Stack<NavigationEntry> _navigationHistory = new();
-    private readonly Dictionary<string, Type> _pageRegistry = new();
+    private IServiceProvider? _serviceProvider;
 
     /// <summary>
     /// Gets the singleton instance of the NavigationService.
     /// </summary>
-    public static NavigationService Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                lock (_lock)
-                {
-                    _instance ??= new NavigationService();
-                }
-            }
-            return _instance;
-        }
-    }
+    public static NavigationService Instance => _instance.Value;
+
+    /// <inheritdoc />
+    public override bool CanGoBack => _frame?.CanGoBack ?? false;
 
     private NavigationService()
     {
-        RegisterPages();
+    }
+
+    /// <summary>
+    /// Sets the DI service provider used to resolve page instances.
+    /// Called once during application startup after the DI container is built.
+    /// </summary>
+    public void SetServiceProvider(IServiceProvider serviceProvider)
+    {
+        _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
     }
 
     /// <summary>
@@ -52,201 +51,144 @@ public sealed class NavigationService : INavigationService
         _frame = frame ?? throw new ArgumentNullException(nameof(frame));
     }
 
-    /// <summary>
-    /// Gets whether navigation can go back.
-    /// </summary>
-    public bool CanGoBack => _frame?.CanGoBack ?? false;
+    /// <inheritdoc />
+    protected override void RegisterAllPages()
+    {
+        // Primary navigation (2 pages)
+        RegisterPage("Dashboard", typeof(DashboardPage));
+        RegisterPage("Watchlist", typeof(WatchlistPage));
 
-    /// <summary>
-    /// Event raised when navigation occurs.
-    /// </summary>
-    public event EventHandler<NavigationEventArgs>? Navigated;
+        // Data Sources (3 pages)
+        RegisterPage("Provider", typeof(ProviderPage));
+        RegisterPage("ProviderHealth", typeof(ProviderHealthPage));
+        RegisterPage("DataSources", typeof(DataSourcesPage));
 
-    /// <summary>
-    /// Navigates to a page by tag name.
-    /// </summary>
-    public bool NavigateTo(string pageTag, object? parameter = null)
+        // Data Management (9 pages)
+        RegisterPage("LiveData", typeof(LiveDataViewerPage));
+        RegisterPage("DataBrowser", typeof(DataBrowserPage));
+        RegisterPage("Symbols", typeof(SymbolsPage));
+        RegisterPage("SymbolMapping", typeof(SymbolMappingPage));
+        RegisterPage("SymbolStorage", typeof(SymbolStoragePage));
+        RegisterPage("Storage", typeof(StoragePage));
+        RegisterPage("Backfill", typeof(BackfillPage));
+        RegisterPage("PortfolioImport", typeof(PortfolioImportPage));
+        RegisterPage("IndexSubscription", typeof(IndexSubscriptionPage));
+        RegisterPage("Options", typeof(OptionsPage));
+        RegisterPage("Schedules", typeof(ScheduleManagerPage));
+
+        // Monitoring (6 pages)
+        RegisterPage("DataQuality", typeof(DataQualityPage));
+        RegisterPage("CollectionSessions", typeof(CollectionSessionPage));
+        RegisterPage("ArchiveHealth", typeof(ArchiveHealthPage));
+        RegisterPage("ServiceManager", typeof(ServiceManagerPage));
+        RegisterPage("SystemHealth", typeof(SystemHealthPage));
+        RegisterPage("Diagnostics", typeof(DiagnosticsPage));
+
+        // Tools (10 pages)
+        RegisterPage("DataExport", typeof(DataExportPage));
+        RegisterPage("DataSampling", typeof(DataSamplingPage));
+        RegisterPage("TimeSeriesAlignment", typeof(TimeSeriesAlignmentPage));
+        RegisterPage("ExportPresets", typeof(ExportPresetsPage));
+        RegisterPage("AnalysisExport", typeof(AnalysisExportPage));
+        RegisterPage("AnalysisExportWizard", typeof(AnalysisExportWizardPage));
+        RegisterPage("EventReplay", typeof(EventReplayPage));
+        RegisterPage("PackageManager", typeof(PackageManagerPage));
+        RegisterPage("TradingHours", typeof(TradingHoursPage));
+
+        // Analytics & Visualization (4 pages)
+        RegisterPage("AdvancedAnalytics", typeof(AdvancedAnalyticsPage));
+        RegisterPage("Charts", typeof(ChartingPage));
+        RegisterPage("OrderBook", typeof(OrderBookPage));
+        RegisterPage("DataCalendar", typeof(DataCalendarPage));
+
+        // Storage & Maintenance (3 pages)
+        RegisterPage("StorageOptimization", typeof(StorageOptimizationPage));
+        RegisterPage("RetentionAssurance", typeof(RetentionAssurancePage));
+        RegisterPage("AdminMaintenance", typeof(AdminMaintenancePage));
+
+        // Integrations (2 pages)
+        RegisterPage("LeanIntegration", typeof(LeanIntegrationPage));
+        RegisterPage("MessagingHub", typeof(MessagingHubPage));
+
+        // Workspaces & Notifications (2 pages)
+        RegisterPage("Workspaces", typeof(WorkspacePage));
+        RegisterPage("NotificationCenter", typeof(NotificationCenterPage));
+
+        // Support & Setup (6 pages)
+        RegisterPage("Help", typeof(HelpPage));
+        RegisterPage("Welcome", typeof(WelcomePage));
+        RegisterPage("Settings", typeof(SettingsPage));
+        RegisterPage("KeyboardShortcuts", typeof(KeyboardShortcutsPage));
+        RegisterPage("SetupWizard", typeof(SetupWizardPage));
+        RegisterPage("AddProviderWizard", typeof(AddProviderWizardPage));
+
+        // Activity Log (1 page)
+        RegisterPage("ActivityLog", typeof(ActivityLogPage));
+    }
+
+    /// <inheritdoc />
+    protected override bool NavigateToPageCore(Type pageType, object? parameter)
     {
         if (_frame == null) return false;
 
-        if (_pageRegistry.TryGetValue(pageTag, out var pageType))
+        var page = CreatePage(pageType);
+
+        if (parameter != null && page is Page wpfPage && wpfPage.DataContext != null)
         {
-            bool result;
-            if (parameter != null)
-            {
-                // Create page instance and pass parameter
-                var page = Activator.CreateInstance(pageType);
-                if (page is Page wpfPage && wpfPage.DataContext != null)
-                {
-                    // If the page has a ViewModel with a Parameter property, set it
-                    var parameterProperty = wpfPage.DataContext.GetType().GetProperty("Parameter");
-                    parameterProperty?.SetValue(wpfPage.DataContext, parameter);
-                }
-                result = _frame.Navigate(page);
-            }
-            else
-            {
-                result = _frame.Navigate(Activator.CreateInstance(pageType));
-            }
-
-            if (result)
-            {
-                // Only push to history after successful navigation
-                var entry = new NavigationEntry
-                {
-                    PageTag = pageTag,
-                    Parameter = parameter,
-                    Timestamp = DateTime.UtcNow
-                };
-                _navigationHistory.Push(entry);
-
-                Navigated?.Invoke(this, new NavigationEventArgs
-                {
-                    PageTag = pageTag,
-                    Parameter = parameter
-                });
-            }
-
-            return result;
+            var parameterProperty = wpfPage.DataContext.GetType().GetProperty("Parameter");
+            parameterProperty?.SetValue(wpfPage.DataContext, parameter);
         }
 
-        System.Diagnostics.Debug.WriteLine($"[NavigationService] Unknown page tag: {pageTag}");
-        return false;
+        var result = _frame.Navigate(page);
+
+        if (result)
+        {
+            // Trigger onboarding tour for the navigated page if applicable
+            var currentTag = GetCurrentPageTag();
+            if (currentTag != null)
+            {
+                CheckOnboardingTourForPage(currentTag);
+            }
+        }
+
+        return result;
     }
 
     /// <summary>
-    /// Navigates to a page type directly.
+    /// Checks if an onboarding tour should be shown for the navigated page
+    /// and raises the TourAvailable event if so.
     /// </summary>
-    public bool NavigateTo(Type pageType, object? parameter = null)
+    private static void CheckOnboardingTourForPage(string pageTag)
     {
-        if (_frame == null) return false;
+        try
+        {
+            var tourService = MarketDataCollector.Ui.Services.OnboardingTourService.Instance;
+            if (tourService.IsTourActive) return;
 
-        var page = Activator.CreateInstance(pageType);
-        return _frame.Navigate(page);
+            var tour = tourService.GetTourForPage(pageTag);
+            if (tour != null)
+            {
+                tourService.StartTour(tour.Id);
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[NavigationService] Tour check failed: {ex.Message}");
+        }
     }
 
-    /// <summary>
-    /// Navigates back.
-    /// </summary>
-    public void GoBack()
+    /// <inheritdoc />
+    protected override void GoBackCore()
     {
         if (_frame?.CanGoBack ?? false)
         {
             _frame.GoBack();
-            if (_navigationHistory.Count > 0)
-            {
-                _navigationHistory.Pop();
-            }
         }
     }
 
-    /// <summary>
-    /// Gets the page type for a given tag.
-    /// </summary>
-    public Type? GetPageType(string pageTag)
+    /// <inheritdoc />
+    protected override void ClearHistoryCore()
     {
-        return _pageRegistry.TryGetValue(pageTag, out var pageType) ? pageType : null;
-    }
-
-    /// <summary>
-    /// Gets navigation breadcrumbs.
-    /// </summary>
-    public IReadOnlyList<NavigationEntry> GetBreadcrumbs()
-    {
-        return _navigationHistory.ToArray();
-    }
-
-    /// <summary>
-    /// Registers all navigable pages (47 pages).
-    /// </summary>
-    private void RegisterPages()
-    {
-        // Primary navigation (2 pages)
-        _pageRegistry["Dashboard"] = typeof(DashboardPage);
-        _pageRegistry["Watchlist"] = typeof(WatchlistPage);
-
-        // Data Sources (3 pages)
-        _pageRegistry["Provider"] = typeof(ProviderPage);
-        _pageRegistry["ProviderHealth"] = typeof(ProviderHealthPage);
-        _pageRegistry["DataSources"] = typeof(DataSourcesPage);
-
-        // Data Management (9 pages)
-        _pageRegistry["LiveData"] = typeof(LiveDataViewerPage);
-        _pageRegistry["DataBrowser"] = typeof(DataBrowserPage);
-        _pageRegistry["Symbols"] = typeof(SymbolsPage);
-        _pageRegistry["SymbolMapping"] = typeof(SymbolMappingPage);
-        _pageRegistry["SymbolStorage"] = typeof(SymbolStoragePage);
-        _pageRegistry["Storage"] = typeof(StoragePage);
-        _pageRegistry["Backfill"] = typeof(BackfillPage);
-        _pageRegistry["PortfolioImport"] = typeof(PortfolioImportPage);
-        _pageRegistry["IndexSubscription"] = typeof(IndexSubscriptionPage);
-        _pageRegistry["Schedules"] = typeof(ScheduleManagerPage);
-
-        // Monitoring (6 pages)
-        _pageRegistry["DataQuality"] = typeof(DataQualityPage);
-        _pageRegistry["CollectionSessions"] = typeof(CollectionSessionPage);
-        _pageRegistry["ArchiveHealth"] = typeof(ArchiveHealthPage);
-        _pageRegistry["ServiceManager"] = typeof(ServiceManagerPage);
-        _pageRegistry["SystemHealth"] = typeof(SystemHealthPage);
-        _pageRegistry["Diagnostics"] = typeof(DiagnosticsPage);
-
-        // Tools (10 pages)
-        _pageRegistry["DataExport"] = typeof(DataExportPage);
-        _pageRegistry["DataSampling"] = typeof(DataSamplingPage);
-        _pageRegistry["TimeSeriesAlignment"] = typeof(TimeSeriesAlignmentPage);
-        _pageRegistry["ExportPresets"] = typeof(ExportPresetsPage);
-        _pageRegistry["AnalysisExport"] = typeof(AnalysisExportPage);
-        _pageRegistry["AnalysisExportWizard"] = typeof(AnalysisExportWizardPage);
-        _pageRegistry["EventReplay"] = typeof(EventReplayPage);
-        _pageRegistry["PackageManager"] = typeof(PackageManagerPage);
-        _pageRegistry["TradingHours"] = typeof(TradingHoursPage);
-
-        // Analytics & Visualization (4 pages)
-        _pageRegistry["AdvancedAnalytics"] = typeof(AdvancedAnalyticsPage);
-        _pageRegistry["Charts"] = typeof(ChartingPage);
-        _pageRegistry["OrderBook"] = typeof(OrderBookPage);
-        _pageRegistry["DataCalendar"] = typeof(DataCalendarPage);
-
-        // Storage & Maintenance (3 pages)
-        _pageRegistry["StorageOptimization"] = typeof(StorageOptimizationPage);
-        _pageRegistry["RetentionAssurance"] = typeof(RetentionAssurancePage);
-        _pageRegistry["AdminMaintenance"] = typeof(AdminMaintenancePage);
-
-        // Integrations (2 pages)
-        _pageRegistry["LeanIntegration"] = typeof(LeanIntegrationPage);
-        _pageRegistry["MessagingHub"] = typeof(MessagingHubPage);
-
-        // Workspaces & Notifications (2 pages)
-        _pageRegistry["Workspaces"] = typeof(WorkspacePage);
-        _pageRegistry["NotificationCenter"] = typeof(NotificationCenterPage);
-
-        // Support & Setup (6 pages)
-        _pageRegistry["Help"] = typeof(HelpPage);
-        _pageRegistry["Welcome"] = typeof(WelcomePage);
-        _pageRegistry["Settings"] = typeof(SettingsPage);
-        _pageRegistry["KeyboardShortcuts"] = typeof(KeyboardShortcutsPage);
-        _pageRegistry["SetupWizard"] = typeof(SetupWizardPage);
-
-        // Activity Log (1 page)
-        _pageRegistry["ActivityLog"] = typeof(ActivityLogPage);
-    }
-
-    /// <summary>
-    /// Gets all registered page tags.
-    /// </summary>
-    public IReadOnlyCollection<string> GetRegisteredPages() => _pageRegistry.Keys;
-
-    /// <summary>
-    /// Checks if a page tag is registered.
-    /// </summary>
-    public bool IsPageRegistered(string pageTag) => _pageRegistry.ContainsKey(pageTag);
-
-    /// <summary>
-    /// Clears navigation history.
-    /// </summary>
-    public void ClearHistory()
-    {
-        _navigationHistory.Clear();
         while (_frame?.CanGoBack ?? false)
         {
             _frame.RemoveBackEntry();
@@ -254,14 +196,15 @@ public sealed class NavigationService : INavigationService
     }
 
     /// <summary>
-    /// Gets the current page tag.
+    /// Creates a page instance using the DI container if available, falling back to Activator.
     /// </summary>
-    public string? GetCurrentPageTag()
+    private object? CreatePage(Type pageType)
     {
-        if (_navigationHistory.Count > 0)
+        if (_serviceProvider != null)
         {
-            return _navigationHistory.Peek().PageTag;
+            return _serviceProvider.GetService(pageType) ?? ActivatorUtilities.CreateInstance(_serviceProvider, pageType);
         }
-        return null;
+
+        return Activator.CreateInstance(pageType);
     }
 }

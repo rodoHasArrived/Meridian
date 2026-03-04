@@ -10,8 +10,7 @@ using MarketDataCollector.Domain.Events;
 using MarketDataCollector.Infrastructure;
 using MarketDataCollector.Infrastructure.Contracts;
 using MarketDataCollector.Infrastructure.Http;
-using MarketDataCollector.Infrastructure.Providers.Backfill;
-using MarketDataCollector.Infrastructure.Providers.Core;
+using MarketDataCollector.Infrastructure.Adapters.Core;
 using MarketDataCollector.Storage;
 using MarketDataCollector.Storage.Policies;
 using MarketDataCollector.Storage.Sinks;
@@ -169,17 +168,20 @@ public sealed class HostStartup : IAsyncDisposable
     /// </summary>
     /// <param name="dataClient">The market data client.</param>
     /// <returns>Configured subscription manager.</returns>
-    public SubscriptionManager CreateSubscriptionManager(IMarketDataClient dataClient)
+    public SubscriptionOrchestrator CreateSubscriptionOrchestrator(IMarketDataClient dataClient)
     {
         var depthCollector = GetRequiredService<MarketDepthCollector>();
         var tradeCollector = GetRequiredService<TradeDataCollector>();
-        var log = LoggingSetup.ForContext<SubscriptionManager>();
+        var log = LoggingSetup.ForContext<SubscriptionOrchestrator>();
 
-        return new SubscriptionManager(
+        var optionCollector = GetService<OptionDataCollector>();
+
+        return new SubscriptionOrchestrator(
             depthCollector,
             tradeCollector,
             dataClient,
-            log);
+            log,
+            optionCollector);
     }
 
     /// <summary>

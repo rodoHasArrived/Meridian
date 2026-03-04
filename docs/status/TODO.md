@@ -1,41 +1,60 @@
 # TODO Tracking
 
 > Auto-generated TODO documentation. Do not edit manually.
-> Last updated: 2026-02-12T09:08:16.071033+00:00
+> Last updated: 2026-03-04T05:45:31.117988+00:00
 
 ## Summary
 
 | Metric | Count |
 |--------|-------|
-| **Total Items** | 12 |
+| **Total Items** | 22 |
 | **Linked to Issues** | 0 |
-| **Untracked** | 12 |
+| **Untracked** | 22 |
 
 ### By Type
 
 | Type | Count | Description |
 |------|-------|-------------|
-| `NOTE` | 12 | Important notes and documentation |
+| `NOTE` | 22 | Important notes and documentation |
 
 ### By Directory
 
 | Directory | Count |
 |-----------|-------|
-| `tests/` | 9 |
-| `src/` | 3 |
+| `tests/` | 15 |
+| `src/` | 5 |
+| `.github/` | 2 |
+
+## Unassigned & Untracked
+
+22 items have no assignee and no issue tracking:
+
+Consider assigning ownership or creating tracking issues for these items.
 
 ## All Items
 
-### NOTE (12)
+### NOTE (22)
 
-- [ ] `src/MarketDataCollector.Ui.Shared/Endpoints/ConfigEndpoints.cs:138`
+- [ ] `.github/workflows/desktop-builds.yml:9`
+  > UWP/WinUI 3 application has been removed. WPF is the sole desktop client.
+
+- [ ] `.github/workflows/test-matrix.yml:5`
+  > This workflow intentionally does NOT use reusable-dotnet-build.yml because it needs separate C# / F# test runs with per-language arguments, a Category!=Integration filter, platform-conditional jobs, and per-platform Codecov flags. The reusable template targets simpler "build + test entire solution" scenarios.
+
+- [ ] `src/MarketDataCollector.Ui.Services/Services/AdminMaintenanceModels.cs:411`
+  > SelfTest*, ErrorCodes*, ShowConfig*, QuickCheck* models are defined in DiagnosticsService.cs to avoid duplication and maintain single source of truth
+
+- [ ] `src/MarketDataCollector.Ui.Services/Services/DataCompletenessService.cs:632`
+  > SymbolCompleteness is defined in AdvancedAnalyticsModels.cs to avoid duplication
+
+- [ ] `src/MarketDataCollector.Ui.Services/Services/ProviderHealthService.cs:516`
+  > ProviderComparison is defined in AdvancedAnalyticsModels.cs for cross-provider comparison ProviderHealthComparison below is for overall provider ranking
+
+- [ ] `src/MarketDataCollector.Ui.Shared/Endpoints/ConfigEndpoints.cs:213`
   > Status endpoint is handled by StatusEndpoints.MapStatusEndpoints() which provides live status via StatusEndpointHandlers rather than loading from file
 
-- [ ] `src/MarketDataCollector.Uwp/GlobalUsings.cs:7`
-  > Type aliases and Contracts namespaces are NOT re-defined here because they are already provided by the referenced MarketDataCollector.Ui.Services project (via its GlobalUsings.cs). Re-defining them would cause CS0101 duplicate type definition errors. =============================================================================
-
 - [ ] `src/MarketDataCollector.Wpf/GlobalUsings.cs:7`
-  > Type aliases and Contracts namespaces are NOT re-defined here because they are already provided by the referenced MarketDataCollector.Ui.Services project (via its GlobalUsings.cs). Re-defining them would cause CS0101 duplicate type definition errors. =============================================================================
+  > Type aliases and Contracts namespaces are NOT re-defined here because they are already provided by the referenced MarketDataCollector.Ui.Services project (via its GlobalUsings.cs). Re-defining them would cause CS0101 duplicate type definition errors.
 
 - [ ] `tests/MarketDataCollector.Tests/Application/Backfill/BackfillWorkerServiceTests.cs:28`
   > Using null! because validation throws before dependencies are accessed
@@ -49,8 +68,14 @@
 - [ ] `tests/MarketDataCollector.Tests/Application/Commands/SymbolCommandsTests.cs:19`
   > SymbolCommands requires a SymbolManagementService which needs a ConfigStore. For CanHandle tests we can use a stub since CanHandle doesn't touch the service. For ExecuteAsync tests that require validation (missing value), we need the real command.
 
-- [ ] `tests/MarketDataCollector.Tests/Application/Monitoring/DataQuality/DataFreshnessSlaMonitorTests.cs:523`
+- [ ] `tests/MarketDataCollector.Tests/Application/Monitoring/DataQuality/DataFreshnessSlaMonitorTests.cs:525`
   > Actual result depends on current time, so we check the logic is working
+
+- [ ] `tests/MarketDataCollector.Tests/Application/Pipeline/EventPipelineTests.cs:284`
+  > the consumer drains the entire batch from the channel before processing, so the channel is empty once the consumer is blocked.
+
+- [ ] `tests/MarketDataCollector.Tests/Application/Pipeline/EventPipelineTests.cs:516`
+  > the consumer drains the entire batch from the channel before processing, so the channel is empty once the consumer is blocked.
 
 - [ ] `tests/MarketDataCollector.Tests/Infrastructure/Resilience/WebSocketResiliencePolicyTests.cs:201`
   > We can't directly invoke the event from outside the class The test validates that the subscription mechanism works
@@ -58,11 +83,23 @@
 - [ ] `tests/MarketDataCollector.Tests/Storage/StorageChecksumServiceTests.cs:121`
   > File.WriteAllTextAsync uses UTF-8 with BOM by default on some platforms, so we compute expected from the actual file bytes
 
-- [ ] `tests/MarketDataCollector.Wpf.Tests/Services/ConnectionServiceTests.cs:286`
-  > This test may need to wait briefly for async operation
+- [ ] `tests/MarketDataCollector.Ui.Tests/Services/BackfillServiceTests.cs:181`
+  > This test verifies the IsRunning property logic In actual usage, CurrentProgress would be set during a backfill operation We're testing the property getter logic here
+
+- [ ] `tests/MarketDataCollector.Ui.Tests/Services/BackfillServiceTests.cs:198`
+  > Similar to IsRunning test, this verifies the property logic
+
+- [ ] `tests/MarketDataCollector.Ui.Tests/Services/ScheduledMaintenanceServiceTests.cs:85`
+  > since this is a singleton shared across tests, if StartScheduler was previously called, we stop it first to ensure test isolation.
 
 - [ ] `tests/MarketDataCollector.Wpf.Tests/Services/NavigationServiceTests.cs:57`
   > This test assumes NavigationService might not be initialized In production, Initialize should be called during app startup
+
+- [ ] `tests/MarketDataCollector.Wpf.Tests/Services/OfflineTrackingPersistenceServiceTests.cs:27`
+  > Singleton state may persist across tests. We explicitly shut down first to verify the default state transition.
+
+- [ ] `tests/MarketDataCollector.Wpf.Tests/Services/PendingOperationsQueueServiceTests.cs:30`
+  > This may not be false if other tests have run InitializeAsync. We test the lifecycle explicitly below.
 
 ---
 

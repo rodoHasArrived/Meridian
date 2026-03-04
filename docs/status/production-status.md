@@ -1,8 +1,7 @@
 # Market Data Collector - Production Status
 
-**Last Updated:** 2026-02-06
-**Version:** 1.6.1
-**Status:** Production Ready
+**Version:** 1.6.2
+**Status:** Development / Pilot Ready
 
 This document consolidates the architecture assessment and production readiness information for the Market Data Collector system.
 
@@ -16,20 +15,22 @@ The Market Data Collector is a feature-rich system with a working CLI, backfill 
 
 | Category | Status | Notes |
 |----------|--------|-------|
-| Core Event Pipeline | ✅ Implemented | Channel-based processing with backpressure |
-| Storage Layer | ✅ Implemented | JSONL/Parquet outputs with WAL support |
+| Core Event Pipeline | ✅ Implemented | Channel-based processing with backpressure, injectable metrics |
+| Storage Layer | ✅ Implemented | JSONL/Parquet composite sink with WAL support |
 | Backfill Providers | ✅ Implemented | Multiple providers; credentials required for some |
 | Alpaca Provider (Streaming) | ✅ Implemented | Requires Alpaca credentials |
 | NYSE Provider | ⚠️ Needs credentials | NYSE Connect credentials required |
 | Interactive Brokers | ⚠️ Requires build flag | Compile with `IBAPI` and reference IBApi |
 | Polygon Provider | ⚠️ Partial | Stub mode unless configured; WebSocket parsing in progress |
 | StockSharp Provider | ⚠️ Integration scaffold | Requires StockSharp setup |
-| Monitoring | ✅ Implemented | HTTP server + Prometheus metrics |
-| WPF Desktop App | ⚠️ Partial UX parity | Recommended Windows desktop UI; several navigable pages still show placeholder "Coming Soon" content |
-| UWP Desktop App | ✅ Implemented | Legacy Windows 10+ companion UI |
+| Monitoring | ✅ Implemented | HTTP server + Prometheus metrics + OpenTelemetry |
+| Data Quality | ✅ Implemented | Completeness, gap analysis, anomaly detection, SLA monitoring |
+| WPF Desktop App | ⚠️ Partial UX parity | Windows desktop UI (sole desktop client); ~42 of 49 pages wired to live services; ~6 pages show static placeholder data (StoragePage, WelcomePage, TradingHoursPage). See [FEATURE_INVENTORY.md](FEATURE_INVENTORY.md) §10. |
 | QuantConnect Lean | ✅ Implemented | Custom data types + IDataProvider |
 | Symbol Search Providers | ✅ Implemented | 5 providers (Alpaca, Finnhub, Polygon, OpenFIGI, StockSharp) |
-| Architecture | ✅ Monolithic | Single-process runtime |
+| API Surface | ✅ Implemented | 283 route constants, typed OpenAPI annotations across all endpoint families |
+| Architecture | ✅ Monolithic | Single-process runtime, unified DI composition |
+| Improvement Tracking | ✅ Near complete | 33/35 core items completed (94.3%), see [IMPROVEMENTS.md](IMPROVEMENTS.md) and [FEATURE_INVENTORY.md](FEATURE_INVENTORY.md) |
 
 ---
 
@@ -74,7 +75,7 @@ Multiple storage strategies:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│              DESKTOP APPLICATIONS (WPF / UWP)                       │
+│              DESKTOP APPLICATION (WPF)                               │
 │  ┌─────────────┐  ┌──────────────┐  ┌──────────────────────────┐   │
 │  │ ConfigService│  │StatusService │  │ BackfillService          │   │
 │  └─────────────┘  └──────────────┘  └──────────────────────────┘   │
@@ -107,7 +108,7 @@ Multiple storage strategies:
 ### WPF UX Parity
 
 **Status:** ⚠️ Partial implementation  
-The WPF shell and navigation model are in place, but multiple pages are still placeholder screens. Treat current WPF status as "navigation-complete, workflow-parity in progress" until those pages are functionally implemented.
+The WPF shell and navigation model are in place, and approximately 42 of 49 pages are wired to live backend services. The remaining pages (`StoragePage`, `WelcomePage`, `TradingHoursPage`, and a few others) currently display static placeholder values. Phase 11 of the roadmap addresses this. See [`FEATURE_INVENTORY.md`](FEATURE_INVENTORY.md) §10 for the full page-by-page breakdown.
 
 ### Polygon Streaming
 
@@ -147,8 +148,8 @@ The Polygon provider runs in stub mode without credentials and requires full Web
 
 | Component | File | Current Behavior | Production Action |
 |-----------|------|------------------|-------------------|
-| Polygon Provider | `Infrastructure/Providers/Polygon/PolygonMarketDataClient.cs` | Stub or partial streaming | Complete WebSocket message parsing |
-| IB Provider (no IBAPI) | `Infrastructure/Providers/InteractiveBrokers/EnhancedIBConnectionManager.cs` | Throws NotSupportedException | Build with IBAPI flag |
+| Polygon Provider | `Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs` | Stub or partial streaming | Complete WebSocket message parsing |
+| IB Provider (no IBAPI) | `Infrastructure/Adapters/InteractiveBrokers/EnhancedIBConnectionManager.cs` | Throws NotSupportedException | Build with IBAPI flag |
 
 ---
 
@@ -254,12 +255,22 @@ When `IBAPI` is NOT defined:
 
 ## Testing Notes
 
-The project has 85 test files (80 C#, 5 F#) across `tests/MarketDataCollector.Tests/` and `tests/MarketDataCollector.FSharp.Tests/`. Coverage spans backfill, storage, pipeline, monitoring, providers, credentials, serialization, integration, and domain model tests. Refer to the `tests/` directory for the current suite and to the CI pipelines for test execution coverage.
+The project has 219 test files (215 C#, 4 F#) across 4 test projects with ~3,444 test methods:
+
+| Test Project | Focus | Test Methods |
+|--------------|-------|-------|
+| `MarketDataCollector.Tests` | Core unit/integration tests (backfill, storage, pipeline, monitoring, providers, credentials, serialization, domain) | ~444 |
+| `MarketDataCollector.FSharp.Tests` | F# domain validation, calculations, pipeline transforms | ~99 |
+| `MarketDataCollector.Wpf.Tests` | WPF desktop service tests (navigation, config, status, connection) | ~324 |
+| `MarketDataCollector.Ui.Tests` | Desktop UI service tests (API client, backfill, fixtures, forms, health, watchlist, collections) | ~927 |
+
+Refer to the `tests/` directory for the current suite and to the CI pipelines for test execution coverage.
 
 ---
 
 ## Related Documentation
 
+- [Feature Inventory](FEATURE_INVENTORY.md) - Complete per-feature status across all functional areas
 - [Roadmap](ROADMAP.md) - Feature backlog and development priorities
 - [Changelog](CHANGELOG.md) - Recent changes and improvements
 - [Configuration](../HELP.md#configuration) - Detailed configuration reference
@@ -269,4 +280,4 @@ The project has 85 test files (80 C#, 5 F#) across `tests/MarketDataCollector.Te
 
 ---
 
-*Last Updated: 2026-02-06*
+*Last Updated: 2026-02-22*

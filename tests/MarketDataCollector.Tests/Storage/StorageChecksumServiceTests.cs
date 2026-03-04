@@ -28,8 +28,8 @@ public sealed class StorageChecksumServiceTests : IDisposable
                     Directory.Delete(_testRoot, recursive: true);
                 return;
             }
-            catch (IOException) when (attempt < 4) { Thread.Sleep(50); }
-            catch (UnauthorizedAccessException) when (attempt < 4) { Thread.Sleep(50); }
+            catch (IOException) when (attempt < 4) { Thread.Sleep(10); }
+            catch (UnauthorizedAccessException) when (attempt < 4) { Thread.Sleep(10); }
         }
     }
 
@@ -118,7 +118,7 @@ public sealed class StorageChecksumServiceTests : IDisposable
         var expected = Convert.ToHexString(
             SHA256.HashData(Encoding.UTF8.GetBytes(content))).ToLowerInvariant();
 
-        // Note: File.WriteAllTextAsync uses UTF-8 with BOM by default on some platforms,
+        // NOTE: File.WriteAllTextAsync uses UTF-8 with BOM by default on some platforms,
         // so we compute expected from the actual file bytes
         var fileBytes = await File.ReadAllBytesAsync(path);
         var expectedFromFile = Convert.ToHexString(SHA256.HashData(fileBytes)).ToLowerInvariant();

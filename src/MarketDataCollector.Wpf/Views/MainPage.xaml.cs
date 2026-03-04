@@ -4,8 +4,13 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using MarketDataCollector.Ui.Services;
+using MarketDataCollector.Ui.Services.Services;
 using MarketDataCollector.Wpf.Contracts;
 using MarketDataCollector.Wpf.Services;
+using SearchService = MarketDataCollector.Ui.Services.SearchService;
+using WpfServices = MarketDataCollector.Wpf.Services;
 using SysNavigation = System.Windows.Navigation;
 
 namespace MarketDataCollector.Wpf.Views;
@@ -17,8 +22,9 @@ namespace MarketDataCollector.Wpf.Views;
 public partial class MainPage : Page
 {
     private readonly NavigationService _navigationService;
-    private readonly IConnectionService _connectionService;
+    private readonly ConnectionService _connectionService;
     private readonly SearchService _searchService;
+    private readonly MessagingService _messagingService;
     private bool _commandPaletteOpen;
 
     /// <summary>
@@ -29,19 +35,24 @@ public partial class MainPage : Page
         MonitorNavList, CollectNavList, StorageNavList, QualityNavList, SettingsNavList
     };
 
-    public MainPage()
+    public MainPage(
+        NavigationService navigationService,
+        ConnectionService connectionService,
+        SearchService searchService,
+        MessagingService messagingService)
     {
         InitializeComponent();
 
-        _navigationService = MarketDataCollector.Wpf.Services.NavigationService.Instance;
-        _connectionService = MarketDataCollector.Wpf.Services.ConnectionService.Instance;
-        _searchService = SearchService.Instance;
+        _navigationService = navigationService;
+        _connectionService = connectionService;
+        _searchService = searchService;
+        _messagingService = messagingService;
 
         // Subscribe to connection state changes
         _connectionService.ConnectionStateChanged += OnConnectionStateChanged;
 
         // Subscribe to messaging for page updates
-        MessagingService.Instance.MessageReceived += OnMessageReceived;
+        _messagingService.MessageReceived += OnMessageReceived;
 
         // Register Ctrl+K for command palette via PreviewKeyDown
         PreviewKeyDown += OnPreviewKeyDown;
@@ -70,6 +81,9 @@ public partial class MainPage : Page
 
         // Update back button visibility
         UpdateBackButtonVisibility();
+
+        // Initialize fixture/offline mode banner (P0: Hard visual distinction)
+        InitializeFixtureModeBanner();
     }
 
     #region Workspace Navigation Handlers
@@ -302,6 +316,7 @@ public partial class MainPage : Page
             new("Multi-Source", "Collect", "page:DataSources", new[] { "failover", "multiple" }),
             new("Symbols", "Collect", "page:Symbols", new[] { "stocks", "tickers" }),
             new("Backfill", "Collect", "page:Backfill", new[] { "historical", "download" }),
+            new("Options", "Collect", "page:Options", new[] { "derivatives", "chain", "greeks", "strikes", "expiration", "calls", "puts" }),
             new("Schedules", "Collect", "page:Schedules", new[] { "schedule", "cron", "timer" }),
             new("Sessions", "Collect", "page:CollectionSessions", new[] { "history", "runs" }),
 
@@ -346,7 +361,7 @@ public partial class MainPage : Page
                 // Collector control
                 break;
             case "refresh":
-                MessagingService.Instance.Send("RefreshStatus");
+                _messagingService.Send("RefreshStatus");
                 break;
         }
     }
@@ -375,6 +390,7 @@ public partial class MainPage : Page
             "DataSources" => "Multi-Source Config",
             "Symbols" => "Symbols",
             "Backfill" => "Historical Data Backfill",
+            "Options" => "Options Chain",
             "Schedules" => "Schedules",
             "CollectionSessions" => "Collection Sessions",
             "DataBrowser" => "Data Browser",
@@ -424,7 +440,7 @@ public partial class MainPage : Page
 
     private void OnRefreshButtonClick(object sender, RoutedEventArgs e)
     {
-        MessagingService.Instance.Send("RefreshStatus");
+        _messagingService.Send("RefreshStatus");
     }
 
     private void OnNotificationsButtonClick(object sender, RoutedEventArgs e)
@@ -479,6 +495,63 @@ public partial class MainPage : Page
                 break;
         }
     }
+
+    #region Fixture/Offline Mode Banner
+
+    /// <summary>
+    /// Initializes the fixture/offline mode banner and subscribes to mode changes.
+    /// Addresses P0: "Hard visual distinction for sample/offline mode".
+    /// </summary>
+    private void InitializeFixtureModeBanner()
+    {
+        var detector = FixtureModeDetector.Instance;
+
+        // Subscribe to mode changes
+        detector.ModeChanged += OnFixtureModeChanged;
+
+        // Set initial state
+        UpdateFixtureModeBanner(detector);
+    }
+
+    private void OnFixtureModeChanged(object? sender, EventArgs e)
+    {
+        Dispatcher.Invoke(() => UpdateFixtureModeBanner(FixtureModeDetector.Instance));
+    }
+
+    private void UpdateFixtureModeBanner(FixtureModeDetector detector)
+    {
+        if (detector.IsNonLiveMode)
+        {
+            FixtureModeBanner.Visibility = Visibility.Visible;
+            FixtureModeLabel.Text = detector.ModeLabel;
+
+            // Parse banner color from detector
+            try
+            {
+                FixtureModeBannerBrush.Color = (Color)ColorConverter.ConvertFromString(detector.BannerColor);
+            }
+            catch
+            {
+                FixtureModeBannerBrush.Color = Colors.Orange;
+            }
+
+            // Adjust content frame margin to account for banner
+            ContentFrame.Margin = new Thickness(0, 92, 0, 0); // 56 header + 36 banner
+        }
+        else
+        {
+            FixtureModeBanner.Visibility = Visibility.Collapsed;
+            ContentFrame.Margin = new Thickness(0, 56, 0, 0);
+        }
+    }
+
+    private void OnFixtureModeDismiss(object sender, RoutedEventArgs e)
+    {
+        FixtureModeBanner.Visibility = Visibility.Collapsed;
+        ContentFrame.Margin = new Thickness(0, 56, 0, 0);
+    }
+
+    #endregion
 
     private void OnMessageReceived(object? sender, string message)
     {
