@@ -360,6 +360,7 @@ public sealed class WebSocketConnectionManager : IAsyncDisposable
             {
                 messageBuilder.Clear();
                 WebSocketReceiveResult result;
+                var messageBytesReceived = 0;
 
                 do
                 {
@@ -372,10 +373,11 @@ public sealed class WebSocketConnectionManager : IAsyncDisposable
                         return;
                     }
 
+                    messageBytesReceived += result.Count;
                     messageBuilder.Append(Encoding.UTF8.GetString(buffer, 0, result.Count));
 
-                    // Guard against unbounded message accumulation.
-                    if (messageBuilder.Length > _config.MaxMessageSizeBytes)
+                    // Guard against unbounded message accumulation (compare bytes, not UTF-16 chars).
+                    if (messageBytesReceived > _config.MaxMessageSizeBytes)
                     {
                         _log.Warning(
                             "{Provider} WebSocket message exceeds maximum allowed size of {MaxBytes} bytes — dropping message",
@@ -385,13 +387,6 @@ public sealed class WebSocketConnectionManager : IAsyncDisposable
                         while (!result.EndOfMessage)
                         {
                             result = await _webSocket.ReceiveAsync(buffer, ct).ConfigureAwait(false);
-
-                            if (result.MessageType == WebSocketMessageType.Close)
-                            {
-                                _log.Information("{Provider} WebSocket closed by server while draining oversized message", _providerName);
-                                StateChanged?.Invoke(WebSocketState.CloseReceived);
-                                return;
-                            }
 
                             if (result.MessageType == WebSocketMessageType.Close)
                             {

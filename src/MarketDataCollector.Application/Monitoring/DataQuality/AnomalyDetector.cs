@@ -461,8 +461,10 @@ public sealed class AnomalyDetector : IDisposable
             }
 
             // Evict symbol statistics for symbols not seen since the cutoff.
+            // Use LastObservedAt (wall-clock processing time) rather than LastEventTime
+            // (event timestamp) to avoid premature eviction during delayed/backfilled feeds.
             var staleStatKeys = _symbolStats
-                .Where(kvp => kvp.Value.LastEventTime < cutoff)
+                .Where(kvp => kvp.Value.LastObservedAt != DateTimeOffset.MinValue && kvp.Value.LastObservedAt < cutoff)
                 .Select(kvp => kvp.Key)
                 .ToList();
 
@@ -523,6 +525,9 @@ public sealed class AnomalyDetector : IDisposable
         private const int MaxHistorySize = 1000;
 
         public DateTimeOffset LastEventTime { get; private set; } = DateTimeOffset.MinValue;
+        // Wall-clock time of last processing (used for retention eviction to avoid
+        // premature eviction of symbols with delayed or out-of-order event timestamps).
+        public DateTimeOffset LastObservedAt { get; private set; } = DateTimeOffset.MinValue;
         public bool IsMarkedStale { get; private set; }
         public bool HasEnoughSamples => _priceHistory.Count >= _minSamples;
 
@@ -537,6 +542,7 @@ public sealed class AnomalyDetector : IDisposable
             lock (_lock)
             {
                 LastEventTime = timestamp;
+                LastObservedAt = DateTimeOffset.UtcNow;
                 IsMarkedStale = false;
 
                 DataAnomaly? anomaly = null;
@@ -703,6 +709,7 @@ public sealed class AnomalyDetector : IDisposable
             lock (_lock)
             {
                 LastEventTime = timestamp;
+                LastObservedAt = DateTimeOffset.UtcNow;
                 IsMarkedStale = false;
                 var midPrice = (bidPrice + askPrice) / 2;
                 AddPrice(midPrice);
