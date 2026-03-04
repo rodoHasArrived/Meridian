@@ -15,8 +15,10 @@
 
 .PHONY: help quickstart install docker docker-build docker-up docker-down docker-logs \
         run run-ui run-backfill test test-unit test-integration test-fsharp test-all build build-quick \
-        publish clean check-deps watch \
-        setup-config setup-dev lint format-check benchmark docs verify-adrs verify-contracts gen-context \
+        publish clean check-deps watch watch-build \
+        setup-config setup-dev lint format-check benchmark bench-quick bench-filter \
+        pre-pr pre-pr-full \
+        docs verify-adrs verify-contracts gen-context \
         gen-interfaces gen-structure gen-providers gen-workflows update-claude-md docs-all \
         doctor doctor-ci doctor-quick doctor-fix diagnose diagnose-build \
         collect-debug collect-debug-minimal build-profile build-binlog validate-data analyze-errors \
@@ -98,6 +100,9 @@ help: ## Show this help message
 	@echo ""
 	@echo "$(BLUE)Desktop App:$(NC)"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | grep -E 'icons|desktop' | awk 'BEGIN {FS = ":.*?## "}; {printf "  $(GREEN)%-18s$(NC) %s\n", $$1, $$2}'
+	@echo ""
+	@echo "$(BLUE)Pre-PR & Quality:$(NC)"
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | grep -E 'pre-pr|ai-audit|ai-verify' | awk 'BEGIN {FS = ":.*?## "}; {printf "  $(GREEN)%-18s$(NC) %s\n", $$1, $$2}'
 	@echo ""
 	@echo "$(BLUE)Diagnostics:$(NC)"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | grep -E 'doctor|diagnose|collect-debug|build-profile|build-binlog|build-graph|fingerprint|env-|impact|bisect|metrics|history|validate-data|analyze-errors' | awk 'BEGIN {FS = ":.*?## "}; {printf "  $(GREEN)%-18s$(NC) %s\n", $$1, $$2}'
@@ -273,9 +278,21 @@ test-all: ## Run all tests with coverage report
 test-coverage: ## Run tests with coverage (alias for test-all)
 	@$(MAKE) test-all
 
-benchmark: ## Run benchmarks
+benchmark: ## Run full benchmarks
 	@echo "$(BLUE)Running benchmarks...$(NC)"
 	dotnet run --project $(BENCHMARK_PROJECT) -c Release
+
+bench-quick: ## Run quick bottleneck benchmarks (~10 min)
+	@echo "$(BLUE)Running quick bottleneck benchmarks...$(NC)"
+	@if [ -x benchmarks/run-bottleneck-benchmarks.sh ]; then \
+		./benchmarks/run-bottleneck-benchmarks.sh --quick; \
+	else \
+		dotnet run --project $(BENCHMARK_PROJECT) -c Release -- --filter "*EndToEnd*|*Pipeline*" --job short; \
+	fi
+
+bench-filter: ## Run specific benchmarks (FILTER required, e.g. FILTER=*Collector*)
+	@echo "$(BLUE)Running benchmarks matching $(FILTER)...$(NC)"
+	dotnet run --project $(BENCHMARK_PROJECT) -c Release -- --filter "$(FILTER)" --memory --job short
 
 lint: ## Check code formatting (solution-wide)
 	dotnet format MarketDataCollector.sln --verify-no-changes --verbosity normal
@@ -560,6 +577,19 @@ endif
 desktop-dev-bootstrap: ## Run desktop development bootstrap checks (PowerShell)
 	@echo "$(BLUE)Running desktop development bootstrap checks...$(NC)"
 	pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/dev/desktop-dev.ps1
+
+# =============================================================================
+# Pre-PR Validation
+# =============================================================================
+
+pre-pr: lint test ## Run pre-PR checks (format + tests) — run before pushing
+	@echo ""
+	@echo "$(GREEN)All pre-PR checks passed!$(NC)"
+	@echo "Ready to push and open a pull request."
+
+pre-pr-full: lint test-all ## Full pre-PR validation (format + all tests with coverage)
+	@echo ""
+	@echo "$(GREEN)Full pre-PR validation passed!$(NC)"
 
 # =============================================================================
 # AI Repository Updater
