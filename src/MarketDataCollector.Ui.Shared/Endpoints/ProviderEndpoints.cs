@@ -2,7 +2,7 @@ using System.Text.Json;
 using MarketDataCollector.Application.Config;
 using MarketDataCollector.Contracts.Api;
 using MarketDataCollector.Contracts.Configuration;
-using MarketDataCollector.Infrastructure.Providers.Core;
+using MarketDataCollector.Infrastructure.Adapters.Core;
 using MarketDataCollector.Ui.Shared;
 using MarketDataCollector.Ui.Shared.Services;
 using Microsoft.AspNetCore.Builder;
@@ -38,6 +38,7 @@ public static class ProviderEndpoints
             }, jsonOptions);
         })
         .WithName("GetDataSources")
+        .WithDescription("Returns all configured data sources with failover and default source settings.")
         .Produces(200);
 
         // Create or update data source
@@ -76,6 +77,7 @@ public static class ProviderEndpoints
             return Results.Ok(new { id });
         })
         .WithName("UpsertDataSource")
+        .WithDescription("Creates or updates a data source configuration entry.")
         .Produces(200)
         .Produces(400);
 
@@ -94,6 +96,7 @@ public static class ProviderEndpoints
             return Results.Ok();
         })
         .WithName("DeleteDataSource")
+        .WithDescription("Removes a data source configuration by ID.")
         .Produces(200);
 
         // Toggle data source enabled status
@@ -116,6 +119,7 @@ public static class ProviderEndpoints
             return Results.Ok();
         })
         .WithName("ToggleDataSource")
+        .WithDescription("Toggles the enabled/disabled state of a data source.")
         .Produces(200)
         .Produces(404);
 
@@ -138,6 +142,7 @@ public static class ProviderEndpoints
             return Results.Ok();
         })
         .WithName("SetDefaultSources")
+        .WithDescription("Sets the default real-time and historical data source IDs.")
         .Produces(200);
 
         // Update failover settings
@@ -159,6 +164,7 @@ public static class ProviderEndpoints
             return Results.Ok();
         })
         .WithName("UpdateFailoverSettings")
+        .WithDescription("Updates automatic failover settings including timeout and enable/disable.")
         .Produces(200);
 
         // Provider comparison view
@@ -209,7 +215,8 @@ public static class ProviderEndpoints
             return Results.Json(fallbackComparison, jsonOptions);
         })
         .WithName("GetProviderComparison")
-        .Produces(200);
+        .WithDescription("Returns a side-by-side comparison of all provider metrics including latency, quality, and throughput.")
+        .Produces<ProviderComparisonResponse>(200);
 
         // Provider status
         group.MapGet(UiApiRoutes.ProviderStatus, (ConfigStore store) =>
@@ -238,7 +245,8 @@ public static class ProviderEndpoints
             return Results.Json(status, jsonOptions);
         })
         .WithName("GetProviderStatus")
-        .Produces(200);
+        .WithDescription("Returns connection status for all configured providers.")
+        .Produces<ProviderStatusResponse[]>(200);
 
         // Provider metrics
         group.MapGet(UiApiRoutes.ProviderMetrics, (ConfigStore store) =>
@@ -275,7 +283,8 @@ public static class ProviderEndpoints
             return Results.Json(fallbackMetrics, jsonOptions);
         })
         .WithName("GetProviderMetrics")
-        .Produces(200);
+        .WithDescription("Returns detailed metrics for all providers including throughput, latency, and quality scores.")
+        .Produces<ProviderMetricsResponse[]>(200);
 
         // Single provider metrics
         group.MapGet(UiApiRoutes.ProviderMetrics + "/{providerId}", (ConfigStore store, string providerId) =>
@@ -317,7 +326,8 @@ public static class ProviderEndpoints
             return Results.Json(CreateFallbackMetrics(source), jsonOptions);
         })
         .WithName("GetProviderMetricsById")
-        .Produces(200)
+        .WithDescription("Returns detailed metrics for a single provider by ID.")
+        .Produces<ProviderMetricsResponse>(200)
         .Produces(404);
 
         // Provider catalog endpoint - centralized metadata for UI consumption
@@ -357,6 +367,7 @@ public static class ProviderEndpoints
             }, jsonOptions);
         })
         .WithName("GetProviderCatalog")
+        .WithDescription("Returns the provider catalog with metadata. Filter by type using ?type=streaming or ?type=backfill.")
         .Produces(200);
 
         // Single provider catalog entry
@@ -373,8 +384,66 @@ public static class ProviderEndpoints
             return Results.Json(entry, jsonOptions);
         })
         .WithName("GetProviderCatalogById")
-        .Produces(200)
+        .WithDescription("Returns catalog metadata for a single provider by ID.")
+        .Produces<ProviderCatalogEntry>(200)
         .Produces(404);
+
+        // Alias: /api/config/data-sources → /api/config/datasources (for backward compatibility with tests)
+        group.MapGet("/api/config/data-sources", (ConfigStore store) =>
+        {
+            var cfg = store.Load();
+            return Results.Json(new
+            {
+                sources = cfg.DataSources?.Sources ?? Array.Empty<DataSourceConfig>(),
+                defaultRealTimeSourceId = cfg.DataSources?.DefaultRealTimeSourceId,
+                defaultHistoricalSourceId = cfg.DataSources?.DefaultHistoricalSourceId,
+                enableFailover = cfg.DataSources?.EnableFailover ?? true,
+                failoverTimeoutSeconds = cfg.DataSources?.FailoverTimeoutSeconds ?? 30
+            }, jsonOptions);
+        })
+        .WithName("GetDataSourcesAlias")
+        .WithDescription("Alias for /api/config/datasources for backward compatibility.")
+        .Produces(200);
+
+        group.MapPost("/api/config/data-sources", async (ConfigStore store, DataSourceConfigRequest req) =>
+        {
+            if (string.IsNullOrWhiteSpace(req.Name))
+                return Results.BadRequest("Name is required.");
+
+            var cfg = store.Load();
+            var dataSources = cfg.DataSources ?? new DataSourcesConfig();
+            var sources = (dataSources.Sources ?? Array.Empty<DataSourceConfig>()).ToList();
+
+            var id = string.IsNullOrWhiteSpace(req.Id) ? Guid.NewGuid().ToString("N") : req.Id;
+            var source = new DataSourceConfig(
+                Id: id,
+                Name: req.Name,
+                Provider: Enum.TryParse<DataSourceKind>(req.Provider, ignoreCase: true, out var p) ? p : DataSourceKind.IB,
+                Enabled: req.Enabled,
+                Type: Enum.TryParse<DataSourceType>(req.Type, ignoreCase: true, out var t) ? t : DataSourceType.RealTime,
+                Priority: req.Priority,
+                Alpaca: req.Alpaca?.ToDomain(),
+                Polygon: req.Polygon?.ToDomain(),
+                IB: req.IB?.ToDomain(),
+                Symbols: req.Symbols,
+                Description: req.Description,
+                Tags: req.Tags
+            );
+
+            var idx = sources.FindIndex(s => string.Equals(s.Id, id, StringComparison.OrdinalIgnoreCase));
+            if (idx >= 0) sources[idx] = source;
+            else sources.Add(source);
+
+            var next = cfg with { DataSources = dataSources with { Sources = sources.ToArray() } };
+            await store.SaveAsync(next);
+
+            return Results.Ok(new { id });
+        })
+        .WithName("UpsertDataSourceAlias")
+        .WithDescription("Alias for /api/config/datasources POST for backward compatibility.")
+        .Produces(200)
+        .Produces(400)
+        .RequireRateLimiting(UiEndpoints.MutationRateLimitPolicy);
     }
 
     private static ProviderMetricsResponse CreateFallbackMetrics(DataSourceConfig source) => new(

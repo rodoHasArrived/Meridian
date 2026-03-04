@@ -13,9 +13,7 @@ public sealed class ActivityFeedService
     private const string ActivityLogFileName = "activity_log.json";
     private const int MaxActivities = 100;
 
-    private static ActivityFeedService? _instance;
-    private static readonly object _lock = new();
-
+    private static readonly Lazy<ActivityFeedService> _instance = new(() => new ActivityFeedService());
     private readonly string _activityLogPath;
     private readonly BoundedObservableCollection<ActivityItem> _activities;
     private readonly JsonSerializerOptions _jsonOptions;
@@ -23,20 +21,7 @@ public sealed class ActivityFeedService
     /// <summary>
     /// Gets the singleton instance of the ActivityFeedService.
     /// </summary>
-    public static ActivityFeedService Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                lock (_lock)
-                {
-                    _instance ??= new ActivityFeedService();
-                }
-            }
-            return _instance;
-        }
-    }
+    public static ActivityFeedService Instance => _instance.Value;
 
     /// <summary>
     /// Gets the observable collection of activities.
@@ -311,18 +296,7 @@ public sealed class ActivityFeedService
         }
     }
 
-    private static string FormatBytes(long bytes)
-    {
-        string[] suffixes = { "B", "KB", "MB", "GB", "TB" };
-        int i = 0;
-        double value = bytes;
-        while (value >= 1024 && i < suffixes.Length - 1)
-        {
-            value /= 1024;
-            i++;
-        }
-        return $"{value:N1} {suffixes[i]}";
-    }
+    private static string FormatBytes(long bytes) => FormatHelpers.FormatBytes(bytes);
 }
 
 /// <summary>
@@ -382,7 +356,7 @@ public enum ActivityType
 /// <summary>
 /// Individual activity item.
 /// </summary>
-public class ActivityItem
+public sealed class ActivityItem
 {
     public string Id { get; set; } = string.Empty;
     public ActivityType Type { get; set; }

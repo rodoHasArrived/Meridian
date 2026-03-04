@@ -1,9 +1,8 @@
-using MarketDataCollector.Application.Backfill;
 using MarketDataCollector.Application.Logging;
 using MarketDataCollector.Contracts.Api;
+using MarketDataCollector.Infrastructure.Adapters.Core;
+using MarketDataCollector.Infrastructure.Adapters.Stooq;
 using MarketDataCollector.Infrastructure.Contracts;
-using MarketDataCollector.Infrastructure.Providers.Backfill;
-using MarketDataCollector.Infrastructure.Providers.Core;
 using CoreBackfillCoordinator = MarketDataCollector.Application.UI.BackfillCoordinator;
 using BackfillRequest = MarketDataCollector.Application.Backfill.BackfillRequest;
 using BackfillResult = MarketDataCollector.Application.Backfill.BackfillResult;
@@ -104,13 +103,13 @@ public sealed class BackfillCoordinator : IDisposable
     /// <summary>
     /// Gets health status of all providers.
     /// </summary>
-    public Task<IReadOnlyDictionary<string, Infrastructure.Providers.Backfill.ProviderHealthStatus>> CheckProviderHealthAsync(CancellationToken ct = default)
+    public Task<IReadOnlyDictionary<string, Infrastructure.Adapters.Core.ProviderHealthStatus>> CheckProviderHealthAsync(CancellationToken ct = default)
         => _core.CheckProviderHealthAsync(ct);
 
     /// <summary>
     /// Resolve a symbol using OpenFIGI.
     /// </summary>
-    public Task<MarketDataCollector.Infrastructure.Providers.Backfill.SymbolResolution.SymbolResolution?> ResolveSymbolAsync(string symbol, CancellationToken ct = default)
+    public Task<MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution?> ResolveSymbolAsync(string symbol, CancellationToken ct = default)
         => _core.ResolveSymbolAsync(symbol, ct);
 
     /// <summary>
@@ -325,10 +324,10 @@ public sealed class BackfillCoordinator : IDisposable
     /// Creates the backfill service using providers from ProviderRegistry.
     /// Falls back to ProviderFactory or manual instantiation if registry is empty.
     /// </summary>
-    private HistoricalBackfillService CreateService()
+    private MarketDataCollector.Application.Backfill.HistoricalBackfillService CreateService()
     {
         var providers = GetProviders();
-        return new HistoricalBackfillService(providers, _log);
+        return new MarketDataCollector.Application.Backfill.HistoricalBackfillService(providers, _log);
     }
 
     /// <summary>

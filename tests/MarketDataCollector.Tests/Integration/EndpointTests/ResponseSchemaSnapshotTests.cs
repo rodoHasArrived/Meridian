@@ -14,7 +14,9 @@ namespace MarketDataCollector.Tests.Integration.EndpointTests;
 /// the corresponding assertion to fail, providing an early warning before
 /// downstream consumers break.
 /// </summary>
-public sealed class ResponseSchemaSnapshotTests : IClassFixture<EndpointTestFixture>
+[Trait("Category", "Integration")]
+[Collection("Endpoint")]
+public sealed class ResponseSchemaSnapshotTests
 {
     private readonly HttpClient _client;
     private static readonly JsonSerializerOptions JsonOptions = new() { PropertyNameCaseInsensitive = true };

@@ -1,12 +1,12 @@
 # Documentation Health Dashboard
 
 > Auto-generated documentation health report. Do not edit manually.
-> Last updated: 2026-02-12T09:09:37.851794+00:00
+> Last updated: 2026-03-04T15:08:12.670004+00:00
 
 ## Overall Health Score
 
 ```
-  [##########################----] 86/100
+  [##########################----] 87/100
   Rating: Good
 ```
 
@@ -14,14 +14,14 @@
 
 | Metric | Value |
 |--------|-------|
-| Total documentation files | 137 |
-| Total lines | 55,022 |
-| Average file size (lines) | 401.6 |
-| Orphaned files | 51 |
+| Total documentation files | 165 |
+| Total lines | 69,511 |
+| Average file size (lines) | 421.3 |
+| Orphaned files | 53 |
 | Files without headings | 1 |
 | Stale files (>90 days) | 0 |
-| TODO/FIXME markers | 90 |
-| **Health score** | **86/100** |
+| TODO/FIXME markers | 152 |
+| **Health score** | **87/100** |
 
 ### Score Breakdown
 
@@ -45,27 +45,27 @@ These files lack a Markdown heading, making them harder to navigate:
 
 These files are not linked from any other Markdown file in the repository:
 
+- `.github/CS0101_FIX_SUMMARY.md`
 - `.github/PULL_REQUEST_TEMPLATE.md`
 - `.github/QUICKSTART.md`
+- `.github/TEST_MATRIX_FIX_SUMMARY.md`
 - `.github/WORKFLOW_IMPROVEMENTS.md`
+- `.github/instructions/docs.instructions.md`
+- `.github/instructions/dotnet-tests.instructions.md`
 - `.github/pull_request_template_desktop.md`
 - `.github/workflows/AI_SYNC_FIX_SUMMARY.md`
 - `.github/workflows/SKIPPED_JOBS_EXPLAINED.md`
 - `.github/workflows/TESTING_AI_SYNC.md`
-- `CONFIG_CONSOLIDATION_REPORT.md`
+- `benchmarks/BOTTLENECK_REPORT.md`
 - `docs/architecture/crystallized-storage-format.md`
+- `docs/architecture/nautilus-inspired-restructuring-proposal.md`
 - `docs/archived/2026-02_PR_SUMMARY.md`
 - `docs/archived/2026-02_UI_IMPROVEMENTS_SUMMARY.md`
 - `docs/archived/2026-02_VISUAL_CODE_EXAMPLES.md`
 - `docs/archived/ARTIFACT_ACTIONS_DOWNGRADE.md`
 - `docs/archived/CHANGES_SUMMARY.md`
-- `docs/archived/DUPLICATE_CODE_ANALYSIS.md`
-- `docs/archived/REDESIGN_IMPROVEMENTS.md`
-- `docs/archived/REPOSITORY_REORGANIZATION_PLAN.md`
-- `docs/archived/desktop-ui-alternatives-evaluation.md`
-- `docs/audits/CLEANUP_OPPORTUNITIES.md`
-- `docs/audits/CLEANUP_SUMMARY.md`
-- ... and 31 more
+- `docs/archived/CONFIG_CONSOLIDATION_REPORT.md`
+- ... and 33 more
 
 ## Trend
 
@@ -73,7 +73,7 @@ These files are not linked from any other Markdown file in the repository:
 
 | Date | Score | Files | Orphans | Stale |
 |------|-------|-------|---------|-------|
-| 2026-02-12 | 86 | 137 | 51 | 0 |
+| 2026-03-04 | 87 | 165 | 53 | 0 |
 
 ---
 

@@ -8,6 +8,8 @@ using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using WpfServices = MarketDataCollector.Wpf.Services;
+using MarketDataCollector.Ui.Services;
 using MarketDataCollector.Wpf.Services;
 
 namespace MarketDataCollector.Wpf.Views;
@@ -26,14 +28,25 @@ public partial class SetupWizardPage : Page
     private readonly ConnectionService _connectionService;
     private readonly FirstRunService _firstRunService;
     private readonly BackendServiceManager _backendServiceManager;
+    private readonly WpfServices.NotificationService _notificationService;
+    private readonly WpfServices.NavigationService _navigationService;
+    private readonly SetupWizardService _setupWizardService;
     private readonly HttpClient _httpClient;
 
-    public SetupWizardPage()
+    public SetupWizardPage(
+        ConnectionService connectionService,
+        FirstRunService firstRunService,
+        BackendServiceManager backendServiceManager,
+        WpfServices.NotificationService notificationService,
+        WpfServices.NavigationService navigationService)
     {
         InitializeComponent();
-        _connectionService = ConnectionService.Instance;
-        _firstRunService = FirstRunService.Instance;
-        _backendServiceManager = BackendServiceManager.Instance;
+        _connectionService = connectionService;
+        _firstRunService = firstRunService;
+        _backendServiceManager = backendServiceManager;
+        _notificationService = notificationService;
+        _navigationService = navigationService;
+        _setupWizardService = new SetupWizardService();
         _httpClient = new HttpClient { Timeout = TimeSpan.FromSeconds(8) };
     }
 
@@ -42,10 +55,46 @@ public partial class SetupWizardPage : Page
         ProviderCombo.ItemsSource = ProviderOptions;
         ConfigPathText.Text = _firstRunService.ConfigFilePath;
 
+        // Populate role-based presets
+        PresetsList.ItemsSource = _setupWizardService.GetSetupPresets();
+
         LoadExistingConfiguration();
         LoadStoredApiKeys();
 
         await EnsureBackendAvailableAsync();
+    }
+
+    private async void PresetCard_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is not Button button || button.Tag is not string presetId) return;
+
+        var presets = _setupWizardService.GetSetupPresets();
+        var preset = presets.FirstOrDefault(p => p.Id == presetId);
+        if (preset == null) return;
+
+        PresetStatusText.Text = $"Applying \"{preset.Name}\" preset...";
+
+        // Set the recommended provider
+        var recommendedProvider = preset.RecommendedProviders.FirstOrDefault(p =>
+            ProviderOptions.Contains(p, StringComparer.OrdinalIgnoreCase))
+            ?? ProviderOptions[0];
+
+        ProviderCombo.SelectedItem = recommendedProvider;
+
+        // Apply preset configuration
+        try
+        {
+            await _setupWizardService.ApplyPresetAsync(preset, recommendedProvider);
+            PresetStatusText.Text = $"Applied \"{preset.Name}\" preset: {preset.DefaultSymbols.Length} symbols, " +
+                                    $"{(preset.SubscribeDepth ? "L2 depth" : "L1 only")}, " +
+                                    $"{(preset.EnableBackfill ? "backfill enabled" : "no backfill")}.";
+            _notificationService.NotifySuccess("Setup Preset", $"\"{preset.Name}\" preset applied successfully.");
+        }
+        catch (Exception ex)
+        {
+            PresetStatusText.Text = $"Failed to apply preset: {ex.Message}";
+            _ = _notificationService.NotifyErrorAsync("Setup Preset", $"Failed to apply preset: {ex.Message}");
+        }
     }
 
     private void LoadExistingConfiguration()
@@ -139,7 +188,7 @@ public partial class SetupWizardPage : Page
             var startResult = await _backendServiceManager.StartAsync();
             if (!startResult.Success)
             {
-                NotificationService.Instance.NotifyWarning("Backend", startResult.Message);
+                _notificationService.NotifyWarning("Backend", startResult.Message);
             }
         }
 
@@ -173,11 +222,11 @@ public partial class SetupWizardPage : Page
         var result = await _backendServiceManager.StartAsync();
         if (result.Success)
         {
-            NotificationService.Instance.NotifyInfo("Backend", result.Message);
+            _notificationService.NotifyInfo("Backend", result.Message);
         }
         else
         {
-            NotificationService.Instance.NotifyWarning("Backend", result.Message);
+            _notificationService.NotifyWarning("Backend", result.Message);
         }
 
         await RefreshBackendStatusAsync();
@@ -214,7 +263,7 @@ public partial class SetupWizardPage : Page
         if (!startResult.Success)
         {
             ValidationStatusText.Text = $"Saved config, but backend start failed: {startResult.Message}";
-            NotificationService.Instance.NotifyWarning("Setup Wizard", "Configuration saved, but backend is offline.");
+            _notificationService.NotifyWarning("Setup Wizard", "Configuration saved, but backend is offline.");
             return;
         }
 
@@ -222,14 +271,14 @@ public partial class SetupWizardPage : Page
         if (!backendResult.isHealthy)
         {
             ValidationStatusText.Text = $"Saved config, but backend is unreachable: {backendResult.message}";
-            NotificationService.Instance.NotifyWarning("Setup Wizard", "Configuration saved, but backend is offline.");
+            _notificationService.NotifyWarning("Setup Wizard", "Configuration saved, but backend is offline.");
             return;
         }
 
         ValidationStatusText.Text = "Configuration saved and backend verified. Redirecting to dashboard...";
-        NotificationService.Instance.NotifySuccess("Setup Wizard", "Setup complete. Welcome!");
+        _notificationService.NotifySuccess("Setup Wizard", "Setup complete. Welcome!");
 
-        MarketDataCollector.Wpf.Services.NavigationService.Instance.NavigateTo("Dashboard");
+        _navigationService.NavigateTo("Dashboard");
     }
 
     private bool TryGetWizardInputs(out string provider, out string storageLocation)
@@ -301,7 +350,7 @@ public partial class SetupWizardPage : Page
         catch (Exception ex)
         {
             ValidationStatusText.Text = $"Failed to save configuration: {ex.Message}";
-            _ = NotificationService.Instance.NotifyErrorAsync("Setup Wizard", "Failed to save configuration.");
+            _ = _notificationService.NotifyErrorAsync("Setup Wizard", "Failed to save configuration.");
             return false;
         }
     }
@@ -323,7 +372,7 @@ public partial class SetupWizardPage : Page
         Environment.SetEnvironmentVariable(variableName, value.Trim(), EnvironmentVariableTarget.User);
     }
 
-    private static void OpenUrl(string url)
+    private void OpenUrl(string url)
     {
         try
         {
@@ -335,7 +384,7 @@ public partial class SetupWizardPage : Page
         }
         catch
         {
-            NotificationService.Instance.ShowNotification(
+            _notificationService.ShowNotification(
                 "Error",
                 "Could not open the link. Please try again.",
                 NotificationType.Error);

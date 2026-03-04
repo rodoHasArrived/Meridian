@@ -10,23 +10,8 @@ namespace MarketDataCollector.Ui.Services;
 /// </summary>
 public sealed class LiveDataService
 {
-    private static LiveDataService? _instance;
-    private static readonly object _lock = new();
-
-    public static LiveDataService Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                lock (_lock)
-                {
-                    _instance ??= new LiveDataService();
-                }
-            }
-            return _instance;
-        }
-    }
+    private static readonly Lazy<LiveDataService> _instance = new(() => new LiveDataService());
+    public static LiveDataService Instance => _instance.Value;
 
     private LiveDataService() { }
 
@@ -106,7 +91,7 @@ public sealed class LiveDataService
 
 // DTOs for live data
 
-public class TradeEvent
+public sealed class TradeEvent
 {
     public string Symbol { get; set; } = string.Empty;
     public decimal Price { get; set; }
@@ -118,7 +103,7 @@ public class TradeEvent
     public string Side { get; set; } = string.Empty; // Buy/Sell/Unknown
 }
 
-public class QuoteEvent
+public sealed class QuoteEvent
 {
     public string Symbol { get; set; } = string.Empty;
     public decimal BidPrice { get; set; }
@@ -132,7 +117,7 @@ public class QuoteEvent
     public decimal MidPrice { get; set; }
 }
 
-public class OrderBookSnapshot
+public sealed class OrderBookSnapshot
 {
     public string Symbol { get; set; } = string.Empty;
     public DateTime Timestamp { get; set; }
@@ -147,7 +132,7 @@ public class OrderBookSnapshot
     public decimal Imbalance { get; set; }
 }
 
-public class OrderBookLevel
+public sealed class OrderBookLevel
 {
     public decimal Price { get; set; }
     public decimal Size { get; set; }
@@ -155,7 +140,7 @@ public class OrderBookLevel
     public string Exchange { get; set; } = string.Empty;
 }
 
-public class BboQuote
+public sealed class BboQuote
 {
     public string Symbol { get; set; } = string.Empty;
     public decimal BidPrice { get; set; }
@@ -168,7 +153,7 @@ public class BboQuote
     public DateTime Timestamp { get; set; }
 }
 
-public class OrderFlowStats
+public sealed class OrderFlowStats
 {
     public string Symbol { get; set; } = string.Empty;
     public decimal Vwap { get; set; }
@@ -183,7 +168,7 @@ public class OrderFlowStats
     public DateTime PeriodEnd { get; set; }
 }
 
-public class SubscriptionInfo
+public sealed class SubscriptionInfo
 {
     public string Symbol { get; set; } = string.Empty;
     public int SubscriptionId { get; set; }
@@ -195,7 +180,7 @@ public class SubscriptionInfo
     public double EventsPerSecond { get; set; }
 }
 
-public class SubscribeRequest
+public sealed class SubscribeRequest
 {
     public string Symbol { get; set; } = string.Empty;
     public bool SubscribeTrades { get; set; }
@@ -204,19 +189,19 @@ public class SubscribeRequest
     public int DepthLevels { get; set; } = 10;
 }
 
-public class SubscriptionResult
+public sealed class SubscriptionResult
 {
     public bool Success { get; set; }
     public int SubscriptionId { get; set; }
     public string Message { get; set; } = string.Empty;
 }
 
-public class UnsubscribeResponse
+public sealed class UnsubscribeResponse
 {
     public bool Success { get; set; }
 }
 
-public class DataStreamHealth
+public sealed class DataStreamHealth
 {
     public bool IsHealthy { get; set; }
     public int ActiveStreams { get; set; }
@@ -226,7 +211,7 @@ public class DataStreamHealth
     public List<StreamHealthInfo> Streams { get; set; } = new();
 }
 
-public class StreamHealthInfo
+public sealed class StreamHealthInfo
 {
     public string Symbol { get; set; } = string.Empty;
     public string StreamType { get; set; } = string.Empty;

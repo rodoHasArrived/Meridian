@@ -160,7 +160,7 @@ public sealed class CircularBufferTests
         array.Should().ContainInOrder(1, 2, 3);
     }
 
-    [Fact(Skip = "CalculatePercentageChange method not implemented yet")]
+    [Fact]
     public void CalculatePercentageChange_ReturnsCorrectValue()
     {
         // Arrange
@@ -175,7 +175,7 @@ public sealed class CircularBufferTests
         change.Should().BeApproximately(10.0, 0.01, "110 is 10% higher than 100");
     }
 
-    [Fact(Skip = "CalculatePercentageChange method not implemented yet")]
+    [Fact]
     public void CalculatePercentageChange_WhenDivisionByZero_ReturnsNull()
     {
         // Arrange

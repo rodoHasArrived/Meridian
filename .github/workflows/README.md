@@ -61,13 +61,12 @@ Workflows have been consolidated from 25 to 19 files, reducing duplication and a
 
 #### 5. **Desktop Builds** (`desktop-builds.yml`) *(consolidated)*
 - **Trigger**: Push/PRs touching desktop app paths, Manual dispatch with build target selector
-- **Purpose**: Builds UWP and WPF desktop applications
+- **Purpose**: Builds WPF desktop application
 - **Replaces**: `desktop-app.yml`, `wpf-desktop.yml`, `wpf-commands.yml`
 - **Features**:
-  - UWP: Icon generation, x64/arm64 builds, MSIX packaging, testing, release
   - WPF: Self-contained and framework-dependent publishing for x64/arm64
   - WPF smoke test for startup validation
-  - Selective build targeting (all/uwp/wpf/wpf-smoke-test)
+  - Selective build targeting (wpf/wpf-smoke-test)
   - **AI**: Build failure diagnosis on failure
 
 ### Code Quality and Security Workflows
@@ -218,9 +217,16 @@ Workflows have been consolidated from 25 to 19 files, reducing duplication and a
 #### 19. **Reusable Build Helpers** (`reusable-dotnet-build.yml`)
 - **Trigger**: Reusable workflow (called by other workflows)
 - **Purpose**: Standardizes build/test steps for .NET jobs
+- **Called by**: `pr-checks.yml`, `dotnet-desktop.yml`, `nightly.yml`
 - **Features**:
-  - Shared build/test steps
-  - Consistent caching and restore behavior
+  - Shared build/test steps with consistent configuration
+  - Cross-platform support via `runs-on` input (ubuntu, windows, macos)
+  - Configurable git fetch depth for full history when needed
+  - Optional code coverage collection and Codecov upload
+  - Optional build artifact upload
+  - Automatic diagnostics artifact upload (binlogs, TRX results)
+  - Consistent NuGet caching via `setup-dotnet-cache` composite action
+  - Configurable job timeout
 
 ## Configuration Files
 
@@ -275,7 +281,7 @@ Standard template requiring:
 
 ## AI Integration
 
-All AI-powered features use `actions/ai-inference@v1` with `gpt-4o-mini` and are configured with `continue-on-error: true` so AI failures never block workflows. AI features include:
+AI-powered features use `actions/ai-inference@v1` with `gpt-4o-mini` and are configured with `continue-on-error: true` so AI failures never block workflows. The `prompt-generation.yml` review step additionally requires a `MODELS_GITHUB_TOKEN` secret to avoid model-access failures from the default workflow token. AI features include:
 
 | Workflow | AI Feature | Purpose |
 |----------|-----------|---------|
@@ -388,6 +394,38 @@ graph TD
 3. Update documentation if behavior changes
 4. Consider backward compatibility
 
+### PR Creation Fallback Pattern
+
+When using `peter-evans/create-pull-request` action with a fallback commit step:
+
+1. **The Action's Behavior**:
+   - Creates a temporary branch and commits changes
+   - Pushes to the target branch (e.g., `automation/*`)
+   - Tries to create a PR (may fail if repo settings don't allow it)
+   - Resets to the base branch (no staged changes remain)
+
+2. **Fallback Step Requirements**:
+   ```yaml
+   - name: Fallback commit
+     if: steps.create-pr.outcome == 'failure'
+     run: |
+       git add <files>
+       
+       # Check if there are staged changes before committing
+       if git diff --staged --quiet; then
+         echo "::notice::No changes to commit. Changes were already pushed to branch."
+         exit 0
+       fi
+       
+       git commit -m "message"
+       git push
+   ```
+
+3. **Why This Matters**:
+   - Without the check, `git commit` fails with exit code 1 when nothing to commit
+   - The changes are already on a branch, so the workflow should succeed
+   - Used in: `prompt-generation.yml`, `documentation.yml`
+
 ### Debugging Workflows
 
 1. Enable debug logging:
@@ -409,5 +447,5 @@ graph TD
 
 ---
 
-**Last Updated**: 2026-02-06
+**Last Updated**: 2026-02-12
 **Maintained By**: Market Data Collector Team

@@ -9,7 +9,9 @@ namespace MarketDataCollector.Tests.Integration.EndpointTests;
 /// <summary>
 /// Integration tests for symbol management endpoints (/api/symbols/*).
 /// </summary>
-public sealed class SymbolEndpointTests : IClassFixture<EndpointTestFixture>
+[Trait("Category", "Integration")]
+[Collection("Endpoint")]
+public sealed class SymbolEndpointTests
 {
     private readonly HttpClient _client;
     private static readonly JsonSerializerOptions JsonOptions = new() { PropertyNameCaseInsensitive = true };

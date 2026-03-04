@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace MarketDataCollector.Wpf.Services;
 /// Service for retention policy assurance with guardrails, legal holds, and verification.
 /// Implements Feature Refinement #23 - File Retention Assurance.
 ///
-/// This service provides UWP-specific features (legal holds, guardrails, UI persistence)
+/// This service provides WPF-specific features (legal holds, guardrails, UI persistence)
 /// and delegates file operations to the core service via HTTP API endpoints:
 /// - /api/storage/health/check - File health checks with checksum validation
 /// - /api/storage/health/orphans - Find orphaned files
@@ -22,8 +23,7 @@ namespace MarketDataCollector.Wpf.Services;
 /// </summary>
 public sealed class RetentionAssuranceService
 {
-    private static RetentionAssuranceService? _instance;
-    private static readonly object _lock = new();
+    private static readonly Lazy<RetentionAssuranceService> _instance = new(() => new RetentionAssuranceService());
 
     private const string RetentionConfigKey = "RetentionConfig";
     private const string LegalHoldsKey = "LegalHolds";
@@ -34,20 +34,7 @@ public sealed class RetentionAssuranceService
     private readonly List<LegalHold> _legalHolds = new();
     private readonly List<RetentionAuditReport> _auditReports = new();
 
-    public static RetentionAssuranceService Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                lock (_lock)
-                {
-                    _instance ??= new RetentionAssuranceService();
-                }
-            }
-            return _instance;
-        }
-    }
+    public static RetentionAssuranceService Instance => _instance.Value;
 
     private RetentionAssuranceService()
     {

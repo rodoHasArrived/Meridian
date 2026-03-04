@@ -12,9 +12,7 @@ namespace MarketDataCollector.Ui.Services;
 /// </summary>
 public sealed class ScheduledMaintenanceService
 {
-    private static ScheduledMaintenanceService? _instance;
-    private static readonly object _lock = new();
-
+    private static readonly Lazy<ScheduledMaintenanceService> _instance = new(() => new ScheduledMaintenanceService());
     private readonly NotificationService _notificationService;
     private readonly List<MaintenanceTask> _tasks = new();
     private readonly List<MaintenanceExecutionLog> _executionLog = new();
@@ -22,20 +20,7 @@ public sealed class ScheduledMaintenanceService
     private Timer? _schedulerTimer;
     private const int MaxLogEntries = 100;
 
-    public static ScheduledMaintenanceService Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                lock (_lock)
-                {
-                    _instance ??= new ScheduledMaintenanceService();
-                }
-            }
-            return _instance;
-        }
-    }
+    public static ScheduledMaintenanceService Instance => _instance.Value;
 
     private ScheduledMaintenanceService()
     {
@@ -564,7 +549,7 @@ public sealed class ScheduledMaintenanceService
 /// <summary>
 /// Represents a scheduled maintenance task.
 /// </summary>
-public class MaintenanceTask
+public sealed class MaintenanceTask
 {
     public string Id { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
@@ -654,7 +639,7 @@ public class MaintenanceTask
 /// <summary>
 /// Maintenance task schedule configuration.
 /// </summary>
-public class MaintenanceTimingConfig
+public sealed class MaintenanceTimingConfig
 {
     public ScheduleType ScheduleType { get; set; }
     public TimeSpan TimeOfDay { get; set; }
@@ -704,7 +689,7 @@ public enum MaintenanceScope
 /// <summary>
 /// Result of a maintenance task execution.
 /// </summary>
-public class MaintenanceResult
+public sealed class MaintenanceResult
 {
     public string TaskId { get; set; } = string.Empty;
     public string TaskName { get; set; } = string.Empty;
@@ -725,7 +710,7 @@ public class MaintenanceResult
 /// <summary>
 /// Log entry for maintenance task executions.
 /// </summary>
-public class MaintenanceExecutionLog
+public sealed class MaintenanceExecutionLog
 {
     public string TaskId { get; set; } = string.Empty;
     public string TaskName { get; set; } = string.Empty;

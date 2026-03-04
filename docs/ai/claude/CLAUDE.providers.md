@@ -24,12 +24,18 @@ The system uses a unified abstraction layer supporting both **real-time streamin
 │ └─ Polygon          │              │ ├─ Finnhub              │
 └─────────────────────┘              │ ├─ Alpha Vantage        │
                                      │ ├─ Nasdaq Data Link     │
-┌─────────────────────┐              │ └─ Polygon              │
-│ Symbol Search       │              └─────────────────────────┘
+┌─────────────────────┐              │ ├─ Polygon              │
+│ Failover            │              │ └─ StockSharp           │
+│ └─ FailoverAware    │              └─────────────────────────┘
+│    MarketDataClient │
+└─────────────────────┘
+┌─────────────────────┐
+│ Symbol Search       │
 │ ├─ Alpaca           │
 │ ├─ Polygon          │
 │ ├─ Finnhub          │
-│ └─ OpenFIGI         │
+│ ├─ OpenFIGI         │
+│ └─ StockSharp       │
 └─────────────────────┘
 ```
 
@@ -37,53 +43,124 @@ The system uses a unified abstraction layer supporting both **real-time streamin
 
 ## File Locations
 
-### Core Abstractions
+### Core Abstractions (ProviderSdk)
 | File | Purpose |
 |------|---------|
-| `Infrastructure/DataSources/IDataSource.cs` | Base interface for all data sources |
-| `Infrastructure/DataSources/IRealtimeDataSource.cs` | Real-time streaming extension |
-| `Infrastructure/DataSources/IHistoricalDataSource.cs` | Historical data retrieval |
-| `Infrastructure/DataSources/DataSourceAttribute.cs` | Attribute for auto-discovery |
-| `Infrastructure/DataSources/DataSourceManager.cs` | Provider lifecycle management |
+| `ProviderSdk/IDataSource.cs` | Base interface for all data sources |
+| `ProviderSdk/IRealtimeDataSource.cs` | Real-time streaming extension |
+| `ProviderSdk/IHistoricalDataSource.cs` | Historical data retrieval |
+| `ProviderSdk/IMarketDataClient.cs` | Market data client interface |
+| `ProviderSdk/DataSourceAttribute.cs` | Attribute for auto-discovery |
+| `ProviderSdk/DataSourceRegistry.cs` | Registry for data source discovery |
+| `ProviderSdk/IProviderMetadata.cs` | Provider metadata interface |
+| `ProviderSdk/IProviderModule.cs` | Provider module interface |
+| `ProviderSdk/IHistoricalBarWriter.cs` | Historical bar data writer |
+| `ProviderSdk/CredentialValidator.cs` | Credential validation |
+| `ProviderSdk/HistoricalDataCapabilities.cs` | Historical capability flags |
+| `ProviderSdk/ImplementsAdrAttribute.cs` | ADR implementation tracking |
+| `ProviderSdk/ProviderHttpUtilities.cs` | HTTP utility methods |
+
+### Infrastructure Base Classes
+| File | Purpose |
+|------|---------|
+| `Infrastructure/DataSources/DataSourceBase.cs` | Base class for data sources |
+| `Infrastructure/DataSources/DataSourceConfiguration.cs` | Data source configuration |
+
+### Provider Core Framework
+| File | Purpose |
+|------|---------|
+| `Infrastructure/Adapters/Core/ProviderFactory.cs` | Factory for creating providers |
+| `Infrastructure/Adapters/Core/ProviderRegistry.cs` | Registry of available providers |
+| `Infrastructure/Adapters/Core/ProviderServiceExtensions.cs` | DI service extensions |
+| `Infrastructure/Adapters/Core/ProviderSubscriptionRanges.cs` | Subscription range management |
+| `Infrastructure/Adapters/Core/ProviderTemplate.cs` | Provider template/base |
 
 ### Streaming Providers
 | Provider | Location | Files |
 |----------|----------|-------|
-| Alpaca | `Infrastructure/Providers/Alpaca/AlpacaMarketDataClient.cs` | 1 |
-| Interactive Brokers | `Infrastructure/Providers/InteractiveBrokers/` | 8 |
-| StockSharp | `Infrastructure/Providers/StockSharp/` | 4 |
-| NYSE | `Infrastructure/Providers/NYSE/` | 3 |
-| Polygon | `Infrastructure/Providers/Polygon/PolygonMarketDataClient.cs` | 1 |
+| Alpaca | `Infrastructure/Adapters/Alpaca/` | 1 |
+| Interactive Brokers | `Infrastructure/Adapters/InteractiveBrokers/` | 8 |
+| StockSharp | `Infrastructure/Adapters/StockSharp/` | 6 |
+| NYSE | `Infrastructure/Adapters/NYSE/` | 3 |
+| Polygon | `Infrastructure/Adapters/Polygon/` | 1 |
+| Failover | `Infrastructure/Adapters/Failover/` | 3 |
 
 **Interactive Brokers files:**
 - `IBMarketDataClient.cs` - Main streaming client
 - `IBConnectionManager.cs` - Connection lifecycle
 - `IBCallbackRouter.cs` - Callback handling
 - `ContractFactory.cs` - IB contract creation
-- `IBHistoricalDataProvider.cs` - Historical data
 - `EnhancedIBConnectionManager.cs` - Enhanced connection management
+- `EnhancedIBConnectionManager.IBApi.cs` - IB API partial class
 - `IBApiLimits.cs` - API rate limiting
+- `IBSimulationClient.cs` - IB testing without live connection
+
+**StockSharp files:**
+- `StockSharpMarketDataClient.cs` - Main streaming client
+- `StockSharpConnectorFactory.cs` - Connector creation
+- `StockSharpConnectorCapabilities.cs` - Capability flags
+- `StockSharpSymbolSearchProvider.cs` - Symbol search
+- `Converters/MessageConverter.cs` - Message conversion
+- `Converters/SecurityConverter.cs` - Security conversion
+
+**Failover files:**
+- `FailoverAwareMarketDataClient.cs` - Automatic provider failover wrapper
+- `StreamingFailoverRegistry.cs` - Failover routing registry
+- `StreamingFailoverService.cs` - Failover orchestration
 
 ### Historical Providers
 | Provider | Location |
 |----------|----------|
-| Composite (failover) | `Infrastructure/Providers/Backfill/CompositeHistoricalDataProvider.cs` |
-| Alpaca | `Infrastructure/Providers/Backfill/AlpacaHistoricalDataProvider.cs` |
-| Yahoo Finance | `Infrastructure/Providers/Backfill/YahooFinanceHistoricalDataProvider.cs` |
-| Stooq | `Infrastructure/Providers/Backfill/StooqHistoricalDataProvider.cs` |
-| Tiingo | `Infrastructure/Providers/Backfill/TiingoHistoricalDataProvider.cs` |
-| Finnhub | `Infrastructure/Providers/Backfill/FinnhubHistoricalDataProvider.cs` |
-| Alpha Vantage | `Infrastructure/Providers/Backfill/AlphaVantageHistoricalDataProvider.cs` |
-| Nasdaq Data Link | `Infrastructure/Providers/Backfill/NasdaqDataLinkHistoricalDataProvider.cs` |
-| Polygon | `Infrastructure/Providers/Backfill/PolygonHistoricalDataProvider.cs` |
+| Base class | `Infrastructure/Adapters/BaseHistoricalDataProvider.cs` |
+| Interface | `Infrastructure/Adapters/IHistoricalDataProvider.cs` |
+| Composite (failover) | `Infrastructure/Adapters/CompositeHistoricalDataProvider.cs` |
+| Alpaca | `Infrastructure/Adapters/Alpaca/AlpacaHistoricalDataProvider.cs` |
+| Yahoo Finance | `Infrastructure/Adapters/YahooFinance/YahooFinanceHistoricalDataProvider.cs` |
+| Stooq | `Infrastructure/Adapters/Stooq/StooqHistoricalDataProvider.cs` |
+| Tiingo | `Infrastructure/Adapters/Tiingo/TiingoHistoricalDataProvider.cs` |
+| Finnhub | `Infrastructure/Adapters/Finnhub/FinnhubHistoricalDataProvider.cs` |
+| Alpha Vantage | `Infrastructure/Adapters/AlphaVantage/AlphaVantageHistoricalDataProvider.cs` |
+| Nasdaq Data Link | `Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs` |
+| Polygon | `Infrastructure/Adapters/Polygon/PolygonHistoricalDataProvider.cs` |
+| StockSharp | `Infrastructure/Adapters/StockSharp/StockSharpHistoricalDataProvider.cs` |
+| Interactive Brokers | `Infrastructure/Adapters/InteractiveBrokers/IBHistoricalDataProvider.cs` |
+
+### Historical Support Modules
+| Module | Location | Purpose |
+|--------|----------|---------|
+| Gap Analysis | `Infrastructure/Adapters/GapAnalysis/` | Data gap detection and repair |
+| Rate Limiting | `Infrastructure/Adapters/RateLimiting/` | Per-provider rate limit tracking |
+| Queue | `Infrastructure/Adapters/Queue/` | Backfill job queue and workers |
+| Symbol Resolution | `Infrastructure/Adapters/SymbolResolution/` | Cross-provider symbol resolution |
+| Core | `Infrastructure/Adapters/Core/` | Response handling utilities |
+
+**Gap Analysis files:**
+- `DataGapAnalyzer.cs` - Gap analysis and reporting
+- `DataGapRepair.cs` - Automatic gap detection/repair
+- `DataQualityMonitor.cs` - Multi-dimensional quality scoring
+
+**Rate Limiting files:**
+- `RateLimiter.cs` - Per-provider rate limiting
+- `ProviderRateLimitTracker.cs` - Rate limit tracking across providers
+
+**Queue files:**
+- `BackfillJob.cs` - Backfill job model
+- `BackfillJobManager.cs` - Job lifecycle management
+- `BackfillRequestQueue.cs` - Request queue implementation
+- `BackfillWorkerService.cs` - Background worker service
+- `PriorityBackfillQueue.cs` - Priority-based queue
+
+**Symbol Resolution files:**
+- `ISymbolResolver.cs` - Symbol resolution interface
+- `OpenFigiSymbolResolver.cs` - OpenFIGI implementation
 
 ### Symbol Search Providers
 | Provider | Location |
 |----------|----------|
-| Alpaca | `Infrastructure/Providers/SymbolSearch/AlpacaSymbolSearchProviderRefactored.cs` |
-| Polygon | `Infrastructure/Providers/SymbolSearch/PolygonSymbolSearchProvider.cs` |
-| Finnhub | `Infrastructure/Providers/SymbolSearch/FinnhubSymbolSearchProviderRefactored.cs` |
-| OpenFIGI | `Infrastructure/Providers/SymbolSearch/OpenFigiClient.cs` |
+| Alpaca | `Infrastructure/Adapters/Core/AlpacaSymbolSearchProviderRefactored.cs` |
+| Polygon | `Infrastructure/Adapters/Core/PolygonSymbolSearchProvider.cs` |
+| Finnhub | `Infrastructure/Adapters/Core/FinnhubSymbolSearchProviderRefactored.cs` |
+| OpenFIGI | `Infrastructure/Adapters/Core/OpenFigiClient.cs` |
 
 Supporting files:
 - `ISymbolSearchProvider.cs` - Base interface
@@ -93,13 +170,12 @@ Supporting files:
 ### Resilience Infrastructure
 | File | Purpose |
 |------|---------|
-| `Infrastructure/Providers/Resilience/CircuitBreaker.cs` | Open/Closed/HalfOpen states |
-| `Infrastructure/Providers/Resilience/ConcurrentProviderExecutor.cs` | Parallel provider operations |
-| `Infrastructure/Providers/Backfill/RateLimiter.cs` | Per-provider rate limiting |
-| `Infrastructure/Providers/Backfill/DataGapRepair.cs` | Automatic gap detection/repair |
-| `Infrastructure/Providers/Backfill/DataGapAnalyzer.cs` | Gap analysis and reporting |
-| `Infrastructure/Providers/Backfill/DataQualityMonitor.cs` | Multi-dimensional quality scoring |
-| `Infrastructure/Providers/Backfill/ProviderRateLimitTracker.cs` | Rate limit tracking across providers |
+| `Infrastructure/Resilience/HttpResiliencePolicy.cs` | HTTP resilience with Polly |
+| `Infrastructure/Resilience/WebSocketResiliencePolicy.cs` | WebSocket resilience |
+| `Infrastructure/Resilience/WebSocketConnectionManager.cs` | WebSocket connection lifecycle |
+| `Infrastructure/Resilience/WebSocketConnectionConfig.cs` | WebSocket configuration |
+| `Infrastructure/Http/SharedResiliencePolicies.cs` | Shared Polly policies |
+| `Infrastructure/Adapters/Core/BackfillProgressTracker.cs` | Backfill progress tracking |
 
 ---
 
@@ -205,7 +281,7 @@ public interface IHistoricalDataProvider
 ### Step 1: Create the Provider Class
 
 ```csharp
-// Location: Infrastructure/Providers/{ProviderName}/{ProviderName}DataSource.cs
+// Location: Infrastructure/Adapters/{ProviderName}/{ProviderName}DataSource.cs
 
 [DataSource(
     "myprovider",
@@ -254,7 +330,7 @@ public sealed class MyProviderDataSource : IRealtimeDataSource
 ### Step 2: Create Options Class
 
 ```csharp
-// Location: Infrastructure/Providers/{ProviderName}/{ProviderName}Options.cs
+// Location: Infrastructure/Adapters/{ProviderName}/{ProviderName}Options.cs
 
 public sealed class MyProviderOptions
 {
@@ -321,7 +397,7 @@ public class MyProviderDataSourceTests
 ### Step 1: Create the Provider Class
 
 ```csharp
-// Location: Infrastructure/Providers/Backfill/{ProviderName}HistoricalDataProvider.cs
+// Location: Infrastructure/Adapters/Core/{ProviderName}HistoricalDataProvider.cs
 
 public sealed class MyHistoricalProvider : IHistoricalDataProvider
 {
@@ -669,6 +745,37 @@ export TIINGO__APIKEY=your-key
 
 ---
 
+## Canonicalization Requirements for Providers
+
+A planned [Deterministic Canonicalization](../../architecture/deterministic-canonicalization.md) stage will run between provider adapters and `EventPipeline` to normalize cross-provider differences. When implementing or modifying a provider, keep these requirements in mind:
+
+### What providers must do
+
+1. **Populate `ExchangeTimestamp`** — Call `StampReceiveTime(exchangeTs)` with the exchange timestamp when the provider feed includes it. Alpaca provides ISO 8601 timestamps in `t`, Polygon provides epoch-millisecond `t`, IB provides epoch-seconds for tick-by-tick and epoch-milliseconds in RTVolume.
+
+2. **Pass raw symbol unchanged** — Do not attempt to resolve canonical symbols in the provider adapter. Use the raw symbol string from the provider feed. Canonicalization handles identity resolution.
+
+3. **Preserve raw condition codes** — Store provider-specific condition codes in `TradeDto.Conditions` (or equivalent payload fields) without mapping. The `ConditionCodeMapper` handles translation to canonical codes.
+
+4. **Set `Source` accurately** — The `Source` field on `MarketEvent` must match the provider identifier used in `CanonicalSymbolRegistry.ProviderMappings` (e.g., `"ALPACA"`, `"POLYGON"`, `"IB"`, `"STOCKSHARP"`).
+
+### Provider-specific timestamp hazards
+
+| Provider | Hazard | Mitigation |
+|----------|--------|------------|
+| IB | Uses **seconds** for `tickByTickAllLast` but **milliseconds** in RTVolume | Provider adapter must normalize before calling `StampReceiveTime()` |
+| StockSharp | `msg.ServerTime` source varies by connector (exchange time vs. server time) | Document clock quality per connector |
+| Polygon | Timestamps are Unix epoch **milliseconds** | Standard conversion |
+| Alpaca | ISO 8601 strings | Standard parsing |
+
+### Venue identifiers by provider
+
+Each provider uses a different format for exchange/venue identifiers. The `VenueMicMapper` normalizes these to ISO 10383 MIC codes. When adding a new provider, document the venue format in the [canonicalization design](../../architecture/deterministic-canonicalization.md) and add mappings to `config/venue-mapping.json`.
+
+See the [provider field audit](../../architecture/deterministic-canonicalization.md#provider-field-audit) for a comprehensive comparison of field formats across providers.
+
+---
+
 ## Related Documentation
 
 - [docs/providers/provider-comparison.md](../../providers/provider-comparison.md) - Provider feature matrix
@@ -676,7 +783,8 @@ export TIINGO__APIKEY=your-key
 - [docs/providers/interactive-brokers-setup.md](../../providers/interactive-brokers-setup.md) - IB setup
 - [docs/providers/alpaca-setup.md](../../providers/alpaca-setup.md) - Alpaca setup
 - [docs/architecture/provider-management.md](../../architecture/provider-management.md) - Provider architecture
+- [docs/architecture/deterministic-canonicalization.md](../../architecture/deterministic-canonicalization.md) - Canonicalization design
 
 ---
 
-*Last Updated: 2026-01-31*
+*Last Updated: 2026-02-24*

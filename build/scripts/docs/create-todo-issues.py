@@ -16,7 +16,6 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -45,7 +44,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--label", default=DEFAULT_LABEL, help="Label to add to created issues")
     parser.add_argument("--max-issues", type=int, default=20, help="Maximum issues to create per run")
     parser.add_argument("--dry-run", action="store_true", help="Report what would be created")
-    parser.add_argument("--output-json", type=Path, help="Optional JSON summary output path")
+    parser.add_argument("--output-json", type=Path, help="Write machine-readable summary JSON")
     return parser.parse_args()
 
 
@@ -65,32 +64,40 @@ def gh_request(method: str, url: str, token: str, payload: dict[str, Any] | None
     try:
         with urllib.request.urlopen(req, timeout=30) as response:
             body = response.read().decode("utf-8")
-            if not body.strip():
+            if not body:
                 return {}
             return json.loads(body)
-    except urllib.error.HTTPError:
-        raise
-    except urllib.error.URLError as exc:
-        raise RuntimeError(f"Network error while calling GitHub API: {exc}") from exc
     except json.JSONDecodeError as exc:
-        raise RuntimeError(f"Invalid JSON received from GitHub API for URL: {url}") from exc
+        print(f"Warning: JSON decode error for {url}: {exc}", file=sys.stderr)
+        raise
+    except urllib.error.HTTPError as exc:
+        print(f"Warning: HTTP {exc.code} for {url}: {exc.reason}", file=sys.stderr)
+        raise
 
 
 def load_todos(path: Path) -> list[TodoItem]:
     try:
-        payload = json.loads(path.read_text(encoding="utf-8"))
-    except OSError as exc:
-        raise ValueError(f"Failed to read scan file: {path}") from exc
+        content = path.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        print(f"Error: scan JSON file not found: {path}", file=sys.stderr)
+        raise
+    except Exception as exc:
+        print(f"Error: failed to read scan JSON: {exc}", file=sys.stderr)
+        raise
+    
+    try:
+        payload = json.loads(content)
     except json.JSONDecodeError as exc:
-        raise ValueError(f"Invalid JSON in scan file: {path}") from exc
-
+        print(f"Error: invalid JSON in scan file: {exc}", file=sys.stderr)
+        raise
+    
     if not isinstance(payload, dict):
-        raise ValueError("Scan JSON root must be an object")
-
-    raw_todos = payload.get("todos", [])
-    if not isinstance(raw_todos, list):
-        raise ValueError("Scan JSON field 'todos' must be a list")
-
+        raise ValueError(f"Expected JSON object at root, got {type(payload).__name__}")
+    
+    todos_list = payload.get("todos", [])
+    if not isinstance(todos_list, list):
+        raise ValueError(f"Expected 'todos' to be a list, got {type(todos_list).__name__}")
+    
     items = []
     for index, raw in enumerate(raw_todos):
         if not isinstance(raw, dict):
@@ -111,7 +118,7 @@ def load_todos(path: Path) -> list[TodoItem]:
                 type=str(raw.get("type", "TODO")),
                 text=str(raw.get("text", "")).strip(),
                 file=str(raw.get("file", "")),
-                line=line,
+                line=int(raw.get("line", 0)),
                 has_issue=bool(raw.get("has_issue", False)),
                 issue_refs=[str(v) for v in raw.get("issue_refs", [])],
                 priority=str(raw.get("priority", "normal")),
@@ -126,12 +133,16 @@ def fingerprint(todo: TodoItem) -> str:
 
 
 def compact_title(todo: TodoItem) -> str:
-    summary = re.sub(r"\s+", " ", todo.text).strip() or f"Review {todo.type} in {todo.file}:{todo.line}"
+    summary = re.sub(r"\s+", " ", todo.text).strip()
     prefix = f"[{todo.type}] "
-    max_summary = max(16, MAX_TITLE_LENGTH - len(prefix))
-    if len(summary) > max_summary:
-        summary = summary[: max_summary - 3].rstrip() + "..."
-    return f"{prefix}{summary}"
+    max_summary_len = MAX_TITLE_LENGTH - len(prefix) - 3  # reserve space for "..."
+    if len(summary) > max_summary_len:
+        summary = summary[:max_summary_len].rstrip() + "..."
+    title = prefix + summary
+    # Final safety check
+    if len(title) > MAX_TITLE_LENGTH:
+        title = title[:MAX_TITLE_LENGTH - 3] + "..."
+    return title
 
 
 def ensure_label(repo: str, token: str, label: str, dry_run: bool) -> None:
@@ -146,19 +157,7 @@ def ensure_label(repo: str, token: str, label: str, dry_run: bool) -> None:
             raise
 
     create_url = f"https://api.github.com/repos/{repo}/labels"
-    try:
-        gh_request(
-            "POST",
-            create_url,
-            token,
-            {
-                "name": label,
-                "color": "0e8a16",
-                "description": "Auto-created from TODO scanner",
-            },
-        )
-    except urllib.error.HTTPError as exc:
-        print(f"Warning: failed to create label '{label}': {exc}", file=sys.stderr)
+    gh_request("POST", create_url, token, {"name": label, "color": "0e8a16", "description": "Auto-created from TODO scanner"})
 
 
 def find_existing_issue(repo: str, token: str, marker: str) -> int | None:
@@ -166,24 +165,28 @@ def find_existing_issue(repo: str, token: str, marker: str) -> int | None:
     url = f"https://api.github.com/search/issues?q={query}&per_page=1"
     try:
         result = gh_request("GET", url, token)
-    except urllib.error.HTTPError:
+    except (urllib.error.HTTPError, json.JSONDecodeError):
         return None
 
+    if not isinstance(result, dict):
+        return None
     items = result.get("items", [])
     if not items:
         return None
-    number = items[0].get("number")
-    if isinstance(number, int):
-        return number
-    try:
-        return int(number)
-    except (TypeError, ValueError):
-        return None
+    return int(items[0].get("number", 0))
 
 
 def create_issue(repo: str, token: str, todo: TodoItem, label: str, dry_run: bool) -> tuple[str, int | None]:
+    """Create or find issue for a TODO item.
+    
+    Returns:
+        Tuple of (status, issue_number) where status is one of:
+        - "existing": Issue already exists
+        - "created": New issue created
+        - "dry-run": Dry run mode (no issue created)
+    """
     marker = fingerprint(todo)
-    existing = find_existing_issue(repo, token, marker) if not dry_run and token and repo else None
+    existing = find_existing_issue(repo, token, marker) if token and repo else None
     if existing is not None:
         return ("existing", existing)
 
@@ -212,21 +215,17 @@ def create_issue(repo: str, token: str, todo: TodoItem, label: str, dry_run: boo
             "_This issue was generated automatically from `build/scripts/docs/scan-todos.py`._",
         ]
     )
-    created = gh_request(
-        "POST",
-        url,
-        token,
-        {"title": compact_title(todo), "body": body, "labels": [label]},
-    )
-    issue_number: int | None = None
-    if isinstance(created, dict):
-        raw_number = created.get("number")
-        if raw_number is not None:
-            try:
-                issue_number = int(raw_number)
-            except (TypeError, ValueError):
-                issue_number = None
-    return ("created", issue_number)
+    try:
+        created = gh_request(
+            "POST",
+            url,
+            token,
+            {"title": compact_title(todo), "body": body, "labels": [label]},
+        )
+        return ("created", int(created.get("number", 0)))
+    except (urllib.error.HTTPError, json.JSONDecodeError, KeyError) as exc:
+        print(f"Failed to create issue: {exc}", file=sys.stderr)
+        raise
 
 
 def main() -> int:
@@ -236,19 +235,16 @@ def main() -> int:
         print(f"Error: scan json not found: {args.scan_json}", file=sys.stderr)
         return 2
 
-    if args.max_issues <= 0:
-        print("Error: --max-issues must be greater than zero", file=sys.stderr)
-        return 2
-
     if not args.dry_run and (not args.repo or not args.token):
         print("Error: --repo and --token (or env vars) are required unless --dry-run is used", file=sys.stderr)
         return 2
 
     try:
         todos = load_todos(args.scan_json)
-    except ValueError as exc:
-        print(f"Error: {exc}", file=sys.stderr)
+    except (json.JSONDecodeError, ValueError, FileNotFoundError) as exc:
+        print(f"Error: failed to load TODOs: {exc}", file=sys.stderr)
         return 2
+
     untracked = [todo for todo in todos if not todo.has_issue]
 
     if not untracked:
@@ -270,68 +266,63 @@ def main() -> int:
         return 0
 
     if not args.dry_run:
-        ensure_label(args.repo, args.token, args.label, dry_run=False)
+        try:
+            ensure_label(args.repo, args.token, args.label, dry_run=False)
+        except Exception as exc:
+            print(f"Warning: failed to ensure label exists: {exc}", file=sys.stderr)
 
     created = 0
-    existing = 0
-    failed = 0
-    skipped_limit = 0
-
+    existing_count = 0
+    dry_run_count = 0
+    skipped = 0
+    issues_list = []
+    
     for todo in untracked:
-        if created >= args.max_issues:
-            skipped_limit += 1
+        if created + existing_count + dry_run_count >= args.max_issues:
+            skipped += 1
             continue
 
         try:
-            outcome, number = create_issue(args.repo, args.token, todo, args.label, args.dry_run)
-        except urllib.error.HTTPError as exc:
-            print(f"Failed to create issue for {todo.file}:{todo.line}: HTTP {exc.code}", file=sys.stderr)
-            failed += 1
-            continue
-        except RuntimeError as exc:
+            status, number = create_issue(args.repo, args.token, todo, args.label, args.dry_run)
+        except Exception as exc:
             print(f"Failed to create issue for {todo.file}:{todo.line}: {exc}", file=sys.stderr)
-            failed += 1
+            skipped += 1
             continue
 
-        if outcome == "existing":
-            existing += 1
-            print(f"Existing issue #{number} already tracks {todo.file}:{todo.line}")
-            continue
-
-        if outcome == "dry-run":
+        if status == "created":
+            print(f"Issue #{number} created for {todo.file}:{todo.line}")
+            created += 1
+            issues_list.append({"status": "created", "number": number, "file": todo.file, "line": todo.line})
+        elif status == "existing":
+            print(f"Issue #{number} already exists for {todo.file}:{todo.line}")
+            existing_count += 1
+            issues_list.append({"status": "existing", "number": number, "file": todo.file, "line": todo.line})
+        elif status == "dry-run":
             print(f"[dry-run] would create issue for {todo.file}:{todo.line} :: {todo.text}")
-            created += 1
-            continue
+            dry_run_count += 1
+            issues_list.append({"status": "dry-run", "number": None, "file": todo.file, "line": todo.line})
 
-        if outcome == "created":
-            print(f"Issue #{number} tracked for {todo.file}:{todo.line}")
-            created += 1
-            continue
-
-        failed += 1
-
-    summary = {
-        "created": created,
-        "existing": existing,
-        "failed": failed,
-        "skipped_limit": skipped_limit,
-        "total_untracked": len(untracked),
-        "dry_run": args.dry_run,
-        "repo": args.repo,
-        "label": args.label,
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-    }
+    total_processed = created + existing_count + dry_run_count
+    print(
+        f"TODO issue creation complete: "
+        f"created={created}, existing={existing_count}, dry_run={dry_run_count}, "
+        f"skipped={skipped}, total_untracked={len(untracked)}"
+    )
 
     if args.output_json:
+        summary = {
+            "created": created,
+            "existing": existing_count,
+            "dry_run": dry_run_count,
+            "skipped": skipped,
+            "total_untracked": len(untracked),
+            "issues": issues_list,
+        }
         args.output_json.parent.mkdir(parents=True, exist_ok=True)
         args.output_json.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+        print(f"Wrote summary JSON: {args.output_json}")
 
-    print(
-        "TODO issue creation complete: "
-        f"created={created}, existing={existing}, failed={failed}, "
-        f"skipped_limit={skipped_limit}, total_untracked={len(untracked)}"
-    )
-    return 1 if failed > 0 else 0
+    return 0
 
 
 if __name__ == "__main__":

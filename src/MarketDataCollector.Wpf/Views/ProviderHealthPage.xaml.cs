@@ -9,8 +9,10 @@ using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using MarketDataCollector.Ui.Services;
 using MarketDataCollector.Wpf.Contracts;
 using MarketDataCollector.Wpf.Services;
+using WpfServices = MarketDataCollector.Wpf.Services;
 using Timer = System.Timers.Timer;
 
 namespace MarketDataCollector.Wpf.Views;
@@ -20,37 +22,54 @@ namespace MarketDataCollector.Wpf.Views;
 /// </summary>
 public partial class ProviderHealthPage : Page
 {
+    private readonly StatusService _statusService;
+    private readonly ConnectionService _connectionService;
+    private readonly WpfServices.LoggingService _loggingService;
+    private readonly WpfServices.NotificationService _notificationService;
     private readonly ObservableCollection<ProviderStatusModel> _streamingProviders = new();
     private readonly ObservableCollection<BackfillProviderModel> _backfillProviders = new();
     private readonly ObservableCollection<ConnectionEventModel> _connectionHistory = new();
     private Timer? _refreshTimer;
+    private Timer? _staleCheckTimer;
     private CancellationTokenSource? _cts;
     private string _baseUrl = "http://localhost:8080";
+    private DateTime? _lastRefreshTime;
 
-    public ProviderHealthPage()
+    public ProviderHealthPage(
+        StatusService statusService,
+        ConnectionService connectionService,
+        WpfServices.LoggingService loggingService,
+        WpfServices.NotificationService notificationService)
     {
         InitializeComponent();
+
+        _statusService = statusService;
+        _connectionService = connectionService;
+        _loggingService = loggingService;
+        _notificationService = notificationService;
 
         StreamingProvidersControl.ItemsSource = _streamingProviders;
         BackfillProvidersControl.ItemsSource = _backfillProviders;
         ConnectionHistoryControl.ItemsSource = _connectionHistory;
 
         // Get base URL from StatusService
-        _baseUrl = StatusService.Instance.BaseUrl;
+        _baseUrl = _statusService.BaseUrl;
 
         // Subscribe to connection events
-        ConnectionService.Instance.StateChanged += OnConnectionStateChanged;
-        ConnectionService.Instance.ConnectionHealthUpdated += OnConnectionHealthUpdated;
+        _connectionService.StateChanged += OnConnectionStateChanged;
+        _connectionService.ConnectionHealthUpdated += OnConnectionHealthUpdated;
 
         Unloaded += OnPageUnloaded;
     }
 
     private void OnPageUnloaded(object sender, RoutedEventArgs e)
     {
-        ConnectionService.Instance.StateChanged -= OnConnectionStateChanged;
-        ConnectionService.Instance.ConnectionHealthUpdated -= OnConnectionHealthUpdated;
+        _connectionService.StateChanged -= OnConnectionStateChanged;
+        _connectionService.ConnectionHealthUpdated -= OnConnectionHealthUpdated;
         _refreshTimer?.Stop();
         _refreshTimer?.Dispose();
+        _staleCheckTimer?.Stop();
+        _staleCheckTimer?.Dispose();
         _cts?.Cancel();
         _cts?.Dispose();
     }
@@ -63,6 +82,11 @@ public partial class ProviderHealthPage : Page
         _refreshTimer = new Timer(30000);
         _refreshTimer.Elapsed += async (_, _) => await Dispatcher.InvokeAsync(RefreshDataAsync);
         _refreshTimer.Start();
+
+        // Start stale check timer (every 2 seconds) to update the "last updated" text
+        _staleCheckTimer = new Timer(2000);
+        _staleCheckTimer.Elapsed += (_, _) => Dispatcher.Invoke(UpdateStaleIndicator);
+        _staleCheckTimer.Start();
     }
 
     private void OnConnectionStateChanged(object? sender, ConnectionStateChangedEventArgs e)
@@ -87,7 +111,7 @@ public partial class ProviderHealthPage : Page
             {
                 AddConnectionEvent(
                     $"Health check failed: {e.ErrorMessage}",
-                    ConnectionService.Instance.CurrentProvider,
+                    _connectionService.CurrentProvider,
                     EventType.Warning);
             });
         }
@@ -110,7 +134,8 @@ public partial class ProviderHealthPage : Page
             UpdateSummaryStats();
 
             // Update last refresh time
-            LastUpdateText.Text = $"Last updated: {DateTime.Now:HH:mm:ss}";
+            _lastRefreshTime = DateTime.UtcNow;
+            UpdateStaleIndicator();
         }
         catch (OperationCanceledException)
         {
@@ -118,7 +143,7 @@ public partial class ProviderHealthPage : Page
         }
         catch (Exception ex)
         {
-            LoggingService.Instance.LogError("Failed to refresh provider health", ex);
+            _loggingService.LogError("Failed to refresh provider health", ex);
         }
     }
 
@@ -127,15 +152,15 @@ public partial class ProviderHealthPage : Page
         _streamingProviders.Clear();
 
         // Get provider catalog
-        var providers = await StatusService.Instance.GetAvailableProvidersAsync(ct);
+        var providers = await _statusService.GetAvailableProvidersAsync(ct);
         var streamingProviders = providers.Where(p =>
             p.ProviderType == "Streaming" || p.ProviderType == "Hybrid").ToList();
 
         // Get current connection status
-        var connectionState = ConnectionService.Instance.State;
-        var currentProvider = ConnectionService.Instance.CurrentProvider;
-        var latency = ConnectionService.Instance.LastLatencyMs;
-        var uptime = ConnectionService.Instance.Uptime;
+        var connectionState = _connectionService.State;
+        var currentProvider = _connectionService.CurrentProvider;
+        var latency = _connectionService.LastLatencyMs;
+        var uptime = _connectionService.Uptime;
 
         foreach (var provider in streamingProviders)
         {
@@ -188,7 +213,7 @@ public partial class ProviderHealthPage : Page
         _backfillProviders.Clear();
 
         // Get provider catalog
-        var providers = await StatusService.Instance.GetAvailableProvidersAsync(ct);
+        var providers = await _statusService.GetAvailableProvidersAsync(ct);
         var backfillProviders = providers.Where(p =>
             p.ProviderType == "Backfill" || p.ProviderType == "Hybrid").ToList();
 
@@ -264,6 +289,26 @@ public partial class ProviderHealthPage : Page
         };
     }
 
+    private void UpdateStaleIndicator()
+    {
+        var secondsSince = _lastRefreshTime.HasValue
+            ? (DateTime.UtcNow - _lastRefreshTime.Value).TotalSeconds
+            : (double?)null;
+
+        var indicator = FormatHelpers.FormatStaleIndicator(secondsSince, staleThresholdSeconds: 45);
+        LastUpdateText.Text = $"Last updated: {indicator.DisplayText}";
+
+        // Visual feedback: stale data gets warning color
+        if (indicator.IsStale)
+        {
+            LastUpdateText.Foreground = (Brush)FindResource("WarningColorBrush");
+        }
+        else
+        {
+            LastUpdateText.Foreground = (Brush)FindResource("ConsoleTextMutedBrush");
+        }
+    }
+
     private void UpdateSummaryStats()
     {
         var connected = _streamingProviders.Count(p => p.IsConnected);
@@ -274,9 +319,9 @@ public partial class ProviderHealthPage : Page
         DisconnectedCountText.Text = disconnected.ToString();
         TotalProvidersText.Text = totalProviders.ToString();
 
-        if (ConnectionService.Instance.State == ConnectionState.Connected)
+        if (_connectionService.State == ConnectionState.Connected)
         {
-            AvgLatencyText.Text = $"{ConnectionService.Instance.LastLatencyMs:F0}";
+            AvgLatencyText.Text = $"{_connectionService.LastLatencyMs:F0}";
         }
         else
         {
@@ -336,7 +381,7 @@ public partial class ProviderHealthPage : Page
     private async void Refresh_Click(object sender, RoutedEventArgs e)
     {
         await RefreshDataAsync();
-        NotificationService.Instance.ShowNotification(
+        _notificationService.ShowNotification(
             "Refreshed",
             "Provider health data has been refreshed.",
             NotificationType.Info);
@@ -352,9 +397,9 @@ public partial class ProviderHealthPage : Page
         if (provider.IsConnected)
         {
             // Disconnect
-            await ConnectionService.Instance.DisconnectAsync();
+            await _connectionService.DisconnectAsync();
             AddConnectionEvent("Disconnected by user", provider.Name, EventType.Info);
-            NotificationService.Instance.ShowNotification(
+            _notificationService.ShowNotification(
                 "Disconnected",
                 $"Disconnected from {provider.Name}.",
                 NotificationType.Info);
@@ -362,9 +407,9 @@ public partial class ProviderHealthPage : Page
         else
         {
             // Connect
-            await ConnectionService.Instance.ConnectAsync(providerId);
+            await _connectionService.ConnectAsync(providerId);
             AddConnectionEvent("Connected by user", provider.Name, EventType.Success);
-            NotificationService.Instance.ShowNotification(
+            _notificationService.ShowNotification(
                 "Connected",
                 $"Connected to {provider.Name}.",
                 NotificationType.Success);
@@ -384,7 +429,7 @@ public partial class ProviderHealthPage : Page
                      $"Status: {provider.StatusText}\n" +
                      $"{provider.LatencyText}\n" +
                      $"{provider.UptimeText}\n" +
-                     $"Reconnects: {ConnectionService.Instance.TotalReconnects}";
+                     $"Reconnects: {_connectionService.TotalReconnects}";
 
         MessageBox.Show(details, $"{provider.Name} Details", MessageBoxButton.OK, MessageBoxImage.Information);
     }
@@ -394,7 +439,7 @@ public partial class ProviderHealthPage : Page
         _connectionHistory.Clear();
         NoHistoryText.Visibility = Visibility.Visible;
 
-        NotificationService.Instance.ShowNotification(
+        _notificationService.ShowNotification(
             "History Cleared",
             "Connection history has been cleared.",
             NotificationType.Info);
@@ -404,7 +449,7 @@ public partial class ProviderHealthPage : Page
 /// <summary>
 /// Model for streaming provider status display.
 /// </summary>
-public class ProviderStatusModel
+public sealed class ProviderStatusModel
 {
     public string ProviderId { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
@@ -419,7 +464,7 @@ public class ProviderStatusModel
 /// <summary>
 /// Model for backfill provider status display.
 /// </summary>
-public class BackfillProviderModel
+public sealed class BackfillProviderModel
 {
     public string ProviderId { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
@@ -432,7 +477,7 @@ public class BackfillProviderModel
 /// <summary>
 /// Model for connection history events.
 /// </summary>
-public class ConnectionEventModel
+public sealed class ConnectionEventModel
 {
     public string Message { get; set; } = string.Empty;
     public string Provider { get; set; } = string.Empty;

@@ -1,8 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
+using System.Threading;
+using System.Threading.Tasks;
 using MarketDataCollector.Contracts.Configuration;
+using MarketDataCollector.Ui.Services;
+using MarketDataCollector.Ui.Services.Services;
 
 namespace MarketDataCollector.Wpf.Services;
 
@@ -11,29 +16,11 @@ namespace MarketDataCollector.Wpf.Services;
 /// </summary>
 public sealed class ConfigServiceValidationResult
 {
-    /// <summary>
-    /// Gets or sets whether the configuration is valid.
-    /// </summary>
     public bool IsValid { get; set; } = true;
-
-    /// <summary>
-    /// Gets or sets the validation errors.
-    /// </summary>
     public string[] Errors { get; set; } = Array.Empty<string>();
-
-    /// <summary>
-    /// Gets or sets the validation warnings.
-    /// </summary>
     public string[] Warnings { get; set; } = Array.Empty<string>();
 
-    /// <summary>
-    /// Creates a successful validation result.
-    /// </summary>
     public static ConfigServiceValidationResult Success() => new() { IsValid = true };
-
-    /// <summary>
-    /// Creates a failed validation result with errors.
-    /// </summary>
     public static ConfigServiceValidationResult Failure(params string[] errors) => new()
     {
         IsValid = false,
@@ -42,45 +29,38 @@ public sealed class ConfigServiceValidationResult
 }
 
 /// <summary>
-/// Service for managing application configuration.
-/// Implements singleton pattern for application-wide configuration management.
+/// Result of inline validation for a single provider field change.
+/// Used to provide immediate feedback in the WPF settings panel.
 /// </summary>
-public sealed class ConfigService
+public sealed class InlineValidationResult
+{
+    public string[] Errors { get; set; } = Array.Empty<string>();
+    public string[] Warnings { get; set; } = Array.Empty<string>();
+    public bool IsValid => Errors.Length == 0;
+    public bool HasWarnings => Warnings.Length > 0;
+}
+
+/// <summary>
+/// WPF platform-specific configuration service.
+/// Extends <see cref="ConfigServiceBase"/> with file I/O and audit trail integration.
+/// Part of Phase 2 service extraction.
+/// </summary>
+public sealed class ConfigService : ConfigServiceBase
 {
     private static readonly Lazy<ConfigService> _instance = new(() => new ConfigService());
-    private static readonly JsonSerializerOptions _jsonOptions = new()
-    {
-        PropertyNameCaseInsensitive = true,
-        ReadCommentHandling = JsonCommentHandling.Skip,
-        AllowTrailingCommas = true,
-        WriteIndented = true
-    };
 
     private bool _initialized;
 
-    /// <summary>
-    /// Gets the singleton instance of the ConfigService.
-    /// </summary>
     public static ConfigService Instance => _instance.Value;
 
-    /// <summary>
-    /// Gets whether the service has been initialized.
-    /// </summary>
     public bool IsInitialized => _initialized;
 
-    /// <summary>
-    /// Gets the path to the configuration file.
-    /// </summary>
-    public string ConfigPath => FirstRunService.Instance.ConfigFilePath;
+    public override string ConfigPath => FirstRunService.Instance.ConfigFilePath;
 
     private ConfigService()
     {
     }
 
-    /// <summary>
-    /// Initializes the configuration service.
-    /// </summary>
-    /// <returns>A task representing the async operation.</returns>
     public Task InitializeAsync()
     {
         _initialized = true;
@@ -88,133 +68,156 @@ public sealed class ConfigService
     }
 
     /// <summary>
-    /// Validates the current configuration.
+    /// Validates the current configuration (WPF-specific result type).
     /// </summary>
-    /// <returns>A task containing the validation result.</returns>
-    public Task<ConfigServiceValidationResult> ValidateConfigAsync()
+    public async Task<ConfigServiceValidationResult> ValidateConfigAsync()
     {
-        return Task.FromResult(ConfigServiceValidationResult.Success());
-    }
-
-    /// <summary>
-    /// Gets the data sources configuration.
-    /// </summary>
-    public async Task<DataSourcesConfigDto> GetDataSourcesConfigAsync()
-    {
-        var config = await LoadConfigAsync() ?? new AppConfigDto();
-        return config.DataSources ?? new DataSourcesConfigDto();
-    }
-
-    /// <summary>
-    /// Adds or updates a data source configuration.
-    /// </summary>
-    public async Task AddOrUpdateDataSourceAsync(DataSourceConfigDto dataSource)
-    {
-        var config = await LoadConfigAsync() ?? new AppConfigDto();
-        var dataSources = config.DataSources ?? new DataSourcesConfigDto();
-        var sources = dataSources.Sources?.ToList() ?? new List<DataSourceConfigDto>();
-
-        var existingIndex = sources.FindIndex(s =>
-            string.Equals(s.Id, dataSource.Id, StringComparison.OrdinalIgnoreCase));
-
-        if (existingIndex >= 0)
+        var result = await ValidateConfigDetailAsync();
+        return new ConfigServiceValidationResult
         {
-            sources[existingIndex] = dataSource;
-        }
-        else
+            IsValid = result.IsValid,
+            Errors = result.Errors,
+            Warnings = result.Warnings
+        };
+    }
+
+    /// <summary>
+    /// Gets the data sources configuration (WPF-specific alias).
+    /// </summary>
+    public Task<DataSourcesConfigDto> GetDataSourcesConfigAsync()
+        => GetDataSourcesConfigDtoAsync();
+
+    /// <summary>
+    /// Gets the data sources configuration. Convenience alias for WPF views.
+    /// </summary>
+    public Task<DataSourcesConfigDto> GetDataSourcesAsync()
+        => GetDataSourcesConfigDtoAsync();
+
+    /// <summary>
+    /// Gets configured symbols. Convenience alias for WPF views.
+    /// </summary>
+    public Task<SymbolConfigDto[]> GetSymbolsAsync()
+        => GetConfiguredSymbolsAsync();
+
+    /// <summary>
+    /// Saves the full data sources configuration. Replaces all sources.
+    /// </summary>
+    public async Task SaveDataSourcesAsync(DataSourcesConfigDto dataSources, CancellationToken ct = default)
+    {
+        var config = await LoadConfigCoreAsync(ct) ?? new AppConfigDto();
+        config.DataSources = dataSources;
+        await SaveConfigCoreAsync(config, ct);
+    }
+
+    /// <summary>
+    /// Gets the currently active data source identifier from configuration.
+    /// Returns null when no active source is set.
+    /// </summary>
+    public async Task<string?> GetActiveDataSourceAsync(CancellationToken ct = default)
+    {
+        var config = await LoadConfigCoreAsync(ct) ?? new AppConfigDto();
+        return config.DataSource;
+    }
+
+    /// <summary>
+    /// Reloads the configuration from disk.
+    /// Call after an external edit to the config file.
+    /// </summary>
+    public async Task ReloadConfigAsync(CancellationToken ct = default)
+    {
+        // Simply re-read from disk — LoadConfigCoreAsync already reads fresh each call.
+        await LoadConfigCoreAsync(ct);
+    }
+
+    /// <summary>
+    /// Validates a single provider's options inline (for real-time field validation).
+    /// Returns a list of validation messages (empty if valid).
+    /// </summary>
+    public async Task<InlineValidationResult> ValidateProviderInlineAsync(
+        string providerId,
+        BackfillProviderOptionsDto options,
+        CancellationToken ct = default)
+    {
+        var warnings = new List<string>();
+        var errors = new List<string>();
+
+        if (options.Priority is < 0)
         {
-            sources.Add(dataSource);
+            errors.Add("Priority must be a non-negative integer.");
         }
 
-        dataSources.Sources = sources.ToArray();
-        config.DataSources = dataSources;
-        await SaveConfigAsync(config);
-    }
-
-    /// <summary>
-    /// Deletes a data source by ID.
-    /// </summary>
-    public async Task DeleteDataSourceAsync(string id)
-    {
-        var config = await LoadConfigAsync() ?? new AppConfigDto();
-        var dataSources = config.DataSources ?? new DataSourcesConfigDto();
-        var sources = dataSources.Sources?.ToList() ?? new List<DataSourceConfigDto>();
-
-        sources.RemoveAll(s =>
-            string.Equals(s.Id, id, StringComparison.OrdinalIgnoreCase));
-
-        dataSources.Sources = sources.ToArray();
-        config.DataSources = dataSources;
-        await SaveConfigAsync(config);
-    }
-
-    /// <summary>
-    /// Sets the default data source for real-time or historical data.
-    /// </summary>
-    public async Task SetDefaultDataSourceAsync(string id, bool isHistorical)
-    {
-        var config = await LoadConfigAsync() ?? new AppConfigDto();
-        var dataSources = config.DataSources ?? new DataSourcesConfigDto();
-
-        if (isHistorical)
+        if (options.RateLimitPerMinute is <= 0)
         {
-            dataSources.DefaultHistoricalSourceId = id;
+            errors.Add("Rate limit per minute must be greater than zero.");
         }
-        else
+
+        if (options.RateLimitPerHour is <= 0)
         {
-            dataSources.DefaultRealTimeSourceId = id;
+            errors.Add("Rate limit per hour must be greater than zero.");
         }
 
-        config.DataSources = dataSources;
-        await SaveConfigAsync(config);
+        // Check for duplicate priorities against other providers
+        if (options.Priority.HasValue)
+        {
+            var providers = await GetBackfillProvidersConfigAsync(ct);
+            foreach (var (otherId, otherOpts) in EnumerateProviders(providers))
+            {
+                if (string.Equals(otherId, NormalizeProviderId(providerId), StringComparison.OrdinalIgnoreCase))
+                    continue;
+                if (otherOpts?.Enabled == true && otherOpts.Priority == options.Priority)
+                {
+                    warnings.Add($"Priority {options.Priority} is also used by '{otherId}'. Fallback order may be ambiguous.");
+                    break;
+                }
+            }
+        }
+
+        return new InlineValidationResult
+        {
+            Errors = errors.ToArray(),
+            Warnings = warnings.ToArray(),
+        };
     }
 
     /// <summary>
-    /// Updates failover settings for data sources.
+    /// Adds or updates a single backfill provider configuration entry.
+    /// Records the change in the audit trail.
     /// </summary>
-    public async Task UpdateFailoverSettingsAsync(bool enableFailover, int failoverTimeoutSeconds)
+    public async Task SetBackfillProviderOptionsAsync(string providerId, BackfillProviderOptionsDto options)
     {
-        var config = await LoadConfigAsync() ?? new AppConfigDto();
-        var dataSources = config.DataSources ?? new DataSourcesConfigDto();
+        var (previousJson, newJson) = await base.SetBackfillProviderOptionsAsync(providerId, options);
 
-        dataSources.EnableFailover = enableFailover;
-        dataSources.FailoverTimeoutSeconds = failoverTimeoutSeconds;
-
-        config.DataSources = dataSources;
-        await SaveConfigAsync(config);
+        Ui.Services.BackfillProviderConfigService.Instance.RecordAuditEntry(
+            NormalizeProviderId(providerId),
+            "update",
+            previousJson,
+            newJson);
     }
 
     /// <summary>
-    /// Gets configuration of the specified type.
+    /// Resets a provider's configuration back to defaults.
     /// </summary>
-    /// <typeparam name="T">The configuration type.</typeparam>
-    /// <returns>A task containing the configuration instance.</returns>
-    public Task<T?> GetConfigAsync<T>() where T : class, new()
+    public async Task ResetBackfillProviderOptionsAsync(string providerId)
     {
-        return Task.FromResult<T?>(new T());
+        if (string.IsNullOrWhiteSpace(providerId))
+        {
+            throw new ArgumentException("Provider id is required", nameof(providerId));
+        }
+
+        var normalizedId = NormalizeProviderId(providerId);
+        var defaultOptions = await Ui.Services.BackfillProviderConfigService.Instance
+            .GetDefaultOptionsAsync(normalizedId);
+
+        var previousJson = await base.ResetBackfillProviderOptionsAsync(providerId, defaultOptions);
+
+        Ui.Services.BackfillProviderConfigService.Instance.RecordAuditEntry(
+            normalizedId,
+            "reset",
+            previousJson,
+            JsonSerializer.Serialize(defaultOptions, SharedJsonOptions));
     }
 
-    /// <summary>
-    /// Saves the current configuration.
-    /// </summary>
-    /// <returns>A task representing the async operation.</returns>
-    public Task SaveConfigAsync()
-    {
-        return Task.CompletedTask;
-    }
-
-    /// <summary>
-    /// Saves the specified configuration.
-    /// </summary>
-    /// <typeparam name="T">The configuration type.</typeparam>
-    /// <param name="config">The configuration to save.</param>
-    /// <returns>A task representing the async operation.</returns>
-    public Task SaveConfigAsync<T>(T config) where T : class
-    {
-        return Task.CompletedTask;
-    }
-
-    private async Task<AppConfigDto?> LoadConfigAsync()
+    protected override async Task<AppConfigDto?> LoadConfigCoreAsync(CancellationToken ct)
     {
         try
         {
@@ -223,22 +226,22 @@ public sealed class ConfigService
                 return new AppConfigDto();
             }
 
-            var json = await File.ReadAllTextAsync(ConfigPath);
+            var json = await File.ReadAllTextAsync(ConfigPath, ct);
             if (string.IsNullOrWhiteSpace(json))
             {
                 return new AppConfigDto();
             }
 
-            return JsonSerializer.Deserialize<AppConfigDto>(json, _jsonOptions) ?? new AppConfigDto();
+            return JsonSerializer.Deserialize<AppConfigDto>(json, SharedJsonOptions) ?? new AppConfigDto();
         }
         catch (Exception ex)
         {
-            LoggingService.Instance.LogError("Failed to load configuration", ex);
+            LogError("Failed to load configuration", ex);
             return new AppConfigDto();
         }
     }
 
-    private async Task SaveConfigAsync(AppConfigDto config)
+    protected override async Task SaveConfigCoreAsync(AppConfigDto config, CancellationToken ct)
     {
         try
         {
@@ -248,13 +251,22 @@ public sealed class ConfigService
                 Directory.CreateDirectory(directory);
             }
 
-            var json = JsonSerializer.Serialize(config, _jsonOptions);
-            await File.WriteAllTextAsync(ConfigPath, json);
+            var json = JsonSerializer.Serialize(config, SharedJsonOptions);
+            await File.WriteAllTextAsync(ConfigPath, json, ct);
         }
         catch (Exception ex)
         {
-            LoggingService.Instance.LogError("Failed to save configuration", ex);
+            LogError("Failed to save configuration", ex);
             throw;
         }
     }
+
+    protected override void LogError(string message, Exception? exception)
+    {
+        LoggingService.Instance.LogError(message, exception);
+    }
+
+    // Keep backward-compatible internal method for existing callers
+    internal Task<AppConfigDto?> LoadConfigAsync()
+        => LoadConfigCoreAsync(CancellationToken.None);
 }

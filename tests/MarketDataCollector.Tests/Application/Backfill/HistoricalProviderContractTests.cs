@@ -2,7 +2,9 @@ using System.Net;
 using System.Text;
 using FluentAssertions;
 using MarketDataCollector.Contracts.Domain.Models;
-using MarketDataCollector.Infrastructure.Providers.Backfill;
+using MarketDataCollector.Infrastructure.Adapters.Core;
+using MarketDataCollector.Infrastructure.Adapters.Stooq;
+using MarketDataCollector.Infrastructure.Adapters.YahooFinance;
 using Moq;
 using Moq.Protected;
 using Xunit;
@@ -456,6 +458,7 @@ public class HistoricalProviderContractTests
         // Assert
         provider.Name.Should().Be("yahoo");
         provider.DisplayName.Should().Contain("Yahoo");
+        provider.Priority.Should().Be(22);
         provider.SupportsAdjustedPrices.Should().BeTrue();
         provider.SupportsDividends.Should().BeTrue();
         provider.SupportsSplits.Should().BeTrue();

@@ -11,29 +11,17 @@ namespace MarketDataCollector.Wpf.Services;
 /// <summary>
 /// Service for managing data storage, file operations, and storage statistics.
 /// Provides access to storage paths, file listings, and space usage.
-/// Inherits platform-agnostic API methods from <see cref="StorageServiceBase"/>.
+/// Passes <see cref="ApiClientService"/> to the base class constructor.
 /// </summary>
 public sealed class StorageService : StorageServiceBase
 {
-    private static StorageService? _instance;
-    private static readonly object _lock = new();
+    private static readonly Lazy<StorageService> _instance = new(() => new StorageService());
+    public static StorageService Instance => _instance.Value;
 
-    public static StorageService Instance
+    private StorageService()
+        : base(ApiClientService.Instance)
     {
-        get
-        {
-            if (_instance == null)
-            {
-                lock (_lock)
-                {
-                    _instance ??= new StorageService();
-                }
-            }
-            return _instance;
-        }
     }
-
-    private StorageService() { }
 
     /// <summary>
     /// Gets list of data files for a symbol.

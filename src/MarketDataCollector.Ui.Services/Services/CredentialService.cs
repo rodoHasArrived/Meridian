@@ -6,53 +6,32 @@ namespace MarketDataCollector.Ui.Services;
 
 /// <summary>
 /// Default credential service for the shared UI services layer.
-/// Platform-specific projects (WPF, UWP) override this with their own implementations
+/// Platform-specific projects (WPF) override this with their own implementations
 /// by setting the Instance property during app startup.
 /// </summary>
-public class CredentialService
+public sealed class CredentialService
 {
-    private static CredentialService? _instance;
-    private static readonly object _lock = new();
+    private static readonly Lazy<CredentialService> _instance = new(() => new CredentialService());
 
     /// <summary>
     /// Resource key prefix for OAuth tokens.
     /// </summary>
     public const string OAuthTokenResource = "oauth_token";
 
-    public static CredentialService Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                lock (_lock)
-                {
-                    _instance ??= new CredentialService();
-                }
-            }
-            return _instance;
-        }
-        set
-        {
-            lock (_lock)
-            {
-                _instance = value;
-            }
-        }
-    }
+    public static CredentialService Instance => _instance.Value;
 
     public event EventHandler<CredentialExpirationEventArgs>? CredentialExpiring;
 
-    public virtual IReadOnlyList<CredentialWithMetadata> GetAllCredentialsWithMetadata()
+    public IReadOnlyList<CredentialWithMetadata> GetAllCredentialsWithMetadata()
         => Array.Empty<CredentialWithMetadata>();
 
-    public virtual Task<OAuthRefreshResult> RefreshOAuthTokenAsync(string providerId)
+    public Task<OAuthRefreshResult> RefreshOAuthTokenAsync(string providerId)
         => Task.FromResult(new OAuthRefreshResult { Success = false, ErrorMessage = "Not implemented" });
 
-    public virtual Task UpdateMetadataAsync(string resource, Action<CredentialMetadataUpdate> updateAction)
+    public Task UpdateMetadataAsync(string resource, Action<CredentialMetadataUpdate> updateAction)
         => Task.CompletedTask;
 
-    public virtual CredentialMetadataInfo? GetMetadata(string resource)
+    public CredentialMetadataInfo? GetMetadata(string resource)
         => null;
 
     protected void OnCredentialExpiring(CredentialExpirationEventArgs e)

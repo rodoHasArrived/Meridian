@@ -11,24 +11,10 @@ namespace MarketDataCollector.Ui.Services;
 /// </summary>
 public sealed class DiagnosticsService
 {
-    private static DiagnosticsService? _instance;
-    private static readonly object _lock = new();
+    private static readonly Lazy<DiagnosticsService> _instance = new(() => new DiagnosticsService());
     private readonly ApiClientService _apiClient;
 
-    public static DiagnosticsService Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                lock (_lock)
-                {
-                    _instance ??= new DiagnosticsService();
-                }
-            }
-            return _instance;
-        }
-    }
+    public static DiagnosticsService Instance => _instance.Value;
 
     private DiagnosticsService()
     {
@@ -459,7 +445,7 @@ public sealed class DiagnosticsService
 
 #region Result Classes
 
-public class DryRunResult
+public sealed class DryRunResult
 {
     public bool Success { get; set; }
     public bool ConfigurationValid { get; set; }
@@ -472,7 +458,7 @@ public class DryRunResult
     public List<ValidationDetail> ValidationDetails { get; set; } = new();
 }
 
-public class ValidationDetail
+public sealed class ValidationDetail
 {
     public string Category { get; set; } = string.Empty;
     public string Item { get; set; } = string.Empty;
@@ -480,7 +466,7 @@ public class ValidationDetail
     public string? Message { get; set; }
 }
 
-public class PreflightResult
+public sealed class PreflightResult
 {
     public bool Success { get; set; }
     public int PassedCount { get; set; }
@@ -488,7 +474,7 @@ public class PreflightResult
     public List<PreflightCheck> Checks { get; set; } = new();
 }
 
-public class PreflightCheck
+public sealed class PreflightCheck
 {
     public string Name { get; set; } = string.Empty;
     public string Category { get; set; } = string.Empty;
@@ -504,7 +490,7 @@ public enum CheckSeverity
     Critical
 }
 
-public class DiagnosticBundleOptions
+public sealed class DiagnosticBundleOptions
 {
     public bool IncludeLogs { get; set; } = true;
     public bool IncludeConfig { get; set; } = true;
@@ -514,7 +500,7 @@ public class DiagnosticBundleOptions
     public bool RedactSecrets { get; set; } = true;
 }
 
-public class DiagnosticBundleResult
+public sealed class DiagnosticBundleResult
 {
     public bool Success { get; set; }
     public string? Error { get; set; }
@@ -523,7 +509,7 @@ public class DiagnosticBundleResult
     public List<string> IncludedFiles { get; set; } = new();
 }
 
-public class DiagnosticSystemMetrics
+public sealed class DiagnosticSystemMetrics
 {
     public double CpuUsagePercent { get; set; }
     public long MemoryUsedBytes { get; set; }
@@ -536,14 +522,14 @@ public class DiagnosticSystemMetrics
     public TimeSpan Uptime { get; set; }
 }
 
-public class ValidationResult
+public sealed class ValidationResult
 {
     public bool Valid { get; set; }
     public string? Error { get; set; }
     public string? Suggestion { get; set; }
 }
 
-public class DiagnosticProviderTestResult
+public sealed class DiagnosticProviderTestResult
 {
     public bool Success { get; set; }
     public string? Error { get; set; }
@@ -556,7 +542,7 @@ public class DiagnosticProviderTestResult
 
 #region API Response Classes
 
-public class DryRunResponse
+public sealed class DryRunResponse
 {
     public bool Success { get; set; }
     public bool ConfigurationValid { get; set; }
@@ -569,12 +555,12 @@ public class DryRunResponse
     public List<ValidationDetail>? ValidationDetails { get; set; }
 }
 
-public class ProviderStatusResponse
+public sealed class ProviderStatusResponse
 {
     public List<ProviderInfo>? Providers { get; set; }
 }
 
-public class ProviderInfo
+public sealed class ProviderInfo
 {
     public string Name { get; set; } = string.Empty;
     public bool IsEnabled { get; set; }
@@ -582,7 +568,7 @@ public class ProviderInfo
     public string? Error { get; set; }
 }
 
-public class StorageStatusResponse
+public sealed class StorageStatusResponse
 {
     public string Path { get; set; } = string.Empty;
     public bool PathExists { get; set; }
@@ -590,14 +576,14 @@ public class StorageStatusResponse
     public double FreeSpaceGb { get; set; }
 }
 
-public class ConfigStatusResponse
+public sealed class ConfigStatusResponse
 {
     public bool FileExists { get; set; }
     public string? FilePath { get; set; }
     public int SymbolCount { get; set; }
 }
 
-public class DiagnosticBundleResponse
+public sealed class DiagnosticBundleResponse
 {
     public string? BundlePath { get; set; }
     public long FileSizeBytes { get; set; }
@@ -605,7 +591,7 @@ public class DiagnosticBundleResponse
 }
 
 // Quick Check
-public class QuickCheckResult
+public sealed class QuickCheckResult
 {
     public bool Success { get; set; }
     public string? Error { get; set; }
@@ -613,13 +599,13 @@ public class QuickCheckResult
     public List<QuickCheckItem> Checks { get; set; } = new();
 }
 
-public class QuickCheckResponse
+public sealed class QuickCheckResponse
 {
     public string Overall { get; set; } = string.Empty;
     public List<QuickCheckItem>? Checks { get; set; }
 }
 
-public class QuickCheckItem
+public sealed class QuickCheckItem
 {
     public string Name { get; set; } = string.Empty;
     public string Status { get; set; } = string.Empty;
@@ -627,25 +613,25 @@ public class QuickCheckItem
 }
 
 // Show Config
-public class ShowConfigResult
+public sealed class ShowConfigResult
 {
     public bool Success { get; set; }
     public string? Error { get; set; }
     public List<ConfigSection> Sections { get; set; } = new();
 }
 
-public class ShowConfigResponse
+public sealed class ShowConfigResponse
 {
     public List<ConfigSection>? Sections { get; set; }
 }
 
-public class ConfigSection
+public sealed class ConfigSection
 {
     public string Name { get; set; } = string.Empty;
     public List<ConfigItem> Items { get; set; } = new();
 }
 
-public class ConfigItem
+public sealed class ConfigItem
 {
     public string Key { get; set; } = string.Empty;
     public string? Value { get; set; }
@@ -654,19 +640,19 @@ public class ConfigItem
 }
 
 // Error Codes
-public class ErrorCodesResult
+public sealed class ErrorCodesResult
 {
     public bool Success { get; set; }
     public string? Error { get; set; }
     public List<ErrorCodeInfo> ErrorCodes { get; set; } = new();
 }
 
-public class ErrorCodesResponse
+public sealed class ErrorCodesResponse
 {
     public List<ErrorCodeInfo>? ErrorCodes { get; set; }
 }
 
-public class ErrorCodeInfo
+public sealed class ErrorCodeInfo
 {
     public string Code { get; set; } = string.Empty;
     public string Category { get; set; } = string.Empty;
@@ -676,7 +662,7 @@ public class ErrorCodeInfo
 }
 
 // Self Test
-public class SelfTestOptions
+public sealed class SelfTestOptions
 {
     public bool TestStorage { get; set; } = true;
     public bool TestProviders { get; set; } = true;
@@ -684,7 +670,7 @@ public class SelfTestOptions
     public bool TestNetwork { get; set; } = true;
 }
 
-public class SelfTestResult
+public sealed class SelfTestResult
 {
     public bool Success { get; set; }
     public string? Error { get; set; }
@@ -694,7 +680,7 @@ public class SelfTestResult
     public int SkippedCount { get; set; }
 }
 
-public class SelfTestResponse
+public sealed class SelfTestResponse
 {
     public bool AllPassed { get; set; }
     public List<SelfTestItem>? Tests { get; set; }
@@ -703,7 +689,7 @@ public class SelfTestResponse
     public int SkippedCount { get; set; }
 }
 
-public class SelfTestItem
+public sealed class SelfTestItem
 {
     public string Name { get; set; } = string.Empty;
     public string Category { get; set; } = string.Empty;
@@ -713,19 +699,19 @@ public class SelfTestItem
 }
 
 // Credential Validation
-public class CredentialValidationResult
+public sealed class CredentialValidationResult
 {
     public bool Success { get; set; }
     public string? Error { get; set; }
     public List<ProviderCredentialStatus> Results { get; set; } = new();
 }
 
-public class CredentialValidationResponse
+public sealed class CredentialValidationResponse
 {
     public List<ProviderCredentialStatus>? Results { get; set; }
 }
 
-public class ProviderCredentialStatus
+public sealed class ProviderCredentialStatus
 {
     public string Provider { get; set; } = string.Empty;
     public bool IsValid { get; set; }
@@ -735,7 +721,7 @@ public class ProviderCredentialStatus
 }
 
 // All Providers Test
-public class AllProvidersTestResult
+public sealed class AllProvidersTestResult
 {
     public bool Success { get; set; }
     public string? Error { get; set; }
@@ -743,13 +729,13 @@ public class AllProvidersTestResult
     public List<ProviderConnectivityResult> Results { get; set; } = new();
 }
 
-public class AllProvidersTestResponse
+public sealed class AllProvidersTestResponse
 {
     public bool AllConnected { get; set; }
     public List<ProviderConnectivityResult>? Results { get; set; }
 }
 
-public class ProviderConnectivityResult
+public sealed class ProviderConnectivityResult
 {
     public string Provider { get; set; } = string.Empty;
     public bool Connected { get; set; }
@@ -759,7 +745,7 @@ public class ProviderConnectivityResult
 }
 
 // Config Validation
-public class DiagnosticConfigValidationResult
+public sealed class DiagnosticConfigValidationResult
 {
     public bool Success { get; set; }
     public string? Error { get; set; }
@@ -768,14 +754,14 @@ public class DiagnosticConfigValidationResult
     public List<string> Warnings { get; set; } = new();
 }
 
-public class ConfigValidationResponse
+public sealed class ConfigValidationResponse
 {
     public bool IsValid { get; set; }
     public List<ConfigIssue>? Issues { get; set; }
     public List<string>? Warnings { get; set; }
 }
 
-public class ConfigIssue
+public sealed class ConfigIssue
 {
     public string Section { get; set; } = string.Empty;
     public string Key { get; set; } = string.Empty;

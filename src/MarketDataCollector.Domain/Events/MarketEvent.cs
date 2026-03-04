@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using MarketDataCollector.Contracts.Domain.Enums;
 using MarketDataCollector.Contracts.Domain.Events;
 using MarketDataCollector.Contracts.Domain.Models;
@@ -13,7 +14,14 @@ public sealed record MarketEvent(
     long Sequence = 0,
     string Source = "IB",
     int SchemaVersion = 1,
-    MarketEventTier Tier = MarketEventTier.Raw
+    MarketEventTier Tier = MarketEventTier.Raw,
+    DateTimeOffset? ExchangeTimestamp = null,
+    DateTimeOffset ReceivedAtUtc = default,
+    long ReceivedAtMonotonic = 0,
+    // Canonicalization fields
+    string? CanonicalSymbol = null,
+    int CanonicalizationVersion = 0,
+    string? CanonicalVenue = null
 )
 {
     public static MarketEvent Trade(DateTimeOffset ts, string symbol, Trade trade, long seq = 0, string source = "IB")
@@ -37,6 +45,21 @@ public sealed record MarketEvent(
     public static MarketEvent DepthIntegrity(DateTimeOffset ts, string symbol, DepthIntegrityEvent integrity, long seq = 0, string source = "IB")
         => new(ts, symbol, MarketEventType.Integrity, integrity, seq == 0 ? integrity.SequenceNumber : seq, source);
 
+
+    public static MarketEvent ResyncRequested(DateTimeOffset ts, string symbol, string reason, string? streamId = null, string? venue = null, long seq = 0, string source = "IB")
+    {
+        var payload = new IntegrityEvent(
+            Timestamp: ts,
+            Symbol: symbol,
+            Severity: IntegritySeverity.Error,
+            Description: $"Resync requested: {reason}",
+            ErrorCode: 1007,
+            SequenceNumber: seq,
+            StreamId: streamId,
+            Venue: venue);
+
+        return new(ts, symbol, MarketEventType.Integrity, payload, seq, source);
+    }
     public static MarketEvent Heartbeat(DateTimeOffset ts, string source = "IB")
         => new(ts, "SYSTEM", MarketEventType.Heartbeat, Payload: null, Sequence: 0, Source: source);
 
@@ -77,4 +100,41 @@ public sealed record MarketEvent(
 
     public static MarketEvent OpenInterest(DateTimeOffset ts, string symbol, OpenInterestUpdate oi, long seq = 0, string source = "IB")
         => new(ts, symbol, MarketEventType.OpenInterest, oi, seq == 0 ? oi.SequenceNumber : seq, source);
+
+    /// <summary>
+    /// Stamps the event with wall-clock and monotonic receive timestamps.
+    /// Call this at the earliest point when the event enters the system.
+    /// </summary>
+    public MarketEvent StampReceiveTime(DateTimeOffset? exchangeTs = null)
+        => this with
+        {
+            ReceivedAtUtc = DateTimeOffset.UtcNow,
+            ReceivedAtMonotonic = Stopwatch.GetTimestamp(),
+            ExchangeTimestamp = exchangeTs ?? ExchangeTimestamp
+        };
+
+    /// <summary>
+    /// Returns the effective symbol for downstream consumers: <see cref="CanonicalSymbol"/>
+    /// when available, otherwise the raw <see cref="Symbol"/>.
+    /// Use this property in storage paths, dedup keys, metrics labels, and quality monitoring
+    /// to ensure consistent behavior regardless of canonicalization state.
+    /// </summary>
+    public string EffectiveSymbol => CanonicalSymbol ?? Symbol;
+
+    /// <summary>
+    /// Computes the estimated end-to-end latency in milliseconds using monotonic clock,
+    /// or falls back to wall-clock difference if monotonic data is unavailable.
+    /// </summary>
+    public double? EstimatedLatencyMs
+    {
+        get
+        {
+            if (ReceivedAtMonotonic > 0 && ExchangeTimestamp.HasValue)
+            {
+                // Wall-clock difference as best-effort (cross-machine clocks are unreliable)
+                return (ReceivedAtUtc - ExchangeTimestamp.Value).TotalMilliseconds;
+            }
+            return null;
+        }
+    }
 }

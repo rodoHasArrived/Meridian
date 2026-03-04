@@ -5,7 +5,7 @@ namespace MarketDataCollector.Contracts.Api;
 /// <summary>
 /// Status response from the core service.
 /// </summary>
-public class StatusResponse
+public sealed class StatusResponse
 {
     [JsonPropertyName("isConnected")]
     public bool IsConnected { get; set; }
@@ -24,9 +24,9 @@ public class StatusResponse
 }
 
 /// <summary>
-/// Metrics data snapshot.
+/// Metrics data snapshot with staleness and provenance tracking.
 /// </summary>
-public class MetricsData
+public sealed class MetricsData
 {
     [JsonPropertyName("published")]
     public long Published { get; set; }
@@ -54,12 +54,37 @@ public class MetricsData
 
     [JsonPropertyName("quotes")]
     public long Quotes { get; set; }
+
+    /// <summary>
+    /// UTC timestamp when these metrics were last updated from the provider.
+    /// Null indicates no data has been received yet.
+    /// </summary>
+    [JsonPropertyName("lastUpdatedUtc")]
+    public DateTimeOffset? LastUpdatedUtc { get; set; }
+
+    /// <summary>
+    /// Name of the provider that sourced these metrics.
+    /// </summary>
+    [JsonPropertyName("sourceProvider")]
+    public string? SourceProvider { get; set; }
+
+    /// <summary>
+    /// Whether the metrics are considered stale (no update in >15 seconds).
+    /// </summary>
+    [JsonPropertyName("isStale")]
+    public bool IsStale { get; set; }
+
+    /// <summary>
+    /// Age of these metrics in seconds since last update.
+    /// </summary>
+    [JsonPropertyName("ageSeconds")]
+    public double AgeSeconds { get; set; }
 }
 
 /// <summary>
 /// Pipeline statistics.
 /// </summary>
-public class PipelineData
+public sealed class PipelineData
 {
     [JsonPropertyName("publishedCount")]
     public long PublishedCount { get; set; }
@@ -89,7 +114,7 @@ public class PipelineData
 /// <summary>
 /// Health check response.
 /// </summary>
-public class HealthCheckResponse
+public sealed class HealthCheckResponse
 {
     [JsonPropertyName("status")]
     public string Status { get; set; } = "unknown";
@@ -107,7 +132,7 @@ public class HealthCheckResponse
 /// <summary>
 /// Individual health check item.
 /// </summary>
-public class HealthCheckItem
+public sealed class HealthCheckItem
 {
     [JsonPropertyName("name")]
     public string Name { get; set; } = string.Empty;
@@ -120,9 +145,48 @@ public class HealthCheckItem
 }
 
 /// <summary>
+/// Health summary response for the /api/health/summary endpoint (D7).
+/// </summary>
+public sealed class HealthSummaryResponse
+{
+    [JsonPropertyName("timestamp")]
+    public DateTimeOffset Timestamp { get; set; }
+
+    [JsonPropertyName("status")]
+    public string Status { get; set; } = "unknown";
+
+    [JsonPropertyName("providers")]
+    public HealthSummaryProviders? Providers { get; set; }
+
+    [JsonPropertyName("storageHealthy")]
+    public bool StorageHealthy { get; set; }
+
+    [JsonPropertyName("pipelineActive")]
+    public bool PipelineActive { get; set; }
+}
+
+/// <summary>
+/// Provider counts for health summary response (D7).
+/// </summary>
+public sealed class HealthSummaryProviders
+{
+    [JsonPropertyName("streaming")]
+    public int Streaming { get; set; }
+
+    [JsonPropertyName("backfill")]
+    public int Backfill { get; set; }
+
+    [JsonPropertyName("symbolSearch")]
+    public int SymbolSearch { get; set; }
+
+    [JsonPropertyName("totalEnabled")]
+    public int TotalEnabled { get; set; }
+}
+
+/// <summary>
 /// Backfill provider information.
 /// </summary>
-public class BackfillProviderInfo
+public sealed class BackfillProviderInfo
 {
     [JsonPropertyName("name")]
     public string Name { get; set; } = string.Empty;
@@ -141,9 +205,9 @@ public class BackfillProviderInfo
 }
 
 /// <summary>
-/// Backfill operation result.
+/// Backfill operation result DTO for API responses.
 /// </summary>
-public class BackfillResult
+public sealed class BackfillResultDto
 {
     [JsonPropertyName("success")]
     public bool Success { get; set; }
@@ -173,7 +237,7 @@ public class BackfillResult
 /// <summary>
 /// Per-symbol backfill result.
 /// </summary>
-public class SymbolBackfillResult
+public sealed class SymbolBackfillResult
 {
     [JsonPropertyName("symbol")]
     public string Symbol { get; set; } = string.Empty;
@@ -194,7 +258,7 @@ public class SymbolBackfillResult
 /// <summary>
 /// Backfill request.
 /// </summary>
-public class BackfillRequest
+public sealed class BackfillRequest
 {
     [JsonPropertyName("provider")]
     public string? Provider { get; set; }
@@ -213,9 +277,76 @@ public class BackfillRequest
 }
 
 /// <summary>
+/// Tracks freshness and provenance of metrics for a specific symbol or subsystem.
+/// Used to show staleness indicators and provider source badges in the UI.
+/// </summary>
+public sealed class MetricsFreshness
+{
+    /// <summary>
+    /// The symbol or subsystem this freshness record applies to.
+    /// </summary>
+    [JsonPropertyName("key")]
+    public string Key { get; set; } = string.Empty;
+
+    /// <summary>
+    /// UTC timestamp of the last received data point.
+    /// </summary>
+    [JsonPropertyName("lastDataPointUtc")]
+    public DateTimeOffset? LastDataPointUtc { get; set; }
+
+    /// <summary>
+    /// The provider that supplied the last data point.
+    /// </summary>
+    [JsonPropertyName("provider")]
+    public string? Provider { get; set; }
+
+    /// <summary>
+    /// Whether the data is considered stale (exceeded freshness threshold).
+    /// </summary>
+    [JsonPropertyName("isStale")]
+    public bool IsStale { get; set; }
+
+    /// <summary>
+    /// Freshness state: Fresh, Warning, Stale, or NoData.
+    /// </summary>
+    [JsonPropertyName("freshnessState")]
+    public string FreshnessState { get; set; } = "NoData";
+
+    /// <summary>
+    /// Age of the data in seconds since last update.
+    /// </summary>
+    [JsonPropertyName("ageSeconds")]
+    public double AgeSeconds { get; set; }
+
+    /// <summary>
+    /// The configured freshness threshold in seconds.
+    /// </summary>
+    [JsonPropertyName("thresholdSeconds")]
+    public int ThresholdSeconds { get; set; } = 60;
+}
+
+/// <summary>
+/// Freshness state constants for metric staleness indicators.
+/// </summary>
+public static class FreshnessStates
+{
+    /// <summary>Data is fresh and within acceptable thresholds.</summary>
+    public const string Fresh = "Fresh";
+
+    /// <summary>Data is approaching staleness (>70% of threshold).</summary>
+    public const string Warning = "Warning";
+
+    /// <summary>Data has exceeded the staleness threshold.</summary>
+    public const string Stale = "Stale";
+
+    /// <summary>No data has been received yet.</summary>
+    public const string NoData = "NoData";
+}
+
+/// <summary>
 /// Storage analytics data.
 /// </summary>
-public class StorageAnalytics
+public sealed class StorageAnalytics
 {
     [JsonPropertyName("totalSizeBytes")]
     public long TotalSizeBytes { get; set; }
@@ -257,7 +388,7 @@ public class StorageAnalytics
 /// <summary>
 /// Per-symbol storage information for analytics breakdown.
 /// </summary>
-public class StorageSymbolBreakdown
+public sealed class StorageSymbolBreakdown
 {
     [JsonPropertyName("symbol")]
     public string Symbol { get; set; } = string.Empty;

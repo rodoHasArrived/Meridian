@@ -8,7 +8,9 @@ namespace MarketDataCollector.Tests.Integration.EndpointTests;
 /// <summary>
 /// Integration tests for Interactive Brokers endpoints (/api/providers/ib/*).
 /// </summary>
-public sealed class IBEndpointTests : IClassFixture<EndpointTestFixture>
+[Trait("Category", "Integration")]
+[Collection("Endpoint")]
+public sealed class IBEndpointTests
 {
     private readonly HttpClient _client;
 

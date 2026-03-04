@@ -7,7 +7,6 @@ namespace MarketDataCollector.Ui.Services;
 
 /// <summary>
 /// Service for managing backfill operations via the core API.
-/// Shared implementation for both WPF and UWP desktop applications.
 /// </summary>
 public sealed class BackfillApiService
 {
@@ -30,19 +29,20 @@ public sealed class BackfillApiService
     /// <summary>
     /// Gets the last backfill operation status.
     /// </summary>
-    public async Task<BackfillResult?> GetLastStatusAsync(CancellationToken ct = default)
+    public async Task<BackfillResultDto?> GetLastStatusAsync(CancellationToken ct = default)
     {
-        return await _apiClient.GetAsync<BackfillResult>(UiApiRoutes.BackfillStatus, ct);
+        return await _apiClient.GetAsync<BackfillResultDto>(UiApiRoutes.BackfillStatus, ct);
     }
 
     /// <summary>
     /// Runs a backfill operation for the specified symbols.
     /// </summary>
-    public async Task<BackfillResult?> RunBackfillAsync(
+    public async Task<BackfillResultDto?> RunBackfillAsync(
         string provider,
         string[] symbols,
         string? from,
         string? to,
+        string granularity = "Daily",
         CancellationToken ct = default)
     {
         var request = new BackfillRequest
@@ -50,11 +50,12 @@ public sealed class BackfillApiService
             Provider = provider,
             Symbols = symbols,
             From = from,
-            To = to
+            To = to,
+            Granularity = granularity
         };
 
         var backfillClient = _apiClient.GetBackfillClient();
-        var response = await _apiClient.PostWithResponseAsync<BackfillResult>(
+        var response = await _apiClient.PostWithResponseAsync<BackfillResultDto>(
             UiApiRoutes.BackfillRun,
             request,
             ct,
@@ -65,7 +66,7 @@ public sealed class BackfillApiService
             return response.Data;
         }
 
-        return new BackfillResult
+        return new BackfillResultDto
         {
             Success = false,
             Error = response.ErrorMessage ?? "Backfill request failed"

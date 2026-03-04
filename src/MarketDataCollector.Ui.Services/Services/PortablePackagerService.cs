@@ -193,13 +193,21 @@ public sealed class PortablePackagerService
                 TotalSizeBytes = manifest.TotalBytesOriginal
             };
         }
-        catch
+        catch (IOException)
+        {
+            return null;
+        }
+        catch (JsonException)
+        {
+            return null;
+        }
+        catch (InvalidDataException)
         {
             return null;
         }
         finally
         {
-            try { if (Directory.Exists(tempDir)) Directory.Delete(tempDir, true); } catch { }
+            try { if (Directory.Exists(tempDir)) Directory.Delete(tempDir, true); } catch (IOException) { }
         }
     }
 
@@ -306,7 +314,7 @@ public sealed class PortablePackagerService
         finally
         {
             // Cleanup temp directory
-            try { Directory.Delete(tempDir, true); } catch { }
+            try { Directory.Delete(tempDir, true); } catch (IOException) { }
         }
     }
 
@@ -357,7 +365,7 @@ public sealed class PortablePackagerService
         }
         finally
         {
-            try { Directory.Delete(tempDir, true); } catch { }
+            try { Directory.Delete(tempDir, true); } catch (IOException) { }
         }
     }
 
@@ -476,7 +484,7 @@ public sealed class PortablePackagerService
         var types = eventTypes ?? new[] { "Trade", "BboQuote", "LOBSnapshot", "HistoricalBar" };
         foreach (var type in types)
         {
-            var schema = _schemaService.GetJsonSchema(type);
+            var schema = _schemaService?.GetJsonSchema(type);
             if (!string.IsNullOrEmpty(schema))
             {
                 await File.WriteAllTextAsync(
@@ -581,7 +589,7 @@ public sealed class PortablePackagerService
 ## Contents
 - **Symbols**: {string.Join(", ", manifest.Symbols ?? new[] { "All" })}
 - **Event Types**: {string.Join(", ", manifest.EventTypes ?? new[] { "All" })}
-- **Date Range**: {(manifest.DateRange?.Start?.ToString("yyyy-MM-dd") ?? "N/A")} to {(manifest.DateRange?.End?.ToString("yyyy-MM-dd") ?? "N/A")}
+- **Date Range**: {(manifest.DateRange?.Start?.ToString(FormatHelpers.IsoDateFormat) ?? "N/A")} to {(manifest.DateRange?.End?.ToString(FormatHelpers.IsoDateFormat) ?? "N/A")}
 - **Total Files**: {manifest.TotalFiles:N0}
 - **Original Size**: {FormatBytes(manifest.TotalBytesOriginal)}
 
@@ -656,21 +664,18 @@ Refer to your data provider's terms of service for data usage rights.
     {
         var encryptedPath = sourcePath + ".enc";
 
-        await Task.Run(() =>
-        {
-            using var sourceStream = File.OpenRead(sourcePath);
-            using var destStream = File.Create(encryptedPath);
+        await using var sourceStream = File.OpenRead(sourcePath);
+        await using var destStream = File.Create(encryptedPath);
 
-            using var aes = Aes.Create();
-            var key = DeriveKey(password, aes.KeySize / 8);
-            aes.Key = key;
-            aes.GenerateIV();
+        using var aes = Aes.Create();
+        var key = DeriveKey(password, aes.KeySize / 8);
+        aes.Key = key;
+        aes.GenerateIV();
 
-            destStream.Write(aes.IV, 0, aes.IV.Length);
+        await destStream.WriteAsync(aes.IV, ct);
 
-            using var cryptoStream = new CryptoStream(destStream, aes.CreateEncryptor(), CryptoStreamMode.Write);
-            sourceStream.CopyTo(cryptoStream);
-        }, ct);
+        await using var cryptoStream = new CryptoStream(destStream, aes.CreateEncryptor(), CryptoStreamMode.Write);
+        await sourceStream.CopyToAsync(cryptoStream, ct);
 
         File.Delete(sourcePath);
         return encryptedPath;
@@ -680,20 +685,17 @@ Refer to your data provider's terms of service for data usage rights.
     {
         var decryptedPath = encryptedPath.Replace(".enc", "");
 
-        await Task.Run(() =>
-        {
-            using var sourceStream = File.OpenRead(encryptedPath);
-            using var destStream = File.Create(decryptedPath);
+        await using var sourceStream = File.OpenRead(encryptedPath);
+        await using var destStream = File.Create(decryptedPath);
 
-            using var aes = Aes.Create();
-            var iv = new byte[aes.BlockSize / 8];
-            sourceStream.Read(iv, 0, iv.Length);
-            aes.IV = iv;
-            aes.Key = DeriveKey(password, aes.KeySize / 8);
+        using var aes = Aes.Create();
+        var iv = new byte[aes.BlockSize / 8];
+        await sourceStream.ReadExactlyAsync(iv, ct);
+        aes.IV = iv;
+        aes.Key = DeriveKey(password, aes.KeySize / 8);
 
-            using var cryptoStream = new CryptoStream(sourceStream, aes.CreateDecryptor(), CryptoStreamMode.Read);
-            cryptoStream.CopyTo(destStream);
-        }, ct);
+        await using var cryptoStream = new CryptoStream(sourceStream, aes.CreateDecryptor(), CryptoStreamMode.Read);
+        await cryptoStream.CopyToAsync(destStream, ct);
 
         return decryptedPath;
     }
@@ -731,18 +733,7 @@ Refer to your data provider's terms of service for data usage rights.
         return originalSize > 0 ? (double)originalSize / compressedSize : 1;
     }
 
-    private static string FormatBytes(long bytes)
-    {
-        string[] sizes = { "B", "KB", "MB", "GB", "TB" };
-        int order = 0;
-        double size = bytes;
-        while (size >= 1024 && order < sizes.Length - 1)
-        {
-            order++;
-            size /= 1024;
-        }
-        return $"{size:0.##} {sizes[order]}";
-    }
+    private static string FormatBytes(long bytes) => FormatHelpers.FormatBytes(bytes);
 }
 
 #region Models

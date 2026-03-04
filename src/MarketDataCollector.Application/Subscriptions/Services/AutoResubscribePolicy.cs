@@ -21,7 +21,7 @@ namespace MarketDataCollector.Application.Subscriptions.Services;
 /// </summary>
 public sealed class AutoResubscribePolicy : IAsyncDisposable
 {
-    private readonly SubscriptionManager _subscriptionManager;
+    private readonly SubscriptionOrchestrator _subscriptionManager;
     private readonly ILogger _log;
     private readonly AutoResubscribeOptions _options;
 
@@ -40,7 +40,7 @@ public sealed class AutoResubscribePolicy : IAsyncDisposable
     private readonly Task _cleanupTask;
 
     public AutoResubscribePolicy(
-        SubscriptionManager subscriptionManager,
+        SubscriptionOrchestrator subscriptionManager,
         AutoResubscribeOptions? options = null,
         ILogger? log = null)
     {
@@ -48,7 +48,7 @@ public sealed class AutoResubscribePolicy : IAsyncDisposable
         _options = options ?? new AutoResubscribeOptions();
         _log = log ?? LoggingSetup.ForContext<AutoResubscribePolicy>();
 
-        _cleanupTask = Task.Run(CleanupLoopAsync);
+        _cleanupTask = CleanupLoopAsync();
 
         _log.Information(
             "AutoResubscribePolicy initialized: " +
@@ -85,6 +85,7 @@ public sealed class AutoResubscribePolicy : IAsyncDisposable
     /// <param name="symbol">The symbol that experienced the integrity event.</param>
     /// <param name="severity">Severity of the integrity event.</param>
     /// <param name="config">Current symbol configuration for resubscription.</param>
+    /// <param name="ct">Cancellation token.</param>
     /// <returns>True if resubscription was triggered, false if skipped.</returns>
     public async Task<bool> OnIntegrityEventAsync(
         string symbol,
@@ -142,7 +143,7 @@ public sealed class AutoResubscribePolicy : IAsyncDisposable
             _log.Information("Triggering auto-resubscribe for {Symbol} due to integrity event", symbol);
 
             // Force unsubscribe and resubscribe through the manager
-            await Task.Run(() => _subscriptionManager.Apply(config));
+            _subscriptionManager.Apply(config);
 
             sw.Stop();
             var elapsedMs = sw.ElapsedMilliseconds;

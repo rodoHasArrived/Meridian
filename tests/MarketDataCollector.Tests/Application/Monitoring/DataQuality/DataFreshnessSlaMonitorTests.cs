@@ -218,13 +218,14 @@ public sealed class DataFreshnessSlaMonitorTests : IDisposable
             AlertCooldownSeconds = 0
         });
 
+        using var violationReceived = new ManualResetEventSlim(false);
         SlaViolationEvent? capturedEvent = null;
-        monitor.OnViolation += e => capturedEvent = e;
+        monitor.OnViolation += e => { capturedEvent = e; violationReceived.Set(); };
 
         monitor.RecordEvent("AAPL");
 
-        // Act - Wait for threshold to pass and check to run
-        Thread.Sleep(2500); // Wait for violation
+        // Act - Wait for the violation callback to fire (timer-based, needs >1s staleness)
+        violationReceived.Wait(TimeSpan.FromSeconds(5));
 
         // Assert
         capturedEvent.Should().NotBeNull();
@@ -244,14 +245,15 @@ public sealed class DataFreshnessSlaMonitorTests : IDisposable
             AlertCooldownSeconds = 0
         });
 
+        using var violationReceived = new ManualResetEventSlim(false);
         SlaRecoveryEvent? capturedRecovery = null;
         monitor.OnRecovery += e => capturedRecovery = e;
-        monitor.OnViolation += _ => { }; // Need to handle violation first
+        monitor.OnViolation += _ => violationReceived.Set();
 
         monitor.RecordEvent("AAPL");
 
-        // Wait for violation
-        Thread.Sleep(2500);
+        // Wait for violation - timer fires every 1s and needs >1s staleness
+        violationReceived.Wait(TimeSpan.FromSeconds(5));
 
         // Act - Record event to recover
         monitor.RecordEvent("AAPL");
@@ -514,13 +516,13 @@ public sealed class DataFreshnessSlaMonitorMarketHoursTests : IDisposable
         monitor.RecordEvent("AAPL");
 
         // Allow a moment for potential async operations
-        Thread.Sleep(100);
+        Thread.Sleep(10);
 
         // Act
         var status = monitor.GetSymbolStatus("AAPL");
 
         // Assert - if outside market hours, state should be OutsideMarketHours
-        // Note: Actual result depends on current time, so we check the logic is working
+        // NOTE: Actual result depends on current time, so we check the logic is working
         status.Should().NotBeNull();
         if (!monitor.IsMarketOpen())
         {

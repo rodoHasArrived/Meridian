@@ -19,15 +19,13 @@ public static class UiApiRoutes
 
     // Configuration endpoints
     public const string Config = "/api/config";
+    public const string ConfigEffective = "/api/config/effective";
     public const string ConfigDataSource = "/api/config/datasource";
     public const string ConfigAlpaca = "/api/config/alpaca";
     public const string ConfigStorage = "/api/config/storage";
     public const string ConfigSymbols = "/api/config/symbols";
-    public const string ConfigSymbolsById = "/api/config/symbols/{symbol}";
     public const string ConfigDataSources = "/api/config/datasources";
     public const string ConfigDataSourcesDefaults = "/api/config/datasources/defaults";
-    public const string ConfigDataSourcesById = "/api/config/datasources/{id}";
-    public const string ConfigDataSourcesToggle = "/api/config/datasources/{id}/toggle";
     public const string ConfigDataSourcesFailover = "/api/config/datasources/failover";
     public const string ConfigDerivatives = "/api/config/derivatives";
 
@@ -49,6 +47,25 @@ public static class UiApiRoutes
     public const string BackfillSchedulesRun = "/api/backfill/schedules/{id}/run";
     public const string BackfillSchedulesHistory = "/api/backfill/schedules/{id}/history";
     public const string BackfillSchedulesTemplates = "/api/backfill/schedules/templates";
+
+    // Backfill checkpoint/resume endpoints (P0: expose checkpoint semantics to users)
+    public const string BackfillCheckpoints = "/api/backfill/checkpoints";
+    public const string BackfillCheckpointsResumable = "/api/backfill/checkpoints/resumable";
+    public const string BackfillCheckpointById = "/api/backfill/checkpoints/{jobId}";
+    public const string BackfillCheckpointResume = "/api/backfill/checkpoints/{jobId}/resume";
+    public const string BackfillCheckpointPending = "/api/backfill/checkpoints/{jobId}/pending";
+
+    // Ingestion job endpoints (P0: unified job contract)
+    public const string IngestionJobs = "/api/ingestion/jobs";
+    public const string IngestionJobById = "/api/ingestion/jobs/{jobId}";
+    public const string IngestionJobTransition = "/api/ingestion/jobs/{jobId}/transition";
+
+    // Backfill provider metadata and status endpoints
+    public const string BackfillProviderMetadata = "/api/backfill/providers/metadata";
+    public const string BackfillProviderStatuses = "/api/backfill/providers/statuses";
+    public const string BackfillFallbackChain = "/api/backfill/providers/fallback-chain";
+    public const string BackfillDryRunPlan = "/api/backfill/providers/dry-run-plan";
+    public const string BackfillProviderConfigAudit = "/api/backfill/providers/audit";
 
     // Provider endpoints
     public const string ProviderComparison = "/api/providers/comparison";
@@ -117,6 +134,11 @@ public static class UiApiRoutes
     public const string StorageTiersStatistics = "/api/storage/tiers/statistics";
     public const string StorageTiersPlan = "/api/storage/tiers/plan";
     public const string StorageMaintenanceDefrag = "/api/storage/maintenance/defrag";
+    public const string StorageConvertParquet = "/api/storage/convert-parquet";
+    public const string StorageCapacityForecast = "/api/storage/capacity-forecast";
+
+    // Historical data query endpoints
+    public const string HistoricalData = "/api/historical";
 
     // Quality/drops endpoints
     public const string QualityDrops = "/api/quality/drops";
@@ -247,6 +269,11 @@ public static class UiApiRoutes
     public const string HealthProviderTest = "/api/health/providers/{provider}/test";
     public const string HealthDiagnosticsBundle = "/api/health/diagnostics/bundle";
 
+    // Trading calendar endpoints
+    public const string CalendarStatus = "/api/calendar/status";
+    public const string CalendarHolidays = "/api/calendar/holidays";
+    public const string CalendarTradingDays = "/api/calendar/trading-days";
+
     // Messaging endpoints
     public const string MessagingConfig = "/api/messaging/config";
     public const string MessagingStatus = "/api/messaging/status";
@@ -297,6 +324,7 @@ public static class UiApiRoutes
 
     // Export endpoints
     public const string ExportAnalysis = "/api/export/analysis";
+    public const string ExportPreview = "/api/export/preview";
     public const string ExportFormats = "/api/export/formats";
     public const string ExportQualityReport = "/api/export/quality-report";
     public const string ExportOrderflow = "/api/export/orderflow";
@@ -317,8 +345,41 @@ public static class UiApiRoutes
     public const string LeanBacktestHistory = "/api/lean/backtest/history";
     public const string LeanBacktestDelete = "/api/lean/backtest/{backtestId}/delete";
 
+    // Options / Derivatives endpoints
+    public const string OptionsChains = "/api/options/chains/{underlyingSymbol}";
+    public const string OptionsExpirations = "/api/options/expirations/{underlyingSymbol}";
+    public const string OptionsStrikes = "/api/options/strikes/{underlyingSymbol}/{expiration}";
+    public const string OptionsQuote = "/api/options/quote";
+    public const string OptionsQuotesByUnderlying = "/api/options/quotes/{underlyingSymbol}";
+    public const string OptionsTrades = "/api/options/trades";
+    public const string OptionsGreeks = "/api/options/greeks";
+    public const string OptionsOpenInterest = "/api/options/open-interest";
+    public const string OptionsSummary = "/api/options/summary";
+    public const string OptionsTrackedUnderlyings = "/api/options/underlyings";
+    public const string OptionsRefresh = "/api/options/refresh";
+
     // Index endpoints
     public const string IndicesConstituents = "/api/indices/{indexName}/constituents";
+
+    // Canonicalization parity endpoints (Phase 2)
+    public const string CanonicalizationStatus = "/api/canonicalization/status";
+    public const string CanonicalizationParity = "/api/canonicalization/parity";
+    public const string CanonicalizationParityByProvider = "/api/canonicalization/parity/{provider}";
+    public const string CanonicalizationConfig = "/api/canonicalization/config";
+
+    // Authentication endpoints
+    public const string AuthLoginPage = "/login";
+    public const string AuthApiLogin = "/api/auth/login";
+    public const string AuthApiLogout = "/api/auth/logout";
+
+    // Resilience endpoints
+    public const string ResilienceCircuitBreakers = "/api/resilience/circuit-breakers";
+
+    // Backfill cost estimation
+    public const string BackfillCostEstimate = "/api/backfill/cost-estimate";
+
+    // Retention compliance
+    public const string RetentionComplianceReport = "/api/admin/retention/compliance-report";
 
     /// <summary>
     /// Replaces a route parameter with a value.

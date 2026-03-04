@@ -11,24 +11,10 @@ namespace MarketDataCollector.Ui.Services;
 /// </summary>
 public sealed class LeanIntegrationService
 {
-    private static LeanIntegrationService? _instance;
-    private static readonly object _lock = new();
+    private static readonly Lazy<LeanIntegrationService> _instance = new(() => new LeanIntegrationService());
     private readonly ApiClientService _apiClient;
 
-    public static LeanIntegrationService Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                lock (_lock)
-                {
-                    _instance ??= new LeanIntegrationService();
-                }
-            }
-            return _instance;
-        }
-    }
+    public static LeanIntegrationService Instance => _instance.Value;
 
     private LeanIntegrationService()
     {
@@ -146,8 +132,8 @@ public sealed class LeanIntegrationService
             new
             {
                 symbols = options.Symbols,
-                fromDate = options.FromDate?.ToString("yyyy-MM-dd"),
-                toDate = options.ToDate?.ToString("yyyy-MM-dd"),
+                fromDate = options.FromDate?.ToString(FormatHelpers.IsoDateFormat),
+                toDate = options.ToDate?.ToString(FormatHelpers.IsoDateFormat),
                 resolution = options.Resolution,
                 overwrite = options.Overwrite
             },
@@ -197,8 +183,8 @@ public sealed class LeanIntegrationService
             {
                 algorithmPath = options.AlgorithmPath,
                 algorithmName = options.AlgorithmName,
-                startDate = options.StartDate?.ToString("yyyy-MM-dd"),
-                endDate = options.EndDate?.ToString("yyyy-MM-dd"),
+                startDate = options.StartDate?.ToString(FormatHelpers.IsoDateFormat),
+                endDate = options.EndDate?.ToString(FormatHelpers.IsoDateFormat),
                 initialCapital = options.InitialCapital,
                 parameters = options.Parameters
             },
@@ -300,7 +286,7 @@ public sealed class LeanIntegrationService
 
 #region Event Args
 
-public class BacktestStatusChangedEventArgs : EventArgs
+public sealed class BacktestStatusChangedEventArgs : EventArgs
 {
     public string BacktestId { get; set; } = string.Empty;
     public BacktestState State { get; set; }
@@ -311,7 +297,7 @@ public class BacktestStatusChangedEventArgs : EventArgs
 
 #region Configuration Classes
 
-public class LeanStatus
+public sealed class LeanStatus
 {
     public bool IsInstalled { get; set; }
     public bool IsConfigured { get; set; }
@@ -321,7 +307,7 @@ public class LeanStatus
     public int SymbolsSynced { get; set; }
 }
 
-public class LeanConfiguration
+public sealed class LeanConfiguration
 {
     public string? LeanPath { get; set; }
     public string? DataPath { get; set; }
@@ -331,7 +317,7 @@ public class LeanConfiguration
     public List<string>? SyncSymbols { get; set; }
 }
 
-public class LeanConfigurationUpdate
+public sealed class LeanConfigurationUpdate
 {
     public string? LeanPath { get; set; }
     public string? DataPath { get; set; }
@@ -341,7 +327,7 @@ public class LeanConfigurationUpdate
     public List<string>? SyncSymbols { get; set; }
 }
 
-public class LeanVerificationResult
+public sealed class LeanVerificationResult
 {
     public bool Success { get; set; }
     public string? LeanPath { get; set; }
@@ -355,7 +341,7 @@ public class LeanVerificationResult
 
 #region Algorithm Classes
 
-public class AlgorithmInfo
+public sealed class AlgorithmInfo
 {
     public string Name { get; set; } = string.Empty;
     public string Path { get; set; } = string.Empty;
@@ -364,7 +350,7 @@ public class AlgorithmInfo
     public bool IsValid { get; set; }
 }
 
-public class AlgorithmListResult
+public sealed class AlgorithmListResult
 {
     public bool Success { get; set; }
     public string? Error { get; set; }
@@ -375,7 +361,7 @@ public class AlgorithmListResult
 
 #region Data Sync Classes
 
-public class DataSyncOptions
+public sealed class DataSyncOptions
 {
     public List<string>? Symbols { get; set; }
     public DateOnly? FromDate { get; set; }
@@ -384,7 +370,7 @@ public class DataSyncOptions
     public bool Overwrite { get; set; }
 }
 
-public class DataSyncResult
+public sealed class DataSyncResult
 {
     public bool Success { get; set; }
     public int SymbolsSynced { get; set; }
@@ -393,7 +379,7 @@ public class DataSyncResult
     public List<string> Errors { get; set; } = new();
 }
 
-public class DataSyncStatus
+public sealed class DataSyncStatus
 {
     public bool IsSyncing { get; set; }
     public double Progress { get; set; }
@@ -406,7 +392,7 @@ public class DataSyncStatus
 
 #region Backtest Classes
 
-public class BacktestOptions
+public sealed class BacktestOptions
 {
     public string? AlgorithmPath { get; set; }
     public string? AlgorithmName { get; set; }
@@ -416,14 +402,14 @@ public class BacktestOptions
     public Dictionary<string, string>? Parameters { get; set; }
 }
 
-public class BacktestStartResult
+public sealed class BacktestStartResult
 {
     public bool Success { get; set; }
     public string? Error { get; set; }
     public string? BacktestId { get; set; }
 }
 
-public class BacktestStatus
+public sealed class BacktestStatus
 {
     public string? BacktestId { get; set; }
     public BacktestState State { get; set; }
@@ -444,7 +430,7 @@ public enum BacktestState
     Cancelled
 }
 
-public class BacktestResults
+public sealed class BacktestResults
 {
     public string? BacktestId { get; set; }
     public string? AlgorithmName { get; set; }
@@ -463,7 +449,7 @@ public class BacktestResults
     public List<EquityPoint>? EquityCurve { get; set; }
 }
 
-public class BacktestTradeRecord
+public sealed class BacktestTradeRecord
 {
     public string Symbol { get; set; } = string.Empty;
     public DateTime EntryTime { get; set; }
@@ -476,13 +462,13 @@ public class BacktestTradeRecord
     public decimal ReturnPercent { get; set; }
 }
 
-public class EquityPoint
+public sealed class EquityPoint
 {
     public DateTime Date { get; set; }
     public decimal Equity { get; set; }
 }
 
-public class BacktestSummary
+public sealed class BacktestSummary
 {
     public string BacktestId { get; set; } = string.Empty;
     public string AlgorithmName { get; set; } = string.Empty;
@@ -493,7 +479,7 @@ public class BacktestSummary
     public decimal? SharpeRatio { get; set; }
 }
 
-public class BacktestHistoryResult
+public sealed class BacktestHistoryResult
 {
     public bool Success { get; set; }
     public string? Error { get; set; }
@@ -504,7 +490,7 @@ public class BacktestHistoryResult
 
 #region API Response Classes
 
-public class LeanVerificationResponse
+public sealed class LeanVerificationResponse
 {
     public bool IsValid { get; set; }
     public string? LeanPath { get; set; }
@@ -514,12 +500,12 @@ public class LeanVerificationResponse
     public string[]? Warnings { get; set; }
 }
 
-public class AlgorithmListResponse
+public sealed class AlgorithmListResponse
 {
     public List<AlgorithmInfo>? Algorithms { get; set; }
 }
 
-public class DataSyncResponse
+public sealed class DataSyncResponse
 {
     public bool Success { get; set; }
     public int SymbolsSynced { get; set; }
@@ -528,12 +514,12 @@ public class DataSyncResponse
     public string[]? Errors { get; set; }
 }
 
-public class BacktestStartResponse
+public sealed class BacktestStartResponse
 {
     public string? BacktestId { get; set; }
 }
 
-public class BacktestHistoryResponse
+public sealed class BacktestHistoryResponse
 {
     public List<BacktestSummary>? Backtests { get; set; }
 }

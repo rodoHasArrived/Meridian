@@ -10,7 +10,10 @@ using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using MarketDataCollector.Ui.Services;
+using MarketDataCollector.Wpf.Contracts;
 using MarketDataCollector.Wpf.Services;
+using WpfServices = MarketDataCollector.Wpf.Services;
 using Timer = System.Timers.Timer;
 
 namespace MarketDataCollector.Wpf.Views;
@@ -45,24 +48,38 @@ public partial class LiveDataViewerPage : Page
     private int _bidSize;
     private int _askSize;
 
-    public LiveDataViewerPage()
+    private readonly StatusService _statusService;
+    private readonly ConnectionService _connectionService;
+    private readonly WpfServices.LoggingService _loggingService;
+    private readonly WpfServices.NotificationService _notificationService;
+
+    public LiveDataViewerPage(
+        StatusService statusService,
+        ConnectionService connectionService,
+        WpfServices.LoggingService loggingService,
+        WpfServices.NotificationService notificationService)
     {
         InitializeComponent();
+
+        _statusService = statusService;
+        _connectionService = connectionService;
+        _loggingService = loggingService;
+        _notificationService = notificationService;
 
         LiveFeedList.ItemsSource = _liveEvents;
 
         // Get base URL from StatusService
-        _baseUrl = StatusService.Instance.BaseUrl;
+        _baseUrl = _statusService.BaseUrl;
 
         // Subscribe to connection events
-        ConnectionService.Instance.StateChanged += OnConnectionStateChanged;
+        _connectionService.StateChanged += OnConnectionStateChanged;
 
         Unloaded += OnPageUnloaded;
     }
 
     private void OnPageUnloaded(object sender, RoutedEventArgs e)
     {
-        ConnectionService.Instance.StateChanged -= OnConnectionStateChanged;
+        _connectionService.StateChanged -= OnConnectionStateChanged;
         _refreshTimer?.Stop();
         _refreshTimer?.Dispose();
         _statsTimer?.Stop();
@@ -94,7 +111,7 @@ public partial class LiveDataViewerPage : Page
 
     private void UpdateConnectionStatus()
     {
-        var state = ConnectionService.Instance.State;
+        var state = _connectionService.State;
         var isConnected = state == ConnectionState.Connected;
 
         ConnectionStatusText.Text = state switch
@@ -121,26 +138,35 @@ public partial class LiveDataViewerPage : Page
             _cts?.Cancel();
             _cts = new CancellationTokenSource();
 
-            // Get symbols from status service
-            var status = await StatusService.Instance.GetStatusAsync(_cts.Token);
-            if (status != null)
+            // Try loading symbols from backend API via SymbolManagementService
+            var symbolService = SymbolManagementService.Instance;
+            var result = await symbolService.GetAllSymbolsAsync(_cts.Token);
+
+            _availableSymbols.Clear();
+
+            if (result.Success && result.Symbols.Count > 0)
             {
-                _availableSymbols.Clear();
-
-                // SimpleStatus doesn't contain subscription details, so use default symbols
-                // In a real implementation, this would call a separate API endpoint
-                _availableSymbols.AddRange(new[] { "SPY", "AAPL", "MSFT", "GOOGL", "AMZN", "QQQ", "IWM", "DIA" });
-
-                SymbolComboBox.ItemsSource = _availableSymbols;
-                if (_availableSymbols.Count > 0 && SymbolComboBox.SelectedItem == null)
+                _availableSymbols.AddRange(result.Symbols.Select(s => s.Symbol));
+            }
+            else
+            {
+                // Fallback: try loading from config service
+                var configSymbols = await Wpf.Services.ConfigService.Instance.GetConfiguredSymbolsAsync(_cts.Token);
+                if (configSymbols.Length > 0)
                 {
-                    SymbolComboBox.SelectedIndex = 0;
+                    _availableSymbols.AddRange(configSymbols.Select(s => s.Symbol));
                 }
+            }
+
+            SymbolComboBox.ItemsSource = _availableSymbols;
+            if (_availableSymbols.Count > 0 && SymbolComboBox.SelectedItem == null)
+            {
+                SymbolComboBox.SelectedIndex = 0;
             }
         }
         catch (Exception ex)
         {
-            LoggingService.Instance.LogError("Failed to load symbols", ex);
+            _loggingService.LogError("Failed to load symbols from backend", ex);
         }
     }
 
@@ -219,7 +245,7 @@ public partial class LiveDataViewerPage : Page
         }
         catch (Exception ex)
         {
-            LoggingService.Instance.LogError("Failed to refresh live data", ex);
+            _loggingService.LogError("Failed to refresh live data", ex);
         }
     }
 
@@ -435,7 +461,7 @@ public partial class LiveDataViewerPage : Page
             }
             SymbolComboBox.SelectedItem = symbol;
 
-            NotificationService.Instance.ShowNotification(
+            _notificationService.ShowNotification(
                 "Symbol Added",
                 $"Added {symbol} to the symbol list.",
                 NotificationType.Success);
@@ -447,7 +473,7 @@ public partial class LiveDataViewerPage : Page
         _isPaused = !_isPaused;
         PauseResumeButton.Content = _isPaused ? "Resume" : "Pause";
 
-        NotificationService.Instance.ShowNotification(
+        _notificationService.ShowNotification(
             _isPaused ? "Paused" : "Resumed",
             _isPaused ? "Live data feed has been paused." : "Live data feed has been resumed.",
             NotificationType.Info);
@@ -459,7 +485,7 @@ public partial class LiveDataViewerPage : Page
         ResetSessionStats();
         NoDataText.Visibility = Visibility.Visible;
 
-        NotificationService.Instance.ShowNotification(
+        _notificationService.ShowNotification(
             "Cleared",
             "Live data feed has been cleared.",
             NotificationType.Info);
@@ -469,7 +495,7 @@ public partial class LiveDataViewerPage : Page
 /// <summary>
 /// Model for live data events in the feed.
 /// </summary>
-public class LiveDataEventModel
+public sealed class LiveDataEventModel
 {
     public string Id { get; set; } = string.Empty;
     public DateTime RawTimestamp { get; set; }
@@ -487,7 +513,7 @@ public class LiveDataEventModel
 /// <summary>
 /// Dialog for adding a new symbol to watch.
 /// </summary>
-public class AddSymbolDialog : Window
+public sealed class AddSymbolDialog : Window
 {
     private readonly TextBox _symbolBox;
 

@@ -15,6 +15,7 @@ namespace MarketDataCollector.Tests.Integration;
 /// verify route format, and detect endpoints returning 501 (Not Implemented).
 /// Prevents unimplemented stubs from slipping through unnoticed.
 /// </summary>
+[Trait("Category", "Integration")]
 public sealed class EndpointStubDetectionTests : IAsyncLifetime
 {
     private StatusHttpServer? _server;
@@ -281,7 +282,8 @@ public sealed class EndpointStubDetectionTests : IAsyncLifetime
             "/api/config/datasource", "/api/config/alpaca",
             "/api/config/datasources", "/api/config/datasources/{id}",
             "/api/config/datasources/{id}/toggle", "/api/config/datasources/defaults",
-            "/api/config/datasources/failover"
+            "/api/config/datasources/failover",
+            "/api/config/symbols/{symbol}" // DELETE endpoint mapped via route concatenation
         };
 
         var staleRoutes = MappedEndpointRoutes

@@ -14,24 +14,10 @@ namespace MarketDataCollector.Ui.Services;
 /// </summary>
 public sealed class PortfolioImportService
 {
-    private static PortfolioImportService? _instance;
-    private static readonly object _lock = new();
+    private static readonly Lazy<PortfolioImportService> _instance = new(() => new PortfolioImportService());
     private readonly ApiClientService _apiClient;
 
-    public static PortfolioImportService Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                lock (_lock)
-                {
-                    _instance ??= new PortfolioImportService();
-                }
-            }
-            return _instance;
-        }
-    }
+    public static PortfolioImportService Instance => _instance.Value;
 
     private PortfolioImportService()
     {
@@ -258,6 +244,20 @@ public sealed class PortfolioImportService
 
         // Fallback to hardcoded common indices
         return GetHardcodedIndex(indexName);
+    }
+
+    /// <summary>
+    /// Imports a list of symbols as subscriptions.
+    /// </summary>
+    public Task<PortfolioImportResult> ImportSymbolsAsync(
+        IEnumerable<string> symbols,
+        bool enableTrades = true,
+        bool enableDepth = false,
+        int depthLevels = 5,
+        CancellationToken ct = default)
+    {
+        var entries = symbols.Select(s => new PortfolioEntry { Symbol = s });
+        return ImportAsSubscriptionsAsync(entries, enableTrades, enableDepth, depthLevels, ct);
     }
 
     private static IndexConstituentsResult GetHardcodedIndex(string indexName)

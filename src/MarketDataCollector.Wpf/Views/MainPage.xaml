@@ -263,6 +263,12 @@
                                         <TextBlock Text="Backfill" Style="{StaticResource NavLabelStyle}" />
                                     </StackPanel>
                                 </ListBoxItem>
+                                <ListBoxItem Tag="Options">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{StaticResource IconTrending}" Style="{StaticResource NavIconStyle}" />
+                                        <TextBlock Text="Options" Style="{StaticResource NavLabelStyle}" />
+                                    </StackPanel>
+                                </ListBoxItem>
                             </ListBox>
 
                             <Rectangle Style="{StaticResource HorizontalDividerStyle}" Margin="20,6" />
@@ -341,6 +347,12 @@
                                         <TextBlock Text="Settings" Style="{StaticResource NavLabelStyle}" />
                                     </StackPanel>
                                 </ListBoxItem>
+                                <ListBoxItem Tag="AddProviderWizard">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{StaticResource IconPlugin}" Style="{StaticResource NavIconStyle}" />
+                                        <TextBlock Text="Add Provider" Style="{StaticResource NavLabelStyle}" />
+                                    </StackPanel>
+                                </ListBoxItem>
                                 <ListBoxItem Tag="AdminMaintenance">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="{StaticResource IconSettings}" Style="{StaticResource NavIconStyle}" />
@@ -355,6 +367,45 @@
 
             <!-- Main Content Area -->
             <Grid>
+                <!-- Fixture/Offline Mode Banner (P0: Hard visual distinction for sample/offline mode) -->
+                <Border x:Name="FixtureModeBanner"
+                        VerticalAlignment="Top"
+                        Height="36"
+                        Visibility="Collapsed"
+                        Panel.ZIndex="10">
+                    <Border.Background>
+                        <SolidColorBrush x:Name="FixtureModeBannerBrush" Color="#FFB300" />
+                    </Border.Background>
+                    <Grid>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                            <TextBlock Text="&#x26A0;"
+                                       FontSize="14"
+                                       Foreground="#1A1A2E"
+                                       VerticalAlignment="Center"
+                                       Margin="0,0,8,0" />
+                            <TextBlock x:Name="FixtureModeLabel"
+                                       Text="FIXTURE MODE — Showing sample data, not connected to live backend"
+                                       FontSize="12"
+                                       FontWeight="SemiBold"
+                                       Foreground="#1A1A2E"
+                                       VerticalAlignment="Center" />
+                        </StackPanel>
+                        <Button x:Name="FixtureModeDismissButton"
+                                Style="{StaticResource IconButtonStyle}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="0,0,8,0"
+                                Click="OnFixtureModeDismiss"
+                                ToolTip="Dismiss banner">
+                            <TextBlock Text="&#x2715;"
+                                       FontSize="12"
+                                       Foreground="#1A1A2E" />
+                        </Button>
+                    </Grid>
+                </Border>
+
                 <!-- Top Header Bar -->
                 <Border DockPanel.Dock="Top"
                         Height="56"

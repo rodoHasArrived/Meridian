@@ -18,11 +18,11 @@ using MarketDataCollector.Domain.Collectors;
 using MarketDataCollector.Domain.Events;
 using MarketDataCollector.Domain.Models;
 using MarketDataCollector.Infrastructure;
-using MarketDataCollector.Infrastructure.Providers.Backfill;
-using MarketDataCollector.Infrastructure.Providers.Streaming.Failover;
-using MarketDataCollector.Infrastructure.Providers.Core;
+using MarketDataCollector.Infrastructure.Adapters.Core;
+using MarketDataCollector.Infrastructure.Adapters.Failover;
 using BackfillRequest = MarketDataCollector.Application.Backfill.BackfillRequest;
 using MarketDataCollector.Storage;
+using MarketDataCollector.Application.ResultTypes;
 using MarketDataCollector.Storage.Policies;
 using MarketDataCollector.Storage.Replay;
 using MarketDataCollector.Storage.Services;
@@ -62,8 +62,15 @@ public partial class Program
         }
         catch (Exception ex)
         {
-            log.Fatal(ex, "MarketDataCollector terminated unexpectedly");
-            return 1;
+            var errorCode = ErrorCodeExtensions.FromException(ex);
+            log.Fatal(ex, "MarketDataCollector terminated unexpectedly (ErrorCode={ErrorCode}, ExitCode={ExitCode})",
+                errorCode, errorCode.ToExitCode());
+
+            // Display user-friendly error with actionable suggestions
+            var friendlyError = FriendlyErrorFormatter.Format(ex);
+            FriendlyErrorFormatter.DisplayError(friendlyError);
+
+            return errorCode.ToExitCode();
         }
         finally
         {
@@ -87,7 +94,10 @@ public partial class Program
             new ValidateConfigCommand(configService, cfgPath, log),
             new DryRunCommand(cfg, configService, log),
             new SelfTestCommand(log),
-            new PackageCommands(cfg, log)
+            new PackageCommands(cfg, log),
+            new ConfigPresetCommand(new AutoConfigurationService(), log),
+            new QueryCommand(new HistoricalDataQueryService(cfg.DataRoot), log),
+            new GenerateLoaderCommand(cfg.DataRoot, log)
         );
 
         var (handled, cliResult) = await dispatcher.TryDispatchAsync(cliArgs.Raw);
@@ -126,8 +136,9 @@ public partial class Program
         // Validate configuration (routed through ConfigurationService)
         if (!configService.ValidateConfig(cfg, out _))
         {
-            log.Error("Exiting due to configuration errors");
-            return 1;
+            log.Error("Exiting due to configuration errors (ExitCode={ExitCode})",
+                ErrorCode.ConfigurationInvalid.ToExitCode());
+            return ErrorCode.ConfigurationInvalid.ToExitCode();
         }
 
         // Ensure data directory exists with proper permissions
@@ -141,12 +152,12 @@ public partial class Program
         var permissionsResult = permissionsService.EnsureDirectoryPermissions(cfg.DataRoot);
         if (!permissionsResult.Success)
         {
-            log.Error("Failed to configure data directory permissions: {Message}. " +
+            log.Error("Failed to configure data directory permissions: {Message} (ExitCode={ExitCode}). " +
                 "Troubleshooting: 1) Check that the application has write access to the parent directory. " +
                 "2) On Linux/macOS, ensure the user has appropriate permissions. " +
                 "3) On Windows, run as administrator if needed.",
-                permissionsResult.Message);
-            return 1;
+                permissionsResult.Message, ErrorCode.FileAccessDenied.ToExitCode());
+            return ErrorCode.FileAccessDenied.ToExitCode();
         }
         log.Information("Data directory permissions configured: {Message}", permissionsResult.Message);
 
@@ -164,8 +175,9 @@ public partial class Program
                 log.Warning("Schema compatibility check found issues: {Message}", schemaCheckResult.Message);
                 if (cliArgs.StrictSchemas)
                 {
-                    log.Error("Exiting due to schema incompatibilities (--strict-schemas enabled)");
-                    return 1;
+                    log.Error("Exiting due to schema incompatibilities (--strict-schemas enabled, ExitCode={ExitCode})",
+                        ErrorCode.SchemaMismatch.ToExitCode());
+                    return ErrorCode.SchemaMismatch.ToExitCode();
                 }
             }
             else
@@ -244,7 +256,7 @@ public partial class Program
                 await uiServer.StopAsync();
                 await uiServer.DisposeAsync();
             }
-            return result.Success ? 0 : 1;
+            return result.Success ? 0 : ErrorCode.ProviderError.ToExitCode();
         }
 
         // Resolve collectors from DI - ensures same instances used by streaming providers
@@ -295,21 +307,39 @@ public partial class Program
                 .Distinct(StringComparer.OrdinalIgnoreCase);
 
             var sources = failoverCfg!.Sources ?? Array.Empty<DataSourceConfig>();
-            foreach (var providerId in allProviderIds)
+
+            // Create streaming clients in parallel for faster startup
+            var providerIds = allProviderIds.ToList();
+            var creationTasks = providerIds.Select(providerId =>
             {
                 var source = sources.FirstOrDefault(s => string.Equals(s.Id, providerId, StringComparison.OrdinalIgnoreCase));
                 var providerKind = source?.Provider ?? cfg.DataSource;
-
-                try
+                return Task.Run(() =>
                 {
-                    var client = providerRegistry.CreateStreamingClient(providerKind);
+                    try
+                    {
+                        var client = providerRegistry.CreateStreamingClient(providerKind);
+                        return (providerId, client: (IMarketDataClient?)client, providerKind, error: (Exception?)null);
+                    }
+                    catch (Exception ex)
+                    {
+                        return (providerId, client: (IMarketDataClient?)null, providerKind, error: (Exception?)ex);
+                    }
+                });
+            });
+
+            var results = await Task.WhenAll(creationTasks);
+            foreach (var (providerId, client, providerKind, error) in results)
+            {
+                if (client != null)
+                {
                     providerMap[providerId] = client;
                     failoverService.RegisterProvider(providerId);
                     log.Information("Created streaming client for failover provider {ProviderId} ({Kind})", providerId, providerKind);
                 }
-                catch (Exception ex)
+                else
                 {
-                    log.Warning(ex, "Failed to create streaming client for provider {ProviderId}; skipping", providerId);
+                    log.Warning(error, "Failed to create streaming client for provider {ProviderId}; skipping", providerId);
                 }
             }
 
@@ -341,12 +371,16 @@ public partial class Program
         }
         catch (Exception ex)
         {
-            log.Error(ex, "Failed to connect to {DataSource} data provider. Check credentials and connectivity.", cfg.DataSource);
-            throw;
+            var errorCode = ErrorCodeExtensions.FromException(ex);
+            if (errorCode == ErrorCode.Unknown)
+                errorCode = ErrorCode.ConnectionFailed;
+            log.Error(ex, "Failed to connect to {DataSource} data provider (ErrorCode={ErrorCode}, ExitCode={ExitCode}). Check credentials and connectivity.",
+                cfg.DataSource, errorCode, errorCode.ToExitCode());
+            return errorCode.ToExitCode();
         }
 
-        // Use HostStartup's factory method to create SubscriptionManager from DI-resolved collectors
-        var subscriptionManager = hostStartup.CreateSubscriptionManager(dataClient);
+        // Use HostStartup's factory method to create SubscriptionOrchestrator from DI-resolved collectors
+        var subscriptionManager = hostStartup.CreateSubscriptionOrchestrator(dataClient);
 
         var runtimeCfg = EnsureDefaultSymbols(cfg);
         subscriptionManager.Apply(runtimeCfg);

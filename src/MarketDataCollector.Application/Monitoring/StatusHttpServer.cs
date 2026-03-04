@@ -81,7 +81,7 @@ public sealed class StatusHttpServer : IAsyncDisposable
     public void Start()
     {
         _listener.Start();
-        _loop = Task.Run(HandleAsync);
+        _loop = HandleAsync();
         _log.Information("StatusHttpServer started");
     }
 
@@ -116,26 +116,24 @@ public sealed class StatusHttpServer : IAsyncDisposable
                 break;
             }
 
-            Task.Run(async () =>
-            {
-                try
-                {
-                    await HandleRequestAsync(ctx);
-                }
-                catch (Exception ex)
-                {
-                    _log.Warning(ex, "Unhandled error processing HTTP request to {Path}",
-                        ctx.Request.Url?.AbsolutePath);
-                }
-                finally
-                {
-                    _requestLimiter.Release();
-                }
-            }, _cts.Token)
-            .ContinueWith(
-                t => _log.Warning(t.Exception!.InnerException ?? t.Exception,
-                    "HTTP request handler task faulted"),
-                TaskContinuationOptions.OnlyOnFaulted | TaskContinuationOptions.ExecuteSynchronously);
+            _ = ProcessRequestAsync(ctx);
+        }
+    }
+
+    private async Task ProcessRequestAsync(HttpListenerContext ctx)
+    {
+        try
+        {
+            await HandleRequestAsync(ctx);
+        }
+        catch (Exception ex)
+        {
+            _log.Warning(ex, "Unhandled error processing HTTP request to {Path}",
+                ctx.Request.Url?.AbsolutePath);
+        }
+        finally
+        {
+            _requestLimiter.Release();
         }
     }
 
@@ -151,7 +149,7 @@ public sealed class StatusHttpServer : IAsyncDisposable
 
             var path = ctx.Request.Url?.AbsolutePath?.Trim('/')?.ToLowerInvariant() ?? string.Empty;
 
-            // Support both /api/* and /* routes for UWP desktop app compatibility
+            // Support both /api/* and /* routes for client compatibility
             if (path.StartsWith("api/"))
                 path = path.Substring(4);
 
@@ -299,13 +297,13 @@ public sealed class StatusHttpServer : IAsyncDisposable
     }
 
     /// <summary>
-    /// Returns current backfill status for UWP app.
+    /// Returns current backfill status for the desktop app.
     /// </summary>
     private Task WriteBackfillStatusAsync(HttpListenerResponse resp)
     {
         resp.ContentType = "application/json";
         // Return empty status when no backfill is running
-        var status = new BackfillResult
+        var status = new BackfillResultDto
         {
             Success = true,
             BarsWritten = 0

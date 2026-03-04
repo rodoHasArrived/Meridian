@@ -4,10 +4,13 @@ using MarketDataCollector.Application.Config;
 using MarketDataCollector.Application.Logging;
 using MarketDataCollector.Application.Monitoring;
 using MarketDataCollector.Application.Pipeline;
+using MarketDataCollector.Infrastructure.Adapters.Core;
+using MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution;
+using MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink;
+using MarketDataCollector.Infrastructure.Adapters.OpenFigi;
+using MarketDataCollector.Infrastructure.Adapters.Stooq;
+using MarketDataCollector.Infrastructure.Adapters.YahooFinance;
 using MarketDataCollector.Infrastructure.Contracts;
-using MarketDataCollector.Infrastructure.Providers.Backfill;
-using MarketDataCollector.Infrastructure.Providers.Backfill.SymbolResolution;
-using MarketDataCollector.Infrastructure.Providers.Core;
 using BackfillRequest = MarketDataCollector.Application.Backfill.BackfillRequest;
 using MarketDataCollector.Storage;
 using MarketDataCollector.Storage.Policies;
@@ -39,6 +42,7 @@ public sealed class BackfillCoordinator : IDisposable
     /// <param name="store">Configuration store.</param>
     /// <param name="registry">Provider registry for unified provider discovery.</param>
     /// <param name="factory">Provider factory as fallback for creating providers if registry is empty.</param>
+    /// <param name="metrics">Event metrics for tracking backfill operations.</param>
     public BackfillCoordinator(ConfigStore store, ProviderRegistry? registry = null, ProviderFactory? factory = null, IEventMetrics? metrics = null)
     {
         _store = store;
@@ -152,7 +156,7 @@ public sealed class BackfillCoordinator : IDisposable
 
             var policy = new JsonlStoragePolicy(storageOpt);
             await using var sink = new JsonlStorageSink(storageOpt, policy);
-            await using var pipeline = new EventPipeline(sink, capacity: 20_000, enablePeriodicFlush: false);
+            await using var pipeline = new EventPipeline(sink, capacity: 20_000, enablePeriodicFlush: false, metrics: _metrics);
 
             // Keep pipeline counters scoped per run
             _metrics.Reset();
@@ -282,11 +286,11 @@ public sealed class BackfillCoordinator : IDisposable
                 log: _log
             );
 
-            providers = new List<IHistoricalDataProvider> { composite };
+            // Combine composite (for fallback routing) with individual providers (for direct selection)
+            var combined = new List<IHistoricalDataProvider> { composite };
+            combined.AddRange(providers);
+            providers = combined;
         }
-
-        // Add individual providers as well for direct selection
-        providers.AddRange(CreateProviders());
 
         return new HistoricalBackfillService(providers, _log);
     }

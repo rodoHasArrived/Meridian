@@ -20,6 +20,7 @@ public partial class StoragePage : Page { }
 public partial class BackfillPage : Page { }
 public partial class PortfolioImportPage : Page { }
 public partial class IndexSubscriptionPage : Page { }
+public partial class OptionsPage : Page { }
 public partial class ScheduleManagerPage : Page { }
 
 // Monitoring pages
@@ -66,6 +67,7 @@ public partial class WelcomePage : Page { }
 public partial class SettingsPage : Page { }
 public partial class KeyboardShortcutsPage : Page { }
 public partial class SetupWizardPage : Page { }
+public partial class AddProviderWizardPage : Page { }
 
 // Activity Log page
 public partial class ActivityLogPage : Page { }

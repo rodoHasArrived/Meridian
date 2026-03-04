@@ -130,7 +130,7 @@ If headings are missing, the workflow still creates an entry with safe defaults 
 - **Verification commands**:
   - `dotnet build src/MarketDataCollector.Ui.Services/MarketDataCollector.Ui.Services.csproj -c Release`
   - `dotnet build src/MarketDataCollector.Wpf/MarketDataCollector.Wpf.csproj -c Release -p:TargetFramework=net9.0-windows` (on Windows)
-  - `dotnet build src/MarketDataCollector.Uwp/MarketDataCollector.Uwp.csproj -c Release -r win-x64 -p:Platform=x64` (on Windows)
+  - `dotnet build src/MarketDataCollector.Wpf/MarketDataCollector.Wpf.csproj -c Release -p:TargetFramework=net9.0-windows` (on Windows)
 - **Source issue**: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/21851485930/job/63058846153
 - **Status**: fixed (commit cec548e)
 
@@ -150,3 +150,188 @@ If headings are missing, the workflow still creates an entry with safe defaults 
   - `dotnet test MarketDataCollector.sln --collect:"XPlat Code Coverage" --results-directory ./test-results && ls -la ./test-results/**/coverage.cobertura.xml`
 - **Source issue**: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/21938525658/job/63358083776#step:5:1
 - **Status**: fixed (commit ad97ee2)
+
+### AI-20260212-conditional-job-dependency
+- **Area**: workflows/GitHub Actions
+- **Symptoms**: Workflow jobs with `if: always()` fail to run when depending on jobs with conditional execution (`if: startsWith(...)`). The dependent job is skipped even though `always()` is specified, because GitHub Actions treats unmet dependencies (skipped jobs) as a blocking condition.
+- **Root cause**: GitHub Actions job dependencies (`needs:`) require all listed jobs to complete successfully or be explicitly handled. When a job is conditionally skipped (e.g., `if: startsWith(github.ref, 'refs/tags/v')`), any job depending on it will also be skipped unless proper conditional logic is used. The `if: always()` condition means "run regardless of previous job failures" but not "run even if dependencies are skipped."
+- **Prevention checklist**:
+  - [ ] When a job has `needs:` dependencies, verify all dependent jobs run in the same conditions or have proper handling
+  - [ ] Never depend on conditionally-executed jobs (with `if:` conditions) from jobs that always run
+  - [ ] If cleanup jobs need to run `always()`, only depend on jobs that also run unconditionally
+  - [ ] Use conditional expressions in dependencies: `if: always() && needs.job-name.result != 'skipped'`
+  - [ ] Document job dependencies with comments explaining conditional logic
+  - [ ] Test workflows on both tag and non-tag branches to verify all jobs execute as expected
+- **Verification commands**:
+  - `grep -A5 "needs:" .github/workflows/*.yml | grep -B5 "if:"`
+  - `python3 -c "import yaml; yaml.safe_load(open('.github/workflows/desktop-builds.yml'))"`
+- **Source issue**: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/21958711610/job/63429967664
+- **Status**: fixed (commit 4f6088f)
+
+---
+
+### AI-20260212-wpf-globalusings-missing-directives
+- **Area**: build/desktop-ui
+- **Symptoms**: WPF project fails to compile with 80 CS0246 errors like "The type or namespace name 'ShortcutInvokedEventArgs' could not be found", "The type or namespace name 'ApiClientService' could not be found". NotificationService fails with CS0535 "does not implement interface member".
+- **Root cause**: GlobalUsings.cs was updated (commit d9b43dc) to remove `global using MarketDataCollector.Ui.Services.Services;` to avoid namespace conflicts with WPF-specific services. Files that reference types from this namespace now need explicit using directives.
+- **Prevention checklist**:
+  - [ ] After modifying GlobalUsings.cs, verify all files in the project still compile
+  - [ ] When removing global usings, search for all usages of types from that namespace
+  - [ ] Add explicit using directives to files that need removed global types
+  - [ ] For WPF files: add `using MarketDataCollector.Wpf.Services;` for WPF services
+  - [ ] For shared types: add `using UiServices = MarketDataCollector.Ui.Services.Services;` and type aliases
+  - [ ] Handle type ambiguities (e.g., NotificationType) with explicit aliases
+  - [ ] Test both local and CI builds after GlobalUsings changes
+- **Verification commands**:
+  - `dotnet build src/MarketDataCollector.Wpf/MarketDataCollector.Wpf.csproj`
+  - `grep -r "using MarketDataCollector.Wpf.Services;" src/MarketDataCollector.Wpf/Views/`
+  - `grep -r "using UiServices" src/MarketDataCollector.Wpf/Services/`
+- **Source issue**: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/21959216554/job/63431802067
+- **Status**: fixed (commit 5ea62c8)
+
+### AI-20260213-nullable-value-property-misuse
+- **Area**: build/C#/nullable types
+- **Symptoms**: Build fails with CS1061 errors: "'double' does not contain a definition for 'Value' and no accessible extension method 'Value' accepting a first argument of type 'double' could be found". This occurs when accessing `.Value` on nullable value types after using the null-forgiving operator (`!`), or when using `out var` with generic methods that return `T?` where the compiler fails to properly infer the nullable type.
+- **Root cause**: When `TryGetFromNewest` was called on a `CircularBuffer<double>`, the `out T? value` parameter became `out double? value`, making `fromValue` and `toValue` of type `double?` (nullable double). The Windows C# compiler has a bug where it incorrectly infers `out var` as `double` instead of `double?` when the out parameter is `T?` for a value type.
+- **Structural fix (commit 49b2916)**: Changed API signature from `out T? value` to `out T value` with `[MaybeNullWhen(false)]` attribute. This eliminates the entire category of nullable value type inference issues because there's no longer a nullable generic out parameter. The bool return value is the presence/absence signal, following standard .NET TryX pattern. This is the recommended approach because:
+  1. Eliminates Windows compiler inference bug entirely
+  2. Follows idiomatic .NET patterns (like Dictionary.TryGetValue)
+  3. Allows safe use of `out var` everywhere
+  4. No defensive null checks needed when true is returned
+  5. Prevents future regressions structurally
+- **Prevention checklist**:
+  - [ ] For Try pattern APIs, use `bool TryX(out T value)` with `[MaybeNullWhen(false)]` instead of `bool TryX(out T? value)`
+  - [ ] The bool is the presence/absence signal; don't use nullable for that purpose
+  - [ ] Assign `default!` on failure path to satisfy nullable reference types analyzer
+  - [ ] When updating existing `out T?` APIs, this is a breaking change but eliminates entire bug class
+  - [ ] Test builds on both Linux and Windows after any changes to nullable type handling
+- **Structural fix pattern**:
+  ```csharp
+  public bool TryGetFromNewest(int offsetFromNewest, [MaybeNullWhen(false)] out T value)
+  {
+      if (offsetFromNewest < 0 || offsetFromNewest >= _count)
+      {
+          value = default!;  // Use default! to satisfy analyzer
+          return false;
+      }
+      
+      value = _buffer[index];
+      return true;
+  }
+  
+  // Call site - clean and simple, works everywhere
+  if (!buffer.TryGetFromNewest(fromOffset, out var fromValue))
+      return null;
+  
+  // fromValue is T (e.g., double), no nullable inference involved
+  ```
+- **Verification commands**:
+  - `dotnet build src/MarketDataCollector.Ui.Services/MarketDataCollector.Ui.Services.csproj -c Release`
+  - `dotnet build src/MarketDataCollector.Wpf/MarketDataCollector.Wpf.csproj -c Release -p:TargetFramework=net9.0-windows`
+  - `grep -n 'out T? value' src/MarketDataCollector.Ui.Services/Collections/CircularBuffer.cs` (should return no matches after fix)
+- **Source issues**: 
+  - https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/21988186038/job/63527798918#step:5:1 (original)
+  - https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/21996212289/job/63556782046 (variant)
+  - https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/21998525615/job/63564824033#step:5:1 (regression)
+- **Status**: fixed structurally (commit 49b2916 - changed API to eliminate nullable generic out parameter)
+- **Note**: This issue regressed multiple times (1e2ea1d, 5756479, 1802ea9, bf67ed5, e920c34) when using workarounds. The structural fix eliminates the problem at the API design level.
+
+---
+
+### AI-20260214-preflight-config-check-ci-failure
+- **ID**: AI-20260214-preflight-config-check-ci-failure
+- **Area**: CI/build/preflight
+- **Symptoms**: Build Observability workflow fails with error "FAILED preflight :: config/appsettings.json missing (run make setup-config)" even though the file is tracked in git. The preflight check fails in CI environments where the config file isn't needed.
+- **Root cause**: The preflight check in `build/python/diagnostics/preflight.py` unconditionally requires `config/appsettings.json` to exist. This is appropriate for local development (where the file is needed for running the application) but not for CI environments where only building is required. The config file is gitignored but was previously committed, causing confusion.
+- **Prevention checklist**:
+  - [ ] When adding preflight checks that validate local development setup, make them CI-aware
+  - [ ] Check for `CI=true` or `GITHUB_ACTIONS=true` environment variables to skip runtime-only checks
+  - [ ] Distinguish between build-time requirements (tools, SDKs) and runtime requirements (config, secrets)
+  - [ ] Test preflight checks both locally and in CI-like environments (with CI=true)
+- **Verification commands**:
+  - `CI=true python3 build/python/cli/buildctl.py build --configuration Release` (should pass preflight even without config file)
+  - `python3 -c "import os; os.environ['CI']='true'; from pathlib import Path; import sys; sys.path.insert(0,'build/python'); from diagnostics.preflight import run_preflight; print(run_preflight(Path('.')))"` (should return (True, []))
+- **Source issue**: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/22014850305/job/63614949528#step:5:1
+- **Status**: fixed (commit 55d2827)
+- **Fixed in**: build/python/diagnostics/preflight.py - Added CI detection to skip config check when CI=true or GITHUB_ACTIONS=true
+
+### AI-20260215-maintenance-endpoint-500-for-missing-schedule
+- **ID**: AI-20260215-maintenance-endpoint-500-for-missing-schedule
+- **Area**: runtime/endpoints
+- **Symptoms**: POST `/api/maintenance/schedules/{id}/run` returns HTTP 500 Internal Server Error instead of 404 when the schedule ID doesn't exist. Integration tests masked this by accepting 500 alongside 404 with a catch-all that passed unconditionally (`true.Should().BeTrue()`).
+- **Root cause**: `ScheduledArchiveMaintenanceService.TriggerScheduleAsync()` throws `KeyNotFoundException` for non-existent schedules. The endpoint handler did not catch this exception, so it propagated as an unhandled 500 error. The test was written to tolerate this by accepting `InternalServerError` and using a tautological catch-all.
+- **Prevention checklist**:
+  - [ ] When implementing endpoints that accept entity IDs, always handle `KeyNotFoundException` and return 404
+  - [ ] Never write tests with `true.Should().BeTrue()` inside catch blocks — these are tautological and mask real failures
+  - [ ] Tighten endpoint test status code assertions: avoid accepting 4–5 different codes when only 1–2 are correct
+  - [ ] Check that all CRUD endpoints consistently return 404 for non-existent entities
+- **Verification commands**:
+  - `dotnet test tests/MarketDataCollector.Tests --filter "FullyQualifiedName~MaintenanceEndpointTests"`
+- **Status**: fixed
+- **Fixed in**: `src/MarketDataCollector.Ui.Shared/Endpoints/MaintenanceScheduleEndpoints.cs` — added `catch (KeyNotFoundException)` returning `Results.NotFound()`. Tests tightened to assert 404 instead of 500.
+
+### AI-20260215-tautological-test-assertions
+- **ID**: AI-20260215-tautological-test-assertions
+- **Area**: tests/quality
+- **Symptoms**: Several tests contained `true.Should().BeTrue()` inside catch-all blocks, making them incapable of ever failing. Other tests asserted `ThrowAsync<Exception>()` (the base type) which is trivially satisfiable by any error.
+- **Root cause**: When writing tests for endpoints or services that return implementation-dependent results, agents used overly permissive assertions to avoid test failures rather than fixing the underlying code.
+- **Prevention checklist**:
+  - [ ] Never use `true.Should().BeTrue()` or equivalent no-op assertions
+  - [ ] Never catch exceptions in test bodies without asserting on the exception type or message
+  - [ ] Assert specific exception types (`ThrowAsync<OperationCanceledException>()`) rather than `ThrowAsync<Exception>()`
+  - [ ] Tests should fail when the system behaves incorrectly — if a test can't fail, it provides no value
+  - [ ] Audit tests for bare `catch {}` blocks that silently pass
+- **Status**: fixed
+- **Fixed in**: `MaintenanceEndpointTests.cs`, `WpfDataQualityServiceTests.cs`, `ConnectionServiceTests.cs` — removed tautological assertions, tightened status code checks, added real assertions
+
+### AI-20260216-github-actions-shell-powershell
+- **ID**: AI-20260216-github-actions-shell-powershell
+- **Area**: build/ci/github-actions
+- **Symptoms**: GitHub Actions workflow fails on Windows runners with PowerShell parsing error: "Missing expression after unary operator '--'". The error occurs when a multi-line `run:` step uses backslash (`\`) for line continuation without specifying the shell.
+- **Root cause**: GitHub Actions defaults to PowerShell on Windows runners. PowerShell uses backtick (`` ` ``) for line continuation, not backslash (`\`). When a workflow step uses bash-style backslash continuation without `shell: bash`, PowerShell interprets `--no-restore \` as attempting to use `--` as a unary operator, causing a parse error.
+- **Prevention checklist**:
+  - [ ] When writing multi-line `run:` steps with backslash (`\`) line continuation, always specify `shell: bash`
+  - [ ] Check reusable workflows that run on multiple platforms (ubuntu, windows, macos) for missing shell specifications
+  - [ ] Review existing steps in the same workflow file for consistency in shell specification
+  - [ ] If using PowerShell-specific syntax, use `shell: pwsh` and backtick (`` ` ``) for line continuation
+  - [ ] Validate workflow YAML syntax after changes: `python3 -c "import yaml; yaml.safe_load(open('.github/workflows/file.yml'))"`
+- **Verification commands**:
+  - `grep -r "run: |" .github/workflows/*.yml | grep -v "shell:"` (should return no multi-line bash commands without shell specification)
+  - `python3 -c "import yaml; yaml.safe_load(open('.github/workflows/reusable-dotnet-build.yml'))"`
+- **Source issue**: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/22047221887/job/63698175553
+- **Status**: fixed
+- **Fixed in**: `.github/workflows/reusable-dotnet-build.yml` line 121 — added `shell: bash` to the Build step
+
+### AI-20260220-cs0104-backfill-result-ambiguity
+- **ID**: AI-20260220-cs0104-backfill-result-ambiguity
+- **Area**: build/namespaces
+- **Symptoms**: Build fails with CS0104: "'BackfillResult' is an ambiguous reference between 'MarketDataCollector.Contracts.Api.BackfillResult' and 'MarketDataCollector.Application.Backfill.BackfillResult'". Using alias directives (`using BackfillResult = ...`) fail to resolve the ambiguity when the conflicting namespace is also imported via a `using` namespace directive.
+- **Root cause**: Both `MarketDataCollector.Contracts.Api` and `MarketDataCollector.Application.Backfill` define types named `BackfillResult` and `BackfillRequest`. When both namespaces are imported via `using` directives alongside `using` alias directives for disambiguation, the compiler still reports CS0104. The fix is to remove the `using MarketDataCollector.Application.Backfill;` namespace directive entirely, keeping only the explicit aliases for the specific types needed.
+- **Prevention checklist**:
+  - [ ] When two imported namespaces contain types with the same name, do NOT import both namespaces — import only one and use aliases for types from the other
+  - [ ] Search for duplicate type names across namespaces before adding new `using` directives: `grep -rn "class TypeName\|record TypeName" src/ --include="*.cs"`
+  - [ ] When adding a new type to `Contracts.Api`, check if a type with the same name exists in `Application.Backfill` (or vice versa)
+  - [ ] Prefer fully qualified names or using aliases over importing both conflicting namespaces
+- **Verification commands**:
+  - `dotnet build src/MarketDataCollector.Ui.Shared/MarketDataCollector.Ui.Shared.csproj -c Release`
+  - `grep -rn "using MarketDataCollector.Application.Backfill;" src/MarketDataCollector.Ui.Shared --include="*.cs"` (should return no results after fix)
+- **Source issue**: CI build failure
+- **Status**: fixed
+- **Fixed in**: `BackfillEndpoints.cs` and `BackfillCoordinator.cs` — removed `using MarketDataCollector.Application.Backfill;` namespace directive, kept explicit `using` aliases for `BackfillRequest` and `BackfillResult`, and fully qualified `HistoricalBackfillService`
+
+### AI-20260220-regex-hyphen-character-class
+- **ID**: AI-20260220-regex-hyphen-character-class
+- **Area**: build/ci/github-actions
+- **Symptoms**: Ticker data collection workflow fails with "Input validation failed: one or more symbols contain unsupported characters" for hyphenated preferred share symbols like PCG-PA, PCG-PB, PCG-PC even after normalization to uppercase.
+- **Root cause**: In the bash `grep -E` character class `[A-Z0-9.\-^=]`, the `\-` escape sequence is placed between `.` and `^`. POSIX ERE interprets this as a potential range `\-^`, which does not match the hyphen character in uppercase symbols like PCG-PA. Hyphens in a bracket expression are only guaranteed to be treated as literals when placed at the start or end of the character class.
+- **Prevention checklist**:
+  - [ ] In regex character classes, always place the literal hyphen at the **end** of the class (e.g., `[A-Z0-9.^=-]`) or at the start
+  - [ ] Never use `\-` in the middle of a character class — use `-` at the end instead
+  - [ ] When supporting stock tickers, the validation pattern must allow: uppercase letters (A-Z), digits (0-9), dot (BRK.A), hyphen (PCG-PA), caret (^GSPC), and equals (=SPX)
+  - [ ] Test validation patterns with hyphenated preferred share symbols: `echo "PCG-PA" | grep -E '^[A-Z0-9.^=-]+$'`
+- **Verification commands**:
+  - `echo "PCG-PA" | grep -E '^[A-Z0-9.^=-]+$' && echo "OK" || echo "FAIL"`
+  - `printf 'PCG-PA\nPCG-PB\nBRK.A\n^GSPC\n=SPX' | grep -Ev '^[A-Z0-9.^=-]+$' | wc -l` (should return 0)
+- **Source issue**: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/21857738217/job/64242040198 (original, Feb 10) and https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/22083541882/job/64238547291 (recurrence, Feb 20)
+- **Status**: fixed
+- **Fixed in**: `.github/workflows/ticker-data-collection.yml` line 97 — changed `grep -qEv '^[A-Z0-9.\-^=]+$'` to `grep -Ev '^[A-Z0-9.^=-]+$'` (hyphen moved to end of character class); also improved to capture and display the invalid symbols before rejecting

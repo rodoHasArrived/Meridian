@@ -1117,7 +1117,7 @@ public sealed class AnalysisExportWizardService
             GeneratedAt = DateTime.UtcNow,
             Profile = config.Profile.Name,
             DataTypes = config.DataTypes,
-            DateRange = new { From = config.FromDate.ToString("yyyy-MM-dd"), To = config.ToDate.ToString("yyyy-MM-dd") },
+            DateRange = new { From = config.FromDate.ToString(FormatHelpers.IsoDateFormat), To = config.ToDate.ToString(FormatHelpers.IsoDateFormat) },
             Symbols = config.Symbols,
             Fields = new[]
             {
@@ -1164,7 +1164,7 @@ public sealed class AnalysisExportWizardService
 /// <summary>
 /// Export profile for a specific analysis tool.
 /// </summary>
-public class ExportProfile
+public sealed class ExportProfile
 {
     public string Id { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
@@ -1181,7 +1181,7 @@ public class ExportProfile
 /// <summary>
 /// Data type available for export.
 /// </summary>
-public class ExportDataType
+public sealed class ExportDataType
 {
     public string Id { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
@@ -1192,7 +1192,7 @@ public class ExportDataType
 /// <summary>
 /// Export configuration.
 /// </summary>
-public class ExportConfiguration
+public sealed class ExportConfiguration
 {
     public ExportProfile Profile { get; set; } = new();
     public string[] Symbols { get; set; } = Array.Empty<string>();
@@ -1208,7 +1208,7 @@ public class ExportConfiguration
 /// <summary>
 /// Export size and duration estimate.
 /// </summary>
-public class ExportEstimate
+public sealed class ExportEstimate
 {
     public long TotalRecords { get; set; }
     public long AvailableRecords { get; set; }
@@ -1220,18 +1220,7 @@ public class ExportEstimate
     public string EstimatedSizeFormatted => FormatBytes(EstimatedSizeBytes);
     public string EstimatedDurationFormatted => FormatDuration(EstimatedDurationSeconds);
 
-    private static string FormatBytes(long bytes)
-    {
-        string[] sizes = { "B", "KB", "MB", "GB", "TB" };
-        int order = 0;
-        double size = bytes;
-        while (size >= 1024 && order < sizes.Length - 1)
-        {
-            order++;
-            size /= 1024;
-        }
-        return $"{size:F1} {sizes[order]}";
-    }
+    private static string FormatBytes(long bytes) => FormatHelpers.FormatBytes(bytes);
 
     private static string FormatDuration(int seconds)
     {
@@ -1244,7 +1233,7 @@ public class ExportEstimate
 /// <summary>
 /// Pre-export data quality report.
 /// </summary>
-public class PreExportQualityReport
+public sealed class PreExportQualityReport
 {
     public DateTime GeneratedAt { get; set; }
     public string[] Symbols { get; set; } = Array.Empty<string>();
@@ -1261,7 +1250,7 @@ public class PreExportQualityReport
 /// <summary>
 /// Quality info for a single symbol.
 /// </summary>
-public class SymbolQualityInfo
+public sealed class SymbolQualityInfo
 {
     public string Symbol { get; set; } = string.Empty;
     public double Completeness { get; set; }
@@ -1273,7 +1262,7 @@ public class SymbolQualityInfo
 /// <summary>
 /// Export progress information.
 /// </summary>
-public class ExportProgress
+public sealed class ExportProgress
 {
     public string CurrentSymbol { get; set; } = string.Empty;
     public int ProcessedSymbols { get; set; }
