@@ -678,20 +678,28 @@ public sealed class PreflightChecker
 
     // Indirection for environment variable access to enable deterministic unit testing.
     // Defaults to Environment.GetEnvironmentVariable but can be overridden in tests.
-    private static Func<string, string?> EnvironmentVariableProvider { get; set; } = Environment.GetEnvironmentVariable;
+    private static readonly Func<string, string?> DefaultEnvironmentVariableProvider = Environment.GetEnvironmentVariable;
+
+    // Per-execution-context override of the environment variable provider to avoid
+    // cross-test interference in parallel test runs.
+    private static readonly AsyncLocal<Func<string, string?>?> EnvironmentVariableProviderOverride = new();
 
     // Internal hook for tests to override environment variable lookup without mutating
     // the real process environment. Production code should not call this.
     internal static void SetEnvironmentVariableProvider(Func<string, string?>? provider)
     {
-        EnvironmentVariableProvider = provider ?? Environment.GetEnvironmentVariable;
+        // When provider is null we clear the override and fall back to the default
+        // Environment.GetEnvironmentVariable implementation.
+        EnvironmentVariableProviderOverride.Value = provider;
     }
 
     private static string? GetEnvVarValue(params string[] names)
     {
+        var provider = EnvironmentVariableProviderOverride.Value ?? DefaultEnvironmentVariableProvider;
+
         foreach (var name in names)
         {
-            var value = EnvironmentVariableProvider(name);
+            var value = provider(name);
             if (!string.IsNullOrEmpty(value))
                 return value;
         }
