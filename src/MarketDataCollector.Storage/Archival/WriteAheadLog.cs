@@ -1,4 +1,5 @@
 using System.Buffers;
+using System.Globalization;
 using System.IO.Compression;
 using System.Security.Cryptography;
 using System.Text;
@@ -476,7 +477,7 @@ public sealed class WriteAheadLog : IAsyncDisposable
                 continue;
             }
 
-            if (!DateTime.TryParse(parts[1], out var timestamp))
+            if (!DateTime.TryParse(parts[1], CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out var timestamp))
             {
                 _log.Warning(
                     "Malformed WAL record skipped in {File}: unable to parse timestamp for sequence {Sequence}",
@@ -592,7 +593,7 @@ public sealed class WriteAheadLog : IAsyncDisposable
                 var parts = line.Split('|', 5);
                 if (parts.Length < 5 ||
                     !long.TryParse(parts[0], out var sequence) ||
-                    !DateTime.TryParse(parts[1], out var timestamp))
+                    !DateTime.TryParse(parts[1], CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out var timestamp))
                 {
                     fileCorruptedCount++;
                     corruptedRecords++;

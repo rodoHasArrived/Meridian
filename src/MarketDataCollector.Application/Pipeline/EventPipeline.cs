@@ -38,6 +38,7 @@ public sealed class EventPipeline : IMarketEventPublisher, IBackpressureSignal, 
     private readonly Task _consumer;
     private readonly Task? _flusher;
     private readonly int _capacity;
+    private readonly BoundedChannelFullMode _fullMode;
     private readonly bool _metricsEnabled;
     private readonly DroppedEventAuditTrail? _auditTrail;
     private readonly IEventMetrics _metrics;
@@ -154,6 +155,7 @@ public sealed class EventPipeline : IMarketEventPublisher, IBackpressureSignal, 
         if (policy is null)
             throw new ArgumentNullException(nameof(policy));
         _capacity = policy.Capacity;
+        _fullMode = policy.FullMode;
         _metricsEnabled = policy.EnableMetrics;
         _flushInterval = flushInterval ?? TimeSpan.FromSeconds(5);
         _batchSize = Math.Max(1, batchSize);
@@ -321,6 +323,30 @@ public sealed class EventPipeline : IMarketEventPublisher, IBackpressureSignal, 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool TryPublish(in MarketEvent evt)
     {
+        // For DropWrite mode, TryWrite returns true even when the new item is
+        // silently discarded. Pre-check capacity to detect these silent drops.
+        // (DropOldest/DropNewest evict old items, so the new item IS accepted.)
+        if (_fullMode == BoundedChannelFullMode.DropWrite && _channel.Reader.Count >= _capacity)
+        {
+            // Channel is at capacity — the item will be silently discarded by the
+            // bounded channel. Still call TryWrite so the channel can apply its
+            // policy, but track the event as dropped.
+            _channel.Writer.TryWrite(evt);
+            Interlocked.Increment(ref _droppedCount);
+            if (_metricsEnabled)
+            {
+                _metrics.IncDropped();
+            }
+
+            if (_auditTrail != null)
+            {
+                _auditTrail.RecordDroppedEventAsync(evt, "backpressure_queue_full")
+                    .ObserveException(operation: "audit trail recording dropped event");
+            }
+
+            return false;
+        }
+
         var written = _channel.Writer.TryWrite(evt);
 
         if (written)
