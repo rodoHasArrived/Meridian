@@ -258,6 +258,10 @@ public static class ExportEndpoints
 
             var result = await exportService.ExportAsync(exportRequest, ct);
 
+            var actualFormat = formatOverride.HasValue
+                ? formatOverride.Value.ToString().ToLowerInvariant()
+                : "parquet";
+
             return Results.Json(new
             {
                 jobId = result.JobId,
