@@ -2,7 +2,7 @@ name: Fix Test Failures Identified By Ci
 description: Fix test failures identified by CI
 # Auto-generated prompt from workflow results - test-matrix
 # Generated: 2026-03-04
-# Source: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/22687677797
+# Source: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/22690966586
 # Model-agnostic prompt - works with any capable LLM
 messages:
   - role: system
@@ -22,18 +22,23 @@ messages:
       - Run tests: `dotnet test tests/MarketDataCollector.Tests`
 
       ## Error Codes Found
-      - `CS0067`
-      - `CS0628`
+      - `CA2022`
+      - `CS0115`
+      - `CS0219`
+      - `CS0506`
+      - `CS0509`
       - `CS1573`
-      - `CS1739`
+      - `CS1591`
       - `CS1998`
+      - `CS4014`
+      - `CS8602`
 
       ## Failure Patterns
-      - `2026-03-04T20:25:30.1457319Z Failed!  - Failed:     1, Passed:  2535, Skipped:     2, Total:  2538, Duration: 9 s - MarketDataCollector.Tests.dll (net9.0)`
-      - `2026-03-04T20:25:22.2661595Z [xUnit.net 00:00:05.56]     MarketDataCollector.Tests.Pipeline.BackpressureSignalTests.PublicQueueUtilization_And_SignalQueueUtilization_AreConsistent [FAIL]`
+      - `2026-03-04T21:50:53.1353483Z Failed!  - Failed:     1, Passed:  2535, Skipped:     2, Total:  2538, Duration: 11 s - MarketDataCollector.Tests.dll (net9.0)`
+      - `2026-03-04T21:50:45.4519436Z [xUnit.net 00:00:07.69]     MarketDataCollector.Tests.Pipeline.BackpressureSignalTests.PublicQueueUtilization_And_SignalQueueUtilization_AreConsistent [FAIL]`
 
       ## Failed Tests
-      - `2026-03-04T20:25:22.2748489Z   Failed MarketDataCollector.Tests.Pipeline.BackpressureSignalTests.PublicQueueUtilization_And_SignalQueueUtilization_AreConsistent [64 ms]`
+      - `2026-03-04T21:50:45.4556130Z   Failed MarketDataCollector.Tests.Pipeline.BackpressureSignalTests.PublicQueueUtilization_And_SignalQueueUtilization_AreConsistent [118 ms]`
       - `MarketDataCollector.Tests.Pipeline.BackpressureSignalTests.PublicQueueUtilization_And_SignalQueueUtilization_AreConsistent`
 
       ## Resolution Approach
