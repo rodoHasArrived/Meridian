@@ -64,7 +64,7 @@ internal sealed class ConfigCommands : ICliCommand
 
         if (CliArguments.HasFlag(args, "--preset"))
         {
-            return RunApplyPreset(args);
+            return await RunApplyPreset(args);
         }
 
         return CliResult.Fail(ErrorCode.Unknown);
@@ -90,7 +90,7 @@ internal sealed class ConfigCommands : ICliCommand
         return CliResult.Ok();
     }
 
-    private CliResult RunApplyPreset(string[] args)
+    private async Task<CliResult> RunApplyPreset(string[] args)
     {
         var presetName = CliArguments.GetValue(args, "--preset");
         if (string.IsNullOrWhiteSpace(presetName))
@@ -111,7 +111,7 @@ internal sealed class ConfigCommands : ICliCommand
         {
             var currentConfig = _configService.GetConfig();
             var newConfig = ConfigurationPresets.ApplyPreset(presetName, currentConfig);
-            _configService.SaveConfig(newConfig).GetAwaiter().GetResult();
+            await _configService.SaveConfigAsync(newConfig);
 
             Console.WriteLine();
             Console.WriteLine($"  Applied preset: {presetName}");

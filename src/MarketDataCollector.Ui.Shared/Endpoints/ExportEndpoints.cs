@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Text.Json;
 using MarketDataCollector.Contracts.Api;
 using MarketDataCollector.Storage;
@@ -117,11 +118,11 @@ public static class ExportEndpoints
                 return Results.Json(new { error = "Export service not available" }, jsonOptions, statusCode: 503);
             }
 
-            var outputDir = Path.Combine(Path.GetTempPath(), "mdc-exports", "quality-" + DateTime.UtcNow.ToString("yyyyMMdd"));
+            var outputDir = Path.Combine(Path.GetTempPath(), "mdc-exports", "quality-" + DateTime.UtcNow.ToString("yyyyMMdd", CultureInfo.InvariantCulture));
 
             var exportRequest = new ExportRequest
             {
-                ProfileId = req?.Format == "csv" ? "r-dataframe" : "python-pandas",
+                ProfileId = req?.Format == "csv" ? "r-stats" : "python-pandas",
                 Symbols = req?.Symbols,
                 OutputDirectory = outputDir,
                 ValidateBeforeExport = true,
@@ -159,11 +160,11 @@ public static class ExportEndpoints
                 return Results.Json(new { error = "Export service not available" }, jsonOptions, statusCode: 503);
             }
 
-            var outputDir = Path.Combine(Path.GetTempPath(), "mdc-exports", "orderflow-" + DateTime.UtcNow.ToString("yyyyMMddHHmm"));
+            var outputDir = Path.Combine(Path.GetTempPath(), "mdc-exports", "orderflow-" + DateTime.UtcNow.ToString("yyyyMMddHHmm", CultureInfo.InvariantCulture));
 
             var formatProfile = (req?.Format ?? "parquet") switch
             {
-                "csv" => "r-dataframe",
+                "csv" => "r-stats",
                 "jsonl" => "python-pandas",
                 _ => "python-pandas"
             };
@@ -207,13 +208,11 @@ public static class ExportEndpoints
                 return Results.Json(new { error = "Export service not available" }, jsonOptions, statusCode: 503);
             }
 
-            var outputDir = Path.Combine(Path.GetTempPath(), "mdc-exports", "integrity-" + DateTime.UtcNow.ToString("yyyyMMddHHmm"));
+            var outputDir = Path.Combine(Path.GetTempPath(), "mdc-exports", "integrity-" + DateTime.UtcNow.ToString("yyyyMMddHHmm", CultureInfo.InvariantCulture));
 
             var exportRequest = new ExportRequest
             {
-                ProfileId = "r-dataframe",
-                OutputDirectory = outputDir,
-                EventTypes = new[] { "IntegrityEvent" },
+                ProfileId = "r-stats",
                 ValidateBeforeExport = true
             };
 
@@ -247,7 +246,7 @@ public static class ExportEndpoints
                 return Results.Json(new { error = "Export service not available" }, jsonOptions, statusCode: 503);
             }
 
-            var outputDir = Path.Combine(Path.GetTempPath(), "mdc-exports", "research-" + DateTime.UtcNow.ToString("yyyyMMddHHmm"));
+            var outputDir = Path.Combine(Path.GetTempPath(), "mdc-exports", "research-" + DateTime.UtcNow.ToString("yyyyMMddHHmm", CultureInfo.InvariantCulture));
 
             var exportRequest = new ExportRequest
             {

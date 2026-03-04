@@ -222,13 +222,13 @@ internal sealed class SymbolCommands : ICliCommand
         if (filePath is null) return CliResult.Fail(ErrorCode.RequiredFieldMissing);
 
         var symbols = _symbolService.GetMonitoredSymbols();
-        if (symbols.Length == 0)
+        if (symbols.Symbols.Length == 0)
         {
             Console.Error.WriteLine("Error: No symbols configured for monitoring");
             return CliResult.Fail(ErrorCode.NoDataAvailable);
         }
 
-        var symbolNames = symbols.Select(s => s.Symbol).ToArray();
+        var symbolNames = symbols.Symbols.Select(s => s.Symbol).ToArray();
         var extension = Path.GetExtension(filePath).ToLowerInvariant();
 
         string content;
