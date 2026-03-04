@@ -38,6 +38,8 @@ MarketDataCollector/docs/
 Market-Data-Collector/
 ├── .claude/
 │   └── settings.local.json
+├── .devcontainer/
+│   └── devcontainer.json
 ├── .github/  # GitHub configuration
 │   ├── actions/
 │   │   └── setup-dotnet-cache/
@@ -58,11 +60,16 @@ Market-Data-Collector/
 │   │   ├── code-review.prompt.yml
 │   │   ├── configure-deployment.prompt.yml
 │   │   ├── explain-architecture.prompt.yml
+│   │   ├── fix-build-errors.prompt.yml
+│   │   ├── fix-code-quality.prompt.yml
+│   │   ├── fix-test-failures.prompt.yml
 │   │   ├── optimize-performance.prompt.yml
 │   │   ├── project-context.prompt.yml
 │   │   ├── provider-implementation-guide.prompt.yml
 │   │   ├── README.md
 │   │   ├── troubleshoot-issue.prompt.yml
+│   │   ├── workflow-results-code-quality.prompt.yml
+│   │   ├── workflow-results-test-matrix.prompt.yml
 │   │   ├── wpf-debug-improve.prompt.yml
 │   │   └── write-unit-tests.prompt.yml
 │   ├── workflows/
@@ -1412,6 +1419,7 @@ Market-Data-Collector/
 ├── MarketDataCollector.sln
 ├── package-lock.json
 ├── package.json
+├── prompt-generation-results.json
 └── README.md
 ```
 
