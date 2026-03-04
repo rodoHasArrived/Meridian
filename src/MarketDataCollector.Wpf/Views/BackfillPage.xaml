@@ -355,6 +355,93 @@
                     </StackPanel>
                 </Border>
 
+                <!-- Gap Analysis Preview -->
+                <Border x:Name="GapAnalysisCard" Style="{StaticResource CardStyle}" Margin="0,0,0,24">
+                    <StackPanel>
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                <TextBlock Text="{StaticResource IconWarning}"
+                                           FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                           FontSize="18"
+                                           Foreground="{StaticResource WarningColorBrush}"
+                                           VerticalAlignment="Center" />
+                                <TextBlock Text="Gap Analysis"
+                                           Style="{StaticResource CardHeaderStyle}"
+                                           Margin="8,0,0,0" />
+                            </StackPanel>
+
+                            <Button Grid.Column="2" Content="Scan for Gaps"
+                                    Style="{StaticResource SecondaryButtonStyle}"
+                                    Click="ScanGaps_Click" />
+                        </Grid>
+
+                        <TextBlock x:Name="GapAnalysisSummaryText"
+                                   Text="Click 'Scan for Gaps' to check your selected symbols for missing data."
+                                   Foreground="{StaticResource ConsoleTextMutedBrush}"
+                                   Margin="0,0,0,12" TextWrapping="Wrap" />
+
+                        <ListView x:Name="GapAnalysisList"
+                                  Background="Transparent"
+                                  BorderThickness="0"
+                                  MaxHeight="220"
+                                  Visibility="Collapsed">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="70" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="80" />
+                                            <ColumnDefinition Width="80" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Symbol}"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="{StaticResource ConsoleTextPrimaryBrush}"
+                                                   VerticalAlignment="Center" />
+                                        <!-- Gap timeline bar -->
+                                        <Grid Grid.Column="1" Margin="8,2" Height="14">
+                                            <Border Background="{StaticResource ConsoleBackgroundMediumBrush}"
+                                                    CornerRadius="2" />
+                                            <Border Background="{Binding CoverageBrush}"
+                                                    CornerRadius="2"
+                                                    HorizontalAlignment="Left"
+                                                    Width="{Binding CoverageWidth}" />
+                                        </Grid>
+                                        <TextBlock Grid.Column="2" Text="{Binding CoverageText}"
+                                                   HorizontalAlignment="Right"
+                                                   Foreground="{StaticResource ConsoleTextSecondaryBrush}"
+                                                   FontSize="11"
+                                                   VerticalAlignment="Center" />
+                                        <TextBlock Grid.Column="3" Text="{Binding GapDaysText}"
+                                                   HorizontalAlignment="Right"
+                                                   Foreground="{StaticResource WarningColorBrush}"
+                                                   FontSize="11"
+                                                   VerticalAlignment="Center" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <StackPanel x:Name="GapActionPanel" Orientation="Horizontal" Margin="0,12,0,0" Visibility="Collapsed">
+                            <Button Content="Auto-Fill Gaps Only"
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    Click="AutoFillGaps_Click"
+                                    Margin="0,0,8,0" />
+                            <TextBlock x:Name="GapActionHintText"
+                                       Text=""
+                                       Foreground="{StaticResource ConsoleTextMutedBrush}"
+                                       FontSize="12"
+                                       VerticalAlignment="Center" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
                 <!-- Per-Symbol Progress -->
                 <Border x:Name="SymbolProgressCard" Style="{StaticResource CardStyle}" Margin="0,0,0,24" Visibility="Collapsed">
                     <StackPanel>
