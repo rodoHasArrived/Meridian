@@ -422,7 +422,6 @@ Market-Data-Collector/
 │   │   ├── deterministic-canonicalization.md
 │   │   ├── domains.md
 │   │   ├── layer-boundaries.md
-│   │   ├── nautilus-inspired-restructuring-proposal.md
 │   │   ├── overview.md
 │   │   ├── provider-management.md
 │   │   ├── storage-design.md
@@ -438,6 +437,7 @@ Market-Data-Collector/
 │   │   ├── consolidation.md
 │   │   ├── desktop-app-xaml-compiler-errors.md
 │   │   ├── desktop-devex-high-value-improvements.md
+│   │   ├── desktop-end-user-improvements-shortlist.md
 │   │   ├── desktop-ui-alternatives-evaluation.md
 │   │   ├── DUPLICATE_CODE_ANALYSIS.md
 │   │   ├── IMPROVEMENTS_2026-02.md
@@ -460,13 +460,16 @@ Market-Data-Collector/
 │   ├── development/
 │   │   ├── policies/
 │   │   │   └── desktop-support-policy.md
+│   │   ├── adding-custom-rules.md
 │   │   ├── build-observability.md
 │   │   ├── central-package-management.md
 │   │   ├── desktop-improvements-executive-summary.md
 │   │   ├── desktop-improvements-quick-reference.md
 │   │   ├── desktop-platform-improvements-implementation-guide.md
 │   │   ├── desktop-testing-guide.md
+│   │   ├── documentation-automation.md
 │   │   ├── documentation-contribution-guide.md
+│   │   ├── expanding-scripts.md
 │   │   ├── github-actions-summary.md
 │   │   ├── github-actions-testing.md
 │   │   ├── provider-implementation.md
@@ -519,14 +522,15 @@ Market-Data-Collector/
 │   ├── evaluations/
 │   │   ├── 2026-03-brainstorm-next-frontier.md
 │   │   ├── data-quality-monitoring-evaluation.md
-│   │   ├── desktop-end-user-improvements-shortlist.md
 │   │   ├── desktop-end-user-improvements.md
 │   │   ├── high-impact-improvement-brainstorm-2026-03.md
 │   │   ├── high-impact-improvements-brainstorm.md
 │   │   ├── high-value-low-cost-improvements-brainstorm.md
 │   │   ├── historical-data-providers-evaluation.md
 │   │   ├── ingestion-orchestration-evaluation.md
+│   │   ├── nautilus-inspired-restructuring-proposal.md
 │   │   ├── operational-readiness-evaluation.md
+│   │   ├── README.md
 │   │   ├── realtime-streaming-architecture-evaluation.md
 │   │   ├── storage-architecture-evaluation.md
 │   │   └── windows-desktop-provider-configurability-assessment.md
@@ -541,14 +545,11 @@ Market-Data-Collector/
 │   │   └── workflows-overview.md
 │   ├── getting-started/
 │   │   └── README.md
-│   ├── guides/
-│   │   ├── adding-custom-rules.md
-│   │   ├── documentation-automation.md
-│   │   └── expanding-scripts.md
 │   ├── integrations/
 │   │   ├── fsharp-integration.md
 │   │   ├── language-strategy.md
-│   │   └── lean-integration.md
+│   │   ├── lean-integration.md
+│   │   └── README.md
 │   ├── operations/
 │   │   ├── deployment.md
 │   │   ├── high-availability.md
@@ -556,6 +557,7 @@ Market-Data-Collector/
 │   │   ├── operator-runbook.md
 │   │   ├── performance-tuning.md
 │   │   ├── portable-data-packager.md
+│   │   ├── README.md
 │   │   └── service-level-objectives.md
 │   ├── providers/
 │   │   ├── alpaca-setup.md
@@ -572,7 +574,8 @@ Market-Data-Collector/
 │   │   ├── environment-variables.md
 │   │   └── open-source-references.md
 │   ├── security/
-│   │   └── known-vulnerabilities.md
+│   │   ├── known-vulnerabilities.md
+│   │   └── README.md
 │   ├── status/
 │   │   ├── CHANGELOG.md
 │   │   ├── EVALUATIONS_AND_AUDITS.md

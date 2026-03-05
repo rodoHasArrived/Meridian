@@ -1,27 +1,27 @@
 # Documentation Health Dashboard
 
 > Auto-generated documentation health report. Do not edit manually.
-> Last updated: 2026-03-05T01:44:39.888151+00:00
+> Last updated: 2026-03-05T07:46:28.268270+00:00
 
 ## Overall Health Score
 
 ```
-  [##########################----] 87/100
-  Rating: Good
+  [###########################---] 90/100
+  Rating: Excellent
 ```
 
 ## Summary
 
 | Metric | Value |
 |--------|-------|
-| Total documentation files | 165 |
-| Total lines | 70,127 |
-| Average file size (lines) | 425.0 |
-| Orphaned files | 53 |
+| Total documentation files | 169 |
+| Total lines | 70,284 |
+| Average file size (lines) | 415.9 |
+| Orphaned files | 36 |
 | Files without headings | 1 |
 | Stale files (>90 days) | 0 |
 | TODO/FIXME markers | 152 |
-| **Health score** | **87/100** |
+| **Health score** | **90/100** |
 
 ### Score Breakdown
 
@@ -58,14 +58,14 @@ These files are not linked from any other Markdown file in the repository:
 - `.github/workflows/TESTING_AI_SYNC.md`
 - `benchmarks/BOTTLENECK_REPORT.md`
 - `docs/architecture/crystallized-storage-format.md`
-- `docs/architecture/nautilus-inspired-restructuring-proposal.md`
 - `docs/archived/2026-02_PR_SUMMARY.md`
 - `docs/archived/2026-02_UI_IMPROVEMENTS_SUMMARY.md`
 - `docs/archived/2026-02_VISUAL_CODE_EXAMPLES.md`
 - `docs/archived/ARTIFACT_ACTIONS_DOWNGRADE.md`
 - `docs/archived/CHANGES_SUMMARY.md`
 - `docs/archived/CONFIG_CONSOLIDATION_REPORT.md`
-- ... and 33 more
+- `docs/archived/DUPLICATE_CODE_ANALYSIS.md`
+- ... and 16 more
 
 ## Trend
 
@@ -73,7 +73,7 @@ These files are not linked from any other Markdown file in the repository:
 
 | Date | Score | Files | Orphans | Stale |
 |------|-------|-------|---------|-------|
-| 2026-03-05 | 87 | 165 | 53 | 0 |
+| 2026-03-05 | 90 | 169 | 36 | 0 |
 
 ---
 
