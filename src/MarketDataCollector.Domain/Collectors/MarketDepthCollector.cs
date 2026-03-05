@@ -15,7 +15,7 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
 
     private readonly ConcurrentDictionary<string, SymbolOrderBookBuffer> _books = new(StringComparer.OrdinalIgnoreCase);
     private readonly ConcurrentQueue<DepthIntegrityEvent> _recentIntegrity = new();
-    private const int MaxDepth = 50;
+    private const ushort MaxDepth = 50;
 
     public MarketDepthCollector(IMarketEventPublisher publisher, bool requireExplicitSubscription = true)
         : base(requireExplicitSubscription)

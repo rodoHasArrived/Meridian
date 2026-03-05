@@ -178,7 +178,7 @@ public sealed class IngestionJob
 /// States for the unified ingestion job state machine.
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum IngestionJobState
+public enum IngestionJobState : byte
 {
     /// <summary>Job is being configured but not yet submitted.</summary>
     Draft,
@@ -206,7 +206,7 @@ public enum IngestionJobState
 /// Type of ingestion workload.
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum IngestionWorkloadType
+public enum IngestionWorkloadType : byte
 {
     /// <summary>Real-time streaming data collection.</summary>
     Realtime,

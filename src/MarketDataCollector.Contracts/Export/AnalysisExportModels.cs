@@ -198,7 +198,7 @@ public sealed class ResearchPackageResponse
 
 #region Enums
 
-public enum AnalysisExportFormat
+public enum AnalysisExportFormat : byte
 {
     CSV,
     Parquet,
@@ -209,7 +209,7 @@ public enum AnalysisExportFormat
     Feather
 }
 
-public enum DataAggregation
+public enum DataAggregation : byte
 {
     Tick,
     Second,
@@ -223,7 +223,7 @@ public enum DataAggregation
     Monthly
 }
 
-public enum CompressionType
+public enum CompressionType : byte
 {
     None,
     Gzip,

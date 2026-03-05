@@ -603,9 +603,9 @@ public sealed record HealthIssue(
     bool AutoRepairable = false
 );
 
-public enum IssueSeverity { Info, Warning, Critical }
+public enum IssueSeverity : byte { Info, Warning, Critical }
 
-public enum IssueType
+public enum IssueType : byte
 {
     ChecksumMismatch,
     SequenceGap,
@@ -626,7 +626,7 @@ public sealed record RepairOptions(
     RepairScope Scope = RepairScope.All
 );
 
-public enum RepairStrategy
+public enum RepairStrategy : byte
 {
     RestoreFromBackup,
     BackfillFromSource,
@@ -636,7 +636,7 @@ public enum RepairStrategy
     RecompressOptimal
 }
 
-public enum RepairScope { SingleFile, Directory, Symbol, DateRange, EventType, All }
+public enum RepairScope : byte { SingleFile, Directory, Symbol, DateRange, EventType, All }
 
 public sealed record RepairResult(
     int FilesProcessed,
