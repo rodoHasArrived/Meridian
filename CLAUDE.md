@@ -25,9 +25,9 @@ Market Data Collector is a high-performance, cross-platform market data collecti
 | Total Source Files | 954 |
 | C# Files | 938 |
 | F# Files | 16 |
-| Test Files | 230 |
-| Test Methods | ~3,739 |
-| Documentation Files | 165 |
+| Test Files | 234 |
+| Test Methods | ~3,738 |
+| Documentation Files | 147 |
 | Main Projects | 13 (+ 4 test + 1 benchmark) |
 | Provider Implementations | 5 streaming, 10 historical |
 | Symbol Search Providers | 5 |
@@ -189,7 +189,26 @@ If the issue is tracked on GitHub, label it `ai-known-error` so the intake workf
 ```
 Market-Data-Collector/
 ├── .claude/
-│   └── settings.local.json
+│   ├── settings.local.json
+│   └── skills/
+│       └── mdc-code-review/
+│           ├── SKILL.md
+│           ├── agents/
+│           │   └── grader.md
+│           ├── eval-viewer/
+│           │   ├── generate_review.py
+│           │   └── viewer.html
+│           ├── evals/
+│           │   └── evals.json
+│           ├── references/
+│           │   ├── architecture.md
+│           │   └── schemas.md
+│           └── scripts/
+│               ├── aggregate_benchmark.py
+│               ├── package_skill.py
+│               ├── quick_validate.py
+│               ├── run_eval.py
+│               └── utils.py
 ├── .devcontainer/
 │   └── devcontainer.json
 ├── .github/  # GitHub configuration
@@ -1674,28 +1693,35 @@ public interface IMarketDataClient : IAsyncDisposable
 }
 ```
 
-### IHistoricalDataProvider (Backfill)
-Location: `src/MarketDataCollector.Infrastructure/Adapters/Core/IHistoricalDataProvider.cs`
+### IHistoricalDataSource (Backfill)
+Location: `src/MarketDataCollector.ProviderSdk/IHistoricalDataSource.cs`
 
 ```csharp
-[ImplementsAdr("ADR-001", "Core historical data provider contract")]
-[ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
-public interface IHistoricalDataProvider
+public interface IHistoricalDataSource : IDataSource
 {
-    string Name { get; }
-    string DisplayName { get; }
-    string Description { get; }
-
-    // Capabilities
-    HistoricalDataCapabilities Capabilities { get; }
-    int Priority { get; }
-
+    // Daily bars
     Task<IReadOnlyList<HistoricalBar>> GetDailyBarsAsync(
         string symbol, DateOnly? from, DateOnly? to, CancellationToken ct = default);
+    Task<IReadOnlyList<AdjustedHistoricalBar>> GetAdjustedDailyBarsAsync(
+        string symbol, DateOnly? from, DateOnly? to, CancellationToken ct = default);
 
-    // Extended methods for tick data, quotes, trades, auctions
+    // Intraday bars
+    bool SupportsIntraday { get; }
+    IReadOnlyList<string> SupportedBarIntervals { get; }
+    Task<IReadOnlyList<IntradayBar>> GetIntradayBarsAsync(
+        string symbol, string interval, DateTimeOffset? from, DateTimeOffset? to, CancellationToken ct = default);
+
+    // Corporate actions
+    bool SupportsDividends { get; }
+    bool SupportsSplits { get; }
+    Task<IReadOnlyList<DividendInfo>> GetDividendsAsync(
+        string symbol, DateOnly? from, DateOnly? to, CancellationToken ct = default);
+    Task<IReadOnlyList<SplitInfo>> GetSplitsAsync(
+        string symbol, DateOnly? from, DateOnly? to, CancellationToken ct = default);
 }
 ```
+
+Related granular interfaces: `IDailyBarSource`, `IIntradayBarSource`, `ICorporateActionSource`.
 
 ---
 
@@ -2112,12 +2138,18 @@ _logger.LogInformation($"Received {bars.Count} bars for {symbol}");
 - Private fields prefixed with `_`
 - Interfaces prefixed with `I`
 
+### Enum Conventions
+- All domain enums use `byte` backing type for memory efficiency: `enum MyEnum : byte { ... }`
+- This applies to: `AggressorSide`, `CanonicalTradeCondition`, `ConnectionStatus`, `DepthIntegrityKind`, `DepthOperation`, `InstrumentType`, `IntegritySeverity`, `LiquidityProfile`, `MarketEventTier`, `MarketEventType`, `MarketState`, `OptionRight`, `OptionStyle`, `OrderBookSide`
+- When adding new enums, always use `: byte` unless more than 256 values are needed
+
 ### Performance
 - Avoid allocations in hot paths
 - Use object pooling for frequently created objects
 - Prefer `Span<T>` and `Memory<T>` for buffer operations
 - Use `System.Threading.Channels` for producer-consumer patterns
 - Consider lock-free alternatives for high-contention scenarios
+- Use narrowed numeric types (`byte`, `ushort`, `float`) where full `int`/`double` range is unnecessary
 
 ---
 
@@ -2413,6 +2445,29 @@ make ai-report           # Generate improvement report
 
 ---
 
+## Claude Code Skills
+
+### mdc-code-review
+
+A bundled Claude Code skill (`.claude/skills/mdc-code-review/`) that provides automated code review and architecture compliance checking for the project. Triggers automatically when reviewing C#/F# code referencing MarketDataCollector namespaces.
+
+**Structure:**
+| Path | Purpose |
+|------|---------|
+| `SKILL.md` | Skill definition and review rubric |
+| `agents/grader.md` | Grading agent instructions for evals |
+| `references/architecture.md` | Deep project context for reviews |
+| `references/schemas.md` | JSON schemas for evals/grading |
+| `evals/evals.json` | Evaluation test cases |
+| `scripts/run_eval.py` | Run evaluation suite |
+| `scripts/quick_validate.py` | Quick validation checks |
+| `scripts/package_skill.py` | Package skill for distribution |
+| `eval-viewer/` | HTML viewer for evaluation results |
+
+**Triggers on:** MVVM compliance, ViewModel extraction, code-behind cleanup, hot-path optimization, pipeline throughput, provider implementation review, backfill logic, data integrity validation, ProviderSdk compliance, dependency violations, JSON source generator usage, hot config reload, or WPF architecture.
+
+---
+
 ## Desktop Application Architecture
 
 ### WPF Desktop App (Recommended)
@@ -2525,4 +2580,4 @@ See `docs/HELP.md#troubleshooting` for detailed solutions.
 
 ---
 
-*Last Updated: 2026-03-05 (statistics audited)*
+*Last Updated: 2026-03-05 (statistics audited, skills/enum/interface docs added)*
