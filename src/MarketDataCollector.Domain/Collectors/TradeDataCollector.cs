@@ -15,22 +15,24 @@ public sealed class TradeDataCollector
     private readonly IMarketEventPublisher _publisher;
     private readonly IQuoteStateStore? _quotes;
 
-    // Per-symbol rolling state
     private readonly ConcurrentDictionary<string, SymbolTradeState> _stateBySymbol =
         new(StringComparer.OrdinalIgnoreCase);
 
-    // Per-symbol recent trade ring buffer (capped at MaxRecentTrades)
+    private readonly ConcurrentDictionary<TradeStreamKey, long> _lastSequenceByStream = new();
+
     private readonly ConcurrentDictionary<string, RecentTradeRing> _recentTrades =
         new(StringComparer.OrdinalIgnoreCase);
 
-    /// <summary>
-    /// Maximum allowed length for a symbol. Covers most instrument types including options and futures.
-    /// </summary>
-    private const int MaxSymbolLength = 50;
+    private static readonly TimeSpan QuoteFreshnessThreshold = TimeSpan.FromMilliseconds(500);
 
-    /// <summary>
-    /// Maximum number of recent trades to retain per symbol for API access.
-    /// </summary>
+    private static readonly TimeSpan[] RollingWindows =
+    {
+        TimeSpan.FromSeconds(1),
+        TimeSpan.FromSeconds(10),
+        TimeSpan.FromSeconds(60)
+    };
+
+    private const int MaxSymbolLength = 50;
     private const int MaxRecentTrades = 200;
 
     public TradeDataCollector(IMarketEventPublisher publisher, IQuoteStateStore? quotes = null)
@@ -39,13 +41,6 @@ public sealed class TradeDataCollector
         _quotes = quotes;
     }
 
-    /// <summary>
-    /// Validates a symbol format. Valid symbols contain only alphanumeric characters,
-    /// dots, hyphens, underscores, colons, or slashes.
-    /// </summary>
-    /// <param name="symbol">The symbol to validate.</param>
-    /// <param name="reason">When validation fails, contains the reason.</param>
-    /// <returns>True if valid, false otherwise.</returns>
     private static bool IsValidSymbolFormat(string symbol, out string reason)
     {
         reason = string.Empty;
@@ -68,11 +63,6 @@ public sealed class TradeDataCollector
         return true;
     }
 
-    /// <summary>
-    /// Entry point from router/adapter layer.
-    /// Performs sequence continuity checks, emits Integrity events on anomalies,
-    /// emits Trade + OrderFlow events on accepted updates.
-    /// </summary>
     public void OnTrade(MarketTradeUpdate update)
     {
         if (update is null) throw new ArgumentNullException(nameof(update));
@@ -80,7 +70,6 @@ public sealed class TradeDataCollector
 
         var symbol = update.Symbol;
 
-        // -------- Symbol format validation --------
         if (!IsValidSymbolFormat(symbol, out var symbolValidationReason))
         {
             var integrity = IntegrityEvent.InvalidSymbol(
@@ -95,7 +84,6 @@ public sealed class TradeDataCollector
             return;
         }
 
-        // -------- SequenceNumber bounds validation --------
         var seq = update.SequenceNumber;
         if (seq < 0)
         {
@@ -111,22 +99,11 @@ public sealed class TradeDataCollector
             return;
         }
 
-        var state = _stateBySymbol.GetOrAdd(symbol, _ => new SymbolTradeState());
-
-        // -------- Integrity / continuity --------
-        // Rules:
-        //  - SequenceNumber must be strictly increasing per symbol stream.
-        //  - If we detect out-of-order or gap, emit IntegrityEvent.
-        //  - For gaps, we still accept the trade (configurable), but flag IsStale in stats.
-        //  - For out-of-order or duplicates, we reject the trade (do not advance stats).
-
-        if (state.LastSequenceNumber.HasValue)
+        var streamKey = new TradeStreamKey(symbol, update.StreamId, update.Venue);
+        if (_lastSequenceByStream.TryGetValue(streamKey, out var last))
         {
-            var last = state.LastSequenceNumber.Value;
-
             if (seq <= last)
             {
-                // out-of-order or duplicate
                 var integrity = IntegrityEvent.OutOfOrder(
                     update.Timestamp,
                     symbol,
@@ -139,7 +116,6 @@ public sealed class TradeDataCollector
                 return;
             }
 
-            // gap?
             var expected = last + 1;
             if (seq > expected)
             {
@@ -152,27 +128,36 @@ public sealed class TradeDataCollector
                     venue: update.Venue);
 
                 _publisher.TryPublish(MarketEvent.Integrity(update.Timestamp, symbol, integrity));
-
-                // Mark stats stale until we see a clean continuation again.
-                state.MarkStale();
             }
         }
 
-        state.LastSequenceNumber = seq;
+        _lastSequenceByStream[streamKey] = seq;
 
-        // -------- Aggressor inference (optional) --------
-        // If upstream cannot classify aggressor, infer using latest BBO:
-        //  - Price >= Ask => Buy
-        //  - Price <= Bid => Sell
-        //  - Otherwise Unknown
+        var state = _stateBySymbol.GetOrAdd(symbol, _ => new SymbolTradeState());
+
         var aggressor = update.Aggressor;
+        var quoteFresh = false;
         if (aggressor == AggressorSide.Unknown && _quotes != null && _quotes.TryGet(symbol, out var bbo) && bbo != null)
         {
-            if (bbo.AskPrice > 0m && update.Price >= bbo.AskPrice) aggressor = AggressorSide.Buy;
-            else if (bbo.BidPrice > 0m && update.Price <= bbo.BidPrice) aggressor = AggressorSide.Sell;
+            quoteFresh = update.Timestamp - bbo.Timestamp <= QuoteFreshnessThreshold;
+            if (quoteFresh)
+            {
+                if (bbo.AskPrice > 0m && update.Price >= bbo.AskPrice) aggressor = AggressorSide.Buy;
+                else if (bbo.BidPrice > 0m && update.Price <= bbo.BidPrice) aggressor = AggressorSide.Sell;
+            }
+            else
+            {
+                var staleQuoteIntegrity = IntegrityEvent.CanonicalizationHardFail(
+                    update.Timestamp,
+                    symbol,
+                    $"Aggressor inference skipped due to stale quote ({(update.Timestamp - bbo.Timestamp).TotalMilliseconds:0}ms old).",
+                    update.SequenceNumber,
+                    update.StreamId,
+                    update.Venue);
+                _publisher.TryPublish(MarketEvent.Integrity(update.Timestamp, symbol, staleQuoteIntegrity));
+            }
         }
 
-        // -------- Trade record --------
         var trade = new Trade(
             Timestamp: update.Timestamp,
             Symbol: symbol,
@@ -183,29 +168,16 @@ public sealed class TradeDataCollector
             StreamId: update.StreamId,
             Venue: update.Venue);
 
-        state.RegisterTrade(trade);
+        var currentStats = state.RegisterTradeAndBuildStats(trade, RollingWindows);
 
-        // Buffer for API access
         var ring = _recentTrades.GetOrAdd(symbol, _ => new RecentTradeRing(MaxRecentTrades));
         ring.Add(trade);
 
         _publisher.TryPublish(MarketEvent.Trade(trade.Timestamp, trade.Symbol, trade));
 
-        // -------- OrderFlow statistics --------
-        var stats = state.BuildOrderFlowStats(
-            timestamp: update.Timestamp,
-            symbol: symbol,
-            seq: seq,
-            streamId: update.StreamId,
-            venue: update.Venue);
-
-        _publisher.TryPublish(MarketEvent.OrderFlow(update.Timestamp, symbol, stats));
+        _publisher.TryPublish(MarketEvent.OrderFlow(update.Timestamp, symbol, currentStats));
     }
 
-    /// <summary>
-    /// Returns the most recent trades for a symbol (newest first), up to <paramref name="limit"/>.
-    /// Returns an empty list if no trades have been recorded for the symbol.
-    /// </summary>
     public IReadOnlyList<Trade> GetRecentTrades(string symbol, int limit = 50)
     {
         if (string.IsNullOrWhiteSpace(symbol)) return Array.Empty<Trade>();
@@ -213,9 +185,6 @@ public sealed class TradeDataCollector
         return ring.GetRecent(Math.Min(limit, MaxRecentTrades));
     }
 
-    /// <summary>
-    /// Returns the current rolling order-flow statistics for a symbol, or null if no trades recorded.
-    /// </summary>
     public OrderFlowStatistics? GetOrderFlowSnapshot(string symbol)
     {
         if (string.IsNullOrWhiteSpace(symbol)) return null;
@@ -224,23 +193,21 @@ public sealed class TradeDataCollector
         return state.BuildOrderFlowStats(
             timestamp: DateTimeOffset.UtcNow,
             symbol: symbol,
-            seq: state.LastSequenceNumber ?? 0,
+            seq: state.LastSequenceNumber,
             streamId: null,
-            venue: null);
+            venue: null,
+            RollingWindows);
     }
 
-    /// <summary>
-    /// Returns all symbols that currently have trade data.
-    /// </summary>
     public IReadOnlyList<string> GetTrackedSymbols()
         => _stateBySymbol.Keys.ToList();
 
-    // =========================
-    // Per-symbol state
-    // =========================
+    private readonly record struct TradeStreamKey(string Symbol, string? StreamId, string? Venue);
+
     private sealed class SymbolTradeState
     {
-        public long? LastSequenceNumber;
+        private readonly object _sync = new();
+        private readonly Queue<Trade> _rollingTrades = new();
 
         private long _buyVolume;
         private long _sellVolume;
@@ -250,34 +217,46 @@ public sealed class TradeDataCollector
         private long _vwapDenominator;
 
         private int _tradeCount;
-        private bool _isStale;
+        private long _lastSequence;
 
-        public void MarkStale() => _isStale = true;
-
-        public void RegisterTrade(Trade trade)
+        public long LastSequenceNumber
         {
-            _tradeCount++;
-
-            _vwapNumerator += trade.Price * trade.Size;
-            _vwapDenominator += trade.Size;
-
-            switch (trade.Aggressor)
+            get
             {
-                case AggressorSide.Buy:
-                    _buyVolume += trade.Size;
-                    break;
-                case AggressorSide.Sell:
-                    _sellVolume += trade.Size;
-                    break;
-                default:
-                    _unknownVolume += trade.Size;
-                    break;
+                lock (_sync) return _lastSequence;
             }
+        }
 
-            // If we're in stale mode, clear it once we start accepting sequential updates again.
-            // (We don't perfectly know that here, but once we keep accepting trades it is "fresh enough".)
-            // You can make this stricter later by requiring N consecutive sequences.
-            if (_isStale) _isStale = false;
+        public OrderFlowStatistics RegisterTradeAndBuildStats(Trade trade, TimeSpan[] windows)
+        {
+            lock (_sync)
+            {
+                _tradeCount++;
+                _lastSequence = trade.SequenceNumber;
+
+                _vwapNumerator += trade.Price * trade.Size;
+                _vwapDenominator += trade.Size;
+
+                switch (trade.Aggressor)
+                {
+                    case AggressorSide.Buy:
+                        _buyVolume += trade.Size;
+                        break;
+                    case AggressorSide.Sell:
+                        _sellVolume += trade.Size;
+                        break;
+                    default:
+                        _unknownVolume += trade.Size;
+                        break;
+                }
+
+                _rollingTrades.Enqueue(trade);
+                var maxWindow = windows.Max();
+                while (_rollingTrades.Count > 0 && trade.Timestamp - _rollingTrades.Peek().Timestamp > maxWindow)
+                    _rollingTrades.Dequeue();
+
+                return BuildStatsLocked(trade.Timestamp, trade.Symbol, trade.SequenceNumber, trade.StreamId, trade.Venue, windows);
+            }
         }
 
         public OrderFlowStatistics BuildOrderFlowStats(
@@ -285,7 +264,22 @@ public sealed class TradeDataCollector
             string symbol,
             long seq,
             string? streamId,
-            string? venue)
+            string? venue,
+            TimeSpan[] windows)
+        {
+            lock (_sync)
+            {
+                return BuildStatsLocked(timestamp, symbol, seq, streamId, venue, windows);
+            }
+        }
+
+        private OrderFlowStatistics BuildStatsLocked(
+            DateTimeOffset timestamp,
+            string symbol,
+            long seq,
+            string? streamId,
+            string? venue,
+            TimeSpan[] windows)
         {
             var total = _buyVolume + _sellVolume + _unknownVolume;
 
@@ -296,6 +290,34 @@ public sealed class TradeDataCollector
             var vwap = _vwapDenominator == 0
                 ? 0m
                 : _vwapNumerator / _vwapDenominator;
+
+            var rolling = new List<RollingOrderFlowWindow>(windows.Length);
+            foreach (var window in windows)
+            {
+                long buy = 0;
+                long sell = 0;
+                long unknown = 0;
+                decimal num = 0;
+                long den = 0;
+                var cutoff = timestamp - window;
+                foreach (var t in _rollingTrades)
+                {
+                    if (t.Timestamp < cutoff) continue;
+                    switch (t.Aggressor)
+                    {
+                        case AggressorSide.Buy: buy += t.Size; break;
+                        case AggressorSide.Sell: sell += t.Size; break;
+                        default: unknown += t.Size; break;
+                    }
+                    num += t.Price * t.Size;
+                    den += t.Size;
+                }
+
+                var rollTotal = buy + sell + unknown;
+                var rollVwap = den == 0 ? 0m : num / den;
+                var rollImbalance = rollTotal == 0 ? 0m : (decimal)(buy - sell) / rollTotal;
+                rolling.Add(new RollingOrderFlowWindow((int)window.TotalSeconds, buy, sell, unknown, rollVwap, rollImbalance));
+            }
 
             return new OrderFlowStatistics(
                 Timestamp: timestamp,
@@ -308,17 +330,11 @@ public sealed class TradeDataCollector
                 TradeCount: _tradeCount,
                 SequenceNumber: seq,
                 StreamId: streamId,
-                Venue: venue);
+                Venue: venue,
+                RollingWindows: rolling);
         }
     }
 
-    // =========================
-    // Recent trade ring buffer
-    // =========================
-
-    /// <summary>
-    /// Thread-safe fixed-capacity ring buffer for recent trades.
-    /// </summary>
     private sealed class RecentTradeRing
     {
         private readonly Trade[] _buffer;
@@ -338,9 +354,6 @@ public sealed class TradeDataCollector
             }
         }
 
-        /// <summary>
-        /// Returns up to <paramref name="limit"/> recent trades, newest first.
-        /// </summary>
         public IReadOnlyList<Trade> GetRecent(int limit)
         {
             lock (_sync)
@@ -349,7 +362,6 @@ public sealed class TradeDataCollector
                 var result = new Trade[take];
                 for (int i = 0; i < take; i++)
                 {
-                    // Walk backwards from head
                     var idx = (_head - 1 - i + _buffer.Length) % _buffer.Length;
                     result[i] = _buffer[idx];
                 }

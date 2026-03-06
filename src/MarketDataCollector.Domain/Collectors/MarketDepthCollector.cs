@@ -15,15 +15,17 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
 
     private readonly ConcurrentDictionary<string, SymbolOrderBookBuffer> _books = new(StringComparer.OrdinalIgnoreCase);
     private readonly ConcurrentQueue<DepthIntegrityEvent> _recentIntegrity = new();
-    private readonly ConcurrentDictionary<string, IntegrityWindow> _integrityWindows = new(StringComparer.OrdinalIgnoreCase);
 
-    private const int AutoResetThreshold = 3;
-    private static readonly TimeSpan AutoResetWindow = TimeSpan.FromSeconds(15);
+    private readonly int _maxDepth;
 
-    public MarketDepthCollector(IMarketEventPublisher publisher, bool requireExplicitSubscription = true)
+    public MarketDepthCollector(
+        IMarketEventPublisher publisher,
+        bool requireExplicitSubscription = true,
+        int maxDepth = 200)
         : base(requireExplicitSubscription)
     {
         _publisher = publisher ?? throw new ArgumentNullException(nameof(publisher));
+        _maxDepth = Math.Max(1, maxDepth);
     }
 
     public void ResetSymbolStream(string symbol)
@@ -75,11 +77,11 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
         if (!ShouldProcessUpdate(symbol))
             return;
 
-        var book = _books.GetOrAdd(symbol, _ => new SymbolOrderBookBuffer());
+        var book = _books.GetOrAdd(symbol, _ => new SymbolOrderBookBuffer(_maxDepth));
 
-        var result = book.Apply(update, out var snapshot);
+        var result = book.Apply(update);
 
-        if (result != DepthIntegrityKind.Unknown)
+        if (result != DepthIntegrityKind.Ok)
         {
             var evt = new DepthIntegrityEvent(
                 Timestamp: update.Timestamp,
@@ -97,16 +99,12 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
             TrackIntegrity(evt);
             _publisher.TryPublish(MarketEvent.DepthIntegrity(update.Timestamp, symbol, evt));
 
-            if (ShouldAutoReset(symbol, evt.Timestamp))
-            {
-                ResetSymbolStream(symbol);
-            }
             return;
         }
 
+        var snapshot = book.GetSnapshot(symbol);
         if (snapshot is null) return;
 
-        // Emit snapshot. Support explicit payload wrapper too if you want to swap later.
         _publisher.TryPublish(MarketEvent.L2Snapshot(snapshot.Timestamp, symbol, snapshot));
     }
 
@@ -115,58 +113,6 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
         _recentIntegrity.Enqueue(evt);
         while (_recentIntegrity.Count > 100)
             _recentIntegrity.TryDequeue(out _);
-
-        var window = _integrityWindows.GetOrAdd(evt.Symbol, _ => new IntegrityWindow(AutoResetWindow, AutoResetThreshold));
-        window.Add(evt.Timestamp);
-    }
-
-    private bool ShouldAutoReset(string symbol, DateTimeOffset timestamp)
-    {
-        if (!_integrityWindows.TryGetValue(symbol, out var window))
-            return false;
-
-        return window.ShouldReset(timestamp);
-    }
-
-    // =========================
-    // Internal per-symbol buffer
-    // =========================
-    private sealed class IntegrityWindow
-    {
-        private readonly TimeSpan _window;
-        private readonly int _threshold;
-        private readonly Queue<DateTimeOffset> _events = new();
-        private readonly object _sync = new();
-
-        public IntegrityWindow(TimeSpan window, int threshold)
-        {
-            _window = window;
-            _threshold = threshold;
-        }
-
-        public void Add(DateTimeOffset timestamp)
-        {
-            lock (_sync)
-            {
-                _events.Enqueue(timestamp);
-                Trim(timestamp);
-            }
-        }
-
-        public bool ShouldReset(DateTimeOffset now)
-        {
-            lock (_sync)
-            {
-                Trim(now);
-                return _events.Count >= _threshold;
-            }
-        }
-
-        private void Trim(DateTimeOffset now)
-        {
-            while (_events.Count > 0 && now - _events.Peek() > _window)
-                _events.Dequeue();
-        }
     }
 
     internal sealed class SymbolOrderBookBuffer : IDisposable
@@ -175,10 +121,19 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
 
         private readonly List<OrderBookLevel> _bids = new();
         private readonly List<OrderBookLevel> _asks = new();
+        private readonly int _maxDepth;
 
         private bool _stale;
+        private long _localSequenceCounter;
+        private long _lastObservedSequence;
+        private string? _lastStreamId;
+        private string? _lastVenue;
+        private DateTimeOffset _lastUpdateTimestamp;
 
-        private long _sequenceCounter;
+        public SymbolOrderBookBuffer(int maxDepth)
+        {
+            _maxDepth = maxDepth;
+        }
 
         public bool IsStale
         {
@@ -186,6 +141,16 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
             {
                 _rwLock.EnterReadLock();
                 try { return _stale; }
+                finally { _rwLock.ExitReadLock(); }
+            }
+        }
+
+        public long LastObservedSequence
+        {
+            get
+            {
+                _rwLock.EnterReadLock();
+                try { return _lastObservedSequence; }
                 finally { _rwLock.ExitReadLock(); }
             }
         }
@@ -200,7 +165,11 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
                 _bids.Clear();
                 _asks.Clear();
                 _stale = false;
-                _sequenceCounter = 0;
+                _localSequenceCounter = 0;
+                _lastObservedSequence = 0;
+                _lastStreamId = null;
+                _lastVenue = null;
+                _lastUpdateTimestamp = default;
                 LastErrorDescription = null;
             }
             finally
@@ -209,10 +178,6 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
             }
         }
 
-        /// <summary>
-        /// Returns a read-only snapshot of the current order book state.
-        /// Returns null if the book is empty.
-        /// </summary>
         public LOBSnapshot? GetSnapshot(string symbol)
         {
             _rwLock.EnterReadLock();
@@ -223,7 +188,8 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
                 var bidsCopy = _bids.ToArray();
                 var asksCopy = _asks.ToArray();
                 var stale = _stale;
-                var seqNum = _sequenceCounter;
+                var seqNum = _lastObservedSequence;
+                var snapshotTimestamp = _lastUpdateTimestamp == default ? DateTimeOffset.UtcNow : _lastUpdateTimestamp;
 
                 decimal? mid = null;
                 if (bidsCopy.Length > 0 && asksCopy.Length > 0)
@@ -239,7 +205,7 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
                 }
 
                 return new LOBSnapshot(
-                    Timestamp: DateTimeOffset.UtcNow,
+                    Timestamp: snapshotTimestamp,
                     Symbol: symbol,
                     Bids: bidsCopy,
                     Asks: asksCopy,
@@ -247,7 +213,9 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
                     MicroPrice: null,
                     Imbalance: imb,
                     MarketState: stale ? MarketState.Unknown : MarketState.Normal,
-                    SequenceNumber: seqNum
+                    SequenceNumber: seqNum,
+                    StreamId: _lastStreamId,
+                    Venue: _lastVenue
                 );
             }
             finally
@@ -256,26 +224,48 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
             }
         }
 
-        public DepthIntegrityKind Apply(MarketDepthUpdate upd, out LOBSnapshot? snapshot)
+        public DepthIntegrityKind Apply(MarketDepthUpdate upd)
         {
-            OrderBookLevel[] bidsCopy;
-            OrderBookLevel[] asksCopy;
-            long seqNum;
-
             _rwLock.EnterWriteLock();
             try
             {
-                snapshot = null;
-
                 if (_stale)
                 {
-                    LastErrorDescription = "Stream is stale (previous integrity failure). Reset required.";
+                    LastErrorDescription = "Stream is stale (previous integrity failure). Resync required.";
                     return DepthIntegrityKind.Stale;
+                }
+
+                var keyChanged = !string.Equals(_lastStreamId, upd.StreamId, StringComparison.Ordinal)
+                    || !string.Equals(_lastVenue, upd.Venue, StringComparison.Ordinal);
+
+                if (keyChanged && _lastStreamId is not null)
+                {
+                    _stale = true;
+                    LastErrorDescription = "Depth stream changed; continuity reset detected and resync required.";
+                    return DepthIntegrityKind.OutOfOrder;
+                }
+
+                // Track continuity (when seq is provided).
+                if (upd.SequenceNumber > 0 && _lastObservedSequence > 0)
+                {
+                    if (upd.SequenceNumber <= _lastObservedSequence)
+                    {
+                        _stale = true;
+                        LastErrorDescription = $"Out-of-order/duplicate depth sequence: last {_lastObservedSequence}, received {upd.SequenceNumber}.";
+                        return DepthIntegrityKind.OutOfOrder;
+                    }
+
+                    var expected = _lastObservedSequence + 1;
+                    if (upd.SequenceNumber > expected)
+                    {
+                        _stale = true;
+                        LastErrorDescription = $"Depth sequence gap: expected {expected}, received {upd.SequenceNumber}.";
+                        return DepthIntegrityKind.Gap;
+                    }
                 }
 
                 var sideList = upd.Side == OrderBookSide.Bid ? _bids : _asks;
 
-                // Validate and apply operation
                 switch (upd.Operation)
                 {
                     case DepthOperation.Insert:
@@ -286,7 +276,8 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
                             return DepthIntegrityKind.Gap;
                         }
                         sideList.Insert(upd.Position, new OrderBookLevel(upd.Side, upd.Position, upd.Price, upd.Size, upd.MarketMaker));
-                        Reindex(sideList, upd.Side);
+                        ReindexRange(sideList, upd.Side, upd.Position);
+                        TrimDepth(sideList);
                         break;
 
                     case DepthOperation.Update:
@@ -307,7 +298,7 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
                             return DepthIntegrityKind.InvalidPosition;
                         }
                         sideList.RemoveAt(upd.Position);
-                        Reindex(sideList, upd.Side);
+                        ReindexRange(sideList, upd.Side, upd.Position);
                         break;
 
                     default:
@@ -316,56 +307,30 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
                         return DepthIntegrityKind.Unknown;
                 }
 
-                // increment local sequence counter (IB depth doesn't carry explicit seq)
-                _sequenceCounter++;
-                seqNum = upd.SequenceNumber != 0 ? upd.SequenceNumber : _sequenceCounter;
-
-                // Copy arrays under write lock (fast memcpy), release lock before building snapshot
-                bidsCopy = _bids.ToArray();
-                asksCopy = _asks.ToArray();
+                _localSequenceCounter++;
+                _lastObservedSequence = upd.SequenceNumber > 0 ? upd.SequenceNumber : _localSequenceCounter;
+                _lastStreamId = upd.StreamId;
+                _lastVenue = upd.Venue;
+                _lastUpdateTimestamp = upd.Timestamp;
 
                 LastErrorDescription = null;
+                return DepthIntegrityKind.Ok;
             }
             finally
             {
                 _rwLock.ExitWriteLock();
             }
-
-            // Build derived microstructure metrics outside the lock
-            decimal? mid = null;
-            if (bidsCopy.Length > 0 && asksCopy.Length > 0)
-                mid = (bidsCopy[0].Price + asksCopy[0].Price) / 2m;
-
-            // Simple top-of-book imbalance using best level sizes
-            decimal? imb = null;
-            if (bidsCopy.Length > 0 && asksCopy.Length > 0)
-            {
-                var b = bidsCopy[0].Size;
-                var a = asksCopy[0].Size;
-                var tot = b + a;
-                if (tot > 0) imb = (b - a) / tot;
-            }
-
-            snapshot = new LOBSnapshot(
-                Timestamp: upd.Timestamp,
-                Symbol: upd.Symbol,
-                Bids: bidsCopy,
-                Asks: asksCopy,
-                MidPrice: mid,
-                MicroPrice: null,
-                Imbalance: imb,
-                MarketState: MarketState.Normal,
-                SequenceNumber: seqNum,
-                StreamId: upd.StreamId,
-                Venue: upd.Venue
-            );
-
-            return DepthIntegrityKind.Unknown; // ok
         }
 
-        private static void Reindex(List<OrderBookLevel> levels, OrderBookSide side)
+        private void TrimDepth(List<OrderBookLevel> levels)
         {
-            for (int i = 0; i < levels.Count; i++)
+            if (levels.Count <= _maxDepth) return;
+            levels.RemoveRange(_maxDepth, levels.Count - _maxDepth);
+        }
+
+        private static void ReindexRange(List<OrderBookLevel> levels, OrderBookSide side, int startIndex)
+        {
+            for (int i = Math.Max(0, startIndex); i < levels.Count; i++)
                 levels[i] = levels[i] with { Side = side, Level = i };
         }
 

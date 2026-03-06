@@ -16,5 +16,6 @@ public sealed record OrderFlowStatistics(
     int TradeCount,
     long SequenceNumber,
     string? StreamId = null,
-    string? Venue = null
+    string? Venue = null,
+    IReadOnlyList<RollingOrderFlowWindow>? RollingWindows = null
 ) : MarketEventPayload;
