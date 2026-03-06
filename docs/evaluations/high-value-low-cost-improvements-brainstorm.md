@@ -210,6 +210,29 @@ The `--dry-run --offline` combination already exists but may not cover all these
 
 ---
 
+### 3.5 Interactive provider diagnostics mode
+
+**Problem:** When a provider fails to connect, users see a generic error message. Diagnosing root cause (wrong credentials, firewall, rate limit, API change) requires reading logs and cross-referencing provider documentation. This is especially painful for Interactive Brokers, which requires TWS/Gateway to be running.
+
+**Improvement:** Add a `--diagnose-provider <name>` CLI flag that runs a structured sequence of health checks for the named provider and emits a step-by-step report:
+
+```
+Diagnosing Alpaca...
+  [✓] Credentials present (ALPACA__KEYID, ALPACA__SECRETKEY)
+  [✓] Endpoint reachable (data.alpaca.markets:443) — 47ms
+  [✓] Auth token exchange — 200 OK
+  [✓] Sample subscription (SPY) — first event in 230ms
+  [✓] Disconnect clean
+
+Result: All checks passed. Provider is healthy.
+```
+
+**Value:** High -- reduces provider setup and debugging time from hours to minutes.
+**Cost:** ~4-6 hours. `DiagnosticsService`, `ConnectivityTestService`, and `CredentialValidationService` all exist; this composes them into a single report.
+**Files:** `src/MarketDataCollector.Application/Commands/DiagnosticsCommands.cs`, `src/MarketDataCollector.Application/Services/DiagnosticBundleService.cs`
+
+---
+
 ## Category 4: Data Integrity & Quality
 
 ### 4.1 Automatic gap backfill on reconnection
@@ -302,6 +325,18 @@ The `--dry-run --offline` combination already exists but may not cover all these
 
 ---
 
+### 5.5 API response contract snapshot tests
+
+**Problem:** The 35+ API endpoints have integration tests but no snapshot/contract tests that catch **unintentional breaking changes** to response shapes. A refactor that renames a JSON property or changes a status code silently breaks API consumers.
+
+**Improvement:** Add snapshot tests that record the full JSON response body for each endpoint at a known state, then fail if the shape changes unexpectedly. Use the existing `ResponseSchemaSnapshotTests` infrastructure already in `tests/MarketDataCollector.Tests/Integration/EndpointTests/ResponseSchemaSnapshotTests.cs` — if not fully populated, ensure every endpoint has at least one baseline snapshot.
+
+**Value:** High -- prevents silent API breakages that affect web dashboard, WPF desktop client, and any external consumers.
+**Cost:** ~4-6 hours. Infrastructure already exists; need to cover the remaining endpoints.
+**Files:** `tests/MarketDataCollector.Tests/Integration/EndpointTests/ResponseSchemaSnapshotTests.cs`
+
+---
+
 ## Category 6: Code Quality Quick Wins
 
 ### 6.1 Replace bare catch blocks with typed exceptions
@@ -359,6 +394,18 @@ This enables deterministic time-based tests without `Thread.Sleep` or flaky timi
 **Value:** Medium -- consistent API error responses; less boilerplate.
 **Cost:** ~6-8 hours for full migration; can be done incrementally.
 **Files:** `src/MarketDataCollector.Ui.Shared/Endpoints/*.cs`
+
+---
+
+### 6.5 Adopt `Result<T, E>` return type for service methods
+
+**Problem:** Service methods currently throw exceptions on expected failure conditions (e.g., symbol not found, provider unavailable), forcing callers to wrap everything in try/catch. The `Result<T, TError>` type already exists in `src/MarketDataCollector.Application/Results/Result.cs` but is used inconsistently — mostly at the CLI boundary rather than in service internals.
+
+**Improvement:** Progressively adopt `Result<T, OperationError>` as the return type for service methods in high-traffic paths like `BackfillCoordinator`, `SymbolManagementService`, and export operations. This makes error paths explicit, eliminates hidden throw sites, and allows callers to pattern-match on failure categories rather than catching `Exception`.
+
+**Value:** Medium-High -- makes service contracts explicit and simplifies endpoint error handling.
+**Cost:** ~6-8 hours incrementally. Existing `Result.cs` and `OperationError.cs` types require no changes.
+**Files:** `src/MarketDataCollector.Application/Results/Result.cs`, `src/MarketDataCollector.Application/Http/BackfillCoordinator.cs`, `src/MarketDataCollector.Storage/Export/AnalysisExportService.cs`
 
 ---
 
@@ -433,6 +480,18 @@ Optionally, add a `--strict-credentials` flag that makes this a hard error.
 **Value:** Low -- saves ~10-50ms of startup I/O.
 **Cost:** ~2-3 hours.
 **Files:** `src/MarketDataCollector/Program.cs`
+
+---
+
+### 8.4 Event pipeline back-pressure tuning via config
+
+**Problem:** `EventPipelinePolicy` defines bounded channel capacities as compile-time constants (`PipelinePolicyConstants`). In memory-constrained environments, the defaults may cause excessive drop rates; on high-memory machines, users sacrifice throughput unnecessarily.
+
+**Improvement:** Expose channel capacity overrides in `appsettings.json` under a `Pipeline.ChannelCapacity` section. Map them onto `BoundedChannelOptions` at composition time. Keep the compile-time constants as documented defaults.
+
+**Value:** Medium -- lets operators tune for their hardware without recompilation.
+**Cost:** ~2-3 hours. Add config binding in `ServiceCompositionRoot`, document in `appsettings.sample.json`.
+**Files:** `src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs`, `src/MarketDataCollector.Application/Composition/ServiceCompositionRoot.cs`, `config/appsettings.sample.json`
 
 ---
 
@@ -675,6 +734,33 @@ The data is available from `Metrics`, `DataQualityMonitoringService`, and `Stora
 
 ---
 
+### 9.13 Symbol-level collection pause and resume
+
+**Problem:** There is currently no way to temporarily pause collection for a specific symbol without removing it from configuration. Users managing large watchlists may want to stop collecting noisy or low-priority symbols during market hours without permanently removing them.
+
+**Improvement:** Add a per-symbol `Paused` state to the subscription orchestrator. Expose it via:
+1. `POST /api/symbols/{symbol}/pause` and `POST /api/symbols/{symbol}/resume` endpoints.
+2. A "Pause" toggle in the Symbols page of the WPF desktop app.
+3. Persist pause state in the config so it survives restarts.
+
+**Value:** Medium-High -- practical operational control for large watchlists.
+**Cost:** ~4-5 hours. `SubscriptionOrchestrator` already unsubscribes/resubscribes; this adds a state flag and two endpoints.
+**Files:** `src/MarketDataCollector.Application/Subscriptions/SubscriptionOrchestrator.cs`, `src/MarketDataCollector.Ui.Shared/Endpoints/SubscriptionEndpoints.cs`, `src/MarketDataCollector.Wpf/Views/SymbolsPage.xaml.cs`
+
+---
+
+### 9.14 Live data snapshot download button
+
+**Problem:** The web dashboard shows live quotes and trades but offers no direct way to download the current in-memory snapshot as a CSV or JSON file. Users who want a quick sample must either use the full export flow or connect to the API directly.
+
+**Improvement:** Add a "Download Snapshot" button on the Live Data page that calls `GET /api/live/snapshot?format=csv` and triggers a browser file download. The snapshot would include the most recent trade and quote for each subscribed symbol.
+
+**Value:** Medium -- bridges the gap between real-time monitoring and ad hoc data retrieval.
+**Cost:** ~2-3 hours. Live data models exist; add one endpoint and a button in the dashboard template.
+**Files:** `src/MarketDataCollector.Ui.Shared/Endpoints/LiveDataEndpoints.cs`, `src/MarketDataCollector/wwwroot/templates/`
+
+---
+
 ## Category 10: Data Consumption & Analysis Workflow
 
 ### 10.1 Quick-query CLI for stored data
@@ -817,6 +903,34 @@ This turns the export from a raw data dump into an analysis-ready dataset.
 
 ---
 
+### 10.7 Time-zone aware queries and exports
+
+**Problem:** All stored timestamps are UTC but users frequently think in exchange-local time (US/Eastern for equities). Queries like `--from 2026-01-03 09:30` are ambiguous — are they UTC or ET? The system defaults to UTC silently, producing off-by-hours results for non-UTC users.
+
+**Improvement:**
+1. Add a `--tz` flag to CLI queries and an optional `timezone` field in the export request JSON.
+2. Accept IANA time zone identifiers (e.g., `"America/New_York"`).
+3. Convert user-provided local times to UTC during query parsing; display results in the user's local time when printing to console.
+4. Default to exchange-local time for equity queries when the time zone is not specified.
+
+**Value:** Medium-High -- eliminates a common off-by-one-session bug for non-UTC users.
+**Cost:** ~3-4 hours. `TimeZoneInfo` is built-in; add a small conversion step in `HistoricalDataQueryService`.
+**Files:** `src/MarketDataCollector.Application/Services/HistoricalDataQueryService.cs`, `src/MarketDataCollector.Application/Commands/QueryCommand.cs`, `src/MarketDataCollector.Ui.Shared/Endpoints/ExportEndpoints.cs`
+
+---
+
+### 10.8 Retention policy dry-run preview
+
+**Problem:** `LifecyclePolicyEngine` can delete or compress files based on age and tier rules. Running it without knowing what will be affected is risky. There's no preview or dry-run mode — users must trust that the policy is configured correctly before irreversible deletions occur.
+
+**Improvement:** Add a `--dry-run` flag to the maintenance CLI trigger and a `preview: true` field in `POST /api/maintenance/execute`. In dry-run mode, return a structured list of files that **would** be deleted/moved with their age, size, and matching rule. No files are modified.
+
+**Value:** High -- gives operators confidence before irreversible maintenance operations.
+**Cost:** ~3-4 hours. `LifecyclePolicyEngine` already evaluates file eligibility; add a "report only" path that skips the actual file operation.
+**Files:** `src/MarketDataCollector.Storage/Services/LifecyclePolicyEngine.cs`, `src/MarketDataCollector.Ui.Shared/Endpoints/MaintenanceScheduleEndpoints.cs`
+
+---
+
 ## Category 11: Trust & Transparency
 
 ### 11.1 Data lineage in exports
@@ -863,7 +977,554 @@ The data for this already exists in `DataLineageService`, `DataQualityScoringSer
 
 ---
 
+### 11.3 Provider data gap accountability report
+
+**Problem:** When gaps occur in collected data, it is not always clear whether the cause was a provider outage, a local network issue, a process restart, or a code bug. Without a structured accountability record, diagnosing gaps days later is tedious.
+
+**Improvement:** Introduce a lightweight gap accountability log: whenever a gap is detected by `GapAnalyzer`, record the gap with a probable cause tag (provider-offline, local-restart, rate-limit, unknown). Tags are assigned based on concurrent events logged in `ErrorRingBuffer`, `ConnectionHealthMonitor`, and `DroppedEventAuditTrail`. Expose via `GET /api/quality/gaps/accountability`.
+
+**Value:** Medium-High -- transforms gap investigation from forensics into structured reporting.
+**Cost:** ~4-5 hours. Cross-correlate existing data sources; add one endpoint.
+**Files:** `src/MarketDataCollector.Application/Monitoring/DataQuality/GapAnalyzer.cs`, `src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs`, `src/MarketDataCollector.Ui.Shared/Endpoints/StorageQualityEndpoints.cs`
+
+---
+
+## Category 12: Strategic Platform Ideas
+
+These ideas are drawn from the companion [High-Impact Improvements Brainstorm](high-impact-improvements-brainstorm.md), which documents effort-agnostic, platform-level capabilities. They are listed here for cross-reference and long-term roadmap consideration. Unlike the items above, these are not constrained to low-cost execution — they represent the highest-leverage bets for transforming this project into a **market data intelligence operating system**.
+
+---
+
+### 12.1 Autonomous Data Trust Fabric
+
+**What it is:** A system-wide trust layer that continuously scores every symbol/feed/time-range for completeness, freshness, sequencing, and cross-provider agreement, then launches automatic remediation workflows.
+
+**Why it matters:** Converts data quality from passive observability into active reliability. Creates a "never silently wrong" user promise and enables enterprise-grade SLAs for archive correctness.
+
+**Potential capabilities:**
+- Per-partition trust score persisted alongside data.
+- Automatic gap repair queue with confidence grading.
+- Quarantine zones for suspicious partitions.
+- Human-readable root-cause analysis summaries.
+
+**Value:** Very High -- shifts from monitoring to self-healing.
+**Cost:** High (multi-week effort, builds on existing quality services).
+**Files:** `src/MarketDataCollector.Application/Monitoring/DataQuality/`, `src/MarketDataCollector.Storage/Services/`
+
+---
+
+### 12.2 Deterministic Market Time-Machine
+
+**What it is:** A deterministic replay system that reconstructs exact historical market state (order book, trades, quote stream, integrity events) and replays it at configurable speed with controllable clock semantics.
+
+**Why it matters:** Massive value for strategy debugging, research reproducibility, and incident forensics. Creates a unique differentiator versus simple archival tools.
+
+**Potential capabilities:**
+- "Replay this symbol set from 2024-08-14 09:30 to 10:00 at 20x" interface.
+- Snapshot + delta model for fast seek.
+- Deterministic event IDs and reproducible run manifests.
+- Side-by-side "live vs replay parity" validation mode.
+
+**Value:** Very High -- unique differentiator for research and debugging.
+**Cost:** High (replay engine requires snapshot infrastructure and clock abstraction).
+**Files:** `src/MarketDataCollector.Storage/Replay/`, `src/MarketDataCollector.Application/`
+
+---
+
+### 12.3 Unified Data Plane: Streaming + Lakehouse Query
+
+**What it is:** A dual-plane architecture where incoming market events feed both low-latency streams and analytics-optimized table formats (Parquet/Iceberg-like abstractions) with schema/version governance.
+
+**Why it matters:** Eliminates the split between collection and analytics systems. Makes the repository a first-class data platform for quant research teams.
+
+**Potential capabilities:**
+- SQL endpoint for ad hoc and scheduled research queries.
+- Materialized derived datasets (OHLCV, microstructure factors, imbalance).
+- Automatic compact/optimize jobs by symbol and date.
+- Metadata catalog with schema lineage, provider provenance, and data freshness.
+
+**Value:** Very High -- transforms collection into a research platform.
+**Cost:** High (requires query engine integration and lakehouse abstractions).
+**Files:** `src/MarketDataCollector.Storage/`, `src/MarketDataCollector.Application/Http/Endpoints/`
+
+---
+
+### 12.4 Dynamic Provider Routing and Cost Intelligence
+
+**What it is:** A policy engine that routes each symbol/data-type request to the provider expected to maximize utility given latency, quality history, coverage, legal constraints, and cost budget.
+
+**Why it matters:** Turns multi-provider support into strategic alpha. Optimizes both quality and spend continuously. Creates a "best execution for data" story.
+
+**Potential capabilities:**
+- Per-symbol routing policies with fallback ladders.
+- Real-time quality/cost scoreboard.
+- Budget-aware throttling and source substitution.
+- "What-if" simulator for monthly provider spend.
+
+**Value:** High -- multiplies value of existing multi-provider infrastructure.
+**Cost:** Medium-High (builds on existing `FailoverAwareMarketDataClient` and provider health monitoring).
+**Files:** `src/MarketDataCollector.Infrastructure/Adapters/Failover/`, `src/MarketDataCollector.Application/Monitoring/`
+
+---
+
+### 12.5 Feature Store for Quant Signals
+
+**What it is:** A native feature computation and serving layer that transforms raw ticks/order-book events into reusable, versioned ML and signal features.
+
+**Why it matters:** Bridges the largest gap between data collection and model development. Increases lock-in via reusable, versioned research artifacts.
+
+**Potential capabilities:**
+- Declarative feature definitions (windowed stats, imbalance, volatility bursts).
+- Offline/backtest feature generation plus online feature serving.
+- Feature lineage tied to raw data trust scores.
+- Drift detection and feature health dashboard.
+
+**Value:** Very High -- directly enables ML/quant research workflows.
+**Cost:** High (new subsystem, builds on `TechnicalIndicatorService` and export pipeline).
+**Files:** `src/MarketDataCollector.Application/Indicators/`, `src/MarketDataCollector.Storage/Export/`
+
+---
+
+### 12.6 Strategy Lifecycle Hub (Research → Backtest → Live)
+
+**What it is:** A standardized lifecycle that packages data snapshots, features, configs, and execution assumptions into reproducible strategy "capsules."
+
+**Why it matters:** Compresses iteration loops for quants. Enables auditable experiments and production promotions. Builds on existing Lean integration momentum.
+
+**Potential capabilities:**
+- One-click export to Lean-compatible bundles with manifest guarantees.
+- Experiment registry (parameters, data slice, metrics, commit hash).
+- Promotion gates based on out-of-sample and stress criteria.
+- Post-trade attribution tied back to source market data.
+
+**Value:** High -- closes the research-to-production loop.
+**Cost:** Medium-High (extends existing Lean integration and portable packager).
+**Files:** `src/MarketDataCollector/Integrations/Lean/`, `src/MarketDataCollector.Storage/Packaging/`
+
+---
+
+### 12.7 Expert Co-Pilot for Operations and Research
+
+**What it is:** A domain assistant trained on repository schemas, provider semantics, operational runbooks, and historical incidents to help users diagnose issues and compose workflows.
+
+**Why it matters:** Lowers skill barrier for newcomers. Speeds expert workflows through natural-language control. Captures tribal knowledge and reduces operational dependence on specific individuals.
+
+**Potential capabilities:**
+- "Why is SPY missing from yesterday 13:00–14:00?" guided diagnosis.
+- Auto-generated backfill and repair plans with dry-run previews.
+- Natural language to query/feature recipe generation.
+- Contextual warnings before risky config changes.
+
+**Value:** High -- multiplies team effectiveness and reduces support burden.
+**Cost:** High (requires LLM integration and domain-specific context building).
+**Files:** `src/MarketDataCollector.Application/Services/`, `docs/ai/`
+
+---
+
+### 12.8 Enterprise Reliability Envelope
+
+**What it is:** A platform mode focused on strict durability and compliance: exactly-once semantics where feasible, immutable audit trails, cryptographic provenance, policy controls, and formalized SLOs.
+
+**Why it matters:** Opens institutional and regulated-user adoption. Converts technical quality into procurement-friendly trust.
+
+**Potential capabilities:**
+- Signed manifests and tamper-evident archive segments.
+- Retention/legal-hold policy engine.
+- SLO dashboards (freshness, completeness, recovery MTTR).
+- Multi-region replication abstraction.
+
+**Value:** High -- prerequisite for institutional/enterprise adoption.
+**Cost:** High (requires cryptographic infrastructure and policy engine).
+**Files:** `src/MarketDataCollector.Storage/Archival/`, `src/MarketDataCollector.Application/Monitoring/`
+
+---
+
+### 12.9 Ecosystem and Extensibility Platform
+
+**What it is:** A plugin marketplace model for providers, transformers, validators, and exports — with stable SDK contracts and compatibility testing.
+
+**Why it matters:** Multiplies development velocity through community contributions. De-risks roadmap by externalizing long-tail integrations.
+
+**Potential capabilities:**
+- Versioned provider plugin SDK with conformance suite.
+- Public plugin registry and trust scoring.
+- Sandboxed execution for third-party extensions.
+- Capability discovery in UI with install/update flows.
+
+**Value:** High -- exponential leverage via community ecosystem.
+**Cost:** High (requires SDK versioning, conformance testing, and discovery infrastructure).
+**Files:** `src/MarketDataCollector.ProviderSdk/`, `src/MarketDataCollector.Infrastructure/`
+
+---
+
+### 12.10 Portfolio-Level Intelligence UX
+
+**What it is:** A user experience that elevates from feed/pipe monitoring to portfolio research decisions: data readiness heatmaps, expected signal quality, and impact previews.
+
+**Why it matters:** Converts technical telemetry into decision intelligence. Makes value visible to both engineers and traders.
+
+**Potential capabilities:**
+- "Research readiness score" by symbol universe.
+- Data availability calendar aligned to strategy sessions.
+- Impact analysis for missing intervals on model confidence.
+- Interactive scenario workbench (switch providers, compare expected quality).
+
+**Value:** High -- bridges the gap between engineers and traders as users.
+**Cost:** Medium-High (primarily UX work on top of existing quality and calendar services).
+**Files:** `src/MarketDataCollector.Wpf/Views/`, `src/MarketDataCollector.Ui.Shared/Endpoints/`, `src/MarketDataCollector.Application/Services/TradingCalendar.cs`
+
+---
+
+### 12.11 Multi-Asset Class Unification
+
+**What it is:** A unified ingest and storage model that treats equities, options, futures, foreign exchange, and cryptocurrency as first-class asset classes — sharing the same pipeline, quality monitoring, and query surfaces.
+
+**Why it matters:** Most quant strategies span asset classes. Forcing users to run separate collection systems for each class is a major adoption barrier. A unified model multiplies the value of every platform capability.
+
+**Potential capabilities:**
+- Common `AssetClass` dimension on all stored events and quality scores.
+- Options chain streaming alongside underlying equity data.
+- Cross-asset correlation and spread monitoring.
+- Asset-class-aware backfill scheduling (crypto runs 24/7; futures have roll dates).
+
+**Value:** Very High -- dramatically expands addressable use cases.
+**Cost:** High (requires provider contract extensions and storage schema changes).
+**Files:** `src/MarketDataCollector.Contracts/Domain/`, `src/MarketDataCollector.ProviderSdk/IMarketDataClient.cs`, `src/MarketDataCollector.Storage/`
+
+---
+
+### 12.12 Distributed Collection Fabric
+
+**What it is:** A multi-node collection architecture where multiple instances of the collector coordinate to cover disjoint symbol sets, providers, or data centers, with centralized aggregation and deduplication.
+
+**Why it matters:** Single-node collection is a scalability ceiling. Large symbol universes (thousands of symbols) and multi-region requirements cannot be served by one process. A distributed model unlocks institutional-scale use cases.
+
+**Potential capabilities:**
+- Coordinator node assigns symbol partitions to collector nodes.
+- Automatic rebalancing when nodes join or leave.
+- Cross-node deduplication using the existing `PersistentDedupLedger`.
+- Centralized gap detection across the full distributed symbol set.
+
+**Value:** Very High -- removes the scalability ceiling for large symbol universes.
+**Cost:** Very High (fundamental architectural extension; requires distributed coordination layer).
+**Files:** `src/MarketDataCollector.Application/Subscriptions/SubscriptionOrchestrator.cs`, `src/MarketDataCollector.Application/Pipeline/`
+
+---
+
+### 12.13 Real-Time Complex Event Processing (CEP)
+
+**What it is:** An embedded CEP engine that evaluates declarative pattern rules against the live event stream and fires alerts, signals, or automated actions when patterns are matched.
+
+**Why it matters:** Raw market data becomes valuable when it drives action. CEP on live streams enables use cases like momentum triggers, order book imbalance alerts, and anomaly-based circuit breakers — without external tooling.
+
+**Potential capabilities:**
+- Declarative pattern DSL: `"when SPY bid > ask + 0.10 for 3 consecutive ticks, alert"`
+- Time-windowed pattern matching (e.g., VWAP deviation over rolling 5 min).
+- Output to webhook, Slack, log, or a new `CepEventSink`.
+- Visual pattern builder in the web dashboard.
+
+**Value:** High -- transforms collection into a real-time decision layer.
+**Cost:** High (requires pattern evaluation engine; integrate with existing pipeline).
+**Files:** `src/MarketDataCollector.Application/Pipeline/EventPipeline.cs`, `src/MarketDataCollector.Application/Monitoring/`
+
+---
+
+### 12.14 Market Microstructure Analytics Engine
+
+**What it is:** A dedicated analytics subsystem that computes deep microstructure metrics — order flow toxicity (VPIN), adverse selection proxies, realized volatility decomposition, and hidden liquidity estimation — from raw tick and order-book data.
+
+**Why it matters:** These metrics are the core inputs to alpha research and execution quality analysis. Building them natively removes the need for post-processing pipelines and increases research velocity.
+
+**Potential capabilities:**
+- VPIN (Volume-synchronized Probability of Informed Trading) per symbol.
+- Amihud illiquidity ratio and Kyle's lambda estimation.
+- Trade direction inference (Lee-Ready, tick test, bulk classification).
+- Realized variance and integrated variance estimators from tick data.
+
+**Value:** Very High -- native support for academic-grade microstructure research.
+**Cost:** High (requires financial econometrics implementation; builds on F# calculation layer).
+**Files:** `src/MarketDataCollector.FSharp/Calculations/`, `src/MarketDataCollector.Application/Indicators/`
+
+---
+
+### 12.15 Data Marketplace and Sharing Layer
+
+**What it is:** A governed layer that enables users to share, publish, or monetize curated data packages — with access controls, licensing metadata, and optional integration with a public or private registry.
+
+**Why it matters:** Community-shared data (high-quality historical samples, curated corporate event datasets, alternative data overlays) dramatically expands the value of the platform. A sharing layer creates network effects.
+
+**Potential capabilities:**
+- Signed, versioned data packages with license and provenance metadata.
+- Private sharing via token-authenticated download links.
+- Optional public registry for open datasets (index OHLCV, ETF flows).
+- Differential packaging: share only new data since last published version.
+
+**Value:** High -- creates compounding community value and differentiation.
+**Cost:** High (requires access control infrastructure and registry integration).
+**Files:** `src/MarketDataCollector.Storage/Packaging/`, `src/MarketDataCollector.Ui.Shared/Endpoints/`
+
+---
+
+### 12.16 Adaptive Data Sampling and Intelligent Compression
+
+**What it is:** A dynamic sampling engine that adjusts event storage granularity based on real-time market conditions — preserving full tick resolution during high-volatility or high-volume windows while downsampling quiet periods to reduce storage footprint without sacrificing analytical value.
+
+**Why it matters:** Tick data volumes can spike 10–50× during market events. Storing everything at full granularity is expensive; discarding events loses information. Adaptive sampling is the optimal middle path used by institutional data vendors.
+
+**Potential capabilities:**
+- Volatility-gated sampling: preserve all ticks when realized volatility exceeds a threshold.
+- Volume-gated sampling: full resolution during high VWAP deviation windows.
+- Configurable compression ratios per symbol tier (index, ETF, small-cap).
+- Lossless reconstruction metadata so compressed periods can be re-expanded if needed.
+
+**Value:** Very High -- dramatically reduces storage costs at scale while preserving signal quality.
+**Cost:** High (requires volatility estimation pipeline and conditional sink routing).
+**Files:** `src/MarketDataCollector.Application/Pipeline/EventPipeline.cs`, `src/MarketDataCollector.Storage/Sinks/`, `src/MarketDataCollector.Application/Monitoring/`
+
+---
+
+### 12.17 Cross-Asset Regime Detection and Labeling
+
+**What it is:** A market state classification layer that automatically labels collected data with regime tags (trending, mean-reverting, high-volatility, low-liquidity, crisis) derived from microstructure features computed in real time.
+
+**Why it matters:** Quantitative strategies behave differently across market regimes. Annotating stored data with regime labels at collection time removes a significant preprocessing burden for researchers and enables regime-conditional backtesting.
+
+**Potential capabilities:**
+- Hidden Markov Model or clustering-based regime classifier trained on microstructure features.
+- Real-time regime state emitted as a metadata event alongside trade/quote streams.
+- Historical re-labeling of archived data when model is updated.
+- Regime transition alerts for live monitoring dashboards.
+
+**Value:** Very High -- unique differentiator that converts raw data into research-ready labeled datasets.
+**Cost:** Very High (requires ML model training and inference pipeline; builds on F# calculation layer).
+**Files:** `src/MarketDataCollector.FSharp/Calculations/`, `src/MarketDataCollector.Application/Monitoring/DataQuality/`
+
+---
+
+### 12.18 Multi-Tenant SaaS Architecture
+
+**What it is:** A transformation of the single-tenant application into a multi-tenant managed platform where multiple organizations or users have isolated namespaces for collection, storage, and API access — without running separate processes.
+
+**Why it matters:** Unlocks hosting the platform as a managed service. Multiple research teams can share infrastructure while having independent symbol universes, quality policies, data retention, and API credentials.
+
+**Potential capabilities:**
+- Namespace-scoped storage paths and API endpoints.
+- Per-tenant rate limiting, quota enforcement, and billing hooks.
+- Tenant-scoped API keys and credential stores.
+- Admin control plane for tenant management.
+
+**Value:** Very High -- enables a managed service business model and institutional adoption.
+**Cost:** Very High (fundamental multi-tenancy requires storage isolation, auth, and routing changes throughout).
+**Files:** `src/MarketDataCollector.Ui.Shared/Endpoints/ApiKeyMiddleware.cs`, `src/MarketDataCollector.Application/Composition/`, `src/MarketDataCollector.Storage/`
+
+---
+
+### 12.19 Compliance and Regulatory Audit Layer
+
+**What it is:** A structured audit trail and data lineage system providing tamper-evident records of all data collection, transformation, and export events — designed to satisfy MiFID II data retention, FINRA recordkeeping, and SEC best execution documentation requirements.
+
+**Why it matters:** Institutional and professional trading firms face regulatory requirements around data provenance and retention. A compliant audit layer makes the platform viable for regulated environments.
+
+**Potential capabilities:**
+- Append-only, cryptographically-signed audit log for all collection sessions.
+- Lineage tracking from raw tick to transformed export.
+- Automated retention enforcement with configurable legal hold overrides.
+- Export of audit evidence in regulatory standard formats (CFTC, MiFID II records).
+
+**Value:** High -- opens the institutional and regulated-firm market segment.
+**Cost:** High (requires append-only log infrastructure and cryptographic signing).
+**Files:** `src/MarketDataCollector.Storage/Archival/WriteAheadLog.cs`, `src/MarketDataCollector.Application/Monitoring/`, `src/MarketDataCollector.Storage/Services/DataLineageService.cs`
+
+---
+
+### 12.20 AI-Assisted Event Annotation and Enrichment
+
+**What it is:** A system that enriches stored market events with contextual annotations — linking data anomalies, gaps, and volatility spikes to macro events (earnings announcements, Fed meetings, geopolitical events) sourced from public calendars, news feeds, or user-provided annotations.
+
+**Why it matters:** Raw market data becomes exponentially more useful when annotated with causal context. Researchers spend significant time manually matching data artifacts to external events. Automated enrichment creates a labeled, contextual dataset that accelerates hypothesis formation.
+
+**Potential capabilities:**
+- Economic calendar integration (earnings dates, FOMC meetings, index rebalances).
+- Automatic correlation of data gaps and volatility spikes with calendar events.
+- User annotation interface: tag any event or time window with free-form notes.
+- AI-assisted annotation suggestions: "this gap coincides with a scheduled maintenance window for Alpaca".
+
+**Value:** High -- converts data collection into a contextual research corpus.
+**Cost:** High (requires calendar integrations, annotation storage, and ML-based correlation).
+**Files:** `src/MarketDataCollector.Application/Services/TradingCalendar.cs`, `src/MarketDataCollector.Storage/Services/MetadataTagService.cs`
+
+---
+
+## Category 13: Visionary & Moonshot Ideas
+
+> These items are purely value-oriented. No implementation constraints, timelines, or cost estimates apply. They represent the highest-ambition directions the platform could pursue, unconstrained by current architecture or team size.
+
+### 13.1 Natural Language Market Data Query Interface
+
+**What it is:** Ask questions about collected data in plain English. "How did SPY trade in the 30 minutes after the last five Fed rate decisions?" or "Show me every day AAPL volume was 3× its 20-day average and sort by next-day return." The system translates these into structured queries against stored data and returns formatted results.
+
+**Why it matters:** The query-to-insight loop is the highest-friction part of owning market data. A natural language interface removes the code barrier entirely and turns a data collection tool into an interactive research partner accessible to non-programmers.
+
+**Value:** Very High
+
+---
+
+### 13.2 Synthetic Market Data Generation via Generative Models
+
+**What it is:** Use generative AI (diffusion models, GANs, or autoregressive models) trained on collected microstructure data to produce statistically faithful synthetic market data — preserving stylized facts like volatility clustering, fat tails, and intraday periodicity — without exposing real trades.
+
+**Why it matters:** Synthetic data eliminates look-ahead bias in strategy research, enables unlimited out-of-sample testing, and allows safe sharing of realistic datasets without confidentiality concerns. It is the foundational capability for responsible quantitative research at scale.
+
+**Value:** Very High
+
+---
+
+### 13.3 Cross-Market Systemic Contagion Detector
+
+**What it is:** A real-time monitor that identifies when a liquidity or volatility shock originating in one market (e.g., a single-stock halt, a futures circuit breaker) begins propagating to correlated instruments — before contagion is visible in prices. Uses Granger causality and order flow imbalance propagation patterns.
+
+**Why it matters:** Systemic risk events are detectable at the microstructure level seconds to minutes before they manifest in headlines or price moves. A contagion detector provides institutional-grade early warning that is currently only available to top-tier market participants.
+
+**Value:** Very High
+
+---
+
+### 13.4 Federated Signal Discovery Across Institutions
+
+**What it is:** Multiple firms train a shared signal discovery model on their local, private order flow data using federated learning — no raw data leaves any institution. The federated model captures cross-institutional patterns (e.g., correlated order flow from multiple buy-side firms) that no single firm could observe alone.
+
+**Why it matters:** The most valuable signals in markets emerge from cross-participant behavior that is invisible to any single data owner. Federated learning is the only privacy-preserving mechanism to discover these signals. No current market data platform offers this.
+
+**Value:** Very High
+
+---
+
+### 13.5 Homomorphic Encrypted Collaborative Analytics
+
+**What it is:** Allow competing institutions to compute joint statistical properties of their private order flow — correlation matrices, volatility surfaces, liquidity metrics — without either party decrypting or revealing their raw data to the other. Uses homomorphic encryption or secure multi-party computation.
+
+**Why it matters:** Risk management, market impact modeling, and pre-trade analytics all improve with larger data populations. HE/SMPC removes the confidentiality barrier that prevents institutions from collaborating on shared analytics.
+
+**Value:** Very High
+
+---
+
+### 13.6 Market Microstructure Digital Twin
+
+**What it is:** A fully simulated, live replica of a market's order book driven by real-time collected data. Enables counterfactual analysis: "What would the SPY order book look like if this 50,000-share block had not printed at 10:32?" Supports synthetic participant modeling and market impact pre-estimation.
+
+**Why it matters:** Digital twins of physical systems have transformed manufacturing, aerospace, and urban planning. A microstructure digital twin would transform pre-trade analytics and risk management, allowing traders to run experiments on a faithful simulation before committing capital.
+
+**Value:** Very High
+
+---
+
+### 13.7 Predictive Trading Halt and Circuit Breaker Intelligence
+
+**What it is:** A real-time ML model that predicts imminent trading halts, limit-up/limit-down triggers, and exchange circuit breakers based on live order flow imbalance, quote stuffing patterns, and cross-venue price divergence. Issues structured alerts minutes or seconds before the official halt.
+
+**Why it matters:** Trading halts create severe adverse selection risk for market makers and momentum traders. Early warning capability — even seconds ahead — has enormous risk-adjusted value. The required microstructure signals are already being collected.
+
+**Value:** Very High
+
+---
+
+### 13.8 Temporal Knowledge Graph for Market Events
+
+**What it is:** A queryable graph database where nodes are market events (earnings, dividends, index rebalances, macro announcements, corporate actions) and edges represent causal, correlative, or temporal relationships discovered automatically from historical collected data. Supports causal reasoning queries: "What events preceded this volatility cluster?"
+
+**Why it matters:** Markets are driven by events, but the relationships between events and price/liquidity outcomes are encoded only implicitly in historical data. A knowledge graph externalizes these relationships as first-class queryable objects, transforming raw data into institutional memory.
+
+**Value:** Very High
+
+---
+
+### 13.9 Autonomous Alpha Decay Monitoring
+
+**What it is:** A system that continuously monitors deployed quantitative strategies' statistical edge in live market data and automatically detects when a strategy's alpha is decaying — its returns are diverging from backtest parameters, its information coefficient is trending toward zero, or its regime assumptions are no longer valid.
+
+**Why it matters:** Most strategy failures are not sudden — they decay over months or quarters. Catching decay early (before significant drawdown) is one of the highest-value operational improvements available to systematic funds. The required infrastructure (live data + backtest reference distribution) already exists in this platform.
+
+**Value:** Very High
+
+---
+
+### 13.10 Real-Time Sentiment and Order Flow Fusion
+
+**What it is:** Continuous fusion of natural language sentiment scores derived from news, regulatory filings, and social media with live microstructure signals (order flow imbalance, quote depth asymmetry, trade direction). The fused signal is more predictive than either input alone and is emitted as a real-time event stream.
+
+**Why it matters:** Sentiment and microstructure are complementary signals operating at different time scales. Their fusion captures information that neither alone contains — a positive earnings surprise hitting an already-imbalanced order book behaves very differently from the same surprise into a balanced book.
+
+**Value:** Very High
+
+---
+
+### 13.11 Self-Calibrating Microstructure Models
+
+**What it is:** Automated daily re-calibration of industry-standard market microstructure models — Kyle's lambda, Amihud illiquidity ratio, Glosten-Milgrom spread decomposition, Roll's implicit spread estimate — using the previous session's collected data. All model parameters are current and model outputs are available as a queryable API.
+
+**Why it matters:** Published microstructure parameters go stale within weeks of publication as markets evolve. Self-calibrating models ensure that any analytics built on top are always fit to current market conditions rather than a historical snapshot.
+
+**Value:** High
+
+---
+
+### 13.12 Privacy-Preserving Institutional Order Flow Intelligence
+
+**What it is:** Statistical fingerprinting of order flow to identify the behavioral signatures of large institutional participants (without identifying specific firms) — enabling pre-trade analytics that answers "is there an informed buyer active in this security right now?" without violating privacy or market surveillance rules.
+
+**Why it matters:** Detecting informed order flow is the Holy Grail of market impact modeling. Behavioral signature detection from microstructure patterns is a legitimate, privacy-preserving alternative to broker flow data that is currently only available to exchanges and a small number of specialist firms.
+
+**Value:** Very High
+
+---
+
+### 13.13 Zero-Knowledge Data Provenance Certificates
+
+**What it is:** Cryptographic certificates attached to every exported dataset that prove — without revealing the data itself — that it was collected from a specific provider, during a specific time window, without tampering, and meets specified quality criteria (e.g., completeness > 99%, gap duration < 5 minutes).
+
+**Why it matters:** Institutional data governance requires provenance guarantees. Currently, all such guarantees are based on trust in the vendor. Zero-knowledge proofs enable cryptographically verifiable data quality certificates that any party can independently verify without access to the underlying data.
+
+**Value:** High
+
+---
+
+### 13.14 Continuous Backtesting Fabric
+
+**What it is:** A live backtesting layer that continuously re-runs a registered library of strategy specifications against the newest collected data — automatically detecting when a strategy's performance on fresh out-of-sample data diverges from its historical distribution, triggering a research alert.
+
+**Why it matters:** Walk-forward validation is the gold standard for strategy robustness, but it is expensive and infrequently performed. A continuous backtesting fabric makes it automatic and invisible — every minute of new data is a new out-of-sample test for every registered strategy.
+
+**Value:** Very High
+
+---
+
+### 13.15 Global Alpha Decay Observatory
+
+**What it is:** A community-driven public dashboard (with optional private contribution) that tracks how quickly various signal categories (momentum, mean-reversion, microstructure, sentiment) decay across different regimes, asset classes, and geographies — built from anonymized, aggregated research contributions from multiple users of the platform.
+
+**Why it matters:** Alpha decay is poorly understood outside the largest institutions because the data required to study it is fragmented and proprietary. A shared observatory would be one of the most valuable public goods in quantitative finance — and it would be a powerful network effect engine for platform adoption.
+
+**Value:** Very High
+
+---
+
 ## Priority Matrix
+
+**Priority Definitions:**
+
+| Priority | Meaning |
+|----------|---------|
+| **P1** | High value, low cost — implement first; ~2-20h each |
+| **P2** | High-medium value, moderate cost — next tier after P1; ~3-12h each |
+| **P3** | Medium value or moderate cost — do opportunistically |
+| **P4** | Low value or high cost relative to gain — defer |
+| **P-Strategic** | Long-horizon platform bets; effort-agnostic; tracked separately as multi-week investments |
+| **P-Moonshot** | Visionary, unconstrained ideas — no implementation timeline or cost estimate; pure value brainstorm |
+
+**Value Scale:** `Low` < `Low-Med` < `Medium` < `Med-High` < `High` < `Very High`
+- *Very High* items have transformational or platform-level impact (typically Category 12)
+
 
 | ID | Improvement | Value | Cost | Priority |
 |----|------------|-------|------|----------|
@@ -914,6 +1575,50 @@ The data for this already exists in `DataLineageService`, `DataQualityScoringSer
 | 9.12 | Command palette hotkey wiring | Medium | 2-3h | **P3** |
 | 6.3 | `Lazy<T>` consolidation | Low-Med | 4-8h | **P3** |
 | 8.3 | Config double-read elimination | Low | 2-3h | **P4** |
+| 12.1 | Autonomous Data Trust Fabric | Very High | 6-12w | **P-Strategic** |
+| 12.2 | Deterministic Market Time-Machine | Very High | 6-12w | **P-Strategic** |
+| 12.3 | Unified Data Plane / Lakehouse Query | Very High | 6-12w | **P-Strategic** |
+| 12.4 | Dynamic Provider Routing & Cost Intel | High | 4-8w | **P-Strategic** |
+| 12.5 | Feature Store for Quant Signals | Very High | 6-12w | **P-Strategic** |
+| 12.6 | Strategy Lifecycle Hub | High | 4-8w | **P-Strategic** |
+| 12.7 | Expert Co-Pilot for Ops & Research | High | 4-8w | **P-Strategic** |
+| 12.8 | Enterprise Reliability Envelope | High | 4-8w | **P-Strategic** |
+| 12.9 | Ecosystem & Extensibility Platform | High | 4-8w | **P-Strategic** |
+| 12.10 | Portfolio-Level Intelligence UX | High | 4-8w | **P-Strategic** |
+| 9.13 | Symbol-level pause and resume | Med-High | 4-5h | **P2** |
+| 9.14 | Live data snapshot download | Medium | 2-3h | **P2** |
+| 11.3 | Provider gap accountability report | Med-High | 4-5h | **P2** |
+| 3.5 | Interactive provider diagnostics mode | High | 4-6h | **P1** |
+| 5.5 | API response contract snapshot tests | High | 4-6h | **P2** |
+| 6.5 | `Result<T,E>` return type adoption | Med-High | 6-8h | **P2** |
+| 10.7 | Time-zone aware queries and exports | Med-High | 3-4h | **P2** |
+| 10.8 | Retention policy dry-run preview | High | 3-4h | **P1** |
+| 8.4 | Pipeline back-pressure tuning via config | Medium | 2-3h | **P3** |
+| 12.11 | Multi-Asset Class Unification | Very High | 6-12w | **P-Strategic** |
+| 12.12 | Distributed Collection Fabric | Very High | 8-16w | **P-Strategic** |
+| 12.13 | Real-Time Complex Event Processing | High | 4-8w | **P-Strategic** |
+| 12.14 | Market Microstructure Analytics Engine | Very High | 6-12w | **P-Strategic** |
+| 12.15 | Data Marketplace and Sharing Layer | High | 4-8w | **P-Strategic** |
+| 12.16 | Adaptive Data Sampling & Compression | Very High | 6-12w | **P-Strategic** |
+| 12.17 | Cross-Asset Regime Detection | Very High | 8-16w | **P-Strategic** |
+| 12.18 | Multi-Tenant SaaS Architecture | Very High | 12-24w | **P-Strategic** |
+| 12.19 | Compliance & Regulatory Audit Layer | High | 8-16w | **P-Strategic** |
+| 12.20 | AI-Assisted Event Annotation | High | 6-12w | **P-Strategic** |
+| 13.1 | Natural Language Market Data Query | Very High | — | **P-Moonshot** |
+| 13.2 | Synthetic Market Data Generation | Very High | — | **P-Moonshot** |
+| 13.3 | Cross-Market Contagion Detector | Very High | — | **P-Moonshot** |
+| 13.4 | Federated Signal Discovery | Very High | — | **P-Moonshot** |
+| 13.5 | Homomorphic Encrypted Analytics | Very High | — | **P-Moonshot** |
+| 13.6 | Market Microstructure Digital Twin | Very High | — | **P-Moonshot** |
+| 13.7 | Predictive Halt & Circuit Breaker Intel | Very High | — | **P-Moonshot** |
+| 13.8 | Temporal Knowledge Graph | Very High | — | **P-Moonshot** |
+| 13.9 | Autonomous Alpha Decay Monitoring | Very High | — | **P-Moonshot** |
+| 13.10 | Real-Time Sentiment + Order Flow Fusion | Very High | — | **P-Moonshot** |
+| 13.11 | Self-Calibrating Microstructure Models | High | — | **P-Moonshot** |
+| 13.12 | Institutional Order Flow Intelligence | Very High | — | **P-Moonshot** |
+| 13.13 | Zero-Knowledge Provenance Certificates | High | — | **P-Moonshot** |
+| 13.14 | Continuous Backtesting Fabric | Very High | — | **P-Moonshot** |
+| 13.15 | Global Alpha Decay Observatory | Very High | — | **P-Moonshot** |
 
 ---
 
@@ -928,4 +1633,6 @@ The data for this already exists in `DataLineageService`, `DataQualityScoringSer
 - **Category 9 items are disproportionately cheap** because the backend services already exist and are tested -- the work is wiring, not building
 - **Category 10 items bridge the "collection to analysis" gap** that determines whether users stick with the tool long-term. Item 10.4 (wire export API) is critical -- the endpoints exist but return fake data
 - **Category 11 items** build user trust through transparency -- lineage, calendar awareness, and quality metadata make the system credible for research use
-- **Total: 48 improvements** across 11 categories. At estimated effort, the full P1 set is ~65-85 hours of work (roughly 2 developer-weeks)
+- **Category 12 items** are long-horizon platform bets from the companion [High-Impact Improvements Brainstorm](high-impact-improvements-brainstorm.md). They are effort-agnostic and represent strategic directions rather than near-term tasks. See that document for prioritization framework and rationale.
+- **Category 13 items** are unconstrained moonshot ideas — no implementation timeline, cost estimate, or architecture constraint applies. They represent the highest-ambition directions the platform could pursue and are tracked as pure value propositions.
+- **Total: 91 improvements** across 13 categories. At estimated effort, the full P1 set is ~65-85 hours of work (roughly 2 developer-weeks). Category 12 items require multi-week investment and are tracked separately. Category 13 items are aspirational with no timeline.
