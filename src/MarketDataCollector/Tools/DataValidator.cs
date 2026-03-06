@@ -149,10 +149,13 @@ public sealed class DataValidator
                     MarketEventType eventType;
                     if (typeEl.ValueKind == JsonValueKind.Number)
                     {
-                        if (!typeEl.TryGetInt32(out var typeInt) || !Enum.IsDefined(typeof(MarketEventType), typeInt))
+                        // MarketEventType has byte backing; cast to byte before Enum.IsDefined to avoid
+                        // ArgumentException from the non-generic overload when passed an int value.
+                        if (!typeEl.TryGetInt32(out var typeInt) || typeInt < 0 || typeInt > byte.MaxValue
+                            || !Enum.IsDefined(typeof(MarketEventType), (byte)typeInt))
                         {
                             invalidEvents++;
-                            errors.Add($"Line {totalLines}: Unknown event type: {typeInt}");
+                            errors.Add($"Line {totalLines}: Unknown event type: {typeEl.GetRawText()}");
                             continue;
                         }
                         eventType = (MarketEventType)typeInt;
