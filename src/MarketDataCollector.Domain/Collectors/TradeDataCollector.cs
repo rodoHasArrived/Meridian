@@ -132,7 +132,10 @@ public sealed class TradeDataCollector
             }
         }
 
-        _lastSequenceByStream[streamKey] = seq;
+        if (seq > 0)
+        {
+            _lastSequenceByStream[streamKey] = seq;
+        }
 
         var state = _stateBySymbol.GetOrAdd(symbol, _ => new SymbolTradeState());
 
