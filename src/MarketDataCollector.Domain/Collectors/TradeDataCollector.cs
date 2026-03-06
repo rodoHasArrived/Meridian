@@ -297,31 +297,93 @@ public sealed class TradeDataCollector
                 : _vwapNumerator / _vwapDenominator;
 
             var rolling = new List<RollingOrderFlowWindow>(windows.Length);
-            foreach (var window in windows)
+
+            // Take a consistent snapshot of the rolling trades so we can compute
+            // all windows in (roughly) O(N + windows * log N) instead of
+            // O(N * windows) by using prefix sums and binary search.
+            var tradesSnapshot = _rollingTrades.ToArray();
+
+            if (tradesSnapshot.Length == 0)
             {
-                long buy = 0;
-                long sell = 0;
-                long unknown = 0;
-                decimal num = 0;
-                long den = 0;
-                var cutoff = timestamp - window;
-                foreach (var t in _rollingTrades)
+                // No trades in the rolling buffer: all rolling window stats are zero.
+                foreach (var window in windows)
                 {
-                    if (t.Timestamp < cutoff) continue;
+                    rolling.Add(new RollingOrderFlowWindow(
+                        (int)window.TotalSeconds,
+                        0,
+                        0,
+                        0,
+                        0m,
+                        0m));
+                }
+            }
+            else
+            {
+                var n = tradesSnapshot.Length;
+                var timestamps = new DateTimeOffset[n];
+                var prefixBuy = new long[n + 1];
+                var prefixSell = new long[n + 1];
+                var prefixUnknown = new long[n + 1];
+                var prefixNum = new decimal[n + 1];
+                var prefixDen = new long[n + 1];
+
+                for (var i = 0; i < n; i++)
+                {
+                    var t = tradesSnapshot[i];
+                    timestamps[i] = t.Timestamp;
+
+                    prefixBuy[i + 1] = prefixBuy[i];
+                    prefixSell[i + 1] = prefixSell[i];
+                    prefixUnknown[i + 1] = prefixUnknown[i];
+                    prefixNum[i + 1] = prefixNum[i];
+                    prefixDen[i + 1] = prefixDen[i];
+
                     switch (t.Aggressor)
                     {
-                        case AggressorSide.Buy: buy += t.Size; break;
-                        case AggressorSide.Sell: sell += t.Size; break;
-                        default: unknown += t.Size; break;
+                        case AggressorSide.Buy:
+                            prefixBuy[i + 1] += t.Size;
+                            break;
+                        case AggressorSide.Sell:
+                            prefixSell[i + 1] += t.Size;
+                            break;
+                        default:
+                            prefixUnknown[i + 1] += t.Size;
+                            break;
                     }
-                    num += t.Price * t.Size;
-                    den += t.Size;
+
+                    prefixNum[i + 1] += t.Price * t.Size;
+                    prefixDen[i + 1] += t.Size;
                 }
 
-                var rollTotal = buy + sell + unknown;
-                var rollVwap = den == 0 ? 0m : num / den;
-                var rollImbalance = rollTotal == 0 ? 0m : (decimal)(buy - sell) / rollTotal;
-                rolling.Add(new RollingOrderFlowWindow((int)window.TotalSeconds, buy, sell, unknown, rollVwap, rollImbalance));
+                foreach (var window in windows)
+                {
+                    var cutoff = timestamp - window;
+
+                    // Find the first index where timestamps[index] >= cutoff.
+                    var idx = Array.BinarySearch(timestamps, cutoff);
+                    if (idx < 0)
+                    {
+                        idx = ~idx;
+                    }
+
+                    var buy = prefixBuy[n] - prefixBuy[idx];
+                    var sell = prefixSell[n] - prefixSell[idx];
+                    var unknown = prefixUnknown[n] - prefixUnknown[idx];
+                    var num = prefixNum[n] - prefixNum[idx];
+                    var den = prefixDen[n] - prefixDen[idx];
+
+                    var rollTotal = buy + sell + unknown;
+                    var rollVwap = den == 0 ? 0m : num / den;
+                    var rollImbalance = rollTotal == 0 ? 0m : (decimal)(buy - sell) / rollTotal;
+
+                    rolling.Add(new RollingOrderFlowWindow(
+                        (int)window.TotalSeconds,
+                        buy,
+                        sell,
+                        unknown,
+                        rollVwap,
+                        rollImbalance));
+                }
             }
 
             return new OrderFlowStatistics(
