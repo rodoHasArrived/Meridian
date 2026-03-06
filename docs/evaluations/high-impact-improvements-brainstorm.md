@@ -2,6 +2,7 @@
 
 **Date:** 2026-03-02  
 **Audience:** Maintainers, architects, and product direction stakeholders  
+**Status:** Brainstorm / Draft  
 **Goal:** Generate ideas that could produce outsized gains in product value, differentiation, and long-term strategic positioning, explicitly ignoring implementation effort.
 
 ---
