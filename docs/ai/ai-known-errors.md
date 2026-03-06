@@ -335,3 +335,21 @@ If headings are missing, the workflow still creates an entry with safe defaults 
 - **Source issue**: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/21857738217/job/64242040198 (original, Feb 10) and https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/22083541882/job/64238547291 (recurrence, Feb 20)
 - **Status**: fixed
 - **Fixed in**: `.github/workflows/ticker-data-collection.yml` line 97 — changed `grep -qEv '^[A-Z0-9.\-^=]+$'` to `grep -Ev '^[A-Z0-9.^=-]+$'` (hyphen moved to end of character class); also improved to capture and display the invalid symbols before rejecting
+
+### AI-20260306-enum-byte-backing-overflow
+- **ID**: AI-20260306-enum-byte-backing-overflow
+- **Area**: build/types
+- **Symptoms**: Build fails with CS0031 ("Constant value 'X' cannot be converted to a 'byte'") across many files. Category-ranged enum values (1000–8005) far exceed the byte range (0–255). All downstream consumers and tests also fail to compile.
+- **Root cause**: An optimization pass changed `public enum ErrorCode : int` to `public enum ErrorCode : byte` without checking whether the existing values fit in a byte. The values in `ErrorCode` use a category-based numbering scheme (General=1000s, Validation=2000s, …, Storage=8000s) that requires at minimum a 16-bit backing type.
+- **Prevention checklist**:
+  - [ ] Before narrowing any enum backing type, grep its values and confirm max value ≤ type max: `grep -E '= [0-9]+' src/.../ErrorCode.cs | awk -F'= ' '{print $2+0}' | sort -n | tail -1`
+  - [ ] Never use `byte` as a backing type for category-ranged error/status enums; prefer `int` (default) unless values are explicitly documented to fit in the smaller type
+  - [ ] After changing an enum backing type, run a full build immediately: `dotnet build MarketDataCollector.sln -c Release /p:EnableWindowsTargeting=true`
+  - [ ] Check all tests that cast integer literals to the enum (e.g., `(DataSourceKind)999`): literals must fit in the backing type
+- **Verification commands**:
+  - `dotnet build MarketDataCollector.sln -c Release /p:EnableWindowsTargeting=true`
+  - `grep -E ': byte' src/MarketDataCollector.Application/Results/ErrorCode.cs` (should return no results — backing type must be int)
+  - `grep -E 'ErrorCode\.' src/ -r --include="*.cs" | grep -v '//\|\.cs:' | head -5`
+- **Source issue**: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/22710880501/job/65983564475#step:6:1
+- **Status**: fixed
+- **Fixed in**: `src/MarketDataCollector.Application/Results/ErrorCode.cs` — changed `: byte` to `: int`; `src/MarketDataCollector.Domain/Collectors/TradeDataCollector.cs` — added `(ushort)` cast on `Math.Max(0, TradeCount - 1)`; `tests/…/MarketDataClientFactoryTests.cs` — changed `(DataSourceKind)999` to `(DataSourceKind)200` (999 > 255); `tests/…/OptionContractSpecTests.cs` — removed `[InlineData(-1)]` (ushort cannot be negative); `tests/…/CanonicalizationGoldenFixtureTests.cs` — added `(byte)` cast for `canonicalizationVersion` comparison
