@@ -1241,16 +1241,16 @@ These ideas are drawn from the companion [High-Impact Improvements Brainstorm](h
 | 9.12 | Command palette hotkey wiring | Medium | 2-3h | **P3** |
 | 6.3 | `Lazy<T>` consolidation | Low-Med | 4-8h | **P3** |
 | 8.3 | Config double-read elimination | Low | 2-3h | **P4** |
-| 12.1 | Autonomous Data Trust Fabric | Very High | Weeks | **P-Strategic** |
-| 12.2 | Deterministic Market Time-Machine | Very High | Weeks | **P-Strategic** |
-| 12.3 | Unified Data Plane: Streaming + Lakehouse Query | Very High | Weeks | **P-Strategic** |
-| 12.4 | Dynamic Provider Routing & Cost Intelligence | High | Weeks | **P-Strategic** |
-| 12.5 | Feature Store for Quant Signals | Very High | Weeks | **P-Strategic** |
-| 12.6 | Strategy Lifecycle Hub | High | Weeks | **P-Strategic** |
-| 12.7 | Expert Co-Pilot for Ops & Research | High | Weeks | **P-Strategic** |
-| 12.8 | Enterprise Reliability Envelope | High | Weeks | **P-Strategic** |
-| 12.9 | Ecosystem & Extensibility Platform | High | Weeks | **P-Strategic** |
-| 12.10 | Portfolio-Level Intelligence UX | High | Weeks | **P-Strategic** |
+| 12.1 | Autonomous Data Trust Fabric | Very High | 6-12w | **P-Strategic** |
+| 12.2 | Deterministic Market Time-Machine | Very High | 6-12w | **P-Strategic** |
+| 12.3 | Unified Data Plane / Lakehouse Query | Very High | 6-12w | **P-Strategic** |
+| 12.4 | Dynamic Provider Routing & Cost Intel | High | 4-8w | **P-Strategic** |
+| 12.5 | Feature Store for Quant Signals | Very High | 6-12w | **P-Strategic** |
+| 12.6 | Strategy Lifecycle Hub | High | 4-8w | **P-Strategic** |
+| 12.7 | Expert Co-Pilot for Ops & Research | High | 4-8w | **P-Strategic** |
+| 12.8 | Enterprise Reliability Envelope | High | 4-8w | **P-Strategic** |
+| 12.9 | Ecosystem & Extensibility Platform | High | 4-8w | **P-Strategic** |
+| 12.10 | Portfolio-Level Intelligence UX | High | 4-8w | **P-Strategic** |
 | 9.13 | Symbol-level pause and resume | Med-High | 4-5h | **P2** |
 | 9.14 | Live data snapshot download | Medium | 2-3h | **P2** |
 | 11.3 | Provider gap accountability report | Med-High | 4-5h | **P2** |
