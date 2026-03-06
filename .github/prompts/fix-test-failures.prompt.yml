@@ -1,8 +1,8 @@
 name: Fix Test Failures Identified By Ci
 description: Fix test failures identified by CI
 # Auto-generated prompt from workflow results - test-matrix
-# Generated: 2026-03-05
-# Source: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/22710968870
+# Generated: 2026-03-06
+# Source: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/22750667351
 # Model-agnostic prompt - works with any capable LLM
 messages:
   - role: system
@@ -22,34 +22,16 @@ messages:
       - Run tests: `dotnet test tests/MarketDataCollector.Tests`
 
       ## Error Codes Found
-      - `CA2022`
-      - `CS0219`
       - `CS1573`
-      - `CS1591`
       - `CS1998`
-      - `CS4014`
-      - `CS8602`
 
       ## Failure Patterns
-      - `2026-03-05T09:22:26.5317544Z Failed!  - Failed:     2, Passed:  2532, Skipped:     2, Total:  2536, Duration: 11 s - MarketDataCollector.Tests.dll (net9.0)`
-      - `2026-03-05T09:24:04.1748712Z Failed!  - Failed:     2, Passed:  2532, Skipped:     2, Total:  2536, Duration: 24 s - MarketDataCollector.Tests.dll (net9.0)`
-      - `2026-03-05T09:22:36.1202820Z Failed!  - Failed:     2, Passed:  2532, Skipped:     2, Total:  2536, Duration: 20 s - MarketDataCollector.Tests.dll (net9.0)`
-      - `2026-03-05T09:22:17.6846925Z [xUnit.net 00:00:06.51]     MarketDataCollector.Tests.Storage.DataValidatorTests.ValidateFileAsync_WithValidEvents_ReturnsValid [FAIL]`
-      - `2026-03-05T09:22:17.6935911Z [xUnit.net 00:00:06.52]     MarketDataCollector.Tests.Storage.DataValidatorTests.ValidateFileAsync_WithActualSerializedEvents_ValidatesCorrectly [FAIL]`
-      - `2026-03-05T09:23:47.2371169Z [xUnit.net 00:00:08.42]     MarketDataCollector.Tests.Storage.DataValidatorTests.ValidateFileAsync_WithValidEvents_ReturnsValid [FAIL]`
-      - `2026-03-05T09:23:47.2978706Z [xUnit.net 00:00:08.48]     MarketDataCollector.Tests.Storage.DataValidatorTests.ValidateFileAsync_WithActualSerializedEvents_ValidatesCorrectly [FAIL]`
-      - `2026-03-05T09:22:21.5926550Z [xUnit.net 00:00:07.35]     MarketDataCollector.Tests.Storage.DataValidatorTests.ValidateFileAsync_WithValidEvents_ReturnsValid [FAIL]`
-      - `2026-03-05T09:22:21.6282710Z [xUnit.net 00:00:07.38]     MarketDataCollector.Tests.Storage.DataValidatorTests.ValidateFileAsync_WithActualSerializedEvents_ValidatesCorrectly [FAIL]`
+      - `2026-03-06T05:37:07.0127600Z Failed!  - Failed:     1, Passed:  2533, Skipped:     2, Total:  2536, Duration: 11 s - MarketDataCollector.Tests.dll (net9.0)`
+      - `2026-03-06T05:36:56.1449758Z [xUnit.net 00:00:04.48]     MarketDataCollector.Tests.PrometheusMetricsUpdaterTests.UpdateLoop_ShouldUpdateMetricsPeriodically [FAIL]`
 
       ## Failed Tests
-      - `2026-03-05T09:22:17.6879977Z [xUnit.net 00:00:06.52]     MarketDataCollector.Tests.Storage.DataValidatorTests.ValidateFileAsync_SupportsCancellation [SKIP]`
-      - `2026-03-05T09:22:17.6949284Z   Failed MarketDataCollector.Tests.Storage.DataValidatorTests.ValidateFileAsync_WithValidEvents_ReturnsValid [78 ms]`
-      - `2026-03-05T09:23:47.2404166Z [xUnit.net 00:00:08.42]     MarketDataCollector.Tests.Storage.DataValidatorTests.ValidateFileAsync_SupportsCancellation [SKIP]`
-      - `2026-03-05T09:23:47.3017005Z   Failed MarketDataCollector.Tests.Storage.DataValidatorTests.ValidateFileAsync_WithActualSerializedEvents_ValidatesCorrectly [5 ms]`
-      - `2026-03-05T09:22:21.5978700Z [xUnit.net 00:00:07.35]     MarketDataCollector.Tests.Storage.DataValidatorTests.ValidateFileAsync_SupportsCancellation [SKIP]`
-      - `2026-03-05T09:22:21.6285410Z    Expected result.IsValid to be True, but found False.`
-      - `MarketDataCollector.Tests.Storage.DataValidatorTests.ValidateFileAsync_WithValidEvents_ReturnsValid`
-      - `MarketDataCollector.Tests.Storage.DataValidatorTests.ValidateFileAsync_WithActualSerializedEvents_ValidatesCorrectly`
+      - `2026-03-06T05:36:56.1511762Z   Failed MarketDataCollector.Tests.PrometheusMetricsUpdaterTests.UpdateLoop_ShouldUpdateMetricsPeriodically [180 ms]`
+      - `MarketDataCollector.Tests.PrometheusMetricsUpdaterTests.UpdateLoop_ShouldUpdateMetricsPeriodically`
 
       ## Resolution Approach
       1. Read the error messages and stack traces carefully
