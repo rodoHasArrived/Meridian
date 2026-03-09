@@ -1,6 +1,6 @@
 # Provider Registry
 
-> Auto-generated on 2026-03-02 03:53:19 UTC
+> Auto-generated on 2026-03-09 03:54:02 UTC
 
 This document lists all data providers available in the Market Data Collector.
 
@@ -8,11 +8,11 @@ This document lists all data providers available in the Market Data Collector.
 
 | Provider | ID | Class | Type | Category | Status |
 |----------|-----|-------|------|----------|--------|
-| Interactive Brokers | `ib` | `IBMarketDataClient` | Realtime | Broker | ✅ Active |
-| StockSharp | `stocksharp` | `StockSharpMarketDataClient` | Realtime | Aggregator | ✅ Active |
-| NYSE Direct | `nyse` | `NYSEDataSource` | Hybrid | Exchange | ✅ Active |
-| Polygon.io | `polygon` | `PolygonMarketDataClient` | Realtime | Aggregator | ✅ Active |
-| Alpaca Markets | `alpaca` | `AlpacaMarketDataClient` | Realtime | Broker | ✅ Active |
+| Alpaca Markets | `alpaca` | — | Streaming | RealTime | ✅ Active |
+| Interactive Brokers | `interactive-brokers` | — | Streaming | RealTime | ✅ Active |
+| Polygon.io | `polygon` | — | Streaming | RealTime | ✅ Active |
+| NYSE | `nyse` | — | Streaming | RealTime | ✅ Active |
+| StockSharp | `stocksharp` | — | Streaming | RealTime | ✅ Active |
 
 ## Historical Data Providers (Backfill)
 
