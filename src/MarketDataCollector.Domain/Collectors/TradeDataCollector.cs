@@ -101,40 +101,52 @@ public sealed class TradeDataCollector
 
         var streamKey = new TradeStreamKey(symbol, update.StreamId, update.Venue);
         // Skip continuity checks when seq == 0, as some adapters use 0 to mean "unsequenced".
-        if (seq > 0 && _lastSequenceByStream.TryGetValue(streamKey, out var last))
-        {
-            if (seq <= last)
-            {
-                var integrity = IntegrityEvent.OutOfOrder(
-                    update.Timestamp,
-                    symbol,
-                    last: last,
-                    received: seq,
-                    streamId: update.StreamId,
-                    venue: update.Venue);
-
-                _publisher.TryPublish(MarketEvent.Integrity(update.Timestamp, symbol, integrity));
-                return;
-            }
-
-            var expected = last + 1;
-            if (seq > expected)
-            {
-                var integrity = IntegrityEvent.SequenceGap(
-                    update.Timestamp,
-                    symbol,
-                    expectedNext: expected,
-                    received: seq,
-                    streamId: update.StreamId,
-                    venue: update.Venue);
-
-                _publisher.TryPublish(MarketEvent.Integrity(update.Timestamp, symbol, integrity));
-            }
-        }
-
         if (seq > 0)
         {
-            _lastSequenceByStream[streamKey] = seq;
+            // Use AddOrUpdate to atomically read the previous value and advance the sequence,
+            // preventing the check-then-set race that could move _lastSequenceByStream backwards
+            // when OnTrade is called concurrently for the same stream.
+            long capturedPrev = -1;
+            _lastSequenceByStream.AddOrUpdate(
+                streamKey,
+                addValueFactory: _ => seq,
+                updateValueFactory: (_, current) =>
+                {
+                    capturedPrev = current;
+                    // Never move the stored sequence backwards.
+                    return current < seq ? seq : current;
+                });
+
+            if (capturedPrev >= 0)
+            {
+                if (seq <= capturedPrev)
+                {
+                    var integrity = IntegrityEvent.OutOfOrder(
+                        update.Timestamp,
+                        symbol,
+                        last: capturedPrev,
+                        received: seq,
+                        streamId: update.StreamId,
+                        venue: update.Venue);
+
+                    _publisher.TryPublish(MarketEvent.Integrity(update.Timestamp, symbol, integrity));
+                    return;
+                }
+
+                var expected = capturedPrev + 1;
+                if (seq > expected)
+                {
+                    var integrity = IntegrityEvent.SequenceGap(
+                        update.Timestamp,
+                        symbol,
+                        expectedNext: expected,
+                        received: seq,
+                        streamId: update.StreamId,
+                        venue: update.Venue);
+
+                    _publisher.TryPublish(MarketEvent.Integrity(update.Timestamp, symbol, integrity));
+                }
+            }
         }
 
         var state = _stateBySymbol.GetOrAdd(symbol, _ => new SymbolTradeState());

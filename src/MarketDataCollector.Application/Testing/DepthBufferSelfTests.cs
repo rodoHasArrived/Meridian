@@ -9,7 +9,7 @@ public static class DepthBufferSelfTests
     public static void Run()
     {
         Test_InsertUpdateDelete();
-        Test_GapMarksStale();
+        Test_OutOfOrderMarksStale();
     }
 
     private static void Test_InsertUpdateDelete()
@@ -43,7 +43,7 @@ public static class DepthBufferSelfTests
         if (snap4.Asks.Count != 0) throw new Exception("Ask delete did not apply.");
     }
 
-    private static void Test_GapMarksStale()
+    private static void Test_OutOfOrderMarksStale()
     {
         var buf = new MarketDepthCollector.SymbolOrderBookBuffer(maxDepth: 50);
         var ts = DateTimeOffset.UtcNow;
