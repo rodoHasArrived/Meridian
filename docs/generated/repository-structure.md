@@ -1,6 +1,6 @@
 # Repository Structure
 
-> Auto-generated on 2026-03-10 19:18:21 UTC
+> Auto-generated on 2026-03-10 20:18:21 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -1307,6 +1307,7 @@ Market-Data-Collector/
 │   │   │   ├── StorageChecksumServiceTests.cs
 │   │   │   ├── StorageOptionsDefaultsTests.cs
 │   │   │   ├── SymbolRegistryServiceTests.cs
+│   │   │   ├── WriteAheadLogCorruptionModeTests.cs
 │   │   │   └── WriteAheadLogTests.cs
 │   │   ├── SymbolSearch/
 │   │   │   ├── OpenFigiClientTests.cs

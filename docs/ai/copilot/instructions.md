@@ -1484,6 +1484,7 @@ Market-Data-Collector/
 │   │   │   ├── StorageChecksumServiceTests.cs
 │   │   │   ├── StorageOptionsDefaultsTests.cs
 │   │   │   ├── SymbolRegistryServiceTests.cs
+│   │   │   ├── WriteAheadLogCorruptionModeTests.cs
 │   │   │   └── WriteAheadLogTests.cs
 │   │   ├── SymbolSearch/
 │   │   │   ├── OpenFigiClientTests.cs
