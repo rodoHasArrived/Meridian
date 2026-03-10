@@ -16,10 +16,6 @@ public sealed class SymbolCommandsTests
         .WriteTo.Console()
         .CreateLogger();
 
-    // NOTE: SymbolCommands requires a SymbolManagementService which needs a ConfigStore.
-    // For CanHandle tests we can use a stub since CanHandle doesn't touch the service.
-    // For ExecuteAsync tests that require validation (missing value), we need the real command.
-
     [Theory]
     [InlineData("--symbols")]
     [InlineData("--symbols-monitored")]
@@ -194,14 +190,26 @@ public sealed class SymbolCommandsTests
     }
 
     /// <summary>
-    /// Creates a SymbolCommands with a stub SymbolManagementService.
-    /// Uses a temp directory as config path to avoid file I/O.
+    /// Creates a <see cref="SymbolCommands"/> backed by a lightweight
+    /// <see cref="MarketDataCollector.Application.Subscriptions.Services.SymbolManagementService"/>
+    /// that targets an isolated temp-directory config file.
+    /// <para>
+    /// This instance is sufficient for two test categories:
+    /// <list type="bullet">
+    ///   <item><description>
+    ///     <b>CanHandle tests</b> – <c>CanHandle</c> only inspects the args array and
+    ///     never calls into the service, so any valid (non-null) service instance works.
+    ///   </description></item>
+    ///   <item><description>
+    ///     <b>ExecuteAsync validation tests</b> (missing required argument) – the command
+    ///     returns <see cref="MarketDataCollector.Application.ResultTypes.ErrorCode.RequiredFieldMissing"/>
+    ///     (exit code 2) before invoking the service, so no real config state is needed.
+    ///   </description></item>
+    /// </list>
+    /// </para>
     /// </summary>
     private static SymbolCommands CreateCommandWithStubService()
     {
-        // SymbolManagementService constructor requires a ConfigStore and dataRoot.
-        // For CanHandle tests and validation-failure tests, this won't be called
-        // or will fail gracefully, which is acceptable for these tests.
         var configStore = new MarketDataCollector.Application.UI.ConfigStore(
             Path.Combine(Path.GetTempPath(), $"mdc-test-{Guid.NewGuid()}.json"));
         var service = new MarketDataCollector.Application.Subscriptions.Services.SymbolManagementService(
