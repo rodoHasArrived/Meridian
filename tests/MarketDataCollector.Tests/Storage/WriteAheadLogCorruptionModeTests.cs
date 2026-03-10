@@ -20,16 +20,38 @@ public sealed class WriteAheadLogCorruptionModeTests : IAsyncDisposable
 
     public async ValueTask DisposeAsync()
     {
+        Exception? lastException = null;
+
         for (var attempt = 0; attempt < 5; attempt++)
         {
             try
             {
                 if (Directory.Exists(_walDir))
+                {
                     Directory.Delete(_walDir, recursive: true);
-                return;
+                }
+
+                // If delete succeeded or directory no longer exists, cleanup is done.
+                if (!Directory.Exists(_walDir))
+                {
+                    return;
+                }
             }
-            catch (IOException) when (attempt < 4) { await Task.Delay(20); }
-            catch (UnauthorizedAccessException) when (attempt < 4) { await Task.Delay(20); }
+            catch (IOException ex) when (attempt < 4)
+            {
+                lastException = ex;
+                await Task.Delay(20);
+            }
+            catch (UnauthorizedAccessException ex) when (attempt < 4)
+            {
+                lastException = ex;
+                await Task.Delay(20);
+            }
+        }
+
+        if (Directory.Exists(_walDir))
+        {
+            throw lastException ?? new IOException($"Failed to delete WAL temp directory '{_walDir}' after 5 attempts.");
         }
     }
 
