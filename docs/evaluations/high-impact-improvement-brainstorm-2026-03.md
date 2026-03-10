@@ -605,5 +605,21 @@ exhaustive and the compiler catches missing cases.
 
 ---
 
+## Implementation Follow-Up (2026-03-10)
+
+The following items from this brainstorm have been implemented:
+
+| Item | Status | Implementation |
+|------|--------|----------------|
+| 1.3 — Alpaca price precision & timestamp integrity | ✅ Done | `AlpacaMarketDataClient`: trade sizes now parsed with `GetInt64()` to avoid truncation on block trades exceeding `int.MaxValue`. Both trade and quote messages now reject unparseable timestamps with a `Warning` log instead of silently substituting `UtcNow`, preserving time-series integrity. |
+| 1.4 — Trade message deduplication | ✅ Done | `AlpacaMarketDataClient`: content-based deduplication added via a bounded sliding window (`HashSet` + `Queue`) of `(symbol, price, size, timestamp)` tuples (capacity 2,048). Duplicate re-deliveries from Alpaca's WebSocket are suppressed at the `Debug` log level. |
+| 4.3 — WAL corruption alerting | ✅ Done | `WriteAheadLog`: new `WalCorruptionMode` enum (`Skip` / `Alert` / `Halt`) added. `WalOptions.CorruptionMode` defaults to `Skip` (backwards-compatible). In `Alert` mode the new `CorruptionDetected` event fires with the corrupted record count so monitoring infrastructure can alert operators. In `Halt` mode an `InvalidDataException` is thrown to force operator review before the application can start. |
+
+Test coverage:
+- `AlpacaMessageParsingTests` — 12 tests covering size precision, timestamp rejection, deduplication, and window eviction.
+- `WriteAheadLogCorruptionModeTests` — 9 tests covering all three modes and the `WalOptions` default.
+
+---
+
 *Generated 2026-03-02 from deep codebase analysis across pipeline, WAL,
 providers, monitoring, configuration, tests, and domain model.*
