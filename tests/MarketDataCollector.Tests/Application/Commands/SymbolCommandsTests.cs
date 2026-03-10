@@ -25,8 +25,7 @@ public sealed class SymbolCommandsTests
     [InlineData("--symbol-status")]
     public void CanHandle_WithSymbolFlag_ReturnsTrue(string flag)
     {
-        // Use a minimal stub - CanHandle only checks args, not the service
-        var cmd = CreateCommandWithStubService();
+        var cmd = CreateCommand();
         cmd.CanHandle(new[] { flag }).Should().BeTrue();
     }
 
@@ -36,28 +35,28 @@ public sealed class SymbolCommandsTests
     [InlineData("--SYMBOL-STATUS")]
     public void CanHandle_CaseInsensitive_ReturnsTrue(string flag)
     {
-        var cmd = CreateCommandWithStubService();
+        var cmd = CreateCommand();
         cmd.CanHandle(new[] { flag }).Should().BeTrue();
     }
 
     [Fact]
     public void CanHandle_WithNonSymbolFlag_ReturnsFalse()
     {
-        var cmd = CreateCommandWithStubService();
+        var cmd = CreateCommand();
         cmd.CanHandle(new[] { "--help" }).Should().BeFalse();
     }
 
     [Fact]
     public void CanHandle_EmptyArgs_ReturnsFalse()
     {
-        var cmd = CreateCommandWithStubService();
+        var cmd = CreateCommand();
         cmd.CanHandle(Array.Empty<string>()).Should().BeFalse();
     }
 
     [Fact]
     public async Task ExecuteAsync_AddWithoutValue_ReturnsError()
     {
-        var cmd = CreateCommandWithStubService();
+        var cmd = CreateCommand();
         // --symbols-add without a value should return 2 (validation error)
         var result = await cmd.ExecuteAsync(new[] { "--symbols-add" });
         result.ExitCode.Should().Be(2);
@@ -66,7 +65,7 @@ public sealed class SymbolCommandsTests
     [Fact]
     public async Task ExecuteAsync_RemoveWithoutValue_ReturnsError()
     {
-        var cmd = CreateCommandWithStubService();
+        var cmd = CreateCommand();
         var result = await cmd.ExecuteAsync(new[] { "--symbols-remove" });
         result.ExitCode.Should().Be(2);
     }
@@ -74,7 +73,7 @@ public sealed class SymbolCommandsTests
     [Fact]
     public async Task ExecuteAsync_StatusWithoutValue_ReturnsError()
     {
-        var cmd = CreateCommandWithStubService();
+        var cmd = CreateCommand();
         var result = await cmd.ExecuteAsync(new[] { "--symbol-status" });
         result.ExitCode.Should().Be(2);
     }
@@ -208,7 +207,7 @@ public sealed class SymbolCommandsTests
     /// </list>
     /// </para>
     /// </summary>
-    private static SymbolCommands CreateCommandWithStubService()
+    private static SymbolCommands CreateCommand()
     {
         var configStore = new MarketDataCollector.Application.UI.ConfigStore(
             Path.Combine(Path.GetTempPath(), $"mdc-test-{Guid.NewGuid()}.json"));
