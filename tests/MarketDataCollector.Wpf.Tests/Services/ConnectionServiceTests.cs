@@ -19,8 +19,8 @@ public sealed class ConnectionServiceTests : IDisposable
 
     public void Dispose()
     {
-        // Cleanup: Stop monitoring and reset state
-        _service.StopMonitoring();
+        // Cleanup: Stop monitoring and reset state to defaults so other tests see defaults
+        _service.ResetToDefaults();
     }
 
     [Fact]

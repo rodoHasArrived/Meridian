@@ -304,6 +304,8 @@ public abstract class StatusServiceBase
         catch (OperationCanceledException) { }
         catch (HttpRequestException) { }
         catch (JsonException) { }
+        catch (UriFormatException) { }
+        catch (InvalidOperationException) { }
 
         return null;
     }
@@ -335,6 +337,8 @@ public abstract class StatusServiceBase
         catch (OperationCanceledException) { }
         catch (HttpRequestException) { }
         catch (JsonException) { }
+        catch (UriFormatException) { }
+        catch (InvalidOperationException) { }
 
         return null;
     }

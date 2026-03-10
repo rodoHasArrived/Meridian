@@ -1,3 +1,4 @@
+using System.Runtime.ExceptionServices;
 using System.Windows.Controls;
 using MarketDataCollector.Wpf.Contracts;
 using MarketDataCollector.Wpf.Services;
@@ -10,6 +11,23 @@ namespace MarketDataCollector.Wpf.Tests.Services;
 /// </summary>
 public sealed class NavigationServiceTests
 {
+    /// <summary>
+    /// Runs an action on a dedicated STA thread. Required for tests that create WPF UI objects.
+    /// </summary>
+    private static void RunOnSta(Action action)
+    {
+        ExceptionDispatchInfo? captured = null;
+        var thread = new Thread(() =>
+        {
+            try { action(); }
+            catch (Exception ex) { captured = ExceptionDispatchInfo.Capture(ex); }
+        });
+        thread.SetApartmentState(ApartmentState.STA);
+        thread.Start();
+        thread.Join();
+        captured?.Throw();
+    }
+
     [Fact]
     public void Instance_ShouldReturnSingleton()
     {
@@ -26,15 +44,18 @@ public sealed class NavigationServiceTests
     [Fact]
     public void Initialize_WithValidFrame_ShouldSetFrame()
     {
-        // Arrange
-        var service = NavigationService.Instance;
-        var frame = new Frame();
+        RunOnSta(() =>
+        {
+            // Arrange
+            var service = NavigationService.Instance;
+            var frame = new Frame();
 
-        // Act
-        service.Initialize(frame);
+            // Act
+            service.Initialize(frame);
 
-        // Assert - no exception thrown
-        service.CanGoBack.Should().BeFalse("newly initialized frame should have no navigation history");
+            // Assert - no exception thrown
+            service.CanGoBack.Should().BeFalse("newly initialized frame should have no navigation history");
+        });
     }
 
     [Fact]
@@ -70,16 +91,19 @@ public sealed class NavigationServiceTests
     [Fact]
     public void NavigateTo_WithUnregisteredPageTag_ShouldReturnFalse()
     {
-        // Arrange
-        var service = NavigationService.Instance;
-        var frame = new Frame();
-        service.Initialize(frame);
+        RunOnSta(() =>
+        {
+            // Arrange
+            var service = NavigationService.Instance;
+            var frame = new Frame();
+            service.Initialize(frame);
 
-        // Act
-        var result = service.NavigateTo("NonExistentPage");
+            // Act
+            var result = service.NavigateTo("NonExistentPage");
 
-        // Assert
-        result.Should().BeFalse("navigation to unregistered page should fail");
+            // Assert
+            result.Should().BeFalse("navigation to unregistered page should fail");
+        });
     }
 
     [Fact]
@@ -167,62 +191,68 @@ public sealed class NavigationServiceTests
     [Fact]
     public void NavigateTo_WithValidPageTag_ShouldNavigateAndRaiseEvent()
     {
-        // Arrange
-        var service = NavigationService.Instance;
-        var frame = new Frame();
-        service.Initialize(frame);
-
-        var registeredPages = service.GetRegisteredPages();
-        var pageTag = registeredPages.FirstOrDefault();
-
-        // Skip test if no pages are registered
-        if (pageTag == null)
+        RunOnSta(() =>
         {
-            return;
-        }
+            // Arrange
+            var service = NavigationService.Instance;
+            var frame = new Frame();
+            service.Initialize(frame);
 
-        bool eventRaised = false;
-        string? navigatedPageTag = null;
+            var registeredPages = service.GetRegisteredPages();
+            var pageTag = registeredPages.FirstOrDefault();
 
-        service.Navigated += (sender, args) =>
-        {
-            eventRaised = true;
-            navigatedPageTag = args.PageTag;
-        };
+            // Skip test if no pages are registered
+            if (pageTag == null)
+            {
+                return;
+            }
 
-        // Act
-        var result = service.NavigateTo(pageTag);
+            bool eventRaised = false;
+            string? navigatedPageTag = null;
 
-        // Assert
-        result.Should().BeTrue($"navigation to registered page '{pageTag}' should succeed");
-        eventRaised.Should().BeTrue("Navigated event should be raised");
-        navigatedPageTag.Should().Be(pageTag, "event should contain correct page tag");
+            service.Navigated += (sender, args) =>
+            {
+                eventRaised = true;
+                navigatedPageTag = args.PageTag;
+            };
+
+            // Act
+            var result = service.NavigateTo(pageTag);
+
+            // Assert
+            result.Should().BeTrue($"navigation to registered page '{pageTag}' should succeed");
+            eventRaised.Should().BeTrue("Navigated event should be raised");
+            navigatedPageTag.Should().Be(pageTag, "event should contain correct page tag");
+        });
     }
 
     [Fact]
     public void GetBreadcrumbs_AfterNavigation_ShouldContainEntry()
     {
-        // Arrange
-        var service = NavigationService.Instance;
-        var frame = new Frame();
-        service.Initialize(frame);
-
-        var registeredPages = service.GetRegisteredPages();
-        var pageTag = registeredPages.FirstOrDefault();
-
-        // Skip test if no pages are registered
-        if (pageTag == null)
+        RunOnSta(() =>
         {
-            return;
-        }
+            // Arrange
+            var service = NavigationService.Instance;
+            var frame = new Frame();
+            service.Initialize(frame);
 
-        // Act
-        service.NavigateTo(pageTag);
-        var breadcrumbs = service.GetBreadcrumbs();
+            var registeredPages = service.GetRegisteredPages();
+            var pageTag = registeredPages.FirstOrDefault();
 
-        // Assert
-        breadcrumbs.Should().NotBeNull();
-        breadcrumbs.Should().NotBeEmpty("breadcrumbs should contain navigation history");
-        breadcrumbs.Should().Contain(b => b.PageTag == pageTag, "breadcrumbs should contain navigated page");
+            // Skip test if no pages are registered
+            if (pageTag == null)
+            {
+                return;
+            }
+
+            // Act
+            service.NavigateTo(pageTag);
+            var breadcrumbs = service.GetBreadcrumbs();
+
+            // Assert
+            breadcrumbs.Should().NotBeNull();
+            breadcrumbs.Should().NotBeEmpty("breadcrumbs should contain navigation history");
+            breadcrumbs.Should().Contain(b => b.PageTag == pageTag, "breadcrumbs should contain navigated page");
+        });
     }
 }
