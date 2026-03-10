@@ -97,6 +97,16 @@ public abstract class ConnectionServiceBase : IDisposable
     public ConnectionSettings GetSettings() => _settings;
 
     /// <summary>
+    /// Resets the service state to defaults. Intended for use in tests only.
+    /// </summary>
+    internal void ResetToDefaults()
+    {
+        StopMonitoring();
+        _settings = new ConnectionSettings();
+        OnSettingsUpdated(_settings);
+    }
+
+    /// <summary>
     /// Starts the connection monitoring with periodic health checks.
     /// </summary>
     public void StartMonitoring()

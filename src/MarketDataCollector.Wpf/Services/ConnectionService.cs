@@ -20,7 +20,7 @@ public sealed class ConnectionService : ConnectionServiceBase, IConnectionServic
 {
     private static readonly Lazy<ConnectionService> _instance = new(() => new ConnectionService());
 
-    private readonly HttpClient _httpClient;
+    private HttpClient _httpClient;
     private Timer? _monitoringTimer;
     private Timer? _reconnectTimer;
 
@@ -94,7 +94,12 @@ public sealed class ConnectionService : ConnectionServiceBase, IConnectionServic
     /// <inheritdoc />
     protected override void OnSettingsUpdated(ConnectionSettings settings)
     {
-        _httpClient.Timeout = TimeSpan.FromSeconds(settings.ServiceTimeoutSeconds);
+        var old = _httpClient;
+        _httpClient = new HttpClient
+        {
+            Timeout = TimeSpan.FromSeconds(settings.ServiceTimeoutSeconds)
+        };
+        old.Dispose();
     }
 
     /// <inheritdoc />
