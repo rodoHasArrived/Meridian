@@ -1,7 +1,7 @@
 # TODO Tracking
 
 > Auto-generated TODO documentation. Do not edit manually.
-> Last updated: 2026-03-09T03:52:53.200322+00:00
+> Last updated: 2026-03-10T03:16:29.316937+00:00
 
 ## Summary
 
@@ -44,7 +44,7 @@ Consider assigning ownership or creating tracking issues for these items.
 - [ ] `src/MarketDataCollector.Ui.Services/Services/AdminMaintenanceModels.cs:411`
   > SelfTest*, ErrorCodes*, ShowConfig*, QuickCheck* models are defined in DiagnosticsService.cs to avoid duplication and maintain single source of truth
 
-- [ ] `src/MarketDataCollector.Ui.Services/Services/DataCompletenessService.cs:632`
+- [ ] `src/MarketDataCollector.Ui.Services/Services/DataCompletenessService.cs:633`
   > SymbolCompleteness is defined in AdvancedAnalyticsModels.cs to avoid duplication
 
 - [ ] `src/MarketDataCollector.Ui.Services/Services/ProviderHealthService.cs:516`
@@ -92,7 +92,7 @@ Consider assigning ownership or creating tracking issues for these items.
 - [ ] `tests/MarketDataCollector.Ui.Tests/Services/ScheduledMaintenanceServiceTests.cs:85`
   > since this is a singleton shared across tests, if StartScheduler was previously called, we stop it first to ensure test isolation.
 
-- [ ] `tests/MarketDataCollector.Wpf.Tests/Services/NavigationServiceTests.cs:57`
+- [ ] `tests/MarketDataCollector.Wpf.Tests/Services/NavigationServiceTests.cs:78`
   > This test assumes NavigationService might not be initialized In production, Initialize should be called during app startup
 
 - [ ] `tests/MarketDataCollector.Wpf.Tests/Services/OfflineTrackingPersistenceServiceTests.cs:27`
