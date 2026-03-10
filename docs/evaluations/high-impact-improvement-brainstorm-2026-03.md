@@ -1,5 +1,9 @@
 # High-Impact Improvement Brainstorm — March 2026
 
+**Date:** 2026-03-01
+**Status:** Active — Defects and Improvements Identified
+**Author:** Architecture Review
+
 > **Scope**: Ideas that meaningfully improve the quality of the codebase and the
 > correctness/reliability of the running program. Implementation effort is
 > explicitly **not** a filter — only impact matters.
