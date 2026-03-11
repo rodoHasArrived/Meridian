@@ -96,11 +96,16 @@ public sealed class JsonlStorageSink : IStorageSink
     private readonly SemaphoreSlim _flushGate = new(1, 1);
     private int _disposed;
 
-    private readonly ConcurrentDictionary<string, WriterState> _writers = new(StringComparer.OrdinalIgnoreCase);
+    // Using Lazy<WriterState> as the value type prevents a race in ConcurrentDictionary.GetOrAdd
+    // where the factory can be called multiple times concurrently for the same key. Without Lazy,
+    // the "losing" WriterState would open a FileStream that is never disposed (resource leak).
+    // With Lazy (ExecutionAndPublication mode), only one WriterState is ever created per path.
+    private readonly ConcurrentDictionary<string, Lazy<WriterState>> _writers = new(StringComparer.OrdinalIgnoreCase);
     private readonly ConcurrentDictionary<string, MarketEventBuffer> _buffers = new(StringComparer.OrdinalIgnoreCase);
 
-    // Cached factory delegates to avoid closure allocation on every GetOrAdd call
-    private readonly Func<string, WriterState> _writerFactory;
+    // Cached factory delegate — the Lazy<> wrapper ensures WriterState.Create is called at most once
+    // per unique path even under concurrent access, while the cached delegate avoids closure allocation.
+    private readonly Func<string, Lazy<WriterState>> _writerFactory;
     private readonly Func<string, MarketEventBuffer> _bufferFactory;
 
     // Metrics
@@ -144,10 +149,12 @@ public sealed class JsonlStorageSink : IStorageSink
             ? null
             : new RetentionManager(options.RootPath, options.RetentionDays, options.MaxTotalBytes, _logger);
 
-        // Cache factory delegates once to avoid closure allocation on every GetOrAdd call
+        // Cache factory delegates once to avoid closure allocation on every GetOrAdd call.
+        // The Lazy wrapper ensures WriterState.Create (which opens a FileStream) is called
+        // at most once per unique path, preventing file handle leaks under concurrent access.
         var compress = _options.Compress;
         var batchSize = _batchOptions.BatchSize;
-        _writerFactory = p => WriterState.Create(p, compress);
+        _writerFactory = p => new Lazy<WriterState>(() => WriterState.Create(p, compress), LazyThreadSafetyMode.ExecutionAndPublication);
         _bufferFactory = _ => new MarketEventBuffer(batchSize);
 
         if (_batchOptions.Enabled)
@@ -197,7 +204,7 @@ public sealed class JsonlStorageSink : IStorageSink
 
     private async ValueTask WriteEventImmediateAsync(string path, MarketEvent evt, CancellationToken ct)
     {
-        var writer = _writers.GetOrAdd(path, _writerFactory);
+        var writer = _writers.GetOrAdd(path, _writerFactory).Value;
         var json = JsonSerializer.Serialize(evt, MarketDataJsonContext.HighPerformanceOptions);
         await writer.WriteLineAsync(json, ct).ConfigureAwait(false);
         Interlocked.Increment(ref _eventsWritten);
@@ -208,7 +215,7 @@ public sealed class JsonlStorageSink : IStorageSink
         var events = buffer.DrainAll();
         if (events.Count == 0) return;
 
-        var writer = _writers.GetOrAdd(path, _writerFactory);
+        var writer = _writers.GetOrAdd(path, _writerFactory).Value;
 
         // Serialize events - use parallel serialization only for very large batches
         // where the parallelism savings outweigh context-switching overhead
@@ -299,9 +306,12 @@ public sealed class JsonlStorageSink : IStorageSink
             await FlushAllBuffersAsync(ct).ConfigureAwait(false);
         }
 
-        // Then flush all writers to disk
+        // Then flush all writers to disk (only those that have been realized)
         foreach (var kv in _writers)
-            await kv.Value.FlushAsync(ct).ConfigureAwait(false);
+        {
+            if (kv.Value.IsValueCreated)
+                await kv.Value.Value.FlushAsync(ct).ConfigureAwait(false);
+        }
     }
 
     public async ValueTask DisposeAsync()
@@ -354,9 +364,12 @@ public sealed class JsonlStorageSink : IStorageSink
             }
         }
 
-        // 4. Dispose all writers
+        // 4. Dispose all writers (only those that have been realized)
         foreach (var kv in _writers)
-            await kv.Value.DisposeAsync().ConfigureAwait(false);
+        {
+            if (kv.Value.IsValueCreated)
+                await kv.Value.Value.DisposeAsync().ConfigureAwait(false);
+        }
 
         _writers.Clear();
         _buffers.Clear();
@@ -372,11 +385,13 @@ public sealed class JsonlStorageSink : IStorageSink
         private readonly Stream _stream;
         private readonly StreamWriter _writer;
         private readonly SemaphoreSlim _gate = new(1, 1);
+        private readonly bool _compressed;
 
-        private WriterState(Stream stream, StreamWriter writer)
+        private WriterState(Stream stream, StreamWriter writer, bool compressed)
         {
             _stream = stream;
             _writer = writer;
+            _compressed = compressed;
         }
 
         public static WriterState Create(string path, bool compress)
@@ -389,7 +404,7 @@ public sealed class JsonlStorageSink : IStorageSink
 
             var writer = new StreamWriter(fs, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false), 1 << 16, leaveOpen: true);
             writer.AutoFlush = false;
-            return new WriterState(fs, writer);
+            return new WriterState(fs, writer, compress);
         }
 
         public async ValueTask WriteLineAsync(string line, CancellationToken ct)
@@ -420,9 +435,13 @@ public sealed class JsonlStorageSink : IStorageSink
                 {
                     await _writer.WriteLineAsync(line).ConfigureAwait(false);
                 }
-                // Flush writer and underlying stream after batch to ensure durability
+                // Flush writer and underlying stream after batch to ensure durability.
+                // For compressed streams (GZipStream), the StreamWriter only flushes to the
+                // GZipStream buffer; the second flush propagates compressed data to the FileStream.
+                // For uncompressed streams, the second flush is skipped (redundant syscall).
                 await _writer.FlushAsync().ConfigureAwait(false);
-                await _stream.FlushAsync(ct).ConfigureAwait(false);
+                if (_compressed)
+                    await _stream.FlushAsync(ct).ConfigureAwait(false);
             }
             finally
             {
