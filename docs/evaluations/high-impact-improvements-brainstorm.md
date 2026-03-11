@@ -454,7 +454,7 @@ This section maps each major proposal to what already exists in the codebase and
 
 **Existing leverage points:** `DataQualityMonitoringService`, `CrossProviderComparisonService`, `FailoverAwareMarketDataClient`, `EventPipeline`, `PipelinePolicyConstants` (for bounded channel configuration).
 
-**Suggested first implementation step:** Create a `ConsensusWindowBuffer` that groups inbound `MarketEvent` objects from multiple providers by `(Symbol, ExchangeTimestamp ± 50ms)`. For each complete group, emit the event with `ConfidenceScore = agreementCount / totalProviders`. Start with trade events only; extend to quotes once stable. The existing `EventPipeline` bounded channel can fan events to both the consensus buffer and the storage sinks.
+**Suggested first implementation step:** Create a `ConsensusWindowBuffer` that groups inbound `MarketEvent` objects from multiple providers by `(Symbol, ExchangeTimestamp ± 50ms)`. For each complete group, emit the event with a `ConfidenceScore` (0–100) computed as `round(100 * agreementCount / totalProviders)`. Start with trade events only; extend to quotes once stable. The existing `EventPipeline` bounded channel can fan events to both the consensus buffer and the storage sinks.
 
 ---
 
