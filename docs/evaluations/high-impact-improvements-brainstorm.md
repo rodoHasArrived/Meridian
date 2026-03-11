@@ -1004,7 +1004,7 @@ These questions do not yet have agreed answers and should be resolved before det
 
 3. **How should the quality of new observability instrumentation be enforced?**
    - _Solution A (convention):_ Document that new services must emit at least one counter, one gauge, and one histogram via `PrometheusMetrics`. Reviews enforce this by convention.
-   - _Solution B (test assertion):_ Add a test in `MetricsEndpointTests` that queries `/api/metrics` after exercising each new component and asserts that the expected metric names are present.
+   - _Solution B (test assertion):_ Introduce a new `MetricsEndpointTests` test class that queries `/api/metrics` after exercising each new component and asserts that the expected metric names are present.
    - **Recommendation:** Solution B. Convention-only enforcement degrades over time; an automated assertion in the test suite enforces it permanently.
 
 4. **What are the targets for automated self-healing mean-time-to-remediation (MTTR)?**
