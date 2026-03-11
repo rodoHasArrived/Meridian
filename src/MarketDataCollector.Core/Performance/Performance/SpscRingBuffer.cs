@@ -115,7 +115,7 @@ public sealed class SpscRingBuffer<T> where T : struct
         if (head - tail >= _buffer.Length)
             return false; // Buffer full
 
-        _buffer[head & _mask] = item;
+        _buffer[(int)(head & _mask)] = item;
         Volatile.Write(ref _head.Value, head + 1);
         return true;
     }
