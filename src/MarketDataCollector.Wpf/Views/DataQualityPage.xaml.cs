@@ -22,10 +22,6 @@ public partial class DataQualityPage : Page
         _viewModel = new DataQualityViewModel(statusService, loggingService, notificationService);
         DataContext = _viewModel;
 
-        SymbolQualityList.ItemsSource = _viewModel.FilteredSymbols;
-        GapsControl.ItemsSource = _viewModel.Gaps;
-        AlertsList.ItemsSource = _viewModel.Alerts;
-        AnomaliesList.ItemsSource = _viewModel.Anomalies;
     }
 
     private void OnPageLoaded(object sender, RoutedEventArgs e) => _viewModel.Start();
@@ -92,7 +88,7 @@ public partial class DataQualityPage : Page
 
     private void SymbolQuality_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        _viewModel.SelectSymbolCommand.Execute(SymbolQualityList.SelectedItem as SymbolQualityModel);
+        if (sender is ListView lv) _viewModel.SelectSymbolCommand.Execute(lv.SelectedItem as SymbolQualityModel);
     }
 
     private void CloseDrilldown_Click(object sender, RoutedEventArgs e) =>
