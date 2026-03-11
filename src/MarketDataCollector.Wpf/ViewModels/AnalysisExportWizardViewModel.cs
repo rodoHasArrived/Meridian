@@ -274,6 +274,7 @@ public sealed class AnalysisExportWizardViewModel : BindableBase, IDataErrorInfo
     {
         CurrentStep = 1;
         StatusMessage = "Wizard reset.";
+        ValidationSummary = string.Empty;
         PreExportReport = string.Empty;
         EstimatedSize = string.Empty;
     }
