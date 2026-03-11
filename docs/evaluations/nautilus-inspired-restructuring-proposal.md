@@ -1,7 +1,7 @@
 # Structural Improvement Proposal: nautilus_trader-Inspired Patterns
 
 **Date:** 2026-03-01
-**Status:** Proposal
+**Status:** Partially Implemented — Last Reviewed 2026-03-11
 **Author:** Architecture Review
 **Inspired By:** [nautechsystems/nautilus_trader](https://github.com/nautechsystems/nautilus_trader)
 
@@ -9,7 +9,28 @@
 
 ## Executive Summary
 
-This proposal identifies **7 structural improvements** and **5 procedural/code enhancements** for the Market Data Collector repository, inspired by organizational patterns in the nautilus_trader trading system. All changes are **backward-compatible** — existing public APIs, namespaces, and build targets remain stable. The goal is to improve developer ergonomics, reduce coupling, and make the provider subsystem more modular and self-documenting.
+This proposal identified **7 structural improvements** and **5 procedural/code enhancements** for the Market Data Collector repository, inspired by organizational patterns in the nautilus_trader trading system. All changes are **backward-compatible** — existing public APIs, namespaces, and build targets remain stable. The goal is to improve developer ergonomics, reduce coupling, and make the provider subsystem more modular and self-documenting.
+
+---
+
+## Implementation Status Summary
+
+As of 2026-03-11, the following proposals have been evaluated against the live codebase:
+
+| # | Proposal | Status | Notes |
+|---|----------|--------|-------|
+| 1.1 | Unified Per-Provider Directories | ✅ Implemented | Reorganized under `Adapters/` by vendor |
+| 1.2 | Provider Template Scaffold | ⚠️ Partial | `ProviderTemplate.cs` factory exists; no `_Template/` scaffold dir |
+| 1.3 | Co-located Provider Configuration | ❌ Not Started | Configs remain in `Application/Config/` |
+| 1.4 | Explicit Parsing Layer Per Provider | ❌ Not Started | Parsing is still inline within provider clients |
+| 1.5 | Per-Provider Factory Classes | ❌ Not Started | Central `ProviderFactory.cs` unchanged |
+| 1.6 | Consolidated Domain Enums | ✅ Implemented | 14 enums in `Contracts/Domain/Enums/` |
+| 1.7 | Persistence Read/Write/Transform Separation | ⚠️ Partial | Functional separation via `Archival/`, `Replay/`, `Export/` — no literal dirs |
+| 2.1 | Component Lifecycle FSM Base Class | ❌ Not Started | No `ComponentBase`; abstract base classes exist without FSM |
+| 2.2 | Provider-Local Common Types | ⚠️ Partial | Some providers have internal files (StockSharp `Converters/`, IB `IBApiLimits.cs`) |
+| 2.3 | Module-Scoped Message Types | ⚠️ Partial | `Application/Commands/` files exist; no pipeline/backfill command types |
+| 2.4 | Credential Isolation at Provider Boundary | ⚠️ Partial | Hybrid: `ICredentialResolver` in `ProviderFactory.cs` + `ProviderCredentialResolver` in Application |
+| 2.5 | ArchUnitNET Dependency Rules | ❌ Not Started | No architecture boundary tests in test suite |
 
 ---
 
@@ -39,135 +60,99 @@ This proposal identifies **7 structural improvements** and **5 procedural/code e
 
 ### 1.1 Unified Per-Provider Directories
 
-**Problem:** Provider code for the same vendor (e.g., Alpaca) is currently split across three separate directory trees:
+> **Status: ✅ Implemented**
+
+**Original problem:** Provider code for the same vendor (e.g., Alpaca) was split across three separate directory trees (`Streaming/Alpaca/`, `Historical/Alpaca/`, and a flat `SymbolSearch/` folder), with configuration in a fourth location (`Core/Config/AlpacaOptions.cs`).
+
+**Current state:** Providers have been reorganized into unified vendor directories under `Infrastructure/Adapters/`. Each vendor now owns a single directory containing streaming, historical, and symbol-search implementations:
 
 ```
-Infrastructure/Providers/
-├── Streaming/Alpaca/AlpacaMarketDataClient.cs      # streaming
-├── Historical/Alpaca/AlpacaHistoricalDataProvider.cs  # backfill
-└── SymbolSearch/AlpacaSymbolSearchProviderRefactored.cs  # search (flat, no subdirectory)
-```
-
-A developer working on "Alpaca" must navigate three locations. Configuration lives in a fourth place (`Core/Config/AlpacaOptions.cs`). This scattering makes it hard to understand the full surface of a provider.
-
-**nautilus_trader pattern:** Each exchange adapter is a **self-contained directory** containing all concerns:
-
-```
-adapters/interactive_brokers/
-├── config.py          # IB-specific configuration
-├── data.py            # Streaming data client
-├── execution.py       # Order execution
-├── factories.py       # DI factory
-├── providers.py       # Instrument provider
-├── common.py          # IB-internal shared types
-├── client/            # Low-level API wrapper
-├── historical/        # Historical data client
-└── parsing/           # Wire format → domain model
-```
-
-**Proposed change:** Reorganize providers by vendor, with capability sub-files:
-
-```
-Infrastructure/Providers/
-├── Core/                              # (unchanged) shared base classes
+Infrastructure/Adapters/
+├── Core/                              # shared base classes and factory
+│   ├── Backfill/                     # job queue, worker service, priority queue
+│   ├── GapAnalysis/                  # gap detection and repair
+│   ├── RateLimiting/                 # rate limiter and tracker
+│   ├── SymbolResolution/             # symbol resolver interface
 │   ├── ProviderFactory.cs
 │   ├── ProviderRegistry.cs
 │   ├── WebSocketProviderBase.cs
 │   └── ProviderTemplate.cs
-├── Alpaca/                            # NEW: unified Alpaca directory
-│   ├── AlpacaConfig.cs               # moved from Core/Config/AlpacaOptions.cs
-│   ├── AlpacaMarketDataClient.cs     # moved from Streaming/Alpaca/
-│   ├── AlpacaHistoricalDataProvider.cs  # moved from Historical/Alpaca/
-│   ├── AlpacaSymbolSearchProvider.cs  # moved from SymbolSearch/ (renamed)
-│   └── AlpacaFactory.cs              # NEW: extracted from ProviderFactory.cs
+├── Alpaca/
+│   ├── AlpacaMarketDataClient.cs
+│   ├── AlpacaHistoricalDataProvider.cs
+│   └── AlpacaSymbolSearchProviderRefactored.cs
 ├── Polygon/
-│   ├── PolygonConfig.cs
 │   ├── PolygonMarketDataClient.cs
 │   ├── PolygonHistoricalDataProvider.cs
-│   ├── PolygonSymbolSearchProvider.cs
-│   └── PolygonFactory.cs
+│   └── PolygonSymbolSearchProvider.cs
 ├── InteractiveBrokers/
-│   ├── IBConfig.cs
 │   ├── IBMarketDataClient.cs
 │   ├── IBHistoricalDataProvider.cs
 │   ├── IBSimulationClient.cs
-│   ├── IBFactory.cs
-│   ├── Client/                       # low-level IB API (existing files)
-│   │   ├── ContractFactory.cs
-│   │   ├── IBConnectionManager.cs
-│   │   ├── EnhancedIBConnectionManager.cs
-│   │   ├── IBCallbackRouter.cs
-│   │   └── IBApiLimits.cs
-│   └── Parsing/                      # NEW: extracted wire-format translation
-│       └── IBDataParser.cs
+│   ├── ContractFactory.cs
+│   ├── IBConnectionManager.cs
+│   ├── EnhancedIBConnectionManager.cs
+│   ├── IBCallbackRouter.cs
+│   └── IBApiLimits.cs
 ├── NYSE/
-│   ├── NYSEConfig.cs
 │   ├── NYSEDataSource.cs
-│   ├── NYSEFactory.cs
+│   ├── NYSEOptions.cs               # co-located config (already was)
 │   └── NYSEServiceExtensions.cs
 ├── StockSharp/
-│   ├── StockSharpConfig.cs
 │   ├── StockSharpMarketDataClient.cs
 │   ├── StockSharpHistoricalDataProvider.cs
 │   ├── StockSharpSymbolSearchProvider.cs
-│   ├── StockSharpFactory.cs
-│   └── Converters/                   # existing
+│   ├── StockSharpConnectorFactory.cs
+│   ├── StockSharpConnectorCapabilities.cs
+│   └── Converters/
 │       ├── MessageConverter.cs
 │       └── SecurityConverter.cs
 ├── Finnhub/
-│   ├── FinnhubConfig.cs
 │   ├── FinnhubHistoricalDataProvider.cs
-│   ├── FinnhubSymbolSearchProvider.cs
-│   └── FinnhubFactory.cs
+│   └── FinnhubSymbolSearchProviderRefactored.cs
 ├── Tiingo/
-│   ├── TiingoConfig.cs
-│   ├── TiingoHistoricalDataProvider.cs
-│   └── TiingoFactory.cs
+│   └── TiingoHistoricalDataProvider.cs
 ├── YahooFinance/
-│   ├── YahooFinanceHistoricalDataProvider.cs
-│   └── YahooFinanceFactory.cs
+│   └── YahooFinanceHistoricalDataProvider.cs
 ├── Stooq/
-│   ├── StooqHistoricalDataProvider.cs
-│   └── StooqFactory.cs
+│   └── StooqHistoricalDataProvider.cs
 ├── AlphaVantage/
-│   ├── AlphaVantageConfig.cs
-│   ├── AlphaVantageHistoricalDataProvider.cs
-│   └── AlphaVantageFactory.cs
+│   └── AlphaVantageHistoricalDataProvider.cs
 ├── NasdaqDataLink/
-│   ├── NasdaqDataLinkConfig.cs
-│   ├── NasdaqDataLinkHistoricalDataProvider.cs
-│   └── NasdaqDataLinkFactory.cs
-├── Failover/                         # cross-cutting failover stays separate
+│   └── NasdaqDataLinkHistoricalDataProvider.cs
+├── OpenFigi/
+│   ├── OpenFigiClient.cs
+│   └── OpenFigiSymbolResolver.cs
+├── Failover/
 │   ├── FailoverAwareMarketDataClient.cs
 │   ├── StreamingFailoverRegistry.cs
 │   └── StreamingFailoverService.cs
-└── Shared/                           # cross-cutting shared infrastructure
-    ├── GapAnalysis/                  # moved from Historical/GapAnalysis/
-    ├── Queue/                        # moved from Historical/Queue/
-    ├── RateLimiting/                 # moved from Historical/RateLimiting/
-    └── SymbolResolution/             # moved from Historical/SymbolResolution/
+└── (no Shared/ — cross-cutting infra lives in Core/)
 ```
 
-**Benefits:**
-- "Everything about Alpaca" is in one place
-- New provider onboarding: copy a template directory, implement the required files
-- Reduces cognitive overhead when debugging provider-specific issues
-- Aligns streaming + historical + search under one namespace per vendor
+**Remaining gaps vs. proposal:**
+- Per-provider `*Config.cs` and `*Factory.cs` files have **not** been created (see 1.3 and 1.5).
+- The `AlpacaSymbolSearchProviderRefactored.cs` and `FinnhubSymbolSearchProviderRefactored.cs` still carry the legacy `Refactored` suffix (see Section 5.1, Quick Win #1).
+- Namespaces now use `MarketDataCollector.Infrastructure.Adapters.<Vendor>` rather than the proposed `Providers.<Vendor>` — this is the canonical namespace going forward.
 
-**Namespace impact:** `MarketDataCollector.Infrastructure.Providers.Alpaca` replaces separate `Providers.Streaming.Alpaca`, `Providers.Historical.Alpaca`, and `Providers.SymbolSearch` namespaces. Internal references update; public `IMarketDataClient` / `IHistoricalDataProvider` interfaces remain unchanged.
+**Namespace impact:** Internal references use `MarketDataCollector.Infrastructure.Adapters.*`. Public `IMarketDataClient` / `IHistoricalDataProvider` interfaces remain unchanged.
 
 ---
 
 ### 1.2 Provider Template Scaffold
 
+> **Status: ⚠️ Partially Implemented**
+
 **Problem:** The existing `ProviderTemplate.cs` is a metadata record, not a code scaffold. When a developer wants to add a new provider, they must read documentation and manually study existing providers to know which files to create.
 
 **nautilus_trader pattern:** A `_template/` directory contains skeleton files (`core.py`, `data.py`, `execution.py`, `providers.py`) that define the exact file structure every adapter must have.
 
-**Proposed change:** Add a `_Template/` directory with skeleton C# files:
+**Current state:** A `ProviderTemplate.cs` file exists in `Adapters/Core/` as a factory/metadata record that generates provider template data (`ProviderTemplate` record, `ProviderTemplateFactory`, `ProviderRateLimitProfile`). This handles programmatic template creation but is **not** a file-system scaffold that developers can copy to bootstrap a new provider.
+
+**Still needed:** A `_Template/` directory with skeleton C# files:
 
 ```
-Infrastructure/Providers/_Template/
+Infrastructure/Adapters/_Template/
 ├── README.md                          # Step-by-step guide
 ├── TemplateConfig.cs                  # Configuration skeleton
 ├── TemplateMarketDataClient.cs        # IMarketDataClient skeleton (streaming)
@@ -221,6 +206,8 @@ public sealed class TemplateMarketDataClient : IMarketDataClient
 
 ### 1.3 Co-located Provider Configuration
 
+> **Status: ❌ Not Started**
+
 **Problem:** Provider configuration classes are scattered:
 
 | Provider | Config location |
@@ -273,6 +260,8 @@ public sealed record AlpacaBackfillConfig(
 
 ### 1.4 Explicit Parsing Layer Per Provider
 
+> **Status: ❌ Not Started**
+
 **Problem:** Wire-format parsing (JSON deserialization, field mapping, type conversion) is currently embedded inside provider client classes. For example, `AlpacaMarketDataClient.cs` handles both WebSocket connection management and JSON message parsing in the same class.
 
 **nautilus_trader pattern:** Every adapter has a `parsing/` subdirectory with dedicated files per concern (`parsing/data.py`, `parsing/instruments.py`, `parsing/execution.py`).
@@ -305,7 +294,11 @@ For simpler providers (Stooq, AlphaVantage) with minimal parsing, a separate dir
 
 ### 1.5 Per-Provider Factory Classes
 
-**Problem:** The centralized `ProviderFactory.cs` (338 lines) contains creation logic for **all** providers. Adding a new backfill provider means modifying this file, adding type aliases, and risking merge conflicts with other provider work.
+> **Status: ❌ Not Started**
+
+**Problem:** The centralized `ProviderFactory.cs` contains creation logic for **all** providers. Adding a new backfill provider means modifying this file, adding type aliases, and risking merge conflicts with other provider work.
+
+**Current state:** `ProviderFactory.cs` remains the single central factory in `Adapters/Core/`. It exposes `ICredentialResolver` interface and `EnvironmentCredentialResolver` class alongside factory methods for each provider. No per-provider factory classes have been extracted.
 
 **nautilus_trader pattern:** Each adapter has a `factories.py` that knows how to construct that adapter's components. The composition root just calls each factory.
 
@@ -358,61 +351,57 @@ public IReadOnlyList<IHistoricalDataProvider> CreateBackfillProviders()
 
 ### 1.6 Consolidated Domain Enums
 
-**Problem:** Domain enumerations are spread across multiple files and namespaces:
+> **Status: ✅ Implemented**
 
-```
-Contracts/Domain/Enums/          # Some enums here
-Core/Config/DataSourceKind.cs    # Some here
-Contracts/Configuration/         # Some here
-```
+**Original problem:** Domain enumerations were spread across multiple files and namespaces.
 
-**nautilus_trader pattern:** A single `model/enums.py` file contains all trading enumerations, providing a single reference point.
-
-**Proposed change:** Consolidate all domain-level enums into `Contracts/Domain/Enums/` with clear grouping:
+**Current state:** All trading domain enums are consolidated in `Contracts/Domain/Enums/` with individual files per enum:
 
 ```
 Contracts/Domain/Enums/
-├── MarketDataEnums.cs     # EventType, DataFeedType, AssetClass
-├── ProviderEnums.cs       # DataSourceKind, ProviderType, ProviderTypeKind
-├── StorageEnums.cs        # StorageTier, CompressionProfile, NamingConvention
-└── TradingEnums.cs        # OrderSide, TimeInForce (if applicable)
+├── AggressorSide.cs
+├── CanonicalTradeCondition.cs
+├── ConnectionStatus.cs
+├── DepthIntegrityKind.cs
+├── DepthOperation.cs
+├── InstrumentType.cs
+├── IntegritySeverity.cs
+├── LiquidityProfile.cs
+├── MarketEventTier.cs
+├── MarketEventType.cs
+├── MarketState.cs
+├── OptionRight.cs
+├── OptionStyle.cs
+└── OrderBookSide.cs
 ```
 
-Keep individual enum files if they have associated logic (e.g., `DataSourceKindConverter.cs`), but ensure all pure enum definitions live in the canonical location.
-
-**Benefits:**
-- Developers looking for "what enums exist" check one directory
-- Eliminates scattered enum discovery across 4+ projects
-- Prevents duplicate enum definitions
+`DataSourceKind.cs` and its associated `DataSourceKindConverter.cs` remain in `Core/Config/` (deliberately kept together because the converter has associated logic). This is consistent with the proposal's guidance to "keep individual enum files if they have associated logic."
 
 ---
 
 ### 1.7 Persistence Read/Write/Transform Separation
 
+> **Status: ⚠️ Partially Implemented**
+
 **Problem:** The Storage project organizes by technical concept (Sinks, Archival, Export) but mixes read and write concerns within some services.
 
 **nautilus_trader pattern:** Persistence has explicit named layers: `loaders.py` (read), `writer.py` (write), `wranglers.py` (transform).
 
-**Proposed change:** This is a lighter-touch reorganization — add a `README.md` documenting the read/write/transform roles of existing classes, and ensure new storage code follows the pattern:
+**Current state:** The Storage project has achieved functional separation without the literal `Read/`, `Write/`, `Transform/` directory names:
 
 ```
 Storage/
-├── Read/                          # NEW grouping (or just documentation)
-│   ├── JsonlReplayer.cs          # existing, moved from Replay/
-│   └── MemoryMappedJsonlReader.cs # existing, moved from Replay/
-├── Write/
-│   ├── JsonlStorageSink.cs       # existing, moved from Sinks/
-│   ├── ParquetStorageSink.cs     # existing, moved from Sinks/
-│   └── CompositeSink.cs          # existing, moved from Sinks/
-├── Transform/
-│   └── ParquetConversionService.cs # existing, moved from Services/
-├── Archival/                      # existing (unchanged)
-├── Catalog/                       # NEW: inspired by nautilus_trader catalog/
-│   └── StorageCatalogService.cs  # existing, moved from Services/
-├── Export/                        # existing (unchanged)
-├── Maintenance/                   # existing (unchanged)
-└── Packaging/                     # existing (unchanged)
+├── Archival/       # Write layer (WriteAheadLog, AtomicFileWriter, ArchivalStorageService)
+├── Replay/         # Read layer (JsonlReplayer, MemoryMappedJsonlReader)
+├── Sinks/          # Write sinks (JsonlStorageSink, ParquetStorageSink, CompositeSink, CatalogSyncSink)
+├── Export/         # Transform layer (AnalysisExportService, Arrow/Parquet/Xlsx formats)
+├── Services/       # Mixed concerns — 15 services (quality, lineage, catalog, lifecycle, etc.)
+├── Maintenance/    # Maintenance scheduling
+├── Packaging/      # Package creation and validation
+└── Policies/       # Storage policies
 ```
+
+The `Read/Write/Transform` labels map approximately to `Replay/Archival+Sinks/Export`. The main gap is that `Storage/Services/` remains a large grab-bag with 15 mixed-concern classes.
 
 **Alternative (lower risk):** Keep existing directories but add clear `Read/`, `Write/`, `Transform/` XML doc tags and a `Storage/README.md` mapping file that documents which class handles which concern.
 
@@ -422,13 +411,15 @@ Storage/
 
 ### 2.1 Component Lifecycle FSM Base Class
 
+> **Status: ❌ Not Started**
+
 **Problem:** Provider components use implicit lifecycle management via `IHostedService` and `IAsyncDisposable`. There's no standard way to query a component's state (is it starting? connected? degraded? stopping?).
+
+**Current state:** No `ComponentBase` class exists. Providers inherit from abstract base classes (`BaseHistoricalDataProvider`, `BaseSymbolSearchProvider`, `WebSocketProviderBase`) that manage initialization but provide no formal finite-state-machine or queryable lifecycle state.
 
 **nautilus_trader pattern:** Every component extends `Component`, which embeds a finite state machine with explicit states: `PRE_INITIALIZED → READY → RUNNING → DEGRADED → STOPPED → DISPOSED`. State transitions are guarded and logged.
 
 **Proposed enhancement:** Create a `ComponentBase` class in `Core/`:
-
-```csharp
 // Core/ComponentBase.cs
 public abstract class ComponentBase : IAsyncDisposable
 {
@@ -476,7 +467,16 @@ public enum ComponentState
 
 ### 2.2 Provider-Local Common Types
 
+> **Status: ⚠️ Partially Implemented**
+
 **Problem:** Provider-specific constants and types (like IB contract types, Polygon message enums, Alpaca feed names) often end up in shared namespaces or as magic strings scattered through client code.
+
+**Current state:** Two providers have provider-local internal files:
+- `InteractiveBrokers/IBApiLimits.cs` — IB-specific API limits and constants (matches the intent)
+- `StockSharp/StockSharpConnectorCapabilities.cs` — capabilities metadata
+- `StockSharp/Converters/` — wire-format conversion types
+
+Other providers (Alpaca, Polygon, Finnhub) still rely on inline magic strings and shared utilities. A consistent `*Constants.cs` pattern has not been adopted across all providers.
 
 **nautilus_trader pattern:** Each adapter has a `common.py` (or `common/` directory) for adapter-internal shared types. These types are **not exported** to the rest of the system.
 
@@ -506,7 +506,17 @@ Mark these `internal` so they don't leak into the public API surface.
 
 ### 2.3 Module-Scoped Message Types
 
+> **Status: ⚠️ Partially Implemented**
+
 **Problem:** The event pipeline uses a single `MarketEvent` wrapper with polymorphic payloads (per ADR-006). While this is architecturally sound, pipeline-specific command/request types (like "subscribe to this symbol" or "trigger a backfill") are not always clearly separated from domain events.
+
+**Current state:** The `Application/Commands/` directory contains several typed command classes covering CLI-level operations:
+- `PackageCommands.cs`
+- `DiagnosticsCommands.cs`
+- `ConfigCommands.cs`
+- `SymbolCommands.cs`
+
+However, **pipeline-internal** command types (`SubscribeSymbolCommand`, `UnsubscribeSymbolCommand`) and **backfill-module** commands (`RunBackfillCommand`, `CancelBackfillCommand`) have **not** been created. Backfill operations use parameter-passing through `BackfillRequest` records rather than dispatched command objects.
 
 **nautilus_trader pattern:** Each module defines its own message types in a `messages.py` file (e.g., `data/messages.py` defines `SubscribeData`, `UnsubscribeData`, `RequestData`).
 
@@ -533,7 +543,16 @@ These replace ad-hoc parameter bags or string-based dispatching with typed, self
 
 ### 2.4 Credential Isolation at Provider Boundary
 
+> **Status: ⚠️ Partially Implemented**
+
 **Problem:** The current `ICredentialResolver` has methods for every provider (`ResolveAlpacaCredentials`, `ResolvePolygonCredentials`, etc.). Adding a new provider requires modifying this shared interface.
+
+**Current state:** A hybrid approach exists:
+1. `ICredentialResolver` / `EnvironmentCredentialResolver` in `Adapters/Core/ProviderFactory.cs` — monolithic per-provider resolution methods, used at factory creation time.
+2. `ProviderCredentialResolver` in `Application/Config/Credentials/` — a second centralized resolver with the same per-provider methods but richer configuration support.
+3. `ICredentialStore` in `Application/Credentials/` — a newer unified interface (`GetCredentialAsync`, `RefreshCredentialAsync`) that abstracts over vault, environment variables, and config.
+
+The `ICredentialStore` interface represents forward progress toward the proposed pattern, but the per-provider environment-variable-name knowledge has not been moved into individual provider directories.
 
 **nautilus_trader pattern:** Each adapter has its own `credentials.py` or loads environment variables in its `config.py`. Credentials are sourced at the adapter boundary and never passed downstream.
 
@@ -564,11 +583,15 @@ Keep a lightweight `ISecretProvider` interface for vault integration, but move t
 
 ### 2.5 ArchUnitNET Dependency Rules
 
+> **Status: ❌ Not Started**
+
 **Problem:** Layer boundary violations are documented in `repository-organization-guide.md` and `layer-boundaries.md` but not enforced programmatically. Violations are caught only during code review.
+
+**Current state:** No architecture boundary tests exist in any test project. Known layer violations identified during analysis remain in place (see Section 5.3).
 
 **nautilus_trader pattern:** While nautilus_trader doesn't use ArchUnit specifically, their strict module boundaries (no cross-adapter imports, no persistence importing from adapters) are enforced by Python's import system and CI checks.
 
-**Proposed enhancement:** Add an ArchUnitNET test class that enforces documented dependency rules:
+**Proposed enhancement:** Add an ArchUnitNET test class that enforces documented dependency rules. Update the `ProviderFactory` type reference in the loader to use `MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory` (reflecting the completed `Adapters/` migration from 1.1):
 
 ```csharp
 // tests/MarketDataCollector.Tests/Architecture/LayerBoundaryTests.cs
@@ -578,7 +601,7 @@ public class LayerBoundaryTests
         new ArchLoader().LoadAssemblies(
             typeof(MarketDataCollector.Core.Config.AppConfig).Assembly,
             typeof(MarketDataCollector.Domain.Collectors.TradeDataCollector).Assembly,
-            typeof(MarketDataCollector.Infrastructure.Providers.Core.ProviderFactory).Assembly
+            typeof(MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory).Assembly
         ).Build();
 
     [Fact]
@@ -603,9 +626,9 @@ public class LayerBoundaryTests
     public void Providers_Should_Not_Cross_Reference()
     {
         // Alpaca should not reference Polygon internals, etc.
-        Types().That().ResideInNamespace("MarketDataCollector.Infrastructure.Providers.Alpaca")
+        Types().That().ResideInNamespace("MarketDataCollector.Infrastructure.Adapters.Alpaca")
             .Should().NotDependOnAny(
-                Types().That().ResideInNamespace("MarketDataCollector.Infrastructure.Providers.Polygon"))
+                Types().That().ResideInNamespace("MarketDataCollector.Infrastructure.Adapters.Polygon"))
             .Check(Architecture);
     }
 }
@@ -621,37 +644,39 @@ public class LayerBoundaryTests
 
 ## 3. Migration Strategy
 
-### Phase 1: Foundation (Low Risk)
+The phases below have been updated to reflect current implementation status as of 2026-03-11.
 
-| Change | Effort | Risk |
-|--------|--------|------|
-| 1.2 Provider Template Scaffold | Small | None (additive) |
-| 2.2 Provider-Local Common Types | Small | None (additive) |
-| 2.5 ArchUnitNET tests | Small | None (additive) |
-| 1.6 Consolidated Domain Enums | Medium | Low (moves, no API change) |
+### Phase 1: Foundation (Low Risk) — Partially Complete
 
-### Phase 2: Provider Restructuring (Medium Risk)
+| Change | Effort | Risk | Status |
+|--------|--------|------|--------|
+| 1.2 Provider Template Scaffold | Small | None (additive) | ⚠️ Partial |
+| 2.2 Provider-Local Common Types | Small | None (additive) | ⚠️ Partial |
+| 2.5 ArchUnitNET tests | Small | None (additive) | ❌ Not started |
+| 1.6 Consolidated Domain Enums | Medium | Low (moves, no API change) | ✅ Done |
 
-| Change | Effort | Risk |
-|--------|--------|------|
-| 1.1 Unified Per-Provider Directories | Large | Medium (namespace changes) |
-| 1.3 Co-located Provider Configuration | Medium | Low (records can stay API-compatible) |
-| 1.5 Per-Provider Factory Classes | Medium | Low (internal refactoring) |
+### Phase 2: Provider Restructuring (Medium Risk) — Partially Complete
 
-### Phase 3: Enhanced Patterns (Medium Risk)
+| Change | Effort | Risk | Status |
+|--------|--------|------|--------|
+| 1.1 Unified Per-Provider Directories | Large | Medium (namespace changes) | ✅ Done |
+| 1.3 Co-located Provider Configuration | Medium | Low (records can stay API-compatible) | ❌ Not started |
+| 1.5 Per-Provider Factory Classes | Medium | Low (internal refactoring) | ❌ Not started |
 
-| Change | Effort | Risk |
-|--------|--------|------|
-| 1.4 Explicit Parsing Layer | Medium | Low (extract, don't rewrite) |
-| 2.1 Component Lifecycle FSM | Medium | Medium (base class change) |
-| 2.3 Module-Scoped Message Types | Small | Low (additive) |
-| 2.4 Credential Isolation | Small | Low (internal refactoring) |
+### Phase 3: Enhanced Patterns (Medium Risk) — Not Started
 
-### Phase 4: Storage Reorganization (Lower Priority)
+| Change | Effort | Risk | Status |
+|--------|--------|------|--------|
+| 1.4 Explicit Parsing Layer | Medium | Low (extract, don't rewrite) | ❌ Not started |
+| 2.1 Component Lifecycle FSM | Medium | Medium (base class change) | ❌ Not started |
+| 2.3 Module-Scoped Message Types | Small | Low (additive) | ⚠️ Partial |
+| 2.4 Credential Isolation | Small | Low (internal refactoring) | ⚠️ Partial |
 
-| Change | Effort | Risk |
-|--------|--------|------|
-| 1.7 Persistence Read/Write/Transform | Medium | Medium (file moves) |
+### Phase 4: Storage Reorganization (Lower Priority) — Not Started
+
+| Change | Effort | Risk | Status |
+|--------|--------|------|--------|
+| 1.7 Persistence Read/Write/Transform | Medium | Medium (file moves) | ⚠️ Partial |
 
 ### Migration Approach Per Phase
 
@@ -678,30 +703,31 @@ public class LayerBoundaryTests
 
 ## Appendix: Side-by-Side Comparison
 
-### Current vs. Proposed: Finding "Everything About Alpaca"
+### Before vs. After: Finding "Everything About Alpaca"
 
-**Current (4 locations):**
+**Before (4 separate locations):**
 ```
-src/MarketDataCollector.Application/Config/AlpacaOptions.cs          # config
-src/MarketDataCollector.Infrastructure/Providers/Streaming/Alpaca/    # streaming
-src/MarketDataCollector.Infrastructure/Providers/Historical/Alpaca/   # backfill
-src/MarketDataCollector.Infrastructure/Providers/SymbolSearch/Alpaca* # search
-src/MarketDataCollector.Infrastructure/Providers/Core/ProviderFactory.cs  # factory (shared)
+src/MarketDataCollector.Application/Config/AlpacaOptions.cs            # config (still here)
+src/MarketDataCollector.Infrastructure/Providers/Streaming/Alpaca/     # streaming (old)
+src/MarketDataCollector.Infrastructure/Providers/Historical/Alpaca/    # backfill (old)
+src/MarketDataCollector.Infrastructure/Providers/SymbolSearch/Alpaca*  # search (old)
+src/MarketDataCollector.Infrastructure/Providers/Core/ProviderFactory.cs  # factory (old)
 ```
 
-**Proposed (1 location):**
+**After (1 location for implementation, config still separate):**
 ```
-src/MarketDataCollector.Infrastructure/Providers/Alpaca/
-├── AlpacaConfig.cs
+src/MarketDataCollector.Infrastructure/Adapters/Alpaca/
 ├── AlpacaMarketDataClient.cs
 ├── AlpacaHistoricalDataProvider.cs
-├── AlpacaSymbolSearchProvider.cs
-└── AlpacaFactory.cs
+└── AlpacaSymbolSearchProviderRefactored.cs   # rename pending (5.1)
+
+src/MarketDataCollector.Application/Config/AlpacaOptions.cs            # config (1.3 not yet done)
+src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderFactory.cs # factory (1.5 not yet done)
 ```
 
-### Current vs. Proposed: Adding a New Provider
+### Before vs. After: Adding a New Provider
 
-**Current steps:**
+**Before (8 steps across multiple locations):**
 1. Create streaming client in `Providers/Streaming/NewProvider/`
 2. Create historical provider in `Providers/Historical/NewProvider/`
 3. Create search provider in `Providers/SymbolSearch/`
@@ -711,11 +737,17 @@ src/MarketDataCollector.Infrastructure/Providers/Alpaca/
 7. Register in `ServiceCompositionRoot.cs`
 8. Read `docs/development/provider-implementation.md` for guidance
 
-**Proposed steps:**
-1. Copy `Providers/_Template/` to `Providers/NewProvider/`
-2. Rename classes and implement methods (template shows exactly what's needed)
+**Current (5 steps, partially simplified):**
+1. Create a vendor directory under `Adapters/NewProvider/`
+2. Add streaming, historical, and search files within that directory
+3. Add config in `Application/Config/`
+4. Modify `ProviderFactory.cs` to add creation + credential logic
+5. Register in `ServiceCompositionRoot.cs`
+
+**Goal (3 steps, once 1.2/1.3/1.5 are completed):**
+1. Copy `Adapters/_Template/` to `Adapters/NewProvider/`
+2. Rename classes and implement methods
 3. Register in `ServiceCompositionRoot.cs`
-4. Delete any template files for capabilities you don't support
 
 ---
 
@@ -732,82 +764,79 @@ src/MarketDataCollector.Infrastructure/Providers/Alpaca/
 
 ---
 
----
+## 5. Structural Issues — Status Update (2026-03-11)
 
-## 5. Current Structural Issues Discovered During Analysis
-
-The following concrete issues were identified in the current codebase during this analysis. These are independent of the nautilus_trader-inspired proposals and represent existing inconsistencies, naming violations, and misplaced code that should be addressed regardless of whether the larger restructuring is adopted.
+The following concrete issues were identified in the original analysis. Status reflects the codebase as of 2026-03-11.
 
 ### 5.1 Provider Organization Issues
 
-| Issue | Severity | Location | Fix |
-|-------|----------|----------|-----|
-| **Orphaned `BackfillProgressTracker.cs`** from incomplete Backfill→Historical migration | Medium | `Infrastructure/Providers/Backfill/BackfillProgressTracker.cs` | Move to `Historical/` or unified `Providers/Shared/` |
-| **`StockSharpSymbolSearchProvider.cs` in wrong category** — a `ISymbolSearchProvider` living in `Streaming/StockSharp/` | Medium | `Providers/Streaming/StockSharp/StockSharpSymbolSearchProvider.cs` | Move to `SymbolSearch/` (or unified `Providers/StockSharp/`) |
-| **`Refactored` suffix** on canonical implementations | Low | `SymbolSearch/AlpacaSymbolSearchProviderRefactored.cs`, `FinnhubSymbolSearchProviderRefactored.cs` | Rename to `AlpacaSymbolSearchProvider.cs`, `FinnhubSymbolSearchProvider.cs` |
-| **Inconsistent base class naming** — `BaseHistoricalDataProvider` (prefix) vs `WebSocketProviderBase` (suffix) | Low | `Historical/`, `Core/` | Standardize on one pattern (suffix preferred per guide) |
+| Issue | Severity | Status | Current Location |
+|-------|----------|--------|-----------------|
+| **Orphaned `BackfillProgressTracker.cs`** from incomplete Backfill→Historical migration | Medium | ❌ Open | `Infrastructure/Adapters/Core/BackfillProgressTracker.cs` |
+| **`StockSharpSymbolSearchProvider.cs` in wrong category** | Medium | ✅ Fixed | Now in `Adapters/StockSharp/` (unified vendor dir) |
+| **`Refactored` suffix** on `AlpacaSymbolSearchProviderRefactored.cs` and `FinnhubSymbolSearchProviderRefactored.cs` | Low | ❌ Open | `Adapters/Alpaca/`, `Adapters/Finnhub/` |
+| **Inconsistent base class naming** — `BaseHistoricalDataProvider` (prefix) vs `WebSocketProviderBase` (suffix) | Low | ❌ Open | `Adapters/Core/` |
 
 ### 5.2 Configuration Scattering
 
-| Issue | Severity | Location | Fix |
-|-------|----------|----------|-----|
-| **Provider-specific options in Core** — `AlpacaOptions.cs`, `StockSharpConfig.cs` in `Core/Config/` | Low | `Core/Config/` | Move to provider directories (Section 1.3) |
-| **`ICredentialStore.cs` isolated** — single file in `Application/Credentials/` | Low | `Application/Credentials/` | Merge into `Application/Config/Credentials/` |
-| **`Application/Http/` uses `Application.UI` namespace** — directory renamed from `UI/` to `Http/` but namespaces not updated | Medium | `Application/Http/*.cs` | Update namespaces to `MarketDataCollector.Application.Http` |
+| Issue | Severity | Status | Notes |
+|-------|----------|--------|-------|
+| **Provider-specific options in `Core/Config/`** — `AlpacaOptions.cs`, `StockSharpConfig.cs` | Low | ❌ Open | See 1.3 |
+| **`ICredentialStore.cs` isolated** in `Application/Credentials/` | Low | ❌ Open | Separate from `Application/Config/Credentials/` |
+| **`Application/Http/` files still use `Application.UI` namespace** — directory renamed but namespaces not updated | Medium | ❌ Open | `ConfigStore.cs`, `BackfillCoordinator.cs`, `HtmlTemplates.cs`, etc. all declare `namespace MarketDataCollector.Application.UI` |
 
 ### 5.3 Layer Boundary Violations
 
-| Issue | Severity | Location | Fix |
-|-------|----------|----------|-----|
-| **`Core.csproj` references `Domain`** — Core should be a lower layer than Domain | Medium | `Core/MarketDataCollector.Core.csproj` | Move shared types to `Contracts`; remove dependency |
-| **`IHistoricalDataProvider` and `ISymbolSearchProvider` defined in Infrastructure** — provider interfaces should be in `ProviderSdk` | Medium | `Infrastructure/Providers/Historical/`, `Infrastructure/Providers/SymbolSearch/` | Move to `ProviderSdk/` alongside `IMarketDataClient` |
-| **`ImplementsAdrAttribute` in ProviderSdk** — used by all layers, not provider-specific | Low | `ProviderSdk/ImplementsAdrAttribute.cs` | Move to `Contracts/` or `Core/` |
-| **`Results/ErrorCode.cs` in Application** — lower layers can't use error codes without referencing Application | Medium | `Application/Results/` | Move to `Core/` or `Contracts/` |
-| **`MigrationDiagnostics.cs`** — lives in `Core/Monitoring/` but uses namespace `MarketDataCollector.Application.Monitoring` | Medium | `Core/Monitoring/MigrationDiagnostics.cs` | Align namespace to `MarketDataCollector.Core.Monitoring` |
+| Issue | Severity | Status | Notes |
+|-------|----------|--------|-------|
+| **`Core.csproj` references `Domain`** — Core should be a lower layer | Medium | ❌ Open | |
+| **`IHistoricalDataProvider` and `ISymbolSearchProvider` defined in Infrastructure** instead of `ProviderSdk` | Medium | ❌ Open | In `Adapters/Core/` |
+| **`ImplementsAdrAttribute` in ProviderSdk** — used by all layers | Low | ❌ Open | |
+| **`Results/ErrorCode.cs` in Application** — lower layers can't use error codes without referencing Application | Medium | ❌ Open | |
+| **`MigrationDiagnostics.cs`** in `Core/Monitoring/` uses namespace `MarketDataCollector.Application.Monitoring` | Medium | ⚠️ Acknowledged | A comment in the file explains the namespace mismatch is intentional for consistency with other monitoring abstractions |
 
 ### 5.4 Duplicate/Ambiguous Names
 
-| Issue | Severity | Location | Fix |
-|-------|----------|----------|-----|
-| **Two `MarketEvent` records** — near-identical definitions in `Domain/Events/` and `Contracts/Domain/Events/` | Medium | Both projects | Consolidate into one canonical location |
-| **`BackfillCoordinator`** — same class name in `Application/Http/` and `Ui.Shared/Services/` | Medium | Both projects | Rename to `CoreBackfillCoordinator` / `UiBackfillCoordinator` |
-| **`ConfigStore`** — same class name in `Application/Http/` and `Ui.Shared/Services/` | Medium | Both projects | Rename to `InMemoryConfigStore` / `UiConfigStore` |
+| Issue | Severity | Status | Notes |
+|-------|----------|--------|-------|
+| **Two `MarketEvent` records** in `Domain/Events/` and `Contracts/Domain/Events/` | Medium | ❌ Open | |
+| **`BackfillCoordinator`** — same class name in `Application/Http/` and `Ui.Shared/Services/` | Medium | ❌ Open | |
+| **`ConfigStore`** — same class name in `Application/Http/` and `Ui.Shared/Services/` | Medium | ❌ Open | |
 
 ### 5.5 Test Structure Issues
 
-| Issue | Severity | Location | Fix |
-|-------|----------|----------|-----|
-| **24 test files using flat `namespace MarketDataCollector.Tests;`** despite being in correct subdirectories | Medium | Various test files | Update namespaces to match folder (e.g., `MarketDataCollector.Tests.Domain.Collectors`) |
-| **`BackfillWorkerServiceTests.cs` tests Infrastructure code but lives in `Application/Backfill/`** | Medium | `tests/.../Application/Backfill/` | Move to `tests/.../Infrastructure/Providers/` |
-| **`BackfillProgressTrackerTests.cs` tests Infrastructure code but lives in `Application/Pipeline/`** | Medium | `tests/.../Application/Pipeline/` | Move to `tests/.../Infrastructure/Providers/` |
-| **`CronExpressionParserTests.cs` tests `Core/Scheduling/` but lives in `Application/Services/`** | Low | `tests/.../Application/Services/` | Move to `tests/.../Core/Scheduling/` |
-| **5 backfill tests use old namespace `MarketDataCollector.Tests.Backfill`** | Low | `tests/.../Application/Backfill/` | Update to `MarketDataCollector.Tests.Application.Backfill` |
-| **`SymbolSearch/` tests not mirroring source path** — should be under `Infrastructure/Providers/` | Low | `tests/.../SymbolSearch/` | Move to `tests/.../Infrastructure/Providers/SymbolSearch/` |
+| Issue | Severity | Status | Notes |
+|-------|----------|--------|-------|
+| **Flat `namespace MarketDataCollector.Tests;`** in test files that live in subdirectories | Medium | ⚠️ Partial | Some files updated (e.g., `CompositeHistoricalDataProviderTests` uses `...Tests.Application.Backfill`); 5 backfill tests still use `MarketDataCollector.Tests.Backfill` |
+| **`BackfillWorkerServiceTests.cs` tests Infrastructure code but lives in `Application/Backfill/`** | Medium | ❌ Open | |
+| **`BackfillProgressTrackerTests.cs` tests Infrastructure code but lives in `Application/Pipeline/`** | Medium | ❌ Open | |
+| **`CronExpressionParserTests.cs` tests `Core/Scheduling/` but lives in `Application/Services/`** | Low | ❌ Open | |
+| **5 backfill tests use old namespace `MarketDataCollector.Tests.Backfill`** | Low | ❌ Open | |
+| **`SymbolSearch/` tests not mirroring source path** | Low | ❌ Open | |
 
 ### 5.6 Other Structural Issues
 
-| Issue | Severity | Location | Fix |
-|-------|----------|----------|-----|
-| **Double-nested `Core/Performance/Performance/`** folder | Low | `Core/Performance/Performance/` | Flatten to `Core/Performance/` |
-| **`StorageOptions.cs` and `StorageProfiles.cs` at project root** instead of in `Config/` | Low | `Storage/StorageOptions.cs` | Move to `Storage/Config/` |
-| **`Storage/Services/` has 15 mixed-concern services** — grab-bag folder | Low | `Storage/Services/` | Sub-folder by concern (e.g., `Quality/`, `Catalog/`, `Lifecycle/`) |
-| **4 endpoints stranded in `Application/Http/Endpoints/`** while 35 live in `Ui.Shared/Endpoints/` | Medium | `Application/Http/Endpoints/` | Move to `Ui.Shared/Endpoints/` for consistency |
-| **`FSharp` project not actually referenced** by any other project (CLAUDE.md says it is) | Low | `FSharp.fsproj` | Update CLAUDE.md to reflect reality |
-| **`DepthBufferSelfTests.cs`** — runtime self-test code in production Application assembly | Low | `Application/Testing/` | Consider moving to test project or marking clearly as diagnostic |
+| Issue | Severity | Status | Notes |
+|-------|----------|--------|-------|
+| **Double-nested `Core/Performance/Performance/`** folder | Low | ❌ Open | Still present |
+| **`StorageOptions.cs` and `StorageProfiles.cs` at project root** instead of `Config/` | Low | ❌ Open | |
+| **`Storage/Services/` has 15 mixed-concern services** | Low | ❌ Open | |
+| **4 endpoints stranded in `Application/Http/Endpoints/`** while 35 live in `Ui.Shared/Endpoints/` | Medium | ❌ Open | |
+| **`FSharp` project not referenced** by any other project | Low | ❌ Open | |
+| **`DepthBufferSelfTests.cs`** — runtime self-test code in production Application assembly | Low | ❌ Open | |
 
-### Quick Win Priority Order
+### Quick Win Priority Order (Remaining)
 
-These can be fixed independently with minimal risk:
+Items still actionable with minimal risk, in priority order:
 
-1. **Rename `Refactored` suffix files** (2 files, zero API impact)
-2. **Fix namespace/folder mismatch in `Application/Http/`** (namespace update only)
-3. **Fix double-nested `Core/Performance/Performance/`** (1 `git mv`)
-4. **Move orphaned `BackfillProgressTracker.cs`** to correct location
-5. **Move `StockSharpSymbolSearchProvider.cs`** to `SymbolSearch/`
-6. **Update 24 test file namespaces** to match folder structure
-7. **Fix test files testing wrong layer** (move 3 test files)
-8. **Rename ambiguous `BackfillCoordinator`/`ConfigStore` duplicates**
+1. **Rename `Refactored` suffix files** — `AlpacaSymbolSearchProviderRefactored.cs` → `AlpacaSymbolSearchProvider.cs`, same for Finnhub (2 files, zero API impact)
+2. **Fix namespace/folder mismatch in `Application/Http/`** — update `namespace MarketDataCollector.Application.UI` → `MarketDataCollector.Application.Http` across all files in that directory
+3. **Fix double-nested `Core/Performance/Performance/`** — 1 `git mv`
+4. **Move orphaned `BackfillProgressTracker.cs`** — from `Adapters/Core/` root to `Adapters/Core/Backfill/`
+5. **Update 5 remaining backfill test namespaces** — `MarketDataCollector.Tests.Backfill` → `MarketDataCollector.Tests.Application.Backfill`
+6. **Fix 3 test files testing wrong layer** — move to mirror source structure
+7. **Rename ambiguous `BackfillCoordinator`/`ConfigStore` duplicates**
 
 ---
 
-*This proposal is a living document. Feedback and prioritization adjustments are welcome before implementation begins.*
+*This is a living document. Last reviewed 2026-03-11.*
