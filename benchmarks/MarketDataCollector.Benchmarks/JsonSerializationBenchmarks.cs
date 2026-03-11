@@ -1,3 +1,4 @@
+using System.Buffers;
 using System.Text.Json;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
@@ -136,6 +137,23 @@ public class JsonSerializationBenchmarks
     public string[] SerializeBatch_SourceGenerated()
     {
         return _tradeEvents.Select(HighPerformanceJson.Serialize).ToArray();
+    }
+
+    /// <summary>
+    /// Serializes a single event to a pooled <see cref="ArrayBufferWriter{T}"/> using
+    /// <see cref="HighPerformanceJson.WriteTo"/>.  No intermediate <c>string</c> is created;
+    /// the result bytes can be written directly to a <see cref="Stream"/> (e.g. GZipStream),
+    /// eliminating the UTF-16 → UTF-8 transcoding step that <see cref="Serialize_SourceGenerated"/>
+    /// requires when the string is ultimately written to a byte-oriented sink.
+    /// </summary>
+    [Benchmark]
+    public int WriteTo_Utf8JsonWriter_Pooled()
+    {
+        var bufferWriter = new ArrayBufferWriter<byte>(512);
+        using var writer = new Utf8JsonWriter(bufferWriter, new JsonWriterOptions { SkipValidation = true });
+        HighPerformanceJson.WriteTo(writer, _tradeEvent);
+        writer.Flush();
+        return bufferWriter.WrittenCount;
     }
 }
 
