@@ -339,7 +339,12 @@ public sealed class DataQualityViewModel : BindableBase, IDisposable
 
     private async Task RefreshDataAsync()
     {
-        _cts?.Cancel();
+        var previousCts = _cts;
+        if (previousCts != null)
+        {
+            previousCts.Cancel();
+            previousCts.Dispose();
+        }
         _cts = new CancellationTokenSource();
 
         try
