@@ -220,7 +220,7 @@ public class MarketDepthCollectorTests
 
         var integrity = _publishedEvents[0].Payload as DepthIntegrityEvent;
         integrity.Should().NotBeNull();
-        integrity!.Kind.Should().Be(DepthIntegrityKind.Gap);
+        integrity!.Kind.Should().Be(DepthIntegrityKind.InvalidPosition);
     }
 
     [Fact]

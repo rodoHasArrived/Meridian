@@ -126,6 +126,7 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
         private bool _stale;
         private long _localSequenceCounter;
         private long _lastObservedSequence;
+        private long _lastUpstreamSequence;
         private string? _lastStreamId;
         private string? _lastVenue;
         private DateTimeOffset _lastUpdateTimestamp;
@@ -167,6 +168,7 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
                 _stale = false;
                 _localSequenceCounter = 0;
                 _lastObservedSequence = 0;
+                _lastUpstreamSequence = 0;
                 _lastStreamId = null;
                 _lastVenue = null;
                 _lastUpdateTimestamp = default;
@@ -183,7 +185,9 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
             _rwLock.EnterReadLock();
             try
             {
-                if (_bids.Count == 0 && _asks.Count == 0) return null;
+                // Return null only if the book has never received a successful Apply.
+                if (_lastUpdateTimestamp == default)
+                    return null;
 
                 var bidsCopy = _bids.ToArray();
                 var asksCopy = _asks.ToArray();
@@ -245,17 +249,20 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
                     return DepthIntegrityKind.OutOfOrder;
                 }
 
-                // Track continuity (when seq is provided).
-                if (upd.SequenceNumber > 0 && _lastObservedSequence > 0)
+                // Track continuity only when both the current and last sequences are real
+                // upstream values. Using a separate _lastUpstreamSequence prevents false
+                // gap/out-of-order detection when a stream mixes seq=0 (unsequenced) updates
+                // with real upstream sequences.
+                if (upd.SequenceNumber > 0 && _lastUpstreamSequence > 0)
                 {
-                    if (upd.SequenceNumber <= _lastObservedSequence)
+                    if (upd.SequenceNumber <= _lastUpstreamSequence)
                     {
                         _stale = true;
-                        LastErrorDescription = $"Out-of-order/duplicate depth sequence: last {_lastObservedSequence}, received {upd.SequenceNumber}.";
+                        LastErrorDescription = $"Out-of-order/duplicate depth sequence: last {_lastUpstreamSequence}, received {upd.SequenceNumber}.";
                         return DepthIntegrityKind.OutOfOrder;
                     }
 
-                    var expected = _lastObservedSequence + 1;
+                    var expected = _lastUpstreamSequence + 1;
                     if (upd.SequenceNumber > expected)
                     {
                         _stale = true;
@@ -308,6 +315,8 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
                 }
 
                 _localSequenceCounter++;
+                if (upd.SequenceNumber > 0)
+                    _lastUpstreamSequence = upd.SequenceNumber;
                 _lastObservedSequence = upd.SequenceNumber > 0 ? upd.SequenceNumber : _localSequenceCounter;
                 _lastStreamId = upd.StreamId;
                 _lastVenue = upd.Venue;
