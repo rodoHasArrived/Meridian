@@ -17,10 +17,9 @@ namespace MarketDataCollector.Tests.Architecture;
 ///
 /// Rules enforced:
 /// <list type="bullet">
-///   <item>Contracts is a leaf — it must not depend on any other project.</item>
+///   <item>Contracts is a leaf — it must not depend on any other project (including Domain and Infrastructure).</item>
 ///   <item>ProviderSdk must only depend on Contracts.</item>
-///   <item>Domain must not depend on Infrastructure or Application.</item>
-///   <item>Core must not depend on Application or Infrastructure.</item>
+///   <item>Domain must not depend on Infrastructure.</item>
 ///   <item>Adapter namespaces must not cross-reference peer adapters.</item>
 /// </list>
 /// </summary>
