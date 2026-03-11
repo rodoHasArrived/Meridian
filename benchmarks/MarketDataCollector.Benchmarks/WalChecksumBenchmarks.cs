@@ -9,7 +9,7 @@ namespace MarketDataCollector.Benchmarks;
 /// Benchmarks for WAL checksum computation strategies.
 ///
 /// <para>
-/// The BOTTLENECK_REPORT (#2) identifies the WAL checksum path as a P0 bottleneck:
+/// The BOTTLENECK_REPORT (#2) identified the original WAL checksum path as a P0 bottleneck:
 /// <code>
 ///   var data = $"{sequence}|{timestamp:O}|{recordType}|{payload}";
 ///   var bytes = Encoding.UTF8.GetBytes(data);     // duplicates entire payload in memory
@@ -20,13 +20,20 @@ namespace MarketDataCollector.Benchmarks;
 /// </para>
 ///
 /// <para>
-/// These benchmarks measure three alternatives:
+/// The production <c>WriteAheadLog.ComputeChecksum</c> has since been updated to use
+/// <see cref="IncrementalHash"/> with <c>stackalloc</c> output and <see cref="System.Buffers.ArrayPool{T}"/>
+/// for large payloads.  These benchmarks retain the legacy string-concat approach as a historical
+/// baseline so the improvement remains measurable over time.
+/// </para>
+///
+/// <para>
+/// These benchmarks measure three approaches:
 /// <list type="bullet">
-///   <item><see cref="Checksum_StringConcat_Current"/> — current production approach (baseline)</item>
+///   <item><see cref="Checksum_StringConcat_Legacy"/> — original string-concat approach (historical baseline)</item>
 ///   <item><see cref="Checksum_IncrementalHash"/> — hash fields individually with IncrementalHash to
 ///         avoid the full concatenated-string allocation</item>
 ///   <item><see cref="Checksum_IncrementalHash_StackAlloc"/> — IncrementalHash with stackalloc output
-///         buffer (eliminates the 32-byte hash array allocation)</item>
+///         buffer (eliminates the 32-byte hash array allocation; closest to the current production path)</item>
 /// </list>
 /// </para>
 ///
@@ -70,7 +77,8 @@ public class WalChecksumBenchmarks
     };
 
     /// <summary>
-    /// Current production approach from WriteAheadLog.ComputeChecksum.
+    /// Historical string-concat approach that was used in WriteAheadLog.ComputeChecksum
+    /// before the IncrementalHash refactor.  Kept as a measurement baseline.
     /// Allocations per call (1 KB payload):
     ///   1. Interpolated data string  (~1 KB)
     ///   2. byte[] from GetBytes      (~1 KB)
@@ -79,7 +87,7 @@ public class WalChecksumBenchmarks
     ///   5. lowercase string          (64 B)
     /// </summary>
     [Benchmark(Baseline = true)]
-    public string Checksum_StringConcat_Current()
+    public string Checksum_StringConcat_Legacy()
     {
         var payload = CurrentPayload;
         var data = $"{_sequence}|{_timestamp:O}|{RecordType}|{payload}";
