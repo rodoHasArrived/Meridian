@@ -4,7 +4,6 @@ using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using MarketDataCollector.Ui.Services;
 using MarketDataCollector.Wpf.ViewModels;
 using WpfServices = MarketDataCollector.Wpf.Services;
 
@@ -15,7 +14,7 @@ public partial class DataQualityPage : Page
     private readonly DataQualityViewModel _viewModel;
 
     public DataQualityPage(
-        StatusService statusService,
+        WpfServices.StatusService statusService,
         WpfServices.LoggingService loggingService,
         WpfServices.NotificationService notificationService)
     {
