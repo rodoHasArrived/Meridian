@@ -1,3 +1,4 @@
+using System.Buffers;
 using System.Text.Json;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
@@ -157,6 +158,13 @@ public class BatchSerializationBenchmarks
 {
     private MarketEvent[] _events = null!;
 
+    // Static options avoid per-iteration allocation of JsonSerializerOptions, which would
+    // inflate the "Allocated" column and make reflection vs source-gen comparisons unfair.
+    private static readonly JsonSerializerOptions ReflectionOptions = new()
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+    };
+
     [Params(100, 1000, 5000)]
     public int BatchSize;
 
@@ -224,13 +232,41 @@ public class BatchSerializationBenchmarks
         return results;
     }
 
+    /// <summary>
+    /// Serializes each event to a pooled <see cref="ArrayBufferWriter{T}"/> via
+    /// <see cref="HighPerformanceJson.WriteTo"/> and resets it between events.
+    /// Avoids per-event string allocation; the buffer can be written directly to a
+    /// <see cref="Stream"/> without a UTF-16 → UTF-8 conversion step.
+    /// </summary>
+    [Benchmark]
+    public long Sequential_WriteTo_PooledBuffer()
+    {
+        var bufferWriter = new ArrayBufferWriter<byte>(512);
+        using var jsonWriter = new Utf8JsonWriter(bufferWriter, new JsonWriterOptions
+        {
+            SkipValidation = true
+        });
+
+        long totalBytes = 0;
+        for (var i = 0; i < _events.Length; i++)
+        {
+            HighPerformanceJson.WriteTo(jsonWriter, _events[i]);
+            jsonWriter.Flush();
+            totalBytes += bufferWriter.WrittenCount;
+            // Reset writer and buffer for the next event (simulates writing to stream then clearing)
+            jsonWriter.Reset(bufferWriter);
+            bufferWriter.Clear();
+        }
+
+        return totalBytes;
+    }
+
     [Benchmark]
     public string[] Sequential_Reflection()
     {
-        var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
         var lines = new string[_events.Length];
         for (var i = 0; i < _events.Length; i++)
-            lines[i] = JsonSerializer.Serialize(_events[i], options);
+            lines[i] = JsonSerializer.Serialize(_events[i], ReflectionOptions);
         return lines;
     }
 }

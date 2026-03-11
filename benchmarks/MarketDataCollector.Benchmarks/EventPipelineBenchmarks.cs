@@ -148,6 +148,7 @@ public class EventPipelineBenchmarks
 /// Benchmarks for event publishing latency.
 /// </summary>
 [MemoryDiagnoser]
+[Orderer(SummaryOrderPolicy.FastestToSlowest)]
 [RankColumn]
 public class PublishLatencyBenchmarks
 {
@@ -194,7 +195,7 @@ public class PublishLatencyBenchmarks
         _channel.Writer.Complete();
     }
 
-    [Benchmark]
+    [Benchmark(Baseline = true)]
     public bool TryPublish_Sync()
     {
         return _channel.Writer.TryWrite(_event);

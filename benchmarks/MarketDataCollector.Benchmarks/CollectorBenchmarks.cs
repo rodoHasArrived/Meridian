@@ -18,6 +18,10 @@ namespace MarketDataCollector.Benchmarks;
 public class TradeCollectorBenchmarks
 {
     private MarketTradeUpdate[] _updates = null!;
+    // Pre-computed single-symbol and gappy arrays are built once in GlobalSetup so that
+    // the LINQ + array-copy cost is excluded from the measured benchmark paths.
+    private MarketTradeUpdate[] _singleSymbolUpdates = null!;
+    private MarketTradeUpdate[] _gappyUpdates = null!;
     private NoOpPublisher _publisher = null!;
 
     [Params(1000, 10000)]
@@ -44,6 +48,16 @@ public class TradeCollectorBenchmarks
                 Venue: "TEST"
             );
         }
+
+        // Pre-build derived arrays to avoid LINQ allocation inside the benchmark methods.
+        _singleSymbolUpdates = new MarketTradeUpdate[TradeCount];
+        for (var i = 0; i < TradeCount; i++)
+            _singleSymbolUpdates[i] = _updates[i] with { Symbol = "SPY" };
+
+        // Gaps every other trade: sequence 0, 2, 4, …
+        _gappyUpdates = new MarketTradeUpdate[TradeCount];
+        for (var i = 0; i < TradeCount; i++)
+            _gappyUpdates[i] = _updates[i] with { SequenceNumber = i * 2 };
     }
 
     [IterationSetup]
@@ -55,6 +69,7 @@ public class TradeCollectorBenchmarks
     /// <summary>
     /// Full TradeDataCollector pipeline: symbol validation, sequence check,
     /// rolling window update, ring buffer add, event publishing.
+    /// 10 distinct symbols spread evenly across the update array.
     /// </summary>
     [Benchmark(Baseline = true)]
     public int ProcessTrades_MultiSymbol()
@@ -67,28 +82,26 @@ public class TradeCollectorBenchmarks
 
     /// <summary>
     /// Single symbol — measures lock contention on SymbolTradeState.
-    /// All trades go to the same per-symbol lock.
+    /// All trades go to the same per-symbol lock, making contention maximal.
     /// </summary>
     [Benchmark]
     public int ProcessTrades_SingleSymbol()
     {
-        var singleSymbol = _updates.Select(u => u with { Symbol = "SPY" }).ToArray();
         var collector = new TradeDataCollector(_publisher);
-        foreach (var update in singleSymbol)
+        foreach (var update in _singleSymbolUpdates)
             collector.OnTrade(update);
         return _publisher.Count;
     }
 
     /// <summary>
     /// Measures overhead with sequence gaps (triggers integrity events).
+    /// Gaps occur on every other trade (sequence numbers 0, 2, 4, …).
     /// </summary>
     [Benchmark]
     public int ProcessTrades_WithGaps()
     {
-        // Create gaps every 10th trade
-        var gappy = _updates.Select((u, i) => u with { SequenceNumber = i * 2 }).ToArray();
         var collector = new TradeDataCollector(_publisher);
-        foreach (var update in gappy)
+        foreach (var update in _gappyUpdates)
             collector.OnTrade(update);
         return _publisher.Count;
     }
@@ -223,6 +236,11 @@ public class DepthCollectorBenchmarks
 /// Minimal IMarketEventPublisher that counts events without I/O.
 /// Isolates collector CPU cost from pipeline/storage.
 /// </summary>
+/// <remarks>
+/// Non-atomic increment is intentional: all collector benchmarks run single-threaded
+/// (one collector instance per iteration), so no synchronization is needed and the
+/// Interlocked overhead would skew the per-event allocation numbers.
+/// </remarks>
 internal sealed class NoOpPublisher : IMarketEventPublisher
 {
     private int _count;
@@ -231,7 +249,7 @@ internal sealed class NoOpPublisher : IMarketEventPublisher
 
     public bool TryPublish(in MarketEvent evt)
     {
-        Interlocked.Increment(ref _count);
+        _count++;
         return true;
     }
 }

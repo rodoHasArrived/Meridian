@@ -91,7 +91,7 @@ public class EndToEndPipelineBenchmarks
         {
             FullMode = BoundedChannelFullMode.DropOldest,
             SingleReader = true,
-            SingleWriter = false
+            SingleWriter = true
         });
 
         var writer = Task.Run(() =>
@@ -116,6 +116,8 @@ public class EndToEndPipelineBenchmarks
 
     /// <summary>
     /// Stage 1+2+3: Channel + batch drain + serialization (the CPU-bound bottleneck).
+    /// Serializes events to <c>string</c> — the current production path.
+    /// Compare with <see cref="Stage1_2_3_Utf8Bytes_Serialize"/> to see string vs UTF-8 byte cost.
     /// </summary>
     [Benchmark]
     public async Task Stage1_2_3_Channel_BatchDrain_Serialize()
@@ -149,6 +151,49 @@ public class EndToEndPipelineBenchmarks
             {
                 var json = HighPerformanceJson.Serialize(batchBuffer[i]);
                 totalBytes += json.Length;
+            }
+        }
+
+        await writer;
+    }
+
+    /// <summary>
+    /// Stage 1+2+3 (UTF-8 variant): Channel + batch drain + UTF-8 byte serialization.
+    /// Serializes directly to <c>byte[]</c> instead of <c>string</c> to avoid a UTF-16 →
+    /// UTF-8 re-encode when writing to a <see cref="Stream"/>. Expected to allocate fewer
+    /// intermediate strings than the string-based variant.
+    /// </summary>
+    [Benchmark]
+    public async Task Stage1_2_3_Utf8Bytes_Serialize()
+    {
+        var channel = Channel.CreateBounded<MarketEvent>(new BoundedChannelOptions(100_000)
+        {
+            FullMode = BoundedChannelFullMode.DropOldest,
+            SingleReader = true,
+            SingleWriter = true
+        });
+
+        var writer = Task.Run(() =>
+        {
+            foreach (var evt in _events)
+                channel.Writer.TryWrite(evt);
+            channel.Writer.Complete();
+        });
+
+        const int batchSize = 100;
+        var batchBuffer = new List<MarketEvent>(batchSize);
+        long totalBytes = 0;
+
+        while (await channel.Reader.WaitToReadAsync())
+        {
+            batchBuffer.Clear();
+            while (batchBuffer.Count < batchSize && channel.Reader.TryRead(out var evt))
+                batchBuffer.Add(evt);
+
+            for (var i = 0; i < batchBuffer.Count; i++)
+            {
+                var utf8 = HighPerformanceJson.SerializeToUtf8Bytes(batchBuffer[i]);
+                totalBytes += utf8.Length;
             }
         }
 

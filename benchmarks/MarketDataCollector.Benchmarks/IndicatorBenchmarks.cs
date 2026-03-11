@@ -18,8 +18,24 @@ namespace MarketDataCollector.Benchmarks;
 public class IndicatorBenchmarks
 {
     private TechnicalIndicatorService _indicatorService = null!;
+    // Separate service instance used only by GetSnapshot_AfterProcessing.
+    // Populated via a targeted IterationSetup so that ProcessTrade overhead is
+    // excluded from the GetSnapshot measurement.
+    private TechnicalIndicatorService _snapshotService = null!;
     private MarketTradeUpdate[] _trades = null!;
     private HistoricalBar[] _bars = null!;
+
+    private static readonly IndicatorConfiguration AllIndicatorsConfig = new()
+    {
+        EnabledIndicators = new HashSet<IndicatorType>
+        {
+            IndicatorType.SMA,
+            IndicatorType.EMA,
+            IndicatorType.RSI,
+            IndicatorType.MACD,
+            IndicatorType.BollingerBands
+        }
+    };
 
     [Params(100, 500, 1000)]
     public int DataPoints;
@@ -27,18 +43,6 @@ public class IndicatorBenchmarks
     [GlobalSetup]
     public void Setup()
     {
-        _indicatorService = new TechnicalIndicatorService(new IndicatorConfiguration
-        {
-            EnabledIndicators = new HashSet<IndicatorType>
-            {
-                IndicatorType.SMA,
-                IndicatorType.EMA,
-                IndicatorType.RSI,
-                IndicatorType.MACD,
-                IndicatorType.BollingerBands
-            }
-        });
-
         var random = new Random(42);
         var basePrice = 450m;
 
@@ -91,20 +95,26 @@ public class IndicatorBenchmarks
         }
     }
 
-    [IterationSetup]
+    [IterationSetup(Targets = new[]
+    {
+        nameof(ProcessTrades_Streaming),
+        nameof(CalculateHistorical_AllIndicators)
+    })]
     public void IterationSetup()
     {
-        _indicatorService = new TechnicalIndicatorService(new IndicatorConfiguration
-        {
-            EnabledIndicators = new HashSet<IndicatorType>
-            {
-                IndicatorType.SMA,
-                IndicatorType.EMA,
-                IndicatorType.RSI,
-                IndicatorType.MACD,
-                IndicatorType.BollingerBands
-            }
-        });
+        _indicatorService = new TechnicalIndicatorService(AllIndicatorsConfig);
+    }
+
+    /// <summary>
+    /// Pre-processes all trades so that <see cref="GetSnapshot_AfterProcessing"/> only
+    /// measures the snapshot retrieval, not the streaming ingestion.
+    /// </summary>
+    [IterationSetup(Targets = new[] { nameof(GetSnapshot_AfterProcessing) })]
+    public void IterationSetupForSnapshot()
+    {
+        _snapshotService = new TechnicalIndicatorService(AllIndicatorsConfig);
+        foreach (var trade in _trades)
+            _snapshotService.ProcessTrade(trade);
     }
 
     [Benchmark(Baseline = true)]
@@ -120,24 +130,52 @@ public class IndicatorBenchmarks
         return _indicatorService.CalculateHistorical("SPY", _bars);
     }
 
+    /// <summary>
+    /// Measures only the cost of retrieving a pre-computed snapshot.
+    /// Trade processing is done in the targeted <see cref="IterationSetupForSnapshot"/> method
+    /// so it does not inflate this measurement.
+    /// </summary>
     [Benchmark]
     public IndicatorSnapshot? GetSnapshot_AfterProcessing()
     {
-        foreach (var trade in _trades)
-            _indicatorService.ProcessTrade(trade);
-
-        return _indicatorService.GetSnapshot("SPY");
+        return _snapshotService.GetSnapshot("SPY");
     }
 }
 
 /// <summary>
 /// Benchmarks for individual indicator calculations.
+/// Each benchmark measures only <c>CalculateHistorical</c>; service creation and indicator
+/// configuration are done in the targeted <c>[IterationSetup]</c> methods so that object
+/// allocation inside the indicator library is not double-counted.
 /// </summary>
 [MemoryDiagnoser]
 [RankColumn]
 public class SingleIndicatorBenchmarks
 {
     private HistoricalBar[] _bars = null!;
+    private TechnicalIndicatorService _smaService = null!;
+    private TechnicalIndicatorService _rsiService = null!;
+    private TechnicalIndicatorService _macdService = null!;
+    private TechnicalIndicatorService _bollingerService = null!;
+    private TechnicalIndicatorService _allService = null!;
+
+    // Static indicator sets avoid per-iteration HashSet allocations.
+    private static readonly IndicatorConfiguration SmaConfig = new()
+    {
+        EnabledIndicators = new HashSet<IndicatorType> { IndicatorType.SMA }
+    };
+    private static readonly IndicatorConfiguration RsiConfig = new()
+    {
+        EnabledIndicators = new HashSet<IndicatorType> { IndicatorType.RSI }
+    };
+    private static readonly IndicatorConfiguration MacdConfig = new()
+    {
+        EnabledIndicators = new HashSet<IndicatorType> { IndicatorType.MACD }
+    };
+    private static readonly IndicatorConfiguration BollingerConfig = new()
+    {
+        EnabledIndicators = new HashSet<IndicatorType> { IndicatorType.BollingerBands }
+    };
 
     [GlobalSetup]
     public void Setup()
@@ -175,50 +213,46 @@ public class SingleIndicatorBenchmarks
         }
     }
 
-    [Benchmark]
+    // Each benchmark gets its own IterationSetup so BenchmarkDotNet allocates a fresh
+    // service for every iteration, keeping measurement state clean.
+    [IterationSetup(Targets = new[] { nameof(Calculate_SMA_Only) })]
+    public void SetupSma() => _smaService = new TechnicalIndicatorService(SmaConfig);
+
+    [IterationSetup(Targets = new[] { nameof(Calculate_RSI_Only) })]
+    public void SetupRsi() => _rsiService = new TechnicalIndicatorService(RsiConfig);
+
+    [IterationSetup(Targets = new[] { nameof(Calculate_MACD_Only) })]
+    public void SetupMacd() => _macdService = new TechnicalIndicatorService(MacdConfig);
+
+    [IterationSetup(Targets = new[] { nameof(Calculate_BollingerBands_Only) })]
+    public void SetupBollinger() => _bollingerService = new TechnicalIndicatorService(BollingerConfig);
+
+    [IterationSetup(Targets = new[] { nameof(Calculate_AllIndicators) })]
+    public void SetupAll() => _allService = new TechnicalIndicatorService();
+
+    /// <summary>
+    /// SMA — simplest indicator; provides the baseline latency floor.
+    /// </summary>
+    [Benchmark(Baseline = true)]
     public HistoricalIndicatorResult Calculate_SMA_Only()
-    {
-        var service = new TechnicalIndicatorService(new IndicatorConfiguration
-        {
-            EnabledIndicators = new HashSet<IndicatorType> { IndicatorType.SMA }
-        });
-        return service.CalculateHistorical("TEST", _bars);
-    }
+        => _smaService.CalculateHistorical("TEST", _bars);
 
     [Benchmark]
     public HistoricalIndicatorResult Calculate_RSI_Only()
-    {
-        var service = new TechnicalIndicatorService(new IndicatorConfiguration
-        {
-            EnabledIndicators = new HashSet<IndicatorType> { IndicatorType.RSI }
-        });
-        return service.CalculateHistorical("TEST", _bars);
-    }
+        => _rsiService.CalculateHistorical("TEST", _bars);
 
     [Benchmark]
     public HistoricalIndicatorResult Calculate_MACD_Only()
-    {
-        var service = new TechnicalIndicatorService(new IndicatorConfiguration
-        {
-            EnabledIndicators = new HashSet<IndicatorType> { IndicatorType.MACD }
-        });
-        return service.CalculateHistorical("TEST", _bars);
-    }
+        => _macdService.CalculateHistorical("TEST", _bars);
 
     [Benchmark]
     public HistoricalIndicatorResult Calculate_BollingerBands_Only()
-    {
-        var service = new TechnicalIndicatorService(new IndicatorConfiguration
-        {
-            EnabledIndicators = new HashSet<IndicatorType> { IndicatorType.BollingerBands }
-        });
-        return service.CalculateHistorical("TEST", _bars);
-    }
+        => _bollingerService.CalculateHistorical("TEST", _bars);
 
-    [Benchmark(Baseline = true)]
+    /// <summary>
+    /// All indicators combined — shows the cumulative overhead of the default configuration.
+    /// </summary>
+    [Benchmark]
     public HistoricalIndicatorResult Calculate_AllIndicators()
-    {
-        var service = new TechnicalIndicatorService();
-        return service.CalculateHistorical("TEST", _bars);
-    }
+        => _allService.CalculateHistorical("TEST", _bars);
 }
