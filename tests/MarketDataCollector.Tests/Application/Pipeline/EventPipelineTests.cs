@@ -197,7 +197,8 @@ public class EventPipelineTests : IAsyncLifetime
         }
 
         // Wait until the consumer has started processing the first event and is blocked
-        await sink.WaitForFirstBlockAsync(TimeSpan.FromSeconds(5));
+        var isBlocked = await sink.WaitForFirstBlockAsync(TimeSpan.FromSeconds(5));
+        isBlocked.Should().BeTrue("the consumer should reach the blocking point before asserting queue utilization");
 
         // Assert - remaining 49 events are still in the channel
         pipeline.QueueUtilization.Should().BeGreaterThan(0);
