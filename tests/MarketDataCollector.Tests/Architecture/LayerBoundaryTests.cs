@@ -40,15 +40,20 @@ public sealed class LayerBoundaryTests
 
     // ------------------------------------------------------------------ //
     //  Contracts — leaf project (no upstream dependencies)                //
+    // ResideInNamespaceMatching / ResideInAssemblyMatching are used here  //
+    // because ResideInNamespace and ResideInAssembly do exact matching;   //
+    // Contracts types live in sub-namespaces (MarketDataCollector.Contracts.*)
+    // and assembly-level rules require distinguishing Infrastructure.dll  //
+    // from ProviderSdk.dll (both share the Infrastructure namespace).     //
     // ------------------------------------------------------------------ //
 
     [Fact]
     public void Contracts_ShouldNot_DependOn_Domain()
     {
         var rule = Types()
-            .That().ResideInNamespace("MarketDataCollector.Contracts")
+            .That().ResideInNamespaceMatching(@"^MarketDataCollector\.Contracts\.")
             .Should().NotDependOnAny(
-                Types().That().ResideInNamespace("MarketDataCollector.Domain"))
+                Types().That().ResideInNamespaceMatching(@"^MarketDataCollector\.Domain\."))
             .Because("Contracts is a leaf project that must have zero upstream project dependencies (ADR-001).");
 
         rule.Check(Architecture);
@@ -58,9 +63,9 @@ public sealed class LayerBoundaryTests
     public void Contracts_ShouldNot_DependOn_Infrastructure()
     {
         var rule = Types()
-            .That().ResideInNamespace("MarketDataCollector.Contracts")
+            .That().ResideInNamespaceMatching(@"^MarketDataCollector\.Contracts\.")
             .Should().NotDependOnAny(
-                Types().That().ResideInNamespace("MarketDataCollector.Infrastructure"))
+                Types().That().ResideInAssemblyMatching(@"^MarketDataCollector\.Infrastructure$"))
             .Because("Contracts is a leaf project that must have zero upstream project dependencies (ADR-001).");
 
         rule.Check(Architecture);
@@ -74,9 +79,9 @@ public sealed class LayerBoundaryTests
     public void Domain_ShouldNot_DependOn_Infrastructure()
     {
         var rule = Types()
-            .That().ResideInNamespace("MarketDataCollector.Domain")
+            .That().ResideInNamespaceMatching(@"^MarketDataCollector\.Domain\.")
             .Should().NotDependOnAny(
-                Types().That().ResideInNamespace("MarketDataCollector.Infrastructure"))
+                Types().That().ResideInAssemblyMatching(@"^MarketDataCollector\.Infrastructure$"))
             .Because("Domain types must remain independent of Infrastructure to preserve the dependency inversion principle.");
 
         rule.Check(Architecture);
@@ -92,7 +97,7 @@ public sealed class LayerBoundaryTests
         var rule = Types()
             .That().ResideInNamespace("MarketDataCollector.ProviderSdk")
             .Should().NotDependOnAny(
-                Types().That().ResideInNamespace("MarketDataCollector.Domain"))
+                Types().That().ResideInNamespaceMatching(@"^MarketDataCollector\.Domain\."))
             .Because("ProviderSdk must only reference Contracts to stay thin and reusable (ADR-001).");
 
         rule.Check(Architecture);
@@ -104,7 +109,7 @@ public sealed class LayerBoundaryTests
         var rule = Types()
             .That().ResideInNamespace("MarketDataCollector.ProviderSdk")
             .Should().NotDependOnAny(
-                Types().That().ResideInNamespace("MarketDataCollector.Infrastructure"))
+                Types().That().ResideInAssemblyMatching(@"^MarketDataCollector\.Infrastructure$"))
             .Because("ProviderSdk must only reference Contracts to stay thin and reusable (ADR-001).");
 
         rule.Check(Architecture);
