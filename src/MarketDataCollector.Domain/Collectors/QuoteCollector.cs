@@ -56,7 +56,13 @@ public sealed class QuoteCollector : IQuoteStateStore
 
     public bool TryRemove(string symbol, out BboQuotePayload? removed)
     {
-        var key = new SymbolId(symbol);
+        if (string.IsNullOrWhiteSpace(symbol))
+        {
+            removed = null;
+            return false;
+        }
+
+        var key = new SymbolId(symbol.Trim());
         var removedLatest = _latest.TryRemove(key, out removed);
         _seq.TryRemove(key, out _);
 
