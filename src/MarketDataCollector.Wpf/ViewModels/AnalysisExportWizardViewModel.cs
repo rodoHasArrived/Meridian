@@ -386,8 +386,6 @@ public sealed class AnalysisExportWizardViewModel : BindableBase, IDataErrorInfo
         var overallStatus = _preExportPassed ? "All checks passed." : "Some checks failed. Review issues above.";
 
         PreExportReport = string.Join("\n", checks) + $"\n\n{overallStatus}";
-        RaisePropertyChanged(nameof(PreExportReport));
-        RaisePropertyChanged(nameof(EstimatedSize));
     }
 
     /// <summary>
