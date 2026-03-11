@@ -213,7 +213,7 @@ public sealed class TradeDataCollector
             venue: update.Venue);
 
         // Buffer for API access
-        var ring = _recentTrades.GetOrAdd(new SymbolId(symbol), _ => new RecentTradeRing(MaxRecentTrades));
+        var ring = _recentTrades.GetOrAdd(symbolId, _ => new RecentTradeRing(MaxRecentTrades));
         ring.Add(trade);
 
         _publisher.TryPublish(MarketEvent.Trade(trade.Timestamp, trade.Symbol, trade));
