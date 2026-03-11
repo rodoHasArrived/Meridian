@@ -73,6 +73,10 @@ public sealed class EventPipeline : IMarketEventPublisher, IBackpressureSignal, 
     private readonly int _highWaterMark80;
     private readonly int _highWaterMark50;
 
+    // Reader.Count sampling: check queue size every 64 events to reduce per-publish overhead.
+    // Uses a bitmask (& 63) for a branch-friendly, division-free sampling check.
+    private const int ReaderCountSampleMask = 63; // sample every 64th event
+
     /// <summary>
     /// Default maximum time to wait for the final flush during shutdown before giving up.
     /// Prevents the consumer task from hanging indefinitely if the sink is unresponsive.
@@ -371,39 +375,43 @@ public sealed class EventPipeline : IMarketEventPublisher, IBackpressureSignal, 
 
         if (written)
         {
-            Interlocked.Increment(ref _publishedCount);
+            var count = Interlocked.Increment(ref _publishedCount);
             if (_metricsEnabled)
             {
                 _metrics.IncPublished();
             }
 
-            // Read queue size once — Reader.Count acquires an internal lock,
-            // so avoid calling it multiple times per event.
-            var currentSize = _channel.Reader.Count;
+            // Sample Reader.Count every 64 events — Reader.Count acquires an internal lock
+            // on BoundedChannel, so reading it on every publish is expensive at high throughput.
+            // Peak tracking and high-water mark warnings tolerate a small sampling delay.
+            if ((count & ReaderCountSampleMask) == 0)
+            {
+                // Read queue size once — avoid calling it multiple times per sample.
+                var currentSize = _channel.Reader.Count;
 
-            // Update peak using a lock-free compare-and-swap loop.
-            // Skip the Interlocked.Read on the fast path when we're clearly below peak.
-            var peak = Volatile.Read(ref _peakQueueSize);
-            if (currentSize > peak)
-            {
-                Interlocked.CompareExchange(ref _peakQueueSize, currentSize, peak);
-            }
+                // Update peak using a lock-free compare-and-swap loop.
+                var peak = Volatile.Read(ref _peakQueueSize);
+                if (currentSize > peak)
+                {
+                    Interlocked.CompareExchange(ref _peakQueueSize, currentSize, peak);
+                }
 
-            // Use integer comparison instead of floating-point division.
-            // _highWaterMark80 = (int)(capacity * 0.8), _highWaterMark50 = capacity / 2
-            if (currentSize >= _highWaterMark80 && !_highWaterMarkWarned)
-            {
-                _highWaterMarkWarned = true;
-                var utilization = (double)currentSize / _capacity;
-                _logger.LogWarning(
-                    "Pipeline queue utilization at {Utilization:P0} ({CurrentSize}/{Capacity}). Events may be dropped if queue fills. Consider increasing capacity or reducing event rate",
-                    utilization, currentSize, _capacity);
-            }
-            else if (_highWaterMarkWarned && currentSize < _highWaterMark50)
-            {
-                _highWaterMarkWarned = false;
-                var utilization = (double)currentSize / _capacity;
-                _logger.LogInformation("Pipeline queue utilization recovered to {Utilization:P0}", utilization);
+                // Use integer comparison instead of floating-point division.
+                // _highWaterMark80 = (int)(capacity * 0.8), _highWaterMark50 = capacity / 2
+                if (currentSize >= _highWaterMark80 && !_highWaterMarkWarned)
+                {
+                    _highWaterMarkWarned = true;
+                    var utilization = (double)currentSize / _capacity;
+                    _logger.LogWarning(
+                        "Pipeline queue utilization at {Utilization:P0} ({CurrentSize}/{Capacity}). Events may be dropped if queue fills. Consider increasing capacity or reducing event rate",
+                        utilization, currentSize, _capacity);
+                }
+                else if (_highWaterMarkWarned && currentSize < _highWaterMark50)
+                {
+                    _highWaterMarkWarned = false;
+                    var utilization = (double)currentSize / _capacity;
+                    _logger.LogInformation("Pipeline queue utilization recovered to {Utilization:P0}", utilization);
+                }
             }
         }
         else

@@ -1,9 +1,11 @@
+using System.Buffers;
 using System.Collections.Concurrent;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using MarketDataCollector.Application.Logging;
+using MarketDataCollector.Contracts.Domain.Enums;
 using MarketDataCollector.Domain.Events;
 using Serilog;
 
@@ -23,10 +25,18 @@ public sealed class PersistentDedupLedger : IAsyncDisposable
 
     // In-memory cache: composite key → expiry timestamp
     private readonly ConcurrentDictionary<string, long> _cache = new(StringComparer.Ordinal);
+
+    // Cache for key prefixes keyed by (source, symbol, type) — computed once per unique combination
+    // to avoid repeated string interpolation on the hot path.
+    private readonly ConcurrentDictionary<(string?, string?, MarketEventType), string> _prefixCache = new();
+
     private readonly SemaphoreSlim _writeLock = new(1, 1);
     private StreamWriter? _writer;
     private long _totalChecked;
     private long _totalDuplicates;
+
+    // Background eviction timer — avoids scanning the full cache on the hot path.
+    private readonly Timer _evictionTimer;
 
     /// <summary>
     /// Total events checked for duplicates.
@@ -47,6 +57,10 @@ public sealed class PersistentDedupLedger : IAsyncDisposable
         _entryTtl = entryTtl ?? TimeSpan.FromHours(24);
         _maxInMemoryEntries = maxInMemoryEntries;
         Directory.CreateDirectory(ledgerDirectory);
+
+        // Run eviction every 30 seconds in the background to avoid blocking the hot path.
+        _evictionTimer = new Timer(_ => EvictExpiredBackground(), null,
+            TimeSpan.FromSeconds(30), TimeSpan.FromSeconds(30));
     }
 
     /// <summary>
@@ -143,12 +157,6 @@ public sealed class PersistentDedupLedger : IAsyncDisposable
             }
         }
 
-        // Evict expired entries periodically
-        if (_cache.Count > _maxInMemoryEntries)
-        {
-            EvictExpired(nowTicks);
-        }
-
         return false;
     }
 
@@ -157,11 +165,14 @@ public sealed class PersistentDedupLedger : IAsyncDisposable
     /// Uses provider-specific trade IDs when available, otherwise hashes
     /// the semantic identity fields per event type.
     /// </summary>
-    private static string ComputeEventKey(MarketEvent evt)
+    private string ComputeEventKey(MarketEvent evt)
     {
         // Key structure: {Source}:{EffectiveSymbol}:{Type}:{identity}
-        // Uses EffectiveSymbol (CanonicalSymbol ?? Symbol) for consistent dedup across symbol mappings
-        var prefix = $"{evt.Source}:{evt.EffectiveSymbol}:{evt.Type}:";
+        // Uses EffectiveSymbol (CanonicalSymbol ?? Symbol) for consistent dedup across symbol mappings.
+        // Prefix is cached per (source, symbol, type) to avoid re-allocating on every event.
+        var prefix = _prefixCache.GetOrAdd(
+            (evt.Source, evt.EffectiveSymbol, evt.Type),
+            static k => $"{k.Item1}:{k.Item2}:{k.Item3}:");
 
         return evt.Payload switch
         {
@@ -183,16 +194,51 @@ public sealed class PersistentDedupLedger : IAsyncDisposable
         };
     }
 
+    /// <summary>
+    /// Computes a 16-byte (128-bit) hex-encoded SHA-256 hash of the input string.
+    /// Uses stack-allocated buffers for inputs up to 512 bytes to avoid heap allocation.
+    /// </summary>
     private static string HashIdentity(string input)
     {
-        var bytes = SHA256.HashData(Encoding.UTF8.GetBytes(input));
-        // Use first 16 bytes (128 bits) for compact key
-        return Convert.ToHexString(bytes, 0, 16);
+        var maxBytes = Encoding.UTF8.GetMaxByteCount(input.Length);
+        if (maxBytes <= 512)
+        {
+            Span<byte> inputBuf = stackalloc byte[maxBytes];
+            var written = Encoding.UTF8.GetBytes(input, inputBuf);
+            Span<byte> hashBuf = stackalloc byte[32];
+            SHA256.TryHashData(inputBuf[..written], hashBuf, out _);
+            // First 16 bytes = 128-bit compact key
+            return Convert.ToHexStringLower(hashBuf[..16]);
+        }
+
+        // Large input: rent from pool to avoid large stack frame.
+        var rented = ArrayPool<byte>.Shared.Rent(maxBytes);
+        try
+        {
+            var written = Encoding.UTF8.GetBytes(input, rented);
+            Span<byte> hashBuf = stackalloc byte[32];
+            SHA256.TryHashData(rented.AsSpan(0, written), hashBuf, out _);
+            return Convert.ToHexStringLower(hashBuf[..16]);
+        }
+        finally
+        {
+            ArrayPool<byte>.Shared.Return(rented);
+        }
     }
 
     private static string EscapeJson(string s)
     {
         return s.Replace("\\", "\\\\").Replace("\"", "\\\"");
+    }
+
+    /// <summary>
+    /// Background eviction of expired entries, called by the eviction timer.
+    /// Runs off the hot path to avoid blocking event processing.
+    /// </summary>
+    private void EvictExpiredBackground()
+    {
+        if (_cache.Count <= _maxInMemoryEntries) return;
+        EvictExpired(DateTimeOffset.UtcNow.Ticks);
     }
 
     private void EvictExpired(long nowTicks)
@@ -288,6 +334,8 @@ public sealed class PersistentDedupLedger : IAsyncDisposable
 
     public async ValueTask DisposeAsync()
     {
+        await _evictionTimer.DisposeAsync().ConfigureAwait(false);
+
         await _writeLock.WaitAsync().ConfigureAwait(false);
         try
         {

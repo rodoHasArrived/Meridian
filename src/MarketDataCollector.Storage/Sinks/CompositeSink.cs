@@ -137,70 +137,85 @@ public sealed class CompositeSink : IStorageSink
     {
         var now = _timeProvider.GetUtcNow();
 
-        for (var i = 0; i < _sinks.Count; i++)
+        if (_sinks.Count == 1)
         {
-            var state = _circuitStates[i];
-            var effectiveState = GetEffectiveState(state, now);
+            // Fast path: single sink — skip Task.WhenAll overhead.
+            await AppendToSinkAsync(0, evt, now, ct).ConfigureAwait(false);
+            return;
+        }
 
-            if (effectiveState == SinkHealthState.Failed)
+        // Multi-sink: fan out in parallel. Independent sinks are written concurrently so that
+        // total append latency equals max(sink latencies) rather than sum(sink latencies).
+        var tasks = new Task[_sinks.Count];
+        for (var i = 0; i < _sinks.Count; i++)
+            tasks[i] = AppendToSinkAsync(i, evt, now, ct);
+
+        await Task.WhenAll(tasks).ConfigureAwait(false);
+    }
+
+    private async Task AppendToSinkAsync(int i, MarketEvent evt, DateTimeOffset now, CancellationToken ct)
+    {
+        var state = _circuitStates[i];
+        var effectiveState = GetEffectiveState(state, now);
+
+        if (effectiveState == SinkHealthState.Failed)
+        {
+            // Circuit is open and reset timeout has not elapsed; skip this sink.
+            _logger.LogDebug(
+                "Skipping sink {SinkIndex}/{SinkCount} ({SinkType}) — circuit breaker open until {CircuitResetTime}",
+                i + 1, _sinks.Count, _sinkTypeNames[i], state.CircuitResetTime);
+            return;
+        }
+
+        var isHalfOpen = effectiveState == SinkHealthState.Degraded && state.IsCircuitHalfOpen(now, _circuitResetTimeout, _maxConsecutiveFailures);
+
+        try
+        {
+            await _sinks[i].AppendAsync(evt, ct).ConfigureAwait(false);
+
+            // Success: reset consecutive failures (full reset on healthy, or close the circuit on half-open).
+            if (state.ConsecutiveFailures > 0)
             {
-                // Circuit is open and reset timeout has not elapsed; skip this sink.
-                _logger.LogDebug(
-                    "Skipping sink {SinkIndex}/{SinkCount} ({SinkType}) — circuit breaker open until {CircuitResetTime}",
-                    i + 1, _sinks.Count, _sinkTypeNames[i], state.CircuitResetTime);
-                continue;
+                if (isHalfOpen)
+                {
+                    _logger.LogInformation(
+                        "Sink {SinkIndex}/{SinkCount} ({SinkType}) circuit breaker closed — write succeeded after reset timeout",
+                        i + 1, _sinks.Count, _sinkTypeNames[i]);
+                }
+
+                state.RecordSuccess();
+            }
+        }
+        catch (Exception ex) when (ex is not OperationCanceledException)
+        {
+            Interlocked.Increment(ref _appendFailures);
+            state.RecordFailure(now);
+
+            var newState = DetermineHealthState(state);
+
+            if (newState == SinkHealthState.Failed && (!state.WasAlreadyTripped || isHalfOpen))
+            {
+                var resetTime = now + _circuitResetTimeout;
+                state.TripCircuit(resetTime);
+
+                _logger.LogError(ex,
+                    "Sink {SinkIndex}/{SinkCount} ({SinkType}) circuit breaker OPENED after {ConsecutiveFailures} consecutive failures. " +
+                    "Writes will be skipped until {CircuitResetTime}",
+                    i + 1, _sinks.Count, _sinkTypeNames[i], state.ConsecutiveFailures, resetTime);
+            }
+            else
+            {
+                _logger.LogWarning(ex,
+                    "Sink {SinkIndex}/{SinkCount} ({SinkType}) failed to append event for {Symbol} " +
+                    "({ConsecutiveFailures}/{MaxConsecutiveFailures} consecutive failures)",
+                    i + 1, _sinks.Count, _sinkTypeNames[i], evt.Symbol,
+                    state.ConsecutiveFailures, _maxConsecutiveFailures);
             }
 
-            var isHalfOpen = effectiveState == SinkHealthState.Degraded && state.IsCircuitHalfOpen(now, _circuitResetTimeout, _maxConsecutiveFailures);
-
-            try
+            if (_failurePolicy == FailurePolicy.FailOnAnyFailure)
             {
-                await _sinks[i].AppendAsync(evt, ct).ConfigureAwait(false);
-
-                // Success: reset consecutive failures (full reset on healthy, or close the circuit on half-open).
-                if (state.ConsecutiveFailures > 0)
-                {
-                    if (isHalfOpen)
-                    {
-                        _logger.LogInformation(
-                            "Sink {SinkIndex}/{SinkCount} ({SinkType}) circuit breaker closed — write succeeded after reset timeout",
-                            i + 1, _sinks.Count, _sinkTypeNames[i]);
-                    }
-
-                    state.RecordSuccess();
-                }
-            }
-            catch (Exception ex) when (ex is not OperationCanceledException)
-            {
-                Interlocked.Increment(ref _appendFailures);
-                state.RecordFailure(now);
-
-                var newState = DetermineHealthState(state);
-
-                if (newState == SinkHealthState.Failed && (!state.WasAlreadyTripped || isHalfOpen))
-                {
-                    var resetTime = now + _circuitResetTimeout;
-                    state.TripCircuit(resetTime);
-
-                    _logger.LogError(ex,
-                        "Sink {SinkIndex}/{SinkCount} ({SinkType}) circuit breaker OPENED after {ConsecutiveFailures} consecutive failures. " +
-                        "Writes will be skipped until {CircuitResetTime}",
-                        i + 1, _sinks.Count, _sinkTypeNames[i], state.ConsecutiveFailures, resetTime);
-                }
-                else
-                {
-                    _logger.LogWarning(ex,
-                        "Sink {SinkIndex}/{SinkCount} ({SinkType}) failed to append event for {Symbol} " +
-                        "({ConsecutiveFailures}/{MaxConsecutiveFailures} consecutive failures)",
-                        i + 1, _sinks.Count, _sinkTypeNames[i], evt.Symbol,
-                        state.ConsecutiveFailures, _maxConsecutiveFailures);
-                }
-
-                if (_failurePolicy == FailurePolicy.FailOnAnyFailure)
-                {
-                    throw new InvalidOperationException(
-                        $"Sink {_sinkTypeNames[i]} failed and FailurePolicy is FailOnAnyFailure.", ex);
-                }
+                throw new InvalidOperationException(
+                    $"Sink {_sinkTypeNames[i]} failed and FailurePolicy is FailOnAnyFailure.", ex);
             }
         }
     }

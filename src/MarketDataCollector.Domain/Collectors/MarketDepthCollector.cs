@@ -191,32 +191,7 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
                 var streamId = _lastStreamId;
                 var venue = _lastVenue;
 
-                decimal? mid = null;
-                if (bidsCopy.Length > 0 && asksCopy.Length > 0)
-                    mid = (bidsCopy[0].Price + asksCopy[0].Price) / 2m;
-
-                decimal? imb = null;
-                if (bidsCopy.Length > 0 && asksCopy.Length > 0)
-                {
-                    var b = bidsCopy[0].Size;
-                    var a = asksCopy[0].Size;
-                    var tot = b + a;
-                    if (tot > 0) imb = (b - a) / tot;
-                }
-
-                return new LOBSnapshot(
-                    Timestamp: ts,
-                    Symbol: symbol,
-                    Bids: bidsCopy,
-                    Asks: asksCopy,
-                    MidPrice: mid,
-                    MicroPrice: null,
-                    Imbalance: imb,
-                    MarketState: stale ? MarketState.Unknown : MarketState.Normal,
-                    SequenceNumber: seqNum,
-                    StreamId: streamId,
-                    Venue: venue
-                );
+                return BuildSnapshotFromCopies(symbol, ts, seqNum, streamId, venue, stale, bidsCopy, asksCopy);
             }
             finally
             {
@@ -227,10 +202,15 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
         public DepthIntegrityKind Apply(MarketDepthUpdate upd, out LOBSnapshot? snapshot)
         {
             snapshot = null;
-            long seqNum;
-            DateTimeOffset lastUpdateTimestamp;
-            string? streamId;
-            string? venue;
+            long seqNum = 0;
+            DateTimeOffset lastUpdateTimestamp = default;
+            string? streamId = null;
+            string? venue = null;
+            bool stale = false;
+
+            // Capture these outside the lock so we can build the snapshot after releasing the lock.
+            OrderBookLevel[]? bidsCopy = null;
+            OrderBookLevel[]? asksCopy = null;
 
             _rwLock.EnterWriteLock();
             try
@@ -327,15 +307,25 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
                 lastUpdateTimestamp = _lastUpdateTimestamp;
                 streamId = _lastStreamId;
                 venue = _lastVenue;
+                stale = _stale;
 
                 LastErrorDescription = null;
-                snapshot = BuildSnapshot(upd.Symbol, lastUpdateTimestamp, seqNum, streamId, venue);
-                return DepthIntegrityKind.Ok;
+
+                // Copy bids/asks while still holding the write lock to guarantee consistency
+                // with the book modification above. The LOBSnapshot record itself is constructed
+                // OUTSIDE the lock to reduce lock hold time (avoids decimal arithmetic and record
+                // allocation while other threads wait to acquire the write lock).
+                bidsCopy = _bids.ToArray();
+                asksCopy = _asks.ToArray();
             }
             finally
             {
                 _rwLock.ExitWriteLock();
             }
+
+            // Build snapshot outside the write lock — all data was captured under the lock above.
+            snapshot = BuildSnapshotFromCopies(upd.Symbol, lastUpdateTimestamp, seqNum, streamId, venue, stale, bidsCopy!, asksCopy!);
+            return DepthIntegrityKind.Ok;
         }
 
         private static void ReindexFrom(List<OrderBookLevel> levels, OrderBookSide side, int startIndex)
@@ -355,6 +345,19 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
             var bidsCopy = _bids.ToArray();
             var asksCopy = _asks.ToArray();
 
+            return BuildSnapshotFromCopies(symbol, timestamp, seqNum, streamId, venue, _stale, bidsCopy, asksCopy);
+        }
+
+        private static LOBSnapshot BuildSnapshotFromCopies(
+            string symbol,
+            DateTimeOffset timestamp,
+            long seqNum,
+            string? streamId,
+            string? venue,
+            bool stale,
+            OrderBookLevel[] bidsCopy,
+            OrderBookLevel[] asksCopy)
+        {
             decimal? mid = null;
             if (bidsCopy.Length > 0 && asksCopy.Length > 0)
                 mid = (bidsCopy[0].Price + asksCopy[0].Price) / 2m;
@@ -376,7 +379,7 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
                 MidPrice: mid,
                 MicroPrice: null,
                 Imbalance: imb,
-                MarketState: _stale ? MarketState.Unknown : MarketState.Normal,
+                MarketState: stale ? MarketState.Unknown : MarketState.Normal,
                 SequenceNumber: seqNum,
                 StreamId: streamId,
                 Venue: venue

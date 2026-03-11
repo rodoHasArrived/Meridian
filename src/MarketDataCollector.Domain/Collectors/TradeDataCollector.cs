@@ -184,7 +184,15 @@ public sealed class TradeDataCollector
             StreamId: update.StreamId,
             Venue: update.Venue);
 
-        state.RegisterTrade(trade);
+        // Combine RegisterTrade + BuildOrderFlowStats into a single lock acquisition
+        // to eliminate the double lock overhead (was two separate lock(_sync) calls per trade).
+        var stats = state.RegisterTradeAndBuildStats(
+            trade: trade,
+            timestamp: update.Timestamp,
+            symbol: symbol,
+            seq: seq,
+            streamId: update.StreamId,
+            venue: update.Venue);
 
         // Buffer for API access
         var ring = _recentTrades.GetOrAdd(symbol, _ => new RecentTradeRing(MaxRecentTrades));
@@ -193,13 +201,6 @@ public sealed class TradeDataCollector
         _publisher.TryPublish(MarketEvent.Trade(trade.Timestamp, trade.Symbol, trade));
 
         // -------- OrderFlow statistics --------
-        var stats = state.BuildOrderFlowStats(
-            timestamp: update.Timestamp,
-            symbol: symbol,
-            seq: seq,
-            streamId: update.StreamId,
-            venue: update.Venue);
-
         _publisher.TryPublish(MarketEvent.OrderFlow(update.Timestamp, symbol, stats));
     }
 
@@ -304,6 +305,50 @@ public sealed class TradeDataCollector
                     AddToRollingWindow(rollingWindow, trade);
 
                 TrimRollingWindows(trade.Timestamp);
+            }
+        }
+
+        /// <summary>
+        /// Registers a trade and builds order-flow statistics in a single lock acquisition,
+        /// eliminating the double lock overhead of calling <see cref="RegisterTrade"/> followed
+        /// by <see cref="BuildOrderFlowStats"/> separately.
+        /// </summary>
+        public OrderFlowStatistics RegisterTradeAndBuildStats(
+            Trade trade,
+            DateTimeOffset timestamp,
+            string symbol,
+            long seq,
+            string? streamId,
+            string? venue)
+        {
+            lock (_sync)
+            {
+                _tradeCount++;
+                _tradeWindow.Enqueue(trade);
+                foreach (var rollingWindow in _rollingByWindow.Values)
+                    AddToRollingWindow(rollingWindow, trade);
+
+                // Single TrimRollingWindows call covers both RegisterTrade and BuildOrderFlowStats.
+                // trade.Timestamp == timestamp in the hot path so there is no double-trim.
+                TrimRollingWindows(timestamp);
+
+                var activeWindow = _rollingByWindow[TimeSpan.FromSeconds(10)];
+                var total = activeWindow.BuyVolume + activeWindow.SellVolume + activeWindow.UnknownVolume;
+                var imbalance = total == 0 ? 0m : (decimal)(activeWindow.BuyVolume - activeWindow.SellVolume) / total;
+                var vwap = activeWindow.VwapDenominator == 0 ? 0m : activeWindow.VwapNumerator / activeWindow.VwapDenominator;
+
+                return new OrderFlowStatistics(
+                    Timestamp: timestamp,
+                    Symbol: symbol,
+                    BuyVolume: activeWindow.BuyVolume,
+                    SellVolume: activeWindow.SellVolume,
+                    UnknownVolume: activeWindow.UnknownVolume,
+                    VWAP: vwap,
+                    Imbalance: imbalance,
+                    TradeCount: activeWindow.TradeCount,
+                    SequenceNumber: seq,
+                    StreamId: streamId,
+                    Venue: venue);
             }
         }
 
