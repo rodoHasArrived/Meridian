@@ -671,7 +671,7 @@ Each risk includes an estimated impact level, the specific mitigation approach, 
 **Mitigation:**
 
 - Route all diagnostic output through the existing `SensitiveValueMasker` before serialization; validate that all `DiagnosticBundleService` outputs are masker-filtered in unit tests.
-- Require the existing API key middleware (`ApiKeyMiddleware`) for all new diagnostics endpoints; add to `NegativePathEndpointTests` to confirm unauthenticated requests return 401.
+- Require the existing API key middleware (`ApiKeyMiddleware`) for all new diagnostics endpoints, and ensure `MDC_API_KEY` is configured in non-local environments so the middleware enforces authentication; add to `NegativePathEndpointTests` to confirm unauthenticated requests return 401 when `MDC_API_KEY` is set.
 - Introduce two diagnostic depth levels controlled by a config flag: `FullDiagnostics` (internal operators only, served on a local-only port) and `SanitizedDiagnostics` (external-safe, no topology or credential metadata).
 - Store playbook files on disk without secrets embedded; reference credentials by environment variable name, not value.
 
