@@ -611,7 +611,7 @@ Each risk includes an estimated impact level, the specific mitigation approach, 
 
 - Apply the existing tiered storage model: maintain a raw-frame ledger only for a configurable forensic window (default: 7 days); automatically purge raw frames after the window via `LifecyclePolicyEngine`.
 - Persist hashes and lineage metadata in a separate sidecar file (e.g., `{symbol}_ledger_meta.jsonl`) so the hot path for event storage is not disrupted.
-- Use the existing `CompressionProfileManager` `Archive` profile (ZSTD-19) for ledger metadata; apply `RealTime` profile (LZ4) for the hot window.
+- Use the existing `CompressionProfileManager` `cold-archive` profile (ZSTD-19) for ledger metadata; apply the `real-time-collection` profile (LZ4) for the hot window.
 - Benchmark storage overhead before and after by extending `EventPipelineBenchmarks` with a hash-computation benchmark.
 
 ---
