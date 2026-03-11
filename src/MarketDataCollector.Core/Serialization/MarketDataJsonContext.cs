@@ -66,6 +66,7 @@ namespace MarketDataCollector.Application.Serialization;
 [JsonSerializable(typeof(Dictionary<string, object>))]
 [JsonSerializable(typeof(Dictionary<string, JsonElement>))]
 // Configuration types
+[JsonSerializable(typeof(List<string>))]
 [JsonSerializable(typeof(AppConfig))]
 [JsonSerializable(typeof(StorageConfig))]
 [JsonSerializable(typeof(SourceRegistryConfig))]
