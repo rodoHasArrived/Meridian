@@ -288,7 +288,8 @@ Market-Data-Collector/
 │   │   ├── JsonSerializationBenchmarks.cs
 │   │   ├── MarketDataCollector.Benchmarks.csproj
 │   │   ├── Program.cs
-│   │   └── StorageSinkBenchmarks.cs
+│   │   ├── StorageSinkBenchmarks.cs
+│   │   └── WalChecksumBenchmarks.cs
 │   ├── BOTTLENECK_REPORT.md
 │   └── run-bottleneck-benchmarks.sh
 ├── build/
