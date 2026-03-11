@@ -19,9 +19,21 @@ public sealed class TradeDataCollector
     /// <summary>
     /// Typed key that combines symbol, stream, and venue for per-stream continuity tracking.
     /// Using strongly-typed components prevents accidental construction from unrelated strings.
+    /// Venue is normalized to uppercase to preserve case-insensitive semantics across sources.
     /// </summary>
-    private readonly record struct StreamKey(SymbolId Symbol, string? StreamId, string? Venue);
+    private readonly record struct StreamKey
+    {
+        public SymbolId Symbol { get; }
+        public string? StreamId { get; }
+        public string? Venue { get; }
 
+        public StreamKey(SymbolId symbol, string? streamId, string? venue)
+        {
+            Symbol = symbol;
+            StreamId = streamId;
+            Venue = venue is null ? null : venue.ToUpperInvariant();
+        }
+    }
     // Per-stream rolling state (one entry per unique symbol+stream+venue combination)
     private readonly ConcurrentDictionary<StreamKey, SymbolTradeState> _stateBySymbol = new();
 
