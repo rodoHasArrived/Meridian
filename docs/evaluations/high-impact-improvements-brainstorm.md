@@ -757,7 +757,7 @@ These questions do not yet have agreed answers and should be resolved before det
 4. **Should consensus state be part of the `MarketEvent` schema (inline) or a separate stream consumers opt into?**
    - _Solution A (inline):_ Add `ConfidenceScore` and `ConsensusProviderCount` directly to `MarketEvent`. Always present; defaults to 1.0/1 for systems without consensus.
    - _Solution B (parallel stream):_ Consensus metadata is emitted as a separate `ConsensusAnnotation` event on a different channel. Consumers subscribe only when they need it.
-   - **Recommendation:** Solution A for the score and tier; Solution B for the full disagreement detail. Inline a lightweight `byte ConfidenceScore` (0–100) and `byte ConsensusProviderCount` on `MarketEvent`; route the full disagreement record to a separate channel.
+   - **Recommendation:** Solution A for the score and tier; Solution B for the full disagreement detail. Inline a lightweight `float ConfidenceScore` (0–1) and `byte ConsensusProviderCount` on `MarketEvent`; route the full disagreement record to a separate channel.
 
 5. **How should the consensus engine behave during extended hours, pre-market, and closed sessions when provider coverage is thinner?**
    - _Solution A (strict mode only during regular hours):_ Apply consensus scoring only during exchange regular trading hours as defined by `TradingCalendar`. Outside those hours, pass events through with `ConfidenceTier.ExtendedHours`.
