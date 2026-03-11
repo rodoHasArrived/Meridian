@@ -190,7 +190,7 @@ Market Data Collector is built on **.NET 9.0** using **C# 13** and **F# 8.0** ac
 
 - ✅ Core event pipeline, storage, backfill, and HTTP monitoring endpoints are implemented.
 - ✅ WPF desktop app is actively developed and available for Windows users.
-- ⚠️ Some providers and integrations require credentials and/or build-time flags (for example Interactive Brokers).
+- ⚠️ Some providers and integrations require credentials and/or build-time flags (for example, Interactive Brokers).
 - ⚠️ A subset of provider paths (notably Polygon streaming and portions of StockSharp integration) remain partial and continue to evolve.
 
 For detailed, continuously maintained status tracking, see `docs/status/production-status.md`, `docs/status/FEATURE_INVENTORY.md`, and `docs/status/ROADMAP.md`.
