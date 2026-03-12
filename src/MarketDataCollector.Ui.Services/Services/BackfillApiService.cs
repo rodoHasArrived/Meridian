@@ -136,4 +136,32 @@ public sealed class BackfillApiService
 
         return await _apiClient.GetAsync<BackfillStatistics>(route, ct);
     }
+
+    /// <summary>
+    /// Gets real gap analysis for a symbol from the quality monitoring service.
+    /// Returns null when the backend is unreachable or has no data for the symbol.
+    /// </summary>
+    public async Task<SymbolGapAnalysisDto?> GetSymbolGapAnalysisAsync(
+        string symbol,
+        string? date = null,
+        CancellationToken ct = default)
+    {
+        var route = UiApiRoutes.WithParam(UiApiRoutes.QualityGapsBySymbol, "symbol", symbol);
+        if (date != null)
+            route = UiApiRoutes.WithQuery(route, $"date={Uri.EscapeDataString(date)}");
+
+        return await _apiClient.GetAsync<SymbolGapAnalysisDto>(route, ct);
+    }
+}
+
+/// <summary>
+/// Minimal DTO for deserializing the /api/quality/gaps/{symbol} response.
+/// Only the fields used by the gap analysis UI are mapped here.
+/// </summary>
+public sealed class SymbolGapAnalysisDto
+{
+    public string Symbol { get; set; } = "";
+    public int TotalGaps { get; set; }
+    /// <summary>0–100 percentage of trading time with data present.</summary>
+    public double DataAvailabilityPercent { get; set; }
 }
