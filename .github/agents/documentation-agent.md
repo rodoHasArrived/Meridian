@@ -533,6 +533,7 @@ Market-Data-Collector/
 │   │   │   ├── SymbolCommands.cs
 │   │   │   └── ValidateConfigCommand.cs
 │   │   ├── Composition/
+│   │   │   ├── CircuitBreakerCallbackRouter.cs
 │   │   │   ├── HostAdapters.cs
 │   │   │   ├── HostStartup.cs
 │   │   │   └── ServiceCompositionRoot.cs
