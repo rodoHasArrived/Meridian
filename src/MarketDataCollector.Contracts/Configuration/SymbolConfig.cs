@@ -39,6 +39,12 @@ public sealed record SymbolConfig(
     // When null, defaults to High for large-cap equities / ETFs.
     LiquidityProfile? LiquidityProfile = null,
 
+    // Validation configuration - when true, uses relaxed (historical-preset) thresholds
+    // for the F# validation pipeline stage. Useful for illiquid symbols, preferreds, or
+    // any instrument where the default real-time constraints are too strict.
+    // When null or false, the standard default validation config is used.
+    bool? UseRelaxedValidation = null,
+
     // Options contract fields (required when SecurityType = "OPT")
     decimal? Strike = null,                        // Strike price
     OptionRight? Right = null,                     // Call or Put

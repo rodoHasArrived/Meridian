@@ -214,6 +214,9 @@ type QuoteValidator private () =
     static member HasValidSpread(quote: QuoteEvent) : bool =
         Validation.QuoteValidator.hasValidSpread quote
 
+    static member ValidateWithConfig(quote: QuoteEvent, config: Validation.QuoteValidator.QuoteValidationConfig) =
+        ValidationResultWrapper(Validation.QuoteValidator.validateQuote config quote)
+
 /// C#-friendly aggressor inference.
 [<Sealed>]
 type AggressorInference private () =
