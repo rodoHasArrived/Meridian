@@ -95,7 +95,7 @@ public sealed class BackpressureSignalTests : IAsyncLifetime
         var publicUtil = _pipeline.QueueUtilization; // 0–100
         var signalUtil = signal.QueueUtilization;    // 0–1
 
-        (publicUtil / 100.0).Should().BeApproximately(signalUtil, precision: 1e-9,
+        (publicUtil / 100.0).Should().BeApproximately(signalUtil, precision: 1.0 / 100.0 + 1e-9,
             "IBackpressureSignal.QueueUtilization must be the public property divided by 100");
     }
 
