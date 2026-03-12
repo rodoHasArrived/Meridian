@@ -2,9 +2,11 @@ using System.Reflection;
 using System.Text.Json;
 using MarketDataCollector.Contracts.Api;
 using MarketDataCollector.Storage;
+using MarketDataCollector.Ui.Shared;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MarketDataCollector.Ui.Shared.Endpoints;
 
@@ -16,6 +18,7 @@ public static class LeanEndpoints
 {
     private static readonly Dictionary<string, BacktestInfo> s_backtests = new(StringComparer.OrdinalIgnoreCase);
     private static readonly Dictionary<string, SyncJobInfo> s_syncJobs = new(StringComparer.OrdinalIgnoreCase);
+    private static readonly Dictionary<string, IngestedResultInfo> s_ingestedResults = new(StringComparer.OrdinalIgnoreCase);
 
     public static void MapLeanEndpoints(this WebApplication app, JsonSerializerOptions jsonOptions)
     {
@@ -345,6 +348,180 @@ public static class LeanEndpoints
         .Produces(200)
         .Produces(404)
         .RequireRateLimiting(UiEndpoints.MutationRateLimitPolicy);
+
+        // Auto-export status — GET /api/lean/auto-export
+        group.MapGet(UiApiRoutes.LeanAutoExportStatus, ([FromServices] LeanAutoExportService? autoExport) =>
+        {
+            if (autoExport == null)
+            {
+                return Results.Json(new
+                {
+                    enabled = false,
+                    available = false,
+                    message = "LeanAutoExportService is not registered.",
+                    timestamp = DateTimeOffset.UtcNow
+                }, jsonOptions);
+            }
+
+            return Results.Json(new
+            {
+                available = true,
+                enabled = autoExport.Enabled,
+                leanDataPath = autoExport.LeanDataPath,
+                intervalSeconds = (int)autoExport.Interval.TotalSeconds,
+                lastExportAt = autoExport.LastExportAt,
+                lastExportError = autoExport.LastExportError,
+                lastErrorMessage = autoExport.LastErrorMessage,
+                totalFilesExported = autoExport.TotalFilesExported,
+                totalBytesExported = autoExport.TotalBytesExported,
+                timestamp = DateTimeOffset.UtcNow
+            }, jsonOptions);
+        })
+        .WithName("GetLeanAutoExportStatus")
+        .Produces(200);
+
+        // Auto-export configure — POST /api/lean/auto-export/configure
+        group.MapPost(UiApiRoutes.LeanAutoExportConfigure, (
+            [FromBody] LeanAutoExportConfigureRequest? req,
+            [FromServices] LeanAutoExportService? autoExport) =>
+        {
+            if (autoExport == null)
+            {
+                return Results.Json(new
+                {
+                    success = false,
+                    error = "LeanAutoExportService is not registered.",
+                    timestamp = DateTimeOffset.UtcNow
+                }, jsonOptions);
+            }
+
+            autoExport.Configure(
+                leanDataPath: req?.LeanDataPath,
+                enabled: req?.Enabled,
+                intervalSeconds: req?.IntervalSeconds ?? 0,
+                symbols: req?.Symbols);
+
+            return Results.Json(new
+            {
+                success = true,
+                enabled = autoExport.Enabled,
+                leanDataPath = autoExport.LeanDataPath,
+                intervalSeconds = (int)autoExport.Interval.TotalSeconds,
+                timestamp = DateTimeOffset.UtcNow
+            }, jsonOptions);
+        })
+        .WithName("ConfigureLeanAutoExport")
+        .Produces(200)
+        .RequireRateLimiting(UiEndpoints.MutationRateLimitPolicy);
+
+        // Results ingest — POST /api/lean/results/ingest
+        // Reads a Lean backtest result JSON file and stores it as a completed backtest record.
+        group.MapPost(UiApiRoutes.LeanResultsIngest, async (
+            [FromBody] LeanResultsIngestRequest? req) =>
+        {
+            if (req == null || string.IsNullOrEmpty(req.ResultsFilePath))
+            {
+                return Results.BadRequest(new { error = "resultsFilePath is required." });
+            }
+
+            if (!File.Exists(req.ResultsFilePath))
+            {
+                return Results.NotFound(new
+                {
+                    error = $"Results file not found: {req.ResultsFilePath}"
+                });
+            }
+
+            try
+            {
+                var json = await File.ReadAllTextAsync(req.ResultsFilePath).ConfigureAwait(false);
+                using var doc = JsonDocument.Parse(json);
+                var root = doc.RootElement;
+
+                // Extract common fields from Lean's backtest result JSON
+                var backtestId = req.BacktestId ?? Guid.NewGuid().ToString("N")[..12];
+                var algorithmName = req.AlgorithmName
+                    ?? (root.TryGetProperty("AlgorithmConfiguration", out var algCfg)
+                        && algCfg.TryGetProperty("Algorithm", out var algElem)
+                        ? algElem.GetString() ?? "unknown"
+                        : "unknown");
+
+                var info = new BacktestInfo(backtestId, algorithmName, "completed", DateTimeOffset.UtcNow);
+                s_backtests[backtestId] = info;
+
+                // Extract summary statistics
+                decimal? totalReturn = null;
+                decimal? sharpe = null;
+                int? totalTrades = null;
+
+                if (root.TryGetProperty("Statistics", out var stats))
+                {
+                    if (stats.TryGetProperty("Total Return", out var tr) &&
+                        decimal.TryParse(tr.GetString()?.TrimEnd('%'), out var trVal))
+                        totalReturn = trVal / 100m;
+
+                    if (stats.TryGetProperty("Sharpe Ratio", out var sr) &&
+                        decimal.TryParse(sr.GetString(), out var srVal))
+                        sharpe = srVal;
+
+                    if (stats.TryGetProperty("Total Trades", out var tt) &&
+                        int.TryParse(tt.GetString(), out var ttVal))
+                        totalTrades = ttVal;
+                }
+
+                s_ingestedResults[backtestId] = new IngestedResultInfo(
+                    backtestId, algorithmName, req.ResultsFilePath,
+                    totalReturn, sharpe, totalTrades, DateTimeOffset.UtcNow);
+
+                return Results.Json(new
+                {
+                    success = true,
+                    backtestId,
+                    algorithmName,
+                    totalReturn,
+                    sharpeRatio = sharpe,
+                    totalTrades,
+                    message = "Lean backtest results ingested successfully.",
+                    timestamp = DateTimeOffset.UtcNow
+                }, jsonOptions);
+            }
+            catch (JsonException ex)
+            {
+                return Results.BadRequest(new
+                {
+                    error = $"Failed to parse results file: {ex.Message}"
+                });
+            }
+        })
+        .WithName("IngestLeanResults")
+        .Produces(200)
+        .Produces(400)
+        .Produces(404)
+        .RequireRateLimiting(UiEndpoints.MutationRateLimitPolicy);
+
+        // Symbol map — GET /api/lean/symbol-map?symbols=SPY,AAPL
+        group.MapGet(UiApiRoutes.LeanSymbolMap, (string? symbols) =>
+        {
+            var symbolList = (symbols ?? string.Empty)
+                .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+
+            var mappings = symbolList.Select(s => new
+            {
+                mdcSymbol = s.ToUpperInvariant(),
+                leanTicker = LeanSymbolMapper.ToLeanTicker(s),
+                securityType = LeanSymbolMapper.DetectSecurityType(s),
+                market = LeanSymbolMapper.DetectMarket(s)
+            });
+
+            return Results.Json(new
+            {
+                mappings,
+                total = symbolList.Length,
+                timestamp = DateTimeOffset.UtcNow
+            }, jsonOptions);
+        })
+        .WithName("GetLeanSymbolMap")
+        .Produces(200);
     }
 
     private static string? DetectLeanVersion(string leanPath)
@@ -410,4 +587,14 @@ public static class LeanEndpoints
     private sealed record SyncJobInfo(string JobId, string Status, string[] Symbols, string SourcePath, string TargetPath, DateTimeOffset StartedAt, int FileCount);
     private sealed record LeanSyncRequest(string[]? Symbols, DateTime? FromDate, DateTime? ToDate);
     private sealed record BacktestStartRequest(string? AlgorithmName, string? AlgorithmLanguage);
+    private sealed record LeanAutoExportConfigureRequest(bool? Enabled, string? LeanDataPath, int IntervalSeconds, string[]? Symbols);
+    private sealed record LeanResultsIngestRequest(string ResultsFilePath, string? BacktestId, string? AlgorithmName);
+    private sealed record IngestedResultInfo(
+        string BacktestId,
+        string AlgorithmName,
+        string ResultsFilePath,
+        decimal? TotalReturn,
+        decimal? SharpeRatio,
+        int? TotalTrades,
+        DateTimeOffset IngestedAt);
 }
