@@ -284,6 +284,83 @@ public sealed class LeanIntegrationService
 
         return response.Success;
     }
+
+    /// <summary>
+    /// Gets the current auto-export status and configuration.
+    /// </summary>
+    public async Task<LeanAutoExportStatus> GetAutoExportStatusAsync(CancellationToken ct = default)
+    {
+        var response = await _apiClient.GetWithResponseAsync<LeanAutoExportStatus>(
+            "/api/lean/auto-export",
+            ct);
+
+        return response.Data ?? new LeanAutoExportStatus();
+    }
+
+    /// <summary>
+    /// Configures the Lean auto-export service.
+    /// </summary>
+    public async Task<bool> ConfigureAutoExportAsync(
+        LeanAutoExportConfigureOptions options,
+        CancellationToken ct = default)
+    {
+        var response = await _apiClient.PostWithResponseAsync<object>(
+            "/api/lean/auto-export/configure",
+            new
+            {
+                enabled = options.Enabled,
+                leanDataPath = options.LeanDataPath,
+                intervalSeconds = options.IntervalSeconds,
+                symbols = options.Symbols
+            },
+            ct);
+
+        return response.Success;
+    }
+
+    /// <summary>
+    /// Ingests Lean backtest results from a local results file.
+    /// </summary>
+    public async Task<LeanResultsIngestResult> IngestBacktestResultsAsync(
+        string resultsFilePath,
+        string? backtestId = null,
+        string? algorithmName = null,
+        CancellationToken ct = default)
+    {
+        var response = await _apiClient.PostWithResponseAsync<LeanResultsIngestResult>(
+            "/api/lean/results/ingest",
+            new
+            {
+                resultsFilePath,
+                backtestId,
+                algorithmName
+            },
+            ct);
+
+        if (response.Success && response.Data != null)
+            return response.Data;
+
+        return new LeanResultsIngestResult
+        {
+            Success = false,
+            Error = response.ErrorMessage ?? "Results ingestion failed"
+        };
+    }
+
+    /// <summary>
+    /// Resolves the Lean ticker and data path components for a given MDC symbol.
+    /// </summary>
+    public async Task<LeanSymbolMappingResult> GetSymbolMappingAsync(
+        IEnumerable<string> symbols,
+        CancellationToken ct = default)
+    {
+        var joined = string.Join(",", symbols);
+        var response = await _apiClient.GetWithResponseAsync<LeanSymbolMappingResult>(
+            $"/api/lean/symbol-map?symbols={Uri.EscapeDataString(joined)}",
+            ct);
+
+        return response.Data ?? new LeanSymbolMappingResult();
+    }
 }
 
 #region Event Args
@@ -524,6 +601,65 @@ public sealed class BacktestStartResponse
 public sealed class BacktestHistoryResponse
 {
     public List<BacktestSummary>? Backtests { get; set; }
+}
+
+#endregion
+
+#region Auto-Export Classes
+
+public sealed class LeanAutoExportStatus
+{
+    public bool Available { get; set; }
+    public bool Enabled { get; set; }
+    public string? LeanDataPath { get; set; }
+    public int IntervalSeconds { get; set; }
+    public DateTimeOffset? LastExportAt { get; set; }
+    public DateTimeOffset? LastExportError { get; set; }
+    public string? LastErrorMessage { get; set; }
+    public long TotalFilesExported { get; set; }
+    public long TotalBytesExported { get; set; }
+}
+
+public sealed class LeanAutoExportConfigureOptions
+{
+    public bool? Enabled { get; set; }
+    public string? LeanDataPath { get; set; }
+    public int IntervalSeconds { get; set; }
+    public List<string>? Symbols { get; set; }
+}
+
+#endregion
+
+#region Results Ingest Classes
+
+public sealed class LeanResultsIngestResult
+{
+    public bool Success { get; set; }
+    public string? Error { get; set; }
+    public string? BacktestId { get; set; }
+    public string? AlgorithmName { get; set; }
+    public decimal? TotalReturn { get; set; }
+    public decimal? SharpeRatio { get; set; }
+    public int? TotalTrades { get; set; }
+    public string? Message { get; set; }
+}
+
+#endregion
+
+#region Symbol Mapping Classes
+
+public sealed class LeanSymbolMapping
+{
+    public string MdcSymbol { get; set; } = string.Empty;
+    public string LeanTicker { get; set; } = string.Empty;
+    public string SecurityType { get; set; } = string.Empty;
+    public string Market { get; set; } = string.Empty;
+}
+
+public sealed class LeanSymbolMappingResult
+{
+    public List<LeanSymbolMapping> Mappings { get; set; } = new();
+    public int Total { get; set; }
 }
 
 #endregion

@@ -5,6 +5,7 @@ using MarketDataCollector.Application.Monitoring;
 using MarketDataCollector.Application.Monitoring.DataQuality;
 using MarketDataCollector.Application.Pipeline;
 using MarketDataCollector.Application.UI;
+using MarketDataCollector.Ui.Shared;
 using MarketDataCollector.Ui.Shared.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -117,6 +118,10 @@ public static class UiEndpoints
 
         services.AddMutationRateLimiter();
 
+        // Register LeanAutoExportService as a background hosted service
+        services.AddSingleton<LeanAutoExportService>();
+        services.AddHostedService(sp => sp.GetRequiredService<LeanAutoExportService>());
+
         return services;
     }
 
@@ -145,6 +150,11 @@ public static class UiEndpoints
 
         services.AddSingleton(statusHandlers);
         services.AddMutationRateLimiter();
+
+        // Register LeanAutoExportService as a background hosted service
+        services.AddSingleton<LeanAutoExportService>();
+        services.AddHostedService(sp => sp.GetRequiredService<LeanAutoExportService>());
+
         return services;
     }
 
