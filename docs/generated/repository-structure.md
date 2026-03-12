@@ -1,6 +1,6 @@
 # Repository Structure
 
-> Auto-generated on 2026-03-12 17:33:09 UTC
+> Auto-generated on 2026-03-12 17:51:18 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -1081,6 +1081,8 @@ Market-Data-Collector/
 │   │   ├── HtmlTemplateGenerator.Login.cs
 │   │   ├── HtmlTemplateGenerator.Scripts.cs
 │   │   ├── HtmlTemplateGenerator.Styles.cs
+│   │   ├── LeanAutoExportService.cs
+│   │   ├── LeanSymbolMapper.cs
 │   │   ├── LoginSessionService.cs
 │   │   └── MarketDataCollector.Ui.Shared.csproj
 │   └── MarketDataCollector.Wpf/

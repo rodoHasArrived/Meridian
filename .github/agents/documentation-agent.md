@@ -1109,6 +1109,8 @@ Market-Data-Collector/
 │   │   ├── HtmlTemplateGenerator.Login.cs
 │   │   ├── HtmlTemplateGenerator.Scripts.cs
 │   │   ├── HtmlTemplateGenerator.Styles.cs
+│   │   ├── LeanAutoExportService.cs
+│   │   ├── LeanSymbolMapper.cs
 │   │   ├── LoginSessionService.cs
 │   │   └── MarketDataCollector.Ui.Shared.csproj
 │   └── MarketDataCollector.Wpf/
