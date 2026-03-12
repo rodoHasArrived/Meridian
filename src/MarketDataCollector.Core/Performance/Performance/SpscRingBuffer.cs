@@ -3,6 +3,16 @@ using System.Runtime.InteropServices;
 
 namespace MarketDataCollector.Core.Performance;
 
+// Each padded long occupies exactly 128 bytes (two typical 64-byte cache lines),
+// ensuring head and tail never share a cache line regardless of surrounding allocations.
+// Must be a non-nested type because the CLR forbids explicit-layout structs inside generic types.
+[StructLayout(LayoutKind.Explicit, Size = 128)]
+internal struct PaddedLong
+{
+    [FieldOffset(64)]
+    public long Value;
+}
+
 /// <summary>
 /// Lock-free, single-producer/single-consumer ring buffer backed by a pre-allocated array.
 /// </summary>
@@ -30,15 +40,6 @@ namespace MarketDataCollector.Core.Performance;
 /// <typeparam name="T">Value type stored in the ring buffer. Must be a struct.</typeparam>
 public sealed class SpscRingBuffer<T> where T : struct
 {
-    // Each padded long occupies exactly 128 bytes (two typical 64-byte cache lines),
-    // ensuring head and tail never share a cache line regardless of surrounding allocations.
-    [StructLayout(LayoutKind.Explicit, Size = 128)]
-    private struct PaddedLong
-    {
-        [FieldOffset(64)]
-        public long Value;
-    }
-
     private readonly T[] _buffer;
     private readonly int _mask;
 
