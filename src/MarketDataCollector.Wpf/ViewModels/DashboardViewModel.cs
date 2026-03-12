@@ -33,6 +33,7 @@ public sealed class DashboardViewModel : BindableBase, IDisposable
 
     private readonly DispatcherTimer _refreshTimer;
     private readonly DispatcherTimer _staleCheckTimer;
+    private readonly DispatcherTimer _activityPollTimer;
     private readonly CancellationTokenSource _cts = new();   // P6: lifecycle cancellation
 
     // Sparkline history buffers – store last N data points for each metric card.
@@ -374,6 +375,8 @@ public sealed class DashboardViewModel : BindableBase, IDisposable
         _refreshTimer.Tick += OnRefreshTimerTick;
         _staleCheckTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
         _staleCheckTimer.Tick += OnStaleCheckTimerTick;
+        _activityPollTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(10) };
+        _activityPollTimer.Tick += OnActivityPollTimerTick;
     }
 
     // ── Lifecycle (called by the Page) ────────────────────────────────────────────
@@ -383,13 +386,17 @@ public sealed class DashboardViewModel : BindableBase, IDisposable
         _statusService.StartLiveMonitoring(intervalSeconds: 2);
         _refreshTimer.Start();
         _staleCheckTimer.Start();
+        _activityPollTimer.Start();
         _ = RefreshStatusAsync();
+        // Immediately fetch backend events so the feed is populated without waiting 10s.
+        _ = ActivityFeedService.Instance.FetchServerEventsAsync(_cts.Token);
     }
 
     public void Stop()
     {
         _refreshTimer.Stop();
         _staleCheckTimer.Stop();
+        _activityPollTimer.Stop();
         _statusService.StopLiveMonitoring();
     }
 
@@ -466,6 +473,9 @@ public sealed class DashboardViewModel : BindableBase, IDisposable
     }
 
     private void OnRefreshTimerTick(object? sender, EventArgs e) => _ = RefreshStatusAsync();
+
+    private void OnActivityPollTimerTick(object? sender, EventArgs e) =>
+        _ = ActivityFeedService.Instance.FetchServerEventsAsync(_cts.Token);
 
     private void OnStaleCheckTimerTick(object? sender, EventArgs e) =>
         UpdateStaleIndicator(_statusService.IsDataStale);
