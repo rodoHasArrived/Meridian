@@ -1511,7 +1511,11 @@ jobs:
         run: docfx docs/docfx/docfx.json
 
       - name: Configure GitHub Pages
+        # continue-on-error: the 'enablement: true' option tries to create a GitHub Pages
+        # site, which requires repository admin permissions not available in PR/fork contexts.
+        # This step failing should not block the DocFX build or artifact upload.
         uses: actions/configure-pages@v5
+        continue-on-error: true
         with:
           enablement: true
 
