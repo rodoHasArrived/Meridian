@@ -914,6 +914,7 @@ Market-Data-Collector/
 │   ├── MarketDataCollector.Domain/
 │   │   ├── Collectors/
 │   │   │   ├── IQuoteStateStore.cs
+│   │   │   ├── L3OrderBookCollector.cs
 │   │   │   ├── MarketDepthCollector.cs
 │   │   │   ├── OptionDataCollector.cs
 │   │   │   ├── QuoteCollector.cs
