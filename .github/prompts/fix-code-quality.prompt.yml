@@ -1,8 +1,8 @@
 name: Address Code Quality Issues From Ci Analysis
 description: Address code quality issues from CI analysis
-# Auto-generated prompt from workflow results - code-quality
-# Generated: 2026-03-10
-# Source: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/22922468265
+# Auto-generated prompt from workflow results - test-matrix
+# Generated: 2026-03-14
+# Source: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/23075841937
 # Model-agnostic prompt - works with any capable LLM
 messages:
   - role: system
@@ -16,17 +16,20 @@ messages:
       - Async/await for all I/O operations with CancellationToken
       - Classes sealed unless designed for inheritance
 
+      ## Error Codes Found
+      - `CA2022`
+
       ## Failure Patterns
-      - `2 /home/runner/work/Market-Data-Collector/Market-Data-Collector/src/MarketDataCollector.Application/Pipeline/EventPipeline.cs(149,24): warning CS1573: Parameter 'metrics' has no matching param tag in ...`
-      - `2 /home/runner/work/Market-Data-Collector/Market-Data-Collector/src/MarketDataCollector.Application/Pipeline/EventPipeline.cs(148,24): warning CS1573: Parameter 'wal' has no matching param tag in the ...`
-      - `2 /home/runner/work/Market-Data-Collector/Market-Data-Collector/src/MarketDataCollector.Application/Pipeline/EventPipeline.cs(147,33): warning CS1573: Parameter 'auditTrail' has no matching param tag ...`
-      - `2 /home/runner/work/Market-Data-Collector/Market-Data-Collector/src/MarketDataCollector.Application/Pipeline/EventPipeline.cs(146,33): warning CS1573: Parameter 'logger' has no matching param tag in t...`
-      - `2 /home/runner/work/Market-Data-Collector/Market-Data-Collector/src/MarketDataCollector.Application/Pipeline/EventPipeline.cs(145,14): warning CS1573: Parameter 'enablePeriodicFlush' has no matching p...`
-      - `2 /home/runner/work/Market-Data-Collector/Market-Data-Collector/src/MarketDataCollector.Application/Pipeline/EventPipeline.cs(144,13): warning CS1573: Parameter 'batchSize' has no matching param tag i...`
-      - `2 /home/runner/work/Market-Data-Collector/Market-Data-Collector/src/MarketDataCollector.Application/Pipeline/EventPipeline.cs(143,19): warning CS1573: Parameter 'flushInterval' has no matching param t...`
-      - `2 /home/runner/work/Market-Data-Collector/Market-Data-Collector/src/MarketDataCollector.Application/Pipeline/EventPipeline.cs(142,29): warning CS1573: Parameter 'policy' has no matching param tag in t...`
-      - `2 /home/runner/work/Market-Data-Collector/Market-Data-Collector/src/MarketDataCollector.Application/Pipeline/EventPipeline.cs(141,22): warning CS1573: Parameter 'sink' has no matching param tag in the...`
-      - `2 /home/runner/work/Market-Data-Collector/Market-Data-Collector/src/MarketDataCollector.Application/Pipeline/EventPipeline.cs(116,32): warning CS1573: Parameter 'dedupLedger' has no matching param tag...`
+      - `2026-03-14T00:22:08.3333437Z ##[warning]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Contracts\Export\AnalysisExportModels.cs(138,16): warning CS1591: Missing XML comment f...`
+      - `2026-03-14T00:22:08.3336568Z ##[warning]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Contracts\Export\AnalysisExportModels.cs(139,16): warning CS1591: Missing XML comment f...`
+      - `2026-03-14T00:22:08.3340184Z ##[warning]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Contracts\Export\AnalysisExportModels.cs(140,18): warning CS1591: Missing XML comment f...`
+      - `2026-03-14T00:22:08.3343459Z ##[warning]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Contracts\Export\AnalysisExportModels.cs(141,16): warning CS1591: Missing XML comment f...`
+      - `2026-03-14T00:22:08.3346650Z ##[warning]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Contracts\Export\AnalysisExportModels.cs(142,16): warning CS1591: Missing XML comment f...`
+      - `2026-03-14T00:22:08.3350272Z ##[warning]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Contracts\Export\AnalysisExportModels.cs(145,21): warning CS1591: Missing XML comment f...`
+      - `2026-03-14T00:22:08.3353452Z ##[warning]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Contracts\Export\AnalysisExportModels.cs(147,17): warning CS1591: Missing XML comment f...`
+      - `2026-03-14T00:22:08.3356603Z ##[warning]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Contracts\Export\AnalysisExportModels.cs(148,20): warning CS1591: Missing XML comment f...`
+      - `2026-03-14T00:22:08.3359737Z ##[warning]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Contracts\Export\AnalysisExportModels.cs(149,20): warning CS1591: Missing XML comment f...`
+      - `2026-03-14T00:22:08.3363443Z ##[warning]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Contracts\Export\AnalysisExportModels.cs(150,20): warning CS1591: Missing XML comment f...`
 
       ## Resolution Approach
       1. Read the error messages and stack traces carefully
@@ -38,7 +41,7 @@ messages:
 
   - role: user
     content: |
-      The CI workflow `code-quality` has reported failures that need attention.
+      The CI workflow `test-matrix` has reported failures that need attention.
 
       Error details:
       ```
