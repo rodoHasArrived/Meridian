@@ -1,9 +1,9 @@
 # Market Data Collector - Project Roadmap
 
 **Version:** 1.6.2
-**Last Updated:** 2026-02-26
+**Last Updated:** 2026-03-14
 **Status:** Development / Pilot Ready (hardening and scale-up in progress)
-**Repository Snapshot:** `src/` files: **664** | `tests/` files: **219** | HTTP route constants: **283** | Remaining stub routes: **0** | Test methods: **~3,444**
+**Repository Snapshot:** `src/` files: **779** | `tests/` files: **266** | HTTP route constants: **309** | Remaining stub routes: **0** | Test methods: **~4,135**
 
 This roadmap is refreshed to match the current repository state and focuses on the remaining work required to move from "production-ready" to a more fully hardened v2.0 release posture.
 
@@ -23,6 +23,7 @@ For a complete per-feature status breakdown see [`FEATURE_INVENTORY.md`](FEATURE
 - **Provider unit tests** expanded for Polygon subscription/reconnect and StockSharp lifecycle scenarios.
 - **OpenAPI typed annotations** added to all endpoint families (status, health, backfill, config, providers).
 - **Negative-path and schema validation integration tests** added for health/status/config/backfill/provider endpoints.
+- **Polygon `WebSocketProviderBase` adoption** — `PolygonMarketDataClient` now extends `WebSocketProviderBase`, completing C3 for the Polygon provider. NYSE and StockSharp remain.
 
 ### What remains
 
@@ -39,7 +40,7 @@ Remaining work is tracked in `docs/status/IMPROVEMENTS.md` and the new [`FEATURE
 - **8 canonicalization items** (theme J)
   - ✅ Completed: 7 (J1–J7 — design, MarketEvent fields, canonicalizer, condition codes, venue normalization, provider wiring, metrics)
   - 🔄 Partial: 1 (J8 — Golden fixture test suite; curated fixtures + fixture-runner tests added, drift-canary CI still pending)
-- Architecture debt largely resolved; C1/C2 unified provider registry and DI composition path are complete.
+- Architecture debt largely resolved; C1/C2 unified provider registry and DI composition path are complete. C3 partially resolved — Polygon now uses `WebSocketProviderBase`; NYSE and StockSharp pending.
 - **WPF UX parity**: Navigation complete; ~6 pages still show static placeholder data instead of live service data.
 - **Provider completeness**: Polygon and StockSharp functional with credentials; IB and NYSE require external setup steps.
 
@@ -58,7 +59,7 @@ Remaining work is tracked in `docs/status/IMPROVEMENTS.md` and the new [`FEATURE
 | Phase 6: Duplicate & Unused Code Cleanup | ✅ Completed | Cleanup phase closed; residual cleanup now folded into normal maintenance. |
 | Phase 7: Extended Capabilities | ⏸️ Optional / rolling | Scheduled as capacity permits. |
 | Phase 8: Repository Organization & Optimization | 🔄 In progress (rolling) | Continued doc and code organization improvements. |
-| Phase 9: Final Production Release | 🔄 Active target | 94.3% of core improvements complete; remaining: C3 WebSocket refactor, G2 trace propagation. |
+| Phase 9: Final Production Release | 🔄 Active target | 94.3% of core improvements complete; C3 WebSocket refactor partial (Polygon done; NYSE/StockSharp pending), G2 trace propagation pending. |
 | Phase 10: Scalability & Multi-Instance | 📝 Planned | New phase for horizontal scaling and multi-instance coordination. |
 | Phase 11: WPF Full UX Parity | 📝 Planned | Wire live data to remaining static-data pages. |
 | Phase 12: Provider Completeness | 📝 Planned | Validate Polygon/StockSharp feeds; simplify IB/NYSE setup. |
@@ -115,6 +116,13 @@ This section supersedes the prior effort model and aligns with the current activ
 - **H3**: ✅ Event replay infrastructure — `JsonlReplayer`, `MemoryMappedJsonlReader`, `EventReplayService` with pause/resume/seek, CLI `--replay` flag, desktop `EventReplayPage`.
 - **I2**: ✅ CLI progress reporting — `ProgressDisplayService` with progress bars (ETA/throughput), spinners, checklists, and tables.
 - **G2 (remainder)**: End-to-end distributed tracing from provider through storage with trace context propagation. *(pending)*
+
+### Sprint 9 (partial)
+
+- **C3 (Polygon)**: ✅ `PolygonMarketDataClient` refactored to extend `WebSocketProviderBase` — connection lifecycle, heartbeat, and resilience logic consolidated. Template market data client updated as canonical reference.
+- **Route coverage expansion**: ✅ 26 additional route constants added (`283 → 309`) covering alignment, sampling, and extended subscription endpoints.
+- **Test suite expansion**: ✅ 691 additional test methods across all test projects (`~3,444 → ~4,135`); 47 additional test files (`219 → 266`).
+- **C3 (NYSE/StockSharp)**: Adoption of `WebSocketProviderBase` in NYSE and StockSharp providers. *(pending)*
 
 ---
 
@@ -201,20 +209,20 @@ This section supersedes the prior effort model and aligns with the current activ
 |---|---:|---:|
 | Stub endpoints remaining | 0 | 0 |
 | Core improvement items completed | 33 / 35 | 35 / 35 |
-| Core improvement items still open | 1 / 35 (C3) | 0 / 35 |
+| Core improvement items still open | 1 / 35 (C3 — partial, Polygon done) | 0 / 35 |
 | New theme items (H/I) completed | 6 / 8 | 7+ / 8 |
-| Source files | 664 | — |
-| Test files | 219 | 250+ |
-| Test methods | ~3,444 | 4,000+ |
-| Route constants | 283 | 283 |
-| Architecture debt (Theme C completed) | 6 / 7 | 7 / 7 |
+| Source files | 779 | — |
+| Test files | 266 | 300+ |
+| Test methods | ~4,135 | 4,500+ |
+| Route constants | 309 | 309 |
+| Architecture debt (Theme C completed) | 6 / 7 (C3 partial: Polygon ✅, NYSE/StockSharp pending) | 7 / 7 |
 | Provider test coverage | All 5 streaming providers + failover + backfill | Comprehensive |
 | OpenTelemetry instrumentation | Pipeline metrics + activity spans | Full trace propagation |
 | OpenAPI typed annotations | All endpoint families | Complete with error response types |
 | Canonicalization design | Complete | Implementation complete |
 | Canonicalization implementation (J2–J8) | 6 / 7 | 7 / 7 |
 | Cross-provider canonical identity match | N/A | >= 99.5% |
-| WPF pages with live data | ~42 / 49 | 49 / 49 |
+| WPF pages with live data | ~45 / 51 | 51 / 51 |
 
 ---
 
@@ -247,7 +255,7 @@ These phases capture all remaining work identified in the [`FEATURE_INVENTORY.md
 | P12-2 | **StockSharp** | Document all supported `ConnectorType` values (QuikJson, Transaq, LMAX, etc.) in `docs/providers/`; add a validated `appsettings.sample.stocksharp.json`; fix `NotSupportedException` paths when connector type is unset |
 | P12-3 | **Interactive Brokers** | Write `docs/providers/interactive-brokers-build.md` with step-by-step IBAPI download, reference, and build instructions (`dotnet build -p:DefineConstants=IBAPI`); add a CI matrix job that builds with a mocked IBApi stub |
 | P12-4 | **NYSE** | Document NYSE Connect credential registration process; add connectivity smoke-test to `--test-connectivity` output |
-| P12-5 | **All WebSocket (C3)** | Refactor Polygon, NYSE, StockSharp to extend `WebSocketProviderBase`; eliminate ~800 LOC of duplicated connection-lifecycle code; verify provider tests pass after refactor |
+| P12-5 | **All WebSocket (C3)** | ✅ Polygon: `PolygonMarketDataClient` now extends `WebSocketProviderBase`. Remaining: refactor NYSE and StockSharp to extend `WebSocketProviderBase`; eliminate remaining ~500 LOC of duplicated connection-lifecycle code; verify provider tests pass after refactor |
 
 **Exit criteria:** All 5 streaming providers have documented setup paths. Polygon parsing validated against recorded feed. C3 refactor complete.
 
