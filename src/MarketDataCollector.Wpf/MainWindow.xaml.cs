@@ -619,6 +619,7 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// Saves the current workspace session state for next launch.
+    /// Preserves per-page filter state and open pages accumulated during the session.
     /// </summary>
     private void SaveWorkspaceSession()
     {
@@ -627,11 +628,15 @@ public partial class MainWindow : Window
             var currentPage = _navigationService.GetCurrentPageTag();
             var activeWorkspace = _workspaceService.ActiveWorkspace;
 
+            // Load the existing session to preserve OpenPages accumulated during the session.
+            var existing = _workspaceService.GetLastSessionState();
+
             var session = new Ui.Services.SessionState
             {
                 ActivePageTag = currentPage ?? "Dashboard",
                 ActiveWorkspaceId = activeWorkspace?.Id,
                 ActiveFilters = PageStateService.Instance.GetAllFiltersFlat(),
+                OpenPages = existing?.OpenPages ?? new System.Collections.Generic.List<Ui.Services.WorkspacePage>(),
                 WindowBounds = new Ui.Services.WindowBounds
                 {
                     X = RestoreBounds.Left,

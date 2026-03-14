@@ -66,7 +66,7 @@ public partial class BackfillPage : Page
 
     private async void OnPageLoaded(object sender, RoutedEventArgs e)
     {
-        // Set default dates
+        // Set default dates first; RestorePageFilterState will override with saved values
         ToDatePicker.SelectedDate = DateTime.Today;
         FromDatePicker.SelectedDate = DateTime.Today.AddDays(-30);
 
@@ -769,8 +769,10 @@ public partial class BackfillPage : Page
         ClearOpenFigiKeyButton.Visibility = Visibility.Collapsed;
     }
 
-    private void ScanGaps_Click(object sender, RoutedEventArgs e)
+    private async void ScanGaps_Click(object sender, RoutedEventArgs e)
     {
+        try
+        {
         var symbolsText = SymbolsBox.Text?.Trim() ?? "";
         if (string.IsNullOrWhiteSpace(symbolsText))
         {
@@ -784,34 +786,66 @@ public partial class BackfillPage : Page
         var totalDays = Math.Max(1, (int)(toDate - fromDate).TotalDays);
 
         _gapItems.Clear();
+        GapAnalysisCard.Visibility = Visibility.Visible;
+        GapAnalysisList.Visibility = Visibility.Collapsed;
+        GapActionPanel.Visibility = Visibility.Collapsed;
+        GapAnalysisSummaryText.Text = "Scanning for data gaps\u2026";
 
-        // Generate realistic gap analysis based on random simulation (fixture mode)
-        var random = new Random(42);
         var totalGapDays = 0;
+        var apiReachable = false;
 
         foreach (var symbol in symbols)
         {
             var sym = symbol.Trim().ToUpper();
-            var gapDays = random.Next(0, Math.Max(1, totalDays / 4));
-            var coveragePct = totalDays > 0 ? Math.Max(0, Math.Min(100, (int)(100.0 * (totalDays - gapDays) / totalDays))) : 100;
-            totalGapDays += gapDays;
 
-            var coverageBrush = coveragePct >= 95
-                ? new SolidColorBrush(Color.FromRgb(63, 185, 80))
-                : coveragePct >= 70
-                    ? new SolidColorBrush(Color.FromRgb(227, 179, 65))
-                    : new SolidColorBrush(Color.FromRgb(244, 67, 54));
-
-            _gapItems.Add(new GapAnalysisItem
+            try
             {
-                Symbol = sym,
-                CoveragePercent = coveragePct,
-                CoverageText = $"{coveragePct}%",
-                GapDays = gapDays,
-                GapDaysText = gapDays == 0 ? "Complete" : $"{gapDays}d gaps",
-                CoverageBrush = coverageBrush,
-                CoverageWidth = Math.Max(4, coveragePct * 3.5) // scale to fit the grid column
-            });
+                var result = await _backfillApiService.GetSymbolGapAnalysisAsync(sym);
+                apiReachable = true;
+
+                int coveragePct;
+                int gapDays;
+                if (result != null)
+                {
+                    coveragePct = Math.Max(0, Math.Min(100, (int)Math.Round(result.DataAvailabilityPercent)));
+                    gapDays = totalDays - (int)Math.Round(totalDays * coveragePct / 100.0);
+                }
+                else
+                {
+                    // Symbol not yet tracked by quality monitoring — treat as no data recorded
+                    coveragePct = 0;
+                    gapDays = totalDays;
+                }
+
+                totalGapDays += gapDays;
+
+                var coverageBrush = coveragePct >= 95
+                    ? new SolidColorBrush(Color.FromRgb(63, 185, 80))
+                    : coveragePct >= 70
+                        ? new SolidColorBrush(Color.FromRgb(227, 179, 65))
+                        : new SolidColorBrush(Color.FromRgb(244, 67, 54));
+
+                _gapItems.Add(new GapAnalysisItem
+                {
+                    Symbol = sym,
+                    CoveragePercent = coveragePct,
+                    CoverageText = $"{coveragePct}%",
+                    GapDays = gapDays,
+                    GapDaysText = gapDays == 0 ? "Complete" : $"{gapDays}d gaps",
+                    CoverageBrush = coverageBrush,
+                    CoverageWidth = Math.Max(4, coveragePct * 3.5) // scale to fit the grid column
+                });
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"[BackfillPage] Gap scan failed for {sym}: {ex.Message}");
+            }
+        }
+
+        if (!apiReachable)
+        {
+            GapAnalysisSummaryText.Text = "Service unavailable. Ensure the backend is running to scan for gaps.";
+            return;
         }
 
         GapAnalysisList.Visibility = Visibility.Visible;
@@ -822,8 +856,12 @@ public partial class BackfillPage : Page
         GapAnalysisSummaryText.Text = totalGapDays == 0
             ? "All symbols have complete coverage for the selected date range."
             : $"Found gaps in {_gapItems.Count(g => g.GapDays > 0)} of {symbols.Length} symbols.";
-
-        GapAnalysisCard.Visibility = Visibility.Visible;
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[BackfillPage] ScanGaps_Click failed: {ex.Message}");
+            GapAnalysisSummaryText.Text = "An unexpected error occurred while scanning for gaps.";
+        }
     }
 
     private void AutoFillGaps_Click(object sender, RoutedEventArgs e)

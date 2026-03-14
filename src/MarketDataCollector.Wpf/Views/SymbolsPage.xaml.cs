@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using MarketDataCollector.Ui.Services;
 using MarketDataCollector.Wpf.Contracts;
 using WpfServices = MarketDataCollector.Wpf.Services;
 
@@ -24,6 +25,7 @@ public partial class SymbolsPage : Page
     private readonly ObservableCollection<SymbolViewModel> _symbols = new();
     private readonly ObservableCollection<SymbolViewModel> _filteredSymbols = new();
     private readonly ObservableCollection<WatchlistInfo> _watchlists = new();
+    private readonly SymbolManagementService _symbolManagementService;
     private SymbolViewModel? _selectedSymbol;
     private bool _isEditMode;
     private CancellationTokenSource? _loadCts;
@@ -55,6 +57,7 @@ public partial class SymbolsPage : Page
         _loggingService = loggingService;
         _notificationService = notificationService;
         _navigationService = navigationService;
+        _symbolManagementService = SymbolManagementService.Instance;
         SymbolsListView.ItemsSource = _filteredSymbols;
         WatchlistsView.ItemsSource = _watchlists;
 
@@ -299,8 +302,10 @@ public partial class SymbolsPage : Page
         ApplyFilters();
     }
 
-    private void BulkDelete_Click(object sender, RoutedEventArgs e)
+    private async void BulkDelete_Click(object sender, RoutedEventArgs e)
     {
+        try
+        {
         var selected = _filteredSymbols.Where(s => s.IsSelected).ToList();
 
         var result = MessageBox.Show(
@@ -310,6 +315,8 @@ public partial class SymbolsPage : Page
             MessageBoxImage.Question);
 
         if (result != MessageBoxResult.Yes) return;
+
+        var symbolNames = selected.Select(s => s.Symbol).ToList();
 
         foreach (var symbol in selected)
         {
@@ -323,6 +330,21 @@ public partial class SymbolsPage : Page
             "Bulk Delete",
             $"Deleted {selected.Count} symbols.",
             NotificationType.Success);
+
+        // Persist to configuration file (was missing before)
+        await PersistSymbolsToConfigAsync();
+
+        // Sync each removal to backend (fire-and-forget)
+        foreach (var name in symbolNames)
+        {
+            _ = SyncRemoveSymbolFromBackendAsync(name);
+        }
+        }
+        catch (Exception ex)
+        {
+            _loggingService.LogError("BulkDelete failed", ex);
+            _notificationService.ShowNotification("Error", "Failed to delete symbols.", NotificationType.Error);
+        }
     }
 
     private void ImportCsv_Click(object sender, RoutedEventArgs e)
@@ -483,6 +505,21 @@ public partial class SymbolsPage : Page
         // Persist to configuration file
         await PersistSymbolsToConfigAsync();
 
+        // Sync new symbol to backend (fire-and-forget; local config already updated above)
+        if (!_isEditMode)
+        {
+            var addedVm = _symbols.FirstOrDefault(s => s.Symbol == symbolName);
+            if (addedVm != null)
+            {
+                _ = SyncAddSymbolToBackendAsync(
+                    symbolName,
+                    addedVm.SubscribeTrades,
+                    addedVm.SubscribeDepth,
+                    addedVm.DepthLevels,
+                    addedVm.Exchange);
+            }
+        }
+
         ClearForm();
         ApplyFilters();
         SymbolCountText.Text = $"{_symbols.Count} symbols";
@@ -500,15 +537,19 @@ public partial class SymbolsPage : Page
 
         if (result == MessageBoxResult.Yes)
         {
+            var symbolToDelete = _selectedSymbol.Symbol;
             _symbols.Remove(_selectedSymbol);
 
             _notificationService.ShowNotification(
                 "Success",
-                $"Symbol {_selectedSymbol.Symbol} deleted.",
+                $"Symbol {symbolToDelete} deleted.",
                 NotificationType.Success);
 
             // Persist to configuration file
             await PersistSymbolsToConfigAsync();
+
+            // Sync removal to backend (fire-and-forget)
+            _ = SyncRemoveSymbolFromBackendAsync(symbolToDelete);
 
             ClearForm();
             ApplyFilters();
@@ -718,6 +759,32 @@ public partial class SymbolsPage : Page
     {
         await LoadSymbolsFromConfigAsync();
         LastRefreshText.Text = "Last refreshed: just now";
+    }
+
+    private async Task SyncAddSymbolToBackendAsync(
+        string symbol, bool subscribeTrades, bool subscribeDepth, int depthLevels, string exchange)
+    {
+        try
+        {
+            await _symbolManagementService.AddSymbolAsync(
+                symbol, subscribeTrades, subscribeDepth, depthLevels, exchange);
+        }
+        catch (Exception ex)
+        {
+            _loggingService.LogError($"Backend sync failed for add {symbol}", ex);
+        }
+    }
+
+    private async Task SyncRemoveSymbolFromBackendAsync(string symbol)
+    {
+        try
+        {
+            await _symbolManagementService.RemoveSymbolAsync(symbol);
+        }
+        catch (Exception ex)
+        {
+            _loggingService.LogError($"Backend sync failed for remove {symbol}", ex);
+        }
     }
 
     private async Task PersistSymbolsToConfigAsync()
