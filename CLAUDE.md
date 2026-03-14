@@ -850,7 +850,8 @@ Market-Data-Collector/
 │   │   │   └── VenueCode.cs
 │   │   ├── Export/
 │   │   │   ├── AnalysisExportModels.cs
-│   │   │   └── ExportPreset.cs
+│   │   │   ├── ExportPreset.cs
+│   │   │   └── StandardPresets.cs
 │   │   ├── Manifest/
 │   │   │   └── DataManifest.cs
 │   │   ├── Pipeline/
@@ -1045,7 +1046,9 @@ Market-Data-Collector/
 │   │   │   ├── AnalysisQualityReport.cs
 │   │   │   ├── ExportProfile.cs
 │   │   │   ├── ExportRequest.cs
-│   │   │   └── ExportResult.cs
+│   │   │   ├── ExportResult.cs
+│   │   │   ├── ExportValidator.cs
+│   │   │   └── ExportVerificationReport.cs
 │   │   ├── Interfaces/
 │   │   │   ├── ISourceRegistry.cs
 │   │   │   ├── IStorageCatalogService.cs
@@ -1495,6 +1498,7 @@ Market-Data-Collector/
 │   │   │   ├── DataQualityScoringServiceTests.cs
 │   │   │   ├── DataValidatorTests.cs
 │   │   │   ├── EventBufferTests.cs
+│   │   │   ├── ExportValidatorTests.cs
 │   │   │   ├── FilePermissionsServiceTests.cs
 │   │   │   ├── JsonlBatchWriteTests.cs
 │   │   │   ├── LifecyclePolicyEngineTests.cs
