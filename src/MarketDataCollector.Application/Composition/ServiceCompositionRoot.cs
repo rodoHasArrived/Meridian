@@ -1060,6 +1060,17 @@ public static class ServiceCompositionRoot
         this IServiceCollection services,
         CompositionOptions options)
     {
+        // [6.1] Register ICanonicalizationMetrics as a DI singleton so it can be injected,
+        // mocked in tests, and replaced without modifying global static state.
+        // The static CanonicalizationMetrics façade is also updated to delegate to this instance.
+        services.AddSingleton<ICanonicalizationMetrics>(sp =>
+        {
+            var instance = new DefaultCanonicalizationMetrics();
+            // Keep the static façade in sync so legacy call sites continue to work.
+            CanonicalizationMetrics.Current = instance;
+            return instance;
+        });
+
         // Mapping tables (loaded once at startup, frozen for hot-path reads)
         services.AddSingleton<ConditionCodeMapper>(sp =>
         {

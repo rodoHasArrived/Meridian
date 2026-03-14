@@ -1,6 +1,7 @@
 using System.Collections.Concurrent;
 using System.Text.Json;
 using MarketDataCollector.Application.Serialization;
+using MarketDataCollector.Contracts.Domain;
 using MarketDataCollector.Domain.Events;
 using MarketDataCollector.Infrastructure.Contracts;
 using Microsoft.Extensions.Logging;
@@ -25,7 +26,7 @@ public sealed class DeadLetterSink : IAsyncDisposable
     private readonly string _deadLetterDirectory;
     private readonly ILogger<DeadLetterSink> _logger;
     private readonly SemaphoreSlim _writeLock = new(1, 1);
-    private readonly ConcurrentDictionary<string, long> _rejectedCountsBySymbol = new(StringComparer.OrdinalIgnoreCase);
+    private readonly ConcurrentDictionary<SymbolId, long> _rejectedCountsBySymbol = new();
 
     private StreamWriter? _writer;
     private long _totalRejected;
@@ -50,7 +51,7 @@ public sealed class DeadLetterSink : IAsyncDisposable
 
     /// <summary>Gets rejection counts keyed by effective symbol.</summary>
     public IReadOnlyDictionary<string, long> RejectedCountsBySymbol =>
-        _rejectedCountsBySymbol.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+        _rejectedCountsBySymbol.ToDictionary(kvp => kvp.Key.Value, kvp => kvp.Value);
 
     /// <summary>
     /// Records a rejected event and its validation errors to the dead-letter file.
@@ -67,7 +68,7 @@ public sealed class DeadLetterSink : IAsyncDisposable
             return;
 
         Interlocked.Increment(ref _totalRejected);
-        _rejectedCountsBySymbol.AddOrUpdate(evt.EffectiveSymbol, 1, (_, count) => count + 1);
+        _rejectedCountsBySymbol.AddOrUpdate(new SymbolId(evt.EffectiveSymbol), 1, (_, count) => count + 1);
 
         var record = new DeadLetterRecord(
             RejectedAtUtc: DateTimeOffset.UtcNow,
