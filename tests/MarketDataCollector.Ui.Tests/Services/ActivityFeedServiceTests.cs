@@ -359,4 +359,61 @@ public sealed class ActivityFeedServiceTests
     {
         Enum.IsDefined(typeof(ActivityType), type).Should().BeTrue();
     }
+
+    // ── AddServerEventIfNew ──────────────────────────────────────────
+
+    [Fact]
+    public void AddServerEventIfNew_NewItem_ShouldReturnTrueAndAddToFeed()
+    {
+        var svc = CreateService();
+        var id = "server:new-" + Guid.NewGuid();
+        var item = new ActivityItem { Id = id, Title = "Server Error", Type = ActivityType.DataQualityIssue };
+
+        var added = svc.AddServerEventIfNew(item);
+
+        added.Should().BeTrue();
+        svc.Activities.Should().Contain(a => a.Id == id);
+    }
+
+    [Fact]
+    public void AddServerEventIfNew_DuplicateId_ShouldReturnFalseAndNotDuplicate()
+    {
+        var svc = CreateService();
+        var id = "server:dup-" + Guid.NewGuid();
+        var item1 = new ActivityItem { Id = id, Title = "First" };
+        var item2 = new ActivityItem { Id = id, Title = "Second" };
+
+        svc.AddServerEventIfNew(item1);
+        var addedDup = svc.AddServerEventIfNew(item2);
+
+        addedDup.Should().BeFalse();
+        svc.Activities.Count(a => a.Id == id).Should().Be(1);
+    }
+
+    [Fact]
+    public void AddServerEventIfNew_ItemWithoutId_ShouldAssignIdAndAdd()
+    {
+        var svc = CreateService();
+        var item = new ActivityItem { Title = "NoId-" + Guid.NewGuid() };
+
+        var added = svc.AddServerEventIfNew(item);
+
+        added.Should().BeTrue();
+        item.Id.Should().NotBeNullOrEmpty();
+    }
+
+    [Fact]
+    public void AddServerEventIfNew_ShouldRaiseActivityAddedEvent()
+    {
+        var svc = CreateService();
+        ActivityItem? received = null;
+        svc.ActivityAdded += (_, args) => received = args;
+        var id = "server:evt-" + Guid.NewGuid();
+        var item = new ActivityItem { Id = id, Title = "Event" };
+
+        svc.AddServerEventIfNew(item);
+
+        received.Should().NotBeNull();
+        received!.Id.Should().Be(id);
+    }
 }

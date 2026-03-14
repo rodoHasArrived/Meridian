@@ -1,12 +1,14 @@
 using System.Collections.ObjectModel;
 using System.Text.Json;
+using MarketDataCollector.Contracts.Api;
 using MarketDataCollector.Ui.Services.Collections;
 
 namespace MarketDataCollector.Ui.Services;
 
 /// <summary>
 /// Service for tracking and displaying recent activity in the application.
-/// Provides a timeline of events for user awareness.
+/// Provides a timeline of events for user awareness and polls the backend
+/// for server-side error events so the activity feed shows real backend logs.
 /// </summary>
 public sealed class ActivityFeedService
 {
@@ -17,6 +19,10 @@ public sealed class ActivityFeedService
     private readonly string _activityLogPath;
     private readonly BoundedObservableCollection<ActivityItem> _activities;
     private readonly JsonSerializerOptions _jsonOptions;
+
+    // Tracks IDs of server-side error events already added, to prevent duplicates
+    // across repeated FetchServerEventsAsync calls.
+    private readonly HashSet<string> _seenServerEventIds = new(StringComparer.OrdinalIgnoreCase);
 
     /// <summary>
     /// Gets the singleton instance of the ActivityFeedService.
@@ -219,6 +225,91 @@ public sealed class ActivityFeedService
             message,
             provider: provider
         );
+    }
+
+    /// <summary>
+    /// Adds a server-side event to the activity feed only if it has not been seen before.
+    /// Deduplication is based on the item's <see cref="ActivityItem.Id"/>.
+    /// Items without an ID are always added.
+    /// </summary>
+    /// <returns><c>true</c> if the item was new and added; <c>false</c> if it was a duplicate.</returns>
+    public bool AddServerEventIfNew(ActivityItem item)
+    {
+        if (string.IsNullOrEmpty(item.Id))
+        {
+            item.Id = Guid.NewGuid().ToString();
+        }
+
+        if (!_seenServerEventIds.Add(item.Id))
+        {
+            return false;
+        }
+
+        if (item.Timestamp == default)
+        {
+            item.Timestamp = DateTime.UtcNow;
+        }
+
+        _activities.Prepend(item);
+        ActivityAdded?.Invoke(this, item);
+
+        _ = SaveActivitiesAsync().ContinueWith(
+            t => System.Diagnostics.Trace.TraceError(
+                $"Failed to save activities: {t.Exception?.InnerException?.Message}"),
+            TaskContinuationOptions.OnlyOnFaulted | TaskContinuationOptions.ExecuteSynchronously);
+
+        return true;
+    }
+
+    /// <summary>
+    /// Polls the backend <c>/api/errors</c> endpoint and adds any new server-side error events
+    /// to the activity feed. Duplicate events (same ID) are silently skipped.
+    /// Errors from the HTTP call are silently swallowed so a missing backend never crashes the UI.
+    /// </summary>
+    public async Task FetchServerEventsAsync(CancellationToken ct = default)
+    {
+        try
+        {
+            var response = await ApiClientService.Instance.GetAsync<ErrorsResponseDto>(
+                UiApiRoutes.Errors,
+                ct).ConfigureAwait(false);
+
+            if (response?.Errors == null) return;
+
+            foreach (var entry in response.Errors)
+            {
+                if (ct.IsCancellationRequested) break;
+
+                var activityType = entry.Level?.ToLowerInvariant() switch
+                {
+                    "critical" => ActivityType.DataQualityIssue,
+                    "error"    => ActivityType.DataQualityIssue,
+                    "warning"  => ActivityType.DataQualityIssue,
+                    _          => ActivityType.ProviderConnected
+                };
+
+                var item = new ActivityItem
+                {
+                    Id = $"server:{entry.Id}",
+                    Type = activityType,
+                    Title = string.IsNullOrEmpty(entry.Source) ? "Server Event" : entry.Source,
+                    Description = entry.Message,
+                    Symbol = entry.Symbol,
+                    Provider = entry.Provider,
+                    Timestamp = entry.Timestamp.UtcDateTime
+                };
+
+                AddServerEventIfNew(item);
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            // Page navigated away — no action needed.
+        }
+        catch
+        {
+            // Backend unreachable or malformed response — silently ignore.
+        }
     }
 
     /// <summary>
