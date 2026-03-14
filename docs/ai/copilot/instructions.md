@@ -740,12 +740,14 @@ Market-Data-Collector/
 │   │   │   ├── StatusWriter.cs
 │   │   │   ├── SystemHealthChecker.cs
 │   │   │   ├── TickSizeValidator.cs
-│   │   │   └── TimestampMonotonicityChecker.cs
+│   │   │   ├── TimestampMonotonicityChecker.cs
+│   │   │   └── ValidationMetrics.cs
 │   │   ├── Pipeline/
 │   │   │   ├── DeadLetterSink.cs
 │   │   │   ├── DroppedEventAuditTrail.cs
 │   │   │   ├── DualPathEventPipeline.cs
 │   │   │   ├── EventPipeline.cs
+│   │   │   ├── FSharpEventValidator.cs
 │   │   │   ├── HotPathBatchSerializer.cs
 │   │   │   ├── IEventValidator.cs
 │   │   │   ├── IngestionJobService.cs
