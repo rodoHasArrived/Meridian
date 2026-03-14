@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using MarketDataCollector.Ui.Services;
+using WpfServices = MarketDataCollector.Wpf.Services;
 
 namespace MarketDataCollector.Wpf.Views;
 
@@ -14,6 +15,8 @@ namespace MarketDataCollector.Wpf.Views;
 /// </summary>
 public partial class AdvancedAnalyticsPage : Page
 {
+    private const string PageTag = "AdvancedAnalytics";
+
     private readonly AdvancedAnalyticsServiceBase _analyticsService;
     private GapAnalysisResult? _lastGapAnalysis;
 
@@ -29,7 +32,31 @@ public partial class AdvancedAnalyticsPage : Page
     private async void AdvancedAnalyticsPage_Loaded(object sender, RoutedEventArgs e)
     {
         await LoadSymbolsAsync();
+
+        // Restore GapSymbolCombo after population
+        var savedGapSymbol = WpfServices.PageStateService.Instance.GetFilter(PageTag, "gapSymbol");
+        if (savedGapSymbol != null) SelectComboItemByTag(GapSymbolCombo, savedGapSymbol);
+
+        // Restore CompareSymbolBox
+        var savedCompare = WpfServices.PageStateService.Instance.GetFilter(PageTag, "compareSymbol");
+        if (savedCompare != null) CompareSymbolBox.Text = savedCompare;
+
+        // Wire up change handlers
+        GapSymbolCombo.SelectionChanged += (_, _) =>
+            WpfServices.PageStateService.Instance.SetFilter(PageTag, "gapSymbol",
+                (GapSymbolCombo.SelectedItem as ComboBoxItem)?.Tag?.ToString());
+        CompareSymbolBox.TextChanged += (_, _) =>
+            WpfServices.PageStateService.Instance.SetFilter(PageTag, "compareSymbol",
+                string.IsNullOrWhiteSpace(CompareSymbolBox.Text) ? null : CompareSymbolBox.Text);
+
         await RefreshAllAsync();
+    }
+
+    private static void SelectComboItemByTag(ComboBox combo, string tag)
+    {
+        foreach (var item in combo.Items)
+            if (item is ComboBoxItem cbi && cbi.Tag?.ToString() == tag)
+            { combo.SelectedItem = item; return; }
     }
 
     private async void Refresh_Click(object sender, RoutedEventArgs e)

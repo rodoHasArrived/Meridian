@@ -23,6 +23,8 @@ namespace MarketDataCollector.Wpf.Views;
 /// </summary>
 public partial class LiveDataViewerPage : Page
 {
+    private const string PageTag = "LiveDataViewer";
+
     private readonly HttpClient _httpClient = new();
     private readonly ObservableCollection<LiveDataEventModel> _liveEvents = new();
     private readonly List<string> _availableSymbols = new();
@@ -31,7 +33,6 @@ public partial class LiveDataViewerPage : Page
     private CancellationTokenSource? _cts;
     private string _baseUrl = "http://localhost:8080";
     private string _selectedSymbol = string.Empty;
-    private bool _isPaused;
     private int _eventsThisSecond;
     private int _totalEvents;
     private DateTime _lastStatsUpdate = DateTime.UtcNow;
@@ -92,6 +93,7 @@ public partial class LiveDataViewerPage : Page
     {
         UpdateConnectionStatus();
         await LoadSymbolsAsync();
+        RestoreFilterState();
 
         // Start data refresh timer (every 500ms for live data)
         _refreshTimer = new Timer(500);
@@ -423,10 +425,18 @@ public partial class LiveDataViewerPage : Page
         if (SymbolComboBox.SelectedItem is string symbol)
         {
             _selectedSymbol = symbol;
+            WpfServices.PageStateService.Instance.SetFilter(PageTag, "symbol", symbol);
             ResetSessionStats();
             _liveEvents.Clear();
             NoDataText.Visibility = Visibility.Visible;
         }
+    }
+
+    private void RestoreFilterState()
+    {
+        var saved = WpfServices.PageStateService.Instance.GetFilter(PageTag, "symbol");
+        if (saved != null && _availableSymbols.Contains(saved))
+            SymbolComboBox.SelectedItem = saved;
     }
 
     private void ResetSessionStats()

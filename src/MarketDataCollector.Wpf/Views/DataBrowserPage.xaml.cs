@@ -10,22 +10,33 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using MarketDataCollector.Wpf.ViewModels;
+using WpfServices = MarketDataCollector.Wpf.Services;
 
 namespace MarketDataCollector.Wpf.Views;
 
 public partial class DataBrowserPage : Page
 {
+    private const string PageTag = "DataBrowser";
+
     private readonly DataBrowserViewModel _viewModel = new();
 
     public DataBrowserPage()
     {
         InitializeComponent();
         DataContext = _viewModel;
+        Unloaded += OnPageUnloaded;
     }
 
     private void OnPageLoaded(object sender, RoutedEventArgs e)
     {
+        _viewModel.PropertyChanged += OnViewModelPropertyChanged;
+        RestoreFilterState();
         _viewModel.RefreshResults();
+    }
+
+    private void OnPageUnloaded(object sender, RoutedEventArgs e)
+    {
+        _viewModel.PropertyChanged -= OnViewModelPropertyChanged;
     }
 
     private void ApplyFilters_Click(object sender, RoutedEventArgs e)
@@ -52,9 +63,50 @@ public partial class DataBrowserPage : Page
     {
         if (SortCombo.SelectedItem is ComboBoxItem item && item.Tag is string sortKey)
         {
+            WpfServices.PageStateService.Instance.SetFilter(PageTag, "sort", sortKey);
             _viewModel.SortField = sortKey;
             _viewModel.RefreshResults();
         }
+    }
+
+    private void RestoreFilterState()
+    {
+        var pss = WpfServices.PageStateService.Instance;
+        var sort = pss.GetFilter(PageTag, "sort");
+        if (sort != null) SelectComboItemByTag(SortCombo, sort);
+        var symbolFilter = pss.GetFilter(PageTag, "symbolFilter");
+        if (symbolFilter != null) _viewModel.SymbolFilter = symbolFilter;
+        var dataType = pss.GetFilter(PageTag, "dataType");
+        if (dataType != null) _viewModel.SelectedDataType = dataType;
+        var venue = pss.GetFilter(PageTag, "venue");
+        if (venue != null) _viewModel.SelectedVenue = venue;
+    }
+
+    private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        var pss = WpfServices.PageStateService.Instance;
+        switch (e.PropertyName)
+        {
+            case nameof(DataBrowserViewModel.SymbolFilter):
+                pss.SetFilter(PageTag, "symbolFilter",
+                    string.IsNullOrWhiteSpace(_viewModel.SymbolFilter) ? null : _viewModel.SymbolFilter);
+                break;
+            case nameof(DataBrowserViewModel.SelectedDataType):
+                pss.SetFilter(PageTag, "dataType",
+                    _viewModel.SelectedDataType == "All" ? null : _viewModel.SelectedDataType);
+                break;
+            case nameof(DataBrowserViewModel.SelectedVenue):
+                pss.SetFilter(PageTag, "venue",
+                    _viewModel.SelectedVenue == "All" ? null : _viewModel.SelectedVenue);
+                break;
+        }
+    }
+
+    private static void SelectComboItemByTag(ComboBox combo, string tag)
+    {
+        foreach (var item in combo.Items)
+            if (item is ComboBoxItem cbi && cbi.Tag?.ToString() == tag)
+            { combo.SelectedItem = item; return; }
     }
 
     private void ExportCsv_Click(object sender, RoutedEventArgs e)

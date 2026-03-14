@@ -10,6 +10,8 @@ namespace MarketDataCollector.Wpf.Views;
 
 public partial class StoragePage : Page
 {
+    private const string PageTag = "Storage";
+
     private readonly StorageAnalyticsService _analyticsService;
     private readonly SettingsConfigurationService _settingsConfigService;
 
@@ -23,6 +25,7 @@ public partial class StoragePage : Page
     private async void OnPageLoaded(object sender, RoutedEventArgs e)
     {
         await LoadStorageMetricsAsync();
+        RestoreFilterState();
         RefreshFileTreePreview();
     }
 
@@ -51,7 +54,30 @@ public partial class StoragePage : Page
     {
         // Guard against calls during initialization
         if (FileTreePreviewText == null) return;
+
+        var pss = WpfServices.PageStateService.Instance;
+        pss.SetFilter(PageTag, "namingConvention",
+            GetSelectedTag(NamingConventionCombo) is "BySymbol" or null ? null : GetSelectedTag(NamingConventionCombo));
+        pss.SetFilter(PageTag, "compression",
+            GetSelectedTag(CompressionCombo) is "gzip" or null ? null : GetSelectedTag(CompressionCombo));
+
         RefreshFileTreePreview();
+    }
+
+    private void RestoreFilterState()
+    {
+        var pss = WpfServices.PageStateService.Instance;
+        var naming = pss.GetFilter(PageTag, "namingConvention");
+        if (naming != null) SelectComboItemByTag(NamingConventionCombo, naming);
+        var compression = pss.GetFilter(PageTag, "compression");
+        if (compression != null) SelectComboItemByTag(CompressionCombo, compression);
+    }
+
+    private static void SelectComboItemByTag(ComboBox combo, string tag)
+    {
+        foreach (var item in combo.Items)
+            if (item is ComboBoxItem cbi && cbi.Tag?.ToString() == tag)
+            { combo.SelectedItem = item; return; }
     }
 
     private void RefreshFileTreePreview()

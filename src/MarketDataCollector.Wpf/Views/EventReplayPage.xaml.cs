@@ -5,22 +5,62 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using MarketDataCollector.Wpf.ViewModels;
+using WpfServices = MarketDataCollector.Wpf.Services;
 
 namespace MarketDataCollector.Wpf.Views;
 
 public partial class EventReplayPage : Page
 {
+    private const string PageTag = "EventReplay";
+
     private readonly EventReplayViewModel _viewModel = new();
 
     public EventReplayPage()
     {
         InitializeComponent();
         DataContext = _viewModel;
+        Unloaded += OnPageUnloaded;
     }
 
     private void OnPageLoaded(object sender, RoutedEventArgs e)
     {
+        _viewModel.PropertyChanged += OnViewModelPropertyChanged;
+        RestoreFilterState();
         _viewModel.Initialize();
+    }
+
+    private void OnPageUnloaded(object sender, RoutedEventArgs e)
+    {
+        _viewModel.PropertyChanged -= OnViewModelPropertyChanged;
+    }
+
+    private void RestoreFilterState()
+    {
+        var pss = WpfServices.PageStateService.Instance;
+        var filter = pss.GetFilter(PageTag, "filter");
+        if (filter != null) _viewModel.Filter = filter;
+        var speed = pss.GetFilter(PageTag, "speed");
+        if (speed != null) _viewModel.SelectedSpeed = speed;
+        var target = pss.GetFilter(PageTag, "target");
+        if (target != null) _viewModel.SelectedTarget = target;
+    }
+
+    private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        var pss = WpfServices.PageStateService.Instance;
+        switch (e.PropertyName)
+        {
+            case nameof(EventReplayViewModel.Filter):
+                pss.SetFilter(PageTag, "filter",
+                    string.IsNullOrWhiteSpace(_viewModel.Filter) ? null : _viewModel.Filter);
+                break;
+            case nameof(EventReplayViewModel.SelectedSpeed):
+                pss.SetFilter(PageTag, "speed", _viewModel.SelectedSpeed);
+                break;
+            case nameof(EventReplayViewModel.SelectedTarget):
+                pss.SetFilter(PageTag, "target", _viewModel.SelectedTarget);
+                break;
+        }
     }
 
     private void StartReplay_Click(object sender, RoutedEventArgs e)

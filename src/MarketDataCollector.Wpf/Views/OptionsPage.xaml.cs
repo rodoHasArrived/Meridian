@@ -15,6 +15,8 @@ namespace MarketDataCollector.Wpf.Views;
 /// </summary>
 public partial class OptionsPage : Page
 {
+    private const string PageTag = "Options";
+
     private readonly WpfServices.LoggingService _loggingService;
     private readonly UiApiClient? _apiClient;
     private readonly ObservableCollection<string> _underlyings = new();
@@ -43,6 +45,7 @@ public partial class OptionsPage : Page
 
     private async void OnPageLoaded(object sender, RoutedEventArgs e)
     {
+        RestoreFilterState();
         await LoadSummaryAsync();
         await LoadTrackedUnderlyingsAsync();
     }
@@ -119,6 +122,18 @@ public partial class OptionsPage : Page
             e.Handled = true;
             LoadExpirations_Click(sender, e);
         }
+    }
+
+    private void SymbolInput_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        WpfServices.PageStateService.Instance.SetFilter(PageTag, "symbolInput",
+            string.IsNullOrWhiteSpace(SymbolInput.Text) ? null : SymbolInput.Text);
+    }
+
+    private void RestoreFilterState()
+    {
+        var saved = WpfServices.PageStateService.Instance.GetFilter(PageTag, "symbolInput");
+        if (saved != null) SymbolInput.Text = saved;
     }
 
     private async void UnderlyingsList_SelectionChanged(object sender, SelectionChangedEventArgs e)

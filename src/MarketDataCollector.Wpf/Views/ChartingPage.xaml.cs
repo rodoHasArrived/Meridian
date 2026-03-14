@@ -6,11 +6,14 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using MarketDataCollector.Ui.Services;
 using MarketDataCollector.Wpf.ViewModels;
+using WpfServices = MarketDataCollector.Wpf.Services;
 
 namespace MarketDataCollector.Wpf.Views;
 
 public partial class ChartingPage : Page
 {
+    private const string PageTag = "Charting";
+
     private readonly ChartingPageViewModel _viewModel = new();
 
     public ChartingPage()
@@ -20,6 +23,7 @@ public partial class ChartingPage : Page
 
     private void OnPageLoaded(object sender, RoutedEventArgs e)
     {
+        RestoreFilterState();
         _viewModel.Initialize(
             SymbolCombo, CandlestickChart, VolumeChart, VolumeProfileChart,
             IndicatorValuesList, CurrentPriceText, PriceChangeText, PriceChangePercentText,
@@ -31,10 +35,28 @@ public partial class ChartingPage : Page
     }
 
     private void Symbol_SelectionChanged(object sender, SelectionChangedEventArgs e) => _viewModel.OnSymbolChanged();
-    private void Timeframe_SelectionChanged(object sender, SelectionChangedEventArgs e) => _viewModel.OnTimeframeChanged(TimeframeCombo);
     private void DatePicker_Changed(object? sender, EventArgs e) => _viewModel.OnDateChanged(FromDatePicker, ToDatePicker);
     private void Refresh_Click(object sender, RoutedEventArgs e) => _viewModel.RefreshChart();
     private void Indicator_Click(object sender, RoutedEventArgs e) => _viewModel.OnIndicatorToggled(sender);
+    private void Timeframe_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        WpfServices.PageStateService.Instance.SetFilter(PageTag, "timeframe",
+            (TimeframeCombo.SelectedItem as ComboBoxItem)?.Tag?.ToString());
+        _viewModel.OnTimeframeChanged(TimeframeCombo);
+    }
+
+    private void RestoreFilterState()
+    {
+        var tf = WpfServices.PageStateService.Instance.GetFilter(PageTag, "timeframe");
+        if (tf != null) SelectComboItemByTag(TimeframeCombo, tf);
+    }
+
+    private static void SelectComboItemByTag(ComboBox combo, string tag)
+    {
+        foreach (var item in combo.Items)
+            if (item is ComboBoxItem cbi && cbi.Tag?.ToString() == tag)
+            { combo.SelectedItem = item; return; }
+    }
 }
 
 public sealed class ChartingPageViewModel : BindableBase
