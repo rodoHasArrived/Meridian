@@ -4,6 +4,7 @@ using System.Threading.Channels;
 using System.Threading;
 using MarketDataCollector.Application.Monitoring;
 using MarketDataCollector.Application.Services;
+using MarketDataCollector.Application.Tracing;
 using MarketDataCollector.Core.Performance;
 using MarketDataCollector.Domain.Events;
 using MarketDataCollector.Infrastructure.Shared;
@@ -296,10 +297,16 @@ public sealed class EventPipeline : IMarketEventPublisher, IBackpressureSignal, 
     {
         if (_wal == null) return;
 
+        // [3.1] E2E trace propagation: wrap recovery in a dedicated activity so WAL replay
+        // appears as a structured span in distributed traces and can be correlated to the
+        // startup sequence.
+        using var recoveryActivity = MarketDataTracing.StartWalRecoveryActivity();
+
         _logger.LogInformation("Initializing WAL for pipeline recovery");
         await _wal.InitializeAsync(ct).ConfigureAwait(false);
 
         var recovered = 0;
+        var skipped = 0;
         long maxRecoveredSequence = 0;
 
         await foreach (var walRecord in _wal.GetUncommittedRecordsAsync(ct).ConfigureAwait(false))
@@ -311,6 +318,16 @@ public sealed class EventPipeline : IMarketEventPublisher, IBackpressureSignal, 
                 var evt = walRecord.DeserializePayload<MarketEvent>();
                 if (evt != null)
                 {
+                    // [3.4] Idempotent writes: skip events already persisted to the sink.
+                    // This guards against duplicates when the sink was partially flushed
+                    // before the crash and the dedup ledger survived on disk.
+                    if (_dedupLedger != null && await _dedupLedger.IsDuplicateAsync(evt, ct).ConfigureAwait(false))
+                    {
+                        skipped++;
+                        maxRecoveredSequence = Math.Max(maxRecoveredSequence, walRecord.Sequence);
+                        continue;
+                    }
+
                     await _sink.AppendAsync(evt, ct).ConfigureAwait(false);
                     maxRecoveredSequence = Math.Max(maxRecoveredSequence, walRecord.Sequence);
                     recovered++;
@@ -322,17 +339,40 @@ public sealed class EventPipeline : IMarketEventPublisher, IBackpressureSignal, 
             }
         }
 
-        if (recovered > 0)
+        recoveryActivity?.SetTag("pipeline.recovered_count", recovered);
+        recoveryActivity?.SetTag("pipeline.skipped_dedup_count", skipped);
+
+        if (recovered > 0 || skipped > 0)
         {
-            await _sink.FlushAsync(ct).ConfigureAwait(false);
-            await _wal.CommitAsync(maxRecoveredSequence, ct).ConfigureAwait(false);
-            await _wal.TruncateAsync(maxRecoveredSequence, ct).ConfigureAwait(false);
+            if (recovered > 0)
+                await _sink.FlushAsync(ct).ConfigureAwait(false);
+
+            // [1.2] WAL-sink transaction: update local sequence tracking BEFORE committing the
+            // WAL.  If CommitAsync fails (e.g. transient disk error), _lastCommittedWalSequence
+            // still reflects the successfully flushed extent so the next startup does not
+            // re-replay already-persisted events.  The commit itself is best-effort: a failure
+            // here is non-fatal because sink data is already durable.
+            _lastCommittedWalSequence = maxRecoveredSequence;
+
+            try
+            {
+                await _wal.CommitAsync(maxRecoveredSequence, ct).ConfigureAwait(false);
+                await _wal.TruncateAsync(maxRecoveredSequence, ct).ConfigureAwait(false);
+            }
+            catch (Exception ex) when (ex is not OperationCanceledException)
+            {
+                _logger.LogWarning(ex,
+                    "WAL commit/truncate failed after successful sink flush during recovery (sequence {Seq}). " +
+                    "Sink data is safe; WAL records may be replayed again on the next startup but will be " +
+                    "deduplicated if a dedup ledger is configured",
+                    maxRecoveredSequence);
+            }
 
             Interlocked.Add(ref _recoveredCount, recovered);
 
             _logger.LogInformation(
-                "Recovered {RecoveredCount} uncommitted events from WAL through sequence {MaxSequence}",
-                recovered, maxRecoveredSequence);
+                "Recovered {RecoveredCount} uncommitted events from WAL through sequence {MaxSequence} ({SkippedCount} skipped as duplicates)",
+                recovered, maxRecoveredSequence, skipped);
         }
         else
         {
@@ -601,6 +641,10 @@ public sealed class EventPipeline : IMarketEventPublisher, IBackpressureSignal, 
                         batchBuffer.Add(evt);
                     }
 
+                    // [3.1] E2E trace propagation: start a per-batch activity so each consume
+                    // cycle appears as a structured span in distributed traces.
+                    using var batchActivity = MarketDataTracing.StartBatchConsumeActivity(batchBuffer.Count);
+
                     long maxWalSequence = _lastCommittedWalSequence;
 
                     // Write each event: dedup → validate → WAL (if enabled) → sink
@@ -642,12 +686,30 @@ public sealed class EventPipeline : IMarketEventPublisher, IBackpressureSignal, 
                         await _sink.AppendAsync(evt, _cts.Token).ConfigureAwait(false);
                     }
 
-                    // Commit the WAL batch after all events are written to the sink
+                    // [1.2] WAL-sink transaction: flush the sink first, then update local sequence
+                    // tracking BEFORE committing the WAL.  Ordering matters:
+                    //   1. Sink.FlushAsync  – makes events durable in the sink.
+                    //   2. _lastCommittedWalSequence update – prevents re-flushing the same batch
+                    //      on the next iteration if CommitAsync fails.
+                    //   3. Wal.CommitAsync  – best-effort cleanup; failure here is non-fatal
+                    //      because the sink already has the data and the dedup ledger will filter
+                    //      any re-played records on a future startup.
                     if (_wal != null && maxWalSequence > _lastCommittedWalSequence)
                     {
                         await _sink.FlushAsync(_cts.Token).ConfigureAwait(false);
-                        await _wal.CommitAsync(maxWalSequence, _cts.Token).ConfigureAwait(false);
                         _lastCommittedWalSequence = maxWalSequence;
+                        try
+                        {
+                            await _wal.CommitAsync(maxWalSequence, _cts.Token).ConfigureAwait(false);
+                        }
+                        catch (Exception ex) when (ex is not OperationCanceledException)
+                        {
+                            _logger.LogWarning(ex,
+                                "WAL commit failed after successful sink flush for sequence {Seq}. " +
+                                "Events are safe in the sink; WAL records may be replayed on next startup " +
+                                "but will be deduplicated if a dedup ledger is configured",
+                                maxWalSequence);
+                        }
                     }
 
                     Interlocked.Add(ref _consumedCount, batchBuffer.Count);

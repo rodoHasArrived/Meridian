@@ -1,6 +1,7 @@
 using System.Collections.Concurrent;
 using System.Text.Json;
 using MarketDataCollector.Application.Serialization;
+using MarketDataCollector.Contracts.Domain;
 using MarketDataCollector.Domain.Events;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -16,7 +17,7 @@ public sealed class DroppedEventAuditTrail : IAsyncDisposable
     private readonly string _auditPath;
     private readonly ILogger<DroppedEventAuditTrail> _logger;
     private readonly SemaphoreSlim _writeLock = new(1, 1);
-    private readonly ConcurrentDictionary<string, long> _dropCountsBySymbol = new(StringComparer.OrdinalIgnoreCase);
+    private readonly ConcurrentDictionary<SymbolId, long> _dropCountsBySymbol = new();
     private StreamWriter? _writer;
     private long _totalDropped;
     private bool _disposed;
@@ -33,9 +34,9 @@ public sealed class DroppedEventAuditTrail : IAsyncDisposable
     /// <summary>Gets the total number of dropped events recorded.</summary>
     public long TotalDropped => Interlocked.Read(ref _totalDropped);
 
-    /// <summary>Gets drop counts per symbol.</summary>
+    /// <summary>Gets drop counts keyed by symbol.</summary>
     public IReadOnlyDictionary<string, long> DropCountsBySymbol =>
-        _dropCountsBySymbol.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+        _dropCountsBySymbol.ToDictionary(kvp => kvp.Key.Value, kvp => kvp.Value);
 
     /// <summary>
     /// Records a dropped event to the audit trail.
@@ -48,7 +49,7 @@ public sealed class DroppedEventAuditTrail : IAsyncDisposable
         if (_disposed) return;
 
         Interlocked.Increment(ref _totalDropped);
-        _dropCountsBySymbol.AddOrUpdate(evt.EffectiveSymbol, 1, (_, count) => count + 1);
+        _dropCountsBySymbol.AddOrUpdate(new SymbolId(evt.EffectiveSymbol), 1, (_, count) => count + 1);
 
         var record = new
         {

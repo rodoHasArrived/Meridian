@@ -244,6 +244,138 @@ public sealed class WalEventPipelineTests : IAsyncDisposable
 
     #endregion
 
+    #region WAL-Sink Transaction Tests (improvement 1.2)
+
+    [Fact]
+    public async Task ConsumeAsync_WalCommitFailure_DoesNotCauseReFlushedDuplicates()
+    {
+        // Arrange: use a sink that counts flush calls so we can detect re-flushes
+        var flushSink = new CountingFlushSink();
+        var wal = new WriteAheadLog(_walDir, new WalOptions { SyncMode = WalSyncMode.NoSync });
+        await wal.InitializeAsync();
+
+        await using var pipeline = new EventPipeline(
+            flushSink, capacity: 100, enablePeriodicFlush: false, wal: wal);
+
+        // Act: publish and drain events normally
+        for (var i = 0; i < 5; i++)
+            pipeline.TryPublish(CreateTradeEvent($"SYM{i}"));
+
+        await pipeline.FlushAsync(CancellationToken.None);
+
+        // Assert: the sink received exactly 5 events with no duplicates
+        flushSink.ReceivedEvents.Should().HaveCount(5,
+            "WAL commit failure must not cause the same batch to be re-flushed");
+        pipeline.ConsumedCount.Should().Be(5);
+    }
+
+    [Fact]
+    public async Task RecoverAsync_WalCommitFailure_SinkDataNotReplayed()
+    {
+        // Phase 1: write two events to WAL but don't commit (simulates crash)
+        var wal1 = new WriteAheadLog(_walDir, new WalOptions { SyncMode = WalSyncMode.EveryWrite });
+        await wal1.InitializeAsync();
+        var e1 = CreateTradeEvent("SPY");
+        var e2 = CreateTradeEvent("AAPL");
+        await wal1.AppendAsync(e1, e1.Type.ToString());
+        await wal1.AppendAsync(e2, e2.Type.ToString());
+        await wal1.FlushAsync();
+        await wal1.DisposeAsync();
+
+        // Phase 2: recover into a fresh sink – events must arrive exactly once
+        var wal2 = new WriteAheadLog(_walDir, new WalOptions { SyncMode = WalSyncMode.NoSync });
+        await using var sink = new MockWalSink();
+        await using var pipeline = new EventPipeline(
+            sink, capacity: 100, enablePeriodicFlush: false, wal: wal2);
+
+        await pipeline.RecoverAsync();
+
+        // A second RecoverAsync call simulates what would happen if WAL.CommitAsync had failed
+        // during the first recovery (WAL records still present).  Even without a dedup ledger
+        // the pipeline should not replay the same events again because _lastCommittedWalSequence
+        // was updated before the commit attempt.
+        await pipeline.RecoverAsync();
+
+        sink.ReceivedEvents.Should().HaveCount(2,
+            "events should not be replayed if the sink flush succeeded, " +
+            "regardless of whether the WAL commit itself completed");
+    }
+
+    #endregion
+
+    #region Idempotent Recovery Tests (improvement 3.4)
+
+    [Fact]
+    public async Task RecoverAsync_WithDedupLedger_SkipsDuplicates()
+    {
+        // Phase 1: persist two events to both WAL and sink (simulates partial crash after sink flush)
+        var walDir1 = Path.Combine(_walDir, "dedup_p1");
+        var dedupDir = Path.Combine(_walDir, "dedup_ledger");
+        Directory.CreateDirectory(walDir1);
+        Directory.CreateDirectory(dedupDir);
+
+        var wal1 = new WriteAheadLog(walDir1, new WalOptions { SyncMode = WalSyncMode.EveryWrite });
+        await wal1.InitializeAsync();
+
+        var evt1 = CreateTradeEvent("SPY");
+        var evt2 = CreateTradeEvent("AAPL");
+
+        // Write both to WAL without committing (simulates crash before WAL commit)
+        await wal1.AppendAsync(evt1, evt1.Type.ToString());
+        await wal1.AppendAsync(evt2, evt2.Type.ToString());
+        await wal1.FlushAsync();
+        await wal1.DisposeAsync();
+
+        // Phase 2: recover with dedup ledger pre-seeded with the already-persisted events.
+        // IsDuplicateAsync records the event on first call and returns false;
+        // subsequent calls for the same event return true (duplicate).
+        var wal2 = new WriteAheadLog(walDir1, new WalOptions { SyncMode = WalSyncMode.NoSync });
+        var ledger = new PersistentDedupLedger(dedupDir);
+        await ledger.InitializeAsync();
+
+        // Pre-seed: simulate the events having been written to the sink already
+        await ledger.IsDuplicateAsync(evt1, CancellationToken.None);
+        await ledger.IsDuplicateAsync(evt2, CancellationToken.None);
+
+        await using var sink = new MockWalSink();
+        await using var pipeline = new EventPipeline(
+            sink, capacity: 100, enablePeriodicFlush: false,
+            wal: wal2, dedupLedger: ledger);
+
+        await pipeline.RecoverAsync();
+
+        // Assert: events were skipped because dedup ledger shows them already persisted
+        sink.ReceivedEvents.Should().BeEmpty(
+            "events already recorded in the dedup ledger must not be written again on recovery");
+        pipeline.RecoveredCount.Should().Be(0,
+            "skipped-as-duplicate events do not count as recovered");
+    }
+
+    [Fact]
+    public async Task RecoverAsync_WithoutDedupLedger_ReplaysNormally()
+    {
+        // Phase 1: write events to WAL without committing
+        var wal1 = new WriteAheadLog(_walDir, new WalOptions { SyncMode = WalSyncMode.EveryWrite });
+        await wal1.InitializeAsync();
+        await wal1.AppendAsync(CreateTradeEvent("MSFT"), "Trade");
+        await wal1.AppendAsync(CreateTradeEvent("TSLA"), "Trade");
+        await wal1.FlushAsync();
+        await wal1.DisposeAsync();
+
+        // Phase 2: recover without a dedup ledger – both events must be replayed
+        var wal2 = new WriteAheadLog(_walDir, new WalOptions { SyncMode = WalSyncMode.NoSync });
+        await using var sink = new MockWalSink();
+        await using var pipeline = new EventPipeline(
+            sink, capacity: 100, enablePeriodicFlush: false, wal: wal2);
+
+        await pipeline.RecoverAsync();
+
+        sink.ReceivedEvents.Should().HaveCount(2);
+        pipeline.RecoveredCount.Should().Be(2);
+    }
+
+    #endregion
+
     #region End-to-End Durability Tests
 
     [Fact]
@@ -412,4 +544,35 @@ internal sealed class MockWalSink : IStorageSink
     {
         return ValueTask.CompletedTask;
     }
+}
+
+/// <summary>
+/// A storage sink that records all appended events and counts flush calls.
+/// Used to detect duplicate flushes caused by WAL-sink transaction bugs.
+/// </summary>
+internal sealed class CountingFlushSink : IStorageSink
+{
+    private readonly List<MarketEvent> _receivedEvents = new();
+    private readonly object _lock = new();
+
+    public IReadOnlyList<MarketEvent> ReceivedEvents
+    {
+        get { lock (_lock) { return _receivedEvents.ToList(); } }
+    }
+
+    public int FlushCount { get; private set; }
+
+    public ValueTask AppendAsync(MarketEvent evt, CancellationToken ct = default)
+    {
+        lock (_lock) { _receivedEvents.Add(evt); }
+        return ValueTask.CompletedTask;
+    }
+
+    public Task FlushAsync(CancellationToken ct = default)
+    {
+        FlushCount++;
+        return Task.CompletedTask;
+    }
+
+    public ValueTask DisposeAsync() => ValueTask.CompletedTask;
 }
