@@ -41,7 +41,8 @@ public sealed record AppConfig(
     DataSourcesConfig? DataSources = null,
     DerivativesConfig? Derivatives = null,
     ProviderRegistryConfig? ProviderRegistry = null,
-    CanonicalizationConfig? Canonicalization = null
+    CanonicalizationConfig? Canonicalization = null,
+    ValidationPipelineConfig? Validation = null
 );
 
 /// <summary>
@@ -117,4 +118,24 @@ public sealed record StorageConfig(
 /// </summary>
 public sealed record SourceRegistryConfig(
     string? PersistencePath = null
+);
+
+/// <summary>
+/// Configuration for the F# validation pipeline stage.
+/// When enabled, every incoming <see cref="MarketDataCollector.Domain.Events.MarketEvent"/>
+/// is validated against the F# Railway-Oriented validators before it is persisted.
+/// Events that fail validation are written to the dead-letter sink instead of primary storage.
+/// </summary>
+/// <param name="Enabled">
+/// When <see langword="true"/>, the F# validation stage is activated.
+/// Defaults to <see langword="false"/> to preserve backward-compatible behaviour.
+/// </param>
+/// <param name="UseRealTimeMode">
+/// When <see langword="true"/>, stricter real-time configuration is applied:
+/// timestamp max-age drops from 5 minutes to 5 seconds, and sequence numbers
+/// are checked for continuity. Disable for historical backfill or replay scenarios.
+/// </param>
+public sealed record ValidationPipelineConfig(
+    bool Enabled = false,
+    bool UseRealTimeMode = false
 );

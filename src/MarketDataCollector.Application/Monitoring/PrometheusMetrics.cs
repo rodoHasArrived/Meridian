@@ -322,6 +322,16 @@ public static class PrometheusMetrics
         "mdc_canonicalization_version_active",
         "Currently active canonicalization mapping version");
 
+    // Validation pipeline metrics
+    private static readonly Counter ValidationRejectedTotal = Prometheus.Metrics.CreateCounter(
+        "mdc_validation_rejected_total",
+        "Total number of events rejected by the F# validation stage, labelled by error type",
+        new CounterConfiguration { LabelNames = new[] { "error_type" } });
+
+    private static readonly Gauge ValidationPassRatePercent = Prometheus.Metrics.CreateGauge(
+        "mdc_validation_pass_rate_percent",
+        "Percentage of validated events that passed (0–100). 100 when validation is disabled or no events seen.");
+
     // Symbol-level metrics (with labels)
     private static readonly Counter TradesBySymbol = Prometheus.Metrics.CreateCounter(
         "mdc_trades_by_symbol_total",
@@ -415,6 +425,22 @@ public static class PrometheusMetrics
         // Update canonicalization metrics
         var canonSnapshot = Canonicalization.CanonicalizationMetrics.GetSnapshot();
         CanonicalizationVersionActive.Set(canonSnapshot.ActiveVersion);
+
+        // Update validation pipeline metrics
+        UpdateValidationMetrics(ValidationMetrics.GetSnapshot());
+    }
+
+    /// <summary>
+    /// Updates Prometheus validation metrics from a <see cref="ValidationMetricsSnapshot"/>.
+    /// </summary>
+    public static void UpdateValidationMetrics(ValidationMetricsSnapshot snapshot)
+    {
+        ValidationPassRatePercent.Set(snapshot.PassRatePercent);
+
+        foreach (var kvp in snapshot.RejectedByErrorType)
+        {
+            ValidationRejectedTotal.WithLabels(kvp.Key).IncTo(kvp.Value);
+        }
     }
 
     /// <summary>
