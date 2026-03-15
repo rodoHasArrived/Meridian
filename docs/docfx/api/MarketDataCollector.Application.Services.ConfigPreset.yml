@@ -1,0 +1,184 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Services.ConfigPreset
+  commentId: T:MarketDataCollector.Application.Services.ConfigPreset
+  id: ConfigPreset
+  parent: MarketDataCollector.Application.Services
+  children:
+  - MarketDataCollector.Application.Services.ConfigPreset.Crypto
+  - MarketDataCollector.Application.Services.ConfigPreset.DayTrader
+  - MarketDataCollector.Application.Services.ConfigPreset.OptionsTrader
+  - MarketDataCollector.Application.Services.ConfigPreset.Researcher
+  langs:
+  - csharp
+  - vb
+  name: ConfigPreset
+  nameWithType: ConfigPreset
+  fullName: MarketDataCollector.Application.Services.ConfigPreset
+  type: Enum
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/AutoConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConfigPreset
+    path: ../../src/MarketDataCollector.Application/Services/AutoConfigurationService.cs
+    startLine: 1016
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Available configuration presets for different user roles.
+  example: []
+  syntax:
+    content: 'public enum ConfigPreset : byte'
+    content.vb: Public Enum ConfigPreset As Byte
+- uid: MarketDataCollector.Application.Services.ConfigPreset.Researcher
+  commentId: F:MarketDataCollector.Application.Services.ConfigPreset.Researcher
+  id: Researcher
+  parent: MarketDataCollector.Application.Services.ConfigPreset
+  langs:
+  - csharp
+  - vb
+  name: Researcher
+  nameWithType: ConfigPreset.Researcher
+  fullName: MarketDataCollector.Application.Services.ConfigPreset.Researcher
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/AutoConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Researcher
+    path: ../../src/MarketDataCollector.Application/Services/AutoConfigurationService.cs
+    startLine: 1019
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Historical analysis, daily bars, Parquet export.
+  example: []
+  syntax:
+    content: Researcher = 0
+    return:
+      type: MarketDataCollector.Application.Services.ConfigPreset
+- uid: MarketDataCollector.Application.Services.ConfigPreset.DayTrader
+  commentId: F:MarketDataCollector.Application.Services.ConfigPreset.DayTrader
+  id: DayTrader
+  parent: MarketDataCollector.Application.Services.ConfigPreset
+  langs:
+  - csharp
+  - vb
+  name: DayTrader
+  nameWithType: ConfigPreset.DayTrader
+  fullName: MarketDataCollector.Application.Services.ConfigPreset.DayTrader
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/AutoConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DayTrader
+    path: ../../src/MarketDataCollector.Application/Services/AutoConfigurationService.cs
+    startLine: 1021
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Real-time streaming, L2 depth, low-latency storage.
+  example: []
+  syntax:
+    content: DayTrader = 1
+    return:
+      type: MarketDataCollector.Application.Services.ConfigPreset
+- uid: MarketDataCollector.Application.Services.ConfigPreset.OptionsTrader
+  commentId: F:MarketDataCollector.Application.Services.ConfigPreset.OptionsTrader
+  id: OptionsTrader
+  parent: MarketDataCollector.Application.Services.ConfigPreset
+  langs:
+  - csharp
+  - vb
+  name: OptionsTrader
+  nameWithType: ConfigPreset.OptionsTrader
+  fullName: MarketDataCollector.Application.Services.ConfigPreset.OptionsTrader
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/AutoConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OptionsTrader
+    path: ../../src/MarketDataCollector.Application/Services/AutoConfigurationService.cs
+    startLine: 1023
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Options chain + Greeks, IB streaming, derivatives enabled.
+  example: []
+  syntax:
+    content: OptionsTrader = 2
+    return:
+      type: MarketDataCollector.Application.Services.ConfigPreset
+- uid: MarketDataCollector.Application.Services.ConfigPreset.Crypto
+  commentId: F:MarketDataCollector.Application.Services.ConfigPreset.Crypto
+  id: Crypto
+  parent: MarketDataCollector.Application.Services.ConfigPreset
+  langs:
+  - csharp
+  - vb
+  name: Crypto
+  nameWithType: ConfigPreset.Crypto
+  fullName: MarketDataCollector.Application.Services.ConfigPreset.Crypto
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/AutoConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Crypto
+    path: ../../src/MarketDataCollector.Application/Services/AutoConfigurationService.cs
+    startLine: 1025
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: 24/7 crypto collection, Alpaca crypto feed, extended retention.
+  example: []
+  syntax:
+    content: Crypto = 3
+    return:
+      type: MarketDataCollector.Application.Services.ConfigPreset
+references:
+- uid: MarketDataCollector.Application.Services
+  commentId: N:MarketDataCollector.Application.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Services
+  nameWithType: MarketDataCollector.Application.Services
+  fullName: MarketDataCollector.Application.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+- uid: MarketDataCollector.Application.Services.ConfigPreset
+  commentId: T:MarketDataCollector.Application.Services.ConfigPreset
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.ConfigPreset.html
+  name: ConfigPreset
+  nameWithType: ConfigPreset
+  fullName: MarketDataCollector.Application.Services.ConfigPreset

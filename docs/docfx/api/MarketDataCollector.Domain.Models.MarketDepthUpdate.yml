@@ -1,0 +1,924 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate
+  commentId: T:MarketDataCollector.Domain.Models.MarketDepthUpdate
+  id: MarketDepthUpdate
+  parent: MarketDataCollector.Domain.Models
+  children:
+  - MarketDataCollector.Domain.Models.MarketDepthUpdate.#ctor(System.DateTimeOffset,System.String,System.UInt16,MarketDataCollector.Contracts.Domain.Enums.DepthOperation,MarketDataCollector.Contracts.Domain.Enums.OrderBookSide,System.Decimal,System.Decimal,System.String,System.Int64,System.String,System.String)
+  - MarketDataCollector.Domain.Models.MarketDepthUpdate.MarketMaker
+  - MarketDataCollector.Domain.Models.MarketDepthUpdate.Operation
+  - MarketDataCollector.Domain.Models.MarketDepthUpdate.Position
+  - MarketDataCollector.Domain.Models.MarketDepthUpdate.Price
+  - MarketDataCollector.Domain.Models.MarketDepthUpdate.SequenceNumber
+  - MarketDataCollector.Domain.Models.MarketDepthUpdate.Side
+  - MarketDataCollector.Domain.Models.MarketDepthUpdate.Size
+  - MarketDataCollector.Domain.Models.MarketDepthUpdate.StreamId
+  - MarketDataCollector.Domain.Models.MarketDepthUpdate.Symbol
+  - MarketDataCollector.Domain.Models.MarketDepthUpdate.Timestamp
+  - MarketDataCollector.Domain.Models.MarketDepthUpdate.Venue
+  langs:
+  - csharp
+  - vb
+  name: MarketDepthUpdate
+  nameWithType: MarketDepthUpdate
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MarketDepthUpdate
+    path: ../../src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+    startLine: 10
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  summary: >-
+    Normalized L2 depth delta update (adapter input into MarketDepthCollector).
+
+    Operation values align with IB: 0=Insert, 1=Update, 2=Delete.
+
+    Side values align with our OrderBookSide.
+
+    Uses decimal for financial precision.
+  example: []
+  syntax:
+    content: 'public sealed record MarketDepthUpdate : IEquatable<MarketDepthUpdate>'
+    content.vb: Public NotInheritable Class MarketDepthUpdate Implements IEquatable(Of MarketDepthUpdate)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Domain.Models.MarketDepthUpdate}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.#ctor(System.DateTimeOffset,System.String,System.UInt16,MarketDataCollector.Contracts.Domain.Enums.DepthOperation,MarketDataCollector.Contracts.Domain.Enums.OrderBookSide,System.Decimal,System.Decimal,System.String,System.Int64,System.String,System.String)
+  commentId: M:MarketDataCollector.Domain.Models.MarketDepthUpdate.#ctor(System.DateTimeOffset,System.String,System.UInt16,MarketDataCollector.Contracts.Domain.Enums.DepthOperation,MarketDataCollector.Contracts.Domain.Enums.OrderBookSide,System.Decimal,System.Decimal,System.String,System.Int64,System.String,System.String)
+  id: '#ctor(System.DateTimeOffset,System.String,System.UInt16,MarketDataCollector.Contracts.Domain.Enums.DepthOperation,MarketDataCollector.Contracts.Domain.Enums.OrderBookSide,System.Decimal,System.Decimal,System.String,System.Int64,System.String,System.String)'
+  parent: MarketDataCollector.Domain.Models.MarketDepthUpdate
+  langs:
+  - csharp
+  - vb
+  name: MarketDepthUpdate(DateTimeOffset, string, ushort, DepthOperation, OrderBookSide, decimal, decimal, string?, long, string?, string?)
+  nameWithType: MarketDepthUpdate.MarketDepthUpdate(DateTimeOffset, string, ushort, DepthOperation, OrderBookSide, decimal, decimal, string?, long, string?, string?)
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.MarketDepthUpdate(System.DateTimeOffset, string, ushort, MarketDataCollector.Contracts.Domain.Enums.DepthOperation, MarketDataCollector.Contracts.Domain.Enums.OrderBookSide, decimal, decimal, string?, long, string?, string?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+    startLine: 10
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  summary: >-
+    Normalized L2 depth delta update (adapter input into MarketDepthCollector).
+
+    Operation values align with IB: 0=Insert, 1=Update, 2=Delete.
+
+    Side values align with our OrderBookSide.
+
+    Uses decimal for financial precision.
+  example: []
+  syntax:
+    content: public MarketDepthUpdate(DateTimeOffset Timestamp, string Symbol, ushort Position, DepthOperation Operation, OrderBookSide Side, decimal Price, decimal Size, string? MarketMaker = null, long SequenceNumber = 0, string? StreamId = null, string? Venue = null)
+    parameters:
+    - id: Timestamp
+      type: System.DateTimeOffset
+    - id: Symbol
+      type: System.String
+    - id: Position
+      type: System.UInt16
+    - id: Operation
+      type: MarketDataCollector.Contracts.Domain.Enums.DepthOperation
+    - id: Side
+      type: MarketDataCollector.Contracts.Domain.Enums.OrderBookSide
+    - id: Price
+      type: System.Decimal
+    - id: Size
+      type: System.Decimal
+    - id: MarketMaker
+      type: System.String
+    - id: SequenceNumber
+      type: System.Int64
+    - id: StreamId
+      type: System.String
+    - id: Venue
+      type: System.String
+    content.vb: Public Sub New(Timestamp As DateTimeOffset, Symbol As String, Position As UShort, Operation As DepthOperation, Side As OrderBookSide, Price As Decimal, Size As Decimal, MarketMaker As String = Nothing, SequenceNumber As Long = 0, StreamId As String = Nothing, Venue As String = Nothing)
+  overload: MarketDataCollector.Domain.Models.MarketDepthUpdate.#ctor*
+  nameWithType.vb: MarketDepthUpdate.New(DateTimeOffset, String, UShort, DepthOperation, OrderBookSide, Decimal, Decimal, String, Long, String, String)
+  fullName.vb: MarketDataCollector.Domain.Models.MarketDepthUpdate.New(System.DateTimeOffset, String, UShort, MarketDataCollector.Contracts.Domain.Enums.DepthOperation, MarketDataCollector.Contracts.Domain.Enums.OrderBookSide, Decimal, Decimal, String, Long, String, String)
+  name.vb: New(DateTimeOffset, String, UShort, DepthOperation, OrderBookSide, Decimal, Decimal, String, Long, String, String)
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.Timestamp
+  commentId: P:MarketDataCollector.Domain.Models.MarketDepthUpdate.Timestamp
+  id: Timestamp
+  parent: MarketDataCollector.Domain.Models.MarketDepthUpdate
+  langs:
+  - csharp
+  - vb
+  name: Timestamp
+  nameWithType: MarketDepthUpdate.Timestamp
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.Timestamp
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Timestamp
+    path: ../../src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+    startLine: 11
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  syntax:
+    content: public DateTimeOffset Timestamp { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property Timestamp As DateTimeOffset
+  overload: MarketDataCollector.Domain.Models.MarketDepthUpdate.Timestamp*
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.Symbol
+  commentId: P:MarketDataCollector.Domain.Models.MarketDepthUpdate.Symbol
+  id: Symbol
+  parent: MarketDataCollector.Domain.Models.MarketDepthUpdate
+  langs:
+  - csharp
+  - vb
+  name: Symbol
+  nameWithType: MarketDepthUpdate.Symbol
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.Symbol
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Symbol
+    path: ../../src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+    startLine: 12
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  syntax:
+    content: public string Symbol { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Symbol As String
+  overload: MarketDataCollector.Domain.Models.MarketDepthUpdate.Symbol*
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.Position
+  commentId: P:MarketDataCollector.Domain.Models.MarketDepthUpdate.Position
+  id: Position
+  parent: MarketDataCollector.Domain.Models.MarketDepthUpdate
+  langs:
+  - csharp
+  - vb
+  name: Position
+  nameWithType: MarketDepthUpdate.Position
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.Position
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Position
+    path: ../../src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+    startLine: 13
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  syntax:
+    content: public ushort Position { get; init; }
+    parameters: []
+    return:
+      type: System.UInt16
+    content.vb: Public Property Position As UShort
+  overload: MarketDataCollector.Domain.Models.MarketDepthUpdate.Position*
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.Operation
+  commentId: P:MarketDataCollector.Domain.Models.MarketDepthUpdate.Operation
+  id: Operation
+  parent: MarketDataCollector.Domain.Models.MarketDepthUpdate
+  langs:
+  - csharp
+  - vb
+  name: Operation
+  nameWithType: MarketDepthUpdate.Operation
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.Operation
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Operation
+    path: ../../src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+    startLine: 14
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  syntax:
+    content: public DepthOperation Operation { get; init; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Contracts.Domain.Enums.DepthOperation
+    content.vb: Public Property Operation As DepthOperation
+  overload: MarketDataCollector.Domain.Models.MarketDepthUpdate.Operation*
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.Side
+  commentId: P:MarketDataCollector.Domain.Models.MarketDepthUpdate.Side
+  id: Side
+  parent: MarketDataCollector.Domain.Models.MarketDepthUpdate
+  langs:
+  - csharp
+  - vb
+  name: Side
+  nameWithType: MarketDepthUpdate.Side
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.Side
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Side
+    path: ../../src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+    startLine: 15
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  syntax:
+    content: public OrderBookSide Side { get; init; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Contracts.Domain.Enums.OrderBookSide
+    content.vb: Public Property Side As OrderBookSide
+  overload: MarketDataCollector.Domain.Models.MarketDepthUpdate.Side*
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.Price
+  commentId: P:MarketDataCollector.Domain.Models.MarketDepthUpdate.Price
+  id: Price
+  parent: MarketDataCollector.Domain.Models.MarketDepthUpdate
+  langs:
+  - csharp
+  - vb
+  name: Price
+  nameWithType: MarketDepthUpdate.Price
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.Price
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Price
+    path: ../../src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+    startLine: 16
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  syntax:
+    content: public decimal Price { get; init; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: Public Property Price As Decimal
+  overload: MarketDataCollector.Domain.Models.MarketDepthUpdate.Price*
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.Size
+  commentId: P:MarketDataCollector.Domain.Models.MarketDepthUpdate.Size
+  id: Size
+  parent: MarketDataCollector.Domain.Models.MarketDepthUpdate
+  langs:
+  - csharp
+  - vb
+  name: Size
+  nameWithType: MarketDepthUpdate.Size
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.Size
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Size
+    path: ../../src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+    startLine: 17
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  syntax:
+    content: public decimal Size { get; init; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: Public Property Size As Decimal
+  overload: MarketDataCollector.Domain.Models.MarketDepthUpdate.Size*
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.MarketMaker
+  commentId: P:MarketDataCollector.Domain.Models.MarketDepthUpdate.MarketMaker
+  id: MarketMaker
+  parent: MarketDataCollector.Domain.Models.MarketDepthUpdate
+  langs:
+  - csharp
+  - vb
+  name: MarketMaker
+  nameWithType: MarketDepthUpdate.MarketMaker
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.MarketMaker
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MarketMaker
+    path: ../../src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+    startLine: 18
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  syntax:
+    content: public string? MarketMaker { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property MarketMaker As String
+  overload: MarketDataCollector.Domain.Models.MarketDepthUpdate.MarketMaker*
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.SequenceNumber
+  commentId: P:MarketDataCollector.Domain.Models.MarketDepthUpdate.SequenceNumber
+  id: SequenceNumber
+  parent: MarketDataCollector.Domain.Models.MarketDepthUpdate
+  langs:
+  - csharp
+  - vb
+  name: SequenceNumber
+  nameWithType: MarketDepthUpdate.SequenceNumber
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.SequenceNumber
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SequenceNumber
+    path: ../../src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+    startLine: 19
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  syntax:
+    content: public long SequenceNumber { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property SequenceNumber As Long
+  overload: MarketDataCollector.Domain.Models.MarketDepthUpdate.SequenceNumber*
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.StreamId
+  commentId: P:MarketDataCollector.Domain.Models.MarketDepthUpdate.StreamId
+  id: StreamId
+  parent: MarketDataCollector.Domain.Models.MarketDepthUpdate
+  langs:
+  - csharp
+  - vb
+  name: StreamId
+  nameWithType: MarketDepthUpdate.StreamId
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.StreamId
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StreamId
+    path: ../../src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+    startLine: 20
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  syntax:
+    content: public string? StreamId { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property StreamId As String
+  overload: MarketDataCollector.Domain.Models.MarketDepthUpdate.StreamId*
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.Venue
+  commentId: P:MarketDataCollector.Domain.Models.MarketDepthUpdate.Venue
+  id: Venue
+  parent: MarketDataCollector.Domain.Models.MarketDepthUpdate
+  langs:
+  - csharp
+  - vb
+  name: Venue
+  nameWithType: MarketDepthUpdate.Venue
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.Venue
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Venue
+    path: ../../src/MarketDataCollector.Domain/Models/MarketDepthUpdate.cs
+    startLine: 21
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  syntax:
+    content: public string? Venue { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Venue As String
+  overload: MarketDataCollector.Domain.Models.MarketDepthUpdate.Venue*
+references:
+- uid: MarketDataCollector.Domain.Models
+  commentId: N:MarketDataCollector.Domain.Models
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Models
+  nameWithType: MarketDataCollector.Domain.Models
+  fullName: MarketDataCollector.Domain.Models
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Models
+    name: Models
+    href: MarketDataCollector.Domain.Models.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Models
+    name: Models
+    href: MarketDataCollector.Domain.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Domain.Models.MarketDepthUpdate}
+  commentId: T:System.IEquatable{MarketDataCollector.Domain.Models.MarketDepthUpdate}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<MarketDepthUpdate>
+  nameWithType: IEquatable<MarketDepthUpdate>
+  fullName: System.IEquatable<MarketDataCollector.Domain.Models.MarketDepthUpdate>
+  nameWithType.vb: IEquatable(Of MarketDepthUpdate)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Domain.Models.MarketDepthUpdate)
+  name.vb: IEquatable(Of MarketDepthUpdate)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Domain.Models.MarketDepthUpdate
+    name: MarketDepthUpdate
+    href: MarketDataCollector.Domain.Models.MarketDepthUpdate.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Domain.Models.MarketDepthUpdate
+    name: MarketDepthUpdate
+    href: MarketDataCollector.Domain.Models.MarketDepthUpdate.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.#ctor*
+  commentId: Overload:MarketDataCollector.Domain.Models.MarketDepthUpdate.#ctor
+  href: MarketDataCollector.Domain.Models.MarketDepthUpdate.html#MarketDataCollector_Domain_Models_MarketDepthUpdate__ctor_System_DateTimeOffset_System_String_System_UInt16_MarketDataCollector_Contracts_Domain_Enums_DepthOperation_MarketDataCollector_Contracts_Domain_Enums_OrderBookSide_System_Decimal_System_Decimal_System_String_System_Int64_System_String_System_String_
+  name: MarketDepthUpdate
+  nameWithType: MarketDepthUpdate.MarketDepthUpdate
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.MarketDepthUpdate
+  nameWithType.vb: MarketDepthUpdate.New
+  fullName.vb: MarketDataCollector.Domain.Models.MarketDepthUpdate.New
+  name.vb: New
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.UInt16
+  commentId: T:System.UInt16
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint16
+  name: ushort
+  nameWithType: ushort
+  fullName: ushort
+  nameWithType.vb: UShort
+  fullName.vb: UShort
+  name.vb: UShort
+- uid: MarketDataCollector.Contracts.Domain.Enums.DepthOperation
+  commentId: T:MarketDataCollector.Contracts.Domain.Enums.DepthOperation
+  parent: MarketDataCollector.Contracts.Domain.Enums
+  href: MarketDataCollector.Contracts.Domain.Enums.DepthOperation.html
+  name: DepthOperation
+  nameWithType: DepthOperation
+  fullName: MarketDataCollector.Contracts.Domain.Enums.DepthOperation
+- uid: MarketDataCollector.Contracts.Domain.Enums.OrderBookSide
+  commentId: T:MarketDataCollector.Contracts.Domain.Enums.OrderBookSide
+  parent: MarketDataCollector.Contracts.Domain.Enums
+  href: MarketDataCollector.Contracts.Domain.Enums.OrderBookSide.html
+  name: OrderBookSide
+  nameWithType: OrderBookSide
+  fullName: MarketDataCollector.Contracts.Domain.Enums.OrderBookSide
+- uid: System.Decimal
+  commentId: T:System.Decimal
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.decimal
+  name: decimal
+  nameWithType: decimal
+  fullName: decimal
+  nameWithType.vb: Decimal
+  fullName.vb: Decimal
+  name.vb: Decimal
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Contracts.Domain.Enums
+  commentId: N:MarketDataCollector.Contracts.Domain.Enums
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Enums
+  nameWithType: MarketDataCollector.Contracts.Domain.Enums
+  fullName: MarketDataCollector.Contracts.Domain.Enums
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Enums
+    name: Enums
+    href: MarketDataCollector.Contracts.Domain.Enums.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Enums
+    name: Enums
+    href: MarketDataCollector.Contracts.Domain.Enums.html
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.Timestamp*
+  commentId: Overload:MarketDataCollector.Domain.Models.MarketDepthUpdate.Timestamp
+  href: MarketDataCollector.Domain.Models.MarketDepthUpdate.html#MarketDataCollector_Domain_Models_MarketDepthUpdate_Timestamp
+  name: Timestamp
+  nameWithType: MarketDepthUpdate.Timestamp
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.Timestamp
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.Symbol*
+  commentId: Overload:MarketDataCollector.Domain.Models.MarketDepthUpdate.Symbol
+  href: MarketDataCollector.Domain.Models.MarketDepthUpdate.html#MarketDataCollector_Domain_Models_MarketDepthUpdate_Symbol
+  name: Symbol
+  nameWithType: MarketDepthUpdate.Symbol
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.Symbol
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.Position*
+  commentId: Overload:MarketDataCollector.Domain.Models.MarketDepthUpdate.Position
+  href: MarketDataCollector.Domain.Models.MarketDepthUpdate.html#MarketDataCollector_Domain_Models_MarketDepthUpdate_Position
+  name: Position
+  nameWithType: MarketDepthUpdate.Position
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.Position
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.Operation*
+  commentId: Overload:MarketDataCollector.Domain.Models.MarketDepthUpdate.Operation
+  href: MarketDataCollector.Domain.Models.MarketDepthUpdate.html#MarketDataCollector_Domain_Models_MarketDepthUpdate_Operation
+  name: Operation
+  nameWithType: MarketDepthUpdate.Operation
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.Operation
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.Side*
+  commentId: Overload:MarketDataCollector.Domain.Models.MarketDepthUpdate.Side
+  href: MarketDataCollector.Domain.Models.MarketDepthUpdate.html#MarketDataCollector_Domain_Models_MarketDepthUpdate_Side
+  name: Side
+  nameWithType: MarketDepthUpdate.Side
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.Side
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.Price*
+  commentId: Overload:MarketDataCollector.Domain.Models.MarketDepthUpdate.Price
+  href: MarketDataCollector.Domain.Models.MarketDepthUpdate.html#MarketDataCollector_Domain_Models_MarketDepthUpdate_Price
+  name: Price
+  nameWithType: MarketDepthUpdate.Price
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.Price
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.Size*
+  commentId: Overload:MarketDataCollector.Domain.Models.MarketDepthUpdate.Size
+  href: MarketDataCollector.Domain.Models.MarketDepthUpdate.html#MarketDataCollector_Domain_Models_MarketDepthUpdate_Size
+  name: Size
+  nameWithType: MarketDepthUpdate.Size
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.Size
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.MarketMaker*
+  commentId: Overload:MarketDataCollector.Domain.Models.MarketDepthUpdate.MarketMaker
+  href: MarketDataCollector.Domain.Models.MarketDepthUpdate.html#MarketDataCollector_Domain_Models_MarketDepthUpdate_MarketMaker
+  name: MarketMaker
+  nameWithType: MarketDepthUpdate.MarketMaker
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.MarketMaker
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.SequenceNumber*
+  commentId: Overload:MarketDataCollector.Domain.Models.MarketDepthUpdate.SequenceNumber
+  href: MarketDataCollector.Domain.Models.MarketDepthUpdate.html#MarketDataCollector_Domain_Models_MarketDepthUpdate_SequenceNumber
+  name: SequenceNumber
+  nameWithType: MarketDepthUpdate.SequenceNumber
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.SequenceNumber
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.StreamId*
+  commentId: Overload:MarketDataCollector.Domain.Models.MarketDepthUpdate.StreamId
+  href: MarketDataCollector.Domain.Models.MarketDepthUpdate.html#MarketDataCollector_Domain_Models_MarketDepthUpdate_StreamId
+  name: StreamId
+  nameWithType: MarketDepthUpdate.StreamId
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.StreamId
+- uid: MarketDataCollector.Domain.Models.MarketDepthUpdate.Venue*
+  commentId: Overload:MarketDataCollector.Domain.Models.MarketDepthUpdate.Venue
+  href: MarketDataCollector.Domain.Models.MarketDepthUpdate.html#MarketDataCollector_Domain_Models_MarketDepthUpdate_Venue
+  name: Venue
+  nameWithType: MarketDepthUpdate.Venue
+  fullName: MarketDataCollector.Domain.Models.MarketDepthUpdate.Venue

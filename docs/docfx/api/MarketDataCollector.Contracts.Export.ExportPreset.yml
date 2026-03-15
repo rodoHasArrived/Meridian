@@ -1,0 +1,1603 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Contracts.Export.ExportPreset
+  commentId: T:MarketDataCollector.Contracts.Export.ExportPreset
+  id: ExportPreset
+  parent: MarketDataCollector.Contracts.Export
+  children:
+  - MarketDataCollector.Contracts.Export.ExportPreset.Columns
+  - MarketDataCollector.Contracts.Export.ExportPreset.Compression
+  - MarketDataCollector.Contracts.Export.ExportPreset.CreatedAt
+  - MarketDataCollector.Contracts.Export.ExportPreset.Description
+  - MarketDataCollector.Contracts.Export.ExportPreset.Destination
+  - MarketDataCollector.Contracts.Export.ExportPreset.FilenamePattern
+  - MarketDataCollector.Contracts.Export.ExportPreset.Filters
+  - MarketDataCollector.Contracts.Export.ExportPreset.Format
+  - MarketDataCollector.Contracts.Export.ExportPreset.Id
+  - MarketDataCollector.Contracts.Export.ExportPreset.IncludeDataDictionary
+  - MarketDataCollector.Contracts.Export.ExportPreset.IncludeLoaderScript
+  - MarketDataCollector.Contracts.Export.ExportPreset.IncludeManifest
+  - MarketDataCollector.Contracts.Export.ExportPreset.IsBuiltIn
+  - MarketDataCollector.Contracts.Export.ExportPreset.LastUsedAt
+  - MarketDataCollector.Contracts.Export.ExportPreset.Name
+  - MarketDataCollector.Contracts.Export.ExportPreset.NotifyOnComplete
+  - MarketDataCollector.Contracts.Export.ExportPreset.OverwriteExisting
+  - MarketDataCollector.Contracts.Export.ExportPreset.PostExportHook
+  - MarketDataCollector.Contracts.Export.ExportPreset.Schedule
+  - MarketDataCollector.Contracts.Export.ExportPreset.ScheduleEnabled
+  - MarketDataCollector.Contracts.Export.ExportPreset.UpdatedAt
+  - MarketDataCollector.Contracts.Export.ExportPreset.UseCount
+  - MarketDataCollector.Contracts.Export.ExportPreset.Validation
+  langs:
+  - csharp
+  - vb
+  name: ExportPreset
+  nameWithType: ExportPreset
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ExportPreset
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 8
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: >-
+    Represents a saveable export preset configuration.
+
+    Implements Feature Refinement #69 - Archive Export Presets.
+  example: []
+  syntax:
+    content: public sealed class ExportPreset
+    content.vb: Public NotInheritable Class ExportPreset
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Id
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.Id
+  id: Id
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: ExportPreset.Id
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Id
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Id
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 13
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: Unique identifier for this preset.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("id")]
+
+      public string Id { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("id")>
+
+      Public Property Id As String
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.Id*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: id
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Name
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.Name
+  id: Name
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: ExportPreset.Name
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Name
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Name
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 19
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: Human-readable name for the preset.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("name")]
+
+      public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("name")>
+
+      Public Property Name As String
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.Name*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: name
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Description
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.Description
+  id: Description
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: ExportPreset.Description
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Description
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Description
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 25
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: Description of what this preset does.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("description")]
+
+      public string? Description { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("description")>
+
+      Public Property Description As String
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.Description*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: description
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Format
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.Format
+  id: Format
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: Format
+  nameWithType: ExportPreset.Format
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Format
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Format
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 31
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: Export format (Parquet, CSV, JSONL, Lean, XLSX, SQL).
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("format")]
+
+      public ExportPresetFormat Format { get; set; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Contracts.Export.ExportPresetFormat
+    content.vb: >-
+      <JsonPropertyName("format")>
+
+      Public Property Format As ExportPresetFormat
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.Format*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: format
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Compression
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.Compression
+  id: Compression
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: Compression
+  nameWithType: ExportPreset.Compression
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Compression
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Compression
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 37
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: Compression type.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("compression")]
+
+      public ExportPresetCompression Compression { get; set; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Contracts.Export.ExportPresetCompression
+    content.vb: >-
+      <JsonPropertyName("compression")>
+
+      Public Property Compression As ExportPresetCompression
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.Compression*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: compression
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Destination
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.Destination
+  id: Destination
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: Destination
+  nameWithType: ExportPreset.Destination
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Destination
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Destination
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 44
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: >-
+    Destination path template with variable support.
+
+    Variables: {year}, {month}, {day}, {symbol}, {date}, {format}
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("destination")]
+
+      public string Destination { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("destination")>
+
+      Public Property Destination As String
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.Destination*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: destination
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.FilenamePattern
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.FilenamePattern
+  id: FilenamePattern
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: FilenamePattern
+  nameWithType: ExportPreset.FilenamePattern
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.FilenamePattern
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FilenamePattern
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 51
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: >-
+    Filename pattern template.
+
+    Variables: {symbol}, {date}, {type}, {format}
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("filenamePattern")]
+
+      public string FilenamePattern { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("filenamePattern")>
+
+      Public Property FilenamePattern As String
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.FilenamePattern*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: filenamePattern
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Filters
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.Filters
+  id: Filters
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: Filters
+  nameWithType: ExportPreset.Filters
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Filters
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Filters
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 57
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: Filter settings for the export.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("filters")]
+
+      public ExportPresetFilters Filters { get; set; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Contracts.Export.ExportPresetFilters
+    content.vb: >-
+      <JsonPropertyName("filters")>
+
+      Public Property Filters As ExportPresetFilters
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.Filters*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: filters
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Schedule
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.Schedule
+  id: Schedule
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: Schedule
+  nameWithType: ExportPreset.Schedule
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Schedule
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Schedule
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 64
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: >-
+    Optional cron schedule for automated exports.
+
+    Format: "0 6 * * *" (minute hour day month weekday)
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("schedule")]
+
+      public string? Schedule { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("schedule")>
+
+      Public Property Schedule As String
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.Schedule*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: schedule
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.ScheduleEnabled
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.ScheduleEnabled
+  id: ScheduleEnabled
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: ScheduleEnabled
+  nameWithType: ExportPreset.ScheduleEnabled
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.ScheduleEnabled
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ScheduleEnabled
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 70
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: Whether the scheduled export is enabled.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("scheduleEnabled")]
+
+      public bool ScheduleEnabled { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("scheduleEnabled")>
+
+      Public Property ScheduleEnabled As Boolean
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.ScheduleEnabled*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: scheduleEnabled
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.PostExportHook
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.PostExportHook
+  id: PostExportHook
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: PostExportHook
+  nameWithType: ExportPreset.PostExportHook
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.PostExportHook
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PostExportHook
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 77
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: >-
+    Post-export hook command to run after export completes.
+
+    Variables: {date}, {destination}, {symbol}, {files}
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("postExportHook")]
+
+      public string? PostExportHook { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("postExportHook")>
+
+      Public Property PostExportHook As String
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.PostExportHook*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: postExportHook
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.NotifyOnComplete
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.NotifyOnComplete
+  id: NotifyOnComplete
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: NotifyOnComplete
+  nameWithType: ExportPreset.NotifyOnComplete
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.NotifyOnComplete
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: NotifyOnComplete
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 83
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: Whether to send a notification when export completes.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("notifyOnComplete")]
+
+      public bool NotifyOnComplete { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("notifyOnComplete")>
+
+      Public Property NotifyOnComplete As Boolean
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.NotifyOnComplete*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: notifyOnComplete
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.IncludeDataDictionary
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.IncludeDataDictionary
+  id: IncludeDataDictionary
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: IncludeDataDictionary
+  nameWithType: ExportPreset.IncludeDataDictionary
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.IncludeDataDictionary
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncludeDataDictionary
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 89
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: Whether to include a data dictionary with the export.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("includeDataDictionary")]
+
+      public bool IncludeDataDictionary { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("includeDataDictionary")>
+
+      Public Property IncludeDataDictionary As Boolean
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.IncludeDataDictionary*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: includeDataDictionary
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.IncludeLoaderScript
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.IncludeLoaderScript
+  id: IncludeLoaderScript
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: IncludeLoaderScript
+  nameWithType: ExportPreset.IncludeLoaderScript
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.IncludeLoaderScript
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncludeLoaderScript
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 95
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: Whether to include loader scripts for the target format.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("includeLoaderScript")]
+
+      public bool IncludeLoaderScript { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("includeLoaderScript")>
+
+      Public Property IncludeLoaderScript As Boolean
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.IncludeLoaderScript*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: includeLoaderScript
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.OverwriteExisting
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.OverwriteExisting
+  id: OverwriteExisting
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: OverwriteExisting
+  nameWithType: ExportPreset.OverwriteExisting
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.OverwriteExisting
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OverwriteExisting
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 101
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: Whether to overwrite existing files.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("overwriteExisting")]
+
+      public bool OverwriteExisting { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("overwriteExisting")>
+
+      Public Property OverwriteExisting As Boolean
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.OverwriteExisting*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: overwriteExisting
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.CreatedAt
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.CreatedAt
+  id: CreatedAt
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: CreatedAt
+  nameWithType: ExportPreset.CreatedAt
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.CreatedAt
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreatedAt
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 107
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: When this preset was created.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("createdAt")]
+
+      public DateTime CreatedAt { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: >-
+      <JsonPropertyName("createdAt")>
+
+      Public Property CreatedAt As Date
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.CreatedAt*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: createdAt
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.UpdatedAt
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.UpdatedAt
+  id: UpdatedAt
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: UpdatedAt
+  nameWithType: ExportPreset.UpdatedAt
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.UpdatedAt
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UpdatedAt
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 113
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: When this preset was last modified.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("updatedAt")]
+
+      public DateTime UpdatedAt { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: >-
+      <JsonPropertyName("updatedAt")>
+
+      Public Property UpdatedAt As Date
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.UpdatedAt*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: updatedAt
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.LastUsedAt
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.LastUsedAt
+  id: LastUsedAt
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: LastUsedAt
+  nameWithType: ExportPreset.LastUsedAt
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.LastUsedAt
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LastUsedAt
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 119
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: When this preset was last used for an export.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("lastUsedAt")]
+
+      public DateTime? LastUsedAt { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: >-
+      <JsonPropertyName("lastUsedAt")>
+
+      Public Property LastUsedAt As Date?
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.LastUsedAt*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: lastUsedAt
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.UseCount
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.UseCount
+  id: UseCount
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: UseCount
+  nameWithType: ExportPreset.UseCount
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.UseCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UseCount
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 125
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: Number of times this preset has been used.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("useCount")]
+
+      public int UseCount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonPropertyName("useCount")>
+
+      Public Property UseCount As Integer
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.UseCount*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: useCount
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.IsBuiltIn
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.IsBuiltIn
+  id: IsBuiltIn
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: IsBuiltIn
+  nameWithType: ExportPreset.IsBuiltIn
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.IsBuiltIn
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsBuiltIn
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 131
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: Whether this is a built-in preset (read-only).
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("isBuiltIn")]
+
+      public bool IsBuiltIn { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("isBuiltIn")>
+
+      Public Property IsBuiltIn As Boolean
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.IsBuiltIn*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: isBuiltIn
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Columns
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.Columns
+  id: Columns
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: Columns
+  nameWithType: ExportPreset.Columns
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Columns
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Columns
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 138
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: >-
+    Specific columns to include in the export.
+
+    Empty array means all available columns.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("columns")]
+
+      public string[] Columns { get; set; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: >-
+      <JsonPropertyName("columns")>
+
+      Public Property Columns As String()
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.Columns*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: columns
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.IncludeManifest
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.IncludeManifest
+  id: IncludeManifest
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: IncludeManifest
+  nameWithType: ExportPreset.IncludeManifest
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.IncludeManifest
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncludeManifest
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 145
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: >-
+    Whether to include a manifest file with the export.
+
+    The manifest documents what data was exported, quality metrics, and file checksums.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("includeManifest")]
+
+      public bool IncludeManifest { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("includeManifest")>
+
+      Public Property IncludeManifest As Boolean
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.IncludeManifest*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: includeManifest
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Validation
+  commentId: P:MarketDataCollector.Contracts.Export.ExportPreset.Validation
+  id: Validation
+  parent: MarketDataCollector.Contracts.Export.ExportPreset
+  langs:
+  - csharp
+  - vb
+  name: Validation
+  nameWithType: ExportPreset.Validation
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Validation
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Validation
+    path: ../../src/MarketDataCollector.Contracts/Export/ExportPreset.cs
+    startLine: 152
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Export
+  summary: >-
+    Pre-export validation rules. When set, the export validates these conditions
+
+    before writing any files and aborts if any error-level issues are found.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("validation")]
+
+      public ExportValidationRules? Validation { get; set; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Contracts.Export.ExportValidationRules
+    content.vb: >-
+      <JsonPropertyName("validation")>
+
+      Public Property Validation As ExportValidationRules
+  overload: MarketDataCollector.Contracts.Export.ExportPreset.Validation*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: validation
+references:
+- uid: MarketDataCollector.Contracts.Export
+  commentId: N:MarketDataCollector.Contracts.Export
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Export
+  nameWithType: MarketDataCollector.Contracts.Export
+  fullName: MarketDataCollector.Contracts.Export
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Export
+    name: Export
+    href: MarketDataCollector.Contracts.Export.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Export
+    name: Export
+    href: MarketDataCollector.Contracts.Export.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Id*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.Id
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_Id
+  name: Id
+  nameWithType: ExportPreset.Id
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Id
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Name*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.Name
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_Name
+  name: Name
+  nameWithType: ExportPreset.Name
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Name
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Description*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.Description
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_Description
+  name: Description
+  nameWithType: ExportPreset.Description
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Description
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Format*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.Format
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_Format
+  name: Format
+  nameWithType: ExportPreset.Format
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Format
+- uid: MarketDataCollector.Contracts.Export.ExportPresetFormat
+  commentId: T:MarketDataCollector.Contracts.Export.ExportPresetFormat
+  parent: MarketDataCollector.Contracts.Export
+  href: MarketDataCollector.Contracts.Export.ExportPresetFormat.html
+  name: ExportPresetFormat
+  nameWithType: ExportPresetFormat
+  fullName: MarketDataCollector.Contracts.Export.ExportPresetFormat
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Compression*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.Compression
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_Compression
+  name: Compression
+  nameWithType: ExportPreset.Compression
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Compression
+- uid: MarketDataCollector.Contracts.Export.ExportPresetCompression
+  commentId: T:MarketDataCollector.Contracts.Export.ExportPresetCompression
+  parent: MarketDataCollector.Contracts.Export
+  href: MarketDataCollector.Contracts.Export.ExportPresetCompression.html
+  name: ExportPresetCompression
+  nameWithType: ExportPresetCompression
+  fullName: MarketDataCollector.Contracts.Export.ExportPresetCompression
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Destination*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.Destination
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_Destination
+  name: Destination
+  nameWithType: ExportPreset.Destination
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Destination
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.FilenamePattern*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.FilenamePattern
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_FilenamePattern
+  name: FilenamePattern
+  nameWithType: ExportPreset.FilenamePattern
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.FilenamePattern
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Filters*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.Filters
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_Filters
+  name: Filters
+  nameWithType: ExportPreset.Filters
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Filters
+- uid: MarketDataCollector.Contracts.Export.ExportPresetFilters
+  commentId: T:MarketDataCollector.Contracts.Export.ExportPresetFilters
+  parent: MarketDataCollector.Contracts.Export
+  href: MarketDataCollector.Contracts.Export.ExportPresetFilters.html
+  name: ExportPresetFilters
+  nameWithType: ExportPresetFilters
+  fullName: MarketDataCollector.Contracts.Export.ExportPresetFilters
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Schedule*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.Schedule
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_Schedule
+  name: Schedule
+  nameWithType: ExportPreset.Schedule
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Schedule
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.ScheduleEnabled*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.ScheduleEnabled
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_ScheduleEnabled
+  name: ScheduleEnabled
+  nameWithType: ExportPreset.ScheduleEnabled
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.ScheduleEnabled
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.PostExportHook*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.PostExportHook
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_PostExportHook
+  name: PostExportHook
+  nameWithType: ExportPreset.PostExportHook
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.PostExportHook
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.NotifyOnComplete*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.NotifyOnComplete
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_NotifyOnComplete
+  name: NotifyOnComplete
+  nameWithType: ExportPreset.NotifyOnComplete
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.NotifyOnComplete
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.IncludeDataDictionary*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.IncludeDataDictionary
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_IncludeDataDictionary
+  name: IncludeDataDictionary
+  nameWithType: ExportPreset.IncludeDataDictionary
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.IncludeDataDictionary
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.IncludeLoaderScript*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.IncludeLoaderScript
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_IncludeLoaderScript
+  name: IncludeLoaderScript
+  nameWithType: ExportPreset.IncludeLoaderScript
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.IncludeLoaderScript
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.OverwriteExisting*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.OverwriteExisting
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_OverwriteExisting
+  name: OverwriteExisting
+  nameWithType: ExportPreset.OverwriteExisting
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.OverwriteExisting
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.CreatedAt*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.CreatedAt
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_CreatedAt
+  name: CreatedAt
+  nameWithType: ExportPreset.CreatedAt
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.CreatedAt
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.UpdatedAt*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.UpdatedAt
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_UpdatedAt
+  name: UpdatedAt
+  nameWithType: ExportPreset.UpdatedAt
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.UpdatedAt
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.LastUsedAt*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.LastUsedAt
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_LastUsedAt
+  name: LastUsedAt
+  nameWithType: ExportPreset.LastUsedAt
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.LastUsedAt
+- uid: System.Nullable{System.DateTime}
+  commentId: T:System.Nullable{System.DateTime}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime?
+  nameWithType: DateTime?
+  fullName: System.DateTime?
+  nameWithType.vb: Date?
+  fullName.vb: Date?
+  name.vb: Date?
+  spec.csharp:
+  - uid: System.DateTime
+    name: DateTime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTime
+    name: Date
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.UseCount*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.UseCount
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_UseCount
+  name: UseCount
+  nameWithType: ExportPreset.UseCount
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.UseCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.IsBuiltIn*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.IsBuiltIn
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_IsBuiltIn
+  name: IsBuiltIn
+  nameWithType: ExportPreset.IsBuiltIn
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.IsBuiltIn
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Columns*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.Columns
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_Columns
+  name: Columns
+  nameWithType: ExportPreset.Columns
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Columns
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.IncludeManifest*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.IncludeManifest
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_IncludeManifest
+  name: IncludeManifest
+  nameWithType: ExportPreset.IncludeManifest
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.IncludeManifest
+- uid: MarketDataCollector.Contracts.Export.ExportPreset.Validation*
+  commentId: Overload:MarketDataCollector.Contracts.Export.ExportPreset.Validation
+  href: MarketDataCollector.Contracts.Export.ExportPreset.html#MarketDataCollector_Contracts_Export_ExportPreset_Validation
+  name: Validation
+  nameWithType: ExportPreset.Validation
+  fullName: MarketDataCollector.Contracts.Export.ExportPreset.Validation
+- uid: MarketDataCollector.Contracts.Export.ExportValidationRules
+  commentId: T:MarketDataCollector.Contracts.Export.ExportValidationRules
+  parent: MarketDataCollector.Contracts.Export
+  href: MarketDataCollector.Contracts.Export.ExportValidationRules.html
+  name: ExportValidationRules
+  nameWithType: ExportValidationRules
+  fullName: MarketDataCollector.Contracts.Export.ExportValidationRules

@@ -1,0 +1,3266 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Services.ConfigurationService
+  commentId: T:MarketDataCollector.Application.Services.ConfigurationService
+  id: ConfigurationService
+  parent: MarketDataCollector.Application.Services
+  children:
+  - MarketDataCollector.Application.Services.ConfigurationService.#ctor(Serilog.ILogger,MarketDataCollector.Application.Services.ConfigurationWizard,MarketDataCollector.Application.Services.AutoConfigurationService,MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver)
+  - MarketDataCollector.Application.Services.ConfigurationService.ApplyEnvironmentOverrides(MarketDataCollector.Application.Config.AppConfig)
+  - MarketDataCollector.Application.Services.ConfigurationService.ApplySelfHealingFixes(MarketDataCollector.Application.Config.AppConfig)
+  - MarketDataCollector.Application.Services.ConfigurationService.AutoConfigure(MarketDataCollector.Application.Config.AppConfig)
+  - MarketDataCollector.Application.Services.ConfigurationService.DetectProviders
+  - MarketDataCollector.Application.Services.ConfigurationService.DisplayConfigSummary(MarketDataCollector.Application.Config.AppConfig,System.String,System.String[])
+  - MarketDataCollector.Application.Services.ConfigurationService.DisposeAsync
+  - MarketDataCollector.Application.Services.ConfigurationService.DryRunValidationAsync(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Application.Services.DryRunOptions,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Services.ConfigurationService.GenerateFirstTimeConfig(MarketDataCollector.Application.Services.FirstTimeConfigOptions)
+  - MarketDataCollector.Application.Services.ConfigurationService.GetBestRealTimeProvider
+  - MarketDataCollector.Application.Services.ConfigurationService.GetConfig(System.String)
+  - MarketDataCollector.Application.Services.ConfigurationService.GetConfigTemplate(System.String)
+  - MarketDataCollector.Application.Services.ConfigurationService.GetCredentialStatus
+  - MarketDataCollector.Application.Services.ConfigurationService.GetEnvironmentName
+  - MarketDataCollector.Application.Services.ConfigurationService.GetHistoricalProviders
+  - MarketDataCollector.Application.Services.ConfigurationService.GetProvidersByCapability(System.String)
+  - MarketDataCollector.Application.Services.ConfigurationService.IsIBGatewayAvailable
+  - MarketDataCollector.Application.Services.ConfigurationService.LoadAndPrepareConfig(System.String,System.Boolean)
+  - MarketDataCollector.Application.Services.ConfigurationService.LoadValidatedConfig(System.String,MarketDataCollector.Application.Config.PipelineOptions)
+  - MarketDataCollector.Application.Services.ConfigurationService.PerformQuickCheck(MarketDataCollector.Application.Config.AppConfig)
+  - MarketDataCollector.Application.Services.ConfigurationService.Pipeline
+  - MarketDataCollector.Application.Services.ConfigurationService.PrintProviderDetection(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider})
+  - MarketDataCollector.Application.Services.ConfigurationService.ProcessConfig(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Application.Config.PipelineOptions)
+  - MarketDataCollector.Application.Services.ConfigurationService.ResolveAllCredentials(MarketDataCollector.Application.Config.AppConfig)
+  - MarketDataCollector.Application.Services.ConfigurationService.ResolveAlpacaCredentials(System.String,System.String)
+  - MarketDataCollector.Application.Services.ConfigurationService.ResolveAlphaVantageCredentials(System.String)
+  - MarketDataCollector.Application.Services.ConfigurationService.ResolveFinnhubCredentials(System.String)
+  - MarketDataCollector.Application.Services.ConfigurationService.ResolveNasdaqCredentials(System.String)
+  - MarketDataCollector.Application.Services.ConfigurationService.ResolvePolygonCredentials(System.String)
+  - MarketDataCollector.Application.Services.ConfigurationService.ResolveTiingoCredentials(System.String)
+  - MarketDataCollector.Application.Services.ConfigurationService.RunAutoConfig
+  - MarketDataCollector.Application.Services.ConfigurationService.RunAutoConfigAndValidate(MarketDataCollector.Application.Config.AppConfig)
+  - MarketDataCollector.Application.Services.ConfigurationService.RunQuickstartAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Services.ConfigurationService.RunWizardAndValidateAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Services.ConfigurationService.RunWizardAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Services.ConfigurationService.SaveConfigAsync(MarketDataCollector.Application.Config.AppConfig,System.String)
+  - MarketDataCollector.Application.Services.ConfigurationService.StartHotReload(System.String,System.Action{MarketDataCollector.Application.Config.AppConfig},System.Action{System.Exception})
+  - MarketDataCollector.Application.Services.ConfigurationService.StartValidatedHotReload(System.String,System.Action{MarketDataCollector.Application.Config.ValidatedConfig},System.Action{System.Exception},MarketDataCollector.Application.Config.PipelineOptions)
+  - MarketDataCollector.Application.Services.ConfigurationService.StopHotReload
+  - MarketDataCollector.Application.Services.ConfigurationService.TestConnectivityAsync(MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Services.ConfigurationService.ValidateConfig(MarketDataCollector.Application.Config.AppConfig,System.Collections.Generic.IReadOnlyList{System.String}@)
+  - MarketDataCollector.Application.Services.ConfigurationService.ValidateConfig(System.String)
+  - MarketDataCollector.Application.Services.ConfigurationService.ValidateCredentialsAsync(MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: ConfigurationService
+  nameWithType: ConfigurationService
+  fullName: MarketDataCollector.Application.Services.ConfigurationService
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConfigurationService
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 27
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Unified configuration service that consolidates all configuration-related operations.
+
+    This is the single entry point for wizard, auto-config, validation, provider detection,
+
+    credential resolution, self-healing fixes, and hot reload.
+  remarks: >-
+    <p><b>Consolidation Goal:</b> All CLI paths and UI workflows should route through this
+
+    service to eliminate duplicate validation and environment detection logic.</p>
+
+    <p><b>Key Responsibilities:</b></p>
+
+    <ul><li>Provider detection and enumeration</li><li>Credential resolution from environment variables and config</li><li>Configuration validation with detailed error reporting</li><li>Self-healing fixes for common configuration issues</li><li>Configuration hot reload monitoring</li><li>Unified pipeline producing ValidatedConfig from any entry point</li></ul>
+  example: []
+  syntax:
+    content: 'public sealed class ConfigurationService : IAsyncDisposable'
+    content.vb: Public NotInheritable Class ConfigurationService Implements IAsyncDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IAsyncDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Services.ConfigurationService.#ctor(Serilog.ILogger,MarketDataCollector.Application.Services.ConfigurationWizard,MarketDataCollector.Application.Services.AutoConfigurationService,MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.#ctor(Serilog.ILogger,MarketDataCollector.Application.Services.ConfigurationWizard,MarketDataCollector.Application.Services.AutoConfigurationService,MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver)
+  id: '#ctor(Serilog.ILogger,MarketDataCollector.Application.Services.ConfigurationWizard,MarketDataCollector.Application.Services.AutoConfigurationService,MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver)'
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: ConfigurationService(ILogger?, ConfigurationWizard?, AutoConfigurationService?, ProviderCredentialResolver?)
+  nameWithType: ConfigurationService.ConfigurationService(ILogger?, ConfigurationWizard?, AutoConfigurationService?, ProviderCredentialResolver?)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ConfigurationService(Serilog.ILogger?, MarketDataCollector.Application.Services.ConfigurationWizard?, MarketDataCollector.Application.Services.AutoConfigurationService?, MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 36
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  syntax:
+    content: public ConfigurationService(ILogger? log = null, ConfigurationWizard? wizard = null, AutoConfigurationService? autoConfig = null, ProviderCredentialResolver? credentialResolver = null)
+    parameters:
+    - id: log
+      type: Serilog.ILogger
+    - id: wizard
+      type: MarketDataCollector.Application.Services.ConfigurationWizard
+    - id: autoConfig
+      type: MarketDataCollector.Application.Services.AutoConfigurationService
+    - id: credentialResolver
+      type: MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver
+    content.vb: Public Sub New(log As ILogger = Nothing, wizard As ConfigurationWizard = Nothing, autoConfig As AutoConfigurationService = Nothing, credentialResolver As ProviderCredentialResolver = Nothing)
+  overload: MarketDataCollector.Application.Services.ConfigurationService.#ctor*
+  nameWithType.vb: ConfigurationService.New(ILogger, ConfigurationWizard, AutoConfigurationService, ProviderCredentialResolver)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.New(Serilog.ILogger, MarketDataCollector.Application.Services.ConfigurationWizard, MarketDataCollector.Application.Services.AutoConfigurationService, MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver)
+  name.vb: New(ILogger, ConfigurationWizard, AutoConfigurationService, ProviderCredentialResolver)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.Pipeline
+  commentId: P:MarketDataCollector.Application.Services.ConfigurationService.Pipeline
+  id: Pipeline
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: Pipeline
+  nameWithType: ConfigurationService.Pipeline
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.Pipeline
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Pipeline
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 52
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets the underlying configuration pipeline for advanced scenarios.
+  example: []
+  syntax:
+    content: public ConfigurationPipeline Pipeline { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Config.ConfigurationPipeline
+    content.vb: Public ReadOnly Property Pipeline As ConfigurationPipeline
+  overload: MarketDataCollector.Application.Services.ConfigurationService.Pipeline*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.RunWizardAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.RunWizardAsync(System.Threading.CancellationToken)
+  id: RunWizardAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: RunWizardAsync(CancellationToken)
+  nameWithType: ConfigurationService.RunWizardAsync(CancellationToken)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.RunWizardAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RunWizardAsync
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 59
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Runs the interactive configuration wizard.
+  example: []
+  syntax:
+    content: public Task<WizardResult> RunWizardAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Services.WizardResult}
+    content.vb: Public Function RunWizardAsync(ct As CancellationToken = Nothing) As Task(Of WizardResult)
+  overload: MarketDataCollector.Application.Services.ConfigurationService.RunWizardAsync*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.RunAutoConfig
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.RunAutoConfig
+  id: RunAutoConfig
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: RunAutoConfig()
+  nameWithType: ConfigurationService.RunAutoConfig()
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.RunAutoConfig()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RunAutoConfig
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 64
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Runs quick auto-configuration based on environment variables.
+  example: []
+  syntax:
+    content: public WizardResult RunAutoConfig()
+    return:
+      type: MarketDataCollector.Application.Services.WizardResult
+    content.vb: Public Function RunAutoConfig() As WizardResult
+  overload: MarketDataCollector.Application.Services.ConfigurationService.RunAutoConfig*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.RunQuickstartAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.RunQuickstartAsync(System.Threading.CancellationToken)
+  id: RunQuickstartAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: RunQuickstartAsync(CancellationToken)
+  nameWithType: ConfigurationService.RunQuickstartAsync(CancellationToken)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.RunQuickstartAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RunQuickstartAsync
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 69
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: 'Runs quickstart: auto-configures, validates credentials, and prepares for launch.'
+  example: []
+  syntax:
+    content: public Task<WizardResult> RunQuickstartAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Services.WizardResult}
+    content.vb: Public Function RunQuickstartAsync(ct As CancellationToken = Nothing) As Task(Of WizardResult)
+  overload: MarketDataCollector.Application.Services.ConfigurationService.RunQuickstartAsync*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.AutoConfigure(MarketDataCollector.Application.Config.AppConfig)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.AutoConfigure(MarketDataCollector.Application.Config.AppConfig)
+  id: AutoConfigure(MarketDataCollector.Application.Config.AppConfig)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: AutoConfigure(AppConfig?)
+  nameWithType: ConfigurationService.AutoConfigure(AppConfig?)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.AutoConfigure(MarketDataCollector.Application.Config.AppConfig?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AutoConfigure
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 75
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Auto-configures the application based on detected providers and environment.
+
+    Returns a comprehensive result with detected providers, applied fixes, and recommendations.
+  example: []
+  syntax:
+    content: public AutoConfigurationService.AutoConfigResult AutoConfigure(AppConfig? existingConfig = null)
+    parameters:
+    - id: existingConfig
+      type: MarketDataCollector.Application.Config.AppConfig
+    return:
+      type: MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult
+    content.vb: Public Function AutoConfigure(existingConfig As AppConfig = Nothing) As AutoConfigurationService.AutoConfigResult
+  overload: MarketDataCollector.Application.Services.ConfigurationService.AutoConfigure*
+  nameWithType.vb: ConfigurationService.AutoConfigure(AppConfig)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.AutoConfigure(MarketDataCollector.Application.Config.AppConfig)
+  name.vb: AutoConfigure(AppConfig)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.GenerateFirstTimeConfig(MarketDataCollector.Application.Services.FirstTimeConfigOptions)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.GenerateFirstTimeConfig(MarketDataCollector.Application.Services.FirstTimeConfigOptions)
+  id: GenerateFirstTimeConfig(MarketDataCollector.Application.Services.FirstTimeConfigOptions)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: GenerateFirstTimeConfig(FirstTimeConfigOptions)
+  nameWithType: ConfigurationService.GenerateFirstTimeConfig(FirstTimeConfigOptions)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.GenerateFirstTimeConfig(MarketDataCollector.Application.Services.FirstTimeConfigOptions)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GenerateFirstTimeConfig
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 81
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Generates configuration for first-time users with interactive defaults.
+  example: []
+  syntax:
+    content: public AppConfig GenerateFirstTimeConfig(FirstTimeConfigOptions options)
+    parameters:
+    - id: options
+      type: MarketDataCollector.Application.Services.FirstTimeConfigOptions
+    return:
+      type: MarketDataCollector.Application.Config.AppConfig
+    content.vb: Public Function GenerateFirstTimeConfig(options As FirstTimeConfigOptions) As AppConfig
+  overload: MarketDataCollector.Application.Services.ConfigurationService.GenerateFirstTimeConfig*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.DetectProviders
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.DetectProviders
+  id: DetectProviders
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: DetectProviders()
+  nameWithType: ConfigurationService.DetectProviders()
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.DetectProviders()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DetectProviders
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 92
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Detects all available providers based on environment variables and configuration.
+
+    This is the single source of truth for provider detection.
+  example: []
+  syntax:
+    content: public IReadOnlyList<AutoConfigurationService.DetectedProvider> DetectProviders()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider}
+    content.vb: Public Function DetectProviders() As IReadOnlyList(Of AutoConfigurationService.DetectedProvider)
+  overload: MarketDataCollector.Application.Services.ConfigurationService.DetectProviders*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.GetCredentialStatus
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.GetCredentialStatus
+  id: GetCredentialStatus
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: GetCredentialStatus()
+  nameWithType: ConfigurationService.GetCredentialStatus()
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.GetCredentialStatus()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetCredentialStatus
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 98
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets a quick summary of which providers have credentials configured.
+  example: []
+  syntax:
+    content: public IReadOnlyDictionary<string, bool> GetCredentialStatus()
+    return:
+      type: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Boolean}
+    content.vb: Public Function GetCredentialStatus() As IReadOnlyDictionary(Of String, Boolean)
+  overload: MarketDataCollector.Application.Services.ConfigurationService.GetCredentialStatus*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.GetProvidersByCapability(System.String)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.GetProvidersByCapability(System.String)
+  id: GetProvidersByCapability(System.String)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: GetProvidersByCapability(string)
+  nameWithType: ConfigurationService.GetProvidersByCapability(string)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.GetProvidersByCapability(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetProvidersByCapability
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 104
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets detected providers filtered by capability.
+  example: []
+  syntax:
+    content: public IReadOnlyList<AutoConfigurationService.DetectedProvider> GetProvidersByCapability(string capability)
+    parameters:
+    - id: capability
+      type: System.String
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider}
+    content.vb: Public Function GetProvidersByCapability(capability As String) As IReadOnlyList(Of AutoConfigurationService.DetectedProvider)
+  overload: MarketDataCollector.Application.Services.ConfigurationService.GetProvidersByCapability*
+  nameWithType.vb: ConfigurationService.GetProvidersByCapability(String)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.GetProvidersByCapability(String)
+  name.vb: GetProvidersByCapability(String)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.GetBestRealTimeProvider
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.GetBestRealTimeProvider
+  id: GetBestRealTimeProvider
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: GetBestRealTimeProvider()
+  nameWithType: ConfigurationService.GetBestRealTimeProvider()
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.GetBestRealTimeProvider()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetBestRealTimeProvider
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 114
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets the best available provider for real-time streaming.
+  example: []
+  syntax:
+    content: public AutoConfigurationService.DetectedProvider? GetBestRealTimeProvider()
+    return:
+      type: MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider
+    content.vb: Public Function GetBestRealTimeProvider() As AutoConfigurationService.DetectedProvider
+  overload: MarketDataCollector.Application.Services.ConfigurationService.GetBestRealTimeProvider*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.GetHistoricalProviders
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.GetHistoricalProviders
+  id: GetHistoricalProviders
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: GetHistoricalProviders()
+  nameWithType: ConfigurationService.GetHistoricalProviders()
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.GetHistoricalProviders()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetHistoricalProviders
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 125
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets available providers for historical data backfill.
+  example: []
+  syntax:
+    content: public IReadOnlyList<AutoConfigurationService.DetectedProvider> GetHistoricalProviders()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider}
+    content.vb: Public Function GetHistoricalProviders() As IReadOnlyList(Of AutoConfigurationService.DetectedProvider)
+  overload: MarketDataCollector.Application.Services.ConfigurationService.GetHistoricalProviders*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.PrintProviderDetection(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider})
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.PrintProviderDetection(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider})
+  id: PrintProviderDetection(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider})
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: PrintProviderDetection(IReadOnlyList<DetectedProvider>?)
+  nameWithType: ConfigurationService.PrintProviderDetection(IReadOnlyList<AutoConfigurationService.DetectedProvider>?)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.PrintProviderDetection(System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider>?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PrintProviderDetection
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 136
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Prints provider detection results to console (for CLI commands).
+  example: []
+  syntax:
+    content: public void PrintProviderDetection(IReadOnlyList<AutoConfigurationService.DetectedProvider>? providers = null)
+    parameters:
+    - id: providers
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider}
+    content.vb: Public Sub PrintProviderDetection(providers As IReadOnlyList(Of AutoConfigurationService.DetectedProvider) = Nothing)
+  overload: MarketDataCollector.Application.Services.ConfigurationService.PrintProviderDetection*
+  nameWithType.vb: ConfigurationService.PrintProviderDetection(IReadOnlyList(Of AutoConfigurationService.DetectedProvider))
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.PrintProviderDetection(System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider))
+  name.vb: PrintProviderDetection(IReadOnlyList(Of DetectedProvider))
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ResolveAlpacaCredentials(System.String,System.String)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.ResolveAlpacaCredentials(System.String,System.String)
+  id: ResolveAlpacaCredentials(System.String,System.String)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: ResolveAlpacaCredentials(string?, string?)
+  nameWithType: ConfigurationService.ResolveAlpacaCredentials(string?, string?)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ResolveAlpacaCredentials(string?, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResolveAlpacaCredentials
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 180
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Resolves Alpaca credentials from environment or config.
+  example: []
+  syntax:
+    content: public (string? KeyId, string? SecretKey) ResolveAlpacaCredentials(string? configKeyId = null, string? configSecretKey = null)
+    parameters:
+    - id: configKeyId
+      type: System.String
+    - id: configSecretKey
+      type: System.String
+    return:
+      type: System.ValueTuple{System.String,System.String}
+    content.vb: Public Function ResolveAlpacaCredentials(configKeyId As String = Nothing, configSecretKey As String = Nothing) As (KeyId As String, SecretKey As String)
+  overload: MarketDataCollector.Application.Services.ConfigurationService.ResolveAlpacaCredentials*
+  nameWithType.vb: ConfigurationService.ResolveAlpacaCredentials(String, String)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.ResolveAlpacaCredentials(String, String)
+  name.vb: ResolveAlpacaCredentials(String, String)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ResolvePolygonCredentials(System.String)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.ResolvePolygonCredentials(System.String)
+  id: ResolvePolygonCredentials(System.String)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: ResolvePolygonCredentials(string?)
+  nameWithType: ConfigurationService.ResolvePolygonCredentials(string?)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ResolvePolygonCredentials(string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResolvePolygonCredentials
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 186
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Resolves Polygon API key from environment or config.
+  example: []
+  syntax:
+    content: public string? ResolvePolygonCredentials(string? configApiKey = null)
+    parameters:
+    - id: configApiKey
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function ResolvePolygonCredentials(configApiKey As String = Nothing) As String
+  overload: MarketDataCollector.Application.Services.ConfigurationService.ResolvePolygonCredentials*
+  nameWithType.vb: ConfigurationService.ResolvePolygonCredentials(String)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.ResolvePolygonCredentials(String)
+  name.vb: ResolvePolygonCredentials(String)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ResolveTiingoCredentials(System.String)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.ResolveTiingoCredentials(System.String)
+  id: ResolveTiingoCredentials(System.String)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: ResolveTiingoCredentials(string?)
+  nameWithType: ConfigurationService.ResolveTiingoCredentials(string?)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ResolveTiingoCredentials(string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResolveTiingoCredentials
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 192
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Resolves Tiingo API token from environment or config.
+  example: []
+  syntax:
+    content: public string? ResolveTiingoCredentials(string? configApiToken = null)
+    parameters:
+    - id: configApiToken
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function ResolveTiingoCredentials(configApiToken As String = Nothing) As String
+  overload: MarketDataCollector.Application.Services.ConfigurationService.ResolveTiingoCredentials*
+  nameWithType.vb: ConfigurationService.ResolveTiingoCredentials(String)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.ResolveTiingoCredentials(String)
+  name.vb: ResolveTiingoCredentials(String)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ResolveFinnhubCredentials(System.String)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.ResolveFinnhubCredentials(System.String)
+  id: ResolveFinnhubCredentials(System.String)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: ResolveFinnhubCredentials(string?)
+  nameWithType: ConfigurationService.ResolveFinnhubCredentials(string?)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ResolveFinnhubCredentials(string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResolveFinnhubCredentials
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 198
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Resolves Finnhub API key from environment or config.
+  example: []
+  syntax:
+    content: public string? ResolveFinnhubCredentials(string? configApiKey = null)
+    parameters:
+    - id: configApiKey
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function ResolveFinnhubCredentials(configApiKey As String = Nothing) As String
+  overload: MarketDataCollector.Application.Services.ConfigurationService.ResolveFinnhubCredentials*
+  nameWithType.vb: ConfigurationService.ResolveFinnhubCredentials(String)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.ResolveFinnhubCredentials(String)
+  name.vb: ResolveFinnhubCredentials(String)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ResolveAlphaVantageCredentials(System.String)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.ResolveAlphaVantageCredentials(System.String)
+  id: ResolveAlphaVantageCredentials(System.String)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: ResolveAlphaVantageCredentials(string?)
+  nameWithType: ConfigurationService.ResolveAlphaVantageCredentials(string?)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ResolveAlphaVantageCredentials(string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResolveAlphaVantageCredentials
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 204
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Resolves Alpha Vantage API key from environment or config.
+  example: []
+  syntax:
+    content: public string? ResolveAlphaVantageCredentials(string? configApiKey = null)
+    parameters:
+    - id: configApiKey
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function ResolveAlphaVantageCredentials(configApiKey As String = Nothing) As String
+  overload: MarketDataCollector.Application.Services.ConfigurationService.ResolveAlphaVantageCredentials*
+  nameWithType.vb: ConfigurationService.ResolveAlphaVantageCredentials(String)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.ResolveAlphaVantageCredentials(String)
+  name.vb: ResolveAlphaVantageCredentials(String)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ResolveNasdaqCredentials(System.String)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.ResolveNasdaqCredentials(System.String)
+  id: ResolveNasdaqCredentials(System.String)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: ResolveNasdaqCredentials(string?)
+  nameWithType: ConfigurationService.ResolveNasdaqCredentials(string?)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ResolveNasdaqCredentials(string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResolveNasdaqCredentials
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 210
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Resolves Nasdaq Data Link API key from environment or config.
+  example: []
+  syntax:
+    content: public string? ResolveNasdaqCredentials(string? configApiKey = null)
+    parameters:
+    - id: configApiKey
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function ResolveNasdaqCredentials(configApiKey As String = Nothing) As String
+  overload: MarketDataCollector.Application.Services.ConfigurationService.ResolveNasdaqCredentials*
+  nameWithType.vb: ConfigurationService.ResolveNasdaqCredentials(String)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.ResolveNasdaqCredentials(String)
+  name.vb: ResolveNasdaqCredentials(String)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ResolveAllCredentials(MarketDataCollector.Application.Config.AppConfig)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.ResolveAllCredentials(MarketDataCollector.Application.Config.AppConfig)
+  id: ResolveAllCredentials(MarketDataCollector.Application.Config.AppConfig)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: ResolveAllCredentials(AppConfig)
+  nameWithType: ConfigurationService.ResolveAllCredentials(AppConfig)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ResolveAllCredentials(MarketDataCollector.Application.Config.AppConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResolveAllCredentials
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 216
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Resolves all credentials for a given configuration and returns a config with resolved values.
+  example: []
+  syntax:
+    content: public AppConfig ResolveAllCredentials(AppConfig config)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    return:
+      type: MarketDataCollector.Application.Config.AppConfig
+    content.vb: Public Function ResolveAllCredentials(config As AppConfig) As AppConfig
+  overload: MarketDataCollector.Application.Services.ConfigurationService.ResolveAllCredentials*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ValidateConfig(System.String)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.ValidateConfig(System.String)
+  id: ValidateConfig(System.String)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: ValidateConfig(string)
+  nameWithType: ConfigurationService.ValidateConfig(string)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ValidateConfig(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ValidateConfig
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 321
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Validates a configuration file and returns an exit code (0 = valid, 1 = invalid).
+
+    This is the single validation entry point for CLI commands.
+  example: []
+  syntax:
+    content: public int ValidateConfig(string configPath)
+    parameters:
+    - id: configPath
+      type: System.String
+    return:
+      type: System.Int32
+    content.vb: Public Function ValidateConfig(configPath As String) As Integer
+  overload: MarketDataCollector.Application.Services.ConfigurationService.ValidateConfig*
+  nameWithType.vb: ConfigurationService.ValidateConfig(String)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.ValidateConfig(String)
+  name.vb: ValidateConfig(String)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ValidateConfig(MarketDataCollector.Application.Config.AppConfig,System.Collections.Generic.IReadOnlyList{System.String}@)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.ValidateConfig(MarketDataCollector.Application.Config.AppConfig,System.Collections.Generic.IReadOnlyList{System.String}@)
+  id: ValidateConfig(MarketDataCollector.Application.Config.AppConfig,System.Collections.Generic.IReadOnlyList{System.String}@)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: ValidateConfig(AppConfig, out IReadOnlyList<string>)
+  nameWithType: ConfigurationService.ValidateConfig(AppConfig, out IReadOnlyList<string>)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ValidateConfig(MarketDataCollector.Application.Config.AppConfig, out System.Collections.Generic.IReadOnlyList<string>)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ValidateConfig
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 331
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Validates an AppConfig object using the unified validation pipeline.
+
+    Returns true if valid, false otherwise.
+  example: []
+  syntax:
+    content: public bool ValidateConfig(AppConfig config, out IReadOnlyList<string> errors)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    - id: errors
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    return:
+      type: System.Boolean
+    content.vb: Public Function ValidateConfig(config As AppConfig, errors As IReadOnlyList(Of String)) As Boolean
+  overload: MarketDataCollector.Application.Services.ConfigurationService.ValidateConfig*
+  nameWithType.vb: ConfigurationService.ValidateConfig(AppConfig, IReadOnlyList(Of String))
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.ValidateConfig(MarketDataCollector.Application.Config.AppConfig, System.Collections.Generic.IReadOnlyList(Of String))
+  name.vb: ValidateConfig(AppConfig, IReadOnlyList(Of String))
+- uid: MarketDataCollector.Application.Services.ConfigurationService.DryRunValidationAsync(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Application.Services.DryRunOptions,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.DryRunValidationAsync(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Application.Services.DryRunOptions,System.Threading.CancellationToken)
+  id: DryRunValidationAsync(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Application.Services.DryRunOptions,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: DryRunValidationAsync(AppConfig, DryRunOptions?, CancellationToken)
+  nameWithType: ConfigurationService.DryRunValidationAsync(AppConfig, DryRunOptions?, CancellationToken)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.DryRunValidationAsync(MarketDataCollector.Application.Config.AppConfig, MarketDataCollector.Application.Services.DryRunOptions?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DryRunValidationAsync
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 353
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Performs comprehensive validation without starting the collector (dry-run).
+  example: []
+  syntax:
+    content: public Task<DryRunResult> DryRunValidationAsync(AppConfig config, DryRunOptions? options = null, CancellationToken ct = default)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    - id: options
+      type: MarketDataCollector.Application.Services.DryRunOptions
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Services.DryRunResult}
+    content.vb: Public Function DryRunValidationAsync(config As AppConfig, options As DryRunOptions = Nothing, ct As CancellationToken = Nothing) As Task(Of DryRunResult)
+  overload: MarketDataCollector.Application.Services.ConfigurationService.DryRunValidationAsync*
+  nameWithType.vb: ConfigurationService.DryRunValidationAsync(AppConfig, DryRunOptions, CancellationToken)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.DryRunValidationAsync(MarketDataCollector.Application.Config.AppConfig, MarketDataCollector.Application.Services.DryRunOptions, System.Threading.CancellationToken)
+  name.vb: DryRunValidationAsync(AppConfig, DryRunOptions, CancellationToken)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.PerformQuickCheck(MarketDataCollector.Application.Config.AppConfig)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.PerformQuickCheck(MarketDataCollector.Application.Config.AppConfig)
+  id: PerformQuickCheck(MarketDataCollector.Application.Config.AppConfig)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: PerformQuickCheck(AppConfig)
+  nameWithType: ConfigurationService.PerformQuickCheck(AppConfig)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.PerformQuickCheck(MarketDataCollector.Application.Config.AppConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PerformQuickCheck
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 374
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Performs a quick configuration health check.
+  example: []
+  syntax:
+    content: public QuickCheckResult PerformQuickCheck(AppConfig config)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    return:
+      type: MarketDataCollector.Application.Services.QuickCheckResult
+    content.vb: Public Function PerformQuickCheck(config As AppConfig) As QuickCheckResult
+  overload: MarketDataCollector.Application.Services.ConfigurationService.PerformQuickCheck*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.TestConnectivityAsync(MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.TestConnectivityAsync(MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  id: TestConnectivityAsync(MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: TestConnectivityAsync(AppConfig, CancellationToken)
+  nameWithType: ConfigurationService.TestConnectivityAsync(AppConfig, CancellationToken)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.TestConnectivityAsync(MarketDataCollector.Application.Config.AppConfig, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TestConnectivityAsync
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 383
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Tests connectivity to all configured providers.
+  example: []
+  syntax:
+    content: public Task<ConnectivityTestService.ConnectivitySummary> TestConnectivityAsync(AppConfig config, CancellationToken ct = default)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Services.ConnectivityTestService.ConnectivitySummary}
+    content.vb: Public Function TestConnectivityAsync(config As AppConfig, ct As CancellationToken = Nothing) As Task(Of ConnectivityTestService.ConnectivitySummary)
+  overload: MarketDataCollector.Application.Services.ConfigurationService.TestConnectivityAsync*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ValidateCredentialsAsync(MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.ValidateCredentialsAsync(MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  id: ValidateCredentialsAsync(MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: ValidateCredentialsAsync(AppConfig, CancellationToken)
+  nameWithType: ConfigurationService.ValidateCredentialsAsync(AppConfig, CancellationToken)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ValidateCredentialsAsync(MarketDataCollector.Application.Config.AppConfig, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ValidateCredentialsAsync
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 394
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Validates API credentials for all configured providers.
+  example: []
+  syntax:
+    content: public Task<CredentialValidationService.ValidationSummary> ValidateCredentialsAsync(AppConfig config, CancellationToken ct = default)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Services.CredentialValidationService.ValidationSummary}
+    content.vb: Public Function ValidateCredentialsAsync(config As AppConfig, ct As CancellationToken = Nothing) As Task(Of CredentialValidationService.ValidationSummary)
+  overload: MarketDataCollector.Application.Services.ConfigurationService.ValidateCredentialsAsync*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ApplySelfHealingFixes(MarketDataCollector.Application.Config.AppConfig)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.ApplySelfHealingFixes(MarketDataCollector.Application.Config.AppConfig)
+  id: ApplySelfHealingFixes(MarketDataCollector.Application.Config.AppConfig)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: ApplySelfHealingFixes(AppConfig)
+  nameWithType: ConfigurationService.ApplySelfHealingFixes(AppConfig)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ApplySelfHealingFixes(MarketDataCollector.Application.Config.AppConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ApplySelfHealingFixes
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 410
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Applies self-healing fixes to a configuration and returns the fixed config
+
+    along with a list of applied fixes.
+  example: []
+  syntax:
+    content: public (AppConfig Config, IReadOnlyList<string> AppliedFixes, IReadOnlyList<string> Warnings) ApplySelfHealingFixes(AppConfig config)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    return:
+      type: System.ValueTuple{MarketDataCollector.Application.Config.AppConfig,System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String}}
+    content.vb: Public Function ApplySelfHealingFixes(config As AppConfig) As (Config As AppConfig, AppliedFixes As IReadOnlyList(Of String), Warnings As IReadOnlyList(Of String))
+  overload: MarketDataCollector.Application.Services.ConfigurationService.ApplySelfHealingFixes*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.IsIBGatewayAvailable
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.IsIBGatewayAvailable
+  id: IsIBGatewayAvailable
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: IsIBGatewayAvailable()
+  nameWithType: ConfigurationService.IsIBGatewayAvailable()
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.IsIBGatewayAvailable()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsIBGatewayAvailable
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 542
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Checks if IB Gateway/TWS is available on default ports.
+  example: []
+  syntax:
+    content: public bool IsIBGatewayAvailable()
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsIBGatewayAvailable() As Boolean
+  overload: MarketDataCollector.Application.Services.ConfigurationService.IsIBGatewayAvailable*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ApplyEnvironmentOverrides(MarketDataCollector.Application.Config.AppConfig)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.ApplyEnvironmentOverrides(MarketDataCollector.Application.Config.AppConfig)
+  id: ApplyEnvironmentOverrides(MarketDataCollector.Application.Config.AppConfig)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: ApplyEnvironmentOverrides(AppConfig)
+  nameWithType: ConfigurationService.ApplyEnvironmentOverrides(AppConfig)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ApplyEnvironmentOverrides(MarketDataCollector.Application.Config.AppConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ApplyEnvironmentOverrides
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 573
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Applies environment variable overrides to configuration.
+  example: []
+  syntax:
+    content: public AppConfig ApplyEnvironmentOverrides(AppConfig config)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    return:
+      type: MarketDataCollector.Application.Config.AppConfig
+    content.vb: Public Function ApplyEnvironmentOverrides(config As AppConfig) As AppConfig
+  overload: MarketDataCollector.Application.Services.ConfigurationService.ApplyEnvironmentOverrides*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.LoadAndPrepareConfig(System.String,System.Boolean)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.LoadAndPrepareConfig(System.String,System.Boolean)
+  id: LoadAndPrepareConfig(System.String,System.Boolean)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: LoadAndPrepareConfig(string, bool)
+  nameWithType: ConfigurationService.LoadAndPrepareConfig(string, bool)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.LoadAndPrepareConfig(string, bool)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LoadAndPrepareConfig
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 583
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Loads configuration with environment overlays and self-healing fixes applied.
+
+    This is the recommended way to load configuration for all entry points.
+  example: []
+  syntax:
+    content: public AppConfig LoadAndPrepareConfig(string configPath, bool applySelfHealing = true)
+    parameters:
+    - id: configPath
+      type: System.String
+    - id: applySelfHealing
+      type: System.Boolean
+    return:
+      type: MarketDataCollector.Application.Config.AppConfig
+    content.vb: Public Function LoadAndPrepareConfig(configPath As String, applySelfHealing As Boolean = True) As AppConfig
+  overload: MarketDataCollector.Application.Services.ConfigurationService.LoadAndPrepareConfig*
+  nameWithType.vb: ConfigurationService.LoadAndPrepareConfig(String, Boolean)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.LoadAndPrepareConfig(String, Boolean)
+  name.vb: LoadAndPrepareConfig(String, Boolean)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.LoadValidatedConfig(System.String,MarketDataCollector.Application.Config.PipelineOptions)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.LoadValidatedConfig(System.String,MarketDataCollector.Application.Config.PipelineOptions)
+  id: LoadValidatedConfig(System.String,MarketDataCollector.Application.Config.PipelineOptions)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: LoadValidatedConfig(string, PipelineOptions?)
+  nameWithType: ConfigurationService.LoadValidatedConfig(string, PipelineOptions?)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.LoadValidatedConfig(string, MarketDataCollector.Application.Config.PipelineOptions?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LoadValidatedConfig
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 626
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Loads and validates configuration through the unified pipeline.
+
+    Returns a ValidatedConfig with full metadata about validation, fixes, and warnings.
+  remarks: This is the preferred method for new code. It provides richer metadata than LoadAndPrepareConfig.
+  example: []
+  syntax:
+    content: public ValidatedConfig LoadValidatedConfig(string configPath, PipelineOptions? options = null)
+    parameters:
+    - id: configPath
+      type: System.String
+    - id: options
+      type: MarketDataCollector.Application.Config.PipelineOptions
+    return:
+      type: MarketDataCollector.Application.Config.ValidatedConfig
+    content.vb: Public Function LoadValidatedConfig(configPath As String, options As PipelineOptions = Nothing) As ValidatedConfig
+  overload: MarketDataCollector.Application.Services.ConfigurationService.LoadValidatedConfig*
+  nameWithType.vb: ConfigurationService.LoadValidatedConfig(String, PipelineOptions)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.LoadValidatedConfig(String, MarketDataCollector.Application.Config.PipelineOptions)
+  name.vb: LoadValidatedConfig(String, PipelineOptions)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ProcessConfig(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Application.Config.PipelineOptions)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.ProcessConfig(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Application.Config.PipelineOptions)
+  id: ProcessConfig(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Application.Config.PipelineOptions)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: ProcessConfig(AppConfig, PipelineOptions?)
+  nameWithType: ConfigurationService.ProcessConfig(AppConfig, PipelineOptions?)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ProcessConfig(MarketDataCollector.Application.Config.AppConfig, MarketDataCollector.Application.Config.PipelineOptions?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProcessConfig
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 642
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Processes an existing AppConfig through the unified pipeline.
+  example: []
+  syntax:
+    content: public ValidatedConfig ProcessConfig(AppConfig config, PipelineOptions? options = null)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    - id: options
+      type: MarketDataCollector.Application.Config.PipelineOptions
+    return:
+      type: MarketDataCollector.Application.Config.ValidatedConfig
+    content.vb: Public Function ProcessConfig(config As AppConfig, options As PipelineOptions = Nothing) As ValidatedConfig
+  overload: MarketDataCollector.Application.Services.ConfigurationService.ProcessConfig*
+  nameWithType.vb: ConfigurationService.ProcessConfig(AppConfig, PipelineOptions)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.ProcessConfig(MarketDataCollector.Application.Config.AppConfig, MarketDataCollector.Application.Config.PipelineOptions)
+  name.vb: ProcessConfig(AppConfig, PipelineOptions)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.RunWizardAndValidateAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.RunWizardAndValidateAsync(System.Threading.CancellationToken)
+  id: RunWizardAndValidateAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: RunWizardAndValidateAsync(CancellationToken)
+  nameWithType: ConfigurationService.RunWizardAndValidateAsync(CancellationToken)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.RunWizardAndValidateAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RunWizardAndValidateAsync
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 650
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Runs the wizard and processes the result through the pipeline.
+  example: []
+  syntax:
+    content: public Task<ValidatedConfig> RunWizardAndValidateAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Config.ValidatedConfig}
+    content.vb: Public Function RunWizardAndValidateAsync(ct As CancellationToken = Nothing) As Task(Of ValidatedConfig)
+  overload: MarketDataCollector.Application.Services.ConfigurationService.RunWizardAndValidateAsync*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.RunAutoConfigAndValidate(MarketDataCollector.Application.Config.AppConfig)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.RunAutoConfigAndValidate(MarketDataCollector.Application.Config.AppConfig)
+  id: RunAutoConfigAndValidate(MarketDataCollector.Application.Config.AppConfig)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: RunAutoConfigAndValidate(AppConfig?)
+  nameWithType: ConfigurationService.RunAutoConfigAndValidate(AppConfig?)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.RunAutoConfigAndValidate(MarketDataCollector.Application.Config.AppConfig?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RunAutoConfigAndValidate
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 659
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Runs auto-configuration and processes the result through the pipeline.
+  example: []
+  syntax:
+    content: public ValidatedConfig RunAutoConfigAndValidate(AppConfig? existingConfig = null)
+    parameters:
+    - id: existingConfig
+      type: MarketDataCollector.Application.Config.AppConfig
+    return:
+      type: MarketDataCollector.Application.Config.ValidatedConfig
+    content.vb: Public Function RunAutoConfigAndValidate(existingConfig As AppConfig = Nothing) As ValidatedConfig
+  overload: MarketDataCollector.Application.Services.ConfigurationService.RunAutoConfigAndValidate*
+  nameWithType.vb: ConfigurationService.RunAutoConfigAndValidate(AppConfig)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.RunAutoConfigAndValidate(MarketDataCollector.Application.Config.AppConfig)
+  name.vb: RunAutoConfigAndValidate(AppConfig)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.GetEnvironmentName
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.GetEnvironmentName
+  id: GetEnvironmentName
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: GetEnvironmentName()
+  nameWithType: ConfigurationService.GetEnvironmentName()
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.GetEnvironmentName()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetEnvironmentName
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 698
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets the current environment name from MDC_ENVIRONMENT or DOTNET_ENVIRONMENT.
+  example: []
+  syntax:
+    content: public static string? GetEnvironmentName()
+    return:
+      type: System.String
+    content.vb: Public Shared Function GetEnvironmentName() As String
+  overload: MarketDataCollector.Application.Services.ConfigurationService.GetEnvironmentName*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.StartHotReload(System.String,System.Action{MarketDataCollector.Application.Config.AppConfig},System.Action{System.Exception})
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.StartHotReload(System.String,System.Action{MarketDataCollector.Application.Config.AppConfig},System.Action{System.Exception})
+  id: StartHotReload(System.String,System.Action{MarketDataCollector.Application.Config.AppConfig},System.Action{System.Exception})
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: StartHotReload(string, Action<AppConfig>, Action<Exception>?)
+  nameWithType: ConfigurationService.StartHotReload(string, Action<AppConfig>, Action<Exception>?)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.StartHotReload(string, System.Action<MarketDataCollector.Application.Config.AppConfig>, System.Action<System.Exception>?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StartHotReload
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 733
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Starts hot reload monitoring for configuration file changes.
+  example: []
+  syntax:
+    content: public ConfigWatcher StartHotReload(string configPath, Action<AppConfig> onConfigChanged, Action<Exception>? onError = null)
+    parameters:
+    - id: configPath
+      type: System.String
+    - id: onConfigChanged
+      type: System.Action{MarketDataCollector.Application.Config.AppConfig}
+    - id: onError
+      type: System.Action{System.Exception}
+    return:
+      type: MarketDataCollector.Application.Config.ConfigWatcher
+    content.vb: Public Function StartHotReload(configPath As String, onConfigChanged As Action(Of AppConfig), onError As Action(Of Exception) = Nothing) As ConfigWatcher
+  overload: MarketDataCollector.Application.Services.ConfigurationService.StartHotReload*
+  nameWithType.vb: ConfigurationService.StartHotReload(String, Action(Of AppConfig), Action(Of Exception))
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.StartHotReload(String, System.Action(Of MarketDataCollector.Application.Config.AppConfig), System.Action(Of System.Exception))
+  name.vb: StartHotReload(String, Action(Of AppConfig), Action(Of Exception))
+- uid: MarketDataCollector.Application.Services.ConfigurationService.StartValidatedHotReload(System.String,System.Action{MarketDataCollector.Application.Config.ValidatedConfig},System.Action{System.Exception},MarketDataCollector.Application.Config.PipelineOptions)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.StartValidatedHotReload(System.String,System.Action{MarketDataCollector.Application.Config.ValidatedConfig},System.Action{System.Exception},MarketDataCollector.Application.Config.PipelineOptions)
+  id: StartValidatedHotReload(System.String,System.Action{MarketDataCollector.Application.Config.ValidatedConfig},System.Action{System.Exception},MarketDataCollector.Application.Config.PipelineOptions)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: StartValidatedHotReload(string, Action<ValidatedConfig>, Action<Exception>?, PipelineOptions?)
+  nameWithType: ConfigurationService.StartValidatedHotReload(string, Action<ValidatedConfig>, Action<Exception>?, PipelineOptions?)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.StartValidatedHotReload(string, System.Action<MarketDataCollector.Application.Config.ValidatedConfig>, System.Action<System.Exception>?, MarketDataCollector.Application.Config.PipelineOptions?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StartValidatedHotReload
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 756
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Starts hot reload monitoring with validated configuration updates.
+
+    The callback receives a ValidatedConfig that has been processed through the full pipeline.
+  example: []
+  syntax:
+    content: public ConfigWatcher StartValidatedHotReload(string configPath, Action<ValidatedConfig> onConfigChanged, Action<Exception>? onError = null, PipelineOptions? options = null)
+    parameters:
+    - id: configPath
+      type: System.String
+    - id: onConfigChanged
+      type: System.Action{MarketDataCollector.Application.Config.ValidatedConfig}
+    - id: onError
+      type: System.Action{System.Exception}
+    - id: options
+      type: MarketDataCollector.Application.Config.PipelineOptions
+    return:
+      type: MarketDataCollector.Application.Config.ConfigWatcher
+    content.vb: Public Function StartValidatedHotReload(configPath As String, onConfigChanged As Action(Of ValidatedConfig), onError As Action(Of Exception) = Nothing, options As PipelineOptions = Nothing) As ConfigWatcher
+  overload: MarketDataCollector.Application.Services.ConfigurationService.StartValidatedHotReload*
+  nameWithType.vb: ConfigurationService.StartValidatedHotReload(String, Action(Of ValidatedConfig), Action(Of Exception), PipelineOptions)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.StartValidatedHotReload(String, System.Action(Of MarketDataCollector.Application.Config.ValidatedConfig), System.Action(Of System.Exception), MarketDataCollector.Application.Config.PipelineOptions)
+  name.vb: StartValidatedHotReload(String, Action(Of ValidatedConfig), Action(Of Exception), PipelineOptions)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.StopHotReload
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.StopHotReload
+  id: StopHotReload
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: StopHotReload()
+  nameWithType: ConfigurationService.StopHotReload()
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.StopHotReload()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StopHotReload
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 771
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Stops hot reload monitoring.
+  example: []
+  syntax:
+    content: public void StopHotReload()
+    content.vb: Public Sub StopHotReload()
+  overload: MarketDataCollector.Application.Services.ConfigurationService.StopHotReload*
+- uid: MarketDataCollector.Application.Services.ConfigurationService.DisplayConfigSummary(MarketDataCollector.Application.Config.AppConfig,System.String,System.String[])
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.DisplayConfigSummary(MarketDataCollector.Application.Config.AppConfig,System.String,System.String[])
+  id: DisplayConfigSummary(MarketDataCollector.Application.Config.AppConfig,System.String,System.String[])
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: DisplayConfigSummary(AppConfig, string, string[])
+  nameWithType: ConfigurationService.DisplayConfigSummary(AppConfig, string, string[])
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.DisplayConfigSummary(MarketDataCollector.Application.Config.AppConfig, string, string[])
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisplayConfigSummary
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 784
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Displays configuration summary to console.
+  example: []
+  syntax:
+    content: public void DisplayConfigSummary(AppConfig config, string configPath, string[] args)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    - id: configPath
+      type: System.String
+    - id: args
+      type: System.String[]
+    content.vb: Public Sub DisplayConfigSummary(config As AppConfig, configPath As String, args As String())
+  overload: MarketDataCollector.Application.Services.ConfigurationService.DisplayConfigSummary*
+  nameWithType.vb: ConfigurationService.DisplayConfigSummary(AppConfig, String, String())
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.DisplayConfigSummary(MarketDataCollector.Application.Config.AppConfig, String, String())
+  name.vb: DisplayConfigSummary(AppConfig, String, String())
+- uid: MarketDataCollector.Application.Services.ConfigurationService.GetConfigTemplate(System.String)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.GetConfigTemplate(System.String)
+  id: GetConfigTemplate(System.String)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: GetConfigTemplate(string)
+  nameWithType: ConfigurationService.GetConfigTemplate(string)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.GetConfigTemplate(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetConfigTemplate
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 793
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Generates a configuration template.
+  example: []
+  syntax:
+    content: public ConfigTemplate? GetConfigTemplate(string templateName)
+    parameters:
+    - id: templateName
+      type: System.String
+    return:
+      type: MarketDataCollector.Application.Services.ConfigTemplate
+    content.vb: Public Function GetConfigTemplate(templateName As String) As ConfigTemplate
+  overload: MarketDataCollector.Application.Services.ConfigurationService.GetConfigTemplate*
+  nameWithType.vb: ConfigurationService.GetConfigTemplate(String)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.GetConfigTemplate(String)
+  name.vb: GetConfigTemplate(String)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.GetConfig(System.String)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.GetConfig(System.String)
+  id: GetConfig(System.String)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: GetConfig(string?)
+  nameWithType: ConfigurationService.GetConfig(string?)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.GetConfig(string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetConfig
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 802
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Returns the current on-disk config via ConfigStore.
+  example: []
+  syntax:
+    content: public AppConfig GetConfig(string? configPath = null)
+    parameters:
+    - id: configPath
+      type: System.String
+    return:
+      type: MarketDataCollector.Application.Config.AppConfig
+    content.vb: Public Function GetConfig(configPath As String = Nothing) As AppConfig
+  overload: MarketDataCollector.Application.Services.ConfigurationService.GetConfig*
+  nameWithType.vb: ConfigurationService.GetConfig(String)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.GetConfig(String)
+  name.vb: GetConfig(String)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.SaveConfigAsync(MarketDataCollector.Application.Config.AppConfig,System.String)
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.SaveConfigAsync(MarketDataCollector.Application.Config.AppConfig,System.String)
+  id: SaveConfigAsync(MarketDataCollector.Application.Config.AppConfig,System.String)
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: SaveConfigAsync(AppConfig, string?)
+  nameWithType: ConfigurationService.SaveConfigAsync(AppConfig, string?)
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.SaveConfigAsync(MarketDataCollector.Application.Config.AppConfig, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SaveConfigAsync
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 811
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Saves a modified config back to disk.
+  example: []
+  syntax:
+    content: public Task SaveConfigAsync(AppConfig config, string? configPath = null)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    - id: configPath
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function SaveConfigAsync(config As AppConfig, configPath As String = Nothing) As Task
+  overload: MarketDataCollector.Application.Services.ConfigurationService.SaveConfigAsync*
+  nameWithType.vb: ConfigurationService.SaveConfigAsync(AppConfig, String)
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.SaveConfigAsync(MarketDataCollector.Application.Config.AppConfig, String)
+  name.vb: SaveConfigAsync(AppConfig, String)
+- uid: MarketDataCollector.Application.Services.ConfigurationService.DisposeAsync
+  commentId: M:MarketDataCollector.Application.Services.ConfigurationService.DisposeAsync
+  id: DisposeAsync
+  parent: MarketDataCollector.Application.Services.ConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: DisposeAsync()
+  nameWithType: ConfigurationService.DisposeAsync()
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.DisposeAsync()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigurationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisposeAsync
+    path: ../../src/MarketDataCollector.Application/Services/ConfigurationService.cs
+    startLine: 820
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Performs application-defined tasks associated with freeing, releasing, or
+
+    resetting unmanaged resources asynchronously.
+  example: []
+  syntax:
+    content: public ValueTask DisposeAsync()
+    return:
+      type: System.Threading.Tasks.ValueTask
+      description: A task that represents the asynchronous dispose operation.
+    content.vb: Public Function DisposeAsync() As ValueTask
+  overload: MarketDataCollector.Application.Services.ConfigurationService.DisposeAsync*
+  implements:
+  - System.IAsyncDisposable.DisposeAsync
+references:
+- uid: MarketDataCollector.Application.Services
+  commentId: N:MarketDataCollector.Application.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Services
+  nameWithType: MarketDataCollector.Application.Services
+  fullName: MarketDataCollector.Application.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IAsyncDisposable
+  commentId: T:System.IAsyncDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
+  name: IAsyncDisposable
+  nameWithType: IAsyncDisposable
+  fullName: System.IAsyncDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Services.ConfigurationService.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.#ctor
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService__ctor_Serilog_ILogger_MarketDataCollector_Application_Services_ConfigurationWizard_MarketDataCollector_Application_Services_AutoConfigurationService_MarketDataCollector_Application_Config_Credentials_ProviderCredentialResolver_
+  name: ConfigurationService
+  nameWithType: ConfigurationService.ConfigurationService
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ConfigurationService
+  nameWithType.vb: ConfigurationService.New
+  fullName.vb: MarketDataCollector.Application.Services.ConfigurationService.New
+  name.vb: New
+- uid: Serilog.ILogger
+  commentId: T:Serilog.ILogger
+  parent: Serilog
+  isExternal: true
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Serilog.ILogger
+- uid: MarketDataCollector.Application.Services.ConfigurationWizard
+  commentId: T:MarketDataCollector.Application.Services.ConfigurationWizard
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.ConfigurationWizard.html
+  name: ConfigurationWizard
+  nameWithType: ConfigurationWizard
+  fullName: MarketDataCollector.Application.Services.ConfigurationWizard
+- uid: MarketDataCollector.Application.Services.AutoConfigurationService
+  commentId: T:MarketDataCollector.Application.Services.AutoConfigurationService
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.AutoConfigurationService.html
+  name: AutoConfigurationService
+  nameWithType: AutoConfigurationService
+  fullName: MarketDataCollector.Application.Services.AutoConfigurationService
+- uid: MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver
+  commentId: T:MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver
+  parent: MarketDataCollector.Application.Config.Credentials
+  href: MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver.html
+  name: ProviderCredentialResolver
+  nameWithType: ProviderCredentialResolver
+  fullName: MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver
+- uid: Serilog
+  commentId: N:Serilog
+  isExternal: true
+  name: Serilog
+  nameWithType: Serilog
+  fullName: Serilog
+- uid: MarketDataCollector.Application.Config.Credentials
+  commentId: N:MarketDataCollector.Application.Config.Credentials
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config.Credentials
+  nameWithType: MarketDataCollector.Application.Config.Credentials
+  fullName: MarketDataCollector.Application.Config.Credentials
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config.Credentials
+    name: Credentials
+    href: MarketDataCollector.Application.Config.Credentials.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config.Credentials
+    name: Credentials
+    href: MarketDataCollector.Application.Config.Credentials.html
+- uid: MarketDataCollector.Application.Services.ConfigurationService.Pipeline*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.Pipeline
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_Pipeline
+  name: Pipeline
+  nameWithType: ConfigurationService.Pipeline
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.Pipeline
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline
+  commentId: T:MarketDataCollector.Application.Config.ConfigurationPipeline
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.ConfigurationPipeline.html
+  name: ConfigurationPipeline
+  nameWithType: ConfigurationPipeline
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline
+- uid: MarketDataCollector.Application.Config
+  commentId: N:MarketDataCollector.Application.Config
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config
+  nameWithType: MarketDataCollector.Application.Config
+  fullName: MarketDataCollector.Application.Config
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+- uid: MarketDataCollector.Application.Services.ConfigurationService.RunWizardAsync*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.RunWizardAsync
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_RunWizardAsync_System_Threading_CancellationToken_
+  name: RunWizardAsync
+  nameWithType: ConfigurationService.RunWizardAsync
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.RunWizardAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Services.WizardResult}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Services.WizardResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<WizardResult>
+  nameWithType: Task<WizardResult>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Services.WizardResult>
+  nameWithType.vb: Task(Of WizardResult)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Services.WizardResult)
+  name.vb: Task(Of WizardResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Services.WizardResult
+    name: WizardResult
+    href: MarketDataCollector.Application.Services.WizardResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.WizardResult
+    name: WizardResult
+    href: MarketDataCollector.Application.Services.WizardResult.html
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Application.Services.ConfigurationService.RunAutoConfig*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.RunAutoConfig
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_RunAutoConfig
+  name: RunAutoConfig
+  nameWithType: ConfigurationService.RunAutoConfig
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.RunAutoConfig
+- uid: MarketDataCollector.Application.Services.WizardResult
+  commentId: T:MarketDataCollector.Application.Services.WizardResult
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.WizardResult.html
+  name: WizardResult
+  nameWithType: WizardResult
+  fullName: MarketDataCollector.Application.Services.WizardResult
+- uid: MarketDataCollector.Application.Services.ConfigurationService.RunQuickstartAsync*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.RunQuickstartAsync
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_RunQuickstartAsync_System_Threading_CancellationToken_
+  name: RunQuickstartAsync
+  nameWithType: ConfigurationService.RunQuickstartAsync
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.RunQuickstartAsync
+- uid: MarketDataCollector.Application.Services.ConfigurationService.AutoConfigure*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.AutoConfigure
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_AutoConfigure_MarketDataCollector_Application_Config_AppConfig_
+  name: AutoConfigure
+  nameWithType: ConfigurationService.AutoConfigure
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.AutoConfigure
+- uid: MarketDataCollector.Application.Config.AppConfig
+  commentId: T:MarketDataCollector.Application.Config.AppConfig
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.AppConfig.html
+  name: AppConfig
+  nameWithType: AppConfig
+  fullName: MarketDataCollector.Application.Config.AppConfig
+- uid: MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult
+  commentId: T:MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.AutoConfigurationService.html
+  name: AutoConfigurationService.AutoConfigResult
+  nameWithType: AutoConfigurationService.AutoConfigResult
+  fullName: MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService
+    name: AutoConfigurationService
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult
+    name: AutoConfigResult
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult.html
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService
+    name: AutoConfigurationService
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult
+    name: AutoConfigResult
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult.html
+- uid: MarketDataCollector.Application.Services.ConfigurationService.GenerateFirstTimeConfig*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.GenerateFirstTimeConfig
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_GenerateFirstTimeConfig_MarketDataCollector_Application_Services_FirstTimeConfigOptions_
+  name: GenerateFirstTimeConfig
+  nameWithType: ConfigurationService.GenerateFirstTimeConfig
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.GenerateFirstTimeConfig
+- uid: MarketDataCollector.Application.Services.FirstTimeConfigOptions
+  commentId: T:MarketDataCollector.Application.Services.FirstTimeConfigOptions
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.FirstTimeConfigOptions.html
+  name: FirstTimeConfigOptions
+  nameWithType: FirstTimeConfigOptions
+  fullName: MarketDataCollector.Application.Services.FirstTimeConfigOptions
+- uid: MarketDataCollector.Application.Services.ConfigurationService.DetectProviders*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.DetectProviders
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_DetectProviders
+  name: DetectProviders
+  nameWithType: ConfigurationService.DetectProviders
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.DetectProviders
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<AutoConfigurationService.DetectedProvider>
+  nameWithType: IReadOnlyList<AutoConfigurationService.DetectedProvider>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider>
+  nameWithType.vb: IReadOnlyList(Of AutoConfigurationService.DetectedProvider)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider)
+  name.vb: IReadOnlyList(Of AutoConfigurationService.DetectedProvider)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService
+    name: AutoConfigurationService
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider
+    name: DetectedProvider
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService
+    name: AutoConfigurationService
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider
+    name: DetectedProvider
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Application.Services.ConfigurationService.GetCredentialStatus*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.GetCredentialStatus
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_GetCredentialStatus
+  name: GetCredentialStatus
+  nameWithType: ConfigurationService.GetCredentialStatus
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.GetCredentialStatus
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Boolean}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{System.String,System.Boolean}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<string, bool>
+  nameWithType: IReadOnlyDictionary<string, bool>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, bool>
+  nameWithType.vb: IReadOnlyDictionary(Of String, Boolean)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, Boolean)
+  name.vb: IReadOnlyDictionary(Of String, Boolean)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: MarketDataCollector.Application.Services.ConfigurationService.GetProvidersByCapability*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.GetProvidersByCapability
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_GetProvidersByCapability_System_String_
+  name: GetProvidersByCapability
+  nameWithType: ConfigurationService.GetProvidersByCapability
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.GetProvidersByCapability
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Application.Services.ConfigurationService.GetBestRealTimeProvider*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.GetBestRealTimeProvider
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_GetBestRealTimeProvider
+  name: GetBestRealTimeProvider
+  nameWithType: ConfigurationService.GetBestRealTimeProvider
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.GetBestRealTimeProvider
+- uid: MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider
+  commentId: T:MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.AutoConfigurationService.html
+  name: AutoConfigurationService.DetectedProvider
+  nameWithType: AutoConfigurationService.DetectedProvider
+  fullName: MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService
+    name: AutoConfigurationService
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider
+    name: DetectedProvider
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider.html
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService
+    name: AutoConfigurationService
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider
+    name: DetectedProvider
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.DetectedProvider.html
+- uid: MarketDataCollector.Application.Services.ConfigurationService.GetHistoricalProviders*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.GetHistoricalProviders
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_GetHistoricalProviders
+  name: GetHistoricalProviders
+  nameWithType: ConfigurationService.GetHistoricalProviders
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.GetHistoricalProviders
+- uid: MarketDataCollector.Application.Services.ConfigurationService.PrintProviderDetection*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.PrintProviderDetection
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_PrintProviderDetection_System_Collections_Generic_IReadOnlyList_MarketDataCollector_Application_Services_AutoConfigurationService_DetectedProvider__
+  name: PrintProviderDetection
+  nameWithType: ConfigurationService.PrintProviderDetection
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.PrintProviderDetection
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ResolveAlpacaCredentials*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.ResolveAlpacaCredentials
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_ResolveAlpacaCredentials_System_String_System_String_
+  name: ResolveAlpacaCredentials
+  nameWithType: ConfigurationService.ResolveAlpacaCredentials
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ResolveAlpacaCredentials
+- uid: System.ValueTuple{System.String,System.String}
+  commentId: T:System.ValueTuple{System.String,System.String}
+  parent: System
+  definition: System.ValueTuple`2
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: (string KeyId, string SecretKey)
+  nameWithType: (string KeyId, string SecretKey)
+  fullName: (string KeyId, string SecretKey)
+  nameWithType.vb: (KeyId As String, SecretKey As String)
+  fullName.vb: (KeyId As String, SecretKey As String)
+  name.vb: (KeyId As String, SecretKey As String)
+  spec.csharp:
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.String}.KeyId
+    name: KeyId
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.keyid
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.String}.SecretKey
+    name: SecretKey
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.secretkey
+  - name: )
+  spec.vb:
+  - name: (
+  - uid: System.ValueTuple{System.String,System.String}.KeyId
+    name: KeyId
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.keyid
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.String}.SecretKey
+    name: SecretKey
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.secretkey
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.ValueTuple`2
+  commentId: T:System.ValueTuple`2
+  name: (T1, T2)
+  nameWithType: (T1, T2)
+  fullName: (T1, T2)
+  spec.csharp:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+  spec.vb:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ResolvePolygonCredentials*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.ResolvePolygonCredentials
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_ResolvePolygonCredentials_System_String_
+  name: ResolvePolygonCredentials
+  nameWithType: ConfigurationService.ResolvePolygonCredentials
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ResolvePolygonCredentials
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ResolveTiingoCredentials*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.ResolveTiingoCredentials
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_ResolveTiingoCredentials_System_String_
+  name: ResolveTiingoCredentials
+  nameWithType: ConfigurationService.ResolveTiingoCredentials
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ResolveTiingoCredentials
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ResolveFinnhubCredentials*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.ResolveFinnhubCredentials
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_ResolveFinnhubCredentials_System_String_
+  name: ResolveFinnhubCredentials
+  nameWithType: ConfigurationService.ResolveFinnhubCredentials
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ResolveFinnhubCredentials
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ResolveAlphaVantageCredentials*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.ResolveAlphaVantageCredentials
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_ResolveAlphaVantageCredentials_System_String_
+  name: ResolveAlphaVantageCredentials
+  nameWithType: ConfigurationService.ResolveAlphaVantageCredentials
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ResolveAlphaVantageCredentials
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ResolveNasdaqCredentials*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.ResolveNasdaqCredentials
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_ResolveNasdaqCredentials_System_String_
+  name: ResolveNasdaqCredentials
+  nameWithType: ConfigurationService.ResolveNasdaqCredentials
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ResolveNasdaqCredentials
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ResolveAllCredentials*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.ResolveAllCredentials
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_ResolveAllCredentials_MarketDataCollector_Application_Config_AppConfig_
+  name: ResolveAllCredentials
+  nameWithType: ConfigurationService.ResolveAllCredentials
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ResolveAllCredentials
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ValidateConfig*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.ValidateConfig
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_ValidateConfig_System_String_
+  name: ValidateConfig
+  nameWithType: ConfigurationService.ValidateConfig
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ValidateConfig
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Application.Services.ConfigurationService.DryRunValidationAsync*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.DryRunValidationAsync
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_DryRunValidationAsync_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Application_Services_DryRunOptions_System_Threading_CancellationToken_
+  name: DryRunValidationAsync
+  nameWithType: ConfigurationService.DryRunValidationAsync
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.DryRunValidationAsync
+- uid: MarketDataCollector.Application.Services.DryRunOptions
+  commentId: T:MarketDataCollector.Application.Services.DryRunOptions
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.DryRunOptions.html
+  name: DryRunOptions
+  nameWithType: DryRunOptions
+  fullName: MarketDataCollector.Application.Services.DryRunOptions
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Services.DryRunResult}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Services.DryRunResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<DryRunResult>
+  nameWithType: Task<DryRunResult>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Services.DryRunResult>
+  nameWithType.vb: Task(Of DryRunResult)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Services.DryRunResult)
+  name.vb: Task(Of DryRunResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Services.DryRunResult
+    name: DryRunResult
+    href: MarketDataCollector.Application.Services.DryRunResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.DryRunResult
+    name: DryRunResult
+    href: MarketDataCollector.Application.Services.DryRunResult.html
+  - name: )
+- uid: MarketDataCollector.Application.Services.ConfigurationService.PerformQuickCheck*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.PerformQuickCheck
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_PerformQuickCheck_MarketDataCollector_Application_Config_AppConfig_
+  name: PerformQuickCheck
+  nameWithType: ConfigurationService.PerformQuickCheck
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.PerformQuickCheck
+- uid: MarketDataCollector.Application.Services.QuickCheckResult
+  commentId: T:MarketDataCollector.Application.Services.QuickCheckResult
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.QuickCheckResult.html
+  name: QuickCheckResult
+  nameWithType: QuickCheckResult
+  fullName: MarketDataCollector.Application.Services.QuickCheckResult
+- uid: MarketDataCollector.Application.Services.ConfigurationService.TestConnectivityAsync*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.TestConnectivityAsync
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_TestConnectivityAsync_MarketDataCollector_Application_Config_AppConfig_System_Threading_CancellationToken_
+  name: TestConnectivityAsync
+  nameWithType: ConfigurationService.TestConnectivityAsync
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.TestConnectivityAsync
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Services.ConnectivityTestService.ConnectivitySummary}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Services.ConnectivityTestService.ConnectivitySummary}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<ConnectivityTestService.ConnectivitySummary>
+  nameWithType: Task<ConnectivityTestService.ConnectivitySummary>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Services.ConnectivityTestService.ConnectivitySummary>
+  nameWithType.vb: Task(Of ConnectivityTestService.ConnectivitySummary)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Services.ConnectivityTestService.ConnectivitySummary)
+  name.vb: Task(Of ConnectivityTestService.ConnectivitySummary)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Services.ConnectivityTestService
+    name: ConnectivityTestService
+    href: MarketDataCollector.Application.Services.ConnectivityTestService.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services.ConnectivityTestService.ConnectivitySummary
+    name: ConnectivitySummary
+    href: MarketDataCollector.Application.Services.ConnectivityTestService.ConnectivitySummary.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ConnectivityTestService
+    name: ConnectivityTestService
+    href: MarketDataCollector.Application.Services.ConnectivityTestService.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services.ConnectivityTestService.ConnectivitySummary
+    name: ConnectivitySummary
+    href: MarketDataCollector.Application.Services.ConnectivityTestService.ConnectivitySummary.html
+  - name: )
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ValidateCredentialsAsync*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.ValidateCredentialsAsync
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_ValidateCredentialsAsync_MarketDataCollector_Application_Config_AppConfig_System_Threading_CancellationToken_
+  name: ValidateCredentialsAsync
+  nameWithType: ConfigurationService.ValidateCredentialsAsync
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ValidateCredentialsAsync
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Services.CredentialValidationService.ValidationSummary}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Services.CredentialValidationService.ValidationSummary}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<CredentialValidationService.ValidationSummary>
+  nameWithType: Task<CredentialValidationService.ValidationSummary>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Services.CredentialValidationService.ValidationSummary>
+  nameWithType.vb: Task(Of CredentialValidationService.ValidationSummary)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Services.CredentialValidationService.ValidationSummary)
+  name.vb: Task(Of CredentialValidationService.ValidationSummary)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Services.CredentialValidationService
+    name: CredentialValidationService
+    href: MarketDataCollector.Application.Services.CredentialValidationService.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services.CredentialValidationService.ValidationSummary
+    name: ValidationSummary
+    href: MarketDataCollector.Application.Services.CredentialValidationService.ValidationSummary.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.CredentialValidationService
+    name: CredentialValidationService
+    href: MarketDataCollector.Application.Services.CredentialValidationService.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services.CredentialValidationService.ValidationSummary
+    name: ValidationSummary
+    href: MarketDataCollector.Application.Services.CredentialValidationService.ValidationSummary.html
+  - name: )
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ApplySelfHealingFixes*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.ApplySelfHealingFixes
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_ApplySelfHealingFixes_MarketDataCollector_Application_Config_AppConfig_
+  name: ApplySelfHealingFixes
+  nameWithType: ConfigurationService.ApplySelfHealingFixes
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ApplySelfHealingFixes
+- uid: System.ValueTuple{MarketDataCollector.Application.Config.AppConfig,System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String}}
+  commentId: T:System.ValueTuple{MarketDataCollector.Application.Config.AppConfig,System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String}}
+  parent: System
+  definition: System.ValueTuple`3
+  href: https://learn.microsoft.com/dotnet/api/system.valuetuple-marketdatacollector.application.config.appconfig,system.collections.generic.ireadonlylist-system.string-,system.collections.generic.ireadonlylist-system.string--.config
+  name: (AppConfig Config, IReadOnlyList<string> AppliedFixes, IReadOnlyList<string> Warnings)
+  nameWithType: (AppConfig Config, IReadOnlyList<string> AppliedFixes, IReadOnlyList<string> Warnings)
+  fullName: (MarketDataCollector.Application.Config.AppConfig Config, System.Collections.Generic.IReadOnlyList<string> AppliedFixes, System.Collections.Generic.IReadOnlyList<string> Warnings)
+  nameWithType.vb: (Config As AppConfig, AppliedFixes As IReadOnlyList(Of String), Warnings As IReadOnlyList(Of String))
+  fullName.vb: (Config As MarketDataCollector.Application.Config.AppConfig, AppliedFixes As System.Collections.Generic.IReadOnlyList(Of String), Warnings As System.Collections.Generic.IReadOnlyList(Of String))
+  name.vb: (Config As AppConfig, AppliedFixes As IReadOnlyList(Of String), Warnings As IReadOnlyList(Of String))
+  spec.csharp:
+  - name: (
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: " "
+  - uid: System.ValueTuple{MarketDataCollector.Application.Config.AppConfig,System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String}}.Config
+    name: Config
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-marketdatacollector.application.config.appconfig,system.collections.generic.ireadonlylist-system.string-,system.collections.generic.ireadonlylist-system.string--.config
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: " "
+  - uid: System.ValueTuple{MarketDataCollector.Application.Config.AppConfig,System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String}}.AppliedFixes
+    name: AppliedFixes
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-marketdatacollector.application.config.appconfig,system.collections.generic.ireadonlylist-system.string-,system.collections.generic.ireadonlylist-system.string--.appliedfixes
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: " "
+  - uid: System.ValueTuple{MarketDataCollector.Application.Config.AppConfig,System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String}}.Warnings
+    name: Warnings
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-marketdatacollector.application.config.appconfig,system.collections.generic.ireadonlylist-system.string-,system.collections.generic.ireadonlylist-system.string--.warnings
+  - name: )
+  spec.vb:
+  - name: (
+  - uid: System.ValueTuple{MarketDataCollector.Application.Config.AppConfig,System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String}}.Config
+    name: Config
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-marketdatacollector.application.config.appconfig,system.collections.generic.ireadonlylist-system.string-,system.collections.generic.ireadonlylist-system.string--.config
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{MarketDataCollector.Application.Config.AppConfig,System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String}}.AppliedFixes
+    name: AppliedFixes
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-marketdatacollector.application.config.appconfig,system.collections.generic.ireadonlylist-system.string-,system.collections.generic.ireadonlylist-system.string--.appliedfixes
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{MarketDataCollector.Application.Config.AppConfig,System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String}}.Warnings
+    name: Warnings
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-marketdatacollector.application.config.appconfig,system.collections.generic.ireadonlylist-system.string-,system.collections.generic.ireadonlylist-system.string--.warnings
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: System.ValueTuple`3
+  commentId: T:System.ValueTuple`3
+  name: (T1, T2, T3)
+  nameWithType: (T1, T2, T3)
+  fullName: (T1, T2, T3)
+  spec.csharp:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+  spec.vb:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+- uid: MarketDataCollector.Application.Services.ConfigurationService.IsIBGatewayAvailable*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.IsIBGatewayAvailable
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_IsIBGatewayAvailable
+  name: IsIBGatewayAvailable
+  nameWithType: ConfigurationService.IsIBGatewayAvailable
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.IsIBGatewayAvailable
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ApplyEnvironmentOverrides*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.ApplyEnvironmentOverrides
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_ApplyEnvironmentOverrides_MarketDataCollector_Application_Config_AppConfig_
+  name: ApplyEnvironmentOverrides
+  nameWithType: ConfigurationService.ApplyEnvironmentOverrides
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ApplyEnvironmentOverrides
+- uid: MarketDataCollector.Application.Services.ConfigurationService.LoadAndPrepareConfig*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.LoadAndPrepareConfig
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_LoadAndPrepareConfig_System_String_System_Boolean_
+  name: LoadAndPrepareConfig
+  nameWithType: ConfigurationService.LoadAndPrepareConfig
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.LoadAndPrepareConfig
+- uid: MarketDataCollector.Application.Services.ConfigurationService.LoadValidatedConfig*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.LoadValidatedConfig
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_LoadValidatedConfig_System_String_MarketDataCollector_Application_Config_PipelineOptions_
+  name: LoadValidatedConfig
+  nameWithType: ConfigurationService.LoadValidatedConfig
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.LoadValidatedConfig
+- uid: MarketDataCollector.Application.Config.PipelineOptions
+  commentId: T:MarketDataCollector.Application.Config.PipelineOptions
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.PipelineOptions.html
+  name: PipelineOptions
+  nameWithType: PipelineOptions
+  fullName: MarketDataCollector.Application.Config.PipelineOptions
+- uid: MarketDataCollector.Application.Config.ValidatedConfig
+  commentId: T:MarketDataCollector.Application.Config.ValidatedConfig
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.ValidatedConfig.html
+  name: ValidatedConfig
+  nameWithType: ValidatedConfig
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig
+- uid: MarketDataCollector.Application.Services.ConfigurationService.ProcessConfig*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.ProcessConfig
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_ProcessConfig_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Application_Config_PipelineOptions_
+  name: ProcessConfig
+  nameWithType: ConfigurationService.ProcessConfig
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.ProcessConfig
+- uid: MarketDataCollector.Application.Services.ConfigurationService.RunWizardAndValidateAsync*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.RunWizardAndValidateAsync
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_RunWizardAndValidateAsync_System_Threading_CancellationToken_
+  name: RunWizardAndValidateAsync
+  nameWithType: ConfigurationService.RunWizardAndValidateAsync
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.RunWizardAndValidateAsync
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Config.ValidatedConfig}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Config.ValidatedConfig}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<ValidatedConfig>
+  nameWithType: Task<ValidatedConfig>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Config.ValidatedConfig>
+  nameWithType.vb: Task(Of ValidatedConfig)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Config.ValidatedConfig)
+  name.vb: Task(Of ValidatedConfig)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Config.ValidatedConfig
+    name: ValidatedConfig
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.ValidatedConfig
+    name: ValidatedConfig
+  - name: )
+- uid: MarketDataCollector.Application.Services.ConfigurationService.RunAutoConfigAndValidate*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.RunAutoConfigAndValidate
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_RunAutoConfigAndValidate_MarketDataCollector_Application_Config_AppConfig_
+  name: RunAutoConfigAndValidate
+  nameWithType: ConfigurationService.RunAutoConfigAndValidate
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.RunAutoConfigAndValidate
+- uid: MarketDataCollector.Application.Services.ConfigurationService.GetEnvironmentName*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.GetEnvironmentName
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_GetEnvironmentName
+  name: GetEnvironmentName
+  nameWithType: ConfigurationService.GetEnvironmentName
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.GetEnvironmentName
+- uid: MarketDataCollector.Application.Services.ConfigurationService.StartHotReload*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.StartHotReload
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_StartHotReload_System_String_System_Action_MarketDataCollector_Application_Config_AppConfig__System_Action_System_Exception__
+  name: StartHotReload
+  nameWithType: ConfigurationService.StartHotReload
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.StartHotReload
+- uid: System.Action{MarketDataCollector.Application.Config.AppConfig}
+  commentId: T:System.Action{MarketDataCollector.Application.Config.AppConfig}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<AppConfig>
+  nameWithType: Action<AppConfig>
+  fullName: System.Action<MarketDataCollector.Application.Config.AppConfig>
+  nameWithType.vb: Action(Of AppConfig)
+  fullName.vb: System.Action(Of MarketDataCollector.Application.Config.AppConfig)
+  name.vb: Action(Of AppConfig)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: )
+- uid: System.Action{System.Exception}
+  commentId: T:System.Action{System.Exception}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<Exception>
+  nameWithType: Action<Exception>
+  fullName: System.Action<System.Exception>
+  nameWithType.vb: Action(Of Exception)
+  fullName.vb: System.Action(Of System.Exception)
+  name.vb: Action(Of Exception)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: )
+- uid: MarketDataCollector.Application.Config.ConfigWatcher
+  commentId: T:MarketDataCollector.Application.Config.ConfigWatcher
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.ConfigWatcher.html
+  name: ConfigWatcher
+  nameWithType: ConfigWatcher
+  fullName: MarketDataCollector.Application.Config.ConfigWatcher
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Services.ConfigurationService.StartValidatedHotReload*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.StartValidatedHotReload
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_StartValidatedHotReload_System_String_System_Action_MarketDataCollector_Application_Config_ValidatedConfig__System_Action_System_Exception__MarketDataCollector_Application_Config_PipelineOptions_
+  name: StartValidatedHotReload
+  nameWithType: ConfigurationService.StartValidatedHotReload
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.StartValidatedHotReload
+- uid: System.Action{MarketDataCollector.Application.Config.ValidatedConfig}
+  commentId: T:System.Action{MarketDataCollector.Application.Config.ValidatedConfig}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<ValidatedConfig>
+  nameWithType: Action<ValidatedConfig>
+  fullName: System.Action<MarketDataCollector.Application.Config.ValidatedConfig>
+  nameWithType.vb: Action(Of ValidatedConfig)
+  fullName.vb: System.Action(Of MarketDataCollector.Application.Config.ValidatedConfig)
+  name.vb: Action(Of ValidatedConfig)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MarketDataCollector.Application.Config.ValidatedConfig
+    name: ValidatedConfig
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.ValidatedConfig
+    name: ValidatedConfig
+  - name: )
+- uid: MarketDataCollector.Application.Services.ConfigurationService.StopHotReload*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.StopHotReload
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_StopHotReload
+  name: StopHotReload
+  nameWithType: ConfigurationService.StopHotReload
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.StopHotReload
+- uid: MarketDataCollector.Application.Services.ConfigurationService.DisplayConfigSummary*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.DisplayConfigSummary
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_DisplayConfigSummary_MarketDataCollector_Application_Config_AppConfig_System_String_System_String___
+  name: DisplayConfigSummary
+  nameWithType: ConfigurationService.DisplayConfigSummary
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.DisplayConfigSummary
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Services.ConfigurationService.GetConfigTemplate*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.GetConfigTemplate
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_GetConfigTemplate_System_String_
+  name: GetConfigTemplate
+  nameWithType: ConfigurationService.GetConfigTemplate
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.GetConfigTemplate
+- uid: MarketDataCollector.Application.Services.ConfigTemplate
+  commentId: T:MarketDataCollector.Application.Services.ConfigTemplate
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.ConfigTemplate.html
+  name: ConfigTemplate
+  nameWithType: ConfigTemplate
+  fullName: MarketDataCollector.Application.Services.ConfigTemplate
+- uid: MarketDataCollector.Application.Services.ConfigurationService.GetConfig*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.GetConfig
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_GetConfig_System_String_
+  name: GetConfig
+  nameWithType: ConfigurationService.GetConfig
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.GetConfig
+- uid: MarketDataCollector.Application.Services.ConfigurationService.SaveConfigAsync*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.SaveConfigAsync
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_SaveConfigAsync_MarketDataCollector_Application_Config_AppConfig_System_String_
+  name: SaveConfigAsync
+  nameWithType: ConfigurationService.SaveConfigAsync
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.SaveConfigAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: MarketDataCollector.Application.Services.ConfigurationService.DisposeAsync*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigurationService.DisposeAsync
+  href: MarketDataCollector.Application.Services.ConfigurationService.html#MarketDataCollector_Application_Services_ConfigurationService_DisposeAsync
+  name: DisposeAsync
+  nameWithType: ConfigurationService.DisposeAsync
+  fullName: MarketDataCollector.Application.Services.ConfigurationService.DisposeAsync
+- uid: System.IAsyncDisposable.DisposeAsync
+  commentId: M:System.IAsyncDisposable.DisposeAsync
+  parent: System.IAsyncDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  name: DisposeAsync()
+  nameWithType: IAsyncDisposable.DisposeAsync()
+  fullName: System.IAsyncDisposable.DisposeAsync()
+  spec.csharp:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+- uid: System.Threading.Tasks.ValueTask
+  commentId: T:System.Threading.Tasks.ValueTask
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask
+  name: ValueTask
+  nameWithType: ValueTask
+  fullName: System.Threading.Tasks.ValueTask

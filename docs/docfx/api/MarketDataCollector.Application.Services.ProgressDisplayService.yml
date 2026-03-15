@@ -1,0 +1,1129 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService
+  commentId: T:MarketDataCollector.Application.Services.ProgressDisplayService
+  id: ProgressDisplayService
+  parent: MarketDataCollector.Application.Services
+  children:
+  - MarketDataCollector.Application.Services.ProgressDisplayService.#ctor(System.IO.TextWriter)
+  - MarketDataCollector.Application.Services.ProgressDisplayService.ClearLine
+  - MarketDataCollector.Application.Services.ProgressDisplayService.DisplayError(System.String)
+  - MarketDataCollector.Application.Services.ProgressDisplayService.DisplayProgress(System.String,System.Int32,System.Int32,System.String)
+  - MarketDataCollector.Application.Services.ProgressDisplayService.DisplayStatus(System.String)
+  - MarketDataCollector.Application.Services.ProgressDisplayService.DisplaySuccess(System.String)
+  - MarketDataCollector.Application.Services.ProgressDisplayService.DisplayTable(System.String,System.Collections.Generic.IEnumerable{System.ValueTuple{System.String,System.String}})
+  - MarketDataCollector.Application.Services.ProgressDisplayService.DisplayWarning(System.String)
+  - MarketDataCollector.Application.Services.ProgressDisplayService.Dispose
+  - MarketDataCollector.Application.Services.ProgressDisplayService.StartChecklist(System.String,System.String[])
+  - MarketDataCollector.Application.Services.ProgressDisplayService.StartOperation(System.String,System.Int32)
+  - MarketDataCollector.Application.Services.ProgressDisplayService.StartSpinner(System.String)
+  - MarketDataCollector.Application.Services.ProgressDisplayService.StartTiming
+  - MarketDataCollector.Application.Services.ProgressDisplayService.StopTiming
+  langs:
+  - csharp
+  - vb
+  name: ProgressDisplayService
+  nameWithType: ProgressDisplayService
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProgressDisplayService
+    path: ../../src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+    startLine: 8
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Service for displaying real-time progress feedback during long-running operations.
+
+    Provides terminal-based progress bars, spinners, and status updates.
+  example: []
+  syntax:
+    content: 'public sealed class ProgressDisplayService : IDisposable'
+    content.vb: Public NotInheritable Class ProgressDisplayService Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.#ctor(System.IO.TextWriter)
+  commentId: M:MarketDataCollector.Application.Services.ProgressDisplayService.#ctor(System.IO.TextWriter)
+  id: '#ctor(System.IO.TextWriter)'
+  parent: MarketDataCollector.Application.Services.ProgressDisplayService
+  langs:
+  - csharp
+  - vb
+  name: ProgressDisplayService(TextWriter?)
+  nameWithType: ProgressDisplayService.ProgressDisplayService(TextWriter?)
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.ProgressDisplayService(System.IO.TextWriter?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+    startLine: 22
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  syntax:
+    content: public ProgressDisplayService(TextWriter? output = null)
+    parameters:
+    - id: output
+      type: System.IO.TextWriter
+    content.vb: Public Sub New(output As TextWriter = Nothing)
+  overload: MarketDataCollector.Application.Services.ProgressDisplayService.#ctor*
+  nameWithType.vb: ProgressDisplayService.New(TextWriter)
+  fullName.vb: MarketDataCollector.Application.Services.ProgressDisplayService.New(System.IO.TextWriter)
+  name.vb: New(TextWriter)
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.StartOperation(System.String,System.Int32)
+  commentId: M:MarketDataCollector.Application.Services.ProgressDisplayService.StartOperation(System.String,System.Int32)
+  id: StartOperation(System.String,System.Int32)
+  parent: MarketDataCollector.Application.Services.ProgressDisplayService
+  langs:
+  - csharp
+  - vb
+  name: StartOperation(string, int)
+  nameWithType: ProgressDisplayService.StartOperation(string, int)
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.StartOperation(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StartOperation
+    path: ../../src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+    startLine: 31
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Creates a progress tracker for a specific operation.
+  example: []
+  syntax:
+    content: public OperationProgress StartOperation(string operationName, int totalItems = 0)
+    parameters:
+    - id: operationName
+      type: System.String
+    - id: totalItems
+      type: System.Int32
+    return:
+      type: MarketDataCollector.Application.Services.OperationProgress
+    content.vb: Public Function StartOperation(operationName As String, totalItems As Integer = 0) As OperationProgress
+  overload: MarketDataCollector.Application.Services.ProgressDisplayService.StartOperation*
+  nameWithType.vb: ProgressDisplayService.StartOperation(String, Integer)
+  fullName.vb: MarketDataCollector.Application.Services.ProgressDisplayService.StartOperation(String, Integer)
+  name.vb: StartOperation(String, Integer)
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayProgress(System.String,System.Int32,System.Int32,System.String)
+  commentId: M:MarketDataCollector.Application.Services.ProgressDisplayService.DisplayProgress(System.String,System.Int32,System.Int32,System.String)
+  id: DisplayProgress(System.String,System.Int32,System.Int32,System.String)
+  parent: MarketDataCollector.Application.Services.ProgressDisplayService
+  langs:
+  - csharp
+  - vb
+  name: DisplayProgress(string, int, int, string?)
+  nameWithType: ProgressDisplayService.DisplayProgress(string, int, int, string?)
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayProgress(string, int, int, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisplayProgress
+    path: ../../src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+    startLine: 39
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Displays a progress bar with percentage and ETA.
+  example: []
+  syntax:
+    content: public void DisplayProgress(string operation, int current, int total, string? currentItem = null)
+    parameters:
+    - id: operation
+      type: System.String
+    - id: current
+      type: System.Int32
+    - id: total
+      type: System.Int32
+    - id: currentItem
+      type: System.String
+    content.vb: Public Sub DisplayProgress(operation As String, current As Integer, total As Integer, currentItem As String = Nothing)
+  overload: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayProgress*
+  nameWithType.vb: ProgressDisplayService.DisplayProgress(String, Integer, Integer, String)
+  fullName.vb: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayProgress(String, Integer, Integer, String)
+  name.vb: DisplayProgress(String, Integer, Integer, String)
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.StartSpinner(System.String)
+  commentId: M:MarketDataCollector.Application.Services.ProgressDisplayService.StartSpinner(System.String)
+  id: StartSpinner(System.String)
+  parent: MarketDataCollector.Application.Services.ProgressDisplayService
+  langs:
+  - csharp
+  - vb
+  name: StartSpinner(string)
+  nameWithType: ProgressDisplayService.StartSpinner(string)
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.StartSpinner(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StartSpinner
+    path: ../../src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+    startLine: 73
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Displays a spinner for indeterminate progress.
+  example: []
+  syntax:
+    content: public IDisposable StartSpinner(string message)
+    parameters:
+    - id: message
+      type: System.String
+    return:
+      type: System.IDisposable
+    content.vb: Public Function StartSpinner(message As String) As IDisposable
+  overload: MarketDataCollector.Application.Services.ProgressDisplayService.StartSpinner*
+  nameWithType.vb: ProgressDisplayService.StartSpinner(String)
+  fullName.vb: MarketDataCollector.Application.Services.ProgressDisplayService.StartSpinner(String)
+  name.vb: StartSpinner(String)
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayStatus(System.String)
+  commentId: M:MarketDataCollector.Application.Services.ProgressDisplayService.DisplayStatus(System.String)
+  id: DisplayStatus(System.String)
+  parent: MarketDataCollector.Application.Services.ProgressDisplayService
+  langs:
+  - csharp
+  - vb
+  name: DisplayStatus(string)
+  nameWithType: ProgressDisplayService.DisplayStatus(string)
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayStatus(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisplayStatus
+    path: ../../src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+    startLine: 93
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Displays a status line that can be updated.
+  example: []
+  syntax:
+    content: public void DisplayStatus(string status)
+    parameters:
+    - id: status
+      type: System.String
+    content.vb: Public Sub DisplayStatus(status As String)
+  overload: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayStatus*
+  nameWithType.vb: ProgressDisplayService.DisplayStatus(String)
+  fullName.vb: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayStatus(String)
+  name.vb: DisplayStatus(String)
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.DisplaySuccess(System.String)
+  commentId: M:MarketDataCollector.Application.Services.ProgressDisplayService.DisplaySuccess(System.String)
+  id: DisplaySuccess(System.String)
+  parent: MarketDataCollector.Application.Services.ProgressDisplayService
+  langs:
+  - csharp
+  - vb
+  name: DisplaySuccess(string)
+  nameWithType: ProgressDisplayService.DisplaySuccess(string)
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.DisplaySuccess(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisplaySuccess
+    path: ../../src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+    startLine: 111
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Displays a success message.
+  example: []
+  syntax:
+    content: public void DisplaySuccess(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Public Sub DisplaySuccess(message As String)
+  overload: MarketDataCollector.Application.Services.ProgressDisplayService.DisplaySuccess*
+  nameWithType.vb: ProgressDisplayService.DisplaySuccess(String)
+  fullName.vb: MarketDataCollector.Application.Services.ProgressDisplayService.DisplaySuccess(String)
+  name.vb: DisplaySuccess(String)
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayWarning(System.String)
+  commentId: M:MarketDataCollector.Application.Services.ProgressDisplayService.DisplayWarning(System.String)
+  id: DisplayWarning(System.String)
+  parent: MarketDataCollector.Application.Services.ProgressDisplayService
+  langs:
+  - csharp
+  - vb
+  name: DisplayWarning(string)
+  nameWithType: ProgressDisplayService.DisplayWarning(string)
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayWarning(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisplayWarning
+    path: ../../src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+    startLine: 126
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Displays a warning message.
+  example: []
+  syntax:
+    content: public void DisplayWarning(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Public Sub DisplayWarning(message As String)
+  overload: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayWarning*
+  nameWithType.vb: ProgressDisplayService.DisplayWarning(String)
+  fullName.vb: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayWarning(String)
+  name.vb: DisplayWarning(String)
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayError(System.String)
+  commentId: M:MarketDataCollector.Application.Services.ProgressDisplayService.DisplayError(System.String)
+  id: DisplayError(System.String)
+  parent: MarketDataCollector.Application.Services.ProgressDisplayService
+  langs:
+  - csharp
+  - vb
+  name: DisplayError(string)
+  nameWithType: ProgressDisplayService.DisplayError(string)
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayError(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisplayError
+    path: ../../src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+    startLine: 141
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Displays an error message.
+  example: []
+  syntax:
+    content: public void DisplayError(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Public Sub DisplayError(message As String)
+  overload: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayError*
+  nameWithType.vb: ProgressDisplayService.DisplayError(String)
+  fullName.vb: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayError(String)
+  name.vb: DisplayError(String)
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.ClearLine
+  commentId: M:MarketDataCollector.Application.Services.ProgressDisplayService.ClearLine
+  id: ClearLine
+  parent: MarketDataCollector.Application.Services.ProgressDisplayService
+  langs:
+  - csharp
+  - vb
+  name: ClearLine()
+  nameWithType: ProgressDisplayService.ClearLine()
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.ClearLine()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ClearLine
+    path: ../../src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+    startLine: 156
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Clears the current line.
+  example: []
+  syntax:
+    content: public void ClearLine()
+    content.vb: Public Sub ClearLine()
+  overload: MarketDataCollector.Application.Services.ProgressDisplayService.ClearLine*
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.StartChecklist(System.String,System.String[])
+  commentId: M:MarketDataCollector.Application.Services.ProgressDisplayService.StartChecklist(System.String,System.String[])
+  id: StartChecklist(System.String,System.String[])
+  parent: MarketDataCollector.Application.Services.ProgressDisplayService
+  langs:
+  - csharp
+  - vb
+  name: StartChecklist(string, string[])
+  nameWithType: ProgressDisplayService.StartChecklist(string, string[])
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.StartChecklist(string, string[])
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StartChecklist
+    path: ../../src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+    startLine: 170
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Displays a multi-step checklist.
+  example: []
+  syntax:
+    content: public ChecklistDisplay StartChecklist(string title, string[] steps)
+    parameters:
+    - id: title
+      type: System.String
+    - id: steps
+      type: System.String[]
+    return:
+      type: MarketDataCollector.Application.Services.ChecklistDisplay
+    content.vb: Public Function StartChecklist(title As String, steps As String()) As ChecklistDisplay
+  overload: MarketDataCollector.Application.Services.ProgressDisplayService.StartChecklist*
+  nameWithType.vb: ProgressDisplayService.StartChecklist(String, String())
+  fullName.vb: MarketDataCollector.Application.Services.ProgressDisplayService.StartChecklist(String, String())
+  name.vb: StartChecklist(String, String())
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayTable(System.String,System.Collections.Generic.IEnumerable{System.ValueTuple{System.String,System.String}})
+  commentId: M:MarketDataCollector.Application.Services.ProgressDisplayService.DisplayTable(System.String,System.Collections.Generic.IEnumerable{System.ValueTuple{System.String,System.String}})
+  id: DisplayTable(System.String,System.Collections.Generic.IEnumerable{System.ValueTuple{System.String,System.String}})
+  parent: MarketDataCollector.Application.Services.ProgressDisplayService
+  langs:
+  - csharp
+  - vb
+  name: DisplayTable(string, IEnumerable<(string Key, string Value)>)
+  nameWithType: ProgressDisplayService.DisplayTable(string, IEnumerable<(string Key, string Value)>)
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayTable(string, System.Collections.Generic.IEnumerable<(string Key, string Value)>)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisplayTable
+    path: ../../src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+    startLine: 178
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Displays a summary table.
+  example: []
+  syntax:
+    content: public void DisplayTable(string title, IEnumerable<(string Key, string Value)> rows)
+    parameters:
+    - id: title
+      type: System.String
+    - id: rows
+      type: System.Collections.Generic.IEnumerable{System.ValueTuple{System.String,System.String}}
+    content.vb: Public Sub DisplayTable(title As String, rows As IEnumerable(Of (Key As String, Value As String)))
+  overload: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayTable*
+  nameWithType.vb: ProgressDisplayService.DisplayTable(String, IEnumerable(Of (Key As String, Value As String)))
+  fullName.vb: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayTable(String, System.Collections.Generic.IEnumerable(Of (Key As String, Value As String)))
+  name.vb: DisplayTable(String, IEnumerable(Of (Key As String, Value As String)))
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.StartTiming
+  commentId: M:MarketDataCollector.Application.Services.ProgressDisplayService.StartTiming
+  id: StartTiming
+  parent: MarketDataCollector.Application.Services.ProgressDisplayService
+  langs:
+  - csharp
+  - vb
+  name: StartTiming()
+  nameWithType: ProgressDisplayService.StartTiming()
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.StartTiming()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StartTiming
+    path: ../../src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+    startLine: 197
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Starts the internal stopwatch for ETA calculations.
+  example: []
+  syntax:
+    content: public void StartTiming()
+    content.vb: Public Sub StartTiming()
+  overload: MarketDataCollector.Application.Services.ProgressDisplayService.StartTiming*
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.StopTiming
+  commentId: M:MarketDataCollector.Application.Services.ProgressDisplayService.StopTiming
+  id: StopTiming
+  parent: MarketDataCollector.Application.Services.ProgressDisplayService
+  langs:
+  - csharp
+  - vb
+  name: StopTiming()
+  nameWithType: ProgressDisplayService.StopTiming()
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.StopTiming()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StopTiming
+    path: ../../src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+    startLine: 205
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Stops the internal stopwatch.
+  example: []
+  syntax:
+    content: public TimeSpan StopTiming()
+    return:
+      type: System.TimeSpan
+    content.vb: Public Function StopTiming() As TimeSpan
+  overload: MarketDataCollector.Application.Services.ProgressDisplayService.StopTiming*
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.Dispose
+  commentId: M:MarketDataCollector.Application.Services.ProgressDisplayService.Dispose
+  id: Dispose
+  parent: MarketDataCollector.Application.Services.ProgressDisplayService
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: ProgressDisplayService.Dispose()
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Dispose
+    path: ../../src/MarketDataCollector.Application/Services/ProgressDisplayService.cs
+    startLine: 244
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MarketDataCollector.Application.Services.ProgressDisplayService.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: MarketDataCollector.Application.Services
+  commentId: N:MarketDataCollector.Application.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Services
+  nameWithType: MarketDataCollector.Application.Services
+  fullName: MarketDataCollector.Application.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Services.ProgressDisplayService.#ctor
+  href: MarketDataCollector.Application.Services.ProgressDisplayService.html#MarketDataCollector_Application_Services_ProgressDisplayService__ctor_System_IO_TextWriter_
+  name: ProgressDisplayService
+  nameWithType: ProgressDisplayService.ProgressDisplayService
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.ProgressDisplayService
+  nameWithType.vb: ProgressDisplayService.New
+  fullName.vb: MarketDataCollector.Application.Services.ProgressDisplayService.New
+  name.vb: New
+- uid: System.IO.TextWriter
+  commentId: T:System.IO.TextWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.textwriter
+  name: TextWriter
+  nameWithType: TextWriter
+  fullName: System.IO.TextWriter
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.StartOperation*
+  commentId: Overload:MarketDataCollector.Application.Services.ProgressDisplayService.StartOperation
+  href: MarketDataCollector.Application.Services.ProgressDisplayService.html#MarketDataCollector_Application_Services_ProgressDisplayService_StartOperation_System_String_System_Int32_
+  name: StartOperation
+  nameWithType: ProgressDisplayService.StartOperation
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.StartOperation
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Application.Services.OperationProgress
+  commentId: T:MarketDataCollector.Application.Services.OperationProgress
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.OperationProgress.html
+  name: OperationProgress
+  nameWithType: OperationProgress
+  fullName: MarketDataCollector.Application.Services.OperationProgress
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayProgress*
+  commentId: Overload:MarketDataCollector.Application.Services.ProgressDisplayService.DisplayProgress
+  href: MarketDataCollector.Application.Services.ProgressDisplayService.html#MarketDataCollector_Application_Services_ProgressDisplayService_DisplayProgress_System_String_System_Int32_System_Int32_System_String_
+  name: DisplayProgress
+  nameWithType: ProgressDisplayService.DisplayProgress
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayProgress
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.StartSpinner*
+  commentId: Overload:MarketDataCollector.Application.Services.ProgressDisplayService.StartSpinner
+  href: MarketDataCollector.Application.Services.ProgressDisplayService.html#MarketDataCollector_Application_Services_ProgressDisplayService_StartSpinner_System_String_
+  name: StartSpinner
+  nameWithType: ProgressDisplayService.StartSpinner
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.StartSpinner
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayStatus*
+  commentId: Overload:MarketDataCollector.Application.Services.ProgressDisplayService.DisplayStatus
+  href: MarketDataCollector.Application.Services.ProgressDisplayService.html#MarketDataCollector_Application_Services_ProgressDisplayService_DisplayStatus_System_String_
+  name: DisplayStatus
+  nameWithType: ProgressDisplayService.DisplayStatus
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayStatus
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.DisplaySuccess*
+  commentId: Overload:MarketDataCollector.Application.Services.ProgressDisplayService.DisplaySuccess
+  href: MarketDataCollector.Application.Services.ProgressDisplayService.html#MarketDataCollector_Application_Services_ProgressDisplayService_DisplaySuccess_System_String_
+  name: DisplaySuccess
+  nameWithType: ProgressDisplayService.DisplaySuccess
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.DisplaySuccess
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayWarning*
+  commentId: Overload:MarketDataCollector.Application.Services.ProgressDisplayService.DisplayWarning
+  href: MarketDataCollector.Application.Services.ProgressDisplayService.html#MarketDataCollector_Application_Services_ProgressDisplayService_DisplayWarning_System_String_
+  name: DisplayWarning
+  nameWithType: ProgressDisplayService.DisplayWarning
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayWarning
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayError*
+  commentId: Overload:MarketDataCollector.Application.Services.ProgressDisplayService.DisplayError
+  href: MarketDataCollector.Application.Services.ProgressDisplayService.html#MarketDataCollector_Application_Services_ProgressDisplayService_DisplayError_System_String_
+  name: DisplayError
+  nameWithType: ProgressDisplayService.DisplayError
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayError
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.ClearLine*
+  commentId: Overload:MarketDataCollector.Application.Services.ProgressDisplayService.ClearLine
+  href: MarketDataCollector.Application.Services.ProgressDisplayService.html#MarketDataCollector_Application_Services_ProgressDisplayService_ClearLine
+  name: ClearLine
+  nameWithType: ProgressDisplayService.ClearLine
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.ClearLine
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.StartChecklist*
+  commentId: Overload:MarketDataCollector.Application.Services.ProgressDisplayService.StartChecklist
+  href: MarketDataCollector.Application.Services.ProgressDisplayService.html#MarketDataCollector_Application_Services_ProgressDisplayService_StartChecklist_System_String_System_String___
+  name: StartChecklist
+  nameWithType: ProgressDisplayService.StartChecklist
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.StartChecklist
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Services.ChecklistDisplay
+  commentId: T:MarketDataCollector.Application.Services.ChecklistDisplay
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.ChecklistDisplay.html
+  name: ChecklistDisplay
+  nameWithType: ChecklistDisplay
+  fullName: MarketDataCollector.Application.Services.ChecklistDisplay
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayTable*
+  commentId: Overload:MarketDataCollector.Application.Services.ProgressDisplayService.DisplayTable
+  href: MarketDataCollector.Application.Services.ProgressDisplayService.html#MarketDataCollector_Application_Services_ProgressDisplayService_DisplayTable_System_String_System_Collections_Generic_IEnumerable_System_ValueTuple_System_String_System_String___
+  name: DisplayTable
+  nameWithType: ProgressDisplayService.DisplayTable
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.DisplayTable
+- uid: System.Collections.Generic.IEnumerable{System.ValueTuple{System.String,System.String}}
+  commentId: T:System.Collections.Generic.IEnumerable{System.ValueTuple{System.String,System.String}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<(string Field, string Error)>
+  nameWithType: IEnumerable<(string Field, string Error)>
+  fullName: System.Collections.Generic.IEnumerable<(string Field, string Error)>
+  nameWithType.vb: IEnumerable(Of (Field As String, Error As String))
+  fullName.vb: System.Collections.Generic.IEnumerable(Of (Field As String, Error As String))
+  name.vb: IEnumerable(Of (Field As String, Error As String))
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.String}.Field
+    name: Field
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.field
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.String}.Error
+    name: Error
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.error
+  - name: )
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: (
+  - uid: System.ValueTuple{System.String,System.String}.Field
+    name: Field
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.field
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.String}.Error
+    name: Error
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.error
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.StartTiming*
+  commentId: Overload:MarketDataCollector.Application.Services.ProgressDisplayService.StartTiming
+  href: MarketDataCollector.Application.Services.ProgressDisplayService.html#MarketDataCollector_Application_Services_ProgressDisplayService_StartTiming
+  name: StartTiming
+  nameWithType: ProgressDisplayService.StartTiming
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.StartTiming
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.StopTiming*
+  commentId: Overload:MarketDataCollector.Application.Services.ProgressDisplayService.StopTiming
+  href: MarketDataCollector.Application.Services.ProgressDisplayService.html#MarketDataCollector_Application_Services_ProgressDisplayService_StopTiming
+  name: StopTiming
+  nameWithType: ProgressDisplayService.StopTiming
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.StopTiming
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: MarketDataCollector.Application.Services.ProgressDisplayService.Dispose*
+  commentId: Overload:MarketDataCollector.Application.Services.ProgressDisplayService.Dispose
+  href: MarketDataCollector.Application.Services.ProgressDisplayService.html#MarketDataCollector_Application_Services_ProgressDisplayService_Dispose
+  name: Dispose
+  nameWithType: ProgressDisplayService.Dispose
+  fullName: MarketDataCollector.Application.Services.ProgressDisplayService.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

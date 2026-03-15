@@ -1,0 +1,419 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource
+  id: ICorporateActionSource
+  parent: MarketDataCollector.Infrastructure.DataSources
+  children:
+  - MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetDividendsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetSplitsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: ICorporateActionSource
+  nameWithType: ICorporateActionSource
+  fullName: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IHistoricalDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ICorporateActionSource
+    path: ../../src/MarketDataCollector.ProviderSdk/IHistoricalDataSource.cs
+    startLine: 140
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Interface for sources that provide corporate action data.
+  example: []
+  syntax:
+    content: public interface ICorporateActionSource
+    content.vb: Public Interface ICorporateActionSource
+- uid: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetDividendsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetDividendsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  id: GetDividendsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource
+  langs:
+  - csharp
+  - vb
+  name: GetDividendsAsync(string, DateOnly?, DateOnly?, CancellationToken)
+  nameWithType: ICorporateActionSource.GetDividendsAsync(string, DateOnly?, DateOnly?, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetDividendsAsync(string, System.DateOnly?, System.DateOnly?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IHistoricalDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetDividendsAsync
+    path: ../../src/MarketDataCollector.ProviderSdk/IHistoricalDataSource.cs
+    startLine: 145
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Gets dividend history for a symbol.
+  example: []
+  syntax:
+    content: Task<IReadOnlyList<DividendInfo>> GetDividendsAsync(string symbol, DateOnly? from = null, DateOnly? to = null, CancellationToken ct = default)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: from
+      type: System.Nullable{System.DateOnly}
+    - id: to
+      type: System.Nullable{System.DateOnly}
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.DataSources.DividendInfo}}
+    content.vb: Function GetDividendsAsync(symbol As String, from As DateOnly? = Nothing, [to] As DateOnly? = Nothing, ct As CancellationToken = Nothing) As Task(Of IReadOnlyList(Of DividendInfo))
+  overload: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetDividendsAsync*
+  nameWithType.vb: ICorporateActionSource.GetDividendsAsync(String, DateOnly?, DateOnly?, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetDividendsAsync(String, System.DateOnly?, System.DateOnly?, System.Threading.CancellationToken)
+  name.vb: GetDividendsAsync(String, DateOnly?, DateOnly?, CancellationToken)
+- uid: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetSplitsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetSplitsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  id: GetSplitsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource
+  langs:
+  - csharp
+  - vb
+  name: GetSplitsAsync(string, DateOnly?, DateOnly?, CancellationToken)
+  nameWithType: ICorporateActionSource.GetSplitsAsync(string, DateOnly?, DateOnly?, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetSplitsAsync(string, System.DateOnly?, System.DateOnly?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IHistoricalDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSplitsAsync
+    path: ../../src/MarketDataCollector.ProviderSdk/IHistoricalDataSource.cs
+    startLine: 154
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Gets stock split history for a symbol.
+  example: []
+  syntax:
+    content: Task<IReadOnlyList<SplitInfo>> GetSplitsAsync(string symbol, DateOnly? from = null, DateOnly? to = null, CancellationToken ct = default)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: from
+      type: System.Nullable{System.DateOnly}
+    - id: to
+      type: System.Nullable{System.DateOnly}
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.DataSources.SplitInfo}}
+    content.vb: Function GetSplitsAsync(symbol As String, from As DateOnly? = Nothing, [to] As DateOnly? = Nothing, ct As CancellationToken = Nothing) As Task(Of IReadOnlyList(Of SplitInfo))
+  overload: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetSplitsAsync*
+  nameWithType.vb: ICorporateActionSource.GetSplitsAsync(String, DateOnly?, DateOnly?, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetSplitsAsync(String, System.DateOnly?, System.DateOnly?, System.Threading.CancellationToken)
+  name.vb: GetSplitsAsync(String, DateOnly?, DateOnly?, CancellationToken)
+references:
+- uid: MarketDataCollector.Infrastructure.DataSources
+  commentId: N:MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.DataSources
+  nameWithType: MarketDataCollector.Infrastructure.DataSources
+  fullName: MarketDataCollector.Infrastructure.DataSources
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.DataSources
+    name: DataSources
+    href: MarketDataCollector.Infrastructure.DataSources.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.DataSources
+    name: DataSources
+    href: MarketDataCollector.Infrastructure.DataSources.html
+- uid: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetDividendsAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetDividendsAsync
+  href: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.html#MarketDataCollector_Infrastructure_DataSources_ICorporateActionSource_GetDividendsAsync_System_String_System_Nullable_System_DateOnly__System_Nullable_System_DateOnly__System_Threading_CancellationToken_
+  name: GetDividendsAsync
+  nameWithType: ICorporateActionSource.GetDividendsAsync
+  fullName: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetDividendsAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Nullable{System.DateOnly}
+  commentId: T:System.Nullable{System.DateOnly}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  name: DateOnly?
+  nameWithType: DateOnly?
+  fullName: System.DateOnly?
+  spec.csharp:
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '?'
+  spec.vb:
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '?'
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.DataSources.DividendInfo}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.DataSources.DividendInfo}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IReadOnlyList<DividendInfo>>
+  nameWithType: Task<IReadOnlyList<DividendInfo>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<MarketDataCollector.Infrastructure.DataSources.DividendInfo>>
+  nameWithType.vb: Task(Of IReadOnlyList(Of DividendInfo))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Infrastructure.DataSources.DividendInfo))
+  name.vb: Task(Of IReadOnlyList(Of DividendInfo))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.DataSources.DividendInfo
+    name: DividendInfo
+    href: MarketDataCollector.Infrastructure.DataSources.DividendInfo.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.DataSources.DividendInfo
+    name: DividendInfo
+    href: MarketDataCollector.Infrastructure.DataSources.DividendInfo.html
+  - name: )
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetSplitsAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetSplitsAsync
+  href: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.html#MarketDataCollector_Infrastructure_DataSources_ICorporateActionSource_GetSplitsAsync_System_String_System_Nullable_System_DateOnly__System_Nullable_System_DateOnly__System_Threading_CancellationToken_
+  name: GetSplitsAsync
+  nameWithType: ICorporateActionSource.GetSplitsAsync
+  fullName: MarketDataCollector.Infrastructure.DataSources.ICorporateActionSource.GetSplitsAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.DataSources.SplitInfo}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.DataSources.SplitInfo}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IReadOnlyList<SplitInfo>>
+  nameWithType: Task<IReadOnlyList<SplitInfo>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<MarketDataCollector.Infrastructure.DataSources.SplitInfo>>
+  nameWithType.vb: Task(Of IReadOnlyList(Of SplitInfo))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Infrastructure.DataSources.SplitInfo))
+  name.vb: Task(Of IReadOnlyList(Of SplitInfo))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.DataSources.SplitInfo
+    name: SplitInfo
+    href: MarketDataCollector.Infrastructure.DataSources.SplitInfo.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.DataSources.SplitInfo
+    name: SplitInfo
+    href: MarketDataCollector.Infrastructure.DataSources.SplitInfo.html
+  - name: )
+  - name: )

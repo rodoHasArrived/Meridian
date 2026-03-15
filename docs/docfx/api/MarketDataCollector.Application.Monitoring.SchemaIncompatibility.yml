@@ -1,0 +1,659 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility
+  commentId: T:MarketDataCollector.Application.Monitoring.SchemaIncompatibility
+  id: SchemaIncompatibility
+  parent: MarketDataCollector.Application.Monitoring
+  children:
+  - MarketDataCollector.Application.Monitoring.SchemaIncompatibility.#ctor(System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)
+  - MarketDataCollector.Application.Monitoring.SchemaIncompatibility.CanMigrate
+  - MarketDataCollector.Application.Monitoring.SchemaIncompatibility.Compatible(System.String)
+  - MarketDataCollector.Application.Monitoring.SchemaIncompatibility.DetectedVersion
+  - MarketDataCollector.Application.Monitoring.SchemaIncompatibility.ExpectedVersion
+  - MarketDataCollector.Application.Monitoring.SchemaIncompatibility.FilePath
+  - MarketDataCollector.Application.Monitoring.SchemaIncompatibility.IsCompatible
+  langs:
+  - csharp
+  - vb
+  name: SchemaIncompatibility
+  nameWithType: SchemaIncompatibility
+  fullName: MarketDataCollector.Application.Monitoring.SchemaIncompatibility
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SchemaValidationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SchemaIncompatibility
+    path: ../../src/MarketDataCollector.Application/Monitoring/SchemaValidationService.cs
+    startLine: 319
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Information about a schema incompatibility found in a data file.
+  example: []
+  syntax:
+    content: 'public sealed record SchemaIncompatibility : IEquatable<SchemaIncompatibility>'
+    content.vb: Public NotInheritable Class SchemaIncompatibility Implements IEquatable(Of SchemaIncompatibility)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Application.Monitoring.SchemaIncompatibility}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.#ctor(System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)
+  commentId: M:MarketDataCollector.Application.Monitoring.SchemaIncompatibility.#ctor(System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)
+  id: '#ctor(System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)'
+  parent: MarketDataCollector.Application.Monitoring.SchemaIncompatibility
+  langs:
+  - csharp
+  - vb
+  name: SchemaIncompatibility(string, int, int, bool, bool)
+  nameWithType: SchemaIncompatibility.SchemaIncompatibility(string, int, int, bool, bool)
+  fullName: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.SchemaIncompatibility(string, int, int, bool, bool)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SchemaValidationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Monitoring/SchemaValidationService.cs
+    startLine: 319
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Information about a schema incompatibility found in a data file.
+  example: []
+  syntax:
+    content: public SchemaIncompatibility(string FilePath, int DetectedVersion, int ExpectedVersion, bool IsCompatible, bool CanMigrate)
+    parameters:
+    - id: FilePath
+      type: System.String
+    - id: DetectedVersion
+      type: System.Int32
+    - id: ExpectedVersion
+      type: System.Int32
+    - id: IsCompatible
+      type: System.Boolean
+    - id: CanMigrate
+      type: System.Boolean
+    content.vb: Public Sub New(FilePath As String, DetectedVersion As Integer, ExpectedVersion As Integer, IsCompatible As Boolean, CanMigrate As Boolean)
+  overload: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.#ctor*
+  nameWithType.vb: SchemaIncompatibility.New(String, Integer, Integer, Boolean, Boolean)
+  fullName.vb: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.New(String, Integer, Integer, Boolean, Boolean)
+  name.vb: New(String, Integer, Integer, Boolean, Boolean)
+- uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.FilePath
+  commentId: P:MarketDataCollector.Application.Monitoring.SchemaIncompatibility.FilePath
+  id: FilePath
+  parent: MarketDataCollector.Application.Monitoring.SchemaIncompatibility
+  langs:
+  - csharp
+  - vb
+  name: FilePath
+  nameWithType: SchemaIncompatibility.FilePath
+  fullName: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.FilePath
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SchemaValidationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FilePath
+    path: ../../src/MarketDataCollector.Application/Monitoring/SchemaValidationService.cs
+    startLine: 320
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public string FilePath { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property FilePath As String
+  overload: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.FilePath*
+- uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.DetectedVersion
+  commentId: P:MarketDataCollector.Application.Monitoring.SchemaIncompatibility.DetectedVersion
+  id: DetectedVersion
+  parent: MarketDataCollector.Application.Monitoring.SchemaIncompatibility
+  langs:
+  - csharp
+  - vb
+  name: DetectedVersion
+  nameWithType: SchemaIncompatibility.DetectedVersion
+  fullName: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.DetectedVersion
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SchemaValidationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DetectedVersion
+    path: ../../src/MarketDataCollector.Application/Monitoring/SchemaValidationService.cs
+    startLine: 321
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public int DetectedVersion { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DetectedVersion As Integer
+  overload: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.DetectedVersion*
+- uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.ExpectedVersion
+  commentId: P:MarketDataCollector.Application.Monitoring.SchemaIncompatibility.ExpectedVersion
+  id: ExpectedVersion
+  parent: MarketDataCollector.Application.Monitoring.SchemaIncompatibility
+  langs:
+  - csharp
+  - vb
+  name: ExpectedVersion
+  nameWithType: SchemaIncompatibility.ExpectedVersion
+  fullName: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.ExpectedVersion
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SchemaValidationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ExpectedVersion
+    path: ../../src/MarketDataCollector.Application/Monitoring/SchemaValidationService.cs
+    startLine: 322
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public int ExpectedVersion { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ExpectedVersion As Integer
+  overload: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.ExpectedVersion*
+- uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.IsCompatible
+  commentId: P:MarketDataCollector.Application.Monitoring.SchemaIncompatibility.IsCompatible
+  id: IsCompatible
+  parent: MarketDataCollector.Application.Monitoring.SchemaIncompatibility
+  langs:
+  - csharp
+  - vb
+  name: IsCompatible
+  nameWithType: SchemaIncompatibility.IsCompatible
+  fullName: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.IsCompatible
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SchemaValidationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsCompatible
+    path: ../../src/MarketDataCollector.Application/Monitoring/SchemaValidationService.cs
+    startLine: 323
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public bool IsCompatible { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsCompatible As Boolean
+  overload: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.IsCompatible*
+- uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.CanMigrate
+  commentId: P:MarketDataCollector.Application.Monitoring.SchemaIncompatibility.CanMigrate
+  id: CanMigrate
+  parent: MarketDataCollector.Application.Monitoring.SchemaIncompatibility
+  langs:
+  - csharp
+  - vb
+  name: CanMigrate
+  nameWithType: SchemaIncompatibility.CanMigrate
+  fullName: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.CanMigrate
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SchemaValidationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CanMigrate
+    path: ../../src/MarketDataCollector.Application/Monitoring/SchemaValidationService.cs
+    startLine: 324
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public bool CanMigrate { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property CanMigrate As Boolean
+  overload: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.CanMigrate*
+- uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.Compatible(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.SchemaIncompatibility.Compatible(System.String)
+  id: Compatible(System.String)
+  parent: MarketDataCollector.Application.Monitoring.SchemaIncompatibility
+  langs:
+  - csharp
+  - vb
+  name: Compatible(string)
+  nameWithType: SchemaIncompatibility.Compatible(string)
+  fullName: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.Compatible(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SchemaValidationService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Compatible
+    path: ../../src/MarketDataCollector.Application/Monitoring/SchemaValidationService.cs
+    startLine: 327
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public static SchemaIncompatibility Compatible(string filePath)
+    parameters:
+    - id: filePath
+      type: System.String
+    return:
+      type: MarketDataCollector.Application.Monitoring.SchemaIncompatibility
+    content.vb: Public Shared Function Compatible(filePath As String) As SchemaIncompatibility
+  overload: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.Compatible*
+  nameWithType.vb: SchemaIncompatibility.Compatible(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.Compatible(String)
+  name.vb: Compatible(String)
+references:
+- uid: MarketDataCollector.Application.Monitoring
+  commentId: N:MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring
+  nameWithType: MarketDataCollector.Application.Monitoring
+  fullName: MarketDataCollector.Application.Monitoring
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Application.Monitoring.SchemaIncompatibility}
+  commentId: T:System.IEquatable{MarketDataCollector.Application.Monitoring.SchemaIncompatibility}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<SchemaIncompatibility>
+  nameWithType: IEquatable<SchemaIncompatibility>
+  fullName: System.IEquatable<MarketDataCollector.Application.Monitoring.SchemaIncompatibility>
+  nameWithType.vb: IEquatable(Of SchemaIncompatibility)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Application.Monitoring.SchemaIncompatibility)
+  name.vb: IEquatable(Of SchemaIncompatibility)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility
+    name: SchemaIncompatibility
+    href: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility
+    name: SchemaIncompatibility
+    href: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.SchemaIncompatibility.#ctor
+  href: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.html#MarketDataCollector_Application_Monitoring_SchemaIncompatibility__ctor_System_String_System_Int32_System_Int32_System_Boolean_System_Boolean_
+  name: SchemaIncompatibility
+  nameWithType: SchemaIncompatibility.SchemaIncompatibility
+  fullName: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.SchemaIncompatibility
+  nameWithType.vb: SchemaIncompatibility.New
+  fullName.vb: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.FilePath*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.SchemaIncompatibility.FilePath
+  href: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.html#MarketDataCollector_Application_Monitoring_SchemaIncompatibility_FilePath
+  name: FilePath
+  nameWithType: SchemaIncompatibility.FilePath
+  fullName: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.FilePath
+- uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.DetectedVersion*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.SchemaIncompatibility.DetectedVersion
+  href: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.html#MarketDataCollector_Application_Monitoring_SchemaIncompatibility_DetectedVersion
+  name: DetectedVersion
+  nameWithType: SchemaIncompatibility.DetectedVersion
+  fullName: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.DetectedVersion
+- uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.ExpectedVersion*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.SchemaIncompatibility.ExpectedVersion
+  href: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.html#MarketDataCollector_Application_Monitoring_SchemaIncompatibility_ExpectedVersion
+  name: ExpectedVersion
+  nameWithType: SchemaIncompatibility.ExpectedVersion
+  fullName: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.ExpectedVersion
+- uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.IsCompatible*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.SchemaIncompatibility.IsCompatible
+  href: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.html#MarketDataCollector_Application_Monitoring_SchemaIncompatibility_IsCompatible
+  name: IsCompatible
+  nameWithType: SchemaIncompatibility.IsCompatible
+  fullName: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.IsCompatible
+- uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.CanMigrate*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.SchemaIncompatibility.CanMigrate
+  href: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.html#MarketDataCollector_Application_Monitoring_SchemaIncompatibility_CanMigrate
+  name: CanMigrate
+  nameWithType: SchemaIncompatibility.CanMigrate
+  fullName: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.CanMigrate
+- uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.Compatible*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.SchemaIncompatibility.Compatible
+  href: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.html#MarketDataCollector_Application_Monitoring_SchemaIncompatibility_Compatible_System_String_
+  name: Compatible
+  nameWithType: SchemaIncompatibility.Compatible
+  fullName: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.Compatible
+- uid: MarketDataCollector.Application.Monitoring.SchemaIncompatibility
+  commentId: T:MarketDataCollector.Application.Monitoring.SchemaIncompatibility
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.SchemaIncompatibility.html
+  name: SchemaIncompatibility
+  nameWithType: SchemaIncompatibility
+  fullName: MarketDataCollector.Application.Monitoring.SchemaIncompatibility

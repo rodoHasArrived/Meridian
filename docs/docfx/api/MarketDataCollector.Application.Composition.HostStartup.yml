@@ -1,0 +1,1731 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Composition.HostStartup
+  commentId: T:MarketDataCollector.Application.Composition.HostStartup
+  id: HostStartup
+  parent: MarketDataCollector.Application.Composition
+  children:
+  - MarketDataCollector.Application.Composition.HostStartup.ConfigStore
+  - MarketDataCollector.Application.Composition.HostStartup.ConfigurationService
+  - MarketDataCollector.Application.Composition.HostStartup.CreateBackfillProviders
+  - MarketDataCollector.Application.Composition.HostStartup.CreateCompositeBackfillProvider(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider})
+  - MarketDataCollector.Application.Composition.HostStartup.CreateForBackfill(System.String)
+  - MarketDataCollector.Application.Composition.HostStartup.CreateForStreaming(System.String)
+  - MarketDataCollector.Application.Composition.HostStartup.CreateForUtility(System.String)
+  - MarketDataCollector.Application.Composition.HostStartup.CreateStatusWriter(MarketDataCollector.Application.Config.AppConfig,System.String)
+  - MarketDataCollector.Application.Composition.HostStartup.CreateStreamingClient(MarketDataCollector.Application.Config.AppConfig)
+  - MarketDataCollector.Application.Composition.HostStartup.CreateSubscriptionOrchestrator(MarketDataCollector.Infrastructure.IMarketDataClient)
+  - MarketDataCollector.Application.Composition.HostStartup.DisposeAsync
+  - MarketDataCollector.Application.Composition.HostStartup.GetRequiredService``1
+  - MarketDataCollector.Application.Composition.HostStartup.GetService``1
+  - MarketDataCollector.Application.Composition.HostStartup.Pipeline
+  - MarketDataCollector.Application.Composition.HostStartup.ProviderFactory
+  - MarketDataCollector.Application.Composition.HostStartup.ServiceProvider
+  - MarketDataCollector.Application.Composition.HostStartup.StartHotReload(System.String,System.Action{MarketDataCollector.Application.Config.AppConfig},System.Action{System.Exception})
+  - MarketDataCollector.Application.Composition.HostStartup.StorageOptions
+  langs:
+  - csharp
+  - vb
+  name: HostStartup
+  nameWithType: HostStartup
+  fullName: MarketDataCollector.Application.Composition.HostStartup
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HostStartup
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 37
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: >-
+    Unified startup class that provides a single entry point for all host types.
+
+    All hosts flow through this class, which delegates to ServiceCompositionRoot.
+  remarks: >-
+    <p><b>Design Philosophy:</b></p>
+
+    <ul><li>Single setup path for CLI, Web, and Desktop modes</li><li>Uses ServiceCompositionRoot for all DI registration</li><li>Host-specific adapters customize endpoint exposure</li><li>Eliminates duplicated service wiring across hosts</li></ul>
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-001", "Unified host startup for all deployment modes")]
+
+      public sealed class HostStartup : IAsyncDisposable
+    content.vb: >-
+      <ImplementsAdr("ADR-001", "Unified host startup for all deployment modes")>
+
+      Public NotInheritable Class HostStartup Implements IAsyncDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IAsyncDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-001
+    - type: System.String
+      value: Unified host startup for all deployment modes
+- uid: MarketDataCollector.Application.Composition.HostStartup.CreateForStreaming(System.String)
+  commentId: M:MarketDataCollector.Application.Composition.HostStartup.CreateForStreaming(System.String)
+  id: CreateForStreaming(System.String)
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: CreateForStreaming(string)
+  nameWithType: HostStartup.CreateForStreaming(string)
+  fullName: MarketDataCollector.Application.Composition.HostStartup.CreateForStreaming(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateForStreaming
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 57
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Creates a host startup for streaming data collection (CLI headless mode).
+  example: []
+  syntax:
+    content: public static HostStartup CreateForStreaming(string configPath)
+    parameters:
+    - id: configPath
+      type: System.String
+      description: Path to configuration file.
+    return:
+      type: MarketDataCollector.Application.Composition.HostStartup
+      description: Configured HostStartup instance.
+    content.vb: Public Shared Function CreateForStreaming(configPath As String) As HostStartup
+  overload: MarketDataCollector.Application.Composition.HostStartup.CreateForStreaming*
+  nameWithType.vb: HostStartup.CreateForStreaming(String)
+  fullName.vb: MarketDataCollector.Application.Composition.HostStartup.CreateForStreaming(String)
+  name.vb: CreateForStreaming(String)
+- uid: MarketDataCollector.Application.Composition.HostStartup.CreateForBackfill(System.String)
+  commentId: M:MarketDataCollector.Application.Composition.HostStartup.CreateForBackfill(System.String)
+  id: CreateForBackfill(System.String)
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: CreateForBackfill(string)
+  nameWithType: HostStartup.CreateForBackfill(string)
+  fullName: MarketDataCollector.Application.Composition.HostStartup.CreateForBackfill(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateForBackfill
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 77
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Creates a host startup for backfill-only operation.
+  example: []
+  syntax:
+    content: public static HostStartup CreateForBackfill(string configPath)
+    parameters:
+    - id: configPath
+      type: System.String
+      description: Path to configuration file.
+    return:
+      type: MarketDataCollector.Application.Composition.HostStartup
+      description: Configured HostStartup instance.
+    content.vb: Public Shared Function CreateForBackfill(configPath As String) As HostStartup
+  overload: MarketDataCollector.Application.Composition.HostStartup.CreateForBackfill*
+  nameWithType.vb: HostStartup.CreateForBackfill(String)
+  fullName.vb: MarketDataCollector.Application.Composition.HostStartup.CreateForBackfill(String)
+  name.vb: CreateForBackfill(String)
+- uid: MarketDataCollector.Application.Composition.HostStartup.CreateForUtility(System.String)
+  commentId: M:MarketDataCollector.Application.Composition.HostStartup.CreateForUtility(System.String)
+  id: CreateForUtility(System.String)
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: CreateForUtility(string)
+  nameWithType: HostStartup.CreateForUtility(string)
+  fullName: MarketDataCollector.Application.Composition.HostStartup.CreateForUtility(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateForUtility
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 97
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Creates a host startup for minimal utility commands (validation, config checks, etc.).
+  example: []
+  syntax:
+    content: public static HostStartup CreateForUtility(string configPath)
+    parameters:
+    - id: configPath
+      type: System.String
+      description: Path to configuration file.
+    return:
+      type: MarketDataCollector.Application.Composition.HostStartup
+      description: Configured HostStartup instance.
+    content.vb: Public Shared Function CreateForUtility(configPath As String) As HostStartup
+  overload: MarketDataCollector.Application.Composition.HostStartup.CreateForUtility*
+  nameWithType.vb: HostStartup.CreateForUtility(String)
+  fullName.vb: MarketDataCollector.Application.Composition.HostStartup.CreateForUtility(String)
+  name.vb: CreateForUtility(String)
+- uid: MarketDataCollector.Application.Composition.HostStartup.GetRequiredService``1
+  commentId: M:MarketDataCollector.Application.Composition.HostStartup.GetRequiredService``1
+  id: GetRequiredService``1
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: GetRequiredService<T>()
+  nameWithType: HostStartup.GetRequiredService<T>()
+  fullName: MarketDataCollector.Application.Composition.HostStartup.GetRequiredService<T>()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetRequiredService
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 113
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Gets a required service from the DI container.
+  example: []
+  syntax:
+    content: 'public T GetRequiredService<T>() where T : notnull'
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Function GetRequiredService(Of T)() As T
+  overload: MarketDataCollector.Application.Composition.HostStartup.GetRequiredService*
+  nameWithType.vb: HostStartup.GetRequiredService(Of T)()
+  fullName.vb: MarketDataCollector.Application.Composition.HostStartup.GetRequiredService(Of T)()
+  name.vb: GetRequiredService(Of T)()
+- uid: MarketDataCollector.Application.Composition.HostStartup.GetService``1
+  commentId: M:MarketDataCollector.Application.Composition.HostStartup.GetService``1
+  id: GetService``1
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: GetService<T>()
+  nameWithType: HostStartup.GetService<T>()
+  fullName: MarketDataCollector.Application.Composition.HostStartup.GetService<T>()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetService
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 119
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Gets a service from the DI container, or null if not registered.
+  example: []
+  syntax:
+    content: 'public T? GetService<T>() where T : class'
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Function GetService(Of T As Class)() As T
+  overload: MarketDataCollector.Application.Composition.HostStartup.GetService*
+  nameWithType.vb: HostStartup.GetService(Of T)()
+  fullName.vb: MarketDataCollector.Application.Composition.HostStartup.GetService(Of T)()
+  name.vb: GetService(Of T)()
+- uid: MarketDataCollector.Application.Composition.HostStartup.ServiceProvider
+  commentId: P:MarketDataCollector.Application.Composition.HostStartup.ServiceProvider
+  id: ServiceProvider
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: ServiceProvider
+  nameWithType: HostStartup.ServiceProvider
+  fullName: MarketDataCollector.Application.Composition.HostStartup.ServiceProvider
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ServiceProvider
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 125
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Gets the service provider for advanced scenarios.
+  example: []
+  syntax:
+    content: public IServiceProvider ServiceProvider { get; }
+    parameters: []
+    return:
+      type: System.IServiceProvider
+    content.vb: Public ReadOnly Property ServiceProvider As IServiceProvider
+  overload: MarketDataCollector.Application.Composition.HostStartup.ServiceProvider*
+- uid: MarketDataCollector.Application.Composition.HostStartup.ConfigStore
+  commentId: P:MarketDataCollector.Application.Composition.HostStartup.ConfigStore
+  id: ConfigStore
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: ConfigStore
+  nameWithType: HostStartup.ConfigStore
+  fullName: MarketDataCollector.Application.Composition.HostStartup.ConfigStore
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConfigStore
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 130
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Gets the ConfigStore from the DI container.
+  example: []
+  syntax:
+    content: public ConfigStore ConfigStore { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.UI.ConfigStore
+    content.vb: Public ReadOnly Property ConfigStore As ConfigStore
+  overload: MarketDataCollector.Application.Composition.HostStartup.ConfigStore*
+- uid: MarketDataCollector.Application.Composition.HostStartup.ConfigurationService
+  commentId: P:MarketDataCollector.Application.Composition.HostStartup.ConfigurationService
+  id: ConfigurationService
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: ConfigurationService
+  nameWithType: HostStartup.ConfigurationService
+  fullName: MarketDataCollector.Application.Composition.HostStartup.ConfigurationService
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConfigurationService
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 135
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Gets the ConfigurationService from the DI container.
+  example: []
+  syntax:
+    content: public ConfigurationService ConfigurationService { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Services.ConfigurationService
+    content.vb: Public ReadOnly Property ConfigurationService As ConfigurationService
+  overload: MarketDataCollector.Application.Composition.HostStartup.ConfigurationService*
+- uid: MarketDataCollector.Application.Composition.HostStartup.ProviderFactory
+  commentId: P:MarketDataCollector.Application.Composition.HostStartup.ProviderFactory
+  id: ProviderFactory
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: ProviderFactory
+  nameWithType: HostStartup.ProviderFactory
+  fullName: MarketDataCollector.Application.Composition.HostStartup.ProviderFactory
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderFactory
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 140
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Gets the ProviderFactory from the DI container.
+  example: []
+  syntax:
+    content: public ProviderFactory ProviderFactory { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory
+    content.vb: Public ReadOnly Property ProviderFactory As ProviderFactory
+  overload: MarketDataCollector.Application.Composition.HostStartup.ProviderFactory*
+- uid: MarketDataCollector.Application.Composition.HostStartup.Pipeline
+  commentId: P:MarketDataCollector.Application.Composition.HostStartup.Pipeline
+  id: Pipeline
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: Pipeline
+  nameWithType: HostStartup.Pipeline
+  fullName: MarketDataCollector.Application.Composition.HostStartup.Pipeline
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Pipeline
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 145
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Gets the EventPipeline from the DI container.
+  example: []
+  syntax:
+    content: public EventPipeline Pipeline { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Pipeline.EventPipeline
+    content.vb: Public ReadOnly Property Pipeline As EventPipeline
+  overload: MarketDataCollector.Application.Composition.HostStartup.Pipeline*
+- uid: MarketDataCollector.Application.Composition.HostStartup.StorageOptions
+  commentId: P:MarketDataCollector.Application.Composition.HostStartup.StorageOptions
+  id: StorageOptions
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: StorageOptions
+  nameWithType: HostStartup.StorageOptions
+  fullName: MarketDataCollector.Application.Composition.HostStartup.StorageOptions
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StorageOptions
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 150
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Gets the StorageOptions from the DI container.
+  example: []
+  syntax:
+    content: public StorageOptions StorageOptions { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Storage.StorageOptions
+    content.vb: Public ReadOnly Property StorageOptions As StorageOptions
+  overload: MarketDataCollector.Application.Composition.HostStartup.StorageOptions*
+- uid: MarketDataCollector.Application.Composition.HostStartup.CreateStreamingClient(MarketDataCollector.Application.Config.AppConfig)
+  commentId: M:MarketDataCollector.Application.Composition.HostStartup.CreateStreamingClient(MarketDataCollector.Application.Config.AppConfig)
+  id: CreateStreamingClient(MarketDataCollector.Application.Config.AppConfig)
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: CreateStreamingClient(AppConfig)
+  nameWithType: HostStartup.CreateStreamingClient(AppConfig)
+  fullName: MarketDataCollector.Application.Composition.HostStartup.CreateStreamingClient(MarketDataCollector.Application.Config.AppConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateStreamingClient
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 159
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: >-
+    Creates the streaming market data client based on configuration.
+
+    Delegates to <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.CreateStreamingClient(MarketDataCollector.Application.Config.DataSourceKind)" data-throw-if-not-resolved="false"></xref> which uses
+
+    dictionary-based factory lookup instead of switch statements.
+  example: []
+  syntax:
+    content: public IMarketDataClient CreateStreamingClient(AppConfig config)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+      description: Application configuration.
+    return:
+      type: MarketDataCollector.Infrastructure.IMarketDataClient
+      description: Configured market data client.
+    content.vb: Public Function CreateStreamingClient(config As AppConfig) As IMarketDataClient
+  overload: MarketDataCollector.Application.Composition.HostStartup.CreateStreamingClient*
+- uid: MarketDataCollector.Application.Composition.HostStartup.CreateSubscriptionOrchestrator(MarketDataCollector.Infrastructure.IMarketDataClient)
+  commentId: M:MarketDataCollector.Application.Composition.HostStartup.CreateSubscriptionOrchestrator(MarketDataCollector.Infrastructure.IMarketDataClient)
+  id: CreateSubscriptionOrchestrator(MarketDataCollector.Infrastructure.IMarketDataClient)
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: CreateSubscriptionOrchestrator(IMarketDataClient)
+  nameWithType: HostStartup.CreateSubscriptionOrchestrator(IMarketDataClient)
+  fullName: MarketDataCollector.Application.Composition.HostStartup.CreateSubscriptionOrchestrator(MarketDataCollector.Infrastructure.IMarketDataClient)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateSubscriptionOrchestrator
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 170
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Creates a subscription manager for managing symbol subscriptions.
+  example: []
+  syntax:
+    content: public SubscriptionOrchestrator CreateSubscriptionOrchestrator(IMarketDataClient dataClient)
+    parameters:
+    - id: dataClient
+      type: MarketDataCollector.Infrastructure.IMarketDataClient
+      description: The market data client.
+    return:
+      type: MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator
+      description: Configured subscription manager.
+    content.vb: Public Function CreateSubscriptionOrchestrator(dataClient As IMarketDataClient) As SubscriptionOrchestrator
+  overload: MarketDataCollector.Application.Composition.HostStartup.CreateSubscriptionOrchestrator*
+- uid: MarketDataCollector.Application.Composition.HostStartup.CreateBackfillProviders
+  commentId: M:MarketDataCollector.Application.Composition.HostStartup.CreateBackfillProviders
+  id: CreateBackfillProviders
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: CreateBackfillProviders()
+  nameWithType: HostStartup.CreateBackfillProviders()
+  fullName: MarketDataCollector.Application.Composition.HostStartup.CreateBackfillProviders()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateBackfillProviders
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 191
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: >-
+    Creates the backfill providers using the ProviderFactory.
+
+    Uses unified credential resolution through ConfigurationService.
+  example: []
+  syntax:
+    content: public IReadOnlyList<IHistoricalDataProvider> CreateBackfillProviders()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider}
+      description: List of configured backfill providers.
+    content.vb: Public Function CreateBackfillProviders() As IReadOnlyList(Of IHistoricalDataProvider)
+  overload: MarketDataCollector.Application.Composition.HostStartup.CreateBackfillProviders*
+- uid: MarketDataCollector.Application.Composition.HostStartup.CreateCompositeBackfillProvider(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider})
+  commentId: M:MarketDataCollector.Application.Composition.HostStartup.CreateCompositeBackfillProvider(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider})
+  id: CreateCompositeBackfillProvider(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider})
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: CreateCompositeBackfillProvider(IReadOnlyList<IHistoricalDataProvider>)
+  nameWithType: HostStartup.CreateCompositeBackfillProvider(IReadOnlyList<IHistoricalDataProvider>)
+  fullName: MarketDataCollector.Application.Composition.HostStartup.CreateCompositeBackfillProvider(System.Collections.Generic.IReadOnlyList<MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider>)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateCompositeBackfillProvider
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 202
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Creates a composite backfill provider with automatic failover.
+  example: []
+  syntax:
+    content: public CompositeHistoricalDataProvider CreateCompositeBackfillProvider(IReadOnlyList<IHistoricalDataProvider> providers)
+    parameters:
+    - id: providers
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider}
+      description: Individual backfill providers.
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider
+      description: Composite provider with failover support.
+    content.vb: Public Function CreateCompositeBackfillProvider(providers As IReadOnlyList(Of IHistoricalDataProvider)) As CompositeHistoricalDataProvider
+  overload: MarketDataCollector.Application.Composition.HostStartup.CreateCompositeBackfillProvider*
+  nameWithType.vb: HostStartup.CreateCompositeBackfillProvider(IReadOnlyList(Of IHistoricalDataProvider))
+  fullName.vb: MarketDataCollector.Application.Composition.HostStartup.CreateCompositeBackfillProvider(System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider))
+  name.vb: CreateCompositeBackfillProvider(IReadOnlyList(Of IHistoricalDataProvider))
+- uid: MarketDataCollector.Application.Composition.HostStartup.CreateStatusWriter(MarketDataCollector.Application.Config.AppConfig,System.String)
+  commentId: M:MarketDataCollector.Application.Composition.HostStartup.CreateStatusWriter(MarketDataCollector.Application.Config.AppConfig,System.String)
+  id: CreateStatusWriter(MarketDataCollector.Application.Config.AppConfig,System.String)
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: CreateStatusWriter(AppConfig, string)
+  nameWithType: HostStartup.CreateStatusWriter(AppConfig, string)
+  fullName: MarketDataCollector.Application.Composition.HostStartup.CreateStatusWriter(MarketDataCollector.Application.Config.AppConfig, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateStatusWriter
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 215
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Creates a StatusWriter for persisting status information.
+  example: []
+  syntax:
+    content: public StatusWriter CreateStatusWriter(AppConfig config, string configPath)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+      description: Application configuration.
+    - id: configPath
+      type: System.String
+      description: Path to configuration file.
+    return:
+      type: MarketDataCollector.Application.Monitoring.StatusWriter
+      description: Configured StatusWriter.
+    content.vb: Public Function CreateStatusWriter(config As AppConfig, configPath As String) As StatusWriter
+  overload: MarketDataCollector.Application.Composition.HostStartup.CreateStatusWriter*
+  nameWithType.vb: HostStartup.CreateStatusWriter(AppConfig, String)
+  fullName.vb: MarketDataCollector.Application.Composition.HostStartup.CreateStatusWriter(MarketDataCollector.Application.Config.AppConfig, String)
+  name.vb: CreateStatusWriter(AppConfig, String)
+- uid: MarketDataCollector.Application.Composition.HostStartup.StartHotReload(System.String,System.Action{MarketDataCollector.Application.Config.AppConfig},System.Action{System.Exception})
+  commentId: M:MarketDataCollector.Application.Composition.HostStartup.StartHotReload(System.String,System.Action{MarketDataCollector.Application.Config.AppConfig},System.Action{System.Exception})
+  id: StartHotReload(System.String,System.Action{MarketDataCollector.Application.Config.AppConfig},System.Action{System.Exception})
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: StartHotReload(string, Action<AppConfig>, Action<Exception>)
+  nameWithType: HostStartup.StartHotReload(string, Action<AppConfig>, Action<Exception>)
+  fullName: MarketDataCollector.Application.Composition.HostStartup.StartHotReload(string, System.Action<MarketDataCollector.Application.Config.AppConfig>, System.Action<System.Exception>)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StartHotReload
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 229
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Starts hot-reload configuration watching.
+  example: []
+  syntax:
+    content: public ConfigWatcher? StartHotReload(string configPath, Action<AppConfig> onReload, Action<Exception> onError)
+    parameters:
+    - id: configPath
+      type: System.String
+      description: Path to configuration file.
+    - id: onReload
+      type: System.Action{MarketDataCollector.Application.Config.AppConfig}
+      description: Callback when configuration changes.
+    - id: onError
+      type: System.Action{System.Exception}
+      description: Callback for errors.
+    return:
+      type: MarketDataCollector.Application.Config.ConfigWatcher
+      description: ConfigWatcher instance.
+    content.vb: Public Function StartHotReload(configPath As String, onReload As Action(Of AppConfig), onError As Action(Of Exception)) As ConfigWatcher
+  overload: MarketDataCollector.Application.Composition.HostStartup.StartHotReload*
+  nameWithType.vb: HostStartup.StartHotReload(String, Action(Of AppConfig), Action(Of Exception))
+  fullName.vb: MarketDataCollector.Application.Composition.HostStartup.StartHotReload(String, System.Action(Of MarketDataCollector.Application.Config.AppConfig), System.Action(Of System.Exception))
+  name.vb: StartHotReload(String, Action(Of AppConfig), Action(Of Exception))
+- uid: MarketDataCollector.Application.Composition.HostStartup.DisposeAsync
+  commentId: M:MarketDataCollector.Application.Composition.HostStartup.DisposeAsync
+  id: DisposeAsync
+  parent: MarketDataCollector.Application.Composition.HostStartup
+  langs:
+  - csharp
+  - vb
+  name: DisposeAsync()
+  nameWithType: HostStartup.DisposeAsync()
+  fullName: MarketDataCollector.Application.Composition.HostStartup.DisposeAsync()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostStartup.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisposeAsync
+    path: ../../src/MarketDataCollector.Application/Composition/HostStartup.cs
+    startLine: 261
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: >-
+    Performs application-defined tasks associated with freeing, releasing, or
+
+    resetting unmanaged resources asynchronously.
+  example: []
+  syntax:
+    content: public ValueTask DisposeAsync()
+    return:
+      type: System.Threading.Tasks.ValueTask
+      description: A task that represents the asynchronous dispose operation.
+    content.vb: Public Function DisposeAsync() As ValueTask
+  overload: MarketDataCollector.Application.Composition.HostStartup.DisposeAsync*
+  implements:
+  - System.IAsyncDisposable.DisposeAsync
+references:
+- uid: MarketDataCollector.Application.Composition
+  commentId: N:MarketDataCollector.Application.Composition
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Composition
+  nameWithType: MarketDataCollector.Application.Composition
+  fullName: MarketDataCollector.Application.Composition
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Composition
+    name: Composition
+    href: MarketDataCollector.Application.Composition.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Composition
+    name: Composition
+    href: MarketDataCollector.Application.Composition.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IAsyncDisposable
+  commentId: T:System.IAsyncDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
+  name: IAsyncDisposable
+  nameWithType: IAsyncDisposable
+  fullName: System.IAsyncDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Composition.HostStartup.CreateForStreaming*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.CreateForStreaming
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_CreateForStreaming_System_String_
+  name: CreateForStreaming
+  nameWithType: HostStartup.CreateForStreaming
+  fullName: MarketDataCollector.Application.Composition.HostStartup.CreateForStreaming
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Application.Composition.HostStartup
+  commentId: T:MarketDataCollector.Application.Composition.HostStartup
+  parent: MarketDataCollector.Application.Composition
+  href: MarketDataCollector.Application.Composition.HostStartup.html
+  name: HostStartup
+  nameWithType: HostStartup
+  fullName: MarketDataCollector.Application.Composition.HostStartup
+- uid: MarketDataCollector.Application.Composition.HostStartup.CreateForBackfill*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.CreateForBackfill
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_CreateForBackfill_System_String_
+  name: CreateForBackfill
+  nameWithType: HostStartup.CreateForBackfill
+  fullName: MarketDataCollector.Application.Composition.HostStartup.CreateForBackfill
+- uid: MarketDataCollector.Application.Composition.HostStartup.CreateForUtility*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.CreateForUtility
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_CreateForUtility_System_String_
+  name: CreateForUtility
+  nameWithType: HostStartup.CreateForUtility
+  fullName: MarketDataCollector.Application.Composition.HostStartup.CreateForUtility
+- uid: MarketDataCollector.Application.Composition.HostStartup.GetRequiredService*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.GetRequiredService
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_GetRequiredService__1
+  name: GetRequiredService
+  nameWithType: HostStartup.GetRequiredService
+  fullName: MarketDataCollector.Application.Composition.HostStartup.GetRequiredService
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: MarketDataCollector.Application.Composition.HostStartup.GetService*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.GetService
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_GetService__1
+  name: GetService
+  nameWithType: HostStartup.GetService
+  fullName: MarketDataCollector.Application.Composition.HostStartup.GetService
+- uid: MarketDataCollector.Application.Composition.HostStartup.ServiceProvider*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.ServiceProvider
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_ServiceProvider
+  name: ServiceProvider
+  nameWithType: HostStartup.ServiceProvider
+  fullName: MarketDataCollector.Application.Composition.HostStartup.ServiceProvider
+- uid: System.IServiceProvider
+  commentId: T:System.IServiceProvider
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iserviceprovider
+  name: IServiceProvider
+  nameWithType: IServiceProvider
+  fullName: System.IServiceProvider
+- uid: MarketDataCollector.Application.Composition.HostStartup.ConfigStore*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.ConfigStore
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_ConfigStore
+  name: ConfigStore
+  nameWithType: HostStartup.ConfigStore
+  fullName: MarketDataCollector.Application.Composition.HostStartup.ConfigStore
+- uid: MarketDataCollector.Application.UI.ConfigStore
+  commentId: T:MarketDataCollector.Application.UI.ConfigStore
+  parent: MarketDataCollector.Application.UI
+  href: MarketDataCollector.Application.UI.ConfigStore.html
+  name: ConfigStore
+  nameWithType: ConfigStore
+  fullName: MarketDataCollector.Application.UI.ConfigStore
+- uid: MarketDataCollector.Application.UI
+  commentId: N:MarketDataCollector.Application.UI
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.UI
+  nameWithType: MarketDataCollector.Application.UI
+  fullName: MarketDataCollector.Application.UI
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.UI
+    name: UI
+    href: MarketDataCollector.Application.UI.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.UI
+    name: UI
+    href: MarketDataCollector.Application.UI.html
+- uid: MarketDataCollector.Application.Composition.HostStartup.ConfigurationService*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.ConfigurationService
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_ConfigurationService
+  name: ConfigurationService
+  nameWithType: HostStartup.ConfigurationService
+  fullName: MarketDataCollector.Application.Composition.HostStartup.ConfigurationService
+- uid: MarketDataCollector.Application.Services.ConfigurationService
+  commentId: T:MarketDataCollector.Application.Services.ConfigurationService
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.ConfigurationService.html
+  name: ConfigurationService
+  nameWithType: ConfigurationService
+  fullName: MarketDataCollector.Application.Services.ConfigurationService
+- uid: MarketDataCollector.Application.Services
+  commentId: N:MarketDataCollector.Application.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Services
+  nameWithType: MarketDataCollector.Application.Services
+  fullName: MarketDataCollector.Application.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+- uid: MarketDataCollector.Application.Composition.HostStartup.ProviderFactory*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.ProviderFactory
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_ProviderFactory
+  name: ProviderFactory
+  nameWithType: HostStartup.ProviderFactory
+  fullName: MarketDataCollector.Application.Composition.HostStartup.ProviderFactory
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.html
+  name: ProviderFactory
+  nameWithType: ProviderFactory
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory
+- uid: MarketDataCollector.Infrastructure.Adapters.Core
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Core
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Core
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+- uid: MarketDataCollector.Application.Composition.HostStartup.Pipeline*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.Pipeline
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_Pipeline
+  name: Pipeline
+  nameWithType: HostStartup.Pipeline
+  fullName: MarketDataCollector.Application.Composition.HostStartup.Pipeline
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline
+  commentId: T:MarketDataCollector.Application.Pipeline.EventPipeline
+  parent: MarketDataCollector.Application.Pipeline
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html
+  name: EventPipeline
+  nameWithType: EventPipeline
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline
+- uid: MarketDataCollector.Application.Pipeline
+  commentId: N:MarketDataCollector.Application.Pipeline
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Pipeline
+  nameWithType: MarketDataCollector.Application.Pipeline
+  fullName: MarketDataCollector.Application.Pipeline
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Pipeline
+    name: Pipeline
+    href: MarketDataCollector.Application.Pipeline.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Pipeline
+    name: Pipeline
+    href: MarketDataCollector.Application.Pipeline.html
+- uid: MarketDataCollector.Application.Composition.HostStartup.StorageOptions*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.StorageOptions
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_StorageOptions
+  name: StorageOptions
+  nameWithType: HostStartup.StorageOptions
+  fullName: MarketDataCollector.Application.Composition.HostStartup.StorageOptions
+- uid: MarketDataCollector.Storage.StorageOptions
+  commentId: T:MarketDataCollector.Storage.StorageOptions
+  parent: MarketDataCollector.Storage
+  href: MarketDataCollector.Storage.StorageOptions.html
+  name: StorageOptions
+  nameWithType: StorageOptions
+  fullName: MarketDataCollector.Storage.StorageOptions
+- uid: MarketDataCollector.Storage
+  commentId: N:MarketDataCollector.Storage
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage
+  nameWithType: MarketDataCollector.Storage
+  fullName: MarketDataCollector.Storage
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.CreateStreamingClient(MarketDataCollector.Application.Config.DataSourceKind)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.CreateStreamingClient(MarketDataCollector.Application.Config.DataSourceKind)
+  name: CreateStreamingClient(DataSourceKind)
+  nameWithType: ProviderRegistry.CreateStreamingClient(DataSourceKind)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.CreateStreamingClient(MarketDataCollector.Application.Config.DataSourceKind)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.CreateStreamingClient(MarketDataCollector.Application.Config.DataSourceKind)
+    name: CreateStreamingClient
+  - name: (
+  - uid: MarketDataCollector.Application.Config.DataSourceKind
+    name: DataSourceKind
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.CreateStreamingClient(MarketDataCollector.Application.Config.DataSourceKind)
+    name: CreateStreamingClient
+  - name: (
+  - uid: MarketDataCollector.Application.Config.DataSourceKind
+    name: DataSourceKind
+  - name: )
+- uid: MarketDataCollector.Application.Composition.HostStartup.CreateStreamingClient*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.CreateStreamingClient
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_CreateStreamingClient_MarketDataCollector_Application_Config_AppConfig_
+  name: CreateStreamingClient
+  nameWithType: HostStartup.CreateStreamingClient
+  fullName: MarketDataCollector.Application.Composition.HostStartup.CreateStreamingClient
+- uid: MarketDataCollector.Application.Config.AppConfig
+  commentId: T:MarketDataCollector.Application.Config.AppConfig
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.AppConfig.html
+  name: AppConfig
+  nameWithType: AppConfig
+  fullName: MarketDataCollector.Application.Config.AppConfig
+- uid: MarketDataCollector.Infrastructure.IMarketDataClient
+  commentId: T:MarketDataCollector.Infrastructure.IMarketDataClient
+  parent: MarketDataCollector.Infrastructure
+  href: MarketDataCollector.Infrastructure.IMarketDataClient.html
+  name: IMarketDataClient
+  nameWithType: IMarketDataClient
+  fullName: MarketDataCollector.Infrastructure.IMarketDataClient
+- uid: MarketDataCollector.Application.Config
+  commentId: N:MarketDataCollector.Application.Config
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config
+  nameWithType: MarketDataCollector.Application.Config
+  fullName: MarketDataCollector.Application.Config
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+- uid: MarketDataCollector.Infrastructure
+  commentId: N:MarketDataCollector.Infrastructure
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure
+  nameWithType: MarketDataCollector.Infrastructure
+  fullName: MarketDataCollector.Infrastructure
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+- uid: MarketDataCollector.Application.Composition.HostStartup.CreateSubscriptionOrchestrator*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.CreateSubscriptionOrchestrator
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_CreateSubscriptionOrchestrator_MarketDataCollector_Infrastructure_IMarketDataClient_
+  name: CreateSubscriptionOrchestrator
+  nameWithType: HostStartup.CreateSubscriptionOrchestrator
+  fullName: MarketDataCollector.Application.Composition.HostStartup.CreateSubscriptionOrchestrator
+- uid: MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator
+  commentId: T:MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator
+  parent: MarketDataCollector.Application.Subscriptions
+  href: MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator.html
+  name: SubscriptionOrchestrator
+  nameWithType: SubscriptionOrchestrator
+  fullName: MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator
+- uid: MarketDataCollector.Application.Subscriptions
+  commentId: N:MarketDataCollector.Application.Subscriptions
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Subscriptions
+  nameWithType: MarketDataCollector.Application.Subscriptions
+  fullName: MarketDataCollector.Application.Subscriptions
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+- uid: MarketDataCollector.Application.Composition.HostStartup.CreateBackfillProviders*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.CreateBackfillProviders
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_CreateBackfillProviders
+  name: CreateBackfillProviders
+  nameWithType: HostStartup.CreateBackfillProviders
+  fullName: MarketDataCollector.Application.Composition.HostStartup.CreateBackfillProviders
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<IHistoricalDataProvider>
+  nameWithType: IReadOnlyList<IHistoricalDataProvider>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider>
+  nameWithType.vb: IReadOnlyList(Of IHistoricalDataProvider)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider)
+  name.vb: IReadOnlyList(Of IHistoricalDataProvider)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider
+    name: IHistoricalDataProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider
+    name: IHistoricalDataProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Application.Composition.HostStartup.CreateCompositeBackfillProvider*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.CreateCompositeBackfillProvider
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_CreateCompositeBackfillProvider_System_Collections_Generic_IReadOnlyList_MarketDataCollector_Infrastructure_Adapters_Core_IHistoricalDataProvider__
+  name: CreateCompositeBackfillProvider
+  nameWithType: HostStartup.CreateCompositeBackfillProvider
+  fullName: MarketDataCollector.Application.Composition.HostStartup.CreateCompositeBackfillProvider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider.html
+  name: CompositeHistoricalDataProvider
+  nameWithType: CompositeHistoricalDataProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider
+- uid: MarketDataCollector.Application.Composition.HostStartup.CreateStatusWriter*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.CreateStatusWriter
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_CreateStatusWriter_MarketDataCollector_Application_Config_AppConfig_System_String_
+  name: CreateStatusWriter
+  nameWithType: HostStartup.CreateStatusWriter
+  fullName: MarketDataCollector.Application.Composition.HostStartup.CreateStatusWriter
+- uid: MarketDataCollector.Application.Monitoring.StatusWriter
+  commentId: T:MarketDataCollector.Application.Monitoring.StatusWriter
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.StatusWriter.html
+  name: StatusWriter
+  nameWithType: StatusWriter
+  fullName: MarketDataCollector.Application.Monitoring.StatusWriter
+- uid: MarketDataCollector.Application.Monitoring
+  commentId: N:MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring
+  nameWithType: MarketDataCollector.Application.Monitoring
+  fullName: MarketDataCollector.Application.Monitoring
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+- uid: MarketDataCollector.Application.Composition.HostStartup.StartHotReload*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.StartHotReload
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_StartHotReload_System_String_System_Action_MarketDataCollector_Application_Config_AppConfig__System_Action_System_Exception__
+  name: StartHotReload
+  nameWithType: HostStartup.StartHotReload
+  fullName: MarketDataCollector.Application.Composition.HostStartup.StartHotReload
+- uid: System.Action{MarketDataCollector.Application.Config.AppConfig}
+  commentId: T:System.Action{MarketDataCollector.Application.Config.AppConfig}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<AppConfig>
+  nameWithType: Action<AppConfig>
+  fullName: System.Action<MarketDataCollector.Application.Config.AppConfig>
+  nameWithType.vb: Action(Of AppConfig)
+  fullName.vb: System.Action(Of MarketDataCollector.Application.Config.AppConfig)
+  name.vb: Action(Of AppConfig)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: )
+- uid: System.Action{System.Exception}
+  commentId: T:System.Action{System.Exception}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<Exception>
+  nameWithType: Action<Exception>
+  fullName: System.Action<System.Exception>
+  nameWithType.vb: Action(Of Exception)
+  fullName.vb: System.Action(Of System.Exception)
+  name.vb: Action(Of Exception)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: )
+- uid: MarketDataCollector.Application.Config.ConfigWatcher
+  commentId: T:MarketDataCollector.Application.Config.ConfigWatcher
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.ConfigWatcher.html
+  name: ConfigWatcher
+  nameWithType: ConfigWatcher
+  fullName: MarketDataCollector.Application.Config.ConfigWatcher
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Composition.HostStartup.DisposeAsync*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostStartup.DisposeAsync
+  href: MarketDataCollector.Application.Composition.HostStartup.html#MarketDataCollector_Application_Composition_HostStartup_DisposeAsync
+  name: DisposeAsync
+  nameWithType: HostStartup.DisposeAsync
+  fullName: MarketDataCollector.Application.Composition.HostStartup.DisposeAsync
+- uid: System.IAsyncDisposable.DisposeAsync
+  commentId: M:System.IAsyncDisposable.DisposeAsync
+  parent: System.IAsyncDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  name: DisposeAsync()
+  nameWithType: IAsyncDisposable.DisposeAsync()
+  fullName: System.IAsyncDisposable.DisposeAsync()
+  spec.csharp:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+- uid: System.Threading.Tasks.ValueTask
+  commentId: T:System.Threading.Tasks.ValueTask
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask
+  name: ValueTask
+  nameWithType: ValueTask
+  fullName: System.Threading.Tasks.ValueTask
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

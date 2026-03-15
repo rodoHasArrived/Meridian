@@ -1,0 +1,1011 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot
+  commentId: T:MarketDataCollector.Application.Monitoring.StatusSnapshot
+  id: StatusSnapshot
+  parent: MarketDataCollector.Application.Monitoring
+  children:
+  - MarketDataCollector.Application.Monitoring.StatusSnapshot.#ctor(System.DateTimeOffset,System.Int64,System.Int64,System.Int64,System.Boolean,System.Int32,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32},System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32})
+  - MarketDataCollector.Application.Monitoring.StatusSnapshot.DepthSubscriptions
+  - MarketDataCollector.Application.Monitoring.StatusSnapshot.Dropped
+  - MarketDataCollector.Application.Monitoring.StatusSnapshot.FromRuntime(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.IMarketDataClient,MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator,MarketDataCollector.Application.Monitoring.IEventMetrics)
+  - MarketDataCollector.Application.Monitoring.StatusSnapshot.IbEnabled
+  - MarketDataCollector.Application.Monitoring.StatusSnapshot.Integrity
+  - MarketDataCollector.Application.Monitoring.StatusSnapshot.Published
+  - MarketDataCollector.Application.Monitoring.StatusSnapshot.SymbolCount
+  - MarketDataCollector.Application.Monitoring.StatusSnapshot.TimestampUtc
+  - MarketDataCollector.Application.Monitoring.StatusSnapshot.TradeSubscriptions
+  langs:
+  - csharp
+  - vb
+  name: StatusSnapshot
+  nameWithType: StatusSnapshot
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StatusSnapshot
+    path: ../../src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+    startLine: 6
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: 'public sealed record StatusSnapshot : IEquatable<StatusSnapshot>'
+    content.vb: Public NotInheritable Class StatusSnapshot Implements IEquatable(Of StatusSnapshot)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Application.Monitoring.StatusSnapshot}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.#ctor(System.DateTimeOffset,System.Int64,System.Int64,System.Int64,System.Boolean,System.Int32,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32},System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32})
+  commentId: M:MarketDataCollector.Application.Monitoring.StatusSnapshot.#ctor(System.DateTimeOffset,System.Int64,System.Int64,System.Int64,System.Boolean,System.Int32,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32},System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32})
+  id: '#ctor(System.DateTimeOffset,System.Int64,System.Int64,System.Int64,System.Boolean,System.Int32,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32},System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32})'
+  parent: MarketDataCollector.Application.Monitoring.StatusSnapshot
+  langs:
+  - csharp
+  - vb
+  name: StatusSnapshot(DateTimeOffset, long, long, long, bool, int, IReadOnlyDictionary<string, int>, IReadOnlyDictionary<string, int>)
+  nameWithType: StatusSnapshot.StatusSnapshot(DateTimeOffset, long, long, long, bool, int, IReadOnlyDictionary<string, int>, IReadOnlyDictionary<string, int>)
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.StatusSnapshot(System.DateTimeOffset, long, long, long, bool, int, System.Collections.Generic.IReadOnlyDictionary<string, int>, System.Collections.Generic.IReadOnlyDictionary<string, int>)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+    startLine: 6
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public StatusSnapshot(DateTimeOffset TimestampUtc, long Published, long Dropped, long Integrity, bool IbEnabled, int SymbolCount, IReadOnlyDictionary<string, int> DepthSubscriptions, IReadOnlyDictionary<string, int> TradeSubscriptions)
+    parameters:
+    - id: TimestampUtc
+      type: System.DateTimeOffset
+    - id: Published
+      type: System.Int64
+    - id: Dropped
+      type: System.Int64
+    - id: Integrity
+      type: System.Int64
+    - id: IbEnabled
+      type: System.Boolean
+    - id: SymbolCount
+      type: System.Int32
+    - id: DepthSubscriptions
+      type: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32}
+    - id: TradeSubscriptions
+      type: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32}
+    content.vb: Public Sub New(TimestampUtc As DateTimeOffset, Published As Long, Dropped As Long, Integrity As Long, IbEnabled As Boolean, SymbolCount As Integer, DepthSubscriptions As IReadOnlyDictionary(Of String, Integer), TradeSubscriptions As IReadOnlyDictionary(Of String, Integer))
+  overload: MarketDataCollector.Application.Monitoring.StatusSnapshot.#ctor*
+  nameWithType.vb: StatusSnapshot.New(DateTimeOffset, Long, Long, Long, Boolean, Integer, IReadOnlyDictionary(Of String, Integer), IReadOnlyDictionary(Of String, Integer))
+  fullName.vb: MarketDataCollector.Application.Monitoring.StatusSnapshot.New(System.DateTimeOffset, Long, Long, Long, Boolean, Integer, System.Collections.Generic.IReadOnlyDictionary(Of String, Integer), System.Collections.Generic.IReadOnlyDictionary(Of String, Integer))
+  name.vb: New(DateTimeOffset, Long, Long, Long, Boolean, Integer, IReadOnlyDictionary(Of String, Integer), IReadOnlyDictionary(Of String, Integer))
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.TimestampUtc
+  commentId: P:MarketDataCollector.Application.Monitoring.StatusSnapshot.TimestampUtc
+  id: TimestampUtc
+  parent: MarketDataCollector.Application.Monitoring.StatusSnapshot
+  langs:
+  - csharp
+  - vb
+  name: TimestampUtc
+  nameWithType: StatusSnapshot.TimestampUtc
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.TimestampUtc
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TimestampUtc
+    path: ../../src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+    startLine: 7
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public DateTimeOffset TimestampUtc { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property TimestampUtc As DateTimeOffset
+  overload: MarketDataCollector.Application.Monitoring.StatusSnapshot.TimestampUtc*
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.Published
+  commentId: P:MarketDataCollector.Application.Monitoring.StatusSnapshot.Published
+  id: Published
+  parent: MarketDataCollector.Application.Monitoring.StatusSnapshot
+  langs:
+  - csharp
+  - vb
+  name: Published
+  nameWithType: StatusSnapshot.Published
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.Published
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Published
+    path: ../../src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+    startLine: 8
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public long Published { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property Published As Long
+  overload: MarketDataCollector.Application.Monitoring.StatusSnapshot.Published*
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.Dropped
+  commentId: P:MarketDataCollector.Application.Monitoring.StatusSnapshot.Dropped
+  id: Dropped
+  parent: MarketDataCollector.Application.Monitoring.StatusSnapshot
+  langs:
+  - csharp
+  - vb
+  name: Dropped
+  nameWithType: StatusSnapshot.Dropped
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.Dropped
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Dropped
+    path: ../../src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+    startLine: 9
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public long Dropped { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property Dropped As Long
+  overload: MarketDataCollector.Application.Monitoring.StatusSnapshot.Dropped*
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.Integrity
+  commentId: P:MarketDataCollector.Application.Monitoring.StatusSnapshot.Integrity
+  id: Integrity
+  parent: MarketDataCollector.Application.Monitoring.StatusSnapshot
+  langs:
+  - csharp
+  - vb
+  name: Integrity
+  nameWithType: StatusSnapshot.Integrity
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.Integrity
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Integrity
+    path: ../../src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+    startLine: 10
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public long Integrity { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property Integrity As Long
+  overload: MarketDataCollector.Application.Monitoring.StatusSnapshot.Integrity*
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.IbEnabled
+  commentId: P:MarketDataCollector.Application.Monitoring.StatusSnapshot.IbEnabled
+  id: IbEnabled
+  parent: MarketDataCollector.Application.Monitoring.StatusSnapshot
+  langs:
+  - csharp
+  - vb
+  name: IbEnabled
+  nameWithType: StatusSnapshot.IbEnabled
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.IbEnabled
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IbEnabled
+    path: ../../src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+    startLine: 11
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public bool IbEnabled { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IbEnabled As Boolean
+  overload: MarketDataCollector.Application.Monitoring.StatusSnapshot.IbEnabled*
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.SymbolCount
+  commentId: P:MarketDataCollector.Application.Monitoring.StatusSnapshot.SymbolCount
+  id: SymbolCount
+  parent: MarketDataCollector.Application.Monitoring.StatusSnapshot
+  langs:
+  - csharp
+  - vb
+  name: SymbolCount
+  nameWithType: StatusSnapshot.SymbolCount
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.SymbolCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SymbolCount
+    path: ../../src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+    startLine: 12
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public int SymbolCount { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property SymbolCount As Integer
+  overload: MarketDataCollector.Application.Monitoring.StatusSnapshot.SymbolCount*
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.DepthSubscriptions
+  commentId: P:MarketDataCollector.Application.Monitoring.StatusSnapshot.DepthSubscriptions
+  id: DepthSubscriptions
+  parent: MarketDataCollector.Application.Monitoring.StatusSnapshot
+  langs:
+  - csharp
+  - vb
+  name: DepthSubscriptions
+  nameWithType: StatusSnapshot.DepthSubscriptions
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.DepthSubscriptions
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DepthSubscriptions
+    path: ../../src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+    startLine: 13
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public IReadOnlyDictionary<string, int> DepthSubscriptions { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32}
+    content.vb: Public Property DepthSubscriptions As IReadOnlyDictionary(Of String, Integer)
+  overload: MarketDataCollector.Application.Monitoring.StatusSnapshot.DepthSubscriptions*
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.TradeSubscriptions
+  commentId: P:MarketDataCollector.Application.Monitoring.StatusSnapshot.TradeSubscriptions
+  id: TradeSubscriptions
+  parent: MarketDataCollector.Application.Monitoring.StatusSnapshot
+  langs:
+  - csharp
+  - vb
+  name: TradeSubscriptions
+  nameWithType: StatusSnapshot.TradeSubscriptions
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.TradeSubscriptions
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TradeSubscriptions
+    path: ../../src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+    startLine: 14
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public IReadOnlyDictionary<string, int> TradeSubscriptions { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32}
+    content.vb: Public Property TradeSubscriptions As IReadOnlyDictionary(Of String, Integer)
+  overload: MarketDataCollector.Application.Monitoring.StatusSnapshot.TradeSubscriptions*
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.FromRuntime(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.IMarketDataClient,MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator,MarketDataCollector.Application.Monitoring.IEventMetrics)
+  commentId: M:MarketDataCollector.Application.Monitoring.StatusSnapshot.FromRuntime(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.IMarketDataClient,MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator,MarketDataCollector.Application.Monitoring.IEventMetrics)
+  id: FromRuntime(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.IMarketDataClient,MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator,MarketDataCollector.Application.Monitoring.IEventMetrics)
+  parent: MarketDataCollector.Application.Monitoring.StatusSnapshot
+  langs:
+  - csharp
+  - vb
+  name: FromRuntime(AppConfig, IMarketDataClient, SubscriptionOrchestrator, IEventMetrics?)
+  nameWithType: StatusSnapshot.FromRuntime(AppConfig, IMarketDataClient, SubscriptionOrchestrator, IEventMetrics?)
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.FromRuntime(MarketDataCollector.Application.Config.AppConfig, MarketDataCollector.Infrastructure.IMarketDataClient, MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator, MarketDataCollector.Application.Monitoring.IEventMetrics?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FromRuntime
+    path: ../../src/MarketDataCollector.Application/Monitoring/StatusSnapshot.cs
+    startLine: 17
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public static StatusSnapshot FromRuntime(AppConfig cfg, IMarketDataClient ib, SubscriptionOrchestrator subs, IEventMetrics? metrics = null)
+    parameters:
+    - id: cfg
+      type: MarketDataCollector.Application.Config.AppConfig
+    - id: ib
+      type: MarketDataCollector.Infrastructure.IMarketDataClient
+    - id: subs
+      type: MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator
+    - id: metrics
+      type: MarketDataCollector.Application.Monitoring.IEventMetrics
+    return:
+      type: MarketDataCollector.Application.Monitoring.StatusSnapshot
+    content.vb: Public Shared Function FromRuntime(cfg As AppConfig, ib As IMarketDataClient, subs As SubscriptionOrchestrator, metrics As IEventMetrics = Nothing) As StatusSnapshot
+  overload: MarketDataCollector.Application.Monitoring.StatusSnapshot.FromRuntime*
+  nameWithType.vb: StatusSnapshot.FromRuntime(AppConfig, IMarketDataClient, SubscriptionOrchestrator, IEventMetrics)
+  fullName.vb: MarketDataCollector.Application.Monitoring.StatusSnapshot.FromRuntime(MarketDataCollector.Application.Config.AppConfig, MarketDataCollector.Infrastructure.IMarketDataClient, MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator, MarketDataCollector.Application.Monitoring.IEventMetrics)
+  name.vb: FromRuntime(AppConfig, IMarketDataClient, SubscriptionOrchestrator, IEventMetrics)
+references:
+- uid: MarketDataCollector.Application.Monitoring
+  commentId: N:MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring
+  nameWithType: MarketDataCollector.Application.Monitoring
+  fullName: MarketDataCollector.Application.Monitoring
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Application.Monitoring.StatusSnapshot}
+  commentId: T:System.IEquatable{MarketDataCollector.Application.Monitoring.StatusSnapshot}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<StatusSnapshot>
+  nameWithType: IEquatable<StatusSnapshot>
+  fullName: System.IEquatable<MarketDataCollector.Application.Monitoring.StatusSnapshot>
+  nameWithType.vb: IEquatable(Of StatusSnapshot)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Application.Monitoring.StatusSnapshot)
+  name.vb: IEquatable(Of StatusSnapshot)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.StatusSnapshot
+    name: StatusSnapshot
+    href: MarketDataCollector.Application.Monitoring.StatusSnapshot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.StatusSnapshot
+    name: StatusSnapshot
+    href: MarketDataCollector.Application.Monitoring.StatusSnapshot.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.StatusSnapshot.#ctor
+  href: MarketDataCollector.Application.Monitoring.StatusSnapshot.html#MarketDataCollector_Application_Monitoring_StatusSnapshot__ctor_System_DateTimeOffset_System_Int64_System_Int64_System_Int64_System_Boolean_System_Int32_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Int32__System_Collections_Generic_IReadOnlyDictionary_System_String_System_Int32__
+  name: StatusSnapshot
+  nameWithType: StatusSnapshot.StatusSnapshot
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.StatusSnapshot
+  nameWithType.vb: StatusSnapshot.New
+  fullName.vb: MarketDataCollector.Application.Monitoring.StatusSnapshot.New
+  name.vb: New
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<string, int>
+  nameWithType: IReadOnlyDictionary<string, int>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, int>
+  nameWithType.vb: IReadOnlyDictionary(Of String, Integer)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, Integer)
+  name.vb: IReadOnlyDictionary(Of String, Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.TimestampUtc*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.StatusSnapshot.TimestampUtc
+  href: MarketDataCollector.Application.Monitoring.StatusSnapshot.html#MarketDataCollector_Application_Monitoring_StatusSnapshot_TimestampUtc
+  name: TimestampUtc
+  nameWithType: StatusSnapshot.TimestampUtc
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.TimestampUtc
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.Published*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.StatusSnapshot.Published
+  href: MarketDataCollector.Application.Monitoring.StatusSnapshot.html#MarketDataCollector_Application_Monitoring_StatusSnapshot_Published
+  name: Published
+  nameWithType: StatusSnapshot.Published
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.Published
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.Dropped*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.StatusSnapshot.Dropped
+  href: MarketDataCollector.Application.Monitoring.StatusSnapshot.html#MarketDataCollector_Application_Monitoring_StatusSnapshot_Dropped
+  name: Dropped
+  nameWithType: StatusSnapshot.Dropped
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.Dropped
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.Integrity*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.StatusSnapshot.Integrity
+  href: MarketDataCollector.Application.Monitoring.StatusSnapshot.html#MarketDataCollector_Application_Monitoring_StatusSnapshot_Integrity
+  name: Integrity
+  nameWithType: StatusSnapshot.Integrity
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.Integrity
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.IbEnabled*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.StatusSnapshot.IbEnabled
+  href: MarketDataCollector.Application.Monitoring.StatusSnapshot.html#MarketDataCollector_Application_Monitoring_StatusSnapshot_IbEnabled
+  name: IbEnabled
+  nameWithType: StatusSnapshot.IbEnabled
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.IbEnabled
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.SymbolCount*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.StatusSnapshot.SymbolCount
+  href: MarketDataCollector.Application.Monitoring.StatusSnapshot.html#MarketDataCollector_Application_Monitoring_StatusSnapshot_SymbolCount
+  name: SymbolCount
+  nameWithType: StatusSnapshot.SymbolCount
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.SymbolCount
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.DepthSubscriptions*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.StatusSnapshot.DepthSubscriptions
+  href: MarketDataCollector.Application.Monitoring.StatusSnapshot.html#MarketDataCollector_Application_Monitoring_StatusSnapshot_DepthSubscriptions
+  name: DepthSubscriptions
+  nameWithType: StatusSnapshot.DepthSubscriptions
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.DepthSubscriptions
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.TradeSubscriptions*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.StatusSnapshot.TradeSubscriptions
+  href: MarketDataCollector.Application.Monitoring.StatusSnapshot.html#MarketDataCollector_Application_Monitoring_StatusSnapshot_TradeSubscriptions
+  name: TradeSubscriptions
+  nameWithType: StatusSnapshot.TradeSubscriptions
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.TradeSubscriptions
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot.FromRuntime*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.StatusSnapshot.FromRuntime
+  href: MarketDataCollector.Application.Monitoring.StatusSnapshot.html#MarketDataCollector_Application_Monitoring_StatusSnapshot_FromRuntime_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_IMarketDataClient_MarketDataCollector_Application_Subscriptions_SubscriptionOrchestrator_MarketDataCollector_Application_Monitoring_IEventMetrics_
+  name: FromRuntime
+  nameWithType: StatusSnapshot.FromRuntime
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot.FromRuntime
+- uid: MarketDataCollector.Application.Config.AppConfig
+  commentId: T:MarketDataCollector.Application.Config.AppConfig
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.AppConfig.html
+  name: AppConfig
+  nameWithType: AppConfig
+  fullName: MarketDataCollector.Application.Config.AppConfig
+- uid: MarketDataCollector.Infrastructure.IMarketDataClient
+  commentId: T:MarketDataCollector.Infrastructure.IMarketDataClient
+  parent: MarketDataCollector.Infrastructure
+  href: MarketDataCollector.Infrastructure.IMarketDataClient.html
+  name: IMarketDataClient
+  nameWithType: IMarketDataClient
+  fullName: MarketDataCollector.Infrastructure.IMarketDataClient
+- uid: MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator
+  commentId: T:MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator
+  parent: MarketDataCollector.Application.Subscriptions
+  href: MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator.html
+  name: SubscriptionOrchestrator
+  nameWithType: SubscriptionOrchestrator
+  fullName: MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics
+  commentId: T:MarketDataCollector.Application.Monitoring.IEventMetrics
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html
+  name: IEventMetrics
+  nameWithType: IEventMetrics
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics
+- uid: MarketDataCollector.Application.Monitoring.StatusSnapshot
+  commentId: T:MarketDataCollector.Application.Monitoring.StatusSnapshot
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.StatusSnapshot.html
+  name: StatusSnapshot
+  nameWithType: StatusSnapshot
+  fullName: MarketDataCollector.Application.Monitoring.StatusSnapshot
+- uid: MarketDataCollector.Application.Config
+  commentId: N:MarketDataCollector.Application.Config
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config
+  nameWithType: MarketDataCollector.Application.Config
+  fullName: MarketDataCollector.Application.Config
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+- uid: MarketDataCollector.Infrastructure
+  commentId: N:MarketDataCollector.Infrastructure
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure
+  nameWithType: MarketDataCollector.Infrastructure
+  fullName: MarketDataCollector.Infrastructure
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+- uid: MarketDataCollector.Application.Subscriptions
+  commentId: N:MarketDataCollector.Application.Subscriptions
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Subscriptions
+  nameWithType: MarketDataCollector.Application.Subscriptions
+  fullName: MarketDataCollector.Application.Subscriptions
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html

@@ -1,0 +1,949 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter
+  id: IBCallbackRouter
+  parent: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  children:
+  - MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.#ctor(MarketDataCollector.Domain.Collectors.MarketDepthCollector,MarketDataCollector.Domain.Collectors.TradeDataCollector,MarketDataCollector.Domain.Collectors.QuoteCollector)
+  - MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickByTickAllLast(System.Int32,System.Int32,System.Int64,System.Double,System.Double,System.String,System.String)
+  - MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickGeneric(System.Int32,System.Int32,System.Double)
+  - MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickPrice(System.Int32,System.Int32,System.Double,System.Boolean,System.Boolean)
+  - MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSize(System.Int32,System.Int32,System.Int64)
+  - MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSnapshotEnd(System.Int32)
+  - MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickString(System.Int32,System.Int32,System.String)
+  - MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterDepthTicker(System.Int32,System.String)
+  - MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterQuoteTicker(System.Int32,System.String)
+  - MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterTradeTicker(System.Int32,System.String)
+  - MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepth(System.Int32,System.Int32,System.Int32,System.Int32,System.Double,System.Double)
+  - MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepthL2(System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.Double,System.Double,System.Boolean)
+  langs:
+  - csharp
+  - vb
+  name: IBCallbackRouter
+  nameWithType: IBCallbackRouter
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IBCallbackRouter
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+    startLine: 13
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  summary: >-
+    Thin adapter that turns raw IB callbacks into domain updates.
+
+    This file is written to compile without the IBApi package; wire the real EWrapper implementation
+
+    behind conditional compilation if/when you add the official IB API reference.
+  example: []
+  syntax:
+    content: public sealed class IBCallbackRouter
+    content.vb: Public NotInheritable Class IBCallbackRouter
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.#ctor(MarketDataCollector.Domain.Collectors.MarketDepthCollector,MarketDataCollector.Domain.Collectors.TradeDataCollector,MarketDataCollector.Domain.Collectors.QuoteCollector)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.#ctor(MarketDataCollector.Domain.Collectors.MarketDepthCollector,MarketDataCollector.Domain.Collectors.TradeDataCollector,MarketDataCollector.Domain.Collectors.QuoteCollector)
+  id: '#ctor(MarketDataCollector.Domain.Collectors.MarketDepthCollector,MarketDataCollector.Domain.Collectors.TradeDataCollector,MarketDataCollector.Domain.Collectors.QuoteCollector)'
+  parent: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter
+  langs:
+  - csharp
+  - vb
+  name: IBCallbackRouter(MarketDepthCollector, TradeDataCollector, QuoteCollector?)
+  nameWithType: IBCallbackRouter.IBCallbackRouter(MarketDepthCollector, TradeDataCollector, QuoteCollector?)
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.IBCallbackRouter(MarketDataCollector.Domain.Collectors.MarketDepthCollector, MarketDataCollector.Domain.Collectors.TradeDataCollector, MarketDataCollector.Domain.Collectors.QuoteCollector?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+    startLine: 27
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  syntax:
+    content: public IBCallbackRouter(MarketDepthCollector depthCollector, TradeDataCollector tradeCollector, QuoteCollector? quoteCollector = null)
+    parameters:
+    - id: depthCollector
+      type: MarketDataCollector.Domain.Collectors.MarketDepthCollector
+    - id: tradeCollector
+      type: MarketDataCollector.Domain.Collectors.TradeDataCollector
+    - id: quoteCollector
+      type: MarketDataCollector.Domain.Collectors.QuoteCollector
+    content.vb: Public Sub New(depthCollector As MarketDepthCollector, tradeCollector As TradeDataCollector, quoteCollector As QuoteCollector = Nothing)
+  overload: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.#ctor*
+  nameWithType.vb: IBCallbackRouter.New(MarketDepthCollector, TradeDataCollector, QuoteCollector)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.New(MarketDataCollector.Domain.Collectors.MarketDepthCollector, MarketDataCollector.Domain.Collectors.TradeDataCollector, MarketDataCollector.Domain.Collectors.QuoteCollector)
+  name.vb: New(MarketDepthCollector, TradeDataCollector, QuoteCollector)
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterDepthTicker(System.Int32,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterDepthTicker(System.Int32,System.String)
+  id: RegisterDepthTicker(System.Int32,System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter
+  langs:
+  - csharp
+  - vb
+  name: RegisterDepthTicker(int, string)
+  nameWithType: IBCallbackRouter.RegisterDepthTicker(int, string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterDepthTicker(int, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterDepthTicker
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+    startLine: 34
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  syntax:
+    content: public void RegisterDepthTicker(int tickerId, string symbol)
+    parameters:
+    - id: tickerId
+      type: System.Int32
+    - id: symbol
+      type: System.String
+    content.vb: Public Sub RegisterDepthTicker(tickerId As Integer, symbol As String)
+  overload: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterDepthTicker*
+  nameWithType.vb: IBCallbackRouter.RegisterDepthTicker(Integer, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterDepthTicker(Integer, String)
+  name.vb: RegisterDepthTicker(Integer, String)
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterTradeTicker(System.Int32,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterTradeTicker(System.Int32,System.String)
+  id: RegisterTradeTicker(System.Int32,System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter
+  langs:
+  - csharp
+  - vb
+  name: RegisterTradeTicker(int, string)
+  nameWithType: IBCallbackRouter.RegisterTradeTicker(int, string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterTradeTicker(int, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterTradeTicker
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+    startLine: 35
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  syntax:
+    content: public void RegisterTradeTicker(int tickerId, string symbol)
+    parameters:
+    - id: tickerId
+      type: System.Int32
+    - id: symbol
+      type: System.String
+    content.vb: Public Sub RegisterTradeTicker(tickerId As Integer, symbol As String)
+  overload: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterTradeTicker*
+  nameWithType.vb: IBCallbackRouter.RegisterTradeTicker(Integer, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterTradeTicker(Integer, String)
+  name.vb: RegisterTradeTicker(Integer, String)
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterQuoteTicker(System.Int32,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterQuoteTicker(System.Int32,System.String)
+  id: RegisterQuoteTicker(System.Int32,System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter
+  langs:
+  - csharp
+  - vb
+  name: RegisterQuoteTicker(int, string)
+  nameWithType: IBCallbackRouter.RegisterQuoteTicker(int, string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterQuoteTicker(int, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterQuoteTicker
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+    startLine: 36
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  syntax:
+    content: public void RegisterQuoteTicker(int tickerId, string symbol)
+    parameters:
+    - id: tickerId
+      type: System.Int32
+    - id: symbol
+      type: System.String
+    content.vb: Public Sub RegisterQuoteTicker(tickerId As Integer, symbol As String)
+  overload: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterQuoteTicker*
+  nameWithType.vb: IBCallbackRouter.RegisterQuoteTicker(Integer, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterQuoteTicker(Integer, String)
+  name.vb: RegisterQuoteTicker(Integer, String)
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepth(System.Int32,System.Int32,System.Int32,System.Int32,System.Double,System.Double)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepth(System.Int32,System.Int32,System.Int32,System.Int32,System.Double,System.Double)
+  id: UpdateMktDepth(System.Int32,System.Int32,System.Int32,System.Int32,System.Double,System.Double)
+  parent: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter
+  langs:
+  - csharp
+  - vb
+  name: UpdateMktDepth(int, int, int, int, double, double)
+  nameWithType: IBCallbackRouter.UpdateMktDepth(int, int, int, int, double, double)
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepth(int, int, int, int, double, double)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UpdateMktDepth
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+    startLine: 46
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  syntax:
+    content: public void UpdateMktDepth(int tickerId, int position, int operation, int side, double price, double size)
+    parameters:
+    - id: tickerId
+      type: System.Int32
+    - id: position
+      type: System.Int32
+    - id: operation
+      type: System.Int32
+    - id: side
+      type: System.Int32
+    - id: price
+      type: System.Double
+    - id: size
+      type: System.Double
+    content.vb: Public Sub UpdateMktDepth(tickerId As Integer, position As Integer, operation As Integer, side As Integer, price As Double, size As Double)
+  overload: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepth*
+  nameWithType.vb: IBCallbackRouter.UpdateMktDepth(Integer, Integer, Integer, Integer, Double, Double)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepth(Integer, Integer, Integer, Integer, Double, Double)
+  name.vb: UpdateMktDepth(Integer, Integer, Integer, Integer, Double, Double)
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepthL2(System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.Double,System.Double,System.Boolean)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepthL2(System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.Double,System.Double,System.Boolean)
+  id: UpdateMktDepthL2(System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.Double,System.Double,System.Boolean)
+  parent: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter
+  langs:
+  - csharp
+  - vb
+  name: UpdateMktDepthL2(int, int, string, int, int, double, double, bool)
+  nameWithType: IBCallbackRouter.UpdateMktDepthL2(int, int, string, int, int, double, double, bool)
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepthL2(int, int, string, int, int, double, double, bool)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UpdateMktDepthL2
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+    startLine: 67
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  syntax:
+    content: public void UpdateMktDepthL2(int tickerId, int position, string marketMaker, int operation, int side, double price, double size, bool isSmartDepth)
+    parameters:
+    - id: tickerId
+      type: System.Int32
+    - id: position
+      type: System.Int32
+    - id: marketMaker
+      type: System.String
+    - id: operation
+      type: System.Int32
+    - id: side
+      type: System.Int32
+    - id: price
+      type: System.Double
+    - id: size
+      type: System.Double
+    - id: isSmartDepth
+      type: System.Boolean
+    content.vb: Public Sub UpdateMktDepthL2(tickerId As Integer, position As Integer, marketMaker As String, operation As Integer, side As Integer, price As Double, size As Double, isSmartDepth As Boolean)
+  overload: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepthL2*
+  nameWithType.vb: IBCallbackRouter.UpdateMktDepthL2(Integer, Integer, String, Integer, Integer, Double, Double, Boolean)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepthL2(Integer, Integer, String, Integer, Integer, Double, Double, Boolean)
+  name.vb: UpdateMktDepthL2(Integer, Integer, String, Integer, Integer, Double, Double, Boolean)
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickByTickAllLast(System.Int32,System.Int32,System.Int64,System.Double,System.Double,System.String,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickByTickAllLast(System.Int32,System.Int32,System.Int64,System.Double,System.Double,System.String,System.String)
+  id: OnTickByTickAllLast(System.Int32,System.Int32,System.Int64,System.Double,System.Double,System.String,System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter
+  langs:
+  - csharp
+  - vb
+  name: OnTickByTickAllLast(int, int, long, double, double, string, string)
+  nameWithType: IBCallbackRouter.OnTickByTickAllLast(int, int, long, double, double, string, string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickByTickAllLast(int, int, long, double, double, string, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnTickByTickAllLast
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+    startLine: 92
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  syntax:
+    content: public void OnTickByTickAllLast(int reqId, int tickType, long time, double price, double size, string exchange, string specialConditions)
+    parameters:
+    - id: reqId
+      type: System.Int32
+    - id: tickType
+      type: System.Int32
+    - id: time
+      type: System.Int64
+    - id: price
+      type: System.Double
+    - id: size
+      type: System.Double
+    - id: exchange
+      type: System.String
+    - id: specialConditions
+      type: System.String
+    content.vb: Public Sub OnTickByTickAllLast(reqId As Integer, tickType As Integer, time As Long, price As Double, size As Double, exchange As String, specialConditions As String)
+  overload: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickByTickAllLast*
+  nameWithType.vb: IBCallbackRouter.OnTickByTickAllLast(Integer, Integer, Long, Double, Double, String, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickByTickAllLast(Integer, Integer, Long, Double, Double, String, String)
+  name.vb: OnTickByTickAllLast(Integer, Integer, Long, Double, Double, String, String)
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickPrice(System.Int32,System.Int32,System.Double,System.Boolean,System.Boolean)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickPrice(System.Int32,System.Int32,System.Double,System.Boolean,System.Boolean)
+  id: OnTickPrice(System.Int32,System.Int32,System.Double,System.Boolean,System.Boolean)
+  parent: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter
+  langs:
+  - csharp
+  - vb
+  name: OnTickPrice(int, int, double, bool, bool)
+  nameWithType: IBCallbackRouter.OnTickPrice(int, int, double, bool, bool)
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickPrice(int, int, double, bool, bool)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnTickPrice
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+    startLine: 123
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  summary: Handle tick price updates from reqMktData.
+  example: []
+  syntax:
+    content: public void OnTickPrice(int tickerId, int field, double price, bool canAutoExecute, bool pastLimit)
+    parameters:
+    - id: tickerId
+      type: System.Int32
+    - id: field
+      type: System.Int32
+    - id: price
+      type: System.Double
+    - id: canAutoExecute
+      type: System.Boolean
+    - id: pastLimit
+      type: System.Boolean
+    content.vb: Public Sub OnTickPrice(tickerId As Integer, field As Integer, price As Double, canAutoExecute As Boolean, pastLimit As Boolean)
+  overload: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickPrice*
+  nameWithType.vb: IBCallbackRouter.OnTickPrice(Integer, Integer, Double, Boolean, Boolean)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickPrice(Integer, Integer, Double, Boolean, Boolean)
+  name.vb: OnTickPrice(Integer, Integer, Double, Boolean, Boolean)
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSize(System.Int32,System.Int32,System.Int64)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSize(System.Int32,System.Int32,System.Int64)
+  id: OnTickSize(System.Int32,System.Int32,System.Int64)
+  parent: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter
+  langs:
+  - csharp
+  - vb
+  name: OnTickSize(int, int, long)
+  nameWithType: IBCallbackRouter.OnTickSize(int, int, long)
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSize(int, int, long)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnTickSize
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+    startLine: 164
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  summary: Handle tick size updates from reqMktData.
+  example: []
+  syntax:
+    content: public void OnTickSize(int tickerId, int field, long size)
+    parameters:
+    - id: tickerId
+      type: System.Int32
+    - id: field
+      type: System.Int32
+    - id: size
+      type: System.Int64
+    content.vb: Public Sub OnTickSize(tickerId As Integer, field As Integer, size As Long)
+  overload: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSize*
+  nameWithType.vb: IBCallbackRouter.OnTickSize(Integer, Integer, Long)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSize(Integer, Integer, Long)
+  name.vb: OnTickSize(Integer, Integer, Long)
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickString(System.Int32,System.Int32,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickString(System.Int32,System.Int32,System.String)
+  id: OnTickString(System.Int32,System.Int32,System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter
+  langs:
+  - csharp
+  - vb
+  name: OnTickString(int, int, string)
+  nameWithType: IBCallbackRouter.OnTickString(int, int, string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickString(int, int, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnTickString
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+    startLine: 191
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  summary: Handle tick string updates (e.g., last timestamp, RT Volume).
+  example: []
+  syntax:
+    content: public void OnTickString(int tickerId, int field, string value)
+    parameters:
+    - id: tickerId
+      type: System.Int32
+    - id: field
+      type: System.Int32
+    - id: value
+      type: System.String
+    content.vb: Public Sub OnTickString(tickerId As Integer, field As Integer, value As String)
+  overload: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickString*
+  nameWithType.vb: IBCallbackRouter.OnTickString(Integer, Integer, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickString(Integer, Integer, String)
+  name.vb: OnTickString(Integer, Integer, String)
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickGeneric(System.Int32,System.Int32,System.Double)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickGeneric(System.Int32,System.Int32,System.Double)
+  id: OnTickGeneric(System.Int32,System.Int32,System.Double)
+  parent: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter
+  langs:
+  - csharp
+  - vb
+  name: OnTickGeneric(int, int, double)
+  nameWithType: IBCallbackRouter.OnTickGeneric(int, int, double)
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickGeneric(int, int, double)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnTickGeneric
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+    startLine: 216
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  summary: Handle generic tick updates (e.g., halted status, volatility).
+  example: []
+  syntax:
+    content: public void OnTickGeneric(int tickerId, int field, double value)
+    parameters:
+    - id: tickerId
+      type: System.Int32
+    - id: field
+      type: System.Int32
+    - id: value
+      type: System.Double
+    content.vb: Public Sub OnTickGeneric(tickerId As Integer, field As Integer, value As Double)
+  overload: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickGeneric*
+  nameWithType.vb: IBCallbackRouter.OnTickGeneric(Integer, Integer, Double)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickGeneric(Integer, Integer, Double)
+  name.vb: OnTickGeneric(Integer, Integer, Double)
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSnapshotEnd(System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSnapshotEnd(System.Int32)
+  id: OnTickSnapshotEnd(System.Int32)
+  parent: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter
+  langs:
+  - csharp
+  - vb
+  name: OnTickSnapshotEnd(int)
+  nameWithType: IBCallbackRouter.OnTickSnapshotEnd(int)
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSnapshotEnd(int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnTickSnapshotEnd
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/InteractiveBrokers/IBCallbackRouter.cs
+    startLine: 241
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  summary: Handle snapshot end callback.
+  example: []
+  syntax:
+    content: public void OnTickSnapshotEnd(int tickerId)
+    parameters:
+    - id: tickerId
+      type: System.Int32
+    content.vb: Public Sub OnTickSnapshotEnd(tickerId As Integer)
+  overload: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSnapshotEnd*
+  nameWithType.vb: IBCallbackRouter.OnTickSnapshotEnd(Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSnapshotEnd(Integer)
+  name.vb: OnTickSnapshotEnd(Integer)
+references:
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+    name: InteractiveBrokers
+    href: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers
+    name: InteractiveBrokers
+    href: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.#ctor*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.#ctor
+  href: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.html#MarketDataCollector_Infrastructure_Adapters_InteractiveBrokers_IBCallbackRouter__ctor_MarketDataCollector_Domain_Collectors_MarketDepthCollector_MarketDataCollector_Domain_Collectors_TradeDataCollector_MarketDataCollector_Domain_Collectors_QuoteCollector_
+  name: IBCallbackRouter
+  nameWithType: IBCallbackRouter.IBCallbackRouter
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.IBCallbackRouter
+  nameWithType.vb: IBCallbackRouter.New
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.New
+  name.vb: New
+- uid: MarketDataCollector.Domain.Collectors.MarketDepthCollector
+  commentId: T:MarketDataCollector.Domain.Collectors.MarketDepthCollector
+  parent: MarketDataCollector.Domain.Collectors
+  href: MarketDataCollector.Domain.Collectors.MarketDepthCollector.html
+  name: MarketDepthCollector
+  nameWithType: MarketDepthCollector
+  fullName: MarketDataCollector.Domain.Collectors.MarketDepthCollector
+- uid: MarketDataCollector.Domain.Collectors.TradeDataCollector
+  commentId: T:MarketDataCollector.Domain.Collectors.TradeDataCollector
+  parent: MarketDataCollector.Domain.Collectors
+  href: MarketDataCollector.Domain.Collectors.TradeDataCollector.html
+  name: TradeDataCollector
+  nameWithType: TradeDataCollector
+  fullName: MarketDataCollector.Domain.Collectors.TradeDataCollector
+- uid: MarketDataCollector.Domain.Collectors.QuoteCollector
+  commentId: T:MarketDataCollector.Domain.Collectors.QuoteCollector
+  parent: MarketDataCollector.Domain.Collectors
+  href: MarketDataCollector.Domain.Collectors.QuoteCollector.html
+  name: QuoteCollector
+  nameWithType: QuoteCollector
+  fullName: MarketDataCollector.Domain.Collectors.QuoteCollector
+- uid: MarketDataCollector.Domain.Collectors
+  commentId: N:MarketDataCollector.Domain.Collectors
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Collectors
+  nameWithType: MarketDataCollector.Domain.Collectors
+  fullName: MarketDataCollector.Domain.Collectors
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Collectors
+    name: Collectors
+    href: MarketDataCollector.Domain.Collectors.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Collectors
+    name: Collectors
+    href: MarketDataCollector.Domain.Collectors.html
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterDepthTicker*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterDepthTicker
+  href: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.html#MarketDataCollector_Infrastructure_Adapters_InteractiveBrokers_IBCallbackRouter_RegisterDepthTicker_System_Int32_System_String_
+  name: RegisterDepthTicker
+  nameWithType: IBCallbackRouter.RegisterDepthTicker
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterDepthTicker
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterTradeTicker*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterTradeTicker
+  href: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.html#MarketDataCollector_Infrastructure_Adapters_InteractiveBrokers_IBCallbackRouter_RegisterTradeTicker_System_Int32_System_String_
+  name: RegisterTradeTicker
+  nameWithType: IBCallbackRouter.RegisterTradeTicker
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterTradeTicker
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterQuoteTicker*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterQuoteTicker
+  href: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.html#MarketDataCollector_Infrastructure_Adapters_InteractiveBrokers_IBCallbackRouter_RegisterQuoteTicker_System_Int32_System_String_
+  name: RegisterQuoteTicker
+  nameWithType: IBCallbackRouter.RegisterQuoteTicker
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.RegisterQuoteTicker
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepth*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepth
+  href: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.html#MarketDataCollector_Infrastructure_Adapters_InteractiveBrokers_IBCallbackRouter_UpdateMktDepth_System_Int32_System_Int32_System_Int32_System_Int32_System_Double_System_Double_
+  name: UpdateMktDepth
+  nameWithType: IBCallbackRouter.UpdateMktDepth
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepth
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepthL2*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepthL2
+  href: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.html#MarketDataCollector_Infrastructure_Adapters_InteractiveBrokers_IBCallbackRouter_UpdateMktDepthL2_System_Int32_System_Int32_System_String_System_Int32_System_Int32_System_Double_System_Double_System_Boolean_
+  name: UpdateMktDepthL2
+  nameWithType: IBCallbackRouter.UpdateMktDepthL2
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.UpdateMktDepthL2
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickByTickAllLast*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickByTickAllLast
+  href: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.html#MarketDataCollector_Infrastructure_Adapters_InteractiveBrokers_IBCallbackRouter_OnTickByTickAllLast_System_Int32_System_Int32_System_Int64_System_Double_System_Double_System_String_System_String_
+  name: OnTickByTickAllLast
+  nameWithType: IBCallbackRouter.OnTickByTickAllLast
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickByTickAllLast
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickPrice*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickPrice
+  href: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.html#MarketDataCollector_Infrastructure_Adapters_InteractiveBrokers_IBCallbackRouter_OnTickPrice_System_Int32_System_Int32_System_Double_System_Boolean_System_Boolean_
+  name: OnTickPrice
+  nameWithType: IBCallbackRouter.OnTickPrice
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickPrice
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSize*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSize
+  href: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.html#MarketDataCollector_Infrastructure_Adapters_InteractiveBrokers_IBCallbackRouter_OnTickSize_System_Int32_System_Int32_System_Int64_
+  name: OnTickSize
+  nameWithType: IBCallbackRouter.OnTickSize
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSize
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickString*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickString
+  href: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.html#MarketDataCollector_Infrastructure_Adapters_InteractiveBrokers_IBCallbackRouter_OnTickString_System_Int32_System_Int32_System_String_
+  name: OnTickString
+  nameWithType: IBCallbackRouter.OnTickString
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickString
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickGeneric*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickGeneric
+  href: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.html#MarketDataCollector_Infrastructure_Adapters_InteractiveBrokers_IBCallbackRouter_OnTickGeneric_System_Int32_System_Int32_System_Double_
+  name: OnTickGeneric
+  nameWithType: IBCallbackRouter.OnTickGeneric
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickGeneric
+- uid: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSnapshotEnd*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSnapshotEnd
+  href: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.html#MarketDataCollector_Infrastructure_Adapters_InteractiveBrokers_IBCallbackRouter_OnTickSnapshotEnd_System_Int32_
+  name: OnTickSnapshotEnd
+  nameWithType: IBCallbackRouter.OnTickSnapshotEnd
+  fullName: MarketDataCollector.Infrastructure.Adapters.InteractiveBrokers.IBCallbackRouter.OnTickSnapshotEnd

@@ -1,0 +1,865 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress
+  commentId: T:MarketDataCollector.Storage.Packaging.PackageProgress
+  id: PackageProgress
+  parent: MarketDataCollector.Storage.Packaging
+  children:
+  - MarketDataCollector.Storage.Packaging.PackageProgress.BytesProcessed
+  - MarketDataCollector.Storage.Packaging.PackageProgress.CurrentFile
+  - MarketDataCollector.Storage.Packaging.PackageProgress.EstimatedSecondsRemaining
+  - MarketDataCollector.Storage.Packaging.PackageProgress.FilesProcessed
+  - MarketDataCollector.Storage.Packaging.PackageProgress.JobId
+  - MarketDataCollector.Storage.Packaging.PackageProgress.PercentComplete
+  - MarketDataCollector.Storage.Packaging.PackageProgress.Stage
+  - MarketDataCollector.Storage.Packaging.PackageProgress.ThroughputBytesPerSecond
+  - MarketDataCollector.Storage.Packaging.PackageProgress.TotalBytes
+  - MarketDataCollector.Storage.Packaging.PackageProgress.TotalFiles
+  langs:
+  - csharp
+  - vb
+  name: PackageProgress
+  nameWithType: PackageProgress
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PackageProgress
+    path: ../../src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+    startLine: 333
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Packaging
+  summary: Progress information for packaging/import operations.
+  example: []
+  syntax:
+    content: public sealed class PackageProgress
+    content.vb: Public NotInheritable Class PackageProgress
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.JobId
+  commentId: P:MarketDataCollector.Storage.Packaging.PackageProgress.JobId
+  id: JobId
+  parent: MarketDataCollector.Storage.Packaging.PackageProgress
+  langs:
+  - csharp
+  - vb
+  name: JobId
+  nameWithType: PackageProgress.JobId
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.JobId
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: JobId
+    path: ../../src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+    startLine: 335
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Packaging
+  syntax:
+    content: >-
+      [JsonPropertyName("jobId")]
+
+      public string JobId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("jobId")>
+
+      Public Property JobId As String
+  overload: MarketDataCollector.Storage.Packaging.PackageProgress.JobId*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: jobId
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.Stage
+  commentId: P:MarketDataCollector.Storage.Packaging.PackageProgress.Stage
+  id: Stage
+  parent: MarketDataCollector.Storage.Packaging.PackageProgress
+  langs:
+  - csharp
+  - vb
+  name: Stage
+  nameWithType: PackageProgress.Stage
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.Stage
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Stage
+    path: ../../src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+    startLine: 338
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Packaging
+  syntax:
+    content: >-
+      [JsonPropertyName("stage")]
+
+      public PackageStage Stage { get; set; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Storage.Packaging.PackageStage
+    content.vb: >-
+      <JsonPropertyName("stage")>
+
+      Public Property Stage As PackageStage
+  overload: MarketDataCollector.Storage.Packaging.PackageProgress.Stage*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: stage
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.CurrentFile
+  commentId: P:MarketDataCollector.Storage.Packaging.PackageProgress.CurrentFile
+  id: CurrentFile
+  parent: MarketDataCollector.Storage.Packaging.PackageProgress
+  langs:
+  - csharp
+  - vb
+  name: CurrentFile
+  nameWithType: PackageProgress.CurrentFile
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.CurrentFile
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CurrentFile
+    path: ../../src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+    startLine: 341
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Packaging
+  syntax:
+    content: >-
+      [JsonPropertyName("currentFile")]
+
+      public string? CurrentFile { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("currentFile")>
+
+      Public Property CurrentFile As String
+  overload: MarketDataCollector.Storage.Packaging.PackageProgress.CurrentFile*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: currentFile
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.FilesProcessed
+  commentId: P:MarketDataCollector.Storage.Packaging.PackageProgress.FilesProcessed
+  id: FilesProcessed
+  parent: MarketDataCollector.Storage.Packaging.PackageProgress
+  langs:
+  - csharp
+  - vb
+  name: FilesProcessed
+  nameWithType: PackageProgress.FilesProcessed
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.FilesProcessed
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FilesProcessed
+    path: ../../src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+    startLine: 344
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Packaging
+  syntax:
+    content: >-
+      [JsonPropertyName("filesProcessed")]
+
+      public int FilesProcessed { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonPropertyName("filesProcessed")>
+
+      Public Property FilesProcessed As Integer
+  overload: MarketDataCollector.Storage.Packaging.PackageProgress.FilesProcessed*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: filesProcessed
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.TotalFiles
+  commentId: P:MarketDataCollector.Storage.Packaging.PackageProgress.TotalFiles
+  id: TotalFiles
+  parent: MarketDataCollector.Storage.Packaging.PackageProgress
+  langs:
+  - csharp
+  - vb
+  name: TotalFiles
+  nameWithType: PackageProgress.TotalFiles
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.TotalFiles
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TotalFiles
+    path: ../../src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+    startLine: 347
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Packaging
+  syntax:
+    content: >-
+      [JsonPropertyName("totalFiles")]
+
+      public int TotalFiles { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonPropertyName("totalFiles")>
+
+      Public Property TotalFiles As Integer
+  overload: MarketDataCollector.Storage.Packaging.PackageProgress.TotalFiles*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: totalFiles
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.BytesProcessed
+  commentId: P:MarketDataCollector.Storage.Packaging.PackageProgress.BytesProcessed
+  id: BytesProcessed
+  parent: MarketDataCollector.Storage.Packaging.PackageProgress
+  langs:
+  - csharp
+  - vb
+  name: BytesProcessed
+  nameWithType: PackageProgress.BytesProcessed
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.BytesProcessed
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BytesProcessed
+    path: ../../src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+    startLine: 350
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Packaging
+  syntax:
+    content: >-
+      [JsonPropertyName("bytesProcessed")]
+
+      public long BytesProcessed { get; set; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: >-
+      <JsonPropertyName("bytesProcessed")>
+
+      Public Property BytesProcessed As Long
+  overload: MarketDataCollector.Storage.Packaging.PackageProgress.BytesProcessed*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: bytesProcessed
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.TotalBytes
+  commentId: P:MarketDataCollector.Storage.Packaging.PackageProgress.TotalBytes
+  id: TotalBytes
+  parent: MarketDataCollector.Storage.Packaging.PackageProgress
+  langs:
+  - csharp
+  - vb
+  name: TotalBytes
+  nameWithType: PackageProgress.TotalBytes
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.TotalBytes
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TotalBytes
+    path: ../../src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+    startLine: 353
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Packaging
+  syntax:
+    content: >-
+      [JsonPropertyName("totalBytes")]
+
+      public long TotalBytes { get; set; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: >-
+      <JsonPropertyName("totalBytes")>
+
+      Public Property TotalBytes As Long
+  overload: MarketDataCollector.Storage.Packaging.PackageProgress.TotalBytes*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: totalBytes
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.PercentComplete
+  commentId: P:MarketDataCollector.Storage.Packaging.PackageProgress.PercentComplete
+  id: PercentComplete
+  parent: MarketDataCollector.Storage.Packaging.PackageProgress
+  langs:
+  - csharp
+  - vb
+  name: PercentComplete
+  nameWithType: PackageProgress.PercentComplete
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.PercentComplete
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PercentComplete
+    path: ../../src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+    startLine: 356
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Packaging
+  syntax:
+    content: >-
+      [JsonPropertyName("percentComplete")]
+
+      public double PercentComplete { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: >-
+      <JsonPropertyName("percentComplete")>
+
+      Public ReadOnly Property PercentComplete As Double
+  overload: MarketDataCollector.Storage.Packaging.PackageProgress.PercentComplete*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: percentComplete
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.EstimatedSecondsRemaining
+  commentId: P:MarketDataCollector.Storage.Packaging.PackageProgress.EstimatedSecondsRemaining
+  id: EstimatedSecondsRemaining
+  parent: MarketDataCollector.Storage.Packaging.PackageProgress
+  langs:
+  - csharp
+  - vb
+  name: EstimatedSecondsRemaining
+  nameWithType: PackageProgress.EstimatedSecondsRemaining
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.EstimatedSecondsRemaining
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: EstimatedSecondsRemaining
+    path: ../../src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+    startLine: 361
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Packaging
+  syntax:
+    content: >-
+      [JsonPropertyName("estimatedSecondsRemaining")]
+
+      public double? EstimatedSecondsRemaining { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: >-
+      <JsonPropertyName("estimatedSecondsRemaining")>
+
+      Public Property EstimatedSecondsRemaining As Double?
+  overload: MarketDataCollector.Storage.Packaging.PackageProgress.EstimatedSecondsRemaining*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: estimatedSecondsRemaining
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.ThroughputBytesPerSecond
+  commentId: P:MarketDataCollector.Storage.Packaging.PackageProgress.ThroughputBytesPerSecond
+  id: ThroughputBytesPerSecond
+  parent: MarketDataCollector.Storage.Packaging.PackageProgress
+  langs:
+  - csharp
+  - vb
+  name: ThroughputBytesPerSecond
+  nameWithType: PackageProgress.ThroughputBytesPerSecond
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.ThroughputBytesPerSecond
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ThroughputBytesPerSecond
+    path: ../../src/MarketDataCollector.Storage/Packaging/PackageResult.cs
+    startLine: 364
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Packaging
+  syntax:
+    content: >-
+      [JsonPropertyName("throughputBytesPerSecond")]
+
+      public double ThroughputBytesPerSecond { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: >-
+      <JsonPropertyName("throughputBytesPerSecond")>
+
+      Public Property ThroughputBytesPerSecond As Double
+  overload: MarketDataCollector.Storage.Packaging.PackageProgress.ThroughputBytesPerSecond*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: throughputBytesPerSecond
+references:
+- uid: MarketDataCollector.Storage.Packaging
+  commentId: N:MarketDataCollector.Storage.Packaging
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Packaging
+  nameWithType: MarketDataCollector.Storage.Packaging
+  fullName: MarketDataCollector.Storage.Packaging
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Packaging
+    name: Packaging
+    href: MarketDataCollector.Storage.Packaging.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Packaging
+    name: Packaging
+    href: MarketDataCollector.Storage.Packaging.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.JobId*
+  commentId: Overload:MarketDataCollector.Storage.Packaging.PackageProgress.JobId
+  href: MarketDataCollector.Storage.Packaging.PackageProgress.html#MarketDataCollector_Storage_Packaging_PackageProgress_JobId
+  name: JobId
+  nameWithType: PackageProgress.JobId
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.JobId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.Stage*
+  commentId: Overload:MarketDataCollector.Storage.Packaging.PackageProgress.Stage
+  href: MarketDataCollector.Storage.Packaging.PackageProgress.html#MarketDataCollector_Storage_Packaging_PackageProgress_Stage
+  name: Stage
+  nameWithType: PackageProgress.Stage
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.Stage
+- uid: MarketDataCollector.Storage.Packaging.PackageStage
+  commentId: T:MarketDataCollector.Storage.Packaging.PackageStage
+  parent: MarketDataCollector.Storage.Packaging
+  href: MarketDataCollector.Storage.Packaging.PackageStage.html
+  name: PackageStage
+  nameWithType: PackageStage
+  fullName: MarketDataCollector.Storage.Packaging.PackageStage
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.CurrentFile*
+  commentId: Overload:MarketDataCollector.Storage.Packaging.PackageProgress.CurrentFile
+  href: MarketDataCollector.Storage.Packaging.PackageProgress.html#MarketDataCollector_Storage_Packaging_PackageProgress_CurrentFile
+  name: CurrentFile
+  nameWithType: PackageProgress.CurrentFile
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.CurrentFile
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.FilesProcessed*
+  commentId: Overload:MarketDataCollector.Storage.Packaging.PackageProgress.FilesProcessed
+  href: MarketDataCollector.Storage.Packaging.PackageProgress.html#MarketDataCollector_Storage_Packaging_PackageProgress_FilesProcessed
+  name: FilesProcessed
+  nameWithType: PackageProgress.FilesProcessed
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.FilesProcessed
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.TotalFiles*
+  commentId: Overload:MarketDataCollector.Storage.Packaging.PackageProgress.TotalFiles
+  href: MarketDataCollector.Storage.Packaging.PackageProgress.html#MarketDataCollector_Storage_Packaging_PackageProgress_TotalFiles
+  name: TotalFiles
+  nameWithType: PackageProgress.TotalFiles
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.TotalFiles
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.BytesProcessed*
+  commentId: Overload:MarketDataCollector.Storage.Packaging.PackageProgress.BytesProcessed
+  href: MarketDataCollector.Storage.Packaging.PackageProgress.html#MarketDataCollector_Storage_Packaging_PackageProgress_BytesProcessed
+  name: BytesProcessed
+  nameWithType: PackageProgress.BytesProcessed
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.BytesProcessed
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.TotalBytes*
+  commentId: Overload:MarketDataCollector.Storage.Packaging.PackageProgress.TotalBytes
+  href: MarketDataCollector.Storage.Packaging.PackageProgress.html#MarketDataCollector_Storage_Packaging_PackageProgress_TotalBytes
+  name: TotalBytes
+  nameWithType: PackageProgress.TotalBytes
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.TotalBytes
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.PercentComplete*
+  commentId: Overload:MarketDataCollector.Storage.Packaging.PackageProgress.PercentComplete
+  href: MarketDataCollector.Storage.Packaging.PackageProgress.html#MarketDataCollector_Storage_Packaging_PackageProgress_PercentComplete
+  name: PercentComplete
+  nameWithType: PackageProgress.PercentComplete
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.PercentComplete
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.EstimatedSecondsRemaining*
+  commentId: Overload:MarketDataCollector.Storage.Packaging.PackageProgress.EstimatedSecondsRemaining
+  href: MarketDataCollector.Storage.Packaging.PackageProgress.html#MarketDataCollector_Storage_Packaging_PackageProgress_EstimatedSecondsRemaining
+  name: EstimatedSecondsRemaining
+  nameWithType: PackageProgress.EstimatedSecondsRemaining
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.EstimatedSecondsRemaining
+- uid: System.Nullable{System.Double}
+  commentId: T:System.Nullable{System.Double}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double?
+  nameWithType: double?
+  fullName: double?
+  nameWithType.vb: Double?
+  fullName.vb: Double?
+  name.vb: Double?
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Storage.Packaging.PackageProgress.ThroughputBytesPerSecond*
+  commentId: Overload:MarketDataCollector.Storage.Packaging.PackageProgress.ThroughputBytesPerSecond
+  href: MarketDataCollector.Storage.Packaging.PackageProgress.html#MarketDataCollector_Storage_Packaging_PackageProgress_ThroughputBytesPerSecond
+  name: ThroughputBytesPerSecond
+  nameWithType: PackageProgress.ThroughputBytesPerSecond
+  fullName: MarketDataCollector.Storage.Packaging.PackageProgress.ThroughputBytesPerSecond

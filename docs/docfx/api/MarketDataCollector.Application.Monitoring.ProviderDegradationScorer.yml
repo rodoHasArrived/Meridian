@@ -1,0 +1,987 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer
+  commentId: T:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer
+  id: ProviderDegradationScorer
+  parent: MarketDataCollector.Application.Monitoring
+  children:
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.#ctor(MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor,MarketDataCollector.Application.Monitoring.ProviderLatencyService,MarketDataCollector.Application.Monitoring.ProviderDegradationConfig)
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.Dispose
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetAllScores
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetProvidersByHealth
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetScore(System.String)
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.IsDegraded(System.String)
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.OnProviderDegraded
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.OnProviderRecovered
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordError(System.String,System.String)
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordSuccess(System.String)
+  langs:
+  - csharp
+  - vb
+  name: ProviderDegradationScorer
+  nameWithType: ProviderDegradationScorer
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderDegradationScorer
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 11
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: >-
+    Computes a composite health/degradation score per provider by combining
+
+    latency, error rate, missed heartbeats, reconnect frequency, and data quality signals.
+
+    Implements Roadmap H4: Graceful Provider Degradation Scoring.
+  example: []
+  syntax:
+    content: 'public sealed class ProviderDegradationScorer : IDisposable'
+    content.vb: Public NotInheritable Class ProviderDegradationScorer Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.OnProviderDegraded
+  commentId: E:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.OnProviderDegraded
+  id: OnProviderDegraded
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer
+  langs:
+  - csharp
+  - vb
+  name: OnProviderDegraded
+  nameWithType: ProviderDegradationScorer.OnProviderDegraded
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.OnProviderDegraded
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnProviderDegraded
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 24
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Raised when a provider's degradation score crosses the configured threshold.
+  example: []
+  syntax:
+    content: public event Action<ProviderDegradedEvent>? OnProviderDegraded
+    return:
+      type: System.Action{MarketDataCollector.Application.Monitoring.ProviderDegradedEvent}
+    content.vb: Public Event OnProviderDegraded As Action(Of ProviderDegradedEvent)
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.OnProviderRecovered
+  commentId: E:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.OnProviderRecovered
+  id: OnProviderRecovered
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer
+  langs:
+  - csharp
+  - vb
+  name: OnProviderRecovered
+  nameWithType: ProviderDegradationScorer.OnProviderRecovered
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.OnProviderRecovered
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnProviderRecovered
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 30
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Raised when a provider recovers from a degraded state.
+  example: []
+  syntax:
+    content: public event Action<ProviderRecoveredEvent>? OnProviderRecovered
+    return:
+      type: System.Action{MarketDataCollector.Application.Monitoring.ProviderRecoveredEvent}
+    content.vb: Public Event OnProviderRecovered As Action(Of ProviderRecoveredEvent)
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.#ctor(MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor,MarketDataCollector.Application.Monitoring.ProviderLatencyService,MarketDataCollector.Application.Monitoring.ProviderDegradationConfig)
+  commentId: M:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.#ctor(MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor,MarketDataCollector.Application.Monitoring.ProviderLatencyService,MarketDataCollector.Application.Monitoring.ProviderDegradationConfig)
+  id: '#ctor(MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor,MarketDataCollector.Application.Monitoring.ProviderLatencyService,MarketDataCollector.Application.Monitoring.ProviderDegradationConfig)'
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer
+  langs:
+  - csharp
+  - vb
+  name: ProviderDegradationScorer(ConnectionHealthMonitor, ProviderLatencyService, ProviderDegradationConfig?)
+  nameWithType: ProviderDegradationScorer.ProviderDegradationScorer(ConnectionHealthMonitor, ProviderLatencyService, ProviderDegradationConfig?)
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.ProviderDegradationScorer(MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor, MarketDataCollector.Application.Monitoring.ProviderLatencyService, MarketDataCollector.Application.Monitoring.ProviderDegradationConfig?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 33
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public ProviderDegradationScorer(ConnectionHealthMonitor healthMonitor, ProviderLatencyService latencyService, ProviderDegradationConfig? config = null)
+    parameters:
+    - id: healthMonitor
+      type: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+    - id: latencyService
+      type: MarketDataCollector.Application.Monitoring.ProviderLatencyService
+    - id: config
+      type: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+    content.vb: Public Sub New(healthMonitor As ConnectionHealthMonitor, latencyService As ProviderLatencyService, config As ProviderDegradationConfig = Nothing)
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.#ctor*
+  nameWithType.vb: ProviderDegradationScorer.New(ConnectionHealthMonitor, ProviderLatencyService, ProviderDegradationConfig)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.New(MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor, MarketDataCollector.Application.Monitoring.ProviderLatencyService, MarketDataCollector.Application.Monitoring.ProviderDegradationConfig)
+  name.vb: New(ConnectionHealthMonitor, ProviderLatencyService, ProviderDegradationConfig)
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordError(System.String,System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordError(System.String,System.String)
+  id: RecordError(System.String,System.String)
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer
+  langs:
+  - csharp
+  - vb
+  name: RecordError(string, string)
+  nameWithType: ProviderDegradationScorer.RecordError(string, string)
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordError(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecordError
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 56
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Records an error for a provider.
+  example: []
+  syntax:
+    content: public void RecordError(string providerName, string errorType)
+    parameters:
+    - id: providerName
+      type: System.String
+    - id: errorType
+      type: System.String
+    content.vb: Public Sub RecordError(providerName As String, errorType As String)
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordError*
+  nameWithType.vb: ProviderDegradationScorer.RecordError(String, String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordError(String, String)
+  name.vb: RecordError(String, String)
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordSuccess(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordSuccess(System.String)
+  id: RecordSuccess(System.String)
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer
+  langs:
+  - csharp
+  - vb
+  name: RecordSuccess(string)
+  nameWithType: ProviderDegradationScorer.RecordSuccess(string)
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordSuccess(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecordSuccess
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 67
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Records a successful operation for a provider (reduces error rate).
+  example: []
+  syntax:
+    content: public void RecordSuccess(string providerName)
+    parameters:
+    - id: providerName
+      type: System.String
+    content.vb: Public Sub RecordSuccess(providerName As String)
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordSuccess*
+  nameWithType.vb: ProviderDegradationScorer.RecordSuccess(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordSuccess(String)
+  name.vb: RecordSuccess(String)
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetScore(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetScore(System.String)
+  id: GetScore(System.String)
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer
+  langs:
+  - csharp
+  - vb
+  name: GetScore(string)
+  nameWithType: ProviderDegradationScorer.GetScore(string)
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetScore(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetScore
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 79
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: >-
+    Gets the degradation score for a specific provider.
+
+    Score ranges from 0.0 (fully healthy) to 1.0 (fully degraded).
+  example: []
+  syntax:
+    content: public ProviderDegradationScore GetScore(string providerName)
+    parameters:
+    - id: providerName
+      type: System.String
+    return:
+      type: MarketDataCollector.Application.Monitoring.ProviderDegradationScore
+    content.vb: Public Function GetScore(providerName As String) As ProviderDegradationScore
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetScore*
+  nameWithType.vb: ProviderDegradationScorer.GetScore(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetScore(String)
+  name.vb: GetScore(String)
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetAllScores
+  commentId: M:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetAllScores
+  id: GetAllScores
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer
+  langs:
+  - csharp
+  - vb
+  name: GetAllScores()
+  nameWithType: ProviderDegradationScorer.GetAllScores()
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetAllScores()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetAllScores
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 91
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Gets degradation scores for all known providers.
+  example: []
+  syntax:
+    content: public IReadOnlyList<ProviderDegradationScore> GetAllScores()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.ProviderDegradationScore}
+    content.vb: Public Function GetAllScores() As IReadOnlyList(Of ProviderDegradationScore)
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetAllScores*
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetProvidersByHealth
+  commentId: M:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetProvidersByHealth
+  id: GetProvidersByHealth
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer
+  langs:
+  - csharp
+  - vb
+  name: GetProvidersByHealth()
+  nameWithType: ProviderDegradationScorer.GetProvidersByHealth()
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetProvidersByHealth()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetProvidersByHealth
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 113
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Gets providers ranked by health (least degraded first).
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> GetProvidersByHealth()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public Function GetProvidersByHealth() As IReadOnlyList(Of String)
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetProvidersByHealth*
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.IsDegraded(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.IsDegraded(System.String)
+  id: IsDegraded(System.String)
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer
+  langs:
+  - csharp
+  - vb
+  name: IsDegraded(string)
+  nameWithType: ProviderDegradationScorer.IsDegraded(string)
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.IsDegraded(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsDegraded
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 124
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Returns true if the provider is considered degraded.
+  example: []
+  syntax:
+    content: public bool IsDegraded(string providerName)
+    parameters:
+    - id: providerName
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsDegraded(providerName As String) As Boolean
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.IsDegraded*
+  nameWithType.vb: ProviderDegradationScorer.IsDegraded(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.IsDegraded(String)
+  name.vb: IsDegraded(String)
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.Dispose
+  commentId: M:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.Dispose
+  id: Dispose
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: ProviderDegradationScorer.Dispose()
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Dispose
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 248
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: MarketDataCollector.Application.Monitoring
+  commentId: N:MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring
+  nameWithType: MarketDataCollector.Application.Monitoring
+  fullName: MarketDataCollector.Application.Monitoring
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Action{MarketDataCollector.Application.Monitoring.ProviderDegradedEvent}
+  commentId: T:System.Action{MarketDataCollector.Application.Monitoring.ProviderDegradedEvent}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<ProviderDegradedEvent>
+  nameWithType: Action<ProviderDegradedEvent>
+  fullName: System.Action<MarketDataCollector.Application.Monitoring.ProviderDegradedEvent>
+  nameWithType.vb: Action(Of ProviderDegradedEvent)
+  fullName.vb: System.Action(Of MarketDataCollector.Application.Monitoring.ProviderDegradedEvent)
+  name.vb: Action(Of ProviderDegradedEvent)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.ProviderDegradedEvent
+    name: ProviderDegradedEvent
+    href: MarketDataCollector.Application.Monitoring.ProviderDegradedEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.ProviderDegradedEvent
+    name: ProviderDegradedEvent
+    href: MarketDataCollector.Application.Monitoring.ProviderDegradedEvent.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Action{MarketDataCollector.Application.Monitoring.ProviderRecoveredEvent}
+  commentId: T:System.Action{MarketDataCollector.Application.Monitoring.ProviderRecoveredEvent}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<ProviderRecoveredEvent>
+  nameWithType: Action<ProviderRecoveredEvent>
+  fullName: System.Action<MarketDataCollector.Application.Monitoring.ProviderRecoveredEvent>
+  nameWithType.vb: Action(Of ProviderRecoveredEvent)
+  fullName.vb: System.Action(Of MarketDataCollector.Application.Monitoring.ProviderRecoveredEvent)
+  name.vb: Action(Of ProviderRecoveredEvent)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.ProviderRecoveredEvent
+    name: ProviderRecoveredEvent
+    href: MarketDataCollector.Application.Monitoring.ProviderRecoveredEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.ProviderRecoveredEvent
+    name: ProviderRecoveredEvent
+    href: MarketDataCollector.Application.Monitoring.ProviderRecoveredEvent.html
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.#ctor
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.html#MarketDataCollector_Application_Monitoring_ProviderDegradationScorer__ctor_MarketDataCollector_Application_Monitoring_ConnectionHealthMonitor_MarketDataCollector_Application_Monitoring_ProviderLatencyService_MarketDataCollector_Application_Monitoring_ProviderDegradationConfig_
+  name: ProviderDegradationScorer
+  nameWithType: ProviderDegradationScorer.ProviderDegradationScorer
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.ProviderDegradationScorer
+  nameWithType.vb: ProviderDegradationScorer.New
+  fullName.vb: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.New
+  name.vb: New
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  commentId: T:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.html
+  name: ConnectionHealthMonitor
+  nameWithType: ConnectionHealthMonitor
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencyService
+  commentId: T:MarketDataCollector.Application.Monitoring.ProviderLatencyService
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.ProviderLatencyService.html
+  name: ProviderLatencyService
+  nameWithType: ProviderLatencyService
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencyService
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  commentId: T:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.html
+  name: ProviderDegradationConfig
+  nameWithType: ProviderDegradationConfig
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordError*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordError
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.html#MarketDataCollector_Application_Monitoring_ProviderDegradationScorer_RecordError_System_String_System_String_
+  name: RecordError
+  nameWithType: ProviderDegradationScorer.RecordError
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordError
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordSuccess*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordSuccess
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.html#MarketDataCollector_Application_Monitoring_ProviderDegradationScorer_RecordSuccess_System_String_
+  name: RecordSuccess
+  nameWithType: ProviderDegradationScorer.RecordSuccess
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.RecordSuccess
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetScore*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetScore
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.html#MarketDataCollector_Application_Monitoring_ProviderDegradationScorer_GetScore_System_String_
+  name: GetScore
+  nameWithType: ProviderDegradationScorer.GetScore
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetScore
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScore
+  commentId: T:MarketDataCollector.Application.Monitoring.ProviderDegradationScore
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationScore.html
+  name: ProviderDegradationScore
+  nameWithType: ProviderDegradationScore
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScore
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetAllScores*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetAllScores
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.html#MarketDataCollector_Application_Monitoring_ProviderDegradationScorer_GetAllScores
+  name: GetAllScores
+  nameWithType: ProviderDegradationScorer.GetAllScores
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetAllScores
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.ProviderDegradationScore}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.ProviderDegradationScore}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<ProviderDegradationScore>
+  nameWithType: IReadOnlyList<ProviderDegradationScore>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Monitoring.ProviderDegradationScore>
+  nameWithType.vb: IReadOnlyList(Of ProviderDegradationScore)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Monitoring.ProviderDegradationScore)
+  name.vb: IReadOnlyList(Of ProviderDegradationScore)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScore
+    name: ProviderDegradationScore
+    href: MarketDataCollector.Application.Monitoring.ProviderDegradationScore.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScore
+    name: ProviderDegradationScore
+    href: MarketDataCollector.Application.Monitoring.ProviderDegradationScore.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetProvidersByHealth*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetProvidersByHealth
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.html#MarketDataCollector_Application_Monitoring_ProviderDegradationScorer_GetProvidersByHealth
+  name: GetProvidersByHealth
+  nameWithType: ProviderDegradationScorer.GetProvidersByHealth
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.GetProvidersByHealth
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.IsDegraded*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.IsDegraded
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.html#MarketDataCollector_Application_Monitoring_ProviderDegradationScorer_IsDegraded_System_String_
+  name: IsDegraded
+  nameWithType: ProviderDegradationScorer.IsDegraded
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.IsDegraded
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.Dispose*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.Dispose
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.html#MarketDataCollector_Application_Monitoring_ProviderDegradationScorer_Dispose
+  name: Dispose
+  nameWithType: ProviderDegradationScorer.Dispose
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationScorer.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

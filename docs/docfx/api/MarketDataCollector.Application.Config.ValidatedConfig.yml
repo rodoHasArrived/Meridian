@@ -1,0 +1,1038 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Config.ValidatedConfig
+  commentId: T:MarketDataCollector.Application.Config.ValidatedConfig
+  id: ValidatedConfig
+  parent: MarketDataCollector.Application.Config
+  children:
+  - MarketDataCollector.Application.Config.ValidatedConfig.AppliedFixes
+  - MarketDataCollector.Application.Config.ValidatedConfig.Config
+  - MarketDataCollector.Application.Config.ValidatedConfig.Default
+  - MarketDataCollector.Application.Config.ValidatedConfig.EnvironmentName
+  - MarketDataCollector.Application.Config.ValidatedConfig.Failed(MarketDataCollector.Application.Config.AppConfig,System.Collections.Generic.IReadOnlyList{System.String},System.String,MarketDataCollector.Application.Config.ConfigurationOrigin)
+  - MarketDataCollector.Application.Config.ValidatedConfig.FromConfig(MarketDataCollector.Application.Config.AppConfig,System.Boolean,System.String,System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String},System.String,MarketDataCollector.Application.Config.ConfigurationOrigin)
+  - MarketDataCollector.Application.Config.ValidatedConfig.IsValid
+  - MarketDataCollector.Application.Config.ValidatedConfig.Source
+  - MarketDataCollector.Application.Config.ValidatedConfig.SourcePath
+  - MarketDataCollector.Application.Config.ValidatedConfig.Timestamp
+  - MarketDataCollector.Application.Config.ValidatedConfig.ValidationErrors
+  - MarketDataCollector.Application.Config.ValidatedConfig.Warnings
+  - MarketDataCollector.Application.Config.ValidatedConfig.op_Implicit(MarketDataCollector.Application.Config.ValidatedConfig)~MarketDataCollector.Application.Config.AppConfig
+  langs:
+  - csharp
+  - vb
+  name: ValidatedConfig
+  nameWithType: ValidatedConfig
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ValidatedConfig
+    path: ../../src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+    startLine: 16
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: >-
+    Represents a validated, normalized configuration that has passed through the full configuration pipeline.
+
+    This is the single output type from all configuration entry points (wizard, auto-config, file load, hot reload).
+  remarks: >-
+    <p>The configuration pipeline ensures that:</p>
+
+    <ul><li>Environment overlays have been applied</li><li>Environment variable overrides have been applied</li><li>Credentials have been resolved from all sources</li><li>Self-healing fixes have been applied (if enabled)</li><li>Validation has been performed</li></ul>
+  example: []
+  syntax:
+    content: 'public sealed record ValidatedConfig : IEquatable<ValidatedConfig>'
+    content.vb: Public NotInheritable Class ValidatedConfig Implements IEquatable(Of ValidatedConfig)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Application.Config.ValidatedConfig}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.Config
+  commentId: P:MarketDataCollector.Application.Config.ValidatedConfig.Config
+  id: Config
+  parent: MarketDataCollector.Application.Config.ValidatedConfig
+  langs:
+  - csharp
+  - vb
+  name: Config
+  nameWithType: ValidatedConfig.Config
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.Config
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Config
+    path: ../../src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+    startLine: 21
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: The normalized and validated configuration.
+  example: []
+  syntax:
+    content: public required AppConfig Config { get; init; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Config.AppConfig
+    content.vb: Public Property Config As AppConfig
+  overload: MarketDataCollector.Application.Config.ValidatedConfig.Config*
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.IsValid
+  commentId: P:MarketDataCollector.Application.Config.ValidatedConfig.IsValid
+  id: IsValid
+  parent: MarketDataCollector.Application.Config.ValidatedConfig
+  langs:
+  - csharp
+  - vb
+  name: IsValid
+  nameWithType: ValidatedConfig.IsValid
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.IsValid
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsValid
+    path: ../../src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+    startLine: 26
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Whether the configuration passed validation.
+  example: []
+  syntax:
+    content: public required bool IsValid { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsValid As Boolean
+  overload: MarketDataCollector.Application.Config.ValidatedConfig.IsValid*
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.SourcePath
+  commentId: P:MarketDataCollector.Application.Config.ValidatedConfig.SourcePath
+  id: SourcePath
+  parent: MarketDataCollector.Application.Config.ValidatedConfig
+  langs:
+  - csharp
+  - vb
+  name: SourcePath
+  nameWithType: ValidatedConfig.SourcePath
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.SourcePath
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SourcePath
+    path: ../../src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+    startLine: 31
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: The source path of the configuration file (if loaded from file).
+  example: []
+  syntax:
+    content: public string? SourcePath { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SourcePath As String
+  overload: MarketDataCollector.Application.Config.ValidatedConfig.SourcePath*
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.ValidationErrors
+  commentId: P:MarketDataCollector.Application.Config.ValidatedConfig.ValidationErrors
+  id: ValidationErrors
+  parent: MarketDataCollector.Application.Config.ValidatedConfig
+  langs:
+  - csharp
+  - vb
+  name: ValidationErrors
+  nameWithType: ValidatedConfig.ValidationErrors
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.ValidationErrors
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ValidationErrors
+    path: ../../src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+    startLine: 36
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Validation errors, if any.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> ValidationErrors { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public Property ValidationErrors As IReadOnlyList(Of String)
+  overload: MarketDataCollector.Application.Config.ValidatedConfig.ValidationErrors*
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.AppliedFixes
+  commentId: P:MarketDataCollector.Application.Config.ValidatedConfig.AppliedFixes
+  id: AppliedFixes
+  parent: MarketDataCollector.Application.Config.ValidatedConfig
+  langs:
+  - csharp
+  - vb
+  name: AppliedFixes
+  nameWithType: ValidatedConfig.AppliedFixes
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.AppliedFixes
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AppliedFixes
+    path: ../../src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+    startLine: 41
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Self-healing fixes that were applied to the configuration.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> AppliedFixes { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public Property AppliedFixes As IReadOnlyList(Of String)
+  overload: MarketDataCollector.Application.Config.ValidatedConfig.AppliedFixes*
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.Warnings
+  commentId: P:MarketDataCollector.Application.Config.ValidatedConfig.Warnings
+  id: Warnings
+  parent: MarketDataCollector.Application.Config.ValidatedConfig
+  langs:
+  - csharp
+  - vb
+  name: Warnings
+  nameWithType: ValidatedConfig.Warnings
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.Warnings
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Warnings
+    path: ../../src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+    startLine: 46
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Warnings that should be surfaced to the user but don't prevent operation.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> Warnings { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public Property Warnings As IReadOnlyList(Of String)
+  overload: MarketDataCollector.Application.Config.ValidatedConfig.Warnings*
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.EnvironmentName
+  commentId: P:MarketDataCollector.Application.Config.ValidatedConfig.EnvironmentName
+  id: EnvironmentName
+  parent: MarketDataCollector.Application.Config.ValidatedConfig
+  langs:
+  - csharp
+  - vb
+  name: EnvironmentName
+  nameWithType: ValidatedConfig.EnvironmentName
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.EnvironmentName
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: EnvironmentName
+    path: ../../src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+    startLine: 51
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: The environment name used for overlays (e.g., "Production", "Development").
+  example: []
+  syntax:
+    content: public string? EnvironmentName { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property EnvironmentName As String
+  overload: MarketDataCollector.Application.Config.ValidatedConfig.EnvironmentName*
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.Timestamp
+  commentId: P:MarketDataCollector.Application.Config.ValidatedConfig.Timestamp
+  id: Timestamp
+  parent: MarketDataCollector.Application.Config.ValidatedConfig
+  langs:
+  - csharp
+  - vb
+  name: Timestamp
+  nameWithType: ValidatedConfig.Timestamp
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.Timestamp
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Timestamp
+    path: ../../src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+    startLine: 56
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: When the configuration was loaded/validated.
+  example: []
+  syntax:
+    content: public DateTimeOffset Timestamp { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property Timestamp As DateTimeOffset
+  overload: MarketDataCollector.Application.Config.ValidatedConfig.Timestamp*
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.Source
+  commentId: P:MarketDataCollector.Application.Config.ValidatedConfig.Source
+  id: Source
+  parent: MarketDataCollector.Application.Config.ValidatedConfig
+  langs:
+  - csharp
+  - vb
+  name: Source
+  nameWithType: ValidatedConfig.Source
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.Source
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Source
+    path: ../../src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+    startLine: 61
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: How the configuration was sourced.
+  example: []
+  syntax:
+    content: public ConfigurationOrigin Source { get; init; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Config.ConfigurationOrigin
+    content.vb: Public Property Source As ConfigurationOrigin
+  overload: MarketDataCollector.Application.Config.ValidatedConfig.Source*
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.FromConfig(MarketDataCollector.Application.Config.AppConfig,System.Boolean,System.String,System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String},System.String,MarketDataCollector.Application.Config.ConfigurationOrigin)
+  commentId: M:MarketDataCollector.Application.Config.ValidatedConfig.FromConfig(MarketDataCollector.Application.Config.AppConfig,System.Boolean,System.String,System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String},System.String,MarketDataCollector.Application.Config.ConfigurationOrigin)
+  id: FromConfig(MarketDataCollector.Application.Config.AppConfig,System.Boolean,System.String,System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String},System.String,MarketDataCollector.Application.Config.ConfigurationOrigin)
+  parent: MarketDataCollector.Application.Config.ValidatedConfig
+  langs:
+  - csharp
+  - vb
+  name: FromConfig(AppConfig, bool, string?, IReadOnlyList<string>?, IReadOnlyList<string>?, IReadOnlyList<string>?, string?, ConfigurationOrigin)
+  nameWithType: ValidatedConfig.FromConfig(AppConfig, bool, string?, IReadOnlyList<string>?, IReadOnlyList<string>?, IReadOnlyList<string>?, string?, ConfigurationOrigin)
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.FromConfig(MarketDataCollector.Application.Config.AppConfig, bool, string?, System.Collections.Generic.IReadOnlyList<string>?, System.Collections.Generic.IReadOnlyList<string>?, System.Collections.Generic.IReadOnlyList<string>?, string?, MarketDataCollector.Application.Config.ConfigurationOrigin)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FromConfig
+    path: ../../src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+    startLine: 66
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Creates a validated config from a raw AppConfig after running it through validation.
+  example: []
+  syntax:
+    content: public static ValidatedConfig FromConfig(AppConfig config, bool isValid, string? sourcePath = null, IReadOnlyList<string>? validationErrors = null, IReadOnlyList<string>? appliedFixes = null, IReadOnlyList<string>? warnings = null, string? environmentName = null, ConfigurationOrigin source = ConfigurationOrigin.File)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    - id: isValid
+      type: System.Boolean
+    - id: sourcePath
+      type: System.String
+    - id: validationErrors
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    - id: appliedFixes
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    - id: warnings
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    - id: environmentName
+      type: System.String
+    - id: source
+      type: MarketDataCollector.Application.Config.ConfigurationOrigin
+    return:
+      type: MarketDataCollector.Application.Config.ValidatedConfig
+    content.vb: Public Shared Function FromConfig(config As AppConfig, isValid As Boolean, sourcePath As String = Nothing, validationErrors As IReadOnlyList(Of String) = Nothing, appliedFixes As IReadOnlyList(Of String) = Nothing, warnings As IReadOnlyList(Of String) = Nothing, environmentName As String = Nothing, source As ConfigurationOrigin = ConfigurationOrigin.File) As ValidatedConfig
+  overload: MarketDataCollector.Application.Config.ValidatedConfig.FromConfig*
+  nameWithType.vb: ValidatedConfig.FromConfig(AppConfig, Boolean, String, IReadOnlyList(Of String), IReadOnlyList(Of String), IReadOnlyList(Of String), String, ConfigurationOrigin)
+  fullName.vb: MarketDataCollector.Application.Config.ValidatedConfig.FromConfig(MarketDataCollector.Application.Config.AppConfig, Boolean, String, System.Collections.Generic.IReadOnlyList(Of String), System.Collections.Generic.IReadOnlyList(Of String), System.Collections.Generic.IReadOnlyList(Of String), String, MarketDataCollector.Application.Config.ConfigurationOrigin)
+  name.vb: FromConfig(AppConfig, Boolean, String, IReadOnlyList(Of String), IReadOnlyList(Of String), IReadOnlyList(Of String), String, ConfigurationOrigin)
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.Failed(MarketDataCollector.Application.Config.AppConfig,System.Collections.Generic.IReadOnlyList{System.String},System.String,MarketDataCollector.Application.Config.ConfigurationOrigin)
+  commentId: M:MarketDataCollector.Application.Config.ValidatedConfig.Failed(MarketDataCollector.Application.Config.AppConfig,System.Collections.Generic.IReadOnlyList{System.String},System.String,MarketDataCollector.Application.Config.ConfigurationOrigin)
+  id: Failed(MarketDataCollector.Application.Config.AppConfig,System.Collections.Generic.IReadOnlyList{System.String},System.String,MarketDataCollector.Application.Config.ConfigurationOrigin)
+  parent: MarketDataCollector.Application.Config.ValidatedConfig
+  langs:
+  - csharp
+  - vb
+  name: Failed(AppConfig?, IReadOnlyList<string>, string?, ConfigurationOrigin)
+  nameWithType: ValidatedConfig.Failed(AppConfig?, IReadOnlyList<string>, string?, ConfigurationOrigin)
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.Failed(MarketDataCollector.Application.Config.AppConfig?, System.Collections.Generic.IReadOnlyList<string>, string?, MarketDataCollector.Application.Config.ConfigurationOrigin)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Failed
+    path: ../../src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+    startLine: 93
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Creates a ValidatedConfig representing a failure state.
+  example: []
+  syntax:
+    content: public static ValidatedConfig Failed(AppConfig? config, IReadOnlyList<string> errors, string? sourcePath = null, ConfigurationOrigin source = ConfigurationOrigin.File)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    - id: errors
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    - id: sourcePath
+      type: System.String
+    - id: source
+      type: MarketDataCollector.Application.Config.ConfigurationOrigin
+    return:
+      type: MarketDataCollector.Application.Config.ValidatedConfig
+    content.vb: Public Shared Function Failed(config As AppConfig, errors As IReadOnlyList(Of String), sourcePath As String = Nothing, source As ConfigurationOrigin = ConfigurationOrigin.File) As ValidatedConfig
+  overload: MarketDataCollector.Application.Config.ValidatedConfig.Failed*
+  nameWithType.vb: ValidatedConfig.Failed(AppConfig, IReadOnlyList(Of String), String, ConfigurationOrigin)
+  fullName.vb: MarketDataCollector.Application.Config.ValidatedConfig.Failed(MarketDataCollector.Application.Config.AppConfig, System.Collections.Generic.IReadOnlyList(Of String), String, MarketDataCollector.Application.Config.ConfigurationOrigin)
+  name.vb: Failed(AppConfig, IReadOnlyList(Of String), String, ConfigurationOrigin)
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.Default
+  commentId: M:MarketDataCollector.Application.Config.ValidatedConfig.Default
+  id: Default
+  parent: MarketDataCollector.Application.Config.ValidatedConfig
+  langs:
+  - csharp
+  - vb
+  name: Default()
+  nameWithType: ValidatedConfig.Default()
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.Default()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Default
+    path: ../../src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+    startLine: 113
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Creates a ValidatedConfig with default/empty configuration.
+  example: []
+  syntax:
+    content: public static ValidatedConfig Default()
+    return:
+      type: MarketDataCollector.Application.Config.ValidatedConfig
+    content.vb: Public Shared Function [Default]() As ValidatedConfig
+  overload: MarketDataCollector.Application.Config.ValidatedConfig.Default*
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.op_Implicit(MarketDataCollector.Application.Config.ValidatedConfig)~MarketDataCollector.Application.Config.AppConfig
+  commentId: M:MarketDataCollector.Application.Config.ValidatedConfig.op_Implicit(MarketDataCollector.Application.Config.ValidatedConfig)~MarketDataCollector.Application.Config.AppConfig
+  id: op_Implicit(MarketDataCollector.Application.Config.ValidatedConfig)~MarketDataCollector.Application.Config.AppConfig
+  parent: MarketDataCollector.Application.Config.ValidatedConfig
+  langs:
+  - csharp
+  - vb
+  name: implicit operator AppConfig(ValidatedConfig)
+  nameWithType: ValidatedConfig.implicit operator AppConfig(ValidatedConfig)
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.implicit operator MarketDataCollector.Application.Config.AppConfig(MarketDataCollector.Application.Config.ValidatedConfig)
+  type: Operator
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: op_Implicit
+    path: ../../src/MarketDataCollector.Core/Config/ValidatedConfig.cs
+    startLine: 124
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Implicit conversion to AppConfig for backwards compatibility.
+  example: []
+  syntax:
+    content: public static implicit operator AppConfig(ValidatedConfig validated)
+    parameters:
+    - id: validated
+      type: MarketDataCollector.Application.Config.ValidatedConfig
+    return:
+      type: MarketDataCollector.Application.Config.AppConfig
+    content.vb: Public Shared Widening Operator CType(validated As ValidatedConfig) As AppConfig
+  overload: MarketDataCollector.Application.Config.ValidatedConfig.op_Implicit*
+  nameWithType.vb: ValidatedConfig.CType(ValidatedConfig)
+  fullName.vb: MarketDataCollector.Application.Config.ValidatedConfig.CType(MarketDataCollector.Application.Config.ValidatedConfig)
+  name.vb: CType(ValidatedConfig)
+references:
+- uid: MarketDataCollector.Application.Config
+  commentId: N:MarketDataCollector.Application.Config
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config
+  nameWithType: MarketDataCollector.Application.Config
+  fullName: MarketDataCollector.Application.Config
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Application.Config.ValidatedConfig}
+  commentId: T:System.IEquatable{MarketDataCollector.Application.Config.ValidatedConfig}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<ValidatedConfig>
+  nameWithType: IEquatable<ValidatedConfig>
+  fullName: System.IEquatable<MarketDataCollector.Application.Config.ValidatedConfig>
+  nameWithType.vb: IEquatable(Of ValidatedConfig)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Application.Config.ValidatedConfig)
+  name.vb: IEquatable(Of ValidatedConfig)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Config.ValidatedConfig
+    name: ValidatedConfig
+    href: MarketDataCollector.Application.Config.ValidatedConfig.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.ValidatedConfig
+    name: ValidatedConfig
+    href: MarketDataCollector.Application.Config.ValidatedConfig.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.Config*
+  commentId: Overload:MarketDataCollector.Application.Config.ValidatedConfig.Config
+  href: MarketDataCollector.Application.Config.ValidatedConfig.html#MarketDataCollector_Application_Config_ValidatedConfig_Config
+  name: Config
+  nameWithType: ValidatedConfig.Config
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.Config
+- uid: MarketDataCollector.Application.Config.AppConfig
+  commentId: T:MarketDataCollector.Application.Config.AppConfig
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.AppConfig.html
+  name: AppConfig
+  nameWithType: AppConfig
+  fullName: MarketDataCollector.Application.Config.AppConfig
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.IsValid*
+  commentId: Overload:MarketDataCollector.Application.Config.ValidatedConfig.IsValid
+  href: MarketDataCollector.Application.Config.ValidatedConfig.html#MarketDataCollector_Application_Config_ValidatedConfig_IsValid
+  name: IsValid
+  nameWithType: ValidatedConfig.IsValid
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.IsValid
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.SourcePath*
+  commentId: Overload:MarketDataCollector.Application.Config.ValidatedConfig.SourcePath
+  href: MarketDataCollector.Application.Config.ValidatedConfig.html#MarketDataCollector_Application_Config_ValidatedConfig_SourcePath
+  name: SourcePath
+  nameWithType: ValidatedConfig.SourcePath
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.SourcePath
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.ValidationErrors*
+  commentId: Overload:MarketDataCollector.Application.Config.ValidatedConfig.ValidationErrors
+  href: MarketDataCollector.Application.Config.ValidatedConfig.html#MarketDataCollector_Application_Config_ValidatedConfig_ValidationErrors
+  name: ValidationErrors
+  nameWithType: ValidatedConfig.ValidationErrors
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.ValidationErrors
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.AppliedFixes*
+  commentId: Overload:MarketDataCollector.Application.Config.ValidatedConfig.AppliedFixes
+  href: MarketDataCollector.Application.Config.ValidatedConfig.html#MarketDataCollector_Application_Config_ValidatedConfig_AppliedFixes
+  name: AppliedFixes
+  nameWithType: ValidatedConfig.AppliedFixes
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.AppliedFixes
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.Warnings*
+  commentId: Overload:MarketDataCollector.Application.Config.ValidatedConfig.Warnings
+  href: MarketDataCollector.Application.Config.ValidatedConfig.html#MarketDataCollector_Application_Config_ValidatedConfig_Warnings
+  name: Warnings
+  nameWithType: ValidatedConfig.Warnings
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.Warnings
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.EnvironmentName*
+  commentId: Overload:MarketDataCollector.Application.Config.ValidatedConfig.EnvironmentName
+  href: MarketDataCollector.Application.Config.ValidatedConfig.html#MarketDataCollector_Application_Config_ValidatedConfig_EnvironmentName
+  name: EnvironmentName
+  nameWithType: ValidatedConfig.EnvironmentName
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.EnvironmentName
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.Timestamp*
+  commentId: Overload:MarketDataCollector.Application.Config.ValidatedConfig.Timestamp
+  href: MarketDataCollector.Application.Config.ValidatedConfig.html#MarketDataCollector_Application_Config_ValidatedConfig_Timestamp
+  name: Timestamp
+  nameWithType: ValidatedConfig.Timestamp
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.Timestamp
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.Source*
+  commentId: Overload:MarketDataCollector.Application.Config.ValidatedConfig.Source
+  href: MarketDataCollector.Application.Config.ValidatedConfig.html#MarketDataCollector_Application_Config_ValidatedConfig_Source
+  name: Source
+  nameWithType: ValidatedConfig.Source
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.Source
+- uid: MarketDataCollector.Application.Config.ConfigurationOrigin
+  commentId: T:MarketDataCollector.Application.Config.ConfigurationOrigin
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.ConfigurationOrigin.html
+  name: ConfigurationOrigin
+  nameWithType: ConfigurationOrigin
+  fullName: MarketDataCollector.Application.Config.ConfigurationOrigin
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.FromConfig*
+  commentId: Overload:MarketDataCollector.Application.Config.ValidatedConfig.FromConfig
+  href: MarketDataCollector.Application.Config.ValidatedConfig.html#MarketDataCollector_Application_Config_ValidatedConfig_FromConfig_MarketDataCollector_Application_Config_AppConfig_System_Boolean_System_String_System_Collections_Generic_IReadOnlyList_System_String__System_Collections_Generic_IReadOnlyList_System_String__System_Collections_Generic_IReadOnlyList_System_String__System_String_MarketDataCollector_Application_Config_ConfigurationOrigin_
+  name: FromConfig
+  nameWithType: ValidatedConfig.FromConfig
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.FromConfig
+- uid: MarketDataCollector.Application.Config.ValidatedConfig
+  commentId: T:MarketDataCollector.Application.Config.ValidatedConfig
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.ValidatedConfig.html
+  name: ValidatedConfig
+  nameWithType: ValidatedConfig
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.Failed*
+  commentId: Overload:MarketDataCollector.Application.Config.ValidatedConfig.Failed
+  href: MarketDataCollector.Application.Config.ValidatedConfig.html#MarketDataCollector_Application_Config_ValidatedConfig_Failed_MarketDataCollector_Application_Config_AppConfig_System_Collections_Generic_IReadOnlyList_System_String__System_String_MarketDataCollector_Application_Config_ConfigurationOrigin_
+  name: Failed
+  nameWithType: ValidatedConfig.Failed
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.Failed
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.Default*
+  commentId: Overload:MarketDataCollector.Application.Config.ValidatedConfig.Default
+  href: MarketDataCollector.Application.Config.ValidatedConfig.html#MarketDataCollector_Application_Config_ValidatedConfig_Default
+  name: Default
+  nameWithType: ValidatedConfig.Default
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.Default
+- uid: MarketDataCollector.Application.Config.ValidatedConfig.op_Implicit*
+  commentId: Overload:MarketDataCollector.Application.Config.ValidatedConfig.op_Implicit
+  name: implicit operator
+  nameWithType: ValidatedConfig.implicit operator
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig.implicit operator
+  nameWithType.vb: ValidatedConfig.CType
+  fullName.vb: MarketDataCollector.Application.Config.ValidatedConfig.CType
+  name.vb: CType
+  spec.csharp:
+  - name: implicit
+  - name: " "
+  - name: operator

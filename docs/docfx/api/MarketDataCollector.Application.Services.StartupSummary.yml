@@ -1,0 +1,602 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Services.StartupSummary
+  commentId: T:MarketDataCollector.Application.Services.StartupSummary
+  id: StartupSummary
+  parent: MarketDataCollector.Application.Services
+  children:
+  - MarketDataCollector.Application.Services.StartupSummary.#ctor(System.IO.TextWriter)
+  - MarketDataCollector.Application.Services.StartupSummary.Display(MarketDataCollector.Application.Config.AppConfig,System.String,System.String[])
+  - MarketDataCollector.Application.Services.StartupSummary.DisplayCompact(MarketDataCollector.Application.Config.AppConfig)
+  - MarketDataCollector.Application.Services.StartupSummary.DisplayQuickCheck(MarketDataCollector.Application.Services.QuickCheckResult)
+  - MarketDataCollector.Application.Services.StartupSummary.PerformQuickCheck(MarketDataCollector.Application.Config.AppConfig)
+  langs:
+  - csharp
+  - vb
+  name: StartupSummary
+  nameWithType: StartupSummary
+  fullName: MarketDataCollector.Application.Services.StartupSummary
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/StartupSummary.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StartupSummary
+    path: ../../src/MarketDataCollector.Application/Services/StartupSummary.cs
+    startLine: 11
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Generates and displays a user-friendly summary of the configuration at startup.
+
+    Helps users understand what the application will do before it starts.
+  example: []
+  syntax:
+    content: public sealed class StartupSummary
+    content.vb: Public NotInheritable Class StartupSummary
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Services.StartupSummary.#ctor(System.IO.TextWriter)
+  commentId: M:MarketDataCollector.Application.Services.StartupSummary.#ctor(System.IO.TextWriter)
+  id: '#ctor(System.IO.TextWriter)'
+  parent: MarketDataCollector.Application.Services.StartupSummary
+  langs:
+  - csharp
+  - vb
+  name: StartupSummary(TextWriter?)
+  nameWithType: StartupSummary.StartupSummary(TextWriter?)
+  fullName: MarketDataCollector.Application.Services.StartupSummary.StartupSummary(System.IO.TextWriter?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/StartupSummary.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Services/StartupSummary.cs
+    startLine: 16
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  syntax:
+    content: public StartupSummary(TextWriter? output = null)
+    parameters:
+    - id: output
+      type: System.IO.TextWriter
+    content.vb: Public Sub New(output As TextWriter = Nothing)
+  overload: MarketDataCollector.Application.Services.StartupSummary.#ctor*
+  nameWithType.vb: StartupSummary.New(TextWriter)
+  fullName.vb: MarketDataCollector.Application.Services.StartupSummary.New(System.IO.TextWriter)
+  name.vb: New(TextWriter)
+- uid: MarketDataCollector.Application.Services.StartupSummary.Display(MarketDataCollector.Application.Config.AppConfig,System.String,System.String[])
+  commentId: M:MarketDataCollector.Application.Services.StartupSummary.Display(MarketDataCollector.Application.Config.AppConfig,System.String,System.String[])
+  id: Display(MarketDataCollector.Application.Config.AppConfig,System.String,System.String[])
+  parent: MarketDataCollector.Application.Services.StartupSummary
+  langs:
+  - csharp
+  - vb
+  name: Display(AppConfig, string, string[])
+  nameWithType: StartupSummary.Display(AppConfig, string, string[])
+  fullName: MarketDataCollector.Application.Services.StartupSummary.Display(MarketDataCollector.Application.Config.AppConfig, string, string[])
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/StartupSummary.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Display
+    path: ../../src/MarketDataCollector.Application/Services/StartupSummary.cs
+    startLine: 24
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Displays a comprehensive startup summary.
+  example: []
+  syntax:
+    content: public void Display(AppConfig config, string configPath, string[] args)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    - id: configPath
+      type: System.String
+    - id: args
+      type: System.String[]
+    content.vb: Public Sub Display(config As AppConfig, configPath As String, args As String())
+  overload: MarketDataCollector.Application.Services.StartupSummary.Display*
+  nameWithType.vb: StartupSummary.Display(AppConfig, String, String())
+  fullName.vb: MarketDataCollector.Application.Services.StartupSummary.Display(MarketDataCollector.Application.Config.AppConfig, String, String())
+  name.vb: Display(AppConfig, String, String())
+- uid: MarketDataCollector.Application.Services.StartupSummary.DisplayCompact(MarketDataCollector.Application.Config.AppConfig)
+  commentId: M:MarketDataCollector.Application.Services.StartupSummary.DisplayCompact(MarketDataCollector.Application.Config.AppConfig)
+  id: DisplayCompact(MarketDataCollector.Application.Config.AppConfig)
+  parent: MarketDataCollector.Application.Services.StartupSummary
+  langs:
+  - csharp
+  - vb
+  name: DisplayCompact(AppConfig)
+  nameWithType: StartupSummary.DisplayCompact(AppConfig)
+  fullName: MarketDataCollector.Application.Services.StartupSummary.DisplayCompact(MarketDataCollector.Application.Config.AppConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/StartupSummary.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisplayCompact
+    path: ../../src/MarketDataCollector.Application/Services/StartupSummary.cs
+    startLine: 246
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Displays a compact one-line status.
+  example: []
+  syntax:
+    content: public void DisplayCompact(AppConfig config)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    content.vb: Public Sub DisplayCompact(config As AppConfig)
+  overload: MarketDataCollector.Application.Services.StartupSummary.DisplayCompact*
+- uid: MarketDataCollector.Application.Services.StartupSummary.PerformQuickCheck(MarketDataCollector.Application.Config.AppConfig)
+  commentId: M:MarketDataCollector.Application.Services.StartupSummary.PerformQuickCheck(MarketDataCollector.Application.Config.AppConfig)
+  id: PerformQuickCheck(MarketDataCollector.Application.Config.AppConfig)
+  parent: MarketDataCollector.Application.Services.StartupSummary
+  langs:
+  - csharp
+  - vb
+  name: PerformQuickCheck(AppConfig)
+  nameWithType: StartupSummary.PerformQuickCheck(AppConfig)
+  fullName: MarketDataCollector.Application.Services.StartupSummary.PerformQuickCheck(MarketDataCollector.Application.Config.AppConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/StartupSummary.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PerformQuickCheck
+    path: ../../src/MarketDataCollector.Application/Services/StartupSummary.cs
+    startLine: 257
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Displays a quick status check.
+  example: []
+  syntax:
+    content: public QuickCheckResult PerformQuickCheck(AppConfig config)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    return:
+      type: MarketDataCollector.Application.Services.QuickCheckResult
+    content.vb: Public Function PerformQuickCheck(config As AppConfig) As QuickCheckResult
+  overload: MarketDataCollector.Application.Services.StartupSummary.PerformQuickCheck*
+- uid: MarketDataCollector.Application.Services.StartupSummary.DisplayQuickCheck(MarketDataCollector.Application.Services.QuickCheckResult)
+  commentId: M:MarketDataCollector.Application.Services.StartupSummary.DisplayQuickCheck(MarketDataCollector.Application.Services.QuickCheckResult)
+  id: DisplayQuickCheck(MarketDataCollector.Application.Services.QuickCheckResult)
+  parent: MarketDataCollector.Application.Services.StartupSummary
+  langs:
+  - csharp
+  - vb
+  name: DisplayQuickCheck(QuickCheckResult)
+  nameWithType: StartupSummary.DisplayQuickCheck(QuickCheckResult)
+  fullName: MarketDataCollector.Application.Services.StartupSummary.DisplayQuickCheck(MarketDataCollector.Application.Services.QuickCheckResult)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/StartupSummary.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisplayQuickCheck
+    path: ../../src/MarketDataCollector.Application/Services/StartupSummary.cs
+    startLine: 334
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Displays the quick check results.
+  example: []
+  syntax:
+    content: public void DisplayQuickCheck(QuickCheckResult result)
+    parameters:
+    - id: result
+      type: MarketDataCollector.Application.Services.QuickCheckResult
+    content.vb: Public Sub DisplayQuickCheck(result As QuickCheckResult)
+  overload: MarketDataCollector.Application.Services.StartupSummary.DisplayQuickCheck*
+references:
+- uid: MarketDataCollector.Application.Services
+  commentId: N:MarketDataCollector.Application.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Services
+  nameWithType: MarketDataCollector.Application.Services
+  fullName: MarketDataCollector.Application.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Services.StartupSummary.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Services.StartupSummary.#ctor
+  href: MarketDataCollector.Application.Services.StartupSummary.html#MarketDataCollector_Application_Services_StartupSummary__ctor_System_IO_TextWriter_
+  name: StartupSummary
+  nameWithType: StartupSummary.StartupSummary
+  fullName: MarketDataCollector.Application.Services.StartupSummary.StartupSummary
+  nameWithType.vb: StartupSummary.New
+  fullName.vb: MarketDataCollector.Application.Services.StartupSummary.New
+  name.vb: New
+- uid: System.IO.TextWriter
+  commentId: T:System.IO.TextWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.textwriter
+  name: TextWriter
+  nameWithType: TextWriter
+  fullName: System.IO.TextWriter
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: MarketDataCollector.Application.Services.StartupSummary.Display*
+  commentId: Overload:MarketDataCollector.Application.Services.StartupSummary.Display
+  href: MarketDataCollector.Application.Services.StartupSummary.html#MarketDataCollector_Application_Services_StartupSummary_Display_MarketDataCollector_Application_Config_AppConfig_System_String_System_String___
+  name: Display
+  nameWithType: StartupSummary.Display
+  fullName: MarketDataCollector.Application.Services.StartupSummary.Display
+- uid: MarketDataCollector.Application.Config.AppConfig
+  commentId: T:MarketDataCollector.Application.Config.AppConfig
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.AppConfig.html
+  name: AppConfig
+  nameWithType: AppConfig
+  fullName: MarketDataCollector.Application.Config.AppConfig
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Config
+  commentId: N:MarketDataCollector.Application.Config
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config
+  nameWithType: MarketDataCollector.Application.Config
+  fullName: MarketDataCollector.Application.Config
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+- uid: MarketDataCollector.Application.Services.StartupSummary.DisplayCompact*
+  commentId: Overload:MarketDataCollector.Application.Services.StartupSummary.DisplayCompact
+  href: MarketDataCollector.Application.Services.StartupSummary.html#MarketDataCollector_Application_Services_StartupSummary_DisplayCompact_MarketDataCollector_Application_Config_AppConfig_
+  name: DisplayCompact
+  nameWithType: StartupSummary.DisplayCompact
+  fullName: MarketDataCollector.Application.Services.StartupSummary.DisplayCompact
+- uid: MarketDataCollector.Application.Services.StartupSummary.PerformQuickCheck*
+  commentId: Overload:MarketDataCollector.Application.Services.StartupSummary.PerformQuickCheck
+  href: MarketDataCollector.Application.Services.StartupSummary.html#MarketDataCollector_Application_Services_StartupSummary_PerformQuickCheck_MarketDataCollector_Application_Config_AppConfig_
+  name: PerformQuickCheck
+  nameWithType: StartupSummary.PerformQuickCheck
+  fullName: MarketDataCollector.Application.Services.StartupSummary.PerformQuickCheck
+- uid: MarketDataCollector.Application.Services.QuickCheckResult
+  commentId: T:MarketDataCollector.Application.Services.QuickCheckResult
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.QuickCheckResult.html
+  name: QuickCheckResult
+  nameWithType: QuickCheckResult
+  fullName: MarketDataCollector.Application.Services.QuickCheckResult
+- uid: MarketDataCollector.Application.Services.StartupSummary.DisplayQuickCheck*
+  commentId: Overload:MarketDataCollector.Application.Services.StartupSummary.DisplayQuickCheck
+  href: MarketDataCollector.Application.Services.StartupSummary.html#MarketDataCollector_Application_Services_StartupSummary_DisplayQuickCheck_MarketDataCollector_Application_Services_QuickCheckResult_
+  name: DisplayQuickCheck
+  nameWithType: StartupSummary.DisplayQuickCheck
+  fullName: MarketDataCollector.Application.Services.StartupSummary.DisplayQuickCheck

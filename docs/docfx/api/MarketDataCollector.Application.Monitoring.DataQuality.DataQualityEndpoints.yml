@@ -1,0 +1,457 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints
+  id: DataQualityEndpoints
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  children:
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.MapDataQualityEndpoints(Microsoft.AspNetCore.Builder.WebApplication,MarketDataCollector.Application.Monitoring.DataQuality.DataQualityMonitoringService)
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.MapSlaEndpoints(Microsoft.AspNetCore.Builder.WebApplication,MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor)
+  langs:
+  - csharp
+  - vb
+  name: DataQualityEndpoints
+  nameWithType: DataQualityEndpoints
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Http/Endpoints/DataQualityEndpoints.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DataQualityEndpoints
+    path: ../../src/MarketDataCollector.Application/Http/Endpoints/DataQualityEndpoints.cs
+    startLine: 10
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: HTTP endpoint extensions for data quality monitoring dashboard.
+  example: []
+  syntax:
+    content: public static class DataQualityEndpoints
+    content.vb: Public Module DataQualityEndpoints
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.MapDataQualityEndpoints(Microsoft.AspNetCore.Builder.WebApplication,MarketDataCollector.Application.Monitoring.DataQuality.DataQualityMonitoringService)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.MapDataQualityEndpoints(Microsoft.AspNetCore.Builder.WebApplication,MarketDataCollector.Application.Monitoring.DataQuality.DataQualityMonitoringService)
+  id: MapDataQualityEndpoints(Microsoft.AspNetCore.Builder.WebApplication,MarketDataCollector.Application.Monitoring.DataQuality.DataQualityMonitoringService)
+  isExtensionMethod: true
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints
+  langs:
+  - csharp
+  - vb
+  name: MapDataQualityEndpoints(WebApplication, DataQualityMonitoringService)
+  nameWithType: DataQualityEndpoints.MapDataQualityEndpoints(WebApplication, DataQualityMonitoringService)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.MapDataQualityEndpoints(Microsoft.AspNetCore.Builder.WebApplication, MarketDataCollector.Application.Monitoring.DataQuality.DataQualityMonitoringService)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Http/Endpoints/DataQualityEndpoints.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MapDataQualityEndpoints
+    path: ../../src/MarketDataCollector.Application/Http/Endpoints/DataQualityEndpoints.cs
+    startLine: 62
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Maps all data quality monitoring endpoints.
+  example: []
+  syntax:
+    content: public static void MapDataQualityEndpoints(this WebApplication app, DataQualityMonitoringService qualityService)
+    parameters:
+    - id: app
+      type: Microsoft.AspNetCore.Builder.WebApplication
+    - id: qualityService
+      type: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityMonitoringService
+    content.vb: Public Shared Sub MapDataQualityEndpoints(app As WebApplication, qualityService As DataQualityMonitoringService)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.MapDataQualityEndpoints*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.MapSlaEndpoints(Microsoft.AspNetCore.Builder.WebApplication,MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.MapSlaEndpoints(Microsoft.AspNetCore.Builder.WebApplication,MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor)
+  id: MapSlaEndpoints(Microsoft.AspNetCore.Builder.WebApplication,MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor)
+  isExtensionMethod: true
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints
+  langs:
+  - csharp
+  - vb
+  name: MapSlaEndpoints(WebApplication, DataFreshnessSlaMonitor)
+  nameWithType: DataQualityEndpoints.MapSlaEndpoints(WebApplication, DataFreshnessSlaMonitor)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.MapSlaEndpoints(Microsoft.AspNetCore.Builder.WebApplication, MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Http/Endpoints/DataQualityEndpoints.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MapSlaEndpoints
+    path: ../../src/MarketDataCollector.Application/Http/Endpoints/DataQualityEndpoints.cs
+    startLine: 349
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Maps SLA monitoring endpoints (ADQ-4.6).
+  example: []
+  syntax:
+    content: public static void MapSlaEndpoints(this WebApplication app, DataFreshnessSlaMonitor slaMonitor)
+    parameters:
+    - id: app
+      type: Microsoft.AspNetCore.Builder.WebApplication
+    - id: slaMonitor
+      type: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+    content.vb: Public Shared Sub MapSlaEndpoints(app As WebApplication, slaMonitor As DataFreshnessSlaMonitor)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.MapSlaEndpoints*
+references:
+- uid: MarketDataCollector.Application.Monitoring.DataQuality
+  commentId: N:MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring.DataQuality
+  nameWithType: MarketDataCollector.Application.Monitoring.DataQuality
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality
+    name: DataQuality
+    href: MarketDataCollector.Application.Monitoring.DataQuality.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality
+    name: DataQuality
+    href: MarketDataCollector.Application.Monitoring.DataQuality.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.MapDataQualityEndpoints*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.MapDataQualityEndpoints
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.html#MarketDataCollector_Application_Monitoring_DataQuality_DataQualityEndpoints_MapDataQualityEndpoints_Microsoft_AspNetCore_Builder_WebApplication_MarketDataCollector_Application_Monitoring_DataQuality_DataQualityMonitoringService_
+  name: MapDataQualityEndpoints
+  nameWithType: DataQualityEndpoints.MapDataQualityEndpoints
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.MapDataQualityEndpoints
+- uid: Microsoft.AspNetCore.Builder.WebApplication
+  commentId: T:Microsoft.AspNetCore.Builder.WebApplication
+  parent: Microsoft.AspNetCore.Builder
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.webapplication
+  name: WebApplication
+  nameWithType: WebApplication
+  fullName: Microsoft.AspNetCore.Builder.WebApplication
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityMonitoringService
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.DataQualityMonitoringService
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityMonitoringService.html
+  name: DataQualityMonitoringService
+  nameWithType: DataQualityMonitoringService
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityMonitoringService
+- uid: Microsoft.AspNetCore.Builder
+  commentId: N:Microsoft.AspNetCore.Builder
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.AspNetCore.Builder
+  nameWithType: Microsoft.AspNetCore.Builder
+  fullName: Microsoft.AspNetCore.Builder
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Builder
+    name: Builder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Builder
+    name: Builder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.MapSlaEndpoints*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.MapSlaEndpoints
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.html#MarketDataCollector_Application_Monitoring_DataQuality_DataQualityEndpoints_MapSlaEndpoints_Microsoft_AspNetCore_Builder_WebApplication_MarketDataCollector_Application_Monitoring_DataQuality_DataFreshnessSlaMonitor_
+  name: MapSlaEndpoints
+  nameWithType: DataQualityEndpoints.MapSlaEndpoints
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataQualityEndpoints.MapSlaEndpoints
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.html
+  name: DataFreshnessSlaMonitor
+  nameWithType: DataFreshnessSlaMonitor
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor

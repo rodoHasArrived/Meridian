@@ -1,0 +1,1075 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Services.SourceRegistry
+  commentId: T:MarketDataCollector.Storage.Services.SourceRegistry
+  id: SourceRegistry
+  parent: MarketDataCollector.Storage.Services
+  children:
+  - MarketDataCollector.Storage.Services.SourceRegistry.#ctor(System.String)
+  - MarketDataCollector.Storage.Services.SourceRegistry.GetAllSources
+  - MarketDataCollector.Storage.Services.SourceRegistry.GetAllSymbols
+  - MarketDataCollector.Storage.Services.SourceRegistry.GetSourceInfo(System.String)
+  - MarketDataCollector.Storage.Services.SourceRegistry.GetSourcePriorityOrder
+  - MarketDataCollector.Storage.Services.SourceRegistry.GetSymbolInfo(System.String)
+  - MarketDataCollector.Storage.Services.SourceRegistry.RegisterSource(MarketDataCollector.Storage.Interfaces.SourceInfo)
+  - MarketDataCollector.Storage.Services.SourceRegistry.RegisterSymbol(MarketDataCollector.Storage.Interfaces.SymbolInfo)
+  - MarketDataCollector.Storage.Services.SourceRegistry.ResolveSymbolAlias(System.String)
+  langs:
+  - csharp
+  - vb
+  name: SourceRegistry
+  nameWithType: SourceRegistry
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SourceRegistry
+    path: ../../src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+    startLine: 10
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: In-memory implementation of source and symbol registry with JSON persistence.
+  example: []
+  syntax:
+    content: 'public sealed class SourceRegistry : ISourceRegistry'
+    content.vb: Public NotInheritable Class SourceRegistry Implements ISourceRegistry
+  inheritance:
+  - System.Object
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISourceRegistry
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.#ctor(System.String)
+  commentId: M:MarketDataCollector.Storage.Services.SourceRegistry.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: MarketDataCollector.Storage.Services.SourceRegistry
+  langs:
+  - csharp
+  - vb
+  name: SourceRegistry(string?)
+  nameWithType: SourceRegistry.SourceRegistry(string?)
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.SourceRegistry(string?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+    startLine: 17
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public SourceRegistry(string? persistencePath = null)
+    parameters:
+    - id: persistencePath
+      type: System.String
+    content.vb: Public Sub New(persistencePath As String = Nothing)
+  overload: MarketDataCollector.Storage.Services.SourceRegistry.#ctor*
+  nameWithType.vb: SourceRegistry.New(String)
+  fullName.vb: MarketDataCollector.Storage.Services.SourceRegistry.New(String)
+  name.vb: New(String)
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.GetSourceInfo(System.String)
+  commentId: M:MarketDataCollector.Storage.Services.SourceRegistry.GetSourceInfo(System.String)
+  id: GetSourceInfo(System.String)
+  parent: MarketDataCollector.Storage.Services.SourceRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetSourceInfo(string)
+  nameWithType: SourceRegistry.GetSourceInfo(string)
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.GetSourceInfo(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSourceInfo
+    path: ../../src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+    startLine: 31
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Gets information about a registered data source.
+  example: []
+  syntax:
+    content: public SourceInfo? GetSourceInfo(string sourceId)
+    parameters:
+    - id: sourceId
+      type: System.String
+    return:
+      type: MarketDataCollector.Storage.Interfaces.SourceInfo
+    content.vb: Public Function GetSourceInfo(sourceId As String) As SourceInfo
+  overload: MarketDataCollector.Storage.Services.SourceRegistry.GetSourceInfo*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSourceInfo(System.String)
+  nameWithType.vb: SourceRegistry.GetSourceInfo(String)
+  fullName.vb: MarketDataCollector.Storage.Services.SourceRegistry.GetSourceInfo(String)
+  name.vb: GetSourceInfo(String)
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.GetSymbolInfo(System.String)
+  commentId: M:MarketDataCollector.Storage.Services.SourceRegistry.GetSymbolInfo(System.String)
+  id: GetSymbolInfo(System.String)
+  parent: MarketDataCollector.Storage.Services.SourceRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetSymbolInfo(string)
+  nameWithType: SourceRegistry.GetSymbolInfo(string)
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.GetSymbolInfo(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSymbolInfo
+    path: ../../src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+    startLine: 36
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Gets information about a symbol.
+  example: []
+  syntax:
+    content: public SymbolInfo? GetSymbolInfo(string symbol)
+    parameters:
+    - id: symbol
+      type: System.String
+    return:
+      type: MarketDataCollector.Storage.Interfaces.SymbolInfo
+    content.vb: Public Function GetSymbolInfo(symbol As String) As SymbolInfo
+  overload: MarketDataCollector.Storage.Services.SourceRegistry.GetSymbolInfo*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSymbolInfo(System.String)
+  nameWithType.vb: SourceRegistry.GetSymbolInfo(String)
+  fullName.vb: MarketDataCollector.Storage.Services.SourceRegistry.GetSymbolInfo(String)
+  name.vb: GetSymbolInfo(String)
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.GetAllSources
+  commentId: M:MarketDataCollector.Storage.Services.SourceRegistry.GetAllSources
+  id: GetAllSources
+  parent: MarketDataCollector.Storage.Services.SourceRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetAllSources()
+  nameWithType: SourceRegistry.GetAllSources()
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.GetAllSources()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetAllSources
+    path: ../../src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+    startLine: 49
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Gets all registered sources.
+  example: []
+  syntax:
+    content: public IReadOnlyList<SourceInfo> GetAllSources()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Interfaces.SourceInfo}
+    content.vb: Public Function GetAllSources() As IReadOnlyList(Of SourceInfo)
+  overload: MarketDataCollector.Storage.Services.SourceRegistry.GetAllSources*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetAllSources
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.GetAllSymbols
+  commentId: M:MarketDataCollector.Storage.Services.SourceRegistry.GetAllSymbols
+  id: GetAllSymbols
+  parent: MarketDataCollector.Storage.Services.SourceRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetAllSymbols()
+  nameWithType: SourceRegistry.GetAllSymbols()
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.GetAllSymbols()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetAllSymbols
+    path: ../../src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+    startLine: 54
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Gets all registered symbols.
+  example: []
+  syntax:
+    content: public IReadOnlyList<SymbolInfo> GetAllSymbols()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Interfaces.SymbolInfo}
+    content.vb: Public Function GetAllSymbols() As IReadOnlyList(Of SymbolInfo)
+  overload: MarketDataCollector.Storage.Services.SourceRegistry.GetAllSymbols*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetAllSymbols
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.RegisterSource(MarketDataCollector.Storage.Interfaces.SourceInfo)
+  commentId: M:MarketDataCollector.Storage.Services.SourceRegistry.RegisterSource(MarketDataCollector.Storage.Interfaces.SourceInfo)
+  id: RegisterSource(MarketDataCollector.Storage.Interfaces.SourceInfo)
+  parent: MarketDataCollector.Storage.Services.SourceRegistry
+  langs:
+  - csharp
+  - vb
+  name: RegisterSource(SourceInfo)
+  nameWithType: SourceRegistry.RegisterSource(SourceInfo)
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.RegisterSource(MarketDataCollector.Storage.Interfaces.SourceInfo)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterSource
+    path: ../../src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+    startLine: 59
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Registers or updates a data source.
+  example: []
+  syntax:
+    content: public void RegisterSource(SourceInfo source)
+    parameters:
+    - id: source
+      type: MarketDataCollector.Storage.Interfaces.SourceInfo
+    content.vb: Public Sub RegisterSource(source As SourceInfo)
+  overload: MarketDataCollector.Storage.Services.SourceRegistry.RegisterSource*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISourceRegistry.RegisterSource(MarketDataCollector.Storage.Interfaces.SourceInfo)
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.RegisterSymbol(MarketDataCollector.Storage.Interfaces.SymbolInfo)
+  commentId: M:MarketDataCollector.Storage.Services.SourceRegistry.RegisterSymbol(MarketDataCollector.Storage.Interfaces.SymbolInfo)
+  id: RegisterSymbol(MarketDataCollector.Storage.Interfaces.SymbolInfo)
+  parent: MarketDataCollector.Storage.Services.SourceRegistry
+  langs:
+  - csharp
+  - vb
+  name: RegisterSymbol(SymbolInfo)
+  nameWithType: SourceRegistry.RegisterSymbol(SymbolInfo)
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.RegisterSymbol(MarketDataCollector.Storage.Interfaces.SymbolInfo)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterSymbol
+    path: ../../src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+    startLine: 65
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Registers or updates a symbol.
+  example: []
+  syntax:
+    content: public void RegisterSymbol(SymbolInfo symbol)
+    parameters:
+    - id: symbol
+      type: MarketDataCollector.Storage.Interfaces.SymbolInfo
+    content.vb: Public Sub RegisterSymbol(symbol As SymbolInfo)
+  overload: MarketDataCollector.Storage.Services.SourceRegistry.RegisterSymbol*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISourceRegistry.RegisterSymbol(MarketDataCollector.Storage.Interfaces.SymbolInfo)
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.ResolveSymbolAlias(System.String)
+  commentId: M:MarketDataCollector.Storage.Services.SourceRegistry.ResolveSymbolAlias(System.String)
+  id: ResolveSymbolAlias(System.String)
+  parent: MarketDataCollector.Storage.Services.SourceRegistry
+  langs:
+  - csharp
+  - vb
+  name: ResolveSymbolAlias(string)
+  nameWithType: SourceRegistry.ResolveSymbolAlias(string)
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.ResolveSymbolAlias(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResolveSymbolAlias
+    path: ../../src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+    startLine: 81
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Resolves a symbol alias to its canonical name.
+  example: []
+  syntax:
+    content: public string ResolveSymbolAlias(string alias)
+    parameters:
+    - id: alias
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function ResolveSymbolAlias([alias] As String) As String
+  overload: MarketDataCollector.Storage.Services.SourceRegistry.ResolveSymbolAlias*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISourceRegistry.ResolveSymbolAlias(System.String)
+  nameWithType.vb: SourceRegistry.ResolveSymbolAlias(String)
+  fullName.vb: MarketDataCollector.Storage.Services.SourceRegistry.ResolveSymbolAlias(String)
+  name.vb: ResolveSymbolAlias(String)
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.GetSourcePriorityOrder
+  commentId: M:MarketDataCollector.Storage.Services.SourceRegistry.GetSourcePriorityOrder
+  id: GetSourcePriorityOrder
+  parent: MarketDataCollector.Storage.Services.SourceRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetSourcePriorityOrder()
+  nameWithType: SourceRegistry.GetSourcePriorityOrder()
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.GetSourcePriorityOrder()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSourcePriorityOrder
+    path: ../../src/MarketDataCollector.Storage/Services/SourceRegistry.cs
+    startLine: 89
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Gets the priority order for conflict resolution.
+  example: []
+  syntax:
+    content: public string[] GetSourcePriorityOrder()
+    return:
+      type: System.String[]
+    content.vb: Public Function GetSourcePriorityOrder() As String()
+  overload: MarketDataCollector.Storage.Services.SourceRegistry.GetSourcePriorityOrder*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSourcePriorityOrder
+references:
+- uid: MarketDataCollector.Storage.Services
+  commentId: N:MarketDataCollector.Storage.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Services
+  nameWithType: MarketDataCollector.Storage.Services
+  fullName: MarketDataCollector.Storage.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+  commentId: T:MarketDataCollector.Storage.Interfaces.ISourceRegistry
+  parent: MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html
+  name: ISourceRegistry
+  nameWithType: ISourceRegistry
+  fullName: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Storage.Interfaces
+  commentId: N:MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Interfaces
+  nameWithType: MarketDataCollector.Storage.Interfaces
+  fullName: MarketDataCollector.Storage.Interfaces
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Interfaces
+    name: Interfaces
+    href: MarketDataCollector.Storage.Interfaces.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Interfaces
+    name: Interfaces
+    href: MarketDataCollector.Storage.Interfaces.html
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.#ctor*
+  commentId: Overload:MarketDataCollector.Storage.Services.SourceRegistry.#ctor
+  href: MarketDataCollector.Storage.Services.SourceRegistry.html#MarketDataCollector_Storage_Services_SourceRegistry__ctor_System_String_
+  name: SourceRegistry
+  nameWithType: SourceRegistry.SourceRegistry
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.SourceRegistry
+  nameWithType.vb: SourceRegistry.New
+  fullName.vb: MarketDataCollector.Storage.Services.SourceRegistry.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.GetSourceInfo*
+  commentId: Overload:MarketDataCollector.Storage.Services.SourceRegistry.GetSourceInfo
+  href: MarketDataCollector.Storage.Services.SourceRegistry.html#MarketDataCollector_Storage_Services_SourceRegistry_GetSourceInfo_System_String_
+  name: GetSourceInfo
+  nameWithType: SourceRegistry.GetSourceInfo
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.GetSourceInfo
+- uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSourceInfo(System.String)
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSourceInfo(System.String)
+  parent: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+  isExternal: true
+  href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_GetSourceInfo_System_String_
+  name: GetSourceInfo(string)
+  nameWithType: ISourceRegistry.GetSourceInfo(string)
+  fullName: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSourceInfo(string)
+  nameWithType.vb: ISourceRegistry.GetSourceInfo(String)
+  fullName.vb: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSourceInfo(String)
+  name.vb: GetSourceInfo(String)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSourceInfo(System.String)
+    name: GetSourceInfo
+    href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_GetSourceInfo_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSourceInfo(System.String)
+    name: GetSourceInfo
+    href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_GetSourceInfo_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Storage.Interfaces.SourceInfo
+  commentId: T:MarketDataCollector.Storage.Interfaces.SourceInfo
+  parent: MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.Storage.Interfaces.SourceInfo.html
+  name: SourceInfo
+  nameWithType: SourceInfo
+  fullName: MarketDataCollector.Storage.Interfaces.SourceInfo
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.GetSymbolInfo*
+  commentId: Overload:MarketDataCollector.Storage.Services.SourceRegistry.GetSymbolInfo
+  href: MarketDataCollector.Storage.Services.SourceRegistry.html#MarketDataCollector_Storage_Services_SourceRegistry_GetSymbolInfo_System_String_
+  name: GetSymbolInfo
+  nameWithType: SourceRegistry.GetSymbolInfo
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.GetSymbolInfo
+- uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSymbolInfo(System.String)
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSymbolInfo(System.String)
+  parent: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+  isExternal: true
+  href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_GetSymbolInfo_System_String_
+  name: GetSymbolInfo(string)
+  nameWithType: ISourceRegistry.GetSymbolInfo(string)
+  fullName: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSymbolInfo(string)
+  nameWithType.vb: ISourceRegistry.GetSymbolInfo(String)
+  fullName.vb: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSymbolInfo(String)
+  name.vb: GetSymbolInfo(String)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSymbolInfo(System.String)
+    name: GetSymbolInfo
+    href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_GetSymbolInfo_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSymbolInfo(System.String)
+    name: GetSymbolInfo
+    href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_GetSymbolInfo_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Storage.Interfaces.SymbolInfo
+  commentId: T:MarketDataCollector.Storage.Interfaces.SymbolInfo
+  parent: MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.Storage.Interfaces.SymbolInfo.html
+  name: SymbolInfo
+  nameWithType: SymbolInfo
+  fullName: MarketDataCollector.Storage.Interfaces.SymbolInfo
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.GetAllSources*
+  commentId: Overload:MarketDataCollector.Storage.Services.SourceRegistry.GetAllSources
+  href: MarketDataCollector.Storage.Services.SourceRegistry.html#MarketDataCollector_Storage_Services_SourceRegistry_GetAllSources
+  name: GetAllSources
+  nameWithType: SourceRegistry.GetAllSources
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.GetAllSources
+- uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetAllSources
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetAllSources
+  parent: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+  href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_GetAllSources
+  name: GetAllSources()
+  nameWithType: ISourceRegistry.GetAllSources()
+  fullName: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetAllSources()
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetAllSources
+    name: GetAllSources
+    href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_GetAllSources
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetAllSources
+    name: GetAllSources
+    href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_GetAllSources
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Interfaces.SourceInfo}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Interfaces.SourceInfo}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<SourceInfo>
+  nameWithType: IReadOnlyList<SourceInfo>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Storage.Interfaces.SourceInfo>
+  nameWithType.vb: IReadOnlyList(Of SourceInfo)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Storage.Interfaces.SourceInfo)
+  name.vb: IReadOnlyList(Of SourceInfo)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Interfaces.SourceInfo
+    name: SourceInfo
+    href: MarketDataCollector.Storage.Interfaces.SourceInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Interfaces.SourceInfo
+    name: SourceInfo
+    href: MarketDataCollector.Storage.Interfaces.SourceInfo.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.GetAllSymbols*
+  commentId: Overload:MarketDataCollector.Storage.Services.SourceRegistry.GetAllSymbols
+  href: MarketDataCollector.Storage.Services.SourceRegistry.html#MarketDataCollector_Storage_Services_SourceRegistry_GetAllSymbols
+  name: GetAllSymbols
+  nameWithType: SourceRegistry.GetAllSymbols
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.GetAllSymbols
+- uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetAllSymbols
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetAllSymbols
+  parent: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+  href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_GetAllSymbols
+  name: GetAllSymbols()
+  nameWithType: ISourceRegistry.GetAllSymbols()
+  fullName: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetAllSymbols()
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetAllSymbols
+    name: GetAllSymbols
+    href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_GetAllSymbols
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetAllSymbols
+    name: GetAllSymbols
+    href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_GetAllSymbols
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Interfaces.SymbolInfo}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Interfaces.SymbolInfo}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<SymbolInfo>
+  nameWithType: IReadOnlyList<SymbolInfo>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Storage.Interfaces.SymbolInfo>
+  nameWithType.vb: IReadOnlyList(Of SymbolInfo)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Storage.Interfaces.SymbolInfo)
+  name.vb: IReadOnlyList(Of SymbolInfo)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Interfaces.SymbolInfo
+    name: SymbolInfo
+    href: MarketDataCollector.Storage.Interfaces.SymbolInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Interfaces.SymbolInfo
+    name: SymbolInfo
+    href: MarketDataCollector.Storage.Interfaces.SymbolInfo.html
+  - name: )
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.RegisterSource*
+  commentId: Overload:MarketDataCollector.Storage.Services.SourceRegistry.RegisterSource
+  href: MarketDataCollector.Storage.Services.SourceRegistry.html#MarketDataCollector_Storage_Services_SourceRegistry_RegisterSource_MarketDataCollector_Storage_Interfaces_SourceInfo_
+  name: RegisterSource
+  nameWithType: SourceRegistry.RegisterSource
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.RegisterSource
+- uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.RegisterSource(MarketDataCollector.Storage.Interfaces.SourceInfo)
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISourceRegistry.RegisterSource(MarketDataCollector.Storage.Interfaces.SourceInfo)
+  parent: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+  href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_RegisterSource_MarketDataCollector_Storage_Interfaces_SourceInfo_
+  name: RegisterSource(SourceInfo)
+  nameWithType: ISourceRegistry.RegisterSource(SourceInfo)
+  fullName: MarketDataCollector.Storage.Interfaces.ISourceRegistry.RegisterSource(MarketDataCollector.Storage.Interfaces.SourceInfo)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.RegisterSource(MarketDataCollector.Storage.Interfaces.SourceInfo)
+    name: RegisterSource
+    href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_RegisterSource_MarketDataCollector_Storage_Interfaces_SourceInfo_
+  - name: (
+  - uid: MarketDataCollector.Storage.Interfaces.SourceInfo
+    name: SourceInfo
+    href: MarketDataCollector.Storage.Interfaces.SourceInfo.html
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.RegisterSource(MarketDataCollector.Storage.Interfaces.SourceInfo)
+    name: RegisterSource
+    href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_RegisterSource_MarketDataCollector_Storage_Interfaces_SourceInfo_
+  - name: (
+  - uid: MarketDataCollector.Storage.Interfaces.SourceInfo
+    name: SourceInfo
+    href: MarketDataCollector.Storage.Interfaces.SourceInfo.html
+  - name: )
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.RegisterSymbol*
+  commentId: Overload:MarketDataCollector.Storage.Services.SourceRegistry.RegisterSymbol
+  href: MarketDataCollector.Storage.Services.SourceRegistry.html#MarketDataCollector_Storage_Services_SourceRegistry_RegisterSymbol_MarketDataCollector_Storage_Interfaces_SymbolInfo_
+  name: RegisterSymbol
+  nameWithType: SourceRegistry.RegisterSymbol
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.RegisterSymbol
+- uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.RegisterSymbol(MarketDataCollector.Storage.Interfaces.SymbolInfo)
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISourceRegistry.RegisterSymbol(MarketDataCollector.Storage.Interfaces.SymbolInfo)
+  parent: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+  href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_RegisterSymbol_MarketDataCollector_Storage_Interfaces_SymbolInfo_
+  name: RegisterSymbol(SymbolInfo)
+  nameWithType: ISourceRegistry.RegisterSymbol(SymbolInfo)
+  fullName: MarketDataCollector.Storage.Interfaces.ISourceRegistry.RegisterSymbol(MarketDataCollector.Storage.Interfaces.SymbolInfo)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.RegisterSymbol(MarketDataCollector.Storage.Interfaces.SymbolInfo)
+    name: RegisterSymbol
+    href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_RegisterSymbol_MarketDataCollector_Storage_Interfaces_SymbolInfo_
+  - name: (
+  - uid: MarketDataCollector.Storage.Interfaces.SymbolInfo
+    name: SymbolInfo
+    href: MarketDataCollector.Storage.Interfaces.SymbolInfo.html
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.RegisterSymbol(MarketDataCollector.Storage.Interfaces.SymbolInfo)
+    name: RegisterSymbol
+    href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_RegisterSymbol_MarketDataCollector_Storage_Interfaces_SymbolInfo_
+  - name: (
+  - uid: MarketDataCollector.Storage.Interfaces.SymbolInfo
+    name: SymbolInfo
+    href: MarketDataCollector.Storage.Interfaces.SymbolInfo.html
+  - name: )
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.ResolveSymbolAlias*
+  commentId: Overload:MarketDataCollector.Storage.Services.SourceRegistry.ResolveSymbolAlias
+  href: MarketDataCollector.Storage.Services.SourceRegistry.html#MarketDataCollector_Storage_Services_SourceRegistry_ResolveSymbolAlias_System_String_
+  name: ResolveSymbolAlias
+  nameWithType: SourceRegistry.ResolveSymbolAlias
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.ResolveSymbolAlias
+- uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.ResolveSymbolAlias(System.String)
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISourceRegistry.ResolveSymbolAlias(System.String)
+  parent: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+  isExternal: true
+  href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_ResolveSymbolAlias_System_String_
+  name: ResolveSymbolAlias(string)
+  nameWithType: ISourceRegistry.ResolveSymbolAlias(string)
+  fullName: MarketDataCollector.Storage.Interfaces.ISourceRegistry.ResolveSymbolAlias(string)
+  nameWithType.vb: ISourceRegistry.ResolveSymbolAlias(String)
+  fullName.vb: MarketDataCollector.Storage.Interfaces.ISourceRegistry.ResolveSymbolAlias(String)
+  name.vb: ResolveSymbolAlias(String)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.ResolveSymbolAlias(System.String)
+    name: ResolveSymbolAlias
+    href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_ResolveSymbolAlias_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.ResolveSymbolAlias(System.String)
+    name: ResolveSymbolAlias
+    href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_ResolveSymbolAlias_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Storage.Services.SourceRegistry.GetSourcePriorityOrder*
+  commentId: Overload:MarketDataCollector.Storage.Services.SourceRegistry.GetSourcePriorityOrder
+  href: MarketDataCollector.Storage.Services.SourceRegistry.html#MarketDataCollector_Storage_Services_SourceRegistry_GetSourcePriorityOrder
+  name: GetSourcePriorityOrder
+  nameWithType: SourceRegistry.GetSourcePriorityOrder
+  fullName: MarketDataCollector.Storage.Services.SourceRegistry.GetSourcePriorityOrder
+- uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSourcePriorityOrder
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSourcePriorityOrder
+  parent: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+  href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_GetSourcePriorityOrder
+  name: GetSourcePriorityOrder()
+  nameWithType: ISourceRegistry.GetSourcePriorityOrder()
+  fullName: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSourcePriorityOrder()
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSourcePriorityOrder
+    name: GetSourcePriorityOrder
+    href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_GetSourcePriorityOrder
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry.GetSourcePriorityOrder
+    name: GetSourcePriorityOrder
+    href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html#MarketDataCollector_Storage_Interfaces_ISourceRegistry_GetSourcePriorityOrder
+  - name: (
+  - name: )
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )

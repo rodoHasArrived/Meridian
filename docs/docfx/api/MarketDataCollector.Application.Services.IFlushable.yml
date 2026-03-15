@@ -1,0 +1,188 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Services.IFlushable
+  commentId: T:MarketDataCollector.Application.Services.IFlushable
+  id: IFlushable
+  parent: MarketDataCollector.Application.Services
+  children:
+  - MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: IFlushable
+  nameWithType: IFlushable
+  fullName: MarketDataCollector.Application.Services.IFlushable
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Services/IFlushable.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IFlushable
+    path: ../../src/MarketDataCollector.Core/Services/IFlushable.cs
+    startLine: 5
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Services
+  summary: Interface for components that can be flushed during shutdown.
+  example: []
+  syntax:
+    content: public interface IFlushable
+    content.vb: Public Interface IFlushable
+  derivedClasses:
+  - MarketDataCollector.Application.Pipeline.EventPipeline
+  - MarketDataCollector.Storage.Archival.ArchivalStorageService
+  - MarketDataCollector.Storage.Sinks.CatalogSyncSink
+  - MarketDataCollector.Storage.Sinks.CompositeSink
+  - MarketDataCollector.Storage.Sinks.JsonlStorageSink
+  - MarketDataCollector.Storage.Sinks.ParquetStorageSink
+- uid: MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+  id: FlushAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Services.IFlushable
+  langs:
+  - csharp
+  - vb
+  name: FlushAsync(CancellationToken)
+  nameWithType: IFlushable.FlushAsync(CancellationToken)
+  fullName: MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Services/IFlushable.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FlushAsync
+    path: ../../src/MarketDataCollector.Core/Services/IFlushable.cs
+    startLine: 10
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Services
+  summary: Flushes any buffered data to persistent storage.
+  example: []
+  syntax:
+    content: Task FlushAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function FlushAsync(ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Application.Services.IFlushable.FlushAsync*
+references:
+- uid: MarketDataCollector.Application.Services
+  commentId: N:MarketDataCollector.Application.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Services
+  nameWithType: MarketDataCollector.Application.Services
+  fullName: MarketDataCollector.Application.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+- uid: MarketDataCollector.Application.Services.IFlushable.FlushAsync*
+  commentId: Overload:MarketDataCollector.Application.Services.IFlushable.FlushAsync
+  href: MarketDataCollector.Application.Services.IFlushable.html#MarketDataCollector_Application_Services_IFlushable_FlushAsync_System_Threading_CancellationToken_
+  name: FlushAsync
+  nameWithType: IFlushable.FlushAsync
+  fullName: MarketDataCollector.Application.Services.IFlushable.FlushAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

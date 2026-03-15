@@ -1,0 +1,860 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+  id: RealtimeQuote
+  parent: MarketDataCollector.Infrastructure.DataSources
+  children:
+  - MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.#ctor(System.String,System.Decimal,System.Int64,System.Decimal,System.Int64,System.DateTimeOffset,System.String,System.String,System.String,System.Nullable{System.Int64})
+  - MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskExchange
+  - MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskPrice
+  - MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskSize
+  - MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidExchange
+  - MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidPrice
+  - MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidSize
+  - MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.SequenceNumber
+  - MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.SourceId
+  - MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.Symbol
+  - MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.Timestamp
+  langs:
+  - csharp
+  - vb
+  name: RealtimeQuote
+  nameWithType: RealtimeQuote
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RealtimeQuote
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 203
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Real-time BBO quote event from a data source.
+  example: []
+  syntax:
+    content: 'public sealed record RealtimeQuote : IEquatable<RealtimeQuote>'
+    content.vb: Public NotInheritable Class RealtimeQuote Implements IEquatable(Of RealtimeQuote)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Infrastructure.DataSources.RealtimeQuote}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.#ctor(System.String,System.Decimal,System.Int64,System.Decimal,System.Int64,System.DateTimeOffset,System.String,System.String,System.String,System.Nullable{System.Int64})
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.#ctor(System.String,System.Decimal,System.Int64,System.Decimal,System.Int64,System.DateTimeOffset,System.String,System.String,System.String,System.Nullable{System.Int64})
+  id: '#ctor(System.String,System.Decimal,System.Int64,System.Decimal,System.Int64,System.DateTimeOffset,System.String,System.String,System.String,System.Nullable{System.Int64})'
+  parent: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+  langs:
+  - csharp
+  - vb
+  name: RealtimeQuote(string, decimal, long, decimal, long, DateTimeOffset, string, string?, string?, long?)
+  nameWithType: RealtimeQuote.RealtimeQuote(string, decimal, long, decimal, long, DateTimeOffset, string, string?, string?, long?)
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.RealtimeQuote(string, decimal, long, decimal, long, System.DateTimeOffset, string, string?, string?, long?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 203
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Real-time BBO quote event from a data source.
+  example: []
+  syntax:
+    content: public RealtimeQuote(string Symbol, decimal BidPrice, long BidSize, decimal AskPrice, long AskSize, DateTimeOffset Timestamp, string SourceId, string? BidExchange = null, string? AskExchange = null, long? SequenceNumber = null)
+    parameters:
+    - id: Symbol
+      type: System.String
+    - id: BidPrice
+      type: System.Decimal
+    - id: BidSize
+      type: System.Int64
+    - id: AskPrice
+      type: System.Decimal
+    - id: AskSize
+      type: System.Int64
+    - id: Timestamp
+      type: System.DateTimeOffset
+    - id: SourceId
+      type: System.String
+    - id: BidExchange
+      type: System.String
+    - id: AskExchange
+      type: System.String
+    - id: SequenceNumber
+      type: System.Nullable{System.Int64}
+    content.vb: Public Sub New(Symbol As String, BidPrice As Decimal, BidSize As Long, AskPrice As Decimal, AskSize As Long, Timestamp As DateTimeOffset, SourceId As String, BidExchange As String = Nothing, AskExchange As String = Nothing, SequenceNumber As Long? = Nothing)
+  overload: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.#ctor*
+  nameWithType.vb: RealtimeQuote.New(String, Decimal, Long, Decimal, Long, DateTimeOffset, String, String, String, Long?)
+  fullName.vb: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.New(String, Decimal, Long, Decimal, Long, System.DateTimeOffset, String, String, String, Long?)
+  name.vb: New(String, Decimal, Long, Decimal, Long, DateTimeOffset, String, String, String, Long?)
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.Symbol
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.Symbol
+  id: Symbol
+  parent: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+  langs:
+  - csharp
+  - vb
+  name: Symbol
+  nameWithType: RealtimeQuote.Symbol
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.Symbol
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Symbol
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 204
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  syntax:
+    content: public string Symbol { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Symbol As String
+  overload: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.Symbol*
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidPrice
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidPrice
+  id: BidPrice
+  parent: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+  langs:
+  - csharp
+  - vb
+  name: BidPrice
+  nameWithType: RealtimeQuote.BidPrice
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidPrice
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BidPrice
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 205
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  syntax:
+    content: public decimal BidPrice { get; init; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: Public Property BidPrice As Decimal
+  overload: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidPrice*
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidSize
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidSize
+  id: BidSize
+  parent: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+  langs:
+  - csharp
+  - vb
+  name: BidSize
+  nameWithType: RealtimeQuote.BidSize
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidSize
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BidSize
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 206
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  syntax:
+    content: public long BidSize { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property BidSize As Long
+  overload: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidSize*
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskPrice
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskPrice
+  id: AskPrice
+  parent: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+  langs:
+  - csharp
+  - vb
+  name: AskPrice
+  nameWithType: RealtimeQuote.AskPrice
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskPrice
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AskPrice
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 207
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  syntax:
+    content: public decimal AskPrice { get; init; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: Public Property AskPrice As Decimal
+  overload: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskPrice*
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskSize
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskSize
+  id: AskSize
+  parent: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+  langs:
+  - csharp
+  - vb
+  name: AskSize
+  nameWithType: RealtimeQuote.AskSize
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskSize
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AskSize
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 208
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  syntax:
+    content: public long AskSize { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property AskSize As Long
+  overload: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskSize*
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.Timestamp
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.Timestamp
+  id: Timestamp
+  parent: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+  langs:
+  - csharp
+  - vb
+  name: Timestamp
+  nameWithType: RealtimeQuote.Timestamp
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.Timestamp
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Timestamp
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 209
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  syntax:
+    content: public DateTimeOffset Timestamp { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property Timestamp As DateTimeOffset
+  overload: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.Timestamp*
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.SourceId
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.SourceId
+  id: SourceId
+  parent: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+  langs:
+  - csharp
+  - vb
+  name: SourceId
+  nameWithType: RealtimeQuote.SourceId
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.SourceId
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SourceId
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 210
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  syntax:
+    content: public string SourceId { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SourceId As String
+  overload: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.SourceId*
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidExchange
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidExchange
+  id: BidExchange
+  parent: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+  langs:
+  - csharp
+  - vb
+  name: BidExchange
+  nameWithType: RealtimeQuote.BidExchange
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidExchange
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BidExchange
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 211
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  syntax:
+    content: public string? BidExchange { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property BidExchange As String
+  overload: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidExchange*
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskExchange
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskExchange
+  id: AskExchange
+  parent: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+  langs:
+  - csharp
+  - vb
+  name: AskExchange
+  nameWithType: RealtimeQuote.AskExchange
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskExchange
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AskExchange
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 212
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  syntax:
+    content: public string? AskExchange { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property AskExchange As String
+  overload: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskExchange*
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.SequenceNumber
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.SequenceNumber
+  id: SequenceNumber
+  parent: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+  langs:
+  - csharp
+  - vb
+  name: SequenceNumber
+  nameWithType: RealtimeQuote.SequenceNumber
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.SequenceNumber
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SequenceNumber
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 213
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  syntax:
+    content: public long? SequenceNumber { get; init; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int64}
+    content.vb: Public Property SequenceNumber As Long?
+  overload: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.SequenceNumber*
+references:
+- uid: MarketDataCollector.Infrastructure.DataSources
+  commentId: N:MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.DataSources
+  nameWithType: MarketDataCollector.Infrastructure.DataSources
+  fullName: MarketDataCollector.Infrastructure.DataSources
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.DataSources
+    name: DataSources
+    href: MarketDataCollector.Infrastructure.DataSources.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.DataSources
+    name: DataSources
+    href: MarketDataCollector.Infrastructure.DataSources.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Infrastructure.DataSources.RealtimeQuote}
+  commentId: T:System.IEquatable{MarketDataCollector.Infrastructure.DataSources.RealtimeQuote}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<RealtimeQuote>
+  nameWithType: IEquatable<RealtimeQuote>
+  fullName: System.IEquatable<MarketDataCollector.Infrastructure.DataSources.RealtimeQuote>
+  nameWithType.vb: IEquatable(Of RealtimeQuote)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Infrastructure.DataSources.RealtimeQuote)
+  name.vb: IEquatable(Of RealtimeQuote)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+    name: RealtimeQuote
+    href: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+    name: RealtimeQuote
+    href: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.#ctor*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.#ctor
+  href: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.html#MarketDataCollector_Infrastructure_DataSources_RealtimeQuote__ctor_System_String_System_Decimal_System_Int64_System_Decimal_System_Int64_System_DateTimeOffset_System_String_System_String_System_String_System_Nullable_System_Int64__
+  name: RealtimeQuote
+  nameWithType: RealtimeQuote.RealtimeQuote
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.RealtimeQuote
+  nameWithType.vb: RealtimeQuote.New
+  fullName.vb: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Decimal
+  commentId: T:System.Decimal
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.decimal
+  name: decimal
+  nameWithType: decimal
+  fullName: decimal
+  nameWithType.vb: Decimal
+  fullName.vb: Decimal
+  name.vb: Decimal
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: System.Nullable{System.Int64}
+  commentId: T:System.Nullable{System.Int64}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long?
+  nameWithType: long?
+  fullName: long?
+  nameWithType.vb: Long?
+  fullName.vb: Long?
+  name.vb: Long?
+  spec.csharp:
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '?'
+  spec.vb:
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.Symbol*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.Symbol
+  href: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.html#MarketDataCollector_Infrastructure_DataSources_RealtimeQuote_Symbol
+  name: Symbol
+  nameWithType: RealtimeQuote.Symbol
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.Symbol
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidPrice*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidPrice
+  href: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.html#MarketDataCollector_Infrastructure_DataSources_RealtimeQuote_BidPrice
+  name: BidPrice
+  nameWithType: RealtimeQuote.BidPrice
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidPrice
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidSize*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidSize
+  href: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.html#MarketDataCollector_Infrastructure_DataSources_RealtimeQuote_BidSize
+  name: BidSize
+  nameWithType: RealtimeQuote.BidSize
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidSize
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskPrice*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskPrice
+  href: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.html#MarketDataCollector_Infrastructure_DataSources_RealtimeQuote_AskPrice
+  name: AskPrice
+  nameWithType: RealtimeQuote.AskPrice
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskPrice
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskSize*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskSize
+  href: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.html#MarketDataCollector_Infrastructure_DataSources_RealtimeQuote_AskSize
+  name: AskSize
+  nameWithType: RealtimeQuote.AskSize
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskSize
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.Timestamp*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.Timestamp
+  href: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.html#MarketDataCollector_Infrastructure_DataSources_RealtimeQuote_Timestamp
+  name: Timestamp
+  nameWithType: RealtimeQuote.Timestamp
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.Timestamp
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.SourceId*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.SourceId
+  href: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.html#MarketDataCollector_Infrastructure_DataSources_RealtimeQuote_SourceId
+  name: SourceId
+  nameWithType: RealtimeQuote.SourceId
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.SourceId
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidExchange*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidExchange
+  href: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.html#MarketDataCollector_Infrastructure_DataSources_RealtimeQuote_BidExchange
+  name: BidExchange
+  nameWithType: RealtimeQuote.BidExchange
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.BidExchange
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskExchange*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskExchange
+  href: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.html#MarketDataCollector_Infrastructure_DataSources_RealtimeQuote_AskExchange
+  name: AskExchange
+  nameWithType: RealtimeQuote.AskExchange
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.AskExchange
+- uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.SequenceNumber*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.SequenceNumber
+  href: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.html#MarketDataCollector_Infrastructure_DataSources_RealtimeQuote_SequenceNumber
+  name: SequenceNumber
+  nameWithType: RealtimeQuote.SequenceNumber
+  fullName: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.SequenceNumber

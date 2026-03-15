@@ -1,0 +1,1266 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector
+  commentId: T:MarketDataCollector.Domain.Collectors.OptionDataCollector
+  id: OptionDataCollector
+  parent: MarketDataCollector.Domain.Collectors
+  children:
+  - MarketDataCollector.Domain.Collectors.OptionDataCollector.#ctor(MarketDataCollector.Domain.Events.IMarketEventPublisher)
+  - MarketDataCollector.Domain.Collectors.OptionDataCollector.GetChainsForUnderlying(System.String)
+  - MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestChain(System.String,System.DateOnly)
+  - MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestGreeks(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec)
+  - MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestOpenInterest(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec)
+  - MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestQuote(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec)
+  - MarketDataCollector.Domain.Collectors.OptionDataCollector.GetQuotesForUnderlying(System.String)
+  - MarketDataCollector.Domain.Collectors.OptionDataCollector.GetRecentTrades(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec,System.Int32)
+  - MarketDataCollector.Domain.Collectors.OptionDataCollector.GetSummary
+  - MarketDataCollector.Domain.Collectors.OptionDataCollector.GetTrackedUnderlyings
+  - MarketDataCollector.Domain.Collectors.OptionDataCollector.OnChainSnapshot(MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot)
+  - MarketDataCollector.Domain.Collectors.OptionDataCollector.OnGreeksUpdate(MarketDataCollector.Contracts.Domain.Models.GreeksSnapshot)
+  - MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOpenInterestUpdate(MarketDataCollector.Contracts.Domain.Models.OpenInterestUpdate)
+  - MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOptionQuote(MarketDataCollector.Contracts.Domain.Models.OptionQuote)
+  - MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOptionTrade(MarketDataCollector.Contracts.Domain.Models.OptionTrade)
+  langs:
+  - csharp
+  - vb
+  name: OptionDataCollector
+  nameWithType: OptionDataCollector
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OptionDataCollector
+    path: ../../src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+    startLine: 12
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: >-
+    Captures option quotes, trades, greeks, and chain snapshots,
+
+    maintains per-contract state, and emits unified MarketEvents.
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-001", "Option data collector implementing domain event publication")]
+
+      [ImplementsAdr("ADR-006", "Polymorphic MarketEvent payloads for option data types")]
+
+      public sealed class OptionDataCollector
+    content.vb: >-
+      <ImplementsAdr("ADR-001", "Option data collector implementing domain event publication")>
+
+      <ImplementsAdr("ADR-006", "Polymorphic MarketEvent payloads for option data types")>
+
+      Public NotInheritable Class OptionDataCollector
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-001
+    - type: System.String
+      value: Option data collector implementing domain event publication
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-006
+    - type: System.String
+      value: Polymorphic MarketEvent payloads for option data types
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.#ctor(MarketDataCollector.Domain.Events.IMarketEventPublisher)
+  commentId: M:MarketDataCollector.Domain.Collectors.OptionDataCollector.#ctor(MarketDataCollector.Domain.Events.IMarketEventPublisher)
+  id: '#ctor(MarketDataCollector.Domain.Events.IMarketEventPublisher)'
+  parent: MarketDataCollector.Domain.Collectors.OptionDataCollector
+  langs:
+  - csharp
+  - vb
+  name: OptionDataCollector(IMarketEventPublisher)
+  nameWithType: OptionDataCollector.OptionDataCollector(IMarketEventPublisher)
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.OptionDataCollector(MarketDataCollector.Domain.Events.IMarketEventPublisher)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+    startLine: 41
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  syntax:
+    content: public OptionDataCollector(IMarketEventPublisher publisher)
+    parameters:
+    - id: publisher
+      type: MarketDataCollector.Domain.Events.IMarketEventPublisher
+    content.vb: Public Sub New(publisher As IMarketEventPublisher)
+  overload: MarketDataCollector.Domain.Collectors.OptionDataCollector.#ctor*
+  nameWithType.vb: OptionDataCollector.New(IMarketEventPublisher)
+  fullName.vb: MarketDataCollector.Domain.Collectors.OptionDataCollector.New(MarketDataCollector.Domain.Events.IMarketEventPublisher)
+  name.vb: New(IMarketEventPublisher)
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOptionQuote(MarketDataCollector.Contracts.Domain.Models.OptionQuote)
+  commentId: M:MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOptionQuote(MarketDataCollector.Contracts.Domain.Models.OptionQuote)
+  id: OnOptionQuote(MarketDataCollector.Contracts.Domain.Models.OptionQuote)
+  parent: MarketDataCollector.Domain.Collectors.OptionDataCollector
+  langs:
+  - csharp
+  - vb
+  name: OnOptionQuote(OptionQuote)
+  nameWithType: OptionDataCollector.OnOptionQuote(OptionQuote)
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOptionQuote(MarketDataCollector.Contracts.Domain.Models.OptionQuote)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnOptionQuote
+    path: ../../src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+    startLine: 49
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Processes an incoming option quote and emits an OptionQuote market event.
+  example: []
+  syntax:
+    content: public void OnOptionQuote(OptionQuote quote)
+    parameters:
+    - id: quote
+      type: MarketDataCollector.Contracts.Domain.Models.OptionQuote
+    content.vb: Public Sub OnOptionQuote(quote As OptionQuote)
+  overload: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOptionQuote*
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOptionTrade(MarketDataCollector.Contracts.Domain.Models.OptionTrade)
+  commentId: M:MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOptionTrade(MarketDataCollector.Contracts.Domain.Models.OptionTrade)
+  id: OnOptionTrade(MarketDataCollector.Contracts.Domain.Models.OptionTrade)
+  parent: MarketDataCollector.Domain.Collectors.OptionDataCollector
+  langs:
+  - csharp
+  - vb
+  name: OnOptionTrade(OptionTrade)
+  nameWithType: OptionDataCollector.OnOptionTrade(OptionTrade)
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOptionTrade(MarketDataCollector.Contracts.Domain.Models.OptionTrade)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnOptionTrade
+    path: ../../src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+    startLine: 62
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Processes an incoming option trade and emits an OptionTrade market event.
+  example: []
+  syntax:
+    content: public void OnOptionTrade(OptionTrade trade)
+    parameters:
+    - id: trade
+      type: MarketDataCollector.Contracts.Domain.Models.OptionTrade
+    content.vb: Public Sub OnOptionTrade(trade As OptionTrade)
+  overload: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOptionTrade*
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnGreeksUpdate(MarketDataCollector.Contracts.Domain.Models.GreeksSnapshot)
+  commentId: M:MarketDataCollector.Domain.Collectors.OptionDataCollector.OnGreeksUpdate(MarketDataCollector.Contracts.Domain.Models.GreeksSnapshot)
+  id: OnGreeksUpdate(MarketDataCollector.Contracts.Domain.Models.GreeksSnapshot)
+  parent: MarketDataCollector.Domain.Collectors.OptionDataCollector
+  langs:
+  - csharp
+  - vb
+  name: OnGreeksUpdate(GreeksSnapshot)
+  nameWithType: OptionDataCollector.OnGreeksUpdate(GreeksSnapshot)
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnGreeksUpdate(MarketDataCollector.Contracts.Domain.Models.GreeksSnapshot)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnGreeksUpdate
+    path: ../../src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+    startLine: 77
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Processes an incoming greeks snapshot and emits an OptionGreeks market event.
+  example: []
+  syntax:
+    content: public void OnGreeksUpdate(GreeksSnapshot greeks)
+    parameters:
+    - id: greeks
+      type: MarketDataCollector.Contracts.Domain.Models.GreeksSnapshot
+    content.vb: Public Sub OnGreeksUpdate(greeks As GreeksSnapshot)
+  overload: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnGreeksUpdate*
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnChainSnapshot(MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot)
+  commentId: M:MarketDataCollector.Domain.Collectors.OptionDataCollector.OnChainSnapshot(MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot)
+  id: OnChainSnapshot(MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot)
+  parent: MarketDataCollector.Domain.Collectors.OptionDataCollector
+  langs:
+  - csharp
+  - vb
+  name: OnChainSnapshot(OptionChainSnapshot)
+  nameWithType: OptionDataCollector.OnChainSnapshot(OptionChainSnapshot)
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnChainSnapshot(MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnChainSnapshot
+    path: ../../src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+    startLine: 90
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Processes an incoming option chain snapshot and emits an OptionChain market event.
+  example: []
+  syntax:
+    content: public void OnChainSnapshot(OptionChainSnapshot chain)
+    parameters:
+    - id: chain
+      type: MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot
+    content.vb: Public Sub OnChainSnapshot(chain As OptionChainSnapshot)
+  overload: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnChainSnapshot*
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOpenInterestUpdate(MarketDataCollector.Contracts.Domain.Models.OpenInterestUpdate)
+  commentId: M:MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOpenInterestUpdate(MarketDataCollector.Contracts.Domain.Models.OpenInterestUpdate)
+  id: OnOpenInterestUpdate(MarketDataCollector.Contracts.Domain.Models.OpenInterestUpdate)
+  parent: MarketDataCollector.Domain.Collectors.OptionDataCollector
+  langs:
+  - csharp
+  - vb
+  name: OnOpenInterestUpdate(OpenInterestUpdate)
+  nameWithType: OptionDataCollector.OnOpenInterestUpdate(OpenInterestUpdate)
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOpenInterestUpdate(MarketDataCollector.Contracts.Domain.Models.OpenInterestUpdate)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnOpenInterestUpdate
+    path: ../../src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+    startLine: 103
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Processes an incoming open interest update and emits an OpenInterest market event.
+  example: []
+  syntax:
+    content: public void OnOpenInterestUpdate(OpenInterestUpdate update)
+    parameters:
+    - id: update
+      type: MarketDataCollector.Contracts.Domain.Models.OpenInterestUpdate
+    content.vb: Public Sub OnOpenInterestUpdate(update As OpenInterestUpdate)
+  overload: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOpenInterestUpdate*
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestQuote(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec)
+  commentId: M:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestQuote(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec)
+  id: GetLatestQuote(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec)
+  parent: MarketDataCollector.Domain.Collectors.OptionDataCollector
+  langs:
+  - csharp
+  - vb
+  name: GetLatestQuote(OptionContractSpec)
+  nameWithType: OptionDataCollector.GetLatestQuote(OptionContractSpec)
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestQuote(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetLatestQuote
+    path: ../../src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+    startLine: 116
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Returns the latest option quote for a contract, or null if none recorded.
+  example: []
+  syntax:
+    content: public OptionQuote? GetLatestQuote(OptionContractSpec contract)
+    parameters:
+    - id: contract
+      type: MarketDataCollector.Contracts.Domain.Models.OptionContractSpec
+    return:
+      type: MarketDataCollector.Contracts.Domain.Models.OptionQuote
+    content.vb: Public Function GetLatestQuote(contract As OptionContractSpec) As OptionQuote
+  overload: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestQuote*
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestGreeks(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec)
+  commentId: M:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestGreeks(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec)
+  id: GetLatestGreeks(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec)
+  parent: MarketDataCollector.Domain.Collectors.OptionDataCollector
+  langs:
+  - csharp
+  - vb
+  name: GetLatestGreeks(OptionContractSpec)
+  nameWithType: OptionDataCollector.GetLatestGreeks(OptionContractSpec)
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestGreeks(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetLatestGreeks
+    path: ../../src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+    startLine: 126
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Returns the latest greeks snapshot for a contract, or null if none recorded.
+  example: []
+  syntax:
+    content: public GreeksSnapshot? GetLatestGreeks(OptionContractSpec contract)
+    parameters:
+    - id: contract
+      type: MarketDataCollector.Contracts.Domain.Models.OptionContractSpec
+    return:
+      type: MarketDataCollector.Contracts.Domain.Models.GreeksSnapshot
+    content.vb: Public Function GetLatestGreeks(contract As OptionContractSpec) As GreeksSnapshot
+  overload: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestGreeks*
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestChain(System.String,System.DateOnly)
+  commentId: M:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestChain(System.String,System.DateOnly)
+  id: GetLatestChain(System.String,System.DateOnly)
+  parent: MarketDataCollector.Domain.Collectors.OptionDataCollector
+  langs:
+  - csharp
+  - vb
+  name: GetLatestChain(string, DateOnly)
+  nameWithType: OptionDataCollector.GetLatestChain(string, DateOnly)
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestChain(string, System.DateOnly)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetLatestChain
+    path: ../../src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+    startLine: 136
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Returns the latest option chain snapshot for an underlying and expiration.
+  example: []
+  syntax:
+    content: public OptionChainSnapshot? GetLatestChain(string underlyingSymbol, DateOnly expiration)
+    parameters:
+    - id: underlyingSymbol
+      type: System.String
+    - id: expiration
+      type: System.DateOnly
+    return:
+      type: MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot
+    content.vb: Public Function GetLatestChain(underlyingSymbol As String, expiration As DateOnly) As OptionChainSnapshot
+  overload: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestChain*
+  nameWithType.vb: OptionDataCollector.GetLatestChain(String, DateOnly)
+  fullName.vb: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestChain(String, System.DateOnly)
+  name.vb: GetLatestChain(String, DateOnly)
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetChainsForUnderlying(System.String)
+  commentId: M:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetChainsForUnderlying(System.String)
+  id: GetChainsForUnderlying(System.String)
+  parent: MarketDataCollector.Domain.Collectors.OptionDataCollector
+  langs:
+  - csharp
+  - vb
+  name: GetChainsForUnderlying(string)
+  nameWithType: OptionDataCollector.GetChainsForUnderlying(string)
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetChainsForUnderlying(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetChainsForUnderlying
+    path: ../../src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+    startLine: 145
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Returns all cached chain snapshots for an underlying symbol.
+  example: []
+  syntax:
+    content: public IReadOnlyList<OptionChainSnapshot> GetChainsForUnderlying(string underlyingSymbol)
+    parameters:
+    - id: underlyingSymbol
+      type: System.String
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot}
+    content.vb: Public Function GetChainsForUnderlying(underlyingSymbol As String) As IReadOnlyList(Of OptionChainSnapshot)
+  overload: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetChainsForUnderlying*
+  nameWithType.vb: OptionDataCollector.GetChainsForUnderlying(String)
+  fullName.vb: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetChainsForUnderlying(String)
+  name.vb: GetChainsForUnderlying(String)
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestOpenInterest(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec)
+  commentId: M:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestOpenInterest(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec)
+  id: GetLatestOpenInterest(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec)
+  parent: MarketDataCollector.Domain.Collectors.OptionDataCollector
+  langs:
+  - csharp
+  - vb
+  name: GetLatestOpenInterest(OptionContractSpec)
+  nameWithType: OptionDataCollector.GetLatestOpenInterest(OptionContractSpec)
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestOpenInterest(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetLatestOpenInterest
+    path: ../../src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+    startLine: 166
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Returns the latest open interest update for a contract, or null if none recorded.
+  example: []
+  syntax:
+    content: public OpenInterestUpdate? GetLatestOpenInterest(OptionContractSpec contract)
+    parameters:
+    - id: contract
+      type: MarketDataCollector.Contracts.Domain.Models.OptionContractSpec
+    return:
+      type: MarketDataCollector.Contracts.Domain.Models.OpenInterestUpdate
+    content.vb: Public Function GetLatestOpenInterest(contract As OptionContractSpec) As OpenInterestUpdate
+  overload: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestOpenInterest*
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetRecentTrades(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec,System.Int32)
+  commentId: M:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetRecentTrades(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec,System.Int32)
+  id: GetRecentTrades(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec,System.Int32)
+  parent: MarketDataCollector.Domain.Collectors.OptionDataCollector
+  langs:
+  - csharp
+  - vb
+  name: GetRecentTrades(OptionContractSpec, int)
+  nameWithType: OptionDataCollector.GetRecentTrades(OptionContractSpec, int)
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetRecentTrades(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec, int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetRecentTrades
+    path: ../../src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+    startLine: 176
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Returns recent option trades for a contract, newest first.
+  example: []
+  syntax:
+    content: public IReadOnlyList<OptionTrade> GetRecentTrades(OptionContractSpec contract, int limit = 50)
+    parameters:
+    - id: contract
+      type: MarketDataCollector.Contracts.Domain.Models.OptionContractSpec
+    - id: limit
+      type: System.Int32
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.OptionTrade}
+    content.vb: Public Function GetRecentTrades(contract As OptionContractSpec, limit As Integer = 50) As IReadOnlyList(Of OptionTrade)
+  overload: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetRecentTrades*
+  nameWithType.vb: OptionDataCollector.GetRecentTrades(OptionContractSpec, Integer)
+  fullName.vb: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetRecentTrades(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec, Integer)
+  name.vb: GetRecentTrades(OptionContractSpec, Integer)
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetQuotesForUnderlying(System.String)
+  commentId: M:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetQuotesForUnderlying(System.String)
+  id: GetQuotesForUnderlying(System.String)
+  parent: MarketDataCollector.Domain.Collectors.OptionDataCollector
+  langs:
+  - csharp
+  - vb
+  name: GetQuotesForUnderlying(string)
+  nameWithType: OptionDataCollector.GetQuotesForUnderlying(string)
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetQuotesForUnderlying(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetQuotesForUnderlying
+    path: ../../src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+    startLine: 188
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Returns all option quotes for a given underlying symbol.
+  example: []
+  syntax:
+    content: public IReadOnlyList<OptionQuote> GetQuotesForUnderlying(string underlyingSymbol)
+    parameters:
+    - id: underlyingSymbol
+      type: System.String
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.OptionQuote}
+    content.vb: Public Function GetQuotesForUnderlying(underlyingSymbol As String) As IReadOnlyList(Of OptionQuote)
+  overload: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetQuotesForUnderlying*
+  nameWithType.vb: OptionDataCollector.GetQuotesForUnderlying(String)
+  fullName.vb: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetQuotesForUnderlying(String)
+  name.vb: GetQuotesForUnderlying(String)
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetTrackedUnderlyings
+  commentId: M:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetTrackedUnderlyings
+  id: GetTrackedUnderlyings
+  parent: MarketDataCollector.Domain.Collectors.OptionDataCollector
+  langs:
+  - csharp
+  - vb
+  name: GetTrackedUnderlyings()
+  nameWithType: OptionDataCollector.GetTrackedUnderlyings()
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetTrackedUnderlyings()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetTrackedUnderlyings
+    path: ../../src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+    startLine: 207
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Returns all underlying symbols that have active option data.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> GetTrackedUnderlyings()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public Function GetTrackedUnderlyings() As IReadOnlyList(Of String)
+  overload: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetTrackedUnderlyings*
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetSummary
+  commentId: M:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetSummary
+  id: GetSummary
+  parent: MarketDataCollector.Domain.Collectors.OptionDataCollector
+  langs:
+  - csharp
+  - vb
+  name: GetSummary()
+  nameWithType: OptionDataCollector.GetSummary()
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetSummary()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSummary
+    path: ../../src/MarketDataCollector.Domain/Collectors/OptionDataCollector.cs
+    startLine: 223
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Returns a summary snapshot of all option data currently held.
+  example: []
+  syntax:
+    content: public OptionDataSummary GetSummary()
+    return:
+      type: MarketDataCollector.Domain.Collectors.OptionDataSummary
+    content.vb: Public Function GetSummary() As OptionDataSummary
+  overload: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetSummary*
+references:
+- uid: MarketDataCollector.Domain.Collectors
+  commentId: N:MarketDataCollector.Domain.Collectors
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Collectors
+  nameWithType: MarketDataCollector.Domain.Collectors
+  fullName: MarketDataCollector.Domain.Collectors
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Collectors
+    name: Collectors
+    href: MarketDataCollector.Domain.Collectors.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Collectors
+    name: Collectors
+    href: MarketDataCollector.Domain.Collectors.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.#ctor*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.OptionDataCollector.#ctor
+  href: MarketDataCollector.Domain.Collectors.OptionDataCollector.html#MarketDataCollector_Domain_Collectors_OptionDataCollector__ctor_MarketDataCollector_Domain_Events_IMarketEventPublisher_
+  name: OptionDataCollector
+  nameWithType: OptionDataCollector.OptionDataCollector
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.OptionDataCollector
+  nameWithType.vb: OptionDataCollector.New
+  fullName.vb: MarketDataCollector.Domain.Collectors.OptionDataCollector.New
+  name.vb: New
+- uid: MarketDataCollector.Domain.Events.IMarketEventPublisher
+  commentId: T:MarketDataCollector.Domain.Events.IMarketEventPublisher
+  parent: MarketDataCollector.Domain.Events
+  href: MarketDataCollector.Domain.Events.IMarketEventPublisher.html
+  name: IMarketEventPublisher
+  nameWithType: IMarketEventPublisher
+  fullName: MarketDataCollector.Domain.Events.IMarketEventPublisher
+- uid: MarketDataCollector.Domain.Events
+  commentId: N:MarketDataCollector.Domain.Events
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Events
+  nameWithType: MarketDataCollector.Domain.Events
+  fullName: MarketDataCollector.Domain.Events
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOptionQuote*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOptionQuote
+  href: MarketDataCollector.Domain.Collectors.OptionDataCollector.html#MarketDataCollector_Domain_Collectors_OptionDataCollector_OnOptionQuote_MarketDataCollector_Contracts_Domain_Models_OptionQuote_
+  name: OnOptionQuote
+  nameWithType: OptionDataCollector.OnOptionQuote
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOptionQuote
+- uid: MarketDataCollector.Contracts.Domain.Models.OptionQuote
+  commentId: T:MarketDataCollector.Contracts.Domain.Models.OptionQuote
+  parent: MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.Contracts.Domain.Models.OptionQuote.html
+  name: OptionQuote
+  nameWithType: OptionQuote
+  fullName: MarketDataCollector.Contracts.Domain.Models.OptionQuote
+- uid: MarketDataCollector.Contracts.Domain.Models
+  commentId: N:MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Models
+  nameWithType: MarketDataCollector.Contracts.Domain.Models
+  fullName: MarketDataCollector.Contracts.Domain.Models
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Models
+    name: Models
+    href: MarketDataCollector.Contracts.Domain.Models.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Models
+    name: Models
+    href: MarketDataCollector.Contracts.Domain.Models.html
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOptionTrade*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOptionTrade
+  href: MarketDataCollector.Domain.Collectors.OptionDataCollector.html#MarketDataCollector_Domain_Collectors_OptionDataCollector_OnOptionTrade_MarketDataCollector_Contracts_Domain_Models_OptionTrade_
+  name: OnOptionTrade
+  nameWithType: OptionDataCollector.OnOptionTrade
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOptionTrade
+- uid: MarketDataCollector.Contracts.Domain.Models.OptionTrade
+  commentId: T:MarketDataCollector.Contracts.Domain.Models.OptionTrade
+  parent: MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.Contracts.Domain.Models.OptionTrade.html
+  name: OptionTrade
+  nameWithType: OptionTrade
+  fullName: MarketDataCollector.Contracts.Domain.Models.OptionTrade
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnGreeksUpdate*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.OptionDataCollector.OnGreeksUpdate
+  href: MarketDataCollector.Domain.Collectors.OptionDataCollector.html#MarketDataCollector_Domain_Collectors_OptionDataCollector_OnGreeksUpdate_MarketDataCollector_Contracts_Domain_Models_GreeksSnapshot_
+  name: OnGreeksUpdate
+  nameWithType: OptionDataCollector.OnGreeksUpdate
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnGreeksUpdate
+- uid: MarketDataCollector.Contracts.Domain.Models.GreeksSnapshot
+  commentId: T:MarketDataCollector.Contracts.Domain.Models.GreeksSnapshot
+  parent: MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.Contracts.Domain.Models.GreeksSnapshot.html
+  name: GreeksSnapshot
+  nameWithType: GreeksSnapshot
+  fullName: MarketDataCollector.Contracts.Domain.Models.GreeksSnapshot
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnChainSnapshot*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.OptionDataCollector.OnChainSnapshot
+  href: MarketDataCollector.Domain.Collectors.OptionDataCollector.html#MarketDataCollector_Domain_Collectors_OptionDataCollector_OnChainSnapshot_MarketDataCollector_Contracts_Domain_Models_OptionChainSnapshot_
+  name: OnChainSnapshot
+  nameWithType: OptionDataCollector.OnChainSnapshot
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnChainSnapshot
+- uid: MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot
+  commentId: T:MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot
+  parent: MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot.html
+  name: OptionChainSnapshot
+  nameWithType: OptionChainSnapshot
+  fullName: MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOpenInterestUpdate*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOpenInterestUpdate
+  href: MarketDataCollector.Domain.Collectors.OptionDataCollector.html#MarketDataCollector_Domain_Collectors_OptionDataCollector_OnOpenInterestUpdate_MarketDataCollector_Contracts_Domain_Models_OpenInterestUpdate_
+  name: OnOpenInterestUpdate
+  nameWithType: OptionDataCollector.OnOpenInterestUpdate
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.OnOpenInterestUpdate
+- uid: MarketDataCollector.Contracts.Domain.Models.OpenInterestUpdate
+  commentId: T:MarketDataCollector.Contracts.Domain.Models.OpenInterestUpdate
+  parent: MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.Contracts.Domain.Models.OpenInterestUpdate.html
+  name: OpenInterestUpdate
+  nameWithType: OpenInterestUpdate
+  fullName: MarketDataCollector.Contracts.Domain.Models.OpenInterestUpdate
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestQuote*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestQuote
+  href: MarketDataCollector.Domain.Collectors.OptionDataCollector.html#MarketDataCollector_Domain_Collectors_OptionDataCollector_GetLatestQuote_MarketDataCollector_Contracts_Domain_Models_OptionContractSpec_
+  name: GetLatestQuote
+  nameWithType: OptionDataCollector.GetLatestQuote
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestQuote
+- uid: MarketDataCollector.Contracts.Domain.Models.OptionContractSpec
+  commentId: T:MarketDataCollector.Contracts.Domain.Models.OptionContractSpec
+  parent: MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.Contracts.Domain.Models.OptionContractSpec.html
+  name: OptionContractSpec
+  nameWithType: OptionContractSpec
+  fullName: MarketDataCollector.Contracts.Domain.Models.OptionContractSpec
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestGreeks*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestGreeks
+  href: MarketDataCollector.Domain.Collectors.OptionDataCollector.html#MarketDataCollector_Domain_Collectors_OptionDataCollector_GetLatestGreeks_MarketDataCollector_Contracts_Domain_Models_OptionContractSpec_
+  name: GetLatestGreeks
+  nameWithType: OptionDataCollector.GetLatestGreeks
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestGreeks
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestChain*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestChain
+  href: MarketDataCollector.Domain.Collectors.OptionDataCollector.html#MarketDataCollector_Domain_Collectors_OptionDataCollector_GetLatestChain_System_String_System_DateOnly_
+  name: GetLatestChain
+  nameWithType: OptionDataCollector.GetLatestChain
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestChain
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.DateOnly
+  commentId: T:System.DateOnly
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  name: DateOnly
+  nameWithType: DateOnly
+  fullName: System.DateOnly
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetChainsForUnderlying*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetChainsForUnderlying
+  href: MarketDataCollector.Domain.Collectors.OptionDataCollector.html#MarketDataCollector_Domain_Collectors_OptionDataCollector_GetChainsForUnderlying_System_String_
+  name: GetChainsForUnderlying
+  nameWithType: OptionDataCollector.GetChainsForUnderlying
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetChainsForUnderlying
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<OptionChainSnapshot>
+  nameWithType: IReadOnlyList<OptionChainSnapshot>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot>
+  nameWithType.vb: IReadOnlyList(Of OptionChainSnapshot)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot)
+  name.vb: IReadOnlyList(Of OptionChainSnapshot)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot
+    name: OptionChainSnapshot
+    href: MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot
+    name: OptionChainSnapshot
+    href: MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestOpenInterest*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestOpenInterest
+  href: MarketDataCollector.Domain.Collectors.OptionDataCollector.html#MarketDataCollector_Domain_Collectors_OptionDataCollector_GetLatestOpenInterest_MarketDataCollector_Contracts_Domain_Models_OptionContractSpec_
+  name: GetLatestOpenInterest
+  nameWithType: OptionDataCollector.GetLatestOpenInterest
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetLatestOpenInterest
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetRecentTrades*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetRecentTrades
+  href: MarketDataCollector.Domain.Collectors.OptionDataCollector.html#MarketDataCollector_Domain_Collectors_OptionDataCollector_GetRecentTrades_MarketDataCollector_Contracts_Domain_Models_OptionContractSpec_System_Int32_
+  name: GetRecentTrades
+  nameWithType: OptionDataCollector.GetRecentTrades
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetRecentTrades
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.OptionTrade}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.OptionTrade}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<OptionTrade>
+  nameWithType: IReadOnlyList<OptionTrade>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Contracts.Domain.Models.OptionTrade>
+  nameWithType.vb: IReadOnlyList(Of OptionTrade)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Contracts.Domain.Models.OptionTrade)
+  name.vb: IReadOnlyList(Of OptionTrade)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Domain.Models.OptionTrade
+    name: OptionTrade
+    href: MarketDataCollector.Contracts.Domain.Models.OptionTrade.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Domain.Models.OptionTrade
+    name: OptionTrade
+    href: MarketDataCollector.Contracts.Domain.Models.OptionTrade.html
+  - name: )
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetQuotesForUnderlying*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetQuotesForUnderlying
+  href: MarketDataCollector.Domain.Collectors.OptionDataCollector.html#MarketDataCollector_Domain_Collectors_OptionDataCollector_GetQuotesForUnderlying_System_String_
+  name: GetQuotesForUnderlying
+  nameWithType: OptionDataCollector.GetQuotesForUnderlying
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetQuotesForUnderlying
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.OptionQuote}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.OptionQuote}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<OptionQuote>
+  nameWithType: IReadOnlyList<OptionQuote>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Contracts.Domain.Models.OptionQuote>
+  nameWithType.vb: IReadOnlyList(Of OptionQuote)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Contracts.Domain.Models.OptionQuote)
+  name.vb: IReadOnlyList(Of OptionQuote)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Domain.Models.OptionQuote
+    name: OptionQuote
+    href: MarketDataCollector.Contracts.Domain.Models.OptionQuote.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Domain.Models.OptionQuote
+    name: OptionQuote
+    href: MarketDataCollector.Contracts.Domain.Models.OptionQuote.html
+  - name: )
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetTrackedUnderlyings*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetTrackedUnderlyings
+  href: MarketDataCollector.Domain.Collectors.OptionDataCollector.html#MarketDataCollector_Domain_Collectors_OptionDataCollector_GetTrackedUnderlyings
+  name: GetTrackedUnderlyings
+  nameWithType: OptionDataCollector.GetTrackedUnderlyings
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetTrackedUnderlyings
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetSummary*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.OptionDataCollector.GetSummary
+  href: MarketDataCollector.Domain.Collectors.OptionDataCollector.html#MarketDataCollector_Domain_Collectors_OptionDataCollector_GetSummary
+  name: GetSummary
+  nameWithType: OptionDataCollector.GetSummary
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataCollector.GetSummary
+- uid: MarketDataCollector.Domain.Collectors.OptionDataSummary
+  commentId: T:MarketDataCollector.Domain.Collectors.OptionDataSummary
+  parent: MarketDataCollector.Domain.Collectors
+  href: MarketDataCollector.Domain.Collectors.OptionDataSummary.html
+  name: OptionDataSummary
+  nameWithType: OptionDataSummary
+  fullName: MarketDataCollector.Domain.Collectors.OptionDataSummary

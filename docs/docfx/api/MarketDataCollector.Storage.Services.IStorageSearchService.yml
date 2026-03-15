@@ -1,0 +1,708 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Services.IStorageSearchService
+  commentId: T:MarketDataCollector.Storage.Services.IStorageSearchService
+  id: IStorageSearchService
+  parent: MarketDataCollector.Storage.Services
+  children:
+  - MarketDataCollector.Storage.Services.IStorageSearchService.DiscoverAsync(MarketDataCollector.Storage.Services.DiscoveryQuery,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.IStorageSearchService.ParseNaturalLanguageQuery(System.String)
+  - MarketDataCollector.Storage.Services.IStorageSearchService.RebuildIndexAsync(System.String[],MarketDataCollector.Storage.Services.RebuildOptions,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.IStorageSearchService.SearchEventsAsync(MarketDataCollector.Storage.Services.EventSearchQuery,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.IStorageSearchService.SearchFilesAsync(MarketDataCollector.Storage.Services.FileSearchQuery,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.IStorageSearchService.SearchWithFacetsAsync(MarketDataCollector.Storage.Services.FacetedSearchQuery,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.IStorageSearchService.UpdateIndexAsync(System.String,MarketDataCollector.Storage.Services.IndexUpdateType,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: IStorageSearchService
+  nameWithType: IStorageSearchService
+  fullName: MarketDataCollector.Storage.Services.IStorageSearchService
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IStorageSearchService
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 583
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Interface for storage search service.
+  example: []
+  syntax:
+    content: public interface IStorageSearchService
+    content.vb: Public Interface IStorageSearchService
+  derivedClasses:
+  - MarketDataCollector.Storage.Services.StorageSearchService
+- uid: MarketDataCollector.Storage.Services.IStorageSearchService.SearchFilesAsync(MarketDataCollector.Storage.Services.FileSearchQuery,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IStorageSearchService.SearchFilesAsync(MarketDataCollector.Storage.Services.FileSearchQuery,System.Threading.CancellationToken)
+  id: SearchFilesAsync(MarketDataCollector.Storage.Services.FileSearchQuery,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IStorageSearchService
+  langs:
+  - csharp
+  - vb
+  name: SearchFilesAsync(FileSearchQuery, CancellationToken)
+  nameWithType: IStorageSearchService.SearchFilesAsync(FileSearchQuery, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IStorageSearchService.SearchFilesAsync(MarketDataCollector.Storage.Services.FileSearchQuery, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SearchFilesAsync
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 585
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: Task<SearchResult<FileSearchResult>> SearchFilesAsync(FileSearchQuery query, CancellationToken ct = default)
+    parameters:
+    - id: query
+      type: MarketDataCollector.Storage.Services.FileSearchQuery
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.SearchResult{MarketDataCollector.Storage.Services.FileSearchResult}}
+    content.vb: Function SearchFilesAsync(query As FileSearchQuery, ct As CancellationToken = Nothing) As Task(Of SearchResult(Of FileSearchResult))
+  overload: MarketDataCollector.Storage.Services.IStorageSearchService.SearchFilesAsync*
+- uid: MarketDataCollector.Storage.Services.IStorageSearchService.SearchEventsAsync(MarketDataCollector.Storage.Services.EventSearchQuery,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IStorageSearchService.SearchEventsAsync(MarketDataCollector.Storage.Services.EventSearchQuery,System.Threading.CancellationToken)
+  id: SearchEventsAsync(MarketDataCollector.Storage.Services.EventSearchQuery,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IStorageSearchService
+  langs:
+  - csharp
+  - vb
+  name: SearchEventsAsync(EventSearchQuery, CancellationToken)
+  nameWithType: IStorageSearchService.SearchEventsAsync(EventSearchQuery, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IStorageSearchService.SearchEventsAsync(MarketDataCollector.Storage.Services.EventSearchQuery, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SearchEventsAsync
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 586
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: Task<SearchResult<EventSearchResult>> SearchEventsAsync(EventSearchQuery query, CancellationToken ct = default)
+    parameters:
+    - id: query
+      type: MarketDataCollector.Storage.Services.EventSearchQuery
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.SearchResult{MarketDataCollector.Storage.Services.EventSearchResult}}
+    content.vb: Function SearchEventsAsync(query As EventSearchQuery, ct As CancellationToken = Nothing) As Task(Of SearchResult(Of EventSearchResult))
+  overload: MarketDataCollector.Storage.Services.IStorageSearchService.SearchEventsAsync*
+- uid: MarketDataCollector.Storage.Services.IStorageSearchService.DiscoverAsync(MarketDataCollector.Storage.Services.DiscoveryQuery,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IStorageSearchService.DiscoverAsync(MarketDataCollector.Storage.Services.DiscoveryQuery,System.Threading.CancellationToken)
+  id: DiscoverAsync(MarketDataCollector.Storage.Services.DiscoveryQuery,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IStorageSearchService
+  langs:
+  - csharp
+  - vb
+  name: DiscoverAsync(DiscoveryQuery, CancellationToken)
+  nameWithType: IStorageSearchService.DiscoverAsync(DiscoveryQuery, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IStorageSearchService.DiscoverAsync(MarketDataCollector.Storage.Services.DiscoveryQuery, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DiscoverAsync
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 587
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: Task<DataCatalog> DiscoverAsync(DiscoveryQuery query, CancellationToken ct = default)
+    parameters:
+    - id: query
+      type: MarketDataCollector.Storage.Services.DiscoveryQuery
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DataCatalog}
+    content.vb: Function DiscoverAsync(query As DiscoveryQuery, ct As CancellationToken = Nothing) As Task(Of DataCatalog)
+  overload: MarketDataCollector.Storage.Services.IStorageSearchService.DiscoverAsync*
+- uid: MarketDataCollector.Storage.Services.IStorageSearchService.SearchWithFacetsAsync(MarketDataCollector.Storage.Services.FacetedSearchQuery,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IStorageSearchService.SearchWithFacetsAsync(MarketDataCollector.Storage.Services.FacetedSearchQuery,System.Threading.CancellationToken)
+  id: SearchWithFacetsAsync(MarketDataCollector.Storage.Services.FacetedSearchQuery,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IStorageSearchService
+  langs:
+  - csharp
+  - vb
+  name: SearchWithFacetsAsync(FacetedSearchQuery, CancellationToken)
+  nameWithType: IStorageSearchService.SearchWithFacetsAsync(FacetedSearchQuery, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IStorageSearchService.SearchWithFacetsAsync(MarketDataCollector.Storage.Services.FacetedSearchQuery, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SearchWithFacetsAsync
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 588
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: Task<FacetedSearchResult> SearchWithFacetsAsync(FacetedSearchQuery query, CancellationToken ct = default)
+    parameters:
+    - id: query
+      type: MarketDataCollector.Storage.Services.FacetedSearchQuery
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.FacetedSearchResult}
+    content.vb: Function SearchWithFacetsAsync(query As FacetedSearchQuery, ct As CancellationToken = Nothing) As Task(Of FacetedSearchResult)
+  overload: MarketDataCollector.Storage.Services.IStorageSearchService.SearchWithFacetsAsync*
+- uid: MarketDataCollector.Storage.Services.IStorageSearchService.ParseNaturalLanguageQuery(System.String)
+  commentId: M:MarketDataCollector.Storage.Services.IStorageSearchService.ParseNaturalLanguageQuery(System.String)
+  id: ParseNaturalLanguageQuery(System.String)
+  parent: MarketDataCollector.Storage.Services.IStorageSearchService
+  langs:
+  - csharp
+  - vb
+  name: ParseNaturalLanguageQuery(string)
+  nameWithType: IStorageSearchService.ParseNaturalLanguageQuery(string)
+  fullName: MarketDataCollector.Storage.Services.IStorageSearchService.ParseNaturalLanguageQuery(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ParseNaturalLanguageQuery
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 589
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: StorageQuery? ParseNaturalLanguageQuery(string naturalQuery)
+    parameters:
+    - id: naturalQuery
+      type: System.String
+    return:
+      type: MarketDataCollector.Storage.Services.StorageQuery
+    content.vb: Function ParseNaturalLanguageQuery(naturalQuery As String) As StorageQuery
+  overload: MarketDataCollector.Storage.Services.IStorageSearchService.ParseNaturalLanguageQuery*
+  nameWithType.vb: IStorageSearchService.ParseNaturalLanguageQuery(String)
+  fullName.vb: MarketDataCollector.Storage.Services.IStorageSearchService.ParseNaturalLanguageQuery(String)
+  name.vb: ParseNaturalLanguageQuery(String)
+- uid: MarketDataCollector.Storage.Services.IStorageSearchService.UpdateIndexAsync(System.String,MarketDataCollector.Storage.Services.IndexUpdateType,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IStorageSearchService.UpdateIndexAsync(System.String,MarketDataCollector.Storage.Services.IndexUpdateType,System.Threading.CancellationToken)
+  id: UpdateIndexAsync(System.String,MarketDataCollector.Storage.Services.IndexUpdateType,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IStorageSearchService
+  langs:
+  - csharp
+  - vb
+  name: UpdateIndexAsync(string, IndexUpdateType, CancellationToken)
+  nameWithType: IStorageSearchService.UpdateIndexAsync(string, IndexUpdateType, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IStorageSearchService.UpdateIndexAsync(string, MarketDataCollector.Storage.Services.IndexUpdateType, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UpdateIndexAsync
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 590
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: Task UpdateIndexAsync(string filePath, IndexUpdateType updateType, CancellationToken ct = default)
+    parameters:
+    - id: filePath
+      type: System.String
+    - id: updateType
+      type: MarketDataCollector.Storage.Services.IndexUpdateType
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function UpdateIndexAsync(filePath As String, updateType As IndexUpdateType, ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Storage.Services.IStorageSearchService.UpdateIndexAsync*
+  nameWithType.vb: IStorageSearchService.UpdateIndexAsync(String, IndexUpdateType, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Services.IStorageSearchService.UpdateIndexAsync(String, MarketDataCollector.Storage.Services.IndexUpdateType, System.Threading.CancellationToken)
+  name.vb: UpdateIndexAsync(String, IndexUpdateType, CancellationToken)
+- uid: MarketDataCollector.Storage.Services.IStorageSearchService.RebuildIndexAsync(System.String[],MarketDataCollector.Storage.Services.RebuildOptions,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IStorageSearchService.RebuildIndexAsync(System.String[],MarketDataCollector.Storage.Services.RebuildOptions,System.Threading.CancellationToken)
+  id: RebuildIndexAsync(System.String[],MarketDataCollector.Storage.Services.RebuildOptions,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IStorageSearchService
+  langs:
+  - csharp
+  - vb
+  name: RebuildIndexAsync(string[], RebuildOptions, CancellationToken)
+  nameWithType: IStorageSearchService.RebuildIndexAsync(string[], RebuildOptions, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IStorageSearchService.RebuildIndexAsync(string[], MarketDataCollector.Storage.Services.RebuildOptions, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RebuildIndexAsync
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 591
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: Task RebuildIndexAsync(string[] paths, RebuildOptions options, CancellationToken ct = default)
+    parameters:
+    - id: paths
+      type: System.String[]
+    - id: options
+      type: MarketDataCollector.Storage.Services.RebuildOptions
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function RebuildIndexAsync(paths As String(), options As RebuildOptions, ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Storage.Services.IStorageSearchService.RebuildIndexAsync*
+  nameWithType.vb: IStorageSearchService.RebuildIndexAsync(String(), RebuildOptions, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Services.IStorageSearchService.RebuildIndexAsync(String(), MarketDataCollector.Storage.Services.RebuildOptions, System.Threading.CancellationToken)
+  name.vb: RebuildIndexAsync(String(), RebuildOptions, CancellationToken)
+references:
+- uid: MarketDataCollector.Storage.Services
+  commentId: N:MarketDataCollector.Storage.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Services
+  nameWithType: MarketDataCollector.Storage.Services
+  fullName: MarketDataCollector.Storage.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+- uid: MarketDataCollector.Storage.Services.IStorageSearchService.SearchFilesAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.IStorageSearchService.SearchFilesAsync
+  href: MarketDataCollector.Storage.Services.IStorageSearchService.html#MarketDataCollector_Storage_Services_IStorageSearchService_SearchFilesAsync_MarketDataCollector_Storage_Services_FileSearchQuery_System_Threading_CancellationToken_
+  name: SearchFilesAsync
+  nameWithType: IStorageSearchService.SearchFilesAsync
+  fullName: MarketDataCollector.Storage.Services.IStorageSearchService.SearchFilesAsync
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery
+  commentId: T:MarketDataCollector.Storage.Services.FileSearchQuery
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.FileSearchQuery.html
+  name: FileSearchQuery
+  nameWithType: FileSearchQuery
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.SearchResult{MarketDataCollector.Storage.Services.FileSearchResult}}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.SearchResult{MarketDataCollector.Storage.Services.FileSearchResult}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<SearchResult<FileSearchResult>>
+  nameWithType: Task<SearchResult<FileSearchResult>>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.SearchResult<MarketDataCollector.Storage.Services.FileSearchResult>>
+  nameWithType.vb: Task(Of SearchResult(Of FileSearchResult))
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.SearchResult(Of MarketDataCollector.Storage.Services.FileSearchResult))
+  name.vb: Task(Of SearchResult(Of FileSearchResult))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.SearchResult`1
+    name: SearchResult
+    href: MarketDataCollector.Storage.Services.SearchResult-1.html
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.FileSearchResult
+    name: FileSearchResult
+    href: MarketDataCollector.Storage.Services.FileSearchResult.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.SearchResult`1
+    name: SearchResult
+    href: MarketDataCollector.Storage.Services.SearchResult-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.FileSearchResult
+    name: FileSearchResult
+    href: MarketDataCollector.Storage.Services.FileSearchResult.html
+  - name: )
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Storage.Services.IStorageSearchService.SearchEventsAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.IStorageSearchService.SearchEventsAsync
+  href: MarketDataCollector.Storage.Services.IStorageSearchService.html#MarketDataCollector_Storage_Services_IStorageSearchService_SearchEventsAsync_MarketDataCollector_Storage_Services_EventSearchQuery_System_Threading_CancellationToken_
+  name: SearchEventsAsync
+  nameWithType: IStorageSearchService.SearchEventsAsync
+  fullName: MarketDataCollector.Storage.Services.IStorageSearchService.SearchEventsAsync
+- uid: MarketDataCollector.Storage.Services.EventSearchQuery
+  commentId: T:MarketDataCollector.Storage.Services.EventSearchQuery
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.EventSearchQuery.html
+  name: EventSearchQuery
+  nameWithType: EventSearchQuery
+  fullName: MarketDataCollector.Storage.Services.EventSearchQuery
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.SearchResult{MarketDataCollector.Storage.Services.EventSearchResult}}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.SearchResult{MarketDataCollector.Storage.Services.EventSearchResult}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<SearchResult<EventSearchResult>>
+  nameWithType: Task<SearchResult<EventSearchResult>>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.SearchResult<MarketDataCollector.Storage.Services.EventSearchResult>>
+  nameWithType.vb: Task(Of SearchResult(Of EventSearchResult))
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.SearchResult(Of MarketDataCollector.Storage.Services.EventSearchResult))
+  name.vb: Task(Of SearchResult(Of EventSearchResult))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.SearchResult`1
+    name: SearchResult
+    href: MarketDataCollector.Storage.Services.SearchResult-1.html
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.EventSearchResult
+    name: EventSearchResult
+    href: MarketDataCollector.Storage.Services.EventSearchResult.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.SearchResult`1
+    name: SearchResult
+    href: MarketDataCollector.Storage.Services.SearchResult-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.EventSearchResult
+    name: EventSearchResult
+    href: MarketDataCollector.Storage.Services.EventSearchResult.html
+  - name: )
+  - name: )
+- uid: MarketDataCollector.Storage.Services.IStorageSearchService.DiscoverAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.IStorageSearchService.DiscoverAsync
+  href: MarketDataCollector.Storage.Services.IStorageSearchService.html#MarketDataCollector_Storage_Services_IStorageSearchService_DiscoverAsync_MarketDataCollector_Storage_Services_DiscoveryQuery_System_Threading_CancellationToken_
+  name: DiscoverAsync
+  nameWithType: IStorageSearchService.DiscoverAsync
+  fullName: MarketDataCollector.Storage.Services.IStorageSearchService.DiscoverAsync
+- uid: MarketDataCollector.Storage.Services.DiscoveryQuery
+  commentId: T:MarketDataCollector.Storage.Services.DiscoveryQuery
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.DiscoveryQuery.html
+  name: DiscoveryQuery
+  nameWithType: DiscoveryQuery
+  fullName: MarketDataCollector.Storage.Services.DiscoveryQuery
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DataCatalog}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DataCatalog}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<DataCatalog>
+  nameWithType: Task<DataCatalog>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.DataCatalog>
+  nameWithType.vb: Task(Of DataCatalog)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.DataCatalog)
+  name.vb: Task(Of DataCatalog)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.DataCatalog
+    name: DataCatalog
+    href: MarketDataCollector.Storage.Services.DataCatalog.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.DataCatalog
+    name: DataCatalog
+    href: MarketDataCollector.Storage.Services.DataCatalog.html
+  - name: )
+- uid: MarketDataCollector.Storage.Services.IStorageSearchService.SearchWithFacetsAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.IStorageSearchService.SearchWithFacetsAsync
+  href: MarketDataCollector.Storage.Services.IStorageSearchService.html#MarketDataCollector_Storage_Services_IStorageSearchService_SearchWithFacetsAsync_MarketDataCollector_Storage_Services_FacetedSearchQuery_System_Threading_CancellationToken_
+  name: SearchWithFacetsAsync
+  nameWithType: IStorageSearchService.SearchWithFacetsAsync
+  fullName: MarketDataCollector.Storage.Services.IStorageSearchService.SearchWithFacetsAsync
+- uid: MarketDataCollector.Storage.Services.FacetedSearchQuery
+  commentId: T:MarketDataCollector.Storage.Services.FacetedSearchQuery
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.FacetedSearchQuery.html
+  name: FacetedSearchQuery
+  nameWithType: FacetedSearchQuery
+  fullName: MarketDataCollector.Storage.Services.FacetedSearchQuery
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.FacetedSearchResult}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.FacetedSearchResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<FacetedSearchResult>
+  nameWithType: Task<FacetedSearchResult>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.FacetedSearchResult>
+  nameWithType.vb: Task(Of FacetedSearchResult)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.FacetedSearchResult)
+  name.vb: Task(Of FacetedSearchResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.FacetedSearchResult
+    name: FacetedSearchResult
+    href: MarketDataCollector.Storage.Services.FacetedSearchResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.FacetedSearchResult
+    name: FacetedSearchResult
+    href: MarketDataCollector.Storage.Services.FacetedSearchResult.html
+  - name: )
+- uid: MarketDataCollector.Storage.Services.IStorageSearchService.ParseNaturalLanguageQuery*
+  commentId: Overload:MarketDataCollector.Storage.Services.IStorageSearchService.ParseNaturalLanguageQuery
+  href: MarketDataCollector.Storage.Services.IStorageSearchService.html#MarketDataCollector_Storage_Services_IStorageSearchService_ParseNaturalLanguageQuery_System_String_
+  name: ParseNaturalLanguageQuery
+  nameWithType: IStorageSearchService.ParseNaturalLanguageQuery
+  fullName: MarketDataCollector.Storage.Services.IStorageSearchService.ParseNaturalLanguageQuery
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Storage.Services.StorageQuery
+  commentId: T:MarketDataCollector.Storage.Services.StorageQuery
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.StorageQuery.html
+  name: StorageQuery
+  nameWithType: StorageQuery
+  fullName: MarketDataCollector.Storage.Services.StorageQuery
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Storage.Services.IStorageSearchService.UpdateIndexAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.IStorageSearchService.UpdateIndexAsync
+  href: MarketDataCollector.Storage.Services.IStorageSearchService.html#MarketDataCollector_Storage_Services_IStorageSearchService_UpdateIndexAsync_System_String_MarketDataCollector_Storage_Services_IndexUpdateType_System_Threading_CancellationToken_
+  name: UpdateIndexAsync
+  nameWithType: IStorageSearchService.UpdateIndexAsync
+  fullName: MarketDataCollector.Storage.Services.IStorageSearchService.UpdateIndexAsync
+- uid: MarketDataCollector.Storage.Services.IndexUpdateType
+  commentId: T:MarketDataCollector.Storage.Services.IndexUpdateType
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.IndexUpdateType.html
+  name: IndexUpdateType
+  nameWithType: IndexUpdateType
+  fullName: MarketDataCollector.Storage.Services.IndexUpdateType
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: MarketDataCollector.Storage.Services.IStorageSearchService.RebuildIndexAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.IStorageSearchService.RebuildIndexAsync
+  href: MarketDataCollector.Storage.Services.IStorageSearchService.html#MarketDataCollector_Storage_Services_IStorageSearchService_RebuildIndexAsync_System_String___MarketDataCollector_Storage_Services_RebuildOptions_System_Threading_CancellationToken_
+  name: RebuildIndexAsync
+  nameWithType: IStorageSearchService.RebuildIndexAsync
+  fullName: MarketDataCollector.Storage.Services.IStorageSearchService.RebuildIndexAsync
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Storage.Services.RebuildOptions
+  commentId: T:MarketDataCollector.Storage.Services.RebuildOptions
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.RebuildOptions.html
+  name: RebuildOptions
+  nameWithType: RebuildOptions
+  fullName: MarketDataCollector.Storage.Services.RebuildOptions

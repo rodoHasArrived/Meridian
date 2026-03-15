@@ -1,0 +1,1013 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService
+  commentId: T:MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService
+  id: IndexSubscriptionService
+  parent: MarketDataCollector.Application.Subscriptions.Services
+  children:
+  - MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.#ctor(MarketDataCollector.Application.UI.ConfigStore,MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService,Serilog.ILogger)
+  - MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetAvailableIndices
+  - MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetIndexComponentsAsync(System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetSubscriptionStatusAsync(System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.SubscribeToIndexAsync(MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeRequest,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.UnsubscribeFromIndexAsync(System.String,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: IndexSubscriptionService
+  nameWithType: IndexSubscriptionService
+  fullName: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/IndexSubscriptionService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IndexSubscriptionService
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/IndexSubscriptionService.cs
+    startLine: 19
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Service for auto-subscribing to index components.
+  remarks: >-
+    <p><b>Current Implementation:</b> Uses built-in static index component data for major indices
+
+    (SPX, NDX, DJI, RUT, MID). This data is suitable for development and testing.</p>
+
+    <p><b>Production Enhancement:</b> For production use with real-time index rebalancing,
+
+    implement an external API integration (e.g., S&amp;P Global, NASDAQ, IEX Cloud) by extending
+
+    <xref href="MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetIndexComponentsAsync(System.String%2cSystem.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref> to fetch live constituent data.</p>
+  example: []
+  syntax:
+    content: public sealed class IndexSubscriptionService
+    content.vb: Public NotInheritable Class IndexSubscriptionService
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.#ctor(MarketDataCollector.Application.UI.ConfigStore,MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService,Serilog.ILogger)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.#ctor(MarketDataCollector.Application.UI.ConfigStore,MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService,Serilog.ILogger)
+  id: '#ctor(MarketDataCollector.Application.UI.ConfigStore,MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService,Serilog.ILogger)'
+  parent: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService
+  langs:
+  - csharp
+  - vb
+  name: IndexSubscriptionService(ConfigStore, MetadataEnrichmentService, ILogger?)
+  nameWithType: IndexSubscriptionService.IndexSubscriptionService(ConfigStore, MetadataEnrichmentService, ILogger?)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.IndexSubscriptionService(MarketDataCollector.Application.UI.ConfigStore, MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService, Serilog.ILogger?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/IndexSubscriptionService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/IndexSubscriptionService.cs
+    startLine: 29
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  syntax:
+    content: public IndexSubscriptionService(ConfigStore configStore, MetadataEnrichmentService metadataService, ILogger? log = null)
+    parameters:
+    - id: configStore
+      type: MarketDataCollector.Application.UI.ConfigStore
+    - id: metadataService
+      type: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService
+    - id: log
+      type: Serilog.ILogger
+    content.vb: Public Sub New(configStore As ConfigStore, metadataService As MetadataEnrichmentService, log As ILogger = Nothing)
+  overload: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.#ctor*
+  nameWithType.vb: IndexSubscriptionService.New(ConfigStore, MetadataEnrichmentService, ILogger)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.New(MarketDataCollector.Application.UI.ConfigStore, MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService, Serilog.ILogger)
+  name.vb: New(ConfigStore, MetadataEnrichmentService, ILogger)
+- uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetAvailableIndices
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetAvailableIndices
+  id: GetAvailableIndices
+  parent: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService
+  langs:
+  - csharp
+  - vb
+  name: GetAvailableIndices()
+  nameWithType: IndexSubscriptionService.GetAvailableIndices()
+  fullName: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetAvailableIndices()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/IndexSubscriptionService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetAvailableIndices
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/IndexSubscriptionService.cs
+    startLine: 42
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Get available indices for subscription.
+  example: []
+  syntax:
+    content: public IReadOnlyList<IndexDefinition> GetAvailableIndices()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Subscriptions.Models.IndexDefinition}
+    content.vb: Public Function GetAvailableIndices() As IReadOnlyList(Of IndexDefinition)
+  overload: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetAvailableIndices*
+- uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetIndexComponentsAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetIndexComponentsAsync(System.String,System.Threading.CancellationToken)
+  id: GetIndexComponentsAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService
+  langs:
+  - csharp
+  - vb
+  name: GetIndexComponentsAsync(string, CancellationToken)
+  nameWithType: IndexSubscriptionService.GetIndexComponentsAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetIndexComponentsAsync(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/IndexSubscriptionService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetIndexComponentsAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/IndexSubscriptionService.cs
+    startLine: 54
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Get components for a specific index.
+  remarks: >-
+    Currently returns built-in static data. For production use, this method is the extension
+
+    point for integrating external index constituent APIs (e.g., S&amp;P Global, IEX Cloud).
+  example: []
+  syntax:
+    content: public Task<IndexComponents?> GetIndexComponentsAsync(string indexId, CancellationToken ct = default)
+    parameters:
+    - id: indexId
+      type: System.String
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.IndexComponents}
+    content.vb: Public Function GetIndexComponentsAsync(indexId As String, ct As CancellationToken = Nothing) As Task(Of IndexComponents)
+  overload: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetIndexComponentsAsync*
+  nameWithType.vb: IndexSubscriptionService.GetIndexComponentsAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetIndexComponentsAsync(String, System.Threading.CancellationToken)
+  name.vb: GetIndexComponentsAsync(String, CancellationToken)
+- uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.SubscribeToIndexAsync(MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeRequest,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.SubscribeToIndexAsync(MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeRequest,System.Threading.CancellationToken)
+  id: SubscribeToIndexAsync(MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeRequest,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService
+  langs:
+  - csharp
+  - vb
+  name: SubscribeToIndexAsync(IndexSubscribeRequest, CancellationToken)
+  nameWithType: IndexSubscriptionService.SubscribeToIndexAsync(IndexSubscribeRequest, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.SubscribeToIndexAsync(MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/IndexSubscriptionService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SubscribeToIndexAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/IndexSubscriptionService.cs
+    startLine: 71
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Subscribe to all components of an index.
+  example: []
+  syntax:
+    content: public Task<IndexSubscribeResult> SubscribeToIndexAsync(IndexSubscribeRequest request, CancellationToken ct = default)
+    parameters:
+    - id: request
+      type: MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeRequest
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeResult}
+    content.vb: Public Function SubscribeToIndexAsync(request As IndexSubscribeRequest, ct As CancellationToken = Nothing) As Task(Of IndexSubscribeResult)
+  overload: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.SubscribeToIndexAsync*
+- uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.UnsubscribeFromIndexAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.UnsubscribeFromIndexAsync(System.String,System.Threading.CancellationToken)
+  id: UnsubscribeFromIndexAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService
+  langs:
+  - csharp
+  - vb
+  name: UnsubscribeFromIndexAsync(string, CancellationToken)
+  nameWithType: IndexSubscriptionService.UnsubscribeFromIndexAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.UnsubscribeFromIndexAsync(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/IndexSubscriptionService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UnsubscribeFromIndexAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/IndexSubscriptionService.cs
+    startLine: 164
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Unsubscribe from all components of an index.
+  example: []
+  syntax:
+    content: public Task<IndexSubscribeResult> UnsubscribeFromIndexAsync(string indexId, CancellationToken ct = default)
+    parameters:
+    - id: indexId
+      type: System.String
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeResult}
+    content.vb: Public Function UnsubscribeFromIndexAsync(indexId As String, ct As CancellationToken = Nothing) As Task(Of IndexSubscribeResult)
+  overload: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.UnsubscribeFromIndexAsync*
+  nameWithType.vb: IndexSubscriptionService.UnsubscribeFromIndexAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.UnsubscribeFromIndexAsync(String, System.Threading.CancellationToken)
+  name.vb: UnsubscribeFromIndexAsync(String, CancellationToken)
+- uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetSubscriptionStatusAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetSubscriptionStatusAsync(System.String,System.Threading.CancellationToken)
+  id: GetSubscriptionStatusAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService
+  langs:
+  - csharp
+  - vb
+  name: GetSubscriptionStatusAsync(string, CancellationToken)
+  nameWithType: IndexSubscriptionService.GetSubscriptionStatusAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetSubscriptionStatusAsync(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/IndexSubscriptionService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSubscriptionStatusAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/IndexSubscriptionService.cs
+    startLine: 210
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Check which index components are currently subscribed.
+  example: []
+  syntax:
+    content: public Task<IndexSubscriptionStatus> GetSubscriptionStatusAsync(string indexId, CancellationToken ct = default)
+    parameters:
+    - id: indexId
+      type: System.String
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionStatus}
+    content.vb: Public Function GetSubscriptionStatusAsync(indexId As String, ct As CancellationToken = Nothing) As Task(Of IndexSubscriptionStatus)
+  overload: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetSubscriptionStatusAsync*
+  nameWithType.vb: IndexSubscriptionService.GetSubscriptionStatusAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetSubscriptionStatusAsync(String, System.Threading.CancellationToken)
+  name.vb: GetSubscriptionStatusAsync(String, CancellationToken)
+references:
+- uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetIndexComponentsAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetIndexComponentsAsync(System.String,System.Threading.CancellationToken)
+  isExternal: true
+  href: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.html#MarketDataCollector_Application_Subscriptions_Services_IndexSubscriptionService_GetIndexComponentsAsync_System_String_System_Threading_CancellationToken_
+  name: GetIndexComponentsAsync(string, CancellationToken)
+  nameWithType: IndexSubscriptionService.GetIndexComponentsAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetIndexComponentsAsync(string, System.Threading.CancellationToken)
+  nameWithType.vb: IndexSubscriptionService.GetIndexComponentsAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetIndexComponentsAsync(String, System.Threading.CancellationToken)
+  name.vb: GetIndexComponentsAsync(String, CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetIndexComponentsAsync(System.String,System.Threading.CancellationToken)
+    name: GetIndexComponentsAsync
+    href: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.html#MarketDataCollector_Application_Subscriptions_Services_IndexSubscriptionService_GetIndexComponentsAsync_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetIndexComponentsAsync(System.String,System.Threading.CancellationToken)
+    name: GetIndexComponentsAsync
+    href: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.html#MarketDataCollector_Application_Subscriptions_Services_IndexSubscriptionService_GetIndexComponentsAsync_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Application.Subscriptions.Services
+  commentId: N:MarketDataCollector.Application.Subscriptions.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Subscriptions.Services
+  nameWithType: MarketDataCollector.Application.Subscriptions.Services
+  fullName: MarketDataCollector.Application.Subscriptions.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Services
+    name: Services
+    href: MarketDataCollector.Application.Subscriptions.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Services
+    name: Services
+    href: MarketDataCollector.Application.Subscriptions.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.#ctor
+  href: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.html#MarketDataCollector_Application_Subscriptions_Services_IndexSubscriptionService__ctor_MarketDataCollector_Application_UI_ConfigStore_MarketDataCollector_Application_Subscriptions_Services_MetadataEnrichmentService_Serilog_ILogger_
+  name: IndexSubscriptionService
+  nameWithType: IndexSubscriptionService.IndexSubscriptionService
+  fullName: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.IndexSubscriptionService
+  nameWithType.vb: IndexSubscriptionService.New
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.New
+  name.vb: New
+- uid: MarketDataCollector.Application.UI.ConfigStore
+  commentId: T:MarketDataCollector.Application.UI.ConfigStore
+  parent: MarketDataCollector.Application.UI
+  href: MarketDataCollector.Application.UI.ConfigStore.html
+  name: ConfigStore
+  nameWithType: ConfigStore
+  fullName: MarketDataCollector.Application.UI.ConfigStore
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService
+  commentId: T:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService
+  parent: MarketDataCollector.Application.Subscriptions.Services
+  href: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.html
+  name: MetadataEnrichmentService
+  nameWithType: MetadataEnrichmentService
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService
+- uid: Serilog.ILogger
+  commentId: T:Serilog.ILogger
+  parent: Serilog
+  isExternal: true
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Serilog.ILogger
+- uid: MarketDataCollector.Application.UI
+  commentId: N:MarketDataCollector.Application.UI
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.UI
+  nameWithType: MarketDataCollector.Application.UI
+  fullName: MarketDataCollector.Application.UI
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.UI
+    name: UI
+    href: MarketDataCollector.Application.UI.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.UI
+    name: UI
+    href: MarketDataCollector.Application.UI.html
+- uid: Serilog
+  commentId: N:Serilog
+  isExternal: true
+  name: Serilog
+  nameWithType: Serilog
+  fullName: Serilog
+- uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetAvailableIndices*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetAvailableIndices
+  href: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.html#MarketDataCollector_Application_Subscriptions_Services_IndexSubscriptionService_GetAvailableIndices
+  name: GetAvailableIndices
+  nameWithType: IndexSubscriptionService.GetAvailableIndices
+  fullName: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetAvailableIndices
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Subscriptions.Models.IndexDefinition}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Subscriptions.Models.IndexDefinition}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<IndexDefinition>
+  nameWithType: IReadOnlyList<IndexDefinition>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Subscriptions.Models.IndexDefinition>
+  nameWithType.vb: IReadOnlyList(Of IndexDefinition)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Subscriptions.Models.IndexDefinition)
+  name.vb: IReadOnlyList(Of IndexDefinition)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Application.Subscriptions.Models.IndexDefinition
+    name: IndexDefinition
+    href: MarketDataCollector.Application.Subscriptions.Models.IndexDefinition.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.IndexDefinition
+    name: IndexDefinition
+    href: MarketDataCollector.Application.Subscriptions.Models.IndexDefinition.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetIndexComponentsAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetIndexComponentsAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.html#MarketDataCollector_Application_Subscriptions_Services_IndexSubscriptionService_GetIndexComponentsAsync_System_String_System_Threading_CancellationToken_
+  name: GetIndexComponentsAsync
+  nameWithType: IndexSubscriptionService.GetIndexComponentsAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetIndexComponentsAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.IndexComponents}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.IndexComponents}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IndexComponents>
+  nameWithType: Task<IndexComponents>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Subscriptions.Models.IndexComponents>
+  nameWithType.vb: Task(Of IndexComponents)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Subscriptions.Models.IndexComponents)
+  name.vb: Task(Of IndexComponents)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Subscriptions.Models.IndexComponents
+    name: IndexComponents
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.IndexComponents
+    name: IndexComponents
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.SubscribeToIndexAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.SubscribeToIndexAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.html#MarketDataCollector_Application_Subscriptions_Services_IndexSubscriptionService_SubscribeToIndexAsync_MarketDataCollector_Application_Subscriptions_Models_IndexSubscribeRequest_System_Threading_CancellationToken_
+  name: SubscribeToIndexAsync
+  nameWithType: IndexSubscriptionService.SubscribeToIndexAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.SubscribeToIndexAsync
+- uid: MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeRequest
+  commentId: T:MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeRequest
+  parent: MarketDataCollector.Application.Subscriptions.Models
+  href: MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeRequest.html
+  name: IndexSubscribeRequest
+  nameWithType: IndexSubscribeRequest
+  fullName: MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeRequest
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeResult}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IndexSubscribeResult>
+  nameWithType: Task<IndexSubscribeResult>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeResult>
+  nameWithType.vb: Task(Of IndexSubscribeResult)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeResult)
+  name.vb: Task(Of IndexSubscribeResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeResult
+    name: IndexSubscribeResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.IndexSubscribeResult
+    name: IndexSubscribeResult
+  - name: )
+- uid: MarketDataCollector.Application.Subscriptions.Models
+  commentId: N:MarketDataCollector.Application.Subscriptions.Models
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Subscriptions.Models
+  nameWithType: MarketDataCollector.Application.Subscriptions.Models
+  fullName: MarketDataCollector.Application.Subscriptions.Models
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Models
+    name: Models
+    href: MarketDataCollector.Application.Subscriptions.Models.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Models
+    name: Models
+    href: MarketDataCollector.Application.Subscriptions.Models.html
+- uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.UnsubscribeFromIndexAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.UnsubscribeFromIndexAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.html#MarketDataCollector_Application_Subscriptions_Services_IndexSubscriptionService_UnsubscribeFromIndexAsync_System_String_System_Threading_CancellationToken_
+  name: UnsubscribeFromIndexAsync
+  nameWithType: IndexSubscriptionService.UnsubscribeFromIndexAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.UnsubscribeFromIndexAsync
+- uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetSubscriptionStatusAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetSubscriptionStatusAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.html#MarketDataCollector_Application_Subscriptions_Services_IndexSubscriptionService_GetSubscriptionStatusAsync_System_String_System_Threading_CancellationToken_
+  name: GetSubscriptionStatusAsync
+  nameWithType: IndexSubscriptionService.GetSubscriptionStatusAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionService.GetSubscriptionStatusAsync
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionStatus}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionStatus}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IndexSubscriptionStatus>
+  nameWithType: Task<IndexSubscriptionStatus>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionStatus>
+  nameWithType.vb: Task(Of IndexSubscriptionStatus)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionStatus)
+  name.vb: Task(Of IndexSubscriptionStatus)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionStatus
+    name: IndexSubscriptionStatus
+    href: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionStatus.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionStatus
+    name: IndexSubscriptionStatus
+    href: MarketDataCollector.Application.Subscriptions.Services.IndexSubscriptionStatus.html
+  - name: )

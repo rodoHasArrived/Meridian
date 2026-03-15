@@ -1,0 +1,211 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Config.IConfigValidator
+  commentId: T:MarketDataCollector.Application.Config.IConfigValidator
+  id: IConfigValidator
+  parent: MarketDataCollector.Application.Config
+  children:
+  - MarketDataCollector.Application.Config.IConfigValidator.Validate(MarketDataCollector.Application.Config.AppConfig)
+  langs:
+  - csharp
+  - vb
+  name: IConfigValidator
+  nameWithType: IConfigValidator
+  fullName: MarketDataCollector.Application.Config.IConfigValidator
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Config/IConfigValidator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IConfigValidator
+    path: ../../src/MarketDataCollector.Application/Config/IConfigValidator.cs
+    startLine: 8
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Config
+  summary: >-
+    Abstraction over configuration validation so that validation logic
+
+    can be composed as a pipeline: Field → Semantic → Connectivity.
+  example: []
+  syntax:
+    content: public interface IConfigValidator
+    content.vb: Public Interface IConfigValidator
+  derivedClasses:
+  - MarketDataCollector.Application.Config.ConfigValidationPipeline
+- uid: MarketDataCollector.Application.Config.IConfigValidator.Validate(MarketDataCollector.Application.Config.AppConfig)
+  commentId: M:MarketDataCollector.Application.Config.IConfigValidator.Validate(MarketDataCollector.Application.Config.AppConfig)
+  id: Validate(MarketDataCollector.Application.Config.AppConfig)
+  parent: MarketDataCollector.Application.Config.IConfigValidator
+  langs:
+  - csharp
+  - vb
+  name: Validate(AppConfig)
+  nameWithType: IConfigValidator.Validate(AppConfig)
+  fullName: MarketDataCollector.Application.Config.IConfigValidator.Validate(MarketDataCollector.Application.Config.AppConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Config/IConfigValidator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Validate
+    path: ../../src/MarketDataCollector.Application/Config/IConfigValidator.cs
+    startLine: 13
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Config
+  summary: Validates the given configuration and returns a list of validation results.
+  example: []
+  syntax:
+    content: IReadOnlyList<ConfigValidationResult> Validate(AppConfig config)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Config.ConfigValidationResult}
+    content.vb: Function Validate(config As AppConfig) As IReadOnlyList(Of ConfigValidationResult)
+  overload: MarketDataCollector.Application.Config.IConfigValidator.Validate*
+references:
+- uid: MarketDataCollector.Application.Config
+  commentId: N:MarketDataCollector.Application.Config
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config
+  nameWithType: MarketDataCollector.Application.Config
+  fullName: MarketDataCollector.Application.Config
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+- uid: MarketDataCollector.Application.Config.IConfigValidator.Validate*
+  commentId: Overload:MarketDataCollector.Application.Config.IConfigValidator.Validate
+  href: MarketDataCollector.Application.Config.IConfigValidator.html#MarketDataCollector_Application_Config_IConfigValidator_Validate_MarketDataCollector_Application_Config_AppConfig_
+  name: Validate
+  nameWithType: IConfigValidator.Validate
+  fullName: MarketDataCollector.Application.Config.IConfigValidator.Validate
+- uid: MarketDataCollector.Application.Config.AppConfig
+  commentId: T:MarketDataCollector.Application.Config.AppConfig
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.AppConfig.html
+  name: AppConfig
+  nameWithType: AppConfig
+  fullName: MarketDataCollector.Application.Config.AppConfig
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Config.ConfigValidationResult}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Config.ConfigValidationResult}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<ConfigValidationResult>
+  nameWithType: IReadOnlyList<ConfigValidationResult>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Config.ConfigValidationResult>
+  nameWithType.vb: IReadOnlyList(Of ConfigValidationResult)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Config.ConfigValidationResult)
+  name.vb: IReadOnlyList(Of ConfigValidationResult)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Application.Config.ConfigValidationResult
+    name: ConfigValidationResult
+    href: MarketDataCollector.Application.Config.ConfigValidationResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.ConfigValidationResult
+    name: ConfigValidationResult
+    href: MarketDataCollector.Application.Config.ConfigValidationResult.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

@@ -1,0 +1,880 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+  commentId: T:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+  id: HttpHandleResult
+  parent: MarketDataCollector.Infrastructure.Resilience
+  children:
+  - MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Nullable{System.TimeSpan},System.String)
+  - MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.AuthFailure
+  - MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.Error(System.String)
+  - MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.ErrorMessage
+  - MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsAuthError
+  - MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsNotFound
+  - MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsRateLimited
+  - MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsSuccess
+  - MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.NotFound
+  - MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.RateLimited(System.Nullable{System.TimeSpan})
+  - MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.RetryAfter
+  - MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.Success
+  langs:
+  - csharp
+  - vb
+  name: HttpHandleResult
+  nameWithType: HttpHandleResult
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HttpHandleResult
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+    startLine: 312
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: HTTP response handling result for providers.
+  example: []
+  syntax:
+    content: 'public sealed record HttpHandleResult : IEquatable<HttpHandleResult>'
+    content.vb: Public NotInheritable Class HttpHandleResult Implements IEquatable(Of HttpHandleResult)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Infrastructure.Resilience.HttpHandleResult}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Nullable{System.TimeSpan},System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Nullable{System.TimeSpan},System.String)
+  id: '#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Nullable{System.TimeSpan},System.String)'
+  parent: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+  langs:
+  - csharp
+  - vb
+  name: HttpHandleResult(bool, bool, bool, bool, TimeSpan?, string?)
+  nameWithType: HttpHandleResult.HttpHandleResult(bool, bool, bool, bool, TimeSpan?, string?)
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.HttpHandleResult(bool, bool, bool, bool, System.TimeSpan?, string?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+    startLine: 312
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: HTTP response handling result for providers.
+  example: []
+  syntax:
+    content: public HttpHandleResult(bool IsSuccess, bool IsNotFound = false, bool IsRateLimited = false, bool IsAuthError = false, TimeSpan? RetryAfter = null, string? ErrorMessage = null)
+    parameters:
+    - id: IsSuccess
+      type: System.Boolean
+    - id: IsNotFound
+      type: System.Boolean
+    - id: IsRateLimited
+      type: System.Boolean
+    - id: IsAuthError
+      type: System.Boolean
+    - id: RetryAfter
+      type: System.Nullable{System.TimeSpan}
+    - id: ErrorMessage
+      type: System.String
+    content.vb: Public Sub New(IsSuccess As Boolean, IsNotFound As Boolean = False, IsRateLimited As Boolean = False, IsAuthError As Boolean = False, RetryAfter As TimeSpan? = Nothing, ErrorMessage As String = Nothing)
+  overload: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.#ctor*
+  nameWithType.vb: HttpHandleResult.New(Boolean, Boolean, Boolean, Boolean, TimeSpan?, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.New(Boolean, Boolean, Boolean, Boolean, System.TimeSpan?, String)
+  name.vb: New(Boolean, Boolean, Boolean, Boolean, TimeSpan?, String)
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsSuccess
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsSuccess
+  id: IsSuccess
+  parent: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+  langs:
+  - csharp
+  - vb
+  name: IsSuccess
+  nameWithType: HttpHandleResult.IsSuccess
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsSuccess
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsSuccess
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+    startLine: 313
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  syntax:
+    content: public bool IsSuccess { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsSuccess As Boolean
+  overload: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsSuccess*
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsNotFound
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsNotFound
+  id: IsNotFound
+  parent: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+  langs:
+  - csharp
+  - vb
+  name: IsNotFound
+  nameWithType: HttpHandleResult.IsNotFound
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsNotFound
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsNotFound
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+    startLine: 314
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  syntax:
+    content: public bool IsNotFound { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsNotFound As Boolean
+  overload: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsNotFound*
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsRateLimited
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsRateLimited
+  id: IsRateLimited
+  parent: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+  langs:
+  - csharp
+  - vb
+  name: IsRateLimited
+  nameWithType: HttpHandleResult.IsRateLimited
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsRateLimited
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsRateLimited
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+    startLine: 315
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  syntax:
+    content: public bool IsRateLimited { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsRateLimited As Boolean
+  overload: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsRateLimited*
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsAuthError
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsAuthError
+  id: IsAuthError
+  parent: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+  langs:
+  - csharp
+  - vb
+  name: IsAuthError
+  nameWithType: HttpHandleResult.IsAuthError
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsAuthError
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsAuthError
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+    startLine: 316
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  syntax:
+    content: public bool IsAuthError { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsAuthError As Boolean
+  overload: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsAuthError*
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.RetryAfter
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.RetryAfter
+  id: RetryAfter
+  parent: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+  langs:
+  - csharp
+  - vb
+  name: RetryAfter
+  nameWithType: HttpHandleResult.RetryAfter
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.RetryAfter
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RetryAfter
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+    startLine: 317
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  syntax:
+    content: public TimeSpan? RetryAfter { get; init; }
+    parameters: []
+    return:
+      type: System.Nullable{System.TimeSpan}
+    content.vb: Public Property RetryAfter As TimeSpan?
+  overload: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.RetryAfter*
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.ErrorMessage
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.ErrorMessage
+  id: ErrorMessage
+  parent: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+  langs:
+  - csharp
+  - vb
+  name: ErrorMessage
+  nameWithType: HttpHandleResult.ErrorMessage
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.ErrorMessage
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ErrorMessage
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+    startLine: 318
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  syntax:
+    content: public string? ErrorMessage { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ErrorMessage As String
+  overload: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.ErrorMessage*
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.Success
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.Success
+  id: Success
+  parent: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+  langs:
+  - csharp
+  - vb
+  name: Success
+  nameWithType: HttpHandleResult.Success
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.Success
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Success
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+    startLine: 321
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  syntax:
+    content: public static HttpHandleResult Success { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+    content.vb: Public Shared ReadOnly Property Success As HttpHandleResult
+  overload: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.Success*
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.NotFound
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.NotFound
+  id: NotFound
+  parent: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+  langs:
+  - csharp
+  - vb
+  name: NotFound
+  nameWithType: HttpHandleResult.NotFound
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.NotFound
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: NotFound
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+    startLine: 322
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  syntax:
+    content: public static HttpHandleResult NotFound { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+    content.vb: Public Shared ReadOnly Property NotFound As HttpHandleResult
+  overload: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.NotFound*
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.AuthFailure
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.AuthFailure
+  id: AuthFailure
+  parent: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+  langs:
+  - csharp
+  - vb
+  name: AuthFailure
+  nameWithType: HttpHandleResult.AuthFailure
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.AuthFailure
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AuthFailure
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+    startLine: 323
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  syntax:
+    content: public static HttpHandleResult AuthFailure { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+    content.vb: Public Shared ReadOnly Property AuthFailure As HttpHandleResult
+  overload: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.AuthFailure*
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.RateLimited(System.Nullable{System.TimeSpan})
+  commentId: M:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.RateLimited(System.Nullable{System.TimeSpan})
+  id: RateLimited(System.Nullable{System.TimeSpan})
+  parent: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+  langs:
+  - csharp
+  - vb
+  name: RateLimited(TimeSpan?)
+  nameWithType: HttpHandleResult.RateLimited(TimeSpan?)
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.RateLimited(System.TimeSpan?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RateLimited
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+    startLine: 325
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  syntax:
+    content: public static HttpHandleResult RateLimited(TimeSpan? retryAfter = null)
+    parameters:
+    - id: retryAfter
+      type: System.Nullable{System.TimeSpan}
+    return:
+      type: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+    content.vb: Public Shared Function RateLimited(retryAfter As TimeSpan? = Nothing) As HttpHandleResult
+  overload: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.RateLimited*
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.Error(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.Error(System.String)
+  id: Error(System.String)
+  parent: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+  langs:
+  - csharp
+  - vb
+  name: Error(string)
+  nameWithType: HttpHandleResult.Error(string)
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.Error(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Error
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/HttpResiliencePolicy.cs
+    startLine: 328
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  syntax:
+    content: public static HttpHandleResult Error(string message)
+    parameters:
+    - id: message
+      type: System.String
+    return:
+      type: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+    content.vb: Public Shared Function [Error](message As String) As HttpHandleResult
+  overload: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.Error*
+  nameWithType.vb: HttpHandleResult.Error(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.Error(String)
+  name.vb: Error(String)
+references:
+- uid: MarketDataCollector.Infrastructure.Resilience
+  commentId: N:MarketDataCollector.Infrastructure.Resilience
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Resilience
+  nameWithType: MarketDataCollector.Infrastructure.Resilience
+  fullName: MarketDataCollector.Infrastructure.Resilience
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Resilience
+    name: Resilience
+    href: MarketDataCollector.Infrastructure.Resilience.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Resilience
+    name: Resilience
+    href: MarketDataCollector.Infrastructure.Resilience.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Infrastructure.Resilience.HttpHandleResult}
+  commentId: T:System.IEquatable{MarketDataCollector.Infrastructure.Resilience.HttpHandleResult}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<HttpHandleResult>
+  nameWithType: IEquatable<HttpHandleResult>
+  fullName: System.IEquatable<MarketDataCollector.Infrastructure.Resilience.HttpHandleResult>
+  nameWithType.vb: IEquatable(Of HttpHandleResult)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Infrastructure.Resilience.HttpHandleResult)
+  name.vb: IEquatable(Of HttpHandleResult)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+    name: HttpHandleResult
+    href: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+    name: HttpHandleResult
+    href: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.#ctor*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.#ctor
+  href: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.html#MarketDataCollector_Infrastructure_Resilience_HttpHandleResult__ctor_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Nullable_System_TimeSpan__System_String_
+  name: HttpHandleResult
+  nameWithType: HttpHandleResult.HttpHandleResult
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.HttpHandleResult
+  nameWithType.vb: HttpHandleResult.New
+  fullName.vb: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.New
+  name.vb: New
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Nullable{System.TimeSpan}
+  commentId: T:System.Nullable{System.TimeSpan}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan?
+  nameWithType: TimeSpan?
+  fullName: System.TimeSpan?
+  spec.csharp:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+  spec.vb:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsSuccess*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsSuccess
+  href: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.html#MarketDataCollector_Infrastructure_Resilience_HttpHandleResult_IsSuccess
+  name: IsSuccess
+  nameWithType: HttpHandleResult.IsSuccess
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsSuccess
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsNotFound*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsNotFound
+  href: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.html#MarketDataCollector_Infrastructure_Resilience_HttpHandleResult_IsNotFound
+  name: IsNotFound
+  nameWithType: HttpHandleResult.IsNotFound
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsNotFound
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsRateLimited*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsRateLimited
+  href: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.html#MarketDataCollector_Infrastructure_Resilience_HttpHandleResult_IsRateLimited
+  name: IsRateLimited
+  nameWithType: HttpHandleResult.IsRateLimited
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsRateLimited
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsAuthError*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsAuthError
+  href: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.html#MarketDataCollector_Infrastructure_Resilience_HttpHandleResult_IsAuthError
+  name: IsAuthError
+  nameWithType: HttpHandleResult.IsAuthError
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.IsAuthError
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.RetryAfter*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.RetryAfter
+  href: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.html#MarketDataCollector_Infrastructure_Resilience_HttpHandleResult_RetryAfter
+  name: RetryAfter
+  nameWithType: HttpHandleResult.RetryAfter
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.RetryAfter
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.ErrorMessage*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.ErrorMessage
+  href: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.html#MarketDataCollector_Infrastructure_Resilience_HttpHandleResult_ErrorMessage
+  name: ErrorMessage
+  nameWithType: HttpHandleResult.ErrorMessage
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.ErrorMessage
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.Success*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.Success
+  href: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.html#MarketDataCollector_Infrastructure_Resilience_HttpHandleResult_Success
+  name: Success
+  nameWithType: HttpHandleResult.Success
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.Success
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+  commentId: T:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+  parent: MarketDataCollector.Infrastructure.Resilience
+  href: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.html
+  name: HttpHandleResult
+  nameWithType: HttpHandleResult
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.NotFound*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.NotFound
+  href: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.html#MarketDataCollector_Infrastructure_Resilience_HttpHandleResult_NotFound
+  name: NotFound
+  nameWithType: HttpHandleResult.NotFound
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.NotFound
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.AuthFailure*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.AuthFailure
+  href: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.html#MarketDataCollector_Infrastructure_Resilience_HttpHandleResult_AuthFailure
+  name: AuthFailure
+  nameWithType: HttpHandleResult.AuthFailure
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.AuthFailure
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.RateLimited*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.RateLimited
+  href: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.html#MarketDataCollector_Infrastructure_Resilience_HttpHandleResult_RateLimited_System_Nullable_System_TimeSpan__
+  name: RateLimited
+  nameWithType: HttpHandleResult.RateLimited
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.RateLimited
+- uid: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.Error*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.Error
+  href: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.html#MarketDataCollector_Infrastructure_Resilience_HttpHandleResult_Error_System_String_
+  name: Error
+  nameWithType: HttpHandleResult.Error
+  fullName: MarketDataCollector.Infrastructure.Resilience.HttpHandleResult.Error

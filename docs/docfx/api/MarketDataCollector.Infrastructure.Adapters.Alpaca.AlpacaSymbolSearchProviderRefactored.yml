@@ -1,0 +1,2230 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  id: AlpacaSymbolSearchProviderRefactored
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  children:
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.#ctor(System.String,System.String,System.Net.Http.HttpClient,Serilog.ILogger)
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.AlternateApiKeyEnvVars
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ApiKeyEnvVar
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ApplyFilters(System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult},System.String,System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BaseUrl
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildDetailsUrl(System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildSearchUrl(System.String,System.String,System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ConfigureHttpClientHeaders
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeSearchResults(System.String,System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DisplayName
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.HasValidCredentials
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.HttpClientName
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.MaxRequestsPerWindow
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.MinRequestDelay
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.Name
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.Priority
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.RateLimitWindow
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.SupportedAssetTypes
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.SupportedExchanges
+  langs:
+  - csharp
+  - vb
+  name: AlpacaSymbolSearchProviderRefactored
+  nameWithType: AlpacaSymbolSearchProviderRefactored
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AlpacaSymbolSearchProviderRefactored
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 24
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: >-
+    Refactored symbol search provider using Alpaca Markets API, now extending BaseSymbolSearchProvider.
+
+    Provides asset search for US equities with trading status information.
+  remarks: >-
+    This refactored version eliminates ~150 lines of boilerplate code by leveraging
+
+    the BaseSymbolSearchProvider abstract class for common functionality.
+
+
+    Key differences from original:
+
+    - Uses base class for HTTP client, rate limiting, and disposal
+
+    - Cleaner separation between API-specific and common logic
+
+    - Consistent error handling via base class
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-001", "Alpaca symbol search provider implementation")]
+
+      public sealed class AlpacaSymbolSearchProviderRefactored : BaseSymbolSearchProvider, IFilterableSymbolSearchProvider, ISymbolSearchProvider, IProviderMetadata, IDisposable
+    content.vb: >-
+      <ImplementsAdr("ADR-001", "Alpaca symbol search provider implementation")>
+
+      Public NotInheritable Class AlpacaSymbolSearchProviderRefactored Inherits BaseSymbolSearchProvider Implements IFilterableSymbolSearchProvider, ISymbolSearchProvider, IProviderMetadata, IDisposable
+  inheritance:
+  - System.Object
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  implements:
+  - MarketDataCollector.Infrastructure.Adapters.Core.IFilterableSymbolSearchProvider
+  - MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  - System.IDisposable
+  inheritedMembers:
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.String,System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.GetDetailsAsync(System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Dispose
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-001
+    - type: System.String
+      value: Alpaca symbol search provider implementation
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.Name
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.Name
+  id: Name
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: AlpacaSymbolSearchProviderRefactored.Name
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.Name
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Name
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 29
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Unique identifier for the provider (e.g., "alpaca", "finnhub").
+  example: []
+  syntax:
+    content: public override string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Overrides ReadOnly Property Name As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Name
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.Name*
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DisplayName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DisplayName
+  id: DisplayName
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: DisplayName
+  nameWithType: AlpacaSymbolSearchProviderRefactored.DisplayName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DisplayName
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisplayName
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 30
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Human-readable display name for the provider.
+  example: []
+  syntax:
+    content: public override string DisplayName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Overrides ReadOnly Property DisplayName As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DisplayName
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DisplayName*
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.Priority
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.Priority
+  id: Priority
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: Priority
+  nameWithType: AlpacaSymbolSearchProviderRefactored.Priority
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.Priority
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Priority
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 31
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: >-
+    Priority for this provider (lower = higher priority).
+
+    Default is 50.
+  example: []
+  syntax:
+    content: public override int Priority { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Overrides ReadOnly Property Priority As Integer
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Priority
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.Priority*
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.HttpClientName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.HttpClientName
+  id: HttpClientName
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: HttpClientName
+  nameWithType: AlpacaSymbolSearchProviderRefactored.HttpClientName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.HttpClientName
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HttpClientName
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 33
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Named HTTP client identifier from HttpClientNames.
+  example: []
+  syntax:
+    content: protected override string HttpClientName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Protected Overrides ReadOnly Property HttpClientName As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.HttpClientName
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.HttpClientName*
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BaseUrl
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BaseUrl
+  id: BaseUrl
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: BaseUrl
+  nameWithType: AlpacaSymbolSearchProviderRefactored.BaseUrl
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BaseUrl
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BaseUrl
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 34
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Base URL for the provider's API.
+  example: []
+  syntax:
+    content: protected override string BaseUrl { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Protected Overrides ReadOnly Property BaseUrl As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BaseUrl
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BaseUrl*
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ApiKeyEnvVar
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ApiKeyEnvVar
+  id: ApiKeyEnvVar
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: ApiKeyEnvVar
+  nameWithType: AlpacaSymbolSearchProviderRefactored.ApiKeyEnvVar
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ApiKeyEnvVar
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ApiKeyEnvVar
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 35
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Environment variable name for the API key.
+  example: []
+  syntax:
+    content: protected override string ApiKeyEnvVar { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Protected Overrides ReadOnly Property ApiKeyEnvVar As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ApiKeyEnvVar
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ApiKeyEnvVar*
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.AlternateApiKeyEnvVars
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.AlternateApiKeyEnvVars
+  id: AlternateApiKeyEnvVars
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: AlternateApiKeyEnvVars
+  nameWithType: AlpacaSymbolSearchProviderRefactored.AlternateApiKeyEnvVars
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.AlternateApiKeyEnvVars
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AlternateApiKeyEnvVars
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 36
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Alternate environment variable names for the API key (using __ notation).
+  example: []
+  syntax:
+    content: protected override IReadOnlyList<string> AlternateApiKeyEnvVars { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Protected Overrides ReadOnly Property AlternateApiKeyEnvVars As IReadOnlyList(Of String)
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.AlternateApiKeyEnvVars
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.AlternateApiKeyEnvVars*
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.MaxRequestsPerWindow
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.MaxRequestsPerWindow
+  id: MaxRequestsPerWindow
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: MaxRequestsPerWindow
+  nameWithType: AlpacaSymbolSearchProviderRefactored.MaxRequestsPerWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.MaxRequestsPerWindow
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MaxRequestsPerWindow
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 38
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Maximum requests allowed per rate limit window.
+  example: []
+  syntax:
+    content: protected override int MaxRequestsPerWindow { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Protected Overrides ReadOnly Property MaxRequestsPerWindow As Integer
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.MaxRequestsPerWindow
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.MaxRequestsPerWindow*
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.RateLimitWindow
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.RateLimitWindow
+  id: RateLimitWindow
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: RateLimitWindow
+  nameWithType: AlpacaSymbolSearchProviderRefactored.RateLimitWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.RateLimitWindow
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RateLimitWindow
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 39
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Duration of the rate limit window.
+  example: []
+  syntax:
+    content: protected override TimeSpan RateLimitWindow { get; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Protected Overrides ReadOnly Property RateLimitWindow As TimeSpan
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.RateLimitWindow
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.RateLimitWindow*
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.MinRequestDelay
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.MinRequestDelay
+  id: MinRequestDelay
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: MinRequestDelay
+  nameWithType: AlpacaSymbolSearchProviderRefactored.MinRequestDelay
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.MinRequestDelay
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MinRequestDelay
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 40
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Minimum delay between requests.
+  example: []
+  syntax:
+    content: protected override TimeSpan MinRequestDelay { get; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Protected Overrides ReadOnly Property MinRequestDelay As TimeSpan
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.MinRequestDelay
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.MinRequestDelay*
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.SupportedAssetTypes
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.SupportedAssetTypes
+  id: SupportedAssetTypes
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: SupportedAssetTypes
+  nameWithType: AlpacaSymbolSearchProviderRefactored.SupportedAssetTypes
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.SupportedAssetTypes
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SupportedAssetTypes
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 42
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Supported asset types for filtering.
+  example: []
+  syntax:
+    content: public override IReadOnlyList<string> SupportedAssetTypes { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public Overrides ReadOnly Property SupportedAssetTypes As IReadOnlyList(Of String)
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SupportedAssetTypes
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.SupportedAssetTypes*
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.SupportedExchanges
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.SupportedExchanges
+  id: SupportedExchanges
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: SupportedExchanges
+  nameWithType: AlpacaSymbolSearchProviderRefactored.SupportedExchanges
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.SupportedExchanges
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SupportedExchanges
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 43
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Supported exchanges for filtering.
+  example: []
+  syntax:
+    content: public override IReadOnlyList<string> SupportedExchanges { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public Overrides ReadOnly Property SupportedExchanges As IReadOnlyList(Of String)
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SupportedExchanges
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.SupportedExchanges*
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.#ctor(System.String,System.String,System.Net.Http.HttpClient,Serilog.ILogger)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.#ctor(System.String,System.String,System.Net.Http.HttpClient,Serilog.ILogger)
+  id: '#ctor(System.String,System.String,System.Net.Http.HttpClient,Serilog.ILogger)'
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: AlpacaSymbolSearchProviderRefactored(string?, string?, HttpClient?, ILogger?)
+  nameWithType: AlpacaSymbolSearchProviderRefactored.AlpacaSymbolSearchProviderRefactored(string?, string?, HttpClient?, ILogger?)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.AlpacaSymbolSearchProviderRefactored(string?, string?, System.Net.Http.HttpClient?, Serilog.ILogger?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 45
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  syntax:
+    content: public AlpacaSymbolSearchProviderRefactored(string? keyId = null, string? secretKey = null, HttpClient? httpClient = null, ILogger? log = null)
+    parameters:
+    - id: keyId
+      type: System.String
+    - id: secretKey
+      type: System.String
+    - id: httpClient
+      type: System.Net.Http.HttpClient
+    - id: log
+      type: Serilog.ILogger
+    content.vb: Public Sub New(keyId As String = Nothing, secretKey As String = Nothing, httpClient As HttpClient = Nothing, log As ILogger = Nothing)
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.#ctor*
+  nameWithType.vb: AlpacaSymbolSearchProviderRefactored.New(String, String, HttpClient, ILogger)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.New(String, String, System.Net.Http.HttpClient, Serilog.ILogger)
+  name.vb: New(String, String, HttpClient, ILogger)
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.HasValidCredentials
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.HasValidCredentials
+  id: HasValidCredentials
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: HasValidCredentials()
+  nameWithType: AlpacaSymbolSearchProviderRefactored.HasValidCredentials()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.HasValidCredentials()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HasValidCredentials
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 57
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Check if the provider has valid credentials configured.
+  example: []
+  syntax:
+    content: protected override bool HasValidCredentials()
+    return:
+      type: System.Boolean
+    content.vb: Protected Overrides Function HasValidCredentials() As Boolean
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.HasValidCredentials
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.HasValidCredentials*
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ConfigureHttpClientHeaders
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ConfigureHttpClientHeaders
+  id: ConfigureHttpClientHeaders
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: ConfigureHttpClientHeaders()
+  nameWithType: AlpacaSymbolSearchProviderRefactored.ConfigureHttpClientHeaders()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ConfigureHttpClientHeaders()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConfigureHttpClientHeaders
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 62
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Configure HTTP client headers. Override to add provider-specific headers.
+  example: []
+  syntax:
+    content: protected override void ConfigureHttpClientHeaders()
+    content.vb: Protected Overrides Sub ConfigureHttpClientHeaders()
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ConfigureHttpClientHeaders
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ConfigureHttpClientHeaders*
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildSearchUrl(System.String,System.String,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildSearchUrl(System.String,System.String,System.String)
+  id: BuildSearchUrl(System.String,System.String,System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: BuildSearchUrl(string, string?, string?)
+  nameWithType: AlpacaSymbolSearchProviderRefactored.BuildSearchUrl(string, string?, string?)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildSearchUrl(string, string?, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BuildSearchUrl
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 72
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Build the URL for a search request.
+  example: []
+  syntax:
+    content: protected override string BuildSearchUrl(string query, string? assetType, string? exchange)
+    parameters:
+    - id: query
+      type: System.String
+      description: Search query.
+    - id: assetType
+      type: System.String
+      description: Optional asset type filter.
+    - id: exchange
+      type: System.String
+      description: Optional exchange filter.
+    return:
+      type: System.String
+      description: Complete URL for the search request.
+    content.vb: Protected Overrides Function BuildSearchUrl(query As String, assetType As String, exchange As String) As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildSearchUrl(System.String,System.String,System.String)
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildSearchUrl*
+  nameWithType.vb: AlpacaSymbolSearchProviderRefactored.BuildSearchUrl(String, String, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildSearchUrl(String, String, String)
+  name.vb: BuildSearchUrl(String, String, String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildDetailsUrl(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildDetailsUrl(System.String)
+  id: BuildDetailsUrl(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: BuildDetailsUrl(string)
+  nameWithType: AlpacaSymbolSearchProviderRefactored.BuildDetailsUrl(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildDetailsUrl(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BuildDetailsUrl
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 99
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Build the URL for a symbol details request.
+  example: []
+  syntax:
+    content: protected override string BuildDetailsUrl(string symbol)
+    parameters:
+    - id: symbol
+      type: System.String
+      description: Normalized symbol.
+    return:
+      type: System.String
+      description: Complete URL for the details request.
+    content.vb: Protected Overrides Function BuildDetailsUrl(symbol As String) As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildDetailsUrl(System.String)
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildDetailsUrl*
+  nameWithType.vb: AlpacaSymbolSearchProviderRefactored.BuildDetailsUrl(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildDetailsUrl(String)
+  name.vb: BuildDetailsUrl(String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeSearchResults(System.String,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeSearchResults(System.String,System.String)
+  id: DeserializeSearchResults(System.String,System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: DeserializeSearchResults(string, string)
+  nameWithType: AlpacaSymbolSearchProviderRefactored.DeserializeSearchResults(string, string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeSearchResults(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DeserializeSearchResults
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 104
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Deserialize the search response JSON into results.
+  example: []
+  syntax:
+    content: protected override IEnumerable<SymbolSearchResult> DeserializeSearchResults(string json, string query)
+    parameters:
+    - id: json
+      type: System.String
+      description: Response JSON.
+    - id: query
+      type: System.String
+      description: Original search query (for match scoring).
+    return:
+      type: System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult}
+      description: List of search results.
+    content.vb: Protected Overrides Function DeserializeSearchResults(json As String, query As String) As IEnumerable(Of SymbolSearchResult)
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeSearchResults(System.String,System.String)
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeSearchResults*
+  nameWithType.vb: AlpacaSymbolSearchProviderRefactored.DeserializeSearchResults(String, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeSearchResults(String, String)
+  name.vb: DeserializeSearchResults(String, String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+  id: DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: DeserializeDetailsAsync(string, string, CancellationToken)
+  nameWithType: AlpacaSymbolSearchProviderRefactored.DeserializeDetailsAsync(string, string, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeDetailsAsync(string, string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DeserializeDetailsAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 129
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Deserialize the details response JSON into a SymbolDetails object.
+  example: []
+  syntax:
+    content: protected override Task<SymbolDetails?> DeserializeDetailsAsync(string json, string symbol, CancellationToken ct)
+    parameters:
+    - id: json
+      type: System.String
+      description: Response JSON.
+    - id: symbol
+      type: System.String
+      description: Normalized symbol.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.SymbolDetails}
+      description: Symbol details or null if not found.
+    content.vb: Protected Overrides Function DeserializeDetailsAsync(json As String, symbol As String, ct As CancellationToken) As Task(Of SymbolDetails)
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeDetailsAsync*
+  nameWithType.vb: AlpacaSymbolSearchProviderRefactored.DeserializeDetailsAsync(String, String, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeDetailsAsync(String, String, System.Threading.CancellationToken)
+  name.vb: DeserializeDetailsAsync(String, String, CancellationToken)
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ApplyFilters(System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult},System.String,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ApplyFilters(System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult},System.String,System.String)
+  id: ApplyFilters(System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult},System.String,System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: ApplyFilters(IEnumerable<SymbolSearchResult>, string?, string?)
+  nameWithType: AlpacaSymbolSearchProviderRefactored.ApplyFilters(IEnumerable<SymbolSearchResult>, string?, string?)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ApplyFilters(System.Collections.Generic.IEnumerable<MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult>, string?, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ApplyFilters
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Alpaca/AlpacaSymbolSearchProviderRefactored.cs
+    startLine: 172
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  summary: Alpaca supports filtering natively via URL parameters, so we skip client-side filtering.
+  example: []
+  syntax:
+    content: protected override IEnumerable<SymbolSearchResult> ApplyFilters(IEnumerable<SymbolSearchResult> results, string? assetType, string? exchange)
+    parameters:
+    - id: results
+      type: System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult}
+    - id: assetType
+      type: System.String
+    - id: exchange
+      type: System.String
+    return:
+      type: System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult}
+    content.vb: Protected Overrides Function ApplyFilters(results As IEnumerable(Of SymbolSearchResult), assetType As String, exchange As String) As IEnumerable(Of SymbolSearchResult)
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ApplyFilters(System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult},System.String,System.String)
+  overload: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ApplyFilters*
+  nameWithType.vb: AlpacaSymbolSearchProviderRefactored.ApplyFilters(IEnumerable(Of SymbolSearchResult), String, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ApplyFilters(System.Collections.Generic.IEnumerable(Of MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult), String, String)
+  name.vb: ApplyFilters(IEnumerable(Of SymbolSearchResult), String, String)
+references:
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Alpaca
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Alpaca
+    name: Alpaca
+    href: MarketDataCollector.Infrastructure.Adapters.Alpaca.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Alpaca
+    name: Alpaca
+    href: MarketDataCollector.Infrastructure.Adapters.Alpaca.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html
+  name: BaseSymbolSearchProvider
+  nameWithType: BaseSymbolSearchProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IFilterableSymbolSearchProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.IFilterableSymbolSearchProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IFilterableSymbolSearchProvider.html
+  name: IFilterableSymbolSearchProvider
+  nameWithType: IFilterableSymbolSearchProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IFilterableSymbolSearchProvider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.html
+  name: ISymbolSearchProvider
+  nameWithType: ISymbolSearchProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html
+  name: IProviderMetadata
+  nameWithType: IProviderMetadata
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_IsAvailableAsync_System_Threading_CancellationToken_
+  name: IsAvailableAsync(CancellationToken)
+  nameWithType: BaseSymbolSearchProvider.IsAvailableAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.IsAvailableAsync(System.Threading.CancellationToken)
+    name: IsAvailableAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_IsAvailableAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.IsAvailableAsync(System.Threading.CancellationToken)
+    name: IsAvailableAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_IsAvailableAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_SearchAsync_System_String_System_Int32_System_Threading_CancellationToken_
+  name: SearchAsync(string, int, CancellationToken)
+  nameWithType: BaseSymbolSearchProvider.SearchAsync(string, int, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(string, int, System.Threading.CancellationToken)
+  nameWithType.vb: BaseSymbolSearchProvider.SearchAsync(String, Integer, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(String, Integer, System.Threading.CancellationToken)
+  name.vb: SearchAsync(String, Integer, CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.Threading.CancellationToken)
+    name: SearchAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_SearchAsync_System_String_System_Int32_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.Threading.CancellationToken)
+    name: SearchAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_SearchAsync_System_String_System_Int32_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.String,System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_SearchAsync_System_String_System_Int32_System_String_System_String_System_Threading_CancellationToken_
+  name: SearchAsync(string, int, string, string, CancellationToken)
+  nameWithType: BaseSymbolSearchProvider.SearchAsync(string, int, string, string, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(string, int, string, string, System.Threading.CancellationToken)
+  nameWithType.vb: BaseSymbolSearchProvider.SearchAsync(String, Integer, String, String, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(String, Integer, String, String, System.Threading.CancellationToken)
+  name.vb: SearchAsync(String, Integer, String, String, CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.String,System.String,System.Threading.CancellationToken)
+    name: SearchAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_SearchAsync_System_String_System_Int32_System_String_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.String,System.String,System.Threading.CancellationToken)
+    name: SearchAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_SearchAsync_System_String_System_Int32_System_String_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.GetDetailsAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.GetDetailsAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_GetDetailsAsync_System_String_System_Threading_CancellationToken_
+  name: GetDetailsAsync(string, CancellationToken)
+  nameWithType: BaseSymbolSearchProvider.GetDetailsAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.GetDetailsAsync(string, System.Threading.CancellationToken)
+  nameWithType.vb: BaseSymbolSearchProvider.GetDetailsAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.GetDetailsAsync(String, System.Threading.CancellationToken)
+  name.vb: GetDetailsAsync(String, CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.GetDetailsAsync(System.String,System.Threading.CancellationToken)
+    name: GetDetailsAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_GetDetailsAsync_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.GetDetailsAsync(System.String,System.Threading.CancellationToken)
+    name: GetDetailsAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_GetDetailsAsync_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Dispose
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Dispose
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_Dispose
+  name: Dispose()
+  nameWithType: BaseSymbolSearchProvider.Dispose()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Dispose()
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Dispose
+    name: Dispose
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Dispose
+    name: Dispose
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_Dispose
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Infrastructure.Adapters.Core
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Core
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Core
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Name
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Name
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_Name
+  name: Name
+  nameWithType: BaseSymbolSearchProvider.Name
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Name
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.Name*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.Name
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_Name
+  name: Name
+  nameWithType: AlpacaSymbolSearchProviderRefactored.Name
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DisplayName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DisplayName
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_DisplayName
+  name: DisplayName
+  nameWithType: BaseSymbolSearchProvider.DisplayName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DisplayName
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DisplayName*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DisplayName
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_DisplayName
+  name: DisplayName
+  nameWithType: AlpacaSymbolSearchProviderRefactored.DisplayName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DisplayName
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Priority
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Priority
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_Priority
+  name: Priority
+  nameWithType: BaseSymbolSearchProvider.Priority
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Priority
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.Priority*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.Priority
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_Priority
+  name: Priority
+  nameWithType: AlpacaSymbolSearchProviderRefactored.Priority
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.Priority
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.HttpClientName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.HttpClientName
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_HttpClientName
+  name: HttpClientName
+  nameWithType: BaseSymbolSearchProvider.HttpClientName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.HttpClientName
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.HttpClientName*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.HttpClientName
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_HttpClientName
+  name: HttpClientName
+  nameWithType: AlpacaSymbolSearchProviderRefactored.HttpClientName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.HttpClientName
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BaseUrl
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BaseUrl
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_BaseUrl
+  name: BaseUrl
+  nameWithType: BaseSymbolSearchProvider.BaseUrl
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BaseUrl
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BaseUrl*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BaseUrl
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_BaseUrl
+  name: BaseUrl
+  nameWithType: AlpacaSymbolSearchProviderRefactored.BaseUrl
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BaseUrl
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ApiKeyEnvVar
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ApiKeyEnvVar
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_ApiKeyEnvVar
+  name: ApiKeyEnvVar
+  nameWithType: BaseSymbolSearchProvider.ApiKeyEnvVar
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ApiKeyEnvVar
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ApiKeyEnvVar*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ApiKeyEnvVar
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_ApiKeyEnvVar
+  name: ApiKeyEnvVar
+  nameWithType: AlpacaSymbolSearchProviderRefactored.ApiKeyEnvVar
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ApiKeyEnvVar
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.AlternateApiKeyEnvVars
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.AlternateApiKeyEnvVars
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_AlternateApiKeyEnvVars
+  name: AlternateApiKeyEnvVars
+  nameWithType: BaseSymbolSearchProvider.AlternateApiKeyEnvVars
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.AlternateApiKeyEnvVars
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.AlternateApiKeyEnvVars*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.AlternateApiKeyEnvVars
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_AlternateApiKeyEnvVars
+  name: AlternateApiKeyEnvVars
+  nameWithType: AlpacaSymbolSearchProviderRefactored.AlternateApiKeyEnvVars
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.AlternateApiKeyEnvVars
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.MaxRequestsPerWindow
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.MaxRequestsPerWindow
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_MaxRequestsPerWindow
+  name: MaxRequestsPerWindow
+  nameWithType: BaseSymbolSearchProvider.MaxRequestsPerWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.MaxRequestsPerWindow
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.MaxRequestsPerWindow*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.MaxRequestsPerWindow
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_MaxRequestsPerWindow
+  name: MaxRequestsPerWindow
+  nameWithType: AlpacaSymbolSearchProviderRefactored.MaxRequestsPerWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.MaxRequestsPerWindow
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.RateLimitWindow
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.RateLimitWindow
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_RateLimitWindow
+  name: RateLimitWindow
+  nameWithType: BaseSymbolSearchProvider.RateLimitWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.RateLimitWindow
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.RateLimitWindow*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.RateLimitWindow
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_RateLimitWindow
+  name: RateLimitWindow
+  nameWithType: AlpacaSymbolSearchProviderRefactored.RateLimitWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.RateLimitWindow
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.MinRequestDelay
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.MinRequestDelay
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_MinRequestDelay
+  name: MinRequestDelay
+  nameWithType: BaseSymbolSearchProvider.MinRequestDelay
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.MinRequestDelay
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.MinRequestDelay*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.MinRequestDelay
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_MinRequestDelay
+  name: MinRequestDelay
+  nameWithType: AlpacaSymbolSearchProviderRefactored.MinRequestDelay
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.MinRequestDelay
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SupportedAssetTypes
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SupportedAssetTypes
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_SupportedAssetTypes
+  name: SupportedAssetTypes
+  nameWithType: BaseSymbolSearchProvider.SupportedAssetTypes
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SupportedAssetTypes
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.SupportedAssetTypes*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.SupportedAssetTypes
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_SupportedAssetTypes
+  name: SupportedAssetTypes
+  nameWithType: AlpacaSymbolSearchProviderRefactored.SupportedAssetTypes
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.SupportedAssetTypes
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SupportedExchanges
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SupportedExchanges
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_SupportedExchanges
+  name: SupportedExchanges
+  nameWithType: BaseSymbolSearchProvider.SupportedExchanges
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SupportedExchanges
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.SupportedExchanges*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.SupportedExchanges
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_SupportedExchanges
+  name: SupportedExchanges
+  nameWithType: AlpacaSymbolSearchProviderRefactored.SupportedExchanges
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.SupportedExchanges
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.#ctor*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.#ctor
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored__ctor_System_String_System_String_System_Net_Http_HttpClient_Serilog_ILogger_
+  name: AlpacaSymbolSearchProviderRefactored
+  nameWithType: AlpacaSymbolSearchProviderRefactored.AlpacaSymbolSearchProviderRefactored
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.AlpacaSymbolSearchProviderRefactored
+  nameWithType.vb: AlpacaSymbolSearchProviderRefactored.New
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.New
+  name.vb: New
+- uid: System.Net.Http.HttpClient
+  commentId: T:System.Net.Http.HttpClient
+  parent: System.Net.Http
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.http.httpclient
+  name: HttpClient
+  nameWithType: HttpClient
+  fullName: System.Net.Http.HttpClient
+- uid: Serilog.ILogger
+  commentId: T:Serilog.ILogger
+  parent: Serilog
+  isExternal: true
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Serilog.ILogger
+- uid: System.Net.Http
+  commentId: N:System.Net.Http
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Net.Http
+  nameWithType: System.Net.Http
+  fullName: System.Net.Http
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Http
+    name: Http
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Http
+    name: Http
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http
+- uid: Serilog
+  commentId: N:Serilog
+  isExternal: true
+  name: Serilog
+  nameWithType: Serilog
+  fullName: Serilog
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.HasValidCredentials
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.HasValidCredentials
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_HasValidCredentials
+  name: HasValidCredentials()
+  nameWithType: BaseSymbolSearchProvider.HasValidCredentials()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.HasValidCredentials()
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.HasValidCredentials
+    name: HasValidCredentials
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_HasValidCredentials
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.HasValidCredentials
+    name: HasValidCredentials
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_HasValidCredentials
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.HasValidCredentials*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.HasValidCredentials
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_HasValidCredentials
+  name: HasValidCredentials
+  nameWithType: AlpacaSymbolSearchProviderRefactored.HasValidCredentials
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.HasValidCredentials
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ConfigureHttpClientHeaders
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ConfigureHttpClientHeaders
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_ConfigureHttpClientHeaders
+  name: ConfigureHttpClientHeaders()
+  nameWithType: BaseSymbolSearchProvider.ConfigureHttpClientHeaders()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ConfigureHttpClientHeaders()
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ConfigureHttpClientHeaders
+    name: ConfigureHttpClientHeaders
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_ConfigureHttpClientHeaders
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ConfigureHttpClientHeaders
+    name: ConfigureHttpClientHeaders
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_ConfigureHttpClientHeaders
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ConfigureHttpClientHeaders*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ConfigureHttpClientHeaders
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_ConfigureHttpClientHeaders
+  name: ConfigureHttpClientHeaders
+  nameWithType: AlpacaSymbolSearchProviderRefactored.ConfigureHttpClientHeaders
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ConfigureHttpClientHeaders
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildSearchUrl(System.String,System.String,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildSearchUrl(System.String,System.String,System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_BuildSearchUrl_System_String_System_String_System_String_
+  name: BuildSearchUrl(string, string, string)
+  nameWithType: BaseSymbolSearchProvider.BuildSearchUrl(string, string, string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildSearchUrl(string, string, string)
+  nameWithType.vb: BaseSymbolSearchProvider.BuildSearchUrl(String, String, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildSearchUrl(String, String, String)
+  name.vb: BuildSearchUrl(String, String, String)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildSearchUrl(System.String,System.String,System.String)
+    name: BuildSearchUrl
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_BuildSearchUrl_System_String_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildSearchUrl(System.String,System.String,System.String)
+    name: BuildSearchUrl
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_BuildSearchUrl_System_String_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildSearchUrl*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildSearchUrl
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_BuildSearchUrl_System_String_System_String_System_String_
+  name: BuildSearchUrl
+  nameWithType: AlpacaSymbolSearchProviderRefactored.BuildSearchUrl
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildSearchUrl
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildDetailsUrl(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildDetailsUrl(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_BuildDetailsUrl_System_String_
+  name: BuildDetailsUrl(string)
+  nameWithType: BaseSymbolSearchProvider.BuildDetailsUrl(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildDetailsUrl(string)
+  nameWithType.vb: BaseSymbolSearchProvider.BuildDetailsUrl(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildDetailsUrl(String)
+  name.vb: BuildDetailsUrl(String)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildDetailsUrl(System.String)
+    name: BuildDetailsUrl
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_BuildDetailsUrl_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildDetailsUrl(System.String)
+    name: BuildDetailsUrl
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_BuildDetailsUrl_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildDetailsUrl*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildDetailsUrl
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_BuildDetailsUrl_System_String_
+  name: BuildDetailsUrl
+  nameWithType: AlpacaSymbolSearchProviderRefactored.BuildDetailsUrl
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.BuildDetailsUrl
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeSearchResults(System.String,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeSearchResults(System.String,System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_DeserializeSearchResults_System_String_System_String_
+  name: DeserializeSearchResults(string, string)
+  nameWithType: BaseSymbolSearchProvider.DeserializeSearchResults(string, string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeSearchResults(string, string)
+  nameWithType.vb: BaseSymbolSearchProvider.DeserializeSearchResults(String, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeSearchResults(String, String)
+  name.vb: DeserializeSearchResults(String, String)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeSearchResults(System.String,System.String)
+    name: DeserializeSearchResults
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_DeserializeSearchResults_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeSearchResults(System.String,System.String)
+    name: DeserializeSearchResults
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_DeserializeSearchResults_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeSearchResults*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeSearchResults
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_DeserializeSearchResults_System_String_System_String_
+  name: DeserializeSearchResults
+  nameWithType: AlpacaSymbolSearchProviderRefactored.DeserializeSearchResults
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeSearchResults
+- uid: System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult}
+  commentId: T:System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<SymbolSearchResult>
+  nameWithType: IEnumerable<SymbolSearchResult>
+  fullName: System.Collections.Generic.IEnumerable<MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult>
+  nameWithType.vb: IEnumerable(Of SymbolSearchResult)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult)
+  name.vb: IEnumerable(Of SymbolSearchResult)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult
+    name: SymbolSearchResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult
+    name: SymbolSearchResult
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_DeserializeDetailsAsync_System_String_System_String_System_Threading_CancellationToken_
+  name: DeserializeDetailsAsync(string, string, CancellationToken)
+  nameWithType: BaseSymbolSearchProvider.DeserializeDetailsAsync(string, string, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeDetailsAsync(string, string, System.Threading.CancellationToken)
+  nameWithType.vb: BaseSymbolSearchProvider.DeserializeDetailsAsync(String, String, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeDetailsAsync(String, String, System.Threading.CancellationToken)
+  name.vb: DeserializeDetailsAsync(String, String, CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+    name: DeserializeDetailsAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_DeserializeDetailsAsync_System_String_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+    name: DeserializeDetailsAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_DeserializeDetailsAsync_System_String_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeDetailsAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeDetailsAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_DeserializeDetailsAsync_System_String_System_String_System_Threading_CancellationToken_
+  name: DeserializeDetailsAsync
+  nameWithType: AlpacaSymbolSearchProviderRefactored.DeserializeDetailsAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.DeserializeDetailsAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.SymbolDetails}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.SymbolDetails}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<SymbolDetails>
+  nameWithType: Task<SymbolDetails>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Subscriptions.Models.SymbolDetails>
+  nameWithType.vb: Task(Of SymbolDetails)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Subscriptions.Models.SymbolDetails)
+  name.vb: Task(Of SymbolDetails)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolDetails
+    name: SymbolDetails
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolDetails
+    name: SymbolDetails
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ApplyFilters(System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult},System.String,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ApplyFilters(System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult},System.String,System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_ApplyFilters_System_Collections_Generic_IEnumerable_MarketDataCollector_Application_Subscriptions_Models_SymbolSearchResult__System_String_System_String_
+  name: ApplyFilters(IEnumerable<SymbolSearchResult>, string, string)
+  nameWithType: BaseSymbolSearchProvider.ApplyFilters(IEnumerable<SymbolSearchResult>, string, string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ApplyFilters(System.Collections.Generic.IEnumerable<MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult>, string, string)
+  nameWithType.vb: BaseSymbolSearchProvider.ApplyFilters(IEnumerable(Of SymbolSearchResult), String, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ApplyFilters(System.Collections.Generic.IEnumerable(Of MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult), String, String)
+  name.vb: ApplyFilters(IEnumerable(Of SymbolSearchResult), String, String)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ApplyFilters(System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult},System.String,System.String)
+    name: ApplyFilters
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_ApplyFilters_System_Collections_Generic_IEnumerable_MarketDataCollector_Application_Subscriptions_Models_SymbolSearchResult__System_String_System_String_
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult
+    name: SymbolSearchResult
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ApplyFilters(System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult},System.String,System.String)
+    name: ApplyFilters
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_ApplyFilters_System_Collections_Generic_IEnumerable_MarketDataCollector_Application_Subscriptions_Models_SymbolSearchResult__System_String_System_String_
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult
+    name: SymbolSearchResult
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ApplyFilters*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ApplyFilters
+  href: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Alpaca_AlpacaSymbolSearchProviderRefactored_ApplyFilters_System_Collections_Generic_IEnumerable_MarketDataCollector_Application_Subscriptions_Models_SymbolSearchResult__System_String_System_String_
+  name: ApplyFilters
+  nameWithType: AlpacaSymbolSearchProviderRefactored.ApplyFilters
+  fullName: MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored.ApplyFilters

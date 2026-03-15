@@ -1,0 +1,1067 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Services.DataQualityScoringService
+  commentId: T:MarketDataCollector.Storage.Services.DataQualityScoringService
+  id: DataQualityScoringService
+  parent: MarketDataCollector.Storage.Services
+  children:
+  - MarketDataCollector.Storage.Services.DataQualityScoringService.#ctor(MarketDataCollector.Storage.StorageOptions,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.DataQualityScoringService},MarketDataCollector.Storage.Interfaces.ISourceRegistry,MarketDataCollector.Storage.Services.IMetadataTagService)
+  - MarketDataCollector.Storage.Services.DataQualityScoringService.GenerateReportAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.DataQualityScoringService.ScoreFileAsync(System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.DataQualityScoringService.SelectBestSourceAsync(System.String,System.String,System.Nullable{System.DateTimeOffset},System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: DataQualityScoringService
+  nameWithType: DataQualityScoringService
+  fullName: MarketDataCollector.Storage.Services.DataQualityScoringService
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityScoringService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DataQualityScoringService
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityScoringService.cs
+    startLine: 14
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: >-
+    Service that computes quality scores for stored data files and performs
+
+    best-of-breed selection when multiple sources provide overlapping data.
+
+    Quality scores are based on completeness, sequence integrity, latency,
+
+    and cross-source consistency.
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-001", "Data quality scoring for multi-source environments")]
+
+      public sealed class DataQualityScoringService : IDataQualityScoringService
+    content.vb: >-
+      <ImplementsAdr("ADR-001", "Data quality scoring for multi-source environments")>
+
+      Public NotInheritable Class DataQualityScoringService Implements IDataQualityScoringService
+  inheritance:
+  - System.Object
+  implements:
+  - MarketDataCollector.Storage.Services.IDataQualityScoringService
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-001
+    - type: System.String
+      value: Data quality scoring for multi-source environments
+- uid: MarketDataCollector.Storage.Services.DataQualityScoringService.#ctor(MarketDataCollector.Storage.StorageOptions,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.DataQualityScoringService},MarketDataCollector.Storage.Interfaces.ISourceRegistry,MarketDataCollector.Storage.Services.IMetadataTagService)
+  commentId: M:MarketDataCollector.Storage.Services.DataQualityScoringService.#ctor(MarketDataCollector.Storage.StorageOptions,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.DataQualityScoringService},MarketDataCollector.Storage.Interfaces.ISourceRegistry,MarketDataCollector.Storage.Services.IMetadataTagService)
+  id: '#ctor(MarketDataCollector.Storage.StorageOptions,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.DataQualityScoringService},MarketDataCollector.Storage.Interfaces.ISourceRegistry,MarketDataCollector.Storage.Services.IMetadataTagService)'
+  parent: MarketDataCollector.Storage.Services.DataQualityScoringService
+  langs:
+  - csharp
+  - vb
+  name: DataQualityScoringService(StorageOptions, ILogger<DataQualityScoringService>, ISourceRegistry?, IMetadataTagService?)
+  nameWithType: DataQualityScoringService.DataQualityScoringService(StorageOptions, ILogger<DataQualityScoringService>, ISourceRegistry?, IMetadataTagService?)
+  fullName: MarketDataCollector.Storage.Services.DataQualityScoringService.DataQualityScoringService(MarketDataCollector.Storage.StorageOptions, Microsoft.Extensions.Logging.ILogger<MarketDataCollector.Storage.Services.DataQualityScoringService>, MarketDataCollector.Storage.Interfaces.ISourceRegistry?, MarketDataCollector.Storage.Services.IMetadataTagService?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityScoringService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityScoringService.cs
+    startLine: 26
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public DataQualityScoringService(StorageOptions options, ILogger<DataQualityScoringService> logger, ISourceRegistry? sourceRegistry = null, IMetadataTagService? metadataService = null)
+    parameters:
+    - id: options
+      type: MarketDataCollector.Storage.StorageOptions
+    - id: logger
+      type: Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.DataQualityScoringService}
+    - id: sourceRegistry
+      type: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+    - id: metadataService
+      type: MarketDataCollector.Storage.Services.IMetadataTagService
+    content.vb: Public Sub New(options As StorageOptions, logger As ILogger(Of DataQualityScoringService), sourceRegistry As ISourceRegistry = Nothing, metadataService As IMetadataTagService = Nothing)
+  overload: MarketDataCollector.Storage.Services.DataQualityScoringService.#ctor*
+  nameWithType.vb: DataQualityScoringService.New(StorageOptions, ILogger(Of DataQualityScoringService), ISourceRegistry, IMetadataTagService)
+  fullName.vb: MarketDataCollector.Storage.Services.DataQualityScoringService.New(MarketDataCollector.Storage.StorageOptions, Microsoft.Extensions.Logging.ILogger(Of MarketDataCollector.Storage.Services.DataQualityScoringService), MarketDataCollector.Storage.Interfaces.ISourceRegistry, MarketDataCollector.Storage.Services.IMetadataTagService)
+  name.vb: New(StorageOptions, ILogger(Of DataQualityScoringService), ISourceRegistry, IMetadataTagService)
+- uid: MarketDataCollector.Storage.Services.DataQualityScoringService.ScoreFileAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.DataQualityScoringService.ScoreFileAsync(System.String,System.Threading.CancellationToken)
+  id: ScoreFileAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.DataQualityScoringService
+  langs:
+  - csharp
+  - vb
+  name: ScoreFileAsync(string, CancellationToken)
+  nameWithType: DataQualityScoringService.ScoreFileAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.DataQualityScoringService.ScoreFileAsync(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityScoringService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ScoreFileAsync
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityScoringService.cs
+    startLine: 40
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  example: []
+  syntax:
+    content: public Task<QualityAssessment> ScoreFileAsync(string filePath, CancellationToken ct = default)
+    parameters:
+    - id: filePath
+      type: System.String
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.QualityAssessment}
+    content.vb: Public Function ScoreFileAsync(filePath As String, ct As CancellationToken = Nothing) As Task(Of QualityAssessment)
+  overload: MarketDataCollector.Storage.Services.DataQualityScoringService.ScoreFileAsync*
+  implements:
+  - MarketDataCollector.Storage.Services.IDataQualityScoringService.ScoreFileAsync(System.String,System.Threading.CancellationToken)
+  nameWithType.vb: DataQualityScoringService.ScoreFileAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Services.DataQualityScoringService.ScoreFileAsync(String, System.Threading.CancellationToken)
+  name.vb: ScoreFileAsync(String, CancellationToken)
+- uid: MarketDataCollector.Storage.Services.DataQualityScoringService.SelectBestSourceAsync(System.String,System.String,System.Nullable{System.DateTimeOffset},System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.DataQualityScoringService.SelectBestSourceAsync(System.String,System.String,System.Nullable{System.DateTimeOffset},System.Threading.CancellationToken)
+  id: SelectBestSourceAsync(System.String,System.String,System.Nullable{System.DateTimeOffset},System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.DataQualityScoringService
+  langs:
+  - csharp
+  - vb
+  name: SelectBestSourceAsync(string, string, DateTimeOffset?, CancellationToken)
+  nameWithType: DataQualityScoringService.SelectBestSourceAsync(string, string, DateTimeOffset?, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.DataQualityScoringService.SelectBestSourceAsync(string, string, System.DateTimeOffset?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityScoringService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SelectBestSourceAsync
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityScoringService.cs
+    startLine: 103
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  example: []
+  syntax:
+    content: public Task<BestOfBreedResult> SelectBestSourceAsync(string symbol, string eventType, DateTimeOffset? date = null, CancellationToken ct = default)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: eventType
+      type: System.String
+    - id: date
+      type: System.Nullable{System.DateTimeOffset}
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.BestOfBreedResult}
+    content.vb: Public Function SelectBestSourceAsync(symbol As String, eventType As String, [date] As DateTimeOffset? = Nothing, ct As CancellationToken = Nothing) As Task(Of BestOfBreedResult)
+  overload: MarketDataCollector.Storage.Services.DataQualityScoringService.SelectBestSourceAsync*
+  implements:
+  - MarketDataCollector.Storage.Services.IDataQualityScoringService.SelectBestSourceAsync(System.String,System.String,System.Nullable{System.DateTimeOffset},System.Threading.CancellationToken)
+  nameWithType.vb: DataQualityScoringService.SelectBestSourceAsync(String, String, DateTimeOffset?, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Services.DataQualityScoringService.SelectBestSourceAsync(String, String, System.DateTimeOffset?, System.Threading.CancellationToken)
+  name.vb: SelectBestSourceAsync(String, String, DateTimeOffset?, CancellationToken)
+- uid: MarketDataCollector.Storage.Services.DataQualityScoringService.GenerateReportAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.DataQualityScoringService.GenerateReportAsync(System.Threading.CancellationToken)
+  id: GenerateReportAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.DataQualityScoringService
+  langs:
+  - csharp
+  - vb
+  name: GenerateReportAsync(CancellationToken)
+  nameWithType: DataQualityScoringService.GenerateReportAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.DataQualityScoringService.GenerateReportAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityScoringService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GenerateReportAsync
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityScoringService.cs
+    startLine: 161
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  example: []
+  syntax:
+    content: public Task<DataQualityScoringReport> GenerateReportAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DataQualityScoringReport}
+    content.vb: Public Function GenerateReportAsync(ct As CancellationToken = Nothing) As Task(Of DataQualityScoringReport)
+  overload: MarketDataCollector.Storage.Services.DataQualityScoringService.GenerateReportAsync*
+  implements:
+  - MarketDataCollector.Storage.Services.IDataQualityScoringService.GenerateReportAsync(System.Threading.CancellationToken)
+references:
+- uid: MarketDataCollector.Storage.Services
+  commentId: N:MarketDataCollector.Storage.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Services
+  nameWithType: MarketDataCollector.Storage.Services
+  fullName: MarketDataCollector.Storage.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Storage.Services.IDataQualityScoringService
+  commentId: T:MarketDataCollector.Storage.Services.IDataQualityScoringService
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.IDataQualityScoringService.html
+  name: IDataQualityScoringService
+  nameWithType: IDataQualityScoringService
+  fullName: MarketDataCollector.Storage.Services.IDataQualityScoringService
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Storage.Services.DataQualityScoringService.#ctor*
+  commentId: Overload:MarketDataCollector.Storage.Services.DataQualityScoringService.#ctor
+  href: MarketDataCollector.Storage.Services.DataQualityScoringService.html#MarketDataCollector_Storage_Services_DataQualityScoringService__ctor_MarketDataCollector_Storage_StorageOptions_Microsoft_Extensions_Logging_ILogger_MarketDataCollector_Storage_Services_DataQualityScoringService__MarketDataCollector_Storage_Interfaces_ISourceRegistry_MarketDataCollector_Storage_Services_IMetadataTagService_
+  name: DataQualityScoringService
+  nameWithType: DataQualityScoringService.DataQualityScoringService
+  fullName: MarketDataCollector.Storage.Services.DataQualityScoringService.DataQualityScoringService
+  nameWithType.vb: DataQualityScoringService.New
+  fullName.vb: MarketDataCollector.Storage.Services.DataQualityScoringService.New
+  name.vb: New
+- uid: MarketDataCollector.Storage.StorageOptions
+  commentId: T:MarketDataCollector.Storage.StorageOptions
+  parent: MarketDataCollector.Storage
+  href: MarketDataCollector.Storage.StorageOptions.html
+  name: StorageOptions
+  nameWithType: StorageOptions
+  fullName: MarketDataCollector.Storage.StorageOptions
+- uid: Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.DataQualityScoringService}
+  commentId: T:Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.DataQualityScoringService}
+  parent: Microsoft.Extensions.Logging
+  definition: Microsoft.Extensions.Logging.ILogger`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<DataQualityScoringService>
+  nameWithType: ILogger<DataQualityScoringService>
+  fullName: Microsoft.Extensions.Logging.ILogger<MarketDataCollector.Storage.Services.DataQualityScoringService>
+  nameWithType.vb: ILogger(Of DataQualityScoringService)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of MarketDataCollector.Storage.Services.DataQualityScoringService)
+  name.vb: ILogger(Of DataQualityScoringService)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.DataQualityScoringService
+    name: DataQualityScoringService
+    href: MarketDataCollector.Storage.Services.DataQualityScoringService.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.DataQualityScoringService
+    name: DataQualityScoringService
+    href: MarketDataCollector.Storage.Services.DataQualityScoringService.html
+  - name: )
+- uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+  commentId: T:MarketDataCollector.Storage.Interfaces.ISourceRegistry
+  parent: MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html
+  name: ISourceRegistry
+  nameWithType: ISourceRegistry
+  fullName: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+- uid: MarketDataCollector.Storage.Services.IMetadataTagService
+  commentId: T:MarketDataCollector.Storage.Services.IMetadataTagService
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.IMetadataTagService.html
+  name: IMetadataTagService
+  nameWithType: IMetadataTagService
+  fullName: MarketDataCollector.Storage.Services.IMetadataTagService
+- uid: MarketDataCollector.Storage
+  commentId: N:MarketDataCollector.Storage
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage
+  nameWithType: MarketDataCollector.Storage
+  fullName: MarketDataCollector.Storage
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+- uid: Microsoft.Extensions.Logging.ILogger`1
+  commentId: T:Microsoft.Extensions.Logging.ILogger`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<TCategoryName>
+  nameWithType: ILogger<TCategoryName>
+  fullName: Microsoft.Extensions.Logging.ILogger<TCategoryName>
+  nameWithType.vb: ILogger(Of TCategoryName)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of TCategoryName)
+  name.vb: ILogger(Of TCategoryName)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - name: TCategoryName
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TCategoryName
+  - name: )
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: MarketDataCollector.Storage.Interfaces
+  commentId: N:MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Interfaces
+  nameWithType: MarketDataCollector.Storage.Interfaces
+  fullName: MarketDataCollector.Storage.Interfaces
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Interfaces
+    name: Interfaces
+    href: MarketDataCollector.Storage.Interfaces.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Interfaces
+    name: Interfaces
+    href: MarketDataCollector.Storage.Interfaces.html
+- uid: MarketDataCollector.Storage.Services.DataQualityScoringService.ScoreFileAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.DataQualityScoringService.ScoreFileAsync
+  href: MarketDataCollector.Storage.Services.DataQualityScoringService.html#MarketDataCollector_Storage_Services_DataQualityScoringService_ScoreFileAsync_System_String_System_Threading_CancellationToken_
+  name: ScoreFileAsync
+  nameWithType: DataQualityScoringService.ScoreFileAsync
+  fullName: MarketDataCollector.Storage.Services.DataQualityScoringService.ScoreFileAsync
+- uid: MarketDataCollector.Storage.Services.IDataQualityScoringService.ScoreFileAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IDataQualityScoringService.ScoreFileAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IDataQualityScoringService
+  isExternal: true
+  href: MarketDataCollector.Storage.Services.IDataQualityScoringService.html#MarketDataCollector_Storage_Services_IDataQualityScoringService_ScoreFileAsync_System_String_System_Threading_CancellationToken_
+  name: ScoreFileAsync(string, CancellationToken)
+  nameWithType: IDataQualityScoringService.ScoreFileAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IDataQualityScoringService.ScoreFileAsync(string, System.Threading.CancellationToken)
+  nameWithType.vb: IDataQualityScoringService.ScoreFileAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Services.IDataQualityScoringService.ScoreFileAsync(String, System.Threading.CancellationToken)
+  name.vb: ScoreFileAsync(String, CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Services.IDataQualityScoringService.ScoreFileAsync(System.String,System.Threading.CancellationToken)
+    name: ScoreFileAsync
+    href: MarketDataCollector.Storage.Services.IDataQualityScoringService.html#MarketDataCollector_Storage_Services_IDataQualityScoringService_ScoreFileAsync_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Services.IDataQualityScoringService.ScoreFileAsync(System.String,System.Threading.CancellationToken)
+    name: ScoreFileAsync
+    href: MarketDataCollector.Storage.Services.IDataQualityScoringService.html#MarketDataCollector_Storage_Services_IDataQualityScoringService_ScoreFileAsync_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.QualityAssessment}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.QualityAssessment}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<QualityAssessment>
+  nameWithType: Task<QualityAssessment>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.QualityAssessment>
+  nameWithType.vb: Task(Of QualityAssessment)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.QualityAssessment)
+  name.vb: Task(Of QualityAssessment)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.QualityAssessment
+    name: QualityAssessment
+    href: MarketDataCollector.Storage.Services.QualityAssessment.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.QualityAssessment
+    name: QualityAssessment
+    href: MarketDataCollector.Storage.Services.QualityAssessment.html
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Storage.Services.DataQualityScoringService.SelectBestSourceAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.DataQualityScoringService.SelectBestSourceAsync
+  href: MarketDataCollector.Storage.Services.DataQualityScoringService.html#MarketDataCollector_Storage_Services_DataQualityScoringService_SelectBestSourceAsync_System_String_System_String_System_Nullable_System_DateTimeOffset__System_Threading_CancellationToken_
+  name: SelectBestSourceAsync
+  nameWithType: DataQualityScoringService.SelectBestSourceAsync
+  fullName: MarketDataCollector.Storage.Services.DataQualityScoringService.SelectBestSourceAsync
+- uid: MarketDataCollector.Storage.Services.IDataQualityScoringService.SelectBestSourceAsync(System.String,System.String,System.Nullable{System.DateTimeOffset},System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IDataQualityScoringService.SelectBestSourceAsync(System.String,System.String,System.Nullable{System.DateTimeOffset},System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IDataQualityScoringService
+  isExternal: true
+  href: MarketDataCollector.Storage.Services.IDataQualityScoringService.html#MarketDataCollector_Storage_Services_IDataQualityScoringService_SelectBestSourceAsync_System_String_System_String_System_Nullable_System_DateTimeOffset__System_Threading_CancellationToken_
+  name: SelectBestSourceAsync(string, string, DateTimeOffset?, CancellationToken)
+  nameWithType: IDataQualityScoringService.SelectBestSourceAsync(string, string, DateTimeOffset?, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IDataQualityScoringService.SelectBestSourceAsync(string, string, System.DateTimeOffset?, System.Threading.CancellationToken)
+  nameWithType.vb: IDataQualityScoringService.SelectBestSourceAsync(String, String, DateTimeOffset?, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Services.IDataQualityScoringService.SelectBestSourceAsync(String, String, System.DateTimeOffset?, System.Threading.CancellationToken)
+  name.vb: SelectBestSourceAsync(String, String, DateTimeOffset?, CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Services.IDataQualityScoringService.SelectBestSourceAsync(System.String,System.String,System.Nullable{System.DateTimeOffset},System.Threading.CancellationToken)
+    name: SelectBestSourceAsync
+    href: MarketDataCollector.Storage.Services.IDataQualityScoringService.html#MarketDataCollector_Storage_Services_IDataQualityScoringService_SelectBestSourceAsync_System_String_System_String_System_Nullable_System_DateTimeOffset__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Services.IDataQualityScoringService.SelectBestSourceAsync(System.String,System.String,System.Nullable{System.DateTimeOffset},System.Threading.CancellationToken)
+    name: SelectBestSourceAsync
+    href: MarketDataCollector.Storage.Services.IDataQualityScoringService.html#MarketDataCollector_Storage_Services_IDataQualityScoringService_SelectBestSourceAsync_System_String_System_String_System_Nullable_System_DateTimeOffset__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Nullable{System.DateTimeOffset}
+  commentId: T:System.Nullable{System.DateTimeOffset}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset?
+  nameWithType: DateTimeOffset?
+  fullName: System.DateTimeOffset?
+  spec.csharp:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.BestOfBreedResult}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.BestOfBreedResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<BestOfBreedResult>
+  nameWithType: Task<BestOfBreedResult>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.BestOfBreedResult>
+  nameWithType.vb: Task(Of BestOfBreedResult)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.BestOfBreedResult)
+  name.vb: Task(Of BestOfBreedResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.BestOfBreedResult
+    name: BestOfBreedResult
+    href: MarketDataCollector.Storage.Services.BestOfBreedResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.BestOfBreedResult
+    name: BestOfBreedResult
+    href: MarketDataCollector.Storage.Services.BestOfBreedResult.html
+  - name: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Storage.Services.DataQualityScoringService.GenerateReportAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.DataQualityScoringService.GenerateReportAsync
+  href: MarketDataCollector.Storage.Services.DataQualityScoringService.html#MarketDataCollector_Storage_Services_DataQualityScoringService_GenerateReportAsync_System_Threading_CancellationToken_
+  name: GenerateReportAsync
+  nameWithType: DataQualityScoringService.GenerateReportAsync
+  fullName: MarketDataCollector.Storage.Services.DataQualityScoringService.GenerateReportAsync
+- uid: MarketDataCollector.Storage.Services.IDataQualityScoringService.GenerateReportAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IDataQualityScoringService.GenerateReportAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IDataQualityScoringService
+  isExternal: true
+  href: MarketDataCollector.Storage.Services.IDataQualityScoringService.html#MarketDataCollector_Storage_Services_IDataQualityScoringService_GenerateReportAsync_System_Threading_CancellationToken_
+  name: GenerateReportAsync(CancellationToken)
+  nameWithType: IDataQualityScoringService.GenerateReportAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IDataQualityScoringService.GenerateReportAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Services.IDataQualityScoringService.GenerateReportAsync(System.Threading.CancellationToken)
+    name: GenerateReportAsync
+    href: MarketDataCollector.Storage.Services.IDataQualityScoringService.html#MarketDataCollector_Storage_Services_IDataQualityScoringService_GenerateReportAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Services.IDataQualityScoringService.GenerateReportAsync(System.Threading.CancellationToken)
+    name: GenerateReportAsync
+    href: MarketDataCollector.Storage.Services.IDataQualityScoringService.html#MarketDataCollector_Storage_Services_IDataQualityScoringService_GenerateReportAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DataQualityScoringReport}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DataQualityScoringReport}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<DataQualityScoringReport>
+  nameWithType: Task<DataQualityScoringReport>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.DataQualityScoringReport>
+  nameWithType.vb: Task(Of DataQualityScoringReport)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.DataQualityScoringReport)
+  name.vb: Task(Of DataQualityScoringReport)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.DataQualityScoringReport
+    name: DataQualityScoringReport
+    href: MarketDataCollector.Storage.Services.DataQualityScoringReport.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.DataQualityScoringReport
+    name: DataQualityScoringReport
+    href: MarketDataCollector.Storage.Services.DataQualityScoringReport.html
+  - name: )

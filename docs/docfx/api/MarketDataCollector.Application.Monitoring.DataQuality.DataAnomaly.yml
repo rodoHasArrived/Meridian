@@ -1,0 +1,945 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+  id: DataAnomaly
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  children:
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.#ctor(System.String,System.DateTimeOffset,System.String,MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType,MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity,System.String,System.Double,System.Double,System.Double,System.Double,System.String,System.Boolean,System.DateTimeOffset)
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ActualValue
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Description
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DetectedAt
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DeviationPercent
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ExpectedValue
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Id
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.IsAcknowledged
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Provider
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Severity
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Symbol
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Timestamp
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Type
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ZScore
+  langs:
+  - csharp
+  - vb
+  name: DataAnomaly
+  nameWithType: DataAnomaly
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DataAnomaly
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+    startLine: 225
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Detected anomaly in market data.
+  example: []
+  syntax:
+    content: 'public sealed record DataAnomaly : IEquatable<DataAnomaly>'
+    content.vb: Public NotInheritable Class DataAnomaly Implements IEquatable(Of DataAnomaly)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.#ctor(System.String,System.DateTimeOffset,System.String,MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType,MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity,System.String,System.Double,System.Double,System.Double,System.Double,System.String,System.Boolean,System.DateTimeOffset)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.#ctor(System.String,System.DateTimeOffset,System.String,MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType,MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity,System.String,System.Double,System.Double,System.Double,System.Double,System.String,System.Boolean,System.DateTimeOffset)
+  id: '#ctor(System.String,System.DateTimeOffset,System.String,MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType,MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity,System.String,System.Double,System.Double,System.Double,System.Double,System.String,System.Boolean,System.DateTimeOffset)'
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+  langs:
+  - csharp
+  - vb
+  name: DataAnomaly(string, DateTimeOffset, string, AnomalyType, AnomalySeverity, string, double, double, double, double, string?, bool, DateTimeOffset)
+  nameWithType: DataAnomaly.DataAnomaly(string, DateTimeOffset, string, AnomalyType, AnomalySeverity, string, double, double, double, double, string?, bool, DateTimeOffset)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DataAnomaly(string, System.DateTimeOffset, string, MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType, MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity, string, double, double, double, double, string?, bool, System.DateTimeOffset)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+    startLine: 225
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Detected anomaly in market data.
+  example: []
+  syntax:
+    content: public DataAnomaly(string Id, DateTimeOffset Timestamp, string Symbol, AnomalyType Type, AnomalySeverity Severity, string Description, double ExpectedValue, double ActualValue, double DeviationPercent, double ZScore, string? Provider, bool IsAcknowledged, DateTimeOffset DetectedAt)
+    parameters:
+    - id: Id
+      type: System.String
+    - id: Timestamp
+      type: System.DateTimeOffset
+    - id: Symbol
+      type: System.String
+    - id: Type
+      type: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType
+    - id: Severity
+      type: MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity
+    - id: Description
+      type: System.String
+    - id: ExpectedValue
+      type: System.Double
+    - id: ActualValue
+      type: System.Double
+    - id: DeviationPercent
+      type: System.Double
+    - id: ZScore
+      type: System.Double
+    - id: Provider
+      type: System.String
+    - id: IsAcknowledged
+      type: System.Boolean
+    - id: DetectedAt
+      type: System.DateTimeOffset
+    content.vb: Public Sub New(Id As String, Timestamp As DateTimeOffset, Symbol As String, Type As AnomalyType, Severity As AnomalySeverity, Description As String, ExpectedValue As Double, ActualValue As Double, DeviationPercent As Double, ZScore As Double, Provider As String, IsAcknowledged As Boolean, DetectedAt As DateTimeOffset)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.#ctor*
+  nameWithType.vb: DataAnomaly.New(String, DateTimeOffset, String, AnomalyType, AnomalySeverity, String, Double, Double, Double, Double, String, Boolean, DateTimeOffset)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.New(String, System.DateTimeOffset, String, MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType, MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity, String, Double, Double, Double, Double, String, Boolean, System.DateTimeOffset)
+  name.vb: New(String, DateTimeOffset, String, AnomalyType, AnomalySeverity, String, Double, Double, Double, Double, String, Boolean, DateTimeOffset)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Id
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Id
+  id: Id
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: DataAnomaly.Id
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Id
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Id
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+    startLine: 226
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public string Id { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Id As String
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Id*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Timestamp
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Timestamp
+  id: Timestamp
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+  langs:
+  - csharp
+  - vb
+  name: Timestamp
+  nameWithType: DataAnomaly.Timestamp
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Timestamp
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Timestamp
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+    startLine: 227
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public DateTimeOffset Timestamp { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property Timestamp As DateTimeOffset
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Timestamp*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Symbol
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Symbol
+  id: Symbol
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+  langs:
+  - csharp
+  - vb
+  name: Symbol
+  nameWithType: DataAnomaly.Symbol
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Symbol
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Symbol
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+    startLine: 228
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public string Symbol { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Symbol As String
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Symbol*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Type
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Type
+  id: Type
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: DataAnomaly.Type
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Type
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Type
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+    startLine: 229
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public AnomalyType Type { get; init; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType
+    content.vb: Public Property Type As AnomalyType
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Type*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Severity
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Severity
+  id: Severity
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+  langs:
+  - csharp
+  - vb
+  name: Severity
+  nameWithType: DataAnomaly.Severity
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Severity
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Severity
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+    startLine: 230
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public AnomalySeverity Severity { get; init; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity
+    content.vb: Public Property Severity As AnomalySeverity
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Severity*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Description
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Description
+  id: Description
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: DataAnomaly.Description
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Description
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Description
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+    startLine: 231
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public string Description { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Description As String
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Description*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ExpectedValue
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ExpectedValue
+  id: ExpectedValue
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+  langs:
+  - csharp
+  - vb
+  name: ExpectedValue
+  nameWithType: DataAnomaly.ExpectedValue
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ExpectedValue
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ExpectedValue
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+    startLine: 232
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public double ExpectedValue { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property ExpectedValue As Double
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ExpectedValue*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ActualValue
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ActualValue
+  id: ActualValue
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+  langs:
+  - csharp
+  - vb
+  name: ActualValue
+  nameWithType: DataAnomaly.ActualValue
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ActualValue
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ActualValue
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+    startLine: 233
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public double ActualValue { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property ActualValue As Double
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ActualValue*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DeviationPercent
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DeviationPercent
+  id: DeviationPercent
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+  langs:
+  - csharp
+  - vb
+  name: DeviationPercent
+  nameWithType: DataAnomaly.DeviationPercent
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DeviationPercent
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DeviationPercent
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+    startLine: 234
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public double DeviationPercent { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property DeviationPercent As Double
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DeviationPercent*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ZScore
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ZScore
+  id: ZScore
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+  langs:
+  - csharp
+  - vb
+  name: ZScore
+  nameWithType: DataAnomaly.ZScore
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ZScore
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ZScore
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+    startLine: 235
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public double ZScore { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property ZScore As Double
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ZScore*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Provider
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Provider
+  id: Provider
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+  langs:
+  - csharp
+  - vb
+  name: Provider
+  nameWithType: DataAnomaly.Provider
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Provider
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Provider
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+    startLine: 236
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public string? Provider { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Provider As String
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Provider*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.IsAcknowledged
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.IsAcknowledged
+  id: IsAcknowledged
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+  langs:
+  - csharp
+  - vb
+  name: IsAcknowledged
+  nameWithType: DataAnomaly.IsAcknowledged
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.IsAcknowledged
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsAcknowledged
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+    startLine: 237
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public bool IsAcknowledged { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsAcknowledged As Boolean
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.IsAcknowledged*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DetectedAt
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DetectedAt
+  id: DetectedAt
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+  langs:
+  - csharp
+  - vb
+  name: DetectedAt
+  nameWithType: DataAnomaly.DetectedAt
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DetectedAt
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DetectedAt
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataQualityModels.cs
+    startLine: 238
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public DateTimeOffset DetectedAt { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property DetectedAt As DateTimeOffset
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DetectedAt*
+references:
+- uid: MarketDataCollector.Application.Monitoring.DataQuality
+  commentId: N:MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring.DataQuality
+  nameWithType: MarketDataCollector.Application.Monitoring.DataQuality
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality
+    name: DataQuality
+    href: MarketDataCollector.Application.Monitoring.DataQuality.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality
+    name: DataQuality
+    href: MarketDataCollector.Application.Monitoring.DataQuality.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly}
+  commentId: T:System.IEquatable{MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<DataAnomaly>
+  nameWithType: IEquatable<DataAnomaly>
+  fullName: System.IEquatable<MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly>
+  nameWithType.vb: IEquatable(Of DataAnomaly)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly)
+  name.vb: IEquatable(Of DataAnomaly)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+    name: DataAnomaly
+    href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+    name: DataAnomaly
+    href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.#ctor
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html#MarketDataCollector_Application_Monitoring_DataQuality_DataAnomaly__ctor_System_String_System_DateTimeOffset_System_String_MarketDataCollector_Application_Monitoring_DataQuality_AnomalyType_MarketDataCollector_Application_Monitoring_DataQuality_AnomalySeverity_System_String_System_Double_System_Double_System_Double_System_Double_System_String_System_Boolean_System_DateTimeOffset_
+  name: DataAnomaly
+  nameWithType: DataAnomaly.DataAnomaly
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DataAnomaly
+  nameWithType.vb: DataAnomaly.New
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType.html
+  name: AnomalyType
+  nameWithType: AnomalyType
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity.html
+  name: AnomalySeverity
+  nameWithType: AnomalySeverity
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Id*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Id
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html#MarketDataCollector_Application_Monitoring_DataQuality_DataAnomaly_Id
+  name: Id
+  nameWithType: DataAnomaly.Id
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Id
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Timestamp*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Timestamp
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html#MarketDataCollector_Application_Monitoring_DataQuality_DataAnomaly_Timestamp
+  name: Timestamp
+  nameWithType: DataAnomaly.Timestamp
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Timestamp
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Symbol*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Symbol
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html#MarketDataCollector_Application_Monitoring_DataQuality_DataAnomaly_Symbol
+  name: Symbol
+  nameWithType: DataAnomaly.Symbol
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Symbol
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Type*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Type
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html#MarketDataCollector_Application_Monitoring_DataQuality_DataAnomaly_Type
+  name: Type
+  nameWithType: DataAnomaly.Type
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Type
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Severity*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Severity
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html#MarketDataCollector_Application_Monitoring_DataQuality_DataAnomaly_Severity
+  name: Severity
+  nameWithType: DataAnomaly.Severity
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Severity
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Description*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Description
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html#MarketDataCollector_Application_Monitoring_DataQuality_DataAnomaly_Description
+  name: Description
+  nameWithType: DataAnomaly.Description
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Description
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ExpectedValue*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ExpectedValue
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html#MarketDataCollector_Application_Monitoring_DataQuality_DataAnomaly_ExpectedValue
+  name: ExpectedValue
+  nameWithType: DataAnomaly.ExpectedValue
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ExpectedValue
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ActualValue*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ActualValue
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html#MarketDataCollector_Application_Monitoring_DataQuality_DataAnomaly_ActualValue
+  name: ActualValue
+  nameWithType: DataAnomaly.ActualValue
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ActualValue
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DeviationPercent*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DeviationPercent
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html#MarketDataCollector_Application_Monitoring_DataQuality_DataAnomaly_DeviationPercent
+  name: DeviationPercent
+  nameWithType: DataAnomaly.DeviationPercent
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DeviationPercent
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ZScore*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ZScore
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html#MarketDataCollector_Application_Monitoring_DataQuality_DataAnomaly_ZScore
+  name: ZScore
+  nameWithType: DataAnomaly.ZScore
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.ZScore
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Provider*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Provider
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html#MarketDataCollector_Application_Monitoring_DataQuality_DataAnomaly_Provider
+  name: Provider
+  nameWithType: DataAnomaly.Provider
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.Provider
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.IsAcknowledged*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.IsAcknowledged
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html#MarketDataCollector_Application_Monitoring_DataQuality_DataAnomaly_IsAcknowledged
+  name: IsAcknowledged
+  nameWithType: DataAnomaly.IsAcknowledged
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.IsAcknowledged
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DetectedAt*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DetectedAt
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html#MarketDataCollector_Application_Monitoring_DataQuality_DataAnomaly_DetectedAt
+  name: DetectedAt
+  nameWithType: DataAnomaly.DetectedAt
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.DetectedAt

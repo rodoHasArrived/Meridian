@@ -1,0 +1,729 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler
+  commentId: T:MarketDataCollector.Application.Scheduling.IOperationalScheduler
+  id: IOperationalScheduler
+  parent: MarketDataCollector.Application.Scheduling
+  children:
+  - MarketDataCollector.Application.Scheduling.IOperationalScheduler.CanExecuteAsync(MarketDataCollector.Application.Scheduling.OperationType,MarketDataCollector.Application.Scheduling.ResourceRequirements,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Scheduling.IOperationalScheduler.FindNextAvailableSlotAsync(MarketDataCollector.Application.Scheduling.OperationType,System.TimeSpan,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetCurrentMaintenanceWindow
+  - MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetCurrentTradingSession
+  - MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetNextMaintenanceWindow
+  - MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetNextTradingSession
+  - MarketDataCollector.Application.Scheduling.IOperationalScheduler.IsWithinMaintenanceWindow
+  - MarketDataCollector.Application.Scheduling.IOperationalScheduler.IsWithinTradingHours
+  - MarketDataCollector.Application.Scheduling.IOperationalScheduler.RegisterMaintenanceWindow(MarketDataCollector.Application.Scheduling.MaintenanceWindow)
+  - MarketDataCollector.Application.Scheduling.IOperationalScheduler.RemoveMaintenanceWindow(System.String)
+  langs:
+  - csharp
+  - vb
+  name: IOperationalScheduler
+  nameWithType: IOperationalScheduler
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IOperationalScheduler
+    path: ../../src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+    startLine: 137
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: >-
+    Centralized operational scheduler for coordinating maintenance tasks,
+
+    backfill operations, and other scheduled activities with trading hours.
+  remarks: >-
+    The operational scheduler provides:
+
+    - Awareness of trading hours across markets
+
+    - Maintenance window management
+
+    - Operation scheduling with resource requirements
+
+    - Conflict detection and resolution
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-001", "Centralized operational scheduling")]
+
+      public interface IOperationalScheduler
+    content.vb: >-
+      <ImplementsAdr("ADR-001", "Centralized operational scheduling")>
+
+      Public Interface IOperationalScheduler
+  derivedClasses:
+  - MarketDataCollector.Application.Scheduling.OperationalScheduler
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-001
+    - type: System.String
+      value: Centralized operational scheduling
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.CanExecuteAsync(MarketDataCollector.Application.Scheduling.OperationType,MarketDataCollector.Application.Scheduling.ResourceRequirements,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Scheduling.IOperationalScheduler.CanExecuteAsync(MarketDataCollector.Application.Scheduling.OperationType,MarketDataCollector.Application.Scheduling.ResourceRequirements,System.Threading.CancellationToken)
+  id: CanExecuteAsync(MarketDataCollector.Application.Scheduling.OperationType,MarketDataCollector.Application.Scheduling.ResourceRequirements,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Scheduling.IOperationalScheduler
+  langs:
+  - csharp
+  - vb
+  name: CanExecuteAsync(OperationType, ResourceRequirements?, CancellationToken)
+  nameWithType: IOperationalScheduler.CanExecuteAsync(OperationType, ResourceRequirements?, CancellationToken)
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.CanExecuteAsync(MarketDataCollector.Application.Scheduling.OperationType, MarketDataCollector.Application.Scheduling.ResourceRequirements?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CanExecuteAsync
+    path: ../../src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+    startLine: 147
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Checks if an operation can execute now based on current conditions.
+  example: []
+  syntax:
+    content: Task<ScheduleDecision> CanExecuteAsync(OperationType operationType, ResourceRequirements? requirements = null, CancellationToken ct = default)
+    parameters:
+    - id: operationType
+      type: MarketDataCollector.Application.Scheduling.OperationType
+      description: Type of operation.
+    - id: requirements
+      type: MarketDataCollector.Application.Scheduling.ResourceRequirements
+      description: Resource requirements for the operation.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Scheduling.ScheduleDecision}
+      description: Decision about whether the operation can execute.
+    content.vb: Function CanExecuteAsync(operationType As OperationType, requirements As ResourceRequirements = Nothing, ct As CancellationToken = Nothing) As Task(Of ScheduleDecision)
+  overload: MarketDataCollector.Application.Scheduling.IOperationalScheduler.CanExecuteAsync*
+  nameWithType.vb: IOperationalScheduler.CanExecuteAsync(OperationType, ResourceRequirements, CancellationToken)
+  fullName.vb: MarketDataCollector.Application.Scheduling.IOperationalScheduler.CanExecuteAsync(MarketDataCollector.Application.Scheduling.OperationType, MarketDataCollector.Application.Scheduling.ResourceRequirements, System.Threading.CancellationToken)
+  name.vb: CanExecuteAsync(OperationType, ResourceRequirements, CancellationToken)
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.FindNextAvailableSlotAsync(MarketDataCollector.Application.Scheduling.OperationType,System.TimeSpan,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Scheduling.IOperationalScheduler.FindNextAvailableSlotAsync(MarketDataCollector.Application.Scheduling.OperationType,System.TimeSpan,System.Threading.CancellationToken)
+  id: FindNextAvailableSlotAsync(MarketDataCollector.Application.Scheduling.OperationType,System.TimeSpan,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Scheduling.IOperationalScheduler
+  langs:
+  - csharp
+  - vb
+  name: FindNextAvailableSlotAsync(OperationType, TimeSpan, CancellationToken)
+  nameWithType: IOperationalScheduler.FindNextAvailableSlotAsync(OperationType, TimeSpan, CancellationToken)
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.FindNextAvailableSlotAsync(MarketDataCollector.Application.Scheduling.OperationType, System.TimeSpan, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FindNextAvailableSlotAsync
+    path: ../../src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+    startLine: 159
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Finds the next available slot for an operation.
+  example: []
+  syntax:
+    content: Task<ScheduleSlot?> FindNextAvailableSlotAsync(OperationType operationType, TimeSpan minDuration, CancellationToken ct = default)
+    parameters:
+    - id: operationType
+      type: MarketDataCollector.Application.Scheduling.OperationType
+      description: Type of operation.
+    - id: minDuration
+      type: System.TimeSpan
+      description: Minimum duration required.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Scheduling.ScheduleSlot}
+      description: Next available slot or null if none found within search window.
+    content.vb: Function FindNextAvailableSlotAsync(operationType As OperationType, minDuration As TimeSpan, ct As CancellationToken = Nothing) As Task(Of ScheduleSlot)
+  overload: MarketDataCollector.Application.Scheduling.IOperationalScheduler.FindNextAvailableSlotAsync*
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.IsWithinTradingHours
+  commentId: P:MarketDataCollector.Application.Scheduling.IOperationalScheduler.IsWithinTradingHours
+  id: IsWithinTradingHours
+  parent: MarketDataCollector.Application.Scheduling.IOperationalScheduler
+  langs:
+  - csharp
+  - vb
+  name: IsWithinTradingHours
+  nameWithType: IOperationalScheduler.IsWithinTradingHours
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.IsWithinTradingHours
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsWithinTradingHours
+    path: ../../src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+    startLine: 167
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Gets whether we are currently within trading hours for any market.
+  example: []
+  syntax:
+    content: bool IsWithinTradingHours { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsWithinTradingHours As Boolean
+  overload: MarketDataCollector.Application.Scheduling.IOperationalScheduler.IsWithinTradingHours*
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.IsWithinMaintenanceWindow
+  commentId: P:MarketDataCollector.Application.Scheduling.IOperationalScheduler.IsWithinMaintenanceWindow
+  id: IsWithinMaintenanceWindow
+  parent: MarketDataCollector.Application.Scheduling.IOperationalScheduler
+  langs:
+  - csharp
+  - vb
+  name: IsWithinMaintenanceWindow
+  nameWithType: IOperationalScheduler.IsWithinMaintenanceWindow
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.IsWithinMaintenanceWindow
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsWithinMaintenanceWindow
+    path: ../../src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+    startLine: 172
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Gets whether we are currently within a maintenance window.
+  example: []
+  syntax:
+    content: bool IsWithinMaintenanceWindow { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsWithinMaintenanceWindow As Boolean
+  overload: MarketDataCollector.Application.Scheduling.IOperationalScheduler.IsWithinMaintenanceWindow*
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetCurrentTradingSession
+  commentId: M:MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetCurrentTradingSession
+  id: GetCurrentTradingSession
+  parent: MarketDataCollector.Application.Scheduling.IOperationalScheduler
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentTradingSession()
+  nameWithType: IOperationalScheduler.GetCurrentTradingSession()
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetCurrentTradingSession()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetCurrentTradingSession
+    path: ../../src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+    startLine: 178
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Gets the current trading session if any.
+  example: []
+  syntax:
+    content: TradingSession? GetCurrentTradingSession()
+    return:
+      type: MarketDataCollector.Application.Scheduling.TradingSession
+      description: Current trading session or null.
+    content.vb: Function GetCurrentTradingSession() As TradingSession
+  overload: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetCurrentTradingSession*
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetNextTradingSession
+  commentId: M:MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetNextTradingSession
+  id: GetNextTradingSession
+  parent: MarketDataCollector.Application.Scheduling.IOperationalScheduler
+  langs:
+  - csharp
+  - vb
+  name: GetNextTradingSession()
+  nameWithType: IOperationalScheduler.GetNextTradingSession()
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetNextTradingSession()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetNextTradingSession
+    path: ../../src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+    startLine: 184
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Gets the next trading session.
+  example: []
+  syntax:
+    content: TradingSession? GetNextTradingSession()
+    return:
+      type: MarketDataCollector.Application.Scheduling.TradingSession
+      description: Next trading session.
+    content.vb: Function GetNextTradingSession() As TradingSession
+  overload: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetNextTradingSession*
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetCurrentMaintenanceWindow
+  commentId: M:MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetCurrentMaintenanceWindow
+  id: GetCurrentMaintenanceWindow
+  parent: MarketDataCollector.Application.Scheduling.IOperationalScheduler
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentMaintenanceWindow()
+  nameWithType: IOperationalScheduler.GetCurrentMaintenanceWindow()
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetCurrentMaintenanceWindow()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetCurrentMaintenanceWindow
+    path: ../../src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+    startLine: 190
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Gets the current maintenance window if any.
+  example: []
+  syntax:
+    content: MaintenanceWindow? GetCurrentMaintenanceWindow()
+    return:
+      type: MarketDataCollector.Application.Scheduling.MaintenanceWindow
+      description: Current maintenance window or null.
+    content.vb: Function GetCurrentMaintenanceWindow() As MaintenanceWindow
+  overload: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetCurrentMaintenanceWindow*
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetNextMaintenanceWindow
+  commentId: M:MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetNextMaintenanceWindow
+  id: GetNextMaintenanceWindow
+  parent: MarketDataCollector.Application.Scheduling.IOperationalScheduler
+  langs:
+  - csharp
+  - vb
+  name: GetNextMaintenanceWindow()
+  nameWithType: IOperationalScheduler.GetNextMaintenanceWindow()
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetNextMaintenanceWindow()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetNextMaintenanceWindow
+    path: ../../src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+    startLine: 196
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Gets the next maintenance window.
+  example: []
+  syntax:
+    content: MaintenanceWindow? GetNextMaintenanceWindow()
+    return:
+      type: MarketDataCollector.Application.Scheduling.MaintenanceWindow
+      description: Next maintenance window or null.
+    content.vb: Function GetNextMaintenanceWindow() As MaintenanceWindow
+  overload: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetNextMaintenanceWindow*
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.RegisterMaintenanceWindow(MarketDataCollector.Application.Scheduling.MaintenanceWindow)
+  commentId: M:MarketDataCollector.Application.Scheduling.IOperationalScheduler.RegisterMaintenanceWindow(MarketDataCollector.Application.Scheduling.MaintenanceWindow)
+  id: RegisterMaintenanceWindow(MarketDataCollector.Application.Scheduling.MaintenanceWindow)
+  parent: MarketDataCollector.Application.Scheduling.IOperationalScheduler
+  langs:
+  - csharp
+  - vb
+  name: RegisterMaintenanceWindow(MaintenanceWindow)
+  nameWithType: IOperationalScheduler.RegisterMaintenanceWindow(MaintenanceWindow)
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.RegisterMaintenanceWindow(MarketDataCollector.Application.Scheduling.MaintenanceWindow)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterMaintenanceWindow
+    path: ../../src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+    startLine: 202
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Registers a maintenance window.
+  example: []
+  syntax:
+    content: void RegisterMaintenanceWindow(MaintenanceWindow window)
+    parameters:
+    - id: window
+      type: MarketDataCollector.Application.Scheduling.MaintenanceWindow
+      description: Maintenance window to register.
+    content.vb: Sub RegisterMaintenanceWindow(window As MaintenanceWindow)
+  overload: MarketDataCollector.Application.Scheduling.IOperationalScheduler.RegisterMaintenanceWindow*
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.RemoveMaintenanceWindow(System.String)
+  commentId: M:MarketDataCollector.Application.Scheduling.IOperationalScheduler.RemoveMaintenanceWindow(System.String)
+  id: RemoveMaintenanceWindow(System.String)
+  parent: MarketDataCollector.Application.Scheduling.IOperationalScheduler
+  langs:
+  - csharp
+  - vb
+  name: RemoveMaintenanceWindow(string)
+  nameWithType: IOperationalScheduler.RemoveMaintenanceWindow(string)
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.RemoveMaintenanceWindow(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RemoveMaintenanceWindow
+    path: ../../src/MarketDataCollector.Application/Scheduling/IOperationalScheduler.cs
+    startLine: 208
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Removes a maintenance window.
+  example: []
+  syntax:
+    content: void RemoveMaintenanceWindow(string windowName)
+    parameters:
+    - id: windowName
+      type: System.String
+      description: Name of the window to remove.
+    content.vb: Sub RemoveMaintenanceWindow(windowName As String)
+  overload: MarketDataCollector.Application.Scheduling.IOperationalScheduler.RemoveMaintenanceWindow*
+  nameWithType.vb: IOperationalScheduler.RemoveMaintenanceWindow(String)
+  fullName.vb: MarketDataCollector.Application.Scheduling.IOperationalScheduler.RemoveMaintenanceWindow(String)
+  name.vb: RemoveMaintenanceWindow(String)
+references:
+- uid: MarketDataCollector.Application.Scheduling
+  commentId: N:MarketDataCollector.Application.Scheduling
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Scheduling
+  nameWithType: MarketDataCollector.Application.Scheduling
+  fullName: MarketDataCollector.Application.Scheduling
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Scheduling
+    name: Scheduling
+    href: MarketDataCollector.Application.Scheduling.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Scheduling
+    name: Scheduling
+    href: MarketDataCollector.Application.Scheduling.html
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.CanExecuteAsync*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.IOperationalScheduler.CanExecuteAsync
+  href: MarketDataCollector.Application.Scheduling.IOperationalScheduler.html#MarketDataCollector_Application_Scheduling_IOperationalScheduler_CanExecuteAsync_MarketDataCollector_Application_Scheduling_OperationType_MarketDataCollector_Application_Scheduling_ResourceRequirements_System_Threading_CancellationToken_
+  name: CanExecuteAsync
+  nameWithType: IOperationalScheduler.CanExecuteAsync
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.CanExecuteAsync
+- uid: MarketDataCollector.Application.Scheduling.OperationType
+  commentId: T:MarketDataCollector.Application.Scheduling.OperationType
+  parent: MarketDataCollector.Application.Scheduling
+  href: MarketDataCollector.Application.Scheduling.OperationType.html
+  name: OperationType
+  nameWithType: OperationType
+  fullName: MarketDataCollector.Application.Scheduling.OperationType
+- uid: MarketDataCollector.Application.Scheduling.ResourceRequirements
+  commentId: T:MarketDataCollector.Application.Scheduling.ResourceRequirements
+  parent: MarketDataCollector.Application.Scheduling
+  href: MarketDataCollector.Application.Scheduling.ResourceRequirements.html
+  name: ResourceRequirements
+  nameWithType: ResourceRequirements
+  fullName: MarketDataCollector.Application.Scheduling.ResourceRequirements
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Scheduling.ScheduleDecision}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Scheduling.ScheduleDecision}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<ScheduleDecision>
+  nameWithType: Task<ScheduleDecision>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Scheduling.ScheduleDecision>
+  nameWithType.vb: Task(Of ScheduleDecision)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Scheduling.ScheduleDecision)
+  name.vb: Task(Of ScheduleDecision)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Scheduling.ScheduleDecision
+    name: ScheduleDecision
+    href: MarketDataCollector.Application.Scheduling.ScheduleDecision.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Scheduling.ScheduleDecision
+    name: ScheduleDecision
+    href: MarketDataCollector.Application.Scheduling.ScheduleDecision.html
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.FindNextAvailableSlotAsync*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.IOperationalScheduler.FindNextAvailableSlotAsync
+  href: MarketDataCollector.Application.Scheduling.IOperationalScheduler.html#MarketDataCollector_Application_Scheduling_IOperationalScheduler_FindNextAvailableSlotAsync_MarketDataCollector_Application_Scheduling_OperationType_System_TimeSpan_System_Threading_CancellationToken_
+  name: FindNextAvailableSlotAsync
+  nameWithType: IOperationalScheduler.FindNextAvailableSlotAsync
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.FindNextAvailableSlotAsync
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Scheduling.ScheduleSlot}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Scheduling.ScheduleSlot}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<ScheduleSlot>
+  nameWithType: Task<ScheduleSlot>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Scheduling.ScheduleSlot>
+  nameWithType.vb: Task(Of ScheduleSlot)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Scheduling.ScheduleSlot)
+  name.vb: Task(Of ScheduleSlot)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Scheduling.ScheduleSlot
+    name: ScheduleSlot
+    href: MarketDataCollector.Application.Scheduling.ScheduleSlot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Scheduling.ScheduleSlot
+    name: ScheduleSlot
+    href: MarketDataCollector.Application.Scheduling.ScheduleSlot.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.IsWithinTradingHours*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.IOperationalScheduler.IsWithinTradingHours
+  href: MarketDataCollector.Application.Scheduling.IOperationalScheduler.html#MarketDataCollector_Application_Scheduling_IOperationalScheduler_IsWithinTradingHours
+  name: IsWithinTradingHours
+  nameWithType: IOperationalScheduler.IsWithinTradingHours
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.IsWithinTradingHours
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.IsWithinMaintenanceWindow*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.IOperationalScheduler.IsWithinMaintenanceWindow
+  href: MarketDataCollector.Application.Scheduling.IOperationalScheduler.html#MarketDataCollector_Application_Scheduling_IOperationalScheduler_IsWithinMaintenanceWindow
+  name: IsWithinMaintenanceWindow
+  nameWithType: IOperationalScheduler.IsWithinMaintenanceWindow
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.IsWithinMaintenanceWindow
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetCurrentTradingSession*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetCurrentTradingSession
+  href: MarketDataCollector.Application.Scheduling.IOperationalScheduler.html#MarketDataCollector_Application_Scheduling_IOperationalScheduler_GetCurrentTradingSession
+  name: GetCurrentTradingSession
+  nameWithType: IOperationalScheduler.GetCurrentTradingSession
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetCurrentTradingSession
+- uid: MarketDataCollector.Application.Scheduling.TradingSession
+  commentId: T:MarketDataCollector.Application.Scheduling.TradingSession
+  parent: MarketDataCollector.Application.Scheduling
+  href: MarketDataCollector.Application.Scheduling.TradingSession.html
+  name: TradingSession
+  nameWithType: TradingSession
+  fullName: MarketDataCollector.Application.Scheduling.TradingSession
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetNextTradingSession*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetNextTradingSession
+  href: MarketDataCollector.Application.Scheduling.IOperationalScheduler.html#MarketDataCollector_Application_Scheduling_IOperationalScheduler_GetNextTradingSession
+  name: GetNextTradingSession
+  nameWithType: IOperationalScheduler.GetNextTradingSession
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetNextTradingSession
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetCurrentMaintenanceWindow*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetCurrentMaintenanceWindow
+  href: MarketDataCollector.Application.Scheduling.IOperationalScheduler.html#MarketDataCollector_Application_Scheduling_IOperationalScheduler_GetCurrentMaintenanceWindow
+  name: GetCurrentMaintenanceWindow
+  nameWithType: IOperationalScheduler.GetCurrentMaintenanceWindow
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetCurrentMaintenanceWindow
+- uid: MarketDataCollector.Application.Scheduling.MaintenanceWindow
+  commentId: T:MarketDataCollector.Application.Scheduling.MaintenanceWindow
+  parent: MarketDataCollector.Application.Scheduling
+  href: MarketDataCollector.Application.Scheduling.MaintenanceWindow.html
+  name: MaintenanceWindow
+  nameWithType: MaintenanceWindow
+  fullName: MarketDataCollector.Application.Scheduling.MaintenanceWindow
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetNextMaintenanceWindow*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetNextMaintenanceWindow
+  href: MarketDataCollector.Application.Scheduling.IOperationalScheduler.html#MarketDataCollector_Application_Scheduling_IOperationalScheduler_GetNextMaintenanceWindow
+  name: GetNextMaintenanceWindow
+  nameWithType: IOperationalScheduler.GetNextMaintenanceWindow
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.GetNextMaintenanceWindow
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.RegisterMaintenanceWindow*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.IOperationalScheduler.RegisterMaintenanceWindow
+  href: MarketDataCollector.Application.Scheduling.IOperationalScheduler.html#MarketDataCollector_Application_Scheduling_IOperationalScheduler_RegisterMaintenanceWindow_MarketDataCollector_Application_Scheduling_MaintenanceWindow_
+  name: RegisterMaintenanceWindow
+  nameWithType: IOperationalScheduler.RegisterMaintenanceWindow
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.RegisterMaintenanceWindow
+- uid: MarketDataCollector.Application.Scheduling.IOperationalScheduler.RemoveMaintenanceWindow*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.IOperationalScheduler.RemoveMaintenanceWindow
+  href: MarketDataCollector.Application.Scheduling.IOperationalScheduler.html#MarketDataCollector_Application_Scheduling_IOperationalScheduler_RemoveMaintenanceWindow_System_String_
+  name: RemoveMaintenanceWindow
+  nameWithType: IOperationalScheduler.RemoveMaintenanceWindow
+  fullName: MarketDataCollector.Application.Scheduling.IOperationalScheduler.RemoveMaintenanceWindow
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

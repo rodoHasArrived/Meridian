@@ -1,0 +1,1762 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  id: NasdaqDataLinkHistoricalDataProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  children:
+  - MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.#ctor(System.String,System.String,System.Net.Http.HttpClient,Serilog.ILogger)
+  - MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Capabilities
+  - MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Description
+  - MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.DisplayName
+  - MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetAdjustedDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.HttpClientName
+  - MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.MaxRequestsPerWindow
+  - MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Name
+  - MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.NormalizeSymbol(System.String)
+  - MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Priority
+  - MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.RateLimitDelay
+  - MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.RateLimitWindow
+  langs:
+  - csharp
+  - vb
+  name: NasdaqDataLinkHistoricalDataProvider
+  nameWithType: NasdaqDataLinkHistoricalDataProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: NasdaqDataLinkHistoricalDataProvider
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+    startLine: 19
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  summary: >-
+    Historical data provider using Nasdaq Data Link (formerly Quandl).
+
+    Free tier: 50 calls/day, 300 calls/10 seconds.
+
+    Provides access to various datasets including WIKI (end-of-life) and premium datasets.
+
+    Extends BaseHistoricalDataProvider for common functionality.
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-001", "Nasdaq Data Link historical data provider implementation")]
+
+      [ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+
+      public sealed class NasdaqDataLinkHistoricalDataProvider : BaseHistoricalDataProvider, IHistoricalDataProvider, IProviderMetadata, IRateLimitAwareProvider, IDisposable
+    content.vb: >-
+      <ImplementsAdr("ADR-001", "Nasdaq Data Link historical data provider implementation")>
+
+      <ImplementsAdr("ADR-004", "All async methods support CancellationToken")>
+
+      Public NotInheritable Class NasdaqDataLinkHistoricalDataProvider Inherits BaseHistoricalDataProvider Implements IHistoricalDataProvider, IProviderMetadata, IRateLimitAwareProvider, IDisposable
+  inheritance:
+  - System.Object
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  implements:
+  - MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  - MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider
+  - System.IDisposable
+  inheritedMembers:
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsAdjustedPrices
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsIntraday
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsDividends
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsSplits
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsQuotes
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsTrades
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsAuctions
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportedMarkets
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.OnRateLimitHit
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetRateLimitInfo
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Dispose
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-001
+    - type: System.String
+      value: Nasdaq Data Link historical data provider implementation
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-004
+    - type: System.String
+      value: All async methods support CancellationToken
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Name
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Name
+  id: Name
+  parent: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.Name
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Name
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Name
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+    startLine: 28
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  summary: Unique identifier for the provider (e.g., "alpaca", "tiingo").
+  example: []
+  syntax:
+    content: public override string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Overrides ReadOnly Property Name As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Name
+  overload: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Name*
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.DisplayName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.DisplayName
+  id: DisplayName
+  parent: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  langs:
+  - csharp
+  - vb
+  name: DisplayName
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.DisplayName
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.DisplayName
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisplayName
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+    startLine: 29
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  summary: Human-readable display name.
+  example: []
+  syntax:
+    content: public override string DisplayName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Overrides ReadOnly Property DisplayName As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.DisplayName
+  overload: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.DisplayName*
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Description
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Description
+  id: Description
+  parent: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.Description
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Description
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Description
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+    startLine: 30
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  summary: Description of the provider's capabilities.
+  example: []
+  syntax:
+    content: public override string Description { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Overrides ReadOnly Property Description As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Description
+  overload: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Description*
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.HttpClientName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.HttpClientName
+  id: HttpClientName
+  parent: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  langs:
+  - csharp
+  - vb
+  name: HttpClientName
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.HttpClientName
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.HttpClientName
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HttpClientName
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+    startLine: 31
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  summary: Named HTTP client identifier from HttpClientNames.
+  example: []
+  syntax:
+    content: protected override string HttpClientName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Protected Overrides ReadOnly Property HttpClientName As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.HttpClientName
+  overload: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.HttpClientName*
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Priority
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Priority
+  id: Priority
+  parent: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  langs:
+  - csharp
+  - vb
+  name: Priority
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.Priority
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Priority
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Priority
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+    startLine: 33
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  summary: >-
+    Priority for fallback ordering (lower = higher priority, tried first).
+
+    Default: 100 for basic providers.
+  example: []
+  syntax:
+    content: public override int Priority { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Overrides ReadOnly Property Priority As Integer
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Priority
+  overload: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Priority*
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.RateLimitDelay
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.RateLimitDelay
+  id: RateLimitDelay
+  parent: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  langs:
+  - csharp
+  - vb
+  name: RateLimitDelay
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.RateLimitDelay
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.RateLimitDelay
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RateLimitDelay
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+    startLine: 34
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  summary: >-
+    Minimum delay between API calls to respect rate limits.
+
+    Default: no delay.
+  example: []
+  syntax:
+    content: public override TimeSpan RateLimitDelay { get; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Overrides ReadOnly Property RateLimitDelay As TimeSpan
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.RateLimitDelay
+  overload: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.RateLimitDelay*
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.MaxRequestsPerWindow
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.MaxRequestsPerWindow
+  id: MaxRequestsPerWindow
+  parent: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  langs:
+  - csharp
+  - vb
+  name: MaxRequestsPerWindow
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.MaxRequestsPerWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.MaxRequestsPerWindow
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MaxRequestsPerWindow
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+    startLine: 35
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  summary: >-
+    Maximum number of requests allowed per time window.
+
+    Default: unlimited.
+  example: []
+  syntax:
+    content: public override int MaxRequestsPerWindow { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Overrides ReadOnly Property MaxRequestsPerWindow As Integer
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.MaxRequestsPerWindow
+  overload: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.MaxRequestsPerWindow*
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.RateLimitWindow
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.RateLimitWindow
+  id: RateLimitWindow
+  parent: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  langs:
+  - csharp
+  - vb
+  name: RateLimitWindow
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.RateLimitWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.RateLimitWindow
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RateLimitWindow
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+    startLine: 36
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  summary: >-
+    Time window for rate limiting (e.g., 1 minute, 1 hour).
+
+    Default: 1 hour.
+  example: []
+  syntax:
+    content: public override TimeSpan RateLimitWindow { get; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Overrides ReadOnly Property RateLimitWindow As TimeSpan
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.RateLimitWindow
+  overload: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.RateLimitWindow*
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Capabilities
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Capabilities
+  id: Capabilities
+  parent: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  langs:
+  - csharp
+  - vb
+  name: Capabilities
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.Capabilities
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Capabilities
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Capabilities
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+    startLine: 41
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  summary: Nasdaq Data Link supports adjusted bars with corporate actions.
+  example: []
+  syntax:
+    content: public override HistoricalDataCapabilities Capabilities { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.HistoricalDataCapabilities
+    content.vb: Public Overrides ReadOnly Property Capabilities As HistoricalDataCapabilities
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Capabilities
+  overload: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Capabilities*
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.#ctor(System.String,System.String,System.Net.Http.HttpClient,Serilog.ILogger)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.#ctor(System.String,System.String,System.Net.Http.HttpClient,Serilog.ILogger)
+  id: '#ctor(System.String,System.String,System.Net.Http.HttpClient,Serilog.ILogger)'
+  parent: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  langs:
+  - csharp
+  - vb
+  name: NasdaqDataLinkHistoricalDataProvider(string?, string, HttpClient?, ILogger?)
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.NasdaqDataLinkHistoricalDataProvider(string?, string, HttpClient?, ILogger?)
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.NasdaqDataLinkHistoricalDataProvider(string?, string, System.Net.Http.HttpClient?, Serilog.ILogger?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+    startLine: 50
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  summary: Create a Nasdaq Data Link provider.
+  example: []
+  syntax:
+    content: public NasdaqDataLinkHistoricalDataProvider(string? apiKey = null, string database = "WIKI", HttpClient? httpClient = null, ILogger? log = null)
+    parameters:
+    - id: apiKey
+      type: System.String
+      description: API key from data.nasdaq.com (optional but recommended)
+    - id: database
+      type: System.String
+      description: 'Database to query (default: "WIKI" for legacy wiki prices, or use "EOD" for end-of-day)'
+    - id: httpClient
+      type: System.Net.Http.HttpClient
+      description: Optional HTTP client
+    - id: log
+      type: Serilog.ILogger
+      description: Optional logger
+    content.vb: Public Sub New(apiKey As String = Nothing, database As String = "WIKI", httpClient As HttpClient = Nothing, log As ILogger = Nothing)
+  overload: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.#ctor*
+  nameWithType.vb: NasdaqDataLinkHistoricalDataProvider.New(String, String, HttpClient, ILogger)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.New(String, String, System.Net.Http.HttpClient, Serilog.ILogger)
+  name.vb: New(String, String, HttpClient, ILogger)
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.NormalizeSymbol(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.NormalizeSymbol(System.String)
+  id: NormalizeSymbol(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  langs:
+  - csharp
+  - vb
+  name: NormalizeSymbol(string)
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.NormalizeSymbol(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.NormalizeSymbol(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: NormalizeSymbol
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+    startLine: 64
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  summary: Nasdaq Data Link expects uppercase symbols with dots replaced by underscores.
+  example: []
+  syntax:
+    content: protected override string NormalizeSymbol(string symbol)
+    parameters:
+    - id: symbol
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Protected Overrides Function NormalizeSymbol(symbol As String) As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.NormalizeSymbol(System.String)
+  overload: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.NormalizeSymbol*
+  nameWithType.vb: NasdaqDataLinkHistoricalDataProvider.NormalizeSymbol(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.NormalizeSymbol(String)
+  name.vb: NormalizeSymbol(String)
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  id: IsAvailableAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  langs:
+  - csharp
+  - vb
+  name: IsAvailableAsync(CancellationToken)
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.IsAvailableAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsAvailableAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+    startLine: 69
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  summary: >-
+    Check if the provider is currently available and healthy.
+
+    Default implementation validates credentials.
+  example: []
+  syntax:
+    content: public override Task<bool> IsAvailableAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Overrides Function IsAvailableAsync(ct As CancellationToken = Nothing) As Task(Of Boolean)
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  overload: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.IsAvailableAsync*
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  id: GetDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  langs:
+  - csharp
+  - vb
+  name: GetDailyBarsAsync(string, DateOnly?, DateOnly?, CancellationToken)
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.GetDailyBarsAsync(string, DateOnly?, DateOnly?, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetDailyBarsAsync(string, System.DateOnly?, System.DateOnly?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetDailyBarsAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+    startLine: 86
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  summary: >-
+    Fetch daily OHLCV bars for a symbol within the specified date range.
+
+    Must be implemented by derived classes.
+  example: []
+  syntax:
+    content: public override Task<IReadOnlyList<HistoricalBar>> GetDailyBarsAsync(string symbol, DateOnly? from, DateOnly? to, CancellationToken ct = default)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: from
+      type: System.Nullable{System.DateOnly}
+    - id: to
+      type: System.Nullable{System.DateOnly}
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.HistoricalBar}}
+    content.vb: Public Overrides Function GetDailyBarsAsync(symbol As String, from As DateOnly?, [to] As DateOnly?, ct As CancellationToken = Nothing) As Task(Of IReadOnlyList(Of HistoricalBar))
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  overload: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetDailyBarsAsync*
+  nameWithType.vb: NasdaqDataLinkHistoricalDataProvider.GetDailyBarsAsync(String, DateOnly?, DateOnly?, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetDailyBarsAsync(String, System.DateOnly?, System.DateOnly?, System.Threading.CancellationToken)
+  name.vb: GetDailyBarsAsync(String, DateOnly?, DateOnly?, CancellationToken)
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetAdjustedDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetAdjustedDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  id: GetAdjustedDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  langs:
+  - csharp
+  - vb
+  name: GetAdjustedDailyBarsAsync(string, DateOnly?, DateOnly?, CancellationToken)
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.GetAdjustedDailyBarsAsync(string, DateOnly?, DateOnly?, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetAdjustedDailyBarsAsync(string, System.DateOnly?, System.DateOnly?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetAdjustedDailyBarsAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/NasdaqDataLink/NasdaqDataLinkHistoricalDataProvider.cs
+    startLine: 96
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  summary: >-
+    Get extended bar data with adjustment information when supported.
+
+    Default implementation converts standard bars to adjusted bars.
+  example: []
+  syntax:
+    content: public override Task<IReadOnlyList<AdjustedHistoricalBar>> GetAdjustedDailyBarsAsync(string symbol, DateOnly? from, DateOnly? to, CancellationToken ct = default)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: from
+      type: System.Nullable{System.DateOnly}
+    - id: to
+      type: System.Nullable{System.DateOnly}
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.AdjustedHistoricalBar}}
+    content.vb: Public Overrides Function GetAdjustedDailyBarsAsync(symbol As String, from As DateOnly?, [to] As DateOnly?, ct As CancellationToken = Nothing) As Task(Of IReadOnlyList(Of AdjustedHistoricalBar))
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetAdjustedDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  overload: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetAdjustedDailyBarsAsync*
+  nameWithType.vb: NasdaqDataLinkHistoricalDataProvider.GetAdjustedDailyBarsAsync(String, DateOnly?, DateOnly?, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetAdjustedDailyBarsAsync(String, System.DateOnly?, System.DateOnly?, System.Threading.CancellationToken)
+  name.vb: GetAdjustedDailyBarsAsync(String, DateOnly?, DateOnly?, CancellationToken)
+references:
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+    name: NasdaqDataLink
+    href: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink
+    name: NasdaqDataLink
+    href: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html
+  name: BaseHistoricalDataProvider
+  nameWithType: BaseHistoricalDataProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider.html
+  name: IHistoricalDataProvider
+  nameWithType: IHistoricalDataProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html
+  name: IProviderMetadata
+  nameWithType: IProviderMetadata
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider.html
+  name: IRateLimitAwareProvider
+  nameWithType: IRateLimitAwareProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsAdjustedPrices
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsAdjustedPrices
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_SupportsAdjustedPrices
+  name: SupportsAdjustedPrices
+  nameWithType: BaseHistoricalDataProvider.SupportsAdjustedPrices
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsAdjustedPrices
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsIntraday
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsIntraday
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_SupportsIntraday
+  name: SupportsIntraday
+  nameWithType: BaseHistoricalDataProvider.SupportsIntraday
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsIntraday
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsDividends
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsDividends
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_SupportsDividends
+  name: SupportsDividends
+  nameWithType: BaseHistoricalDataProvider.SupportsDividends
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsDividends
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsSplits
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsSplits
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_SupportsSplits
+  name: SupportsSplits
+  nameWithType: BaseHistoricalDataProvider.SupportsSplits
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsSplits
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsQuotes
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsQuotes
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_SupportsQuotes
+  name: SupportsQuotes
+  nameWithType: BaseHistoricalDataProvider.SupportsQuotes
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsQuotes
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsTrades
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsTrades
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_SupportsTrades
+  name: SupportsTrades
+  nameWithType: BaseHistoricalDataProvider.SupportsTrades
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsTrades
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsAuctions
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsAuctions
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_SupportsAuctions
+  name: SupportsAuctions
+  nameWithType: BaseHistoricalDataProvider.SupportsAuctions
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportsAuctions
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportedMarkets
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportedMarkets
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_SupportedMarkets
+  name: SupportedMarkets
+  nameWithType: BaseHistoricalDataProvider.SupportedMarkets
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.SupportedMarkets
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.OnRateLimitHit
+  commentId: E:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.OnRateLimitHit
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_OnRateLimitHit
+  name: OnRateLimitHit
+  nameWithType: BaseHistoricalDataProvider.OnRateLimitHit
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.OnRateLimitHit
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetRateLimitInfo
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetRateLimitInfo
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_GetRateLimitInfo
+  name: GetRateLimitInfo()
+  nameWithType: BaseHistoricalDataProvider.GetRateLimitInfo()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetRateLimitInfo()
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetRateLimitInfo
+    name: GetRateLimitInfo
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_GetRateLimitInfo
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetRateLimitInfo
+    name: GetRateLimitInfo
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_GetRateLimitInfo
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Dispose
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Dispose
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_Dispose
+  name: Dispose()
+  nameWithType: BaseHistoricalDataProvider.Dispose()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Dispose()
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Dispose
+    name: Dispose
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Dispose
+    name: Dispose
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_Dispose
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Infrastructure.Adapters.Core
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Core
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Core
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Name
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Name
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_Name
+  name: Name
+  nameWithType: BaseHistoricalDataProvider.Name
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Name
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Name*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Name
+  href: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_NasdaqDataLink_NasdaqDataLinkHistoricalDataProvider_Name
+  name: Name
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.Name
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.DisplayName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.DisplayName
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_DisplayName
+  name: DisplayName
+  nameWithType: BaseHistoricalDataProvider.DisplayName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.DisplayName
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.DisplayName*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.DisplayName
+  href: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_NasdaqDataLink_NasdaqDataLinkHistoricalDataProvider_DisplayName
+  name: DisplayName
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.DisplayName
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.DisplayName
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Description
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Description
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_Description
+  name: Description
+  nameWithType: BaseHistoricalDataProvider.Description
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Description
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Description*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Description
+  href: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_NasdaqDataLink_NasdaqDataLinkHistoricalDataProvider_Description
+  name: Description
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.Description
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Description
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.HttpClientName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.HttpClientName
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_HttpClientName
+  name: HttpClientName
+  nameWithType: BaseHistoricalDataProvider.HttpClientName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.HttpClientName
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.HttpClientName*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.HttpClientName
+  href: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_NasdaqDataLink_NasdaqDataLinkHistoricalDataProvider_HttpClientName
+  name: HttpClientName
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.HttpClientName
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.HttpClientName
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Priority
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Priority
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_Priority
+  name: Priority
+  nameWithType: BaseHistoricalDataProvider.Priority
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Priority
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Priority*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Priority
+  href: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_NasdaqDataLink_NasdaqDataLinkHistoricalDataProvider_Priority
+  name: Priority
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.Priority
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Priority
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.RateLimitDelay
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.RateLimitDelay
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_RateLimitDelay
+  name: RateLimitDelay
+  nameWithType: BaseHistoricalDataProvider.RateLimitDelay
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.RateLimitDelay
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.RateLimitDelay*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.RateLimitDelay
+  href: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_NasdaqDataLink_NasdaqDataLinkHistoricalDataProvider_RateLimitDelay
+  name: RateLimitDelay
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.RateLimitDelay
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.RateLimitDelay
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.MaxRequestsPerWindow
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.MaxRequestsPerWindow
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_MaxRequestsPerWindow
+  name: MaxRequestsPerWindow
+  nameWithType: BaseHistoricalDataProvider.MaxRequestsPerWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.MaxRequestsPerWindow
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.MaxRequestsPerWindow*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.MaxRequestsPerWindow
+  href: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_NasdaqDataLink_NasdaqDataLinkHistoricalDataProvider_MaxRequestsPerWindow
+  name: MaxRequestsPerWindow
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.MaxRequestsPerWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.MaxRequestsPerWindow
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.RateLimitWindow
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.RateLimitWindow
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_RateLimitWindow
+  name: RateLimitWindow
+  nameWithType: BaseHistoricalDataProvider.RateLimitWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.RateLimitWindow
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.RateLimitWindow*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.RateLimitWindow
+  href: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_NasdaqDataLink_NasdaqDataLinkHistoricalDataProvider_RateLimitWindow
+  name: RateLimitWindow
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.RateLimitWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.RateLimitWindow
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Capabilities
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Capabilities
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_Capabilities
+  name: Capabilities
+  nameWithType: BaseHistoricalDataProvider.Capabilities
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.Capabilities
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Capabilities*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Capabilities
+  href: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_NasdaqDataLink_NasdaqDataLinkHistoricalDataProvider_Capabilities
+  name: Capabilities
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.Capabilities
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.Capabilities
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.HistoricalDataCapabilities
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.HistoricalDataCapabilities
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.HistoricalDataCapabilities.html
+  name: HistoricalDataCapabilities
+  nameWithType: HistoricalDataCapabilities
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.HistoricalDataCapabilities
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.#ctor*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.#ctor
+  href: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_NasdaqDataLink_NasdaqDataLinkHistoricalDataProvider__ctor_System_String_System_String_System_Net_Http_HttpClient_Serilog_ILogger_
+  name: NasdaqDataLinkHistoricalDataProvider
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.NasdaqDataLinkHistoricalDataProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.NasdaqDataLinkHistoricalDataProvider
+  nameWithType.vb: NasdaqDataLinkHistoricalDataProvider.New
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.New
+  name.vb: New
+- uid: System.Net.Http.HttpClient
+  commentId: T:System.Net.Http.HttpClient
+  parent: System.Net.Http
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.http.httpclient
+  name: HttpClient
+  nameWithType: HttpClient
+  fullName: System.Net.Http.HttpClient
+- uid: Serilog.ILogger
+  commentId: T:Serilog.ILogger
+  parent: Serilog
+  isExternal: true
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Serilog.ILogger
+- uid: System.Net.Http
+  commentId: N:System.Net.Http
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Net.Http
+  nameWithType: System.Net.Http
+  fullName: System.Net.Http
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Http
+    name: Http
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Http
+    name: Http
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http
+- uid: Serilog
+  commentId: N:Serilog
+  isExternal: true
+  name: Serilog
+  nameWithType: Serilog
+  fullName: Serilog
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.NormalizeSymbol(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.NormalizeSymbol(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_NormalizeSymbol_System_String_
+  name: NormalizeSymbol(string)
+  nameWithType: BaseHistoricalDataProvider.NormalizeSymbol(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.NormalizeSymbol(string)
+  nameWithType.vb: BaseHistoricalDataProvider.NormalizeSymbol(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.NormalizeSymbol(String)
+  name.vb: NormalizeSymbol(String)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.NormalizeSymbol(System.String)
+    name: NormalizeSymbol
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_NormalizeSymbol_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.NormalizeSymbol(System.String)
+    name: NormalizeSymbol
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_NormalizeSymbol_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.NormalizeSymbol*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.NormalizeSymbol
+  href: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_NasdaqDataLink_NasdaqDataLinkHistoricalDataProvider_NormalizeSymbol_System_String_
+  name: NormalizeSymbol
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.NormalizeSymbol
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.NormalizeSymbol
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_IsAvailableAsync_System_Threading_CancellationToken_
+  name: IsAvailableAsync(CancellationToken)
+  nameWithType: BaseHistoricalDataProvider.IsAvailableAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.IsAvailableAsync(System.Threading.CancellationToken)
+    name: IsAvailableAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_IsAvailableAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.IsAvailableAsync(System.Threading.CancellationToken)
+    name: IsAvailableAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_IsAvailableAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.IsAvailableAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.IsAvailableAsync
+  href: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_NasdaqDataLink_NasdaqDataLinkHistoricalDataProvider_IsAvailableAsync_System_Threading_CancellationToken_
+  name: IsAvailableAsync
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.IsAvailableAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.IsAvailableAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_GetDailyBarsAsync_System_String_System_Nullable_System_DateOnly__System_Nullable_System_DateOnly__System_Threading_CancellationToken_
+  name: GetDailyBarsAsync(string, DateOnly?, DateOnly?, CancellationToken)
+  nameWithType: BaseHistoricalDataProvider.GetDailyBarsAsync(string, DateOnly?, DateOnly?, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetDailyBarsAsync(string, System.DateOnly?, System.DateOnly?, System.Threading.CancellationToken)
+  nameWithType.vb: BaseHistoricalDataProvider.GetDailyBarsAsync(String, DateOnly?, DateOnly?, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetDailyBarsAsync(String, System.DateOnly?, System.DateOnly?, System.Threading.CancellationToken)
+  name.vb: GetDailyBarsAsync(String, DateOnly?, DateOnly?, CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+    name: GetDailyBarsAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_GetDailyBarsAsync_System_String_System_Nullable_System_DateOnly__System_Nullable_System_DateOnly__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+    name: GetDailyBarsAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_GetDailyBarsAsync_System_String_System_Nullable_System_DateOnly__System_Nullable_System_DateOnly__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetDailyBarsAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetDailyBarsAsync
+  href: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_NasdaqDataLink_NasdaqDataLinkHistoricalDataProvider_GetDailyBarsAsync_System_String_System_Nullable_System_DateOnly__System_Nullable_System_DateOnly__System_Threading_CancellationToken_
+  name: GetDailyBarsAsync
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.GetDailyBarsAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetDailyBarsAsync
+- uid: System.Nullable{System.DateOnly}
+  commentId: T:System.Nullable{System.DateOnly}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  name: DateOnly?
+  nameWithType: DateOnly?
+  fullName: System.DateOnly?
+  spec.csharp:
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '?'
+  spec.vb:
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '?'
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.HistoricalBar}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.HistoricalBar}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IReadOnlyList<HistoricalBar>>
+  nameWithType: Task<IReadOnlyList<HistoricalBar>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<MarketDataCollector.Contracts.Domain.Models.HistoricalBar>>
+  nameWithType.vb: Task(Of IReadOnlyList(Of HistoricalBar))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Contracts.Domain.Models.HistoricalBar))
+  name.vb: Task(Of IReadOnlyList(Of HistoricalBar))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Domain.Models.HistoricalBar
+    name: HistoricalBar
+    href: MarketDataCollector.Contracts.Domain.Models.HistoricalBar.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Domain.Models.HistoricalBar
+    name: HistoricalBar
+    href: MarketDataCollector.Contracts.Domain.Models.HistoricalBar.html
+  - name: )
+  - name: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetAdjustedDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetAdjustedDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_GetAdjustedDailyBarsAsync_System_String_System_Nullable_System_DateOnly__System_Nullable_System_DateOnly__System_Threading_CancellationToken_
+  name: GetAdjustedDailyBarsAsync(string, DateOnly?, DateOnly?, CancellationToken)
+  nameWithType: BaseHistoricalDataProvider.GetAdjustedDailyBarsAsync(string, DateOnly?, DateOnly?, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetAdjustedDailyBarsAsync(string, System.DateOnly?, System.DateOnly?, System.Threading.CancellationToken)
+  nameWithType.vb: BaseHistoricalDataProvider.GetAdjustedDailyBarsAsync(String, DateOnly?, DateOnly?, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetAdjustedDailyBarsAsync(String, System.DateOnly?, System.DateOnly?, System.Threading.CancellationToken)
+  name.vb: GetAdjustedDailyBarsAsync(String, DateOnly?, DateOnly?, CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetAdjustedDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+    name: GetAdjustedDailyBarsAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_GetAdjustedDailyBarsAsync_System_String_System_Nullable_System_DateOnly__System_Nullable_System_DateOnly__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.GetAdjustedDailyBarsAsync(System.String,System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.Threading.CancellationToken)
+    name: GetAdjustedDailyBarsAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseHistoricalDataProvider_GetAdjustedDailyBarsAsync_System_String_System_Nullable_System_DateOnly__System_Nullable_System_DateOnly__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetAdjustedDailyBarsAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetAdjustedDailyBarsAsync
+  href: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.html#MarketDataCollector_Infrastructure_Adapters_NasdaqDataLink_NasdaqDataLinkHistoricalDataProvider_GetAdjustedDailyBarsAsync_System_String_System_Nullable_System_DateOnly__System_Nullable_System_DateOnly__System_Threading_CancellationToken_
+  name: GetAdjustedDailyBarsAsync
+  nameWithType: NasdaqDataLinkHistoricalDataProvider.GetAdjustedDailyBarsAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider.GetAdjustedDailyBarsAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.AdjustedHistoricalBar}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.AdjustedHistoricalBar}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IReadOnlyList<AdjustedHistoricalBar>>
+  nameWithType: Task<IReadOnlyList<AdjustedHistoricalBar>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<MarketDataCollector.Contracts.Domain.Models.AdjustedHistoricalBar>>
+  nameWithType.vb: Task(Of IReadOnlyList(Of AdjustedHistoricalBar))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Contracts.Domain.Models.AdjustedHistoricalBar))
+  name.vb: Task(Of IReadOnlyList(Of AdjustedHistoricalBar))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Domain.Models.AdjustedHistoricalBar
+    name: AdjustedHistoricalBar
+    href: MarketDataCollector.Contracts.Domain.Models.AdjustedHistoricalBar.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Domain.Models.AdjustedHistoricalBar
+    name: AdjustedHistoricalBar
+    href: MarketDataCollector.Contracts.Domain.Models.AdjustedHistoricalBar.html
+  - name: )
+  - name: )

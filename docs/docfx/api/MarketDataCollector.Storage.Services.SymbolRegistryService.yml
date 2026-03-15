@@ -1,0 +1,1672 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService
+  commentId: T:MarketDataCollector.Storage.Services.SymbolRegistryService
+  id: SymbolRegistryService
+  parent: MarketDataCollector.Storage.Services
+  children:
+  - MarketDataCollector.Storage.Services.SymbolRegistryService.#ctor(System.String)
+  - MarketDataCollector.Storage.Services.SymbolRegistryService.AddAliasAsync(System.String,MarketDataCollector.Contracts.Catalog.SymbolAlias,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.SymbolRegistryService.AddProviderMappingAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.SymbolRegistryService.GetAllSymbols
+  - MarketDataCollector.Storage.Services.SymbolRegistryService.GetProviderSymbol(System.String,System.String)
+  - MarketDataCollector.Storage.Services.SymbolRegistryService.GetRegistry
+  - MarketDataCollector.Storage.Services.SymbolRegistryService.GetSymbolsByAssetClass(System.String)
+  - MarketDataCollector.Storage.Services.SymbolRegistryService.ImportSymbolsAsync(System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry},System.Boolean,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.SymbolRegistryService.InitializeAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.SymbolRegistryService.LookupSymbol(System.String)
+  - MarketDataCollector.Storage.Services.SymbolRegistryService.RegisterSymbolAsync(MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.SymbolRegistryService.ResolveAlias(System.String)
+  - MarketDataCollector.Storage.Services.SymbolRegistryService.SaveRegistryAsync(System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: SymbolRegistryService
+  nameWithType: SymbolRegistryService
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SymbolRegistryService
+    path: ../../src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+    startLine: 14
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: >-
+    Service for managing the symbol registry with comprehensive alias resolution.
+
+    Stored at _catalog/symbols.json.
+  example: []
+  syntax:
+    content: 'public sealed class SymbolRegistryService : ISymbolRegistryService'
+    content.vb: Public NotInheritable Class SymbolRegistryService Implements ISymbolRegistryService
+  inheritance:
+  - System.Object
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISymbolRegistryService
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.#ctor(System.String)
+  commentId: M:MarketDataCollector.Storage.Services.SymbolRegistryService.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: MarketDataCollector.Storage.Services.SymbolRegistryService
+  langs:
+  - csharp
+  - vb
+  name: SymbolRegistryService(string)
+  nameWithType: SymbolRegistryService.SymbolRegistryService(string)
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.SymbolRegistryService(string)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+    startLine: 27
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public SymbolRegistryService(string storagePath)
+    parameters:
+    - id: storagePath
+      type: System.String
+    content.vb: Public Sub New(storagePath As String)
+  overload: MarketDataCollector.Storage.Services.SymbolRegistryService.#ctor*
+  nameWithType.vb: SymbolRegistryService.New(String)
+  fullName.vb: MarketDataCollector.Storage.Services.SymbolRegistryService.New(String)
+  name.vb: New(String)
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.GetRegistry
+  commentId: M:MarketDataCollector.Storage.Services.SymbolRegistryService.GetRegistry
+  id: GetRegistry
+  parent: MarketDataCollector.Storage.Services.SymbolRegistryService
+  langs:
+  - csharp
+  - vb
+  name: GetRegistry()
+  nameWithType: SymbolRegistryService.GetRegistry()
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.GetRegistry()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetRegistry
+    path: ../../src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+    startLine: 36
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Gets the symbol registry.
+  example: []
+  syntax:
+    content: public SymbolRegistry GetRegistry()
+    return:
+      type: MarketDataCollector.Contracts.Catalog.SymbolRegistry
+    content.vb: Public Function GetRegistry() As SymbolRegistry
+  overload: MarketDataCollector.Storage.Services.SymbolRegistryService.GetRegistry*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetRegistry
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.InitializeAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.SymbolRegistryService.InitializeAsync(System.Threading.CancellationToken)
+  id: InitializeAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.SymbolRegistryService
+  langs:
+  - csharp
+  - vb
+  name: InitializeAsync(CancellationToken)
+  nameWithType: SymbolRegistryService.InitializeAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.InitializeAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: InitializeAsync
+    path: ../../src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+    startLine: 38
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Initializes the registry from storage.
+  example: []
+  syntax:
+    content: public Task InitializeAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function InitializeAsync(ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Storage.Services.SymbolRegistryService.InitializeAsync*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.InitializeAsync(System.Threading.CancellationToken)
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.RegisterSymbolAsync(MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.SymbolRegistryService.RegisterSymbolAsync(MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry,System.Threading.CancellationToken)
+  id: RegisterSymbolAsync(MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.SymbolRegistryService
+  langs:
+  - csharp
+  - vb
+  name: RegisterSymbolAsync(SymbolRegistryEntry, CancellationToken)
+  nameWithType: SymbolRegistryService.RegisterSymbolAsync(SymbolRegistryEntry, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.RegisterSymbolAsync(MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterSymbolAsync
+    path: ../../src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+    startLine: 76
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Registers or updates a symbol entry.
+  example: []
+  syntax:
+    content: public Task RegisterSymbolAsync(SymbolRegistryEntry entry, CancellationToken ct = default)
+    parameters:
+    - id: entry
+      type: MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function RegisterSymbolAsync(entry As SymbolRegistryEntry, ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Storage.Services.SymbolRegistryService.RegisterSymbolAsync*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.RegisterSymbolAsync(MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry,System.Threading.CancellationToken)
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.LookupSymbol(System.String)
+  commentId: M:MarketDataCollector.Storage.Services.SymbolRegistryService.LookupSymbol(System.String)
+  id: LookupSymbol(System.String)
+  parent: MarketDataCollector.Storage.Services.SymbolRegistryService
+  langs:
+  - csharp
+  - vb
+  name: LookupSymbol(string)
+  nameWithType: SymbolRegistryService.LookupSymbol(string)
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.LookupSymbol(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LookupSymbol
+    path: ../../src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+    startLine: 118
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Looks up a symbol by any identifier (canonical, alias, ISIN, FIGI, etc.).
+  example: []
+  syntax:
+    content: public SymbolLookupResult LookupSymbol(string query)
+    parameters:
+    - id: query
+      type: System.String
+    return:
+      type: MarketDataCollector.Contracts.Catalog.SymbolLookupResult
+    content.vb: Public Function LookupSymbol(query As String) As SymbolLookupResult
+  overload: MarketDataCollector.Storage.Services.SymbolRegistryService.LookupSymbol*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.LookupSymbol(System.String)
+  nameWithType.vb: SymbolRegistryService.LookupSymbol(String)
+  fullName.vb: MarketDataCollector.Storage.Services.SymbolRegistryService.LookupSymbol(String)
+  name.vb: LookupSymbol(String)
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.ResolveAlias(System.String)
+  commentId: M:MarketDataCollector.Storage.Services.SymbolRegistryService.ResolveAlias(System.String)
+  id: ResolveAlias(System.String)
+  parent: MarketDataCollector.Storage.Services.SymbolRegistryService
+  langs:
+  - csharp
+  - vb
+  name: ResolveAlias(string)
+  nameWithType: SymbolRegistryService.ResolveAlias(string)
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.ResolveAlias(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResolveAlias
+    path: ../../src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+    startLine: 206
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Resolves an alias to a canonical symbol.
+  example: []
+  syntax:
+    content: public string ResolveAlias(string alias)
+    parameters:
+    - id: alias
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function ResolveAlias([alias] As String) As String
+  overload: MarketDataCollector.Storage.Services.SymbolRegistryService.ResolveAlias*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.ResolveAlias(System.String)
+  nameWithType.vb: SymbolRegistryService.ResolveAlias(String)
+  fullName.vb: MarketDataCollector.Storage.Services.SymbolRegistryService.ResolveAlias(String)
+  name.vb: ResolveAlias(String)
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.GetProviderSymbol(System.String,System.String)
+  commentId: M:MarketDataCollector.Storage.Services.SymbolRegistryService.GetProviderSymbol(System.String,System.String)
+  id: GetProviderSymbol(System.String,System.String)
+  parent: MarketDataCollector.Storage.Services.SymbolRegistryService
+  langs:
+  - csharp
+  - vb
+  name: GetProviderSymbol(string, string)
+  nameWithType: SymbolRegistryService.GetProviderSymbol(string, string)
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.GetProviderSymbol(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetProviderSymbol
+    path: ../../src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+    startLine: 241
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Gets the provider-specific symbol for a canonical symbol.
+  example: []
+  syntax:
+    content: public string? GetProviderSymbol(string canonical, string provider)
+    parameters:
+    - id: canonical
+      type: System.String
+    - id: provider
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function GetProviderSymbol(canonical As String, provider As String) As String
+  overload: MarketDataCollector.Storage.Services.SymbolRegistryService.GetProviderSymbol*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetProviderSymbol(System.String,System.String)
+  nameWithType.vb: SymbolRegistryService.GetProviderSymbol(String, String)
+  fullName.vb: MarketDataCollector.Storage.Services.SymbolRegistryService.GetProviderSymbol(String, String)
+  name.vb: GetProviderSymbol(String, String)
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.AddAliasAsync(System.String,MarketDataCollector.Contracts.Catalog.SymbolAlias,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.SymbolRegistryService.AddAliasAsync(System.String,MarketDataCollector.Contracts.Catalog.SymbolAlias,System.Threading.CancellationToken)
+  id: AddAliasAsync(System.String,MarketDataCollector.Contracts.Catalog.SymbolAlias,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.SymbolRegistryService
+  langs:
+  - csharp
+  - vb
+  name: AddAliasAsync(string, SymbolAlias, CancellationToken)
+  nameWithType: SymbolRegistryService.AddAliasAsync(string, SymbolAlias, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.AddAliasAsync(string, MarketDataCollector.Contracts.Catalog.SymbolAlias, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AddAliasAsync
+    path: ../../src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+    startLine: 265
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Adds an alias for a symbol.
+  example: []
+  syntax:
+    content: public Task AddAliasAsync(string canonical, SymbolAlias alias, CancellationToken ct = default)
+    parameters:
+    - id: canonical
+      type: System.String
+    - id: alias
+      type: MarketDataCollector.Contracts.Catalog.SymbolAlias
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function AddAliasAsync(canonical As String, [alias] As SymbolAlias, ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Storage.Services.SymbolRegistryService.AddAliasAsync*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.AddAliasAsync(System.String,MarketDataCollector.Contracts.Catalog.SymbolAlias,System.Threading.CancellationToken)
+  nameWithType.vb: SymbolRegistryService.AddAliasAsync(String, SymbolAlias, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Services.SymbolRegistryService.AddAliasAsync(String, MarketDataCollector.Contracts.Catalog.SymbolAlias, System.Threading.CancellationToken)
+  name.vb: AddAliasAsync(String, SymbolAlias, CancellationToken)
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.AddProviderMappingAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.SymbolRegistryService.AddProviderMappingAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  id: AddProviderMappingAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.SymbolRegistryService
+  langs:
+  - csharp
+  - vb
+  name: AddProviderMappingAsync(string, string, string, CancellationToken)
+  nameWithType: SymbolRegistryService.AddProviderMappingAsync(string, string, string, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.AddProviderMappingAsync(string, string, string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AddProviderMappingAsync
+    path: ../../src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+    startLine: 295
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Adds a provider mapping.
+  example: []
+  syntax:
+    content: public Task AddProviderMappingAsync(string canonical, string provider, string providerSymbol, CancellationToken ct = default)
+    parameters:
+    - id: canonical
+      type: System.String
+    - id: provider
+      type: System.String
+    - id: providerSymbol
+      type: System.String
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function AddProviderMappingAsync(canonical As String, provider As String, providerSymbol As String, ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Storage.Services.SymbolRegistryService.AddProviderMappingAsync*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.AddProviderMappingAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  nameWithType.vb: SymbolRegistryService.AddProviderMappingAsync(String, String, String, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Services.SymbolRegistryService.AddProviderMappingAsync(String, String, String, System.Threading.CancellationToken)
+  name.vb: AddProviderMappingAsync(String, String, String, CancellationToken)
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.GetAllSymbols
+  commentId: M:MarketDataCollector.Storage.Services.SymbolRegistryService.GetAllSymbols
+  id: GetAllSymbols
+  parent: MarketDataCollector.Storage.Services.SymbolRegistryService
+  langs:
+  - csharp
+  - vb
+  name: GetAllSymbols()
+  nameWithType: SymbolRegistryService.GetAllSymbols()
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.GetAllSymbols()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetAllSymbols
+    path: ../../src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+    startLine: 326
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Gets all symbols.
+  example: []
+  syntax:
+    content: public IEnumerable<SymbolRegistryEntry> GetAllSymbols()
+    return:
+      type: System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry}
+    content.vb: Public Function GetAllSymbols() As IEnumerable(Of SymbolRegistryEntry)
+  overload: MarketDataCollector.Storage.Services.SymbolRegistryService.GetAllSymbols*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetAllSymbols
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.GetSymbolsByAssetClass(System.String)
+  commentId: M:MarketDataCollector.Storage.Services.SymbolRegistryService.GetSymbolsByAssetClass(System.String)
+  id: GetSymbolsByAssetClass(System.String)
+  parent: MarketDataCollector.Storage.Services.SymbolRegistryService
+  langs:
+  - csharp
+  - vb
+  name: GetSymbolsByAssetClass(string)
+  nameWithType: SymbolRegistryService.GetSymbolsByAssetClass(string)
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.GetSymbolsByAssetClass(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSymbolsByAssetClass
+    path: ../../src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+    startLine: 331
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Gets symbols by asset class.
+  example: []
+  syntax:
+    content: public IEnumerable<SymbolRegistryEntry> GetSymbolsByAssetClass(string assetClass)
+    parameters:
+    - id: assetClass
+      type: System.String
+    return:
+      type: System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry}
+    content.vb: Public Function GetSymbolsByAssetClass(assetClass As String) As IEnumerable(Of SymbolRegistryEntry)
+  overload: MarketDataCollector.Storage.Services.SymbolRegistryService.GetSymbolsByAssetClass*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetSymbolsByAssetClass(System.String)
+  nameWithType.vb: SymbolRegistryService.GetSymbolsByAssetClass(String)
+  fullName.vb: MarketDataCollector.Storage.Services.SymbolRegistryService.GetSymbolsByAssetClass(String)
+  name.vb: GetSymbolsByAssetClass(String)
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.SaveRegistryAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.SymbolRegistryService.SaveRegistryAsync(System.Threading.CancellationToken)
+  id: SaveRegistryAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.SymbolRegistryService
+  langs:
+  - csharp
+  - vb
+  name: SaveRegistryAsync(CancellationToken)
+  nameWithType: SymbolRegistryService.SaveRegistryAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.SaveRegistryAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SaveRegistryAsync
+    path: ../../src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+    startLine: 338
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Saves the registry to disk.
+  example: []
+  syntax:
+    content: public Task SaveRegistryAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function SaveRegistryAsync(ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Storage.Services.SymbolRegistryService.SaveRegistryAsync*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.SaveRegistryAsync(System.Threading.CancellationToken)
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.ImportSymbolsAsync(System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry},System.Boolean,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.SymbolRegistryService.ImportSymbolsAsync(System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry},System.Boolean,System.Threading.CancellationToken)
+  id: ImportSymbolsAsync(System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry},System.Boolean,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.SymbolRegistryService
+  langs:
+  - csharp
+  - vb
+  name: ImportSymbolsAsync(IEnumerable<SymbolRegistryEntry>, bool, CancellationToken)
+  nameWithType: SymbolRegistryService.ImportSymbolsAsync(IEnumerable<SymbolRegistryEntry>, bool, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.ImportSymbolsAsync(System.Collections.Generic.IEnumerable<MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry>, bool, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ImportSymbolsAsync
+    path: ../../src/MarketDataCollector.Storage/Services/SymbolRegistryService.cs
+    startLine: 345
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Imports symbols from an external source.
+  example: []
+  syntax:
+    content: public Task<int> ImportSymbolsAsync(IEnumerable<SymbolRegistryEntry> symbols, bool merge = true, CancellationToken ct = default)
+    parameters:
+    - id: symbols
+      type: System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry}
+    - id: merge
+      type: System.Boolean
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+    content.vb: Public Function ImportSymbolsAsync(symbols As IEnumerable(Of SymbolRegistryEntry), merge As Boolean = True, ct As CancellationToken = Nothing) As Task(Of Integer)
+  overload: MarketDataCollector.Storage.Services.SymbolRegistryService.ImportSymbolsAsync*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.ImportSymbolsAsync(System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry},System.Boolean,System.Threading.CancellationToken)
+  nameWithType.vb: SymbolRegistryService.ImportSymbolsAsync(IEnumerable(Of SymbolRegistryEntry), Boolean, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Services.SymbolRegistryService.ImportSymbolsAsync(System.Collections.Generic.IEnumerable(Of MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry), Boolean, System.Threading.CancellationToken)
+  name.vb: ImportSymbolsAsync(IEnumerable(Of SymbolRegistryEntry), Boolean, CancellationToken)
+references:
+- uid: MarketDataCollector.Storage.Services
+  commentId: N:MarketDataCollector.Storage.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Services
+  nameWithType: MarketDataCollector.Storage.Services
+  fullName: MarketDataCollector.Storage.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService
+  commentId: T:MarketDataCollector.Storage.Interfaces.ISymbolRegistryService
+  parent: MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html
+  name: ISymbolRegistryService
+  nameWithType: ISymbolRegistryService
+  fullName: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Storage.Interfaces
+  commentId: N:MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Interfaces
+  nameWithType: MarketDataCollector.Storage.Interfaces
+  fullName: MarketDataCollector.Storage.Interfaces
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Interfaces
+    name: Interfaces
+    href: MarketDataCollector.Storage.Interfaces.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Interfaces
+    name: Interfaces
+    href: MarketDataCollector.Storage.Interfaces.html
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.#ctor*
+  commentId: Overload:MarketDataCollector.Storage.Services.SymbolRegistryService.#ctor
+  href: MarketDataCollector.Storage.Services.SymbolRegistryService.html#MarketDataCollector_Storage_Services_SymbolRegistryService__ctor_System_String_
+  name: SymbolRegistryService
+  nameWithType: SymbolRegistryService.SymbolRegistryService
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.SymbolRegistryService
+  nameWithType.vb: SymbolRegistryService.New
+  fullName.vb: MarketDataCollector.Storage.Services.SymbolRegistryService.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.GetRegistry*
+  commentId: Overload:MarketDataCollector.Storage.Services.SymbolRegistryService.GetRegistry
+  href: MarketDataCollector.Storage.Services.SymbolRegistryService.html#MarketDataCollector_Storage_Services_SymbolRegistryService_GetRegistry
+  name: GetRegistry
+  nameWithType: SymbolRegistryService.GetRegistry
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.GetRegistry
+- uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetRegistry
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetRegistry
+  parent: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService
+  href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_GetRegistry
+  name: GetRegistry()
+  nameWithType: ISymbolRegistryService.GetRegistry()
+  fullName: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetRegistry()
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetRegistry
+    name: GetRegistry
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_GetRegistry
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetRegistry
+    name: GetRegistry
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_GetRegistry
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Contracts.Catalog.SymbolRegistry
+  commentId: T:MarketDataCollector.Contracts.Catalog.SymbolRegistry
+  parent: MarketDataCollector.Contracts.Catalog
+  href: MarketDataCollector.Contracts.Catalog.SymbolRegistry.html
+  name: SymbolRegistry
+  nameWithType: SymbolRegistry
+  fullName: MarketDataCollector.Contracts.Catalog.SymbolRegistry
+- uid: MarketDataCollector.Contracts.Catalog
+  commentId: N:MarketDataCollector.Contracts.Catalog
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Catalog
+  nameWithType: MarketDataCollector.Contracts.Catalog
+  fullName: MarketDataCollector.Contracts.Catalog
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Catalog
+    name: Catalog
+    href: MarketDataCollector.Contracts.Catalog.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Catalog
+    name: Catalog
+    href: MarketDataCollector.Contracts.Catalog.html
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.InitializeAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.SymbolRegistryService.InitializeAsync
+  href: MarketDataCollector.Storage.Services.SymbolRegistryService.html#MarketDataCollector_Storage_Services_SymbolRegistryService_InitializeAsync_System_Threading_CancellationToken_
+  name: InitializeAsync
+  nameWithType: SymbolRegistryService.InitializeAsync
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.InitializeAsync
+- uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.InitializeAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.InitializeAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService
+  isExternal: true
+  href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_InitializeAsync_System_Threading_CancellationToken_
+  name: InitializeAsync(CancellationToken)
+  nameWithType: ISymbolRegistryService.InitializeAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.InitializeAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.InitializeAsync(System.Threading.CancellationToken)
+    name: InitializeAsync
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_InitializeAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.InitializeAsync(System.Threading.CancellationToken)
+    name: InitializeAsync
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_InitializeAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.RegisterSymbolAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.SymbolRegistryService.RegisterSymbolAsync
+  href: MarketDataCollector.Storage.Services.SymbolRegistryService.html#MarketDataCollector_Storage_Services_SymbolRegistryService_RegisterSymbolAsync_MarketDataCollector_Contracts_Catalog_SymbolRegistryEntry_System_Threading_CancellationToken_
+  name: RegisterSymbolAsync
+  nameWithType: SymbolRegistryService.RegisterSymbolAsync
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.RegisterSymbolAsync
+- uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.RegisterSymbolAsync(MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.RegisterSymbolAsync(MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService
+  isExternal: true
+  href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_RegisterSymbolAsync_MarketDataCollector_Contracts_Catalog_SymbolRegistryEntry_System_Threading_CancellationToken_
+  name: RegisterSymbolAsync(SymbolRegistryEntry, CancellationToken)
+  nameWithType: ISymbolRegistryService.RegisterSymbolAsync(SymbolRegistryEntry, CancellationToken)
+  fullName: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.RegisterSymbolAsync(MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.RegisterSymbolAsync(MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry,System.Threading.CancellationToken)
+    name: RegisterSymbolAsync
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_RegisterSymbolAsync_MarketDataCollector_Contracts_Catalog_SymbolRegistryEntry_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry
+    name: SymbolRegistryEntry
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.RegisterSymbolAsync(MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry,System.Threading.CancellationToken)
+    name: RegisterSymbolAsync
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_RegisterSymbolAsync_MarketDataCollector_Contracts_Catalog_SymbolRegistryEntry_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry
+    name: SymbolRegistryEntry
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry
+  commentId: T:MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry
+  parent: MarketDataCollector.Contracts.Catalog
+  href: MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry.html
+  name: SymbolRegistryEntry
+  nameWithType: SymbolRegistryEntry
+  fullName: MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.LookupSymbol*
+  commentId: Overload:MarketDataCollector.Storage.Services.SymbolRegistryService.LookupSymbol
+  href: MarketDataCollector.Storage.Services.SymbolRegistryService.html#MarketDataCollector_Storage_Services_SymbolRegistryService_LookupSymbol_System_String_
+  name: LookupSymbol
+  nameWithType: SymbolRegistryService.LookupSymbol
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.LookupSymbol
+- uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.LookupSymbol(System.String)
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.LookupSymbol(System.String)
+  parent: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService
+  isExternal: true
+  href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_LookupSymbol_System_String_
+  name: LookupSymbol(string)
+  nameWithType: ISymbolRegistryService.LookupSymbol(string)
+  fullName: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.LookupSymbol(string)
+  nameWithType.vb: ISymbolRegistryService.LookupSymbol(String)
+  fullName.vb: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.LookupSymbol(String)
+  name.vb: LookupSymbol(String)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.LookupSymbol(System.String)
+    name: LookupSymbol
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_LookupSymbol_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.LookupSymbol(System.String)
+    name: LookupSymbol
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_LookupSymbol_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Contracts.Catalog.SymbolLookupResult
+  commentId: T:MarketDataCollector.Contracts.Catalog.SymbolLookupResult
+  parent: MarketDataCollector.Contracts.Catalog
+  href: MarketDataCollector.Contracts.Catalog.SymbolLookupResult.html
+  name: SymbolLookupResult
+  nameWithType: SymbolLookupResult
+  fullName: MarketDataCollector.Contracts.Catalog.SymbolLookupResult
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.ResolveAlias*
+  commentId: Overload:MarketDataCollector.Storage.Services.SymbolRegistryService.ResolveAlias
+  href: MarketDataCollector.Storage.Services.SymbolRegistryService.html#MarketDataCollector_Storage_Services_SymbolRegistryService_ResolveAlias_System_String_
+  name: ResolveAlias
+  nameWithType: SymbolRegistryService.ResolveAlias
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.ResolveAlias
+- uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.ResolveAlias(System.String)
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.ResolveAlias(System.String)
+  parent: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService
+  isExternal: true
+  href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_ResolveAlias_System_String_
+  name: ResolveAlias(string)
+  nameWithType: ISymbolRegistryService.ResolveAlias(string)
+  fullName: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.ResolveAlias(string)
+  nameWithType.vb: ISymbolRegistryService.ResolveAlias(String)
+  fullName.vb: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.ResolveAlias(String)
+  name.vb: ResolveAlias(String)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.ResolveAlias(System.String)
+    name: ResolveAlias
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_ResolveAlias_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.ResolveAlias(System.String)
+    name: ResolveAlias
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_ResolveAlias_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.GetProviderSymbol*
+  commentId: Overload:MarketDataCollector.Storage.Services.SymbolRegistryService.GetProviderSymbol
+  href: MarketDataCollector.Storage.Services.SymbolRegistryService.html#MarketDataCollector_Storage_Services_SymbolRegistryService_GetProviderSymbol_System_String_System_String_
+  name: GetProviderSymbol
+  nameWithType: SymbolRegistryService.GetProviderSymbol
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.GetProviderSymbol
+- uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetProviderSymbol(System.String,System.String)
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetProviderSymbol(System.String,System.String)
+  parent: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService
+  isExternal: true
+  href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_GetProviderSymbol_System_String_System_String_
+  name: GetProviderSymbol(string, string)
+  nameWithType: ISymbolRegistryService.GetProviderSymbol(string, string)
+  fullName: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetProviderSymbol(string, string)
+  nameWithType.vb: ISymbolRegistryService.GetProviderSymbol(String, String)
+  fullName.vb: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetProviderSymbol(String, String)
+  name.vb: GetProviderSymbol(String, String)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetProviderSymbol(System.String,System.String)
+    name: GetProviderSymbol
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_GetProviderSymbol_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetProviderSymbol(System.String,System.String)
+    name: GetProviderSymbol
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_GetProviderSymbol_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.AddAliasAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.SymbolRegistryService.AddAliasAsync
+  href: MarketDataCollector.Storage.Services.SymbolRegistryService.html#MarketDataCollector_Storage_Services_SymbolRegistryService_AddAliasAsync_System_String_MarketDataCollector_Contracts_Catalog_SymbolAlias_System_Threading_CancellationToken_
+  name: AddAliasAsync
+  nameWithType: SymbolRegistryService.AddAliasAsync
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.AddAliasAsync
+- uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.AddAliasAsync(System.String,MarketDataCollector.Contracts.Catalog.SymbolAlias,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.AddAliasAsync(System.String,MarketDataCollector.Contracts.Catalog.SymbolAlias,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService
+  isExternal: true
+  href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_AddAliasAsync_System_String_MarketDataCollector_Contracts_Catalog_SymbolAlias_System_Threading_CancellationToken_
+  name: AddAliasAsync(string, SymbolAlias, CancellationToken)
+  nameWithType: ISymbolRegistryService.AddAliasAsync(string, SymbolAlias, CancellationToken)
+  fullName: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.AddAliasAsync(string, MarketDataCollector.Contracts.Catalog.SymbolAlias, System.Threading.CancellationToken)
+  nameWithType.vb: ISymbolRegistryService.AddAliasAsync(String, SymbolAlias, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.AddAliasAsync(String, MarketDataCollector.Contracts.Catalog.SymbolAlias, System.Threading.CancellationToken)
+  name.vb: AddAliasAsync(String, SymbolAlias, CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.AddAliasAsync(System.String,MarketDataCollector.Contracts.Catalog.SymbolAlias,System.Threading.CancellationToken)
+    name: AddAliasAsync
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_AddAliasAsync_System_String_MarketDataCollector_Contracts_Catalog_SymbolAlias_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Catalog.SymbolAlias
+    name: SymbolAlias
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.AddAliasAsync(System.String,MarketDataCollector.Contracts.Catalog.SymbolAlias,System.Threading.CancellationToken)
+    name: AddAliasAsync
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_AddAliasAsync_System_String_MarketDataCollector_Contracts_Catalog_SymbolAlias_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Catalog.SymbolAlias
+    name: SymbolAlias
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Contracts.Catalog.SymbolAlias
+  commentId: T:MarketDataCollector.Contracts.Catalog.SymbolAlias
+  parent: MarketDataCollector.Contracts.Catalog
+  href: MarketDataCollector.Contracts.Catalog.SymbolAlias.html
+  name: SymbolAlias
+  nameWithType: SymbolAlias
+  fullName: MarketDataCollector.Contracts.Catalog.SymbolAlias
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.AddProviderMappingAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.SymbolRegistryService.AddProviderMappingAsync
+  href: MarketDataCollector.Storage.Services.SymbolRegistryService.html#MarketDataCollector_Storage_Services_SymbolRegistryService_AddProviderMappingAsync_System_String_System_String_System_String_System_Threading_CancellationToken_
+  name: AddProviderMappingAsync
+  nameWithType: SymbolRegistryService.AddProviderMappingAsync
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.AddProviderMappingAsync
+- uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.AddProviderMappingAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.AddProviderMappingAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService
+  isExternal: true
+  href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_AddProviderMappingAsync_System_String_System_String_System_String_System_Threading_CancellationToken_
+  name: AddProviderMappingAsync(string, string, string, CancellationToken)
+  nameWithType: ISymbolRegistryService.AddProviderMappingAsync(string, string, string, CancellationToken)
+  fullName: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.AddProviderMappingAsync(string, string, string, System.Threading.CancellationToken)
+  nameWithType.vb: ISymbolRegistryService.AddProviderMappingAsync(String, String, String, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.AddProviderMappingAsync(String, String, String, System.Threading.CancellationToken)
+  name.vb: AddProviderMappingAsync(String, String, String, CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.AddProviderMappingAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+    name: AddProviderMappingAsync
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_AddProviderMappingAsync_System_String_System_String_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.AddProviderMappingAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+    name: AddProviderMappingAsync
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_AddProviderMappingAsync_System_String_System_String_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.GetAllSymbols*
+  commentId: Overload:MarketDataCollector.Storage.Services.SymbolRegistryService.GetAllSymbols
+  href: MarketDataCollector.Storage.Services.SymbolRegistryService.html#MarketDataCollector_Storage_Services_SymbolRegistryService_GetAllSymbols
+  name: GetAllSymbols
+  nameWithType: SymbolRegistryService.GetAllSymbols
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.GetAllSymbols
+- uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetAllSymbols
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetAllSymbols
+  parent: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService
+  href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_GetAllSymbols
+  name: GetAllSymbols()
+  nameWithType: ISymbolRegistryService.GetAllSymbols()
+  fullName: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetAllSymbols()
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetAllSymbols
+    name: GetAllSymbols
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_GetAllSymbols
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetAllSymbols
+    name: GetAllSymbols
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_GetAllSymbols
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry}
+  commentId: T:System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<SymbolRegistryEntry>
+  nameWithType: IEnumerable<SymbolRegistryEntry>
+  fullName: System.Collections.Generic.IEnumerable<MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry>
+  nameWithType.vb: IEnumerable(Of SymbolRegistryEntry)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry)
+  name.vb: IEnumerable(Of SymbolRegistryEntry)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry
+    name: SymbolRegistryEntry
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry
+    name: SymbolRegistryEntry
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.GetSymbolsByAssetClass*
+  commentId: Overload:MarketDataCollector.Storage.Services.SymbolRegistryService.GetSymbolsByAssetClass
+  href: MarketDataCollector.Storage.Services.SymbolRegistryService.html#MarketDataCollector_Storage_Services_SymbolRegistryService_GetSymbolsByAssetClass_System_String_
+  name: GetSymbolsByAssetClass
+  nameWithType: SymbolRegistryService.GetSymbolsByAssetClass
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.GetSymbolsByAssetClass
+- uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetSymbolsByAssetClass(System.String)
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetSymbolsByAssetClass(System.String)
+  parent: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService
+  isExternal: true
+  href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_GetSymbolsByAssetClass_System_String_
+  name: GetSymbolsByAssetClass(string)
+  nameWithType: ISymbolRegistryService.GetSymbolsByAssetClass(string)
+  fullName: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetSymbolsByAssetClass(string)
+  nameWithType.vb: ISymbolRegistryService.GetSymbolsByAssetClass(String)
+  fullName.vb: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetSymbolsByAssetClass(String)
+  name.vb: GetSymbolsByAssetClass(String)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetSymbolsByAssetClass(System.String)
+    name: GetSymbolsByAssetClass
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_GetSymbolsByAssetClass_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.GetSymbolsByAssetClass(System.String)
+    name: GetSymbolsByAssetClass
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_GetSymbolsByAssetClass_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.SaveRegistryAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.SymbolRegistryService.SaveRegistryAsync
+  href: MarketDataCollector.Storage.Services.SymbolRegistryService.html#MarketDataCollector_Storage_Services_SymbolRegistryService_SaveRegistryAsync_System_Threading_CancellationToken_
+  name: SaveRegistryAsync
+  nameWithType: SymbolRegistryService.SaveRegistryAsync
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.SaveRegistryAsync
+- uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.SaveRegistryAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.SaveRegistryAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService
+  isExternal: true
+  href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_SaveRegistryAsync_System_Threading_CancellationToken_
+  name: SaveRegistryAsync(CancellationToken)
+  nameWithType: ISymbolRegistryService.SaveRegistryAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.SaveRegistryAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.SaveRegistryAsync(System.Threading.CancellationToken)
+    name: SaveRegistryAsync
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_SaveRegistryAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.SaveRegistryAsync(System.Threading.CancellationToken)
+    name: SaveRegistryAsync
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_SaveRegistryAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Storage.Services.SymbolRegistryService.ImportSymbolsAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.SymbolRegistryService.ImportSymbolsAsync
+  href: MarketDataCollector.Storage.Services.SymbolRegistryService.html#MarketDataCollector_Storage_Services_SymbolRegistryService_ImportSymbolsAsync_System_Collections_Generic_IEnumerable_MarketDataCollector_Contracts_Catalog_SymbolRegistryEntry__System_Boolean_System_Threading_CancellationToken_
+  name: ImportSymbolsAsync
+  nameWithType: SymbolRegistryService.ImportSymbolsAsync
+  fullName: MarketDataCollector.Storage.Services.SymbolRegistryService.ImportSymbolsAsync
+- uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.ImportSymbolsAsync(System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry},System.Boolean,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.ImportSymbolsAsync(System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry},System.Boolean,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService
+  isExternal: true
+  href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_ImportSymbolsAsync_System_Collections_Generic_IEnumerable_MarketDataCollector_Contracts_Catalog_SymbolRegistryEntry__System_Boolean_System_Threading_CancellationToken_
+  name: ImportSymbolsAsync(IEnumerable<SymbolRegistryEntry>, bool, CancellationToken)
+  nameWithType: ISymbolRegistryService.ImportSymbolsAsync(IEnumerable<SymbolRegistryEntry>, bool, CancellationToken)
+  fullName: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.ImportSymbolsAsync(System.Collections.Generic.IEnumerable<MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry>, bool, System.Threading.CancellationToken)
+  nameWithType.vb: ISymbolRegistryService.ImportSymbolsAsync(IEnumerable(Of SymbolRegistryEntry), Boolean, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.ImportSymbolsAsync(System.Collections.Generic.IEnumerable(Of MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry), Boolean, System.Threading.CancellationToken)
+  name.vb: ImportSymbolsAsync(IEnumerable(Of SymbolRegistryEntry), Boolean, CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.ImportSymbolsAsync(System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry},System.Boolean,System.Threading.CancellationToken)
+    name: ImportSymbolsAsync
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_ImportSymbolsAsync_System_Collections_Generic_IEnumerable_MarketDataCollector_Contracts_Catalog_SymbolRegistryEntry__System_Boolean_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry
+    name: SymbolRegistryEntry
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.ImportSymbolsAsync(System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry},System.Boolean,System.Threading.CancellationToken)
+    name: ImportSymbolsAsync
+    href: MarketDataCollector.Storage.Interfaces.ISymbolRegistryService.html#MarketDataCollector_Storage_Interfaces_ISymbolRegistryService_ImportSymbolsAsync_System_Collections_Generic_IEnumerable_MarketDataCollector_Contracts_Catalog_SymbolRegistryEntry__System_Boolean_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Catalog.SymbolRegistryEntry
+    name: SymbolRegistryEntry
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Threading.Tasks.Task{System.Int32}
+  commentId: T:System.Threading.Tasks.Task{System.Int32}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<int>
+  nameWithType: Task<int>
+  fullName: System.Threading.Tasks.Task<int>
+  nameWithType.vb: Task(Of Integer)
+  fullName.vb: System.Threading.Tasks.Task(Of Integer)
+  name.vb: Task(Of Integer)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )

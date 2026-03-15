@@ -1,0 +1,762 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker
+  commentId: T:MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker
+  id: SymbolSubscriptionTracker
+  parent: MarketDataCollector.Domain.Collectors
+  children:
+  - MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.#ctor(System.Boolean)
+  - MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.GetSubscribedSymbols
+  - MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.IsSubscribed(System.String)
+  - MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.RegisterSubscription(System.String)
+  - MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.RequireExplicitSubscription
+  - MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.ShouldProcessUpdate(System.String)
+  - MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.TryAutoSubscribe(System.String)
+  - MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.UnregisterSubscription(System.String)
+  langs:
+  - csharp
+  - vb
+  name: SymbolSubscriptionTracker
+  nameWithType: SymbolSubscriptionTracker
+  fullName: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SymbolSubscriptionTracker
+    path: ../../src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+    startLine: 9
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: >-
+    Provides common subscription management functionality for market data collectors.
+
+    Thread-safe implementation using ConcurrentDictionary.
+  example: []
+  syntax:
+    content: public abstract class SymbolSubscriptionTracker
+    content.vb: Public MustInherit Class SymbolSubscriptionTracker
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - MarketDataCollector.Domain.Collectors.L3OrderBookCollector
+  - MarketDataCollector.Domain.Collectors.MarketDepthCollector
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.#ctor(System.Boolean)
+  commentId: M:MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.#ctor(System.Boolean)
+  id: '#ctor(System.Boolean)'
+  parent: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker
+  langs:
+  - csharp
+  - vb
+  name: SymbolSubscriptionTracker(bool)
+  nameWithType: SymbolSubscriptionTracker.SymbolSubscriptionTracker(bool)
+  fullName: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.SymbolSubscriptionTracker(bool)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+    startLine: 14
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  syntax:
+    content: protected SymbolSubscriptionTracker(bool requireExplicitSubscription = true)
+    parameters:
+    - id: requireExplicitSubscription
+      type: System.Boolean
+    content.vb: Protected Sub New(requireExplicitSubscription As Boolean = True)
+  overload: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.#ctor*
+  nameWithType.vb: SymbolSubscriptionTracker.New(Boolean)
+  fullName.vb: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.New(Boolean)
+  name.vb: New(Boolean)
+- uid: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.RequireExplicitSubscription
+  commentId: P:MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.RequireExplicitSubscription
+  id: RequireExplicitSubscription
+  parent: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker
+  langs:
+  - csharp
+  - vb
+  name: RequireExplicitSubscription
+  nameWithType: SymbolSubscriptionTracker.RequireExplicitSubscription
+  fullName: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.RequireExplicitSubscription
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RequireExplicitSubscription
+    path: ../../src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+    startLine: 22
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Whether explicit subscription is required before processing updates.
+  example: []
+  syntax:
+    content: protected bool RequireExplicitSubscription { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Protected ReadOnly Property RequireExplicitSubscription As Boolean
+  overload: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.RequireExplicitSubscription*
+- uid: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.RegisterSubscription(System.String)
+  commentId: M:MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.RegisterSubscription(System.String)
+  id: RegisterSubscription(System.String)
+  parent: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker
+  langs:
+  - csharp
+  - vb
+  name: RegisterSubscription(string)
+  nameWithType: SymbolSubscriptionTracker.RegisterSubscription(string)
+  fullName: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.RegisterSubscription(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterSubscription
+    path: ../../src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+    startLine: 27
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Registers a symbol for subscription.
+  example: []
+  syntax:
+    content: public void RegisterSubscription(string symbol)
+    parameters:
+    - id: symbol
+      type: System.String
+    content.vb: Public Sub RegisterSubscription(symbol As String)
+  overload: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.RegisterSubscription*
+  nameWithType.vb: SymbolSubscriptionTracker.RegisterSubscription(String)
+  fullName.vb: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.RegisterSubscription(String)
+  name.vb: RegisterSubscription(String)
+- uid: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.UnregisterSubscription(System.String)
+  commentId: M:MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.UnregisterSubscription(System.String)
+  id: UnregisterSubscription(System.String)
+  parent: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker
+  langs:
+  - csharp
+  - vb
+  name: UnregisterSubscription(string)
+  nameWithType: SymbolSubscriptionTracker.UnregisterSubscription(string)
+  fullName: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.UnregisterSubscription(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UnregisterSubscription
+    path: ../../src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+    startLine: 36
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Unregisters a symbol from subscription.
+  example: []
+  syntax:
+    content: public void UnregisterSubscription(string symbol)
+    parameters:
+    - id: symbol
+      type: System.String
+    content.vb: Public Sub UnregisterSubscription(symbol As String)
+  overload: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.UnregisterSubscription*
+  nameWithType.vb: SymbolSubscriptionTracker.UnregisterSubscription(String)
+  fullName.vb: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.UnregisterSubscription(String)
+  name.vb: UnregisterSubscription(String)
+- uid: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.IsSubscribed(System.String)
+  commentId: M:MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.IsSubscribed(System.String)
+  id: IsSubscribed(System.String)
+  parent: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker
+  langs:
+  - csharp
+  - vb
+  name: IsSubscribed(string)
+  nameWithType: SymbolSubscriptionTracker.IsSubscribed(string)
+  fullName: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.IsSubscribed(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsSubscribed
+    path: ../../src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+    startLine: 45
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Checks if a symbol is currently subscribed.
+  example: []
+  syntax:
+    content: public bool IsSubscribed(string symbol)
+    parameters:
+    - id: symbol
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsSubscribed(symbol As String) As Boolean
+  overload: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.IsSubscribed*
+  nameWithType.vb: SymbolSubscriptionTracker.IsSubscribed(String)
+  fullName.vb: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.IsSubscribed(String)
+  name.vb: IsSubscribed(String)
+- uid: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.TryAutoSubscribe(System.String)
+  commentId: M:MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.TryAutoSubscribe(System.String)
+  id: TryAutoSubscribe(System.String)
+  parent: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker
+  langs:
+  - csharp
+  - vb
+  name: TryAutoSubscribe(string)
+  nameWithType: SymbolSubscriptionTracker.TryAutoSubscribe(string)
+  fullName: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.TryAutoSubscribe(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TryAutoSubscribe
+    path: ../../src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+    startLine: 51
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Attempts to auto-subscribe a symbol if explicit subscription is not required.
+  example: []
+  syntax:
+    content: protected void TryAutoSubscribe(string symbol)
+    parameters:
+    - id: symbol
+      type: System.String
+    content.vb: Protected Sub TryAutoSubscribe(symbol As String)
+  overload: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.TryAutoSubscribe*
+  nameWithType.vb: SymbolSubscriptionTracker.TryAutoSubscribe(String)
+  fullName.vb: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.TryAutoSubscribe(String)
+  name.vb: TryAutoSubscribe(String)
+- uid: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.ShouldProcessUpdate(System.String)
+  commentId: M:MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.ShouldProcessUpdate(System.String)
+  id: ShouldProcessUpdate(System.String)
+  parent: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker
+  langs:
+  - csharp
+  - vb
+  name: ShouldProcessUpdate(string)
+  nameWithType: SymbolSubscriptionTracker.ShouldProcessUpdate(string)
+  fullName: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.ShouldProcessUpdate(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ShouldProcessUpdate
+    path: ../../src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+    startLine: 60
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Checks if an update should be processed based on subscription state.
+  example: []
+  syntax:
+    content: protected bool ShouldProcessUpdate(string symbol)
+    parameters:
+    - id: symbol
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Protected Function ShouldProcessUpdate(symbol As String) As Boolean
+  overload: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.ShouldProcessUpdate*
+  nameWithType.vb: SymbolSubscriptionTracker.ShouldProcessUpdate(String)
+  fullName.vb: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.ShouldProcessUpdate(String)
+  name.vb: ShouldProcessUpdate(String)
+- uid: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.GetSubscribedSymbols
+  commentId: M:MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.GetSubscribedSymbols
+  id: GetSubscribedSymbols
+  parent: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker
+  langs:
+  - csharp
+  - vb
+  name: GetSubscribedSymbols()
+  nameWithType: SymbolSubscriptionTracker.GetSubscribedSymbols()
+  fullName: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.GetSubscribedSymbols()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSubscribedSymbols
+    path: ../../src/MarketDataCollector.Domain/Collectors/SymbolSubscriptionTracker.cs
+    startLine: 72
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Gets all currently subscribed symbols.
+  example: []
+  syntax:
+    content: public IReadOnlyCollection<string> GetSubscribedSymbols()
+    return:
+      type: System.Collections.Generic.IReadOnlyCollection{System.String}
+    content.vb: Public Function GetSubscribedSymbols() As IReadOnlyCollection(Of String)
+  overload: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.GetSubscribedSymbols*
+references:
+- uid: MarketDataCollector.Domain.Collectors
+  commentId: N:MarketDataCollector.Domain.Collectors
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Collectors
+  nameWithType: MarketDataCollector.Domain.Collectors
+  fullName: MarketDataCollector.Domain.Collectors
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Collectors
+    name: Collectors
+    href: MarketDataCollector.Domain.Collectors.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Collectors
+    name: Collectors
+    href: MarketDataCollector.Domain.Collectors.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.#ctor*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.#ctor
+  href: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.html#MarketDataCollector_Domain_Collectors_SymbolSubscriptionTracker__ctor_System_Boolean_
+  name: SymbolSubscriptionTracker
+  nameWithType: SymbolSubscriptionTracker.SymbolSubscriptionTracker
+  fullName: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.SymbolSubscriptionTracker
+  nameWithType.vb: SymbolSubscriptionTracker.New
+  fullName.vb: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.New
+  name.vb: New
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.RequireExplicitSubscription*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.RequireExplicitSubscription
+  href: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.html#MarketDataCollector_Domain_Collectors_SymbolSubscriptionTracker_RequireExplicitSubscription
+  name: RequireExplicitSubscription
+  nameWithType: SymbolSubscriptionTracker.RequireExplicitSubscription
+  fullName: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.RequireExplicitSubscription
+- uid: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.RegisterSubscription*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.RegisterSubscription
+  href: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.html#MarketDataCollector_Domain_Collectors_SymbolSubscriptionTracker_RegisterSubscription_System_String_
+  name: RegisterSubscription
+  nameWithType: SymbolSubscriptionTracker.RegisterSubscription
+  fullName: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.RegisterSubscription
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.UnregisterSubscription*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.UnregisterSubscription
+  href: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.html#MarketDataCollector_Domain_Collectors_SymbolSubscriptionTracker_UnregisterSubscription_System_String_
+  name: UnregisterSubscription
+  nameWithType: SymbolSubscriptionTracker.UnregisterSubscription
+  fullName: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.UnregisterSubscription
+- uid: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.IsSubscribed*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.IsSubscribed
+  href: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.html#MarketDataCollector_Domain_Collectors_SymbolSubscriptionTracker_IsSubscribed_System_String_
+  name: IsSubscribed
+  nameWithType: SymbolSubscriptionTracker.IsSubscribed
+  fullName: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.IsSubscribed
+- uid: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.TryAutoSubscribe*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.TryAutoSubscribe
+  href: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.html#MarketDataCollector_Domain_Collectors_SymbolSubscriptionTracker_TryAutoSubscribe_System_String_
+  name: TryAutoSubscribe
+  nameWithType: SymbolSubscriptionTracker.TryAutoSubscribe
+  fullName: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.TryAutoSubscribe
+- uid: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.ShouldProcessUpdate*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.ShouldProcessUpdate
+  href: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.html#MarketDataCollector_Domain_Collectors_SymbolSubscriptionTracker_ShouldProcessUpdate_System_String_
+  name: ShouldProcessUpdate
+  nameWithType: SymbolSubscriptionTracker.ShouldProcessUpdate
+  fullName: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.ShouldProcessUpdate
+- uid: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.GetSubscribedSymbols*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.GetSubscribedSymbols
+  href: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.html#MarketDataCollector_Domain_Collectors_SymbolSubscriptionTracker_GetSubscribedSymbols
+  name: GetSubscribedSymbols
+  nameWithType: SymbolSubscriptionTracker.GetSubscribedSymbols
+  fullName: MarketDataCollector.Domain.Collectors.SymbolSubscriptionTracker.GetSubscribedSymbols
+- uid: System.Collections.Generic.IReadOnlyCollection{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyCollection{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<string>
+  nameWithType: IReadOnlyCollection<string>
+  fullName: System.Collections.Generic.IReadOnlyCollection<string>
+  nameWithType.vb: IReadOnlyCollection(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of String)
+  name.vb: IReadOnlyCollection(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyCollection`1
+  commentId: T:System.Collections.Generic.IReadOnlyCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<T>
+  nameWithType: IReadOnlyCollection<T>
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>
+  nameWithType.vb: IReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T)
+  name.vb: IReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

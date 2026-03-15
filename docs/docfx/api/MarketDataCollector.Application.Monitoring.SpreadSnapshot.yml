@@ -1,0 +1,735 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot
+  commentId: T:MarketDataCollector.Application.Monitoring.SpreadSnapshot
+  id: SpreadSnapshot
+  parent: MarketDataCollector.Application.Monitoring
+  children:
+  - MarketDataCollector.Application.Monitoring.SpreadSnapshot.#ctor(System.String,System.Double,System.Double,System.Double,System.Double,System.Int64,System.Int64,System.DateTimeOffset)
+  - MarketDataCollector.Application.Monitoring.SpreadSnapshot.AverageSpreadBps
+  - MarketDataCollector.Application.Monitoring.SpreadSnapshot.CurrentSpreadBps
+  - MarketDataCollector.Application.Monitoring.SpreadSnapshot.LastUpdateTime
+  - MarketDataCollector.Application.Monitoring.SpreadSnapshot.MaxSpreadBps
+  - MarketDataCollector.Application.Monitoring.SpreadSnapshot.MinSpreadBps
+  - MarketDataCollector.Application.Monitoring.SpreadSnapshot.Symbol
+  - MarketDataCollector.Application.Monitoring.SpreadSnapshot.TotalQuotes
+  - MarketDataCollector.Application.Monitoring.SpreadSnapshot.WideSpreadCount
+  langs:
+  - csharp
+  - vb
+  name: SpreadSnapshot
+  nameWithType: SpreadSnapshot
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot
+  type: Struct
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SpreadSnapshot
+    path: ../../src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+    startLine: 381
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Snapshot of spread statistics for a symbol.
+  example: []
+  syntax:
+    content: 'public readonly record struct SpreadSnapshot : IEquatable<SpreadSnapshot>'
+    content.vb: Public Structure SpreadSnapshot Implements IEquatable(Of SpreadSnapshot)
+  implements:
+  - System.IEquatable{MarketDataCollector.Application.Monitoring.SpreadSnapshot}
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.#ctor(System.String,System.Double,System.Double,System.Double,System.Double,System.Int64,System.Int64,System.DateTimeOffset)
+  commentId: M:MarketDataCollector.Application.Monitoring.SpreadSnapshot.#ctor(System.String,System.Double,System.Double,System.Double,System.Double,System.Int64,System.Int64,System.DateTimeOffset)
+  id: '#ctor(System.String,System.Double,System.Double,System.Double,System.Double,System.Int64,System.Int64,System.DateTimeOffset)'
+  parent: MarketDataCollector.Application.Monitoring.SpreadSnapshot
+  langs:
+  - csharp
+  - vb
+  name: SpreadSnapshot(string, double, double, double, double, long, long, DateTimeOffset)
+  nameWithType: SpreadSnapshot.SpreadSnapshot(string, double, double, double, double, long, long, DateTimeOffset)
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.SpreadSnapshot(string, double, double, double, double, long, long, System.DateTimeOffset)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+    startLine: 381
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Snapshot of spread statistics for a symbol.
+  example: []
+  syntax:
+    content: public SpreadSnapshot(string Symbol, double CurrentSpreadBps, double AverageSpreadBps, double MinSpreadBps, double MaxSpreadBps, long TotalQuotes, long WideSpreadCount, DateTimeOffset LastUpdateTime)
+    parameters:
+    - id: Symbol
+      type: System.String
+    - id: CurrentSpreadBps
+      type: System.Double
+    - id: AverageSpreadBps
+      type: System.Double
+    - id: MinSpreadBps
+      type: System.Double
+    - id: MaxSpreadBps
+      type: System.Double
+    - id: TotalQuotes
+      type: System.Int64
+    - id: WideSpreadCount
+      type: System.Int64
+    - id: LastUpdateTime
+      type: System.DateTimeOffset
+    content.vb: Public Sub New(Symbol As String, CurrentSpreadBps As Double, AverageSpreadBps As Double, MinSpreadBps As Double, MaxSpreadBps As Double, TotalQuotes As Long, WideSpreadCount As Long, LastUpdateTime As DateTimeOffset)
+  overload: MarketDataCollector.Application.Monitoring.SpreadSnapshot.#ctor*
+  nameWithType.vb: SpreadSnapshot.New(String, Double, Double, Double, Double, Long, Long, DateTimeOffset)
+  fullName.vb: MarketDataCollector.Application.Monitoring.SpreadSnapshot.New(String, Double, Double, Double, Double, Long, Long, System.DateTimeOffset)
+  name.vb: New(String, Double, Double, Double, Double, Long, Long, DateTimeOffset)
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.Symbol
+  commentId: P:MarketDataCollector.Application.Monitoring.SpreadSnapshot.Symbol
+  id: Symbol
+  parent: MarketDataCollector.Application.Monitoring.SpreadSnapshot
+  langs:
+  - csharp
+  - vb
+  name: Symbol
+  nameWithType: SpreadSnapshot.Symbol
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.Symbol
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Symbol
+    path: ../../src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+    startLine: 382
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public string Symbol { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Symbol As String
+  overload: MarketDataCollector.Application.Monitoring.SpreadSnapshot.Symbol*
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.CurrentSpreadBps
+  commentId: P:MarketDataCollector.Application.Monitoring.SpreadSnapshot.CurrentSpreadBps
+  id: CurrentSpreadBps
+  parent: MarketDataCollector.Application.Monitoring.SpreadSnapshot
+  langs:
+  - csharp
+  - vb
+  name: CurrentSpreadBps
+  nameWithType: SpreadSnapshot.CurrentSpreadBps
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.CurrentSpreadBps
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CurrentSpreadBps
+    path: ../../src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+    startLine: 383
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public double CurrentSpreadBps { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property CurrentSpreadBps As Double
+  overload: MarketDataCollector.Application.Monitoring.SpreadSnapshot.CurrentSpreadBps*
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.AverageSpreadBps
+  commentId: P:MarketDataCollector.Application.Monitoring.SpreadSnapshot.AverageSpreadBps
+  id: AverageSpreadBps
+  parent: MarketDataCollector.Application.Monitoring.SpreadSnapshot
+  langs:
+  - csharp
+  - vb
+  name: AverageSpreadBps
+  nameWithType: SpreadSnapshot.AverageSpreadBps
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.AverageSpreadBps
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AverageSpreadBps
+    path: ../../src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+    startLine: 384
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public double AverageSpreadBps { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property AverageSpreadBps As Double
+  overload: MarketDataCollector.Application.Monitoring.SpreadSnapshot.AverageSpreadBps*
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.MinSpreadBps
+  commentId: P:MarketDataCollector.Application.Monitoring.SpreadSnapshot.MinSpreadBps
+  id: MinSpreadBps
+  parent: MarketDataCollector.Application.Monitoring.SpreadSnapshot
+  langs:
+  - csharp
+  - vb
+  name: MinSpreadBps
+  nameWithType: SpreadSnapshot.MinSpreadBps
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.MinSpreadBps
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MinSpreadBps
+    path: ../../src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+    startLine: 385
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public double MinSpreadBps { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property MinSpreadBps As Double
+  overload: MarketDataCollector.Application.Monitoring.SpreadSnapshot.MinSpreadBps*
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.MaxSpreadBps
+  commentId: P:MarketDataCollector.Application.Monitoring.SpreadSnapshot.MaxSpreadBps
+  id: MaxSpreadBps
+  parent: MarketDataCollector.Application.Monitoring.SpreadSnapshot
+  langs:
+  - csharp
+  - vb
+  name: MaxSpreadBps
+  nameWithType: SpreadSnapshot.MaxSpreadBps
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.MaxSpreadBps
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MaxSpreadBps
+    path: ../../src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+    startLine: 386
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public double MaxSpreadBps { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property MaxSpreadBps As Double
+  overload: MarketDataCollector.Application.Monitoring.SpreadSnapshot.MaxSpreadBps*
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.TotalQuotes
+  commentId: P:MarketDataCollector.Application.Monitoring.SpreadSnapshot.TotalQuotes
+  id: TotalQuotes
+  parent: MarketDataCollector.Application.Monitoring.SpreadSnapshot
+  langs:
+  - csharp
+  - vb
+  name: TotalQuotes
+  nameWithType: SpreadSnapshot.TotalQuotes
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.TotalQuotes
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TotalQuotes
+    path: ../../src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+    startLine: 387
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public long TotalQuotes { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property TotalQuotes As Long
+  overload: MarketDataCollector.Application.Monitoring.SpreadSnapshot.TotalQuotes*
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.WideSpreadCount
+  commentId: P:MarketDataCollector.Application.Monitoring.SpreadSnapshot.WideSpreadCount
+  id: WideSpreadCount
+  parent: MarketDataCollector.Application.Monitoring.SpreadSnapshot
+  langs:
+  - csharp
+  - vb
+  name: WideSpreadCount
+  nameWithType: SpreadSnapshot.WideSpreadCount
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.WideSpreadCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: WideSpreadCount
+    path: ../../src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+    startLine: 388
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public long WideSpreadCount { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property WideSpreadCount As Long
+  overload: MarketDataCollector.Application.Monitoring.SpreadSnapshot.WideSpreadCount*
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.LastUpdateTime
+  commentId: P:MarketDataCollector.Application.Monitoring.SpreadSnapshot.LastUpdateTime
+  id: LastUpdateTime
+  parent: MarketDataCollector.Application.Monitoring.SpreadSnapshot
+  langs:
+  - csharp
+  - vb
+  name: LastUpdateTime
+  nameWithType: SpreadSnapshot.LastUpdateTime
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.LastUpdateTime
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LastUpdateTime
+    path: ../../src/MarketDataCollector.Application/Monitoring/SpreadMonitor.cs
+    startLine: 389
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public DateTimeOffset LastUpdateTime { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property LastUpdateTime As DateTimeOffset
+  overload: MarketDataCollector.Application.Monitoring.SpreadSnapshot.LastUpdateTime*
+references:
+- uid: MarketDataCollector.Application.Monitoring
+  commentId: N:MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring
+  nameWithType: MarketDataCollector.Application.Monitoring
+  fullName: MarketDataCollector.Application.Monitoring
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+- uid: System.IEquatable{MarketDataCollector.Application.Monitoring.SpreadSnapshot}
+  commentId: T:System.IEquatable{MarketDataCollector.Application.Monitoring.SpreadSnapshot}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<SpreadSnapshot>
+  nameWithType: IEquatable<SpreadSnapshot>
+  fullName: System.IEquatable<MarketDataCollector.Application.Monitoring.SpreadSnapshot>
+  nameWithType.vb: IEquatable(Of SpreadSnapshot)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Application.Monitoring.SpreadSnapshot)
+  name.vb: IEquatable(Of SpreadSnapshot)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot
+    name: SpreadSnapshot
+    href: MarketDataCollector.Application.Monitoring.SpreadSnapshot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot
+    name: SpreadSnapshot
+    href: MarketDataCollector.Application.Monitoring.SpreadSnapshot.html
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.SpreadSnapshot.#ctor
+  href: MarketDataCollector.Application.Monitoring.SpreadSnapshot.html#MarketDataCollector_Application_Monitoring_SpreadSnapshot__ctor_System_String_System_Double_System_Double_System_Double_System_Double_System_Int64_System_Int64_System_DateTimeOffset_
+  name: SpreadSnapshot
+  nameWithType: SpreadSnapshot.SpreadSnapshot
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.SpreadSnapshot
+  nameWithType.vb: SpreadSnapshot.New
+  fullName.vb: MarketDataCollector.Application.Monitoring.SpreadSnapshot.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.Symbol*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.SpreadSnapshot.Symbol
+  href: MarketDataCollector.Application.Monitoring.SpreadSnapshot.html#MarketDataCollector_Application_Monitoring_SpreadSnapshot_Symbol
+  name: Symbol
+  nameWithType: SpreadSnapshot.Symbol
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.Symbol
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.CurrentSpreadBps*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.SpreadSnapshot.CurrentSpreadBps
+  href: MarketDataCollector.Application.Monitoring.SpreadSnapshot.html#MarketDataCollector_Application_Monitoring_SpreadSnapshot_CurrentSpreadBps
+  name: CurrentSpreadBps
+  nameWithType: SpreadSnapshot.CurrentSpreadBps
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.CurrentSpreadBps
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.AverageSpreadBps*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.SpreadSnapshot.AverageSpreadBps
+  href: MarketDataCollector.Application.Monitoring.SpreadSnapshot.html#MarketDataCollector_Application_Monitoring_SpreadSnapshot_AverageSpreadBps
+  name: AverageSpreadBps
+  nameWithType: SpreadSnapshot.AverageSpreadBps
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.AverageSpreadBps
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.MinSpreadBps*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.SpreadSnapshot.MinSpreadBps
+  href: MarketDataCollector.Application.Monitoring.SpreadSnapshot.html#MarketDataCollector_Application_Monitoring_SpreadSnapshot_MinSpreadBps
+  name: MinSpreadBps
+  nameWithType: SpreadSnapshot.MinSpreadBps
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.MinSpreadBps
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.MaxSpreadBps*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.SpreadSnapshot.MaxSpreadBps
+  href: MarketDataCollector.Application.Monitoring.SpreadSnapshot.html#MarketDataCollector_Application_Monitoring_SpreadSnapshot_MaxSpreadBps
+  name: MaxSpreadBps
+  nameWithType: SpreadSnapshot.MaxSpreadBps
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.MaxSpreadBps
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.TotalQuotes*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.SpreadSnapshot.TotalQuotes
+  href: MarketDataCollector.Application.Monitoring.SpreadSnapshot.html#MarketDataCollector_Application_Monitoring_SpreadSnapshot_TotalQuotes
+  name: TotalQuotes
+  nameWithType: SpreadSnapshot.TotalQuotes
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.TotalQuotes
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.WideSpreadCount*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.SpreadSnapshot.WideSpreadCount
+  href: MarketDataCollector.Application.Monitoring.SpreadSnapshot.html#MarketDataCollector_Application_Monitoring_SpreadSnapshot_WideSpreadCount
+  name: WideSpreadCount
+  nameWithType: SpreadSnapshot.WideSpreadCount
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.WideSpreadCount
+- uid: MarketDataCollector.Application.Monitoring.SpreadSnapshot.LastUpdateTime*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.SpreadSnapshot.LastUpdateTime
+  href: MarketDataCollector.Application.Monitoring.SpreadSnapshot.html#MarketDataCollector_Application_Monitoring_SpreadSnapshot_LastUpdateTime
+  name: LastUpdateTime
+  nameWithType: SpreadSnapshot.LastUpdateTime
+  fullName: MarketDataCollector.Application.Monitoring.SpreadSnapshot.LastUpdateTime

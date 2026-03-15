@@ -1,0 +1,1363 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  id: SequenceErrorTracker
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  children:
+  - MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.#ctor(MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorConfig)
+  - MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.CheckSequence(System.String,System.String,System.Int64,System.DateTimeOffset,System.String,System.String)
+  - MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.Dispose
+  - MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetErrors(System.String,System.String,System.Int32)
+  - MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetErrorsForDate(System.DateOnly)
+  - MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetRecentErrors(System.Int32)
+  - MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetStatistics
+  - MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSummary(System.String,System.Nullable{System.DateOnly})
+  - MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSymbolsWithMostErrors(System.Int32)
+  - MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.OnSequenceError
+  - MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.RecordError(MarketDataCollector.Application.Monitoring.DataQuality.SequenceError)
+  - MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.ResetSymbolState(System.String,System.String,System.String)
+  - MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalDuplicateErrors
+  - MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalEventsChecked
+  - MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalGapErrors
+  - MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalOutOfOrderErrors
+  - MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalResetErrors
+  langs:
+  - csharp
+  - vb
+  name: SequenceErrorTracker
+  nameWithType: SequenceErrorTracker
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SequenceErrorTracker
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 11
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: >-
+    Tracks and reports sequence errors in market data streams.
+
+    Detects gaps, out-of-order events, duplicates, and sequence resets.
+  example: []
+  syntax:
+    content: 'public sealed class SequenceErrorTracker : IDisposable'
+    content.vb: Public NotInheritable Class SequenceErrorTracker Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.OnSequenceError
+  commentId: E:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.OnSequenceError
+  id: OnSequenceError
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  langs:
+  - csharp
+  - vb
+  name: OnSequenceError
+  nameWithType: SequenceErrorTracker.OnSequenceError
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.OnSequenceError
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnSequenceError
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 30
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Event raised when a sequence error is detected.
+  example: []
+  syntax:
+    content: public event Action<SequenceError>? OnSequenceError
+    return:
+      type: System.Action{MarketDataCollector.Application.Monitoring.DataQuality.SequenceError}
+    content.vb: Public Event OnSequenceError As Action(Of SequenceError)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.#ctor(MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorConfig)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.#ctor(MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorConfig)
+  id: '#ctor(MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorConfig)'
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  langs:
+  - csharp
+  - vb
+  name: SequenceErrorTracker(SequenceErrorConfig?)
+  nameWithType: SequenceErrorTracker.SequenceErrorTracker(SequenceErrorConfig?)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.SequenceErrorTracker(MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorConfig?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 32
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public SequenceErrorTracker(SequenceErrorConfig? config = null)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorConfig
+    content.vb: Public Sub New(config As SequenceErrorConfig = Nothing)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.#ctor*
+  nameWithType.vb: SequenceErrorTracker.New(SequenceErrorConfig)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.New(MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorConfig)
+  name.vb: New(SequenceErrorConfig)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.CheckSequence(System.String,System.String,System.Int64,System.DateTimeOffset,System.String,System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.CheckSequence(System.String,System.String,System.Int64,System.DateTimeOffset,System.String,System.String)
+  id: CheckSequence(System.String,System.String,System.Int64,System.DateTimeOffset,System.String,System.String)
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  langs:
+  - csharp
+  - vb
+  name: CheckSequence(string, string, long, DateTimeOffset, string?, string?)
+  nameWithType: SequenceErrorTracker.CheckSequence(string, string, long, DateTimeOffset, string?, string?)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.CheckSequence(string, string, long, System.DateTimeOffset, string?, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CheckSequence
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 45
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Checks a sequence number for errors.
+  example: []
+  syntax:
+    content: public SequenceError? CheckSequence(string symbol, string eventType, long sequenceNumber, DateTimeOffset timestamp, string? streamId = null, string? provider = null)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: eventType
+      type: System.String
+    - id: sequenceNumber
+      type: System.Int64
+    - id: timestamp
+      type: System.DateTimeOffset
+    - id: streamId
+      type: System.String
+    - id: provider
+      type: System.String
+    return:
+      type: MarketDataCollector.Application.Monitoring.DataQuality.SequenceError
+    content.vb: Public Function CheckSequence(symbol As String, eventType As String, sequenceNumber As Long, timestamp As DateTimeOffset, streamId As String = Nothing, provider As String = Nothing) As SequenceError
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.CheckSequence*
+  nameWithType.vb: SequenceErrorTracker.CheckSequence(String, String, Long, DateTimeOffset, String, String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.CheckSequence(String, String, Long, System.DateTimeOffset, String, String)
+  name.vb: CheckSequence(String, String, Long, DateTimeOffset, String, String)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.RecordError(MarketDataCollector.Application.Monitoring.DataQuality.SequenceError)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.RecordError(MarketDataCollector.Application.Monitoring.DataQuality.SequenceError)
+  id: RecordError(MarketDataCollector.Application.Monitoring.DataQuality.SequenceError)
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  langs:
+  - csharp
+  - vb
+  name: RecordError(SequenceError)
+  nameWithType: SequenceErrorTracker.RecordError(SequenceError)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.RecordError(MarketDataCollector.Application.Monitoring.DataQuality.SequenceError)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecordError
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 73
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Records a sequence error directly (for use with existing integrity events).
+  example: []
+  syntax:
+    content: public void RecordError(SequenceError error)
+    parameters:
+    - id: error
+      type: MarketDataCollector.Application.Monitoring.DataQuality.SequenceError
+    content.vb: Public Sub RecordError([error] As SequenceError)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.RecordError*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSummary(System.String,System.Nullable{System.DateOnly})
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSummary(System.String,System.Nullable{System.DateOnly})
+  id: GetSummary(System.String,System.Nullable{System.DateOnly})
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  langs:
+  - csharp
+  - vb
+  name: GetSummary(string, DateOnly?)
+  nameWithType: SequenceErrorTracker.GetSummary(string, DateOnly?)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSummary(string, System.DateOnly?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSummary
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 127
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Gets the error summary for a symbol.
+  example: []
+  syntax:
+    content: public SequenceErrorSummary GetSummary(string symbol, DateOnly? date = null)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: date
+      type: System.Nullable{System.DateOnly}
+    return:
+      type: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorSummary
+    content.vb: Public Function GetSummary(symbol As String, [date] As DateOnly? = Nothing) As SequenceErrorSummary
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSummary*
+  nameWithType.vb: SequenceErrorTracker.GetSummary(String, DateOnly?)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSummary(String, System.DateOnly?)
+  name.vb: GetSummary(String, DateOnly?)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetErrorsForDate(System.DateOnly)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetErrorsForDate(System.DateOnly)
+  id: GetErrorsForDate(System.DateOnly)
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  langs:
+  - csharp
+  - vb
+  name: GetErrorsForDate(DateOnly)
+  nameWithType: SequenceErrorTracker.GetErrorsForDate(DateOnly)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetErrorsForDate(System.DateOnly)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetErrorsForDate
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 164
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Gets all errors for a specific date.
+  example: []
+  syntax:
+    content: public IReadOnlyList<SequenceError> GetErrorsForDate(DateOnly date)
+    parameters:
+    - id: date
+      type: System.DateOnly
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.SequenceError}
+    content.vb: Public Function GetErrorsForDate([date] As DateOnly) As IReadOnlyList(Of SequenceError)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetErrorsForDate*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetRecentErrors(System.Int32)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetRecentErrors(System.Int32)
+  id: GetRecentErrors(System.Int32)
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  langs:
+  - csharp
+  - vb
+  name: GetRecentErrors(int)
+  nameWithType: SequenceErrorTracker.GetRecentErrors(int)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetRecentErrors(int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetRecentErrors
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 176
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Gets recent errors across all symbols.
+  example: []
+  syntax:
+    content: public IReadOnlyList<SequenceError> GetRecentErrors(int count = 100)
+    parameters:
+    - id: count
+      type: System.Int32
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.SequenceError}
+    content.vb: Public Function GetRecentErrors(count As Integer = 100) As IReadOnlyList(Of SequenceError)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetRecentErrors*
+  nameWithType.vb: SequenceErrorTracker.GetRecentErrors(Integer)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetRecentErrors(Integer)
+  name.vb: GetRecentErrors(Integer)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetErrors(System.String,System.String,System.Int32)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetErrors(System.String,System.String,System.Int32)
+  id: GetErrors(System.String,System.String,System.Int32)
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  langs:
+  - csharp
+  - vb
+  name: GetErrors(string, string?, int)
+  nameWithType: SequenceErrorTracker.GetErrors(string, string?, int)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetErrors(string, string?, int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetErrors
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 188
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Gets errors for a specific symbol and event type.
+  example: []
+  syntax:
+    content: public IReadOnlyList<SequenceError> GetErrors(string symbol, string? eventType = null, int count = 100)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: eventType
+      type: System.String
+    - id: count
+      type: System.Int32
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.SequenceError}
+    content.vb: Public Function GetErrors(symbol As String, eventType As String = Nothing, count As Integer = 100) As IReadOnlyList(Of SequenceError)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetErrors*
+  nameWithType.vb: SequenceErrorTracker.GetErrors(String, String, Integer)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetErrors(String, String, Integer)
+  name.vb: GetErrors(String, String, Integer)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSymbolsWithMostErrors(System.Int32)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSymbolsWithMostErrors(System.Int32)
+  id: GetSymbolsWithMostErrors(System.Int32)
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  langs:
+  - csharp
+  - vb
+  name: GetSymbolsWithMostErrors(int)
+  nameWithType: SequenceErrorTracker.GetSymbolsWithMostErrors(int)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSymbolsWithMostErrors(int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSymbolsWithMostErrors
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 203
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Gets symbols with the most errors.
+  example: []
+  syntax:
+    content: public IReadOnlyList<(string Symbol, int ErrorCount)> GetSymbolsWithMostErrors(int count = 10)
+    parameters:
+    - id: count
+      type: System.Int32
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.ValueTuple{System.String,System.Int32}}
+    content.vb: Public Function GetSymbolsWithMostErrors(count As Integer = 10) As IReadOnlyList(Of (Symbol As String, ErrorCount As Integer))
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSymbolsWithMostErrors*
+  nameWithType.vb: SequenceErrorTracker.GetSymbolsWithMostErrors(Integer)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSymbolsWithMostErrors(Integer)
+  name.vb: GetSymbolsWithMostErrors(Integer)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetStatistics
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetStatistics
+  id: GetStatistics
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  langs:
+  - csharp
+  - vb
+  name: GetStatistics()
+  nameWithType: SequenceErrorTracker.GetStatistics()
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetStatistics()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetStatistics
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 217
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Gets overall statistics.
+  example: []
+  syntax:
+    content: public SequenceErrorStatistics GetStatistics()
+    return:
+      type: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorStatistics
+    content.vb: Public Function GetStatistics() As SequenceErrorStatistics
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetStatistics*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.ResetSymbolState(System.String,System.String,System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.ResetSymbolState(System.String,System.String,System.String)
+  id: ResetSymbolState(System.String,System.String,System.String)
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  langs:
+  - csharp
+  - vb
+  name: ResetSymbolState(string, string?, string?)
+  nameWithType: SequenceErrorTracker.ResetSymbolState(string, string?, string?)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.ResetSymbolState(string, string?, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResetSymbolState
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 253
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Resets the sequence state for a symbol (use after intentional reconnection).
+  example: []
+  syntax:
+    content: public void ResetSymbolState(string symbol, string? eventType = null, string? streamId = null)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: eventType
+      type: System.String
+    - id: streamId
+      type: System.String
+    content.vb: Public Sub ResetSymbolState(symbol As String, eventType As String = Nothing, streamId As String = Nothing)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.ResetSymbolState*
+  nameWithType.vb: SequenceErrorTracker.ResetSymbolState(String, String, String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.ResetSymbolState(String, String, String)
+  name.vb: ResetSymbolState(String, String, String)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalGapErrors
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalGapErrors
+  id: TotalGapErrors
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  langs:
+  - csharp
+  - vb
+  name: TotalGapErrors
+  nameWithType: SequenceErrorTracker.TotalGapErrors
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalGapErrors
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TotalGapErrors
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 277
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Gets the total error counts.
+  example: []
+  syntax:
+    content: public long TotalGapErrors { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property TotalGapErrors As Long
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalGapErrors*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalOutOfOrderErrors
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalOutOfOrderErrors
+  id: TotalOutOfOrderErrors
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  langs:
+  - csharp
+  - vb
+  name: TotalOutOfOrderErrors
+  nameWithType: SequenceErrorTracker.TotalOutOfOrderErrors
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalOutOfOrderErrors
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TotalOutOfOrderErrors
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 278
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public long TotalOutOfOrderErrors { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property TotalOutOfOrderErrors As Long
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalOutOfOrderErrors*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalDuplicateErrors
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalDuplicateErrors
+  id: TotalDuplicateErrors
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  langs:
+  - csharp
+  - vb
+  name: TotalDuplicateErrors
+  nameWithType: SequenceErrorTracker.TotalDuplicateErrors
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalDuplicateErrors
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TotalDuplicateErrors
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 279
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public long TotalDuplicateErrors { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property TotalDuplicateErrors As Long
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalDuplicateErrors*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalResetErrors
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalResetErrors
+  id: TotalResetErrors
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  langs:
+  - csharp
+  - vb
+  name: TotalResetErrors
+  nameWithType: SequenceErrorTracker.TotalResetErrors
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalResetErrors
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TotalResetErrors
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 280
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public long TotalResetErrors { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property TotalResetErrors As Long
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalResetErrors*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalEventsChecked
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalEventsChecked
+  id: TotalEventsChecked
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  langs:
+  - csharp
+  - vb
+  name: TotalEventsChecked
+  nameWithType: SequenceErrorTracker.TotalEventsChecked
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalEventsChecked
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TotalEventsChecked
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 281
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public long TotalEventsChecked { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property TotalEventsChecked As Long
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalEventsChecked*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.Dispose
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.Dispose
+  id: Dispose
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: SequenceErrorTracker.Dispose()
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Dispose
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/SequenceErrorTracker.cs
+    startLine: 342
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: MarketDataCollector.Application.Monitoring.DataQuality
+  commentId: N:MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring.DataQuality
+  nameWithType: MarketDataCollector.Application.Monitoring.DataQuality
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality
+    name: DataQuality
+    href: MarketDataCollector.Application.Monitoring.DataQuality.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality
+    name: DataQuality
+    href: MarketDataCollector.Application.Monitoring.DataQuality.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Action{MarketDataCollector.Application.Monitoring.DataQuality.SequenceError}
+  commentId: T:System.Action{MarketDataCollector.Application.Monitoring.DataQuality.SequenceError}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<SequenceError>
+  nameWithType: Action<SequenceError>
+  fullName: System.Action<MarketDataCollector.Application.Monitoring.DataQuality.SequenceError>
+  nameWithType.vb: Action(Of SequenceError)
+  fullName.vb: System.Action(Of MarketDataCollector.Application.Monitoring.DataQuality.SequenceError)
+  name.vb: Action(Of SequenceError)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceError
+    name: SequenceError
+    href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceError.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceError
+    name: SequenceError
+    href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceError.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.#ctor
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.html#MarketDataCollector_Application_Monitoring_DataQuality_SequenceErrorTracker__ctor_MarketDataCollector_Application_Monitoring_DataQuality_SequenceErrorConfig_
+  name: SequenceErrorTracker
+  nameWithType: SequenceErrorTracker.SequenceErrorTracker
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.SequenceErrorTracker
+  nameWithType.vb: SequenceErrorTracker.New
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.New
+  name.vb: New
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorConfig
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorConfig
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorConfig.html
+  name: SequenceErrorConfig
+  nameWithType: SequenceErrorConfig
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorConfig
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.CheckSequence*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.CheckSequence
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.html#MarketDataCollector_Application_Monitoring_DataQuality_SequenceErrorTracker_CheckSequence_System_String_System_String_System_Int64_System_DateTimeOffset_System_String_System_String_
+  name: CheckSequence
+  nameWithType: SequenceErrorTracker.CheckSequence
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.CheckSequence
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceError
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.SequenceError
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceError.html
+  name: SequenceError
+  nameWithType: SequenceError
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceError
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.RecordError*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.RecordError
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.html#MarketDataCollector_Application_Monitoring_DataQuality_SequenceErrorTracker_RecordError_MarketDataCollector_Application_Monitoring_DataQuality_SequenceError_
+  name: RecordError
+  nameWithType: SequenceErrorTracker.RecordError
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.RecordError
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSummary*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSummary
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.html#MarketDataCollector_Application_Monitoring_DataQuality_SequenceErrorTracker_GetSummary_System_String_System_Nullable_System_DateOnly__
+  name: GetSummary
+  nameWithType: SequenceErrorTracker.GetSummary
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSummary
+- uid: System.Nullable{System.DateOnly}
+  commentId: T:System.Nullable{System.DateOnly}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  name: DateOnly?
+  nameWithType: DateOnly?
+  fullName: System.DateOnly?
+  spec.csharp:
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '?'
+  spec.vb:
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '?'
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorSummary
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorSummary
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorSummary.html
+  name: SequenceErrorSummary
+  nameWithType: SequenceErrorSummary
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorSummary
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetErrorsForDate*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetErrorsForDate
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.html#MarketDataCollector_Application_Monitoring_DataQuality_SequenceErrorTracker_GetErrorsForDate_System_DateOnly_
+  name: GetErrorsForDate
+  nameWithType: SequenceErrorTracker.GetErrorsForDate
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetErrorsForDate
+- uid: System.DateOnly
+  commentId: T:System.DateOnly
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  name: DateOnly
+  nameWithType: DateOnly
+  fullName: System.DateOnly
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.SequenceError}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.SequenceError}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<SequenceError>
+  nameWithType: IReadOnlyList<SequenceError>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Monitoring.DataQuality.SequenceError>
+  nameWithType.vb: IReadOnlyList(Of SequenceError)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Monitoring.DataQuality.SequenceError)
+  name.vb: IReadOnlyList(Of SequenceError)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceError
+    name: SequenceError
+    href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceError.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceError
+    name: SequenceError
+    href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceError.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetRecentErrors*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetRecentErrors
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.html#MarketDataCollector_Application_Monitoring_DataQuality_SequenceErrorTracker_GetRecentErrors_System_Int32_
+  name: GetRecentErrors
+  nameWithType: SequenceErrorTracker.GetRecentErrors
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetRecentErrors
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetErrors*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetErrors
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.html#MarketDataCollector_Application_Monitoring_DataQuality_SequenceErrorTracker_GetErrors_System_String_System_String_System_Int32_
+  name: GetErrors
+  nameWithType: SequenceErrorTracker.GetErrors
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetErrors
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSymbolsWithMostErrors*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSymbolsWithMostErrors
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.html#MarketDataCollector_Application_Monitoring_DataQuality_SequenceErrorTracker_GetSymbolsWithMostErrors_System_Int32_
+  name: GetSymbolsWithMostErrors
+  nameWithType: SequenceErrorTracker.GetSymbolsWithMostErrors
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetSymbolsWithMostErrors
+- uid: System.Collections.Generic.IReadOnlyList{System.ValueTuple{System.String,System.Int32}}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.ValueTuple{System.String,System.Int32}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<(string Symbol, int Count)>
+  nameWithType: IReadOnlyList<(string Symbol, int Count)>
+  fullName: System.Collections.Generic.IReadOnlyList<(string Symbol, int Count)>
+  nameWithType.vb: IReadOnlyList(Of (Symbol As String, Count As Integer))
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of (Symbol As String, Count As Integer))
+  name.vb: IReadOnlyList(Of (Symbol As String, Count As Integer))
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.Int32}.Symbol
+    name: Symbol
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.int32-.symbol
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.Int32}.Count
+    name: Count
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.int32-.count
+  - name: )
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: (
+  - uid: System.ValueTuple{System.String,System.Int32}.Symbol
+    name: Symbol
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.int32-.symbol
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.Int32}.Count
+    name: Count
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.int32-.count
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetStatistics*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetStatistics
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.html#MarketDataCollector_Application_Monitoring_DataQuality_SequenceErrorTracker_GetStatistics
+  name: GetStatistics
+  nameWithType: SequenceErrorTracker.GetStatistics
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.GetStatistics
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorStatistics
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorStatistics
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorStatistics.html
+  name: SequenceErrorStatistics
+  nameWithType: SequenceErrorStatistics
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorStatistics
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.ResetSymbolState*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.ResetSymbolState
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.html#MarketDataCollector_Application_Monitoring_DataQuality_SequenceErrorTracker_ResetSymbolState_System_String_System_String_System_String_
+  name: ResetSymbolState
+  nameWithType: SequenceErrorTracker.ResetSymbolState
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.ResetSymbolState
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalGapErrors*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalGapErrors
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.html#MarketDataCollector_Application_Monitoring_DataQuality_SequenceErrorTracker_TotalGapErrors
+  name: TotalGapErrors
+  nameWithType: SequenceErrorTracker.TotalGapErrors
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalGapErrors
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalOutOfOrderErrors*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalOutOfOrderErrors
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.html#MarketDataCollector_Application_Monitoring_DataQuality_SequenceErrorTracker_TotalOutOfOrderErrors
+  name: TotalOutOfOrderErrors
+  nameWithType: SequenceErrorTracker.TotalOutOfOrderErrors
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalOutOfOrderErrors
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalDuplicateErrors*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalDuplicateErrors
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.html#MarketDataCollector_Application_Monitoring_DataQuality_SequenceErrorTracker_TotalDuplicateErrors
+  name: TotalDuplicateErrors
+  nameWithType: SequenceErrorTracker.TotalDuplicateErrors
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalDuplicateErrors
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalResetErrors*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalResetErrors
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.html#MarketDataCollector_Application_Monitoring_DataQuality_SequenceErrorTracker_TotalResetErrors
+  name: TotalResetErrors
+  nameWithType: SequenceErrorTracker.TotalResetErrors
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalResetErrors
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalEventsChecked*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalEventsChecked
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.html#MarketDataCollector_Application_Monitoring_DataQuality_SequenceErrorTracker_TotalEventsChecked
+  name: TotalEventsChecked
+  nameWithType: SequenceErrorTracker.TotalEventsChecked
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.TotalEventsChecked
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.Dispose*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.Dispose
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.html#MarketDataCollector_Application_Monitoring_DataQuality_SequenceErrorTracker_Dispose
+  name: Dispose
+  nameWithType: SequenceErrorTracker.Dispose
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SequenceErrorTracker.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

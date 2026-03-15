@@ -1,0 +1,334 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.DataSources.IDepthSource
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.IDepthSource
+  id: IDepthSource
+  parent: MarketDataCollector.Infrastructure.DataSources
+  children:
+  - MarketDataCollector.Infrastructure.DataSources.IDepthSource.DepthUpdates
+  - MarketDataCollector.Infrastructure.DataSources.IDepthSource.MaxDepthLevels
+  - MarketDataCollector.Infrastructure.DataSources.IDepthSource.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  - MarketDataCollector.Infrastructure.DataSources.IDepthSource.UnsubscribeMarketDepth(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: IDepthSource
+  nameWithType: IDepthSource
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDepthSource
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IDepthSource
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 160
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Interface for sources that provide market depth data.
+  example: []
+  syntax:
+    content: public interface IDepthSource
+    content.vb: Public Interface IDepthSource
+- uid: MarketDataCollector.Infrastructure.DataSources.IDepthSource.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IDepthSource.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  id: SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  parent: MarketDataCollector.Infrastructure.DataSources.IDepthSource
+  langs:
+  - csharp
+  - vb
+  name: SubscribeMarketDepth(SymbolConfig)
+  nameWithType: IDepthSource.SubscribeMarketDepth(SymbolConfig)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDepthSource.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SubscribeMarketDepth
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 165
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Subscribes to market depth for the given symbol.
+  example: []
+  syntax:
+    content: int SubscribeMarketDepth(SymbolConfig config)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Contracts.Configuration.SymbolConfig
+    return:
+      type: System.Int32
+    content.vb: Function SubscribeMarketDepth(config As SymbolConfig) As Integer
+  overload: MarketDataCollector.Infrastructure.DataSources.IDepthSource.SubscribeMarketDepth*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDepthSource.UnsubscribeMarketDepth(System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IDepthSource.UnsubscribeMarketDepth(System.Int32)
+  id: UnsubscribeMarketDepth(System.Int32)
+  parent: MarketDataCollector.Infrastructure.DataSources.IDepthSource
+  langs:
+  - csharp
+  - vb
+  name: UnsubscribeMarketDepth(int)
+  nameWithType: IDepthSource.UnsubscribeMarketDepth(int)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDepthSource.UnsubscribeMarketDepth(int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UnsubscribeMarketDepth
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 170
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Unsubscribes from a depth subscription.
+  example: []
+  syntax:
+    content: void UnsubscribeMarketDepth(int subscriptionId)
+    parameters:
+    - id: subscriptionId
+      type: System.Int32
+    content.vb: Sub UnsubscribeMarketDepth(subscriptionId As Integer)
+  overload: MarketDataCollector.Infrastructure.DataSources.IDepthSource.UnsubscribeMarketDepth*
+  nameWithType.vb: IDepthSource.UnsubscribeMarketDepth(Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.DataSources.IDepthSource.UnsubscribeMarketDepth(Integer)
+  name.vb: UnsubscribeMarketDepth(Integer)
+- uid: MarketDataCollector.Infrastructure.DataSources.IDepthSource.DepthUpdates
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDepthSource.DepthUpdates
+  id: DepthUpdates
+  parent: MarketDataCollector.Infrastructure.DataSources.IDepthSource
+  langs:
+  - csharp
+  - vb
+  name: DepthUpdates
+  nameWithType: IDepthSource.DepthUpdates
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDepthSource.DepthUpdates
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DepthUpdates
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 175
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Observable stream of market depth updates.
+  example: []
+  syntax:
+    content: IObservable<RealtimeDepthUpdate> DepthUpdates { get; }
+    parameters: []
+    return:
+      type: System.IObservable{MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate}
+    content.vb: ReadOnly Property DepthUpdates As IObservable(Of RealtimeDepthUpdate)
+  overload: MarketDataCollector.Infrastructure.DataSources.IDepthSource.DepthUpdates*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDepthSource.MaxDepthLevels
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDepthSource.MaxDepthLevels
+  id: MaxDepthLevels
+  parent: MarketDataCollector.Infrastructure.DataSources.IDepthSource
+  langs:
+  - csharp
+  - vb
+  name: MaxDepthLevels
+  nameWithType: IDepthSource.MaxDepthLevels
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDepthSource.MaxDepthLevels
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MaxDepthLevels
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 180
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Maximum number of depth levels supported.
+  example: []
+  syntax:
+    content: int MaxDepthLevels { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property MaxDepthLevels As Integer
+  overload: MarketDataCollector.Infrastructure.DataSources.IDepthSource.MaxDepthLevels*
+references:
+- uid: MarketDataCollector.Infrastructure.DataSources
+  commentId: N:MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.DataSources
+  nameWithType: MarketDataCollector.Infrastructure.DataSources
+  fullName: MarketDataCollector.Infrastructure.DataSources
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.DataSources
+    name: DataSources
+    href: MarketDataCollector.Infrastructure.DataSources.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.DataSources
+    name: DataSources
+    href: MarketDataCollector.Infrastructure.DataSources.html
+- uid: MarketDataCollector.Infrastructure.DataSources.IDepthSource.SubscribeMarketDepth*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDepthSource.SubscribeMarketDepth
+  href: MarketDataCollector.Infrastructure.DataSources.IDepthSource.html#MarketDataCollector_Infrastructure_DataSources_IDepthSource_SubscribeMarketDepth_MarketDataCollector_Contracts_Configuration_SymbolConfig_
+  name: SubscribeMarketDepth
+  nameWithType: IDepthSource.SubscribeMarketDepth
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDepthSource.SubscribeMarketDepth
+- uid: MarketDataCollector.Contracts.Configuration.SymbolConfig
+  commentId: T:MarketDataCollector.Contracts.Configuration.SymbolConfig
+  parent: MarketDataCollector.Contracts.Configuration
+  href: MarketDataCollector.Contracts.Configuration.SymbolConfig.html
+  name: SymbolConfig
+  nameWithType: SymbolConfig
+  fullName: MarketDataCollector.Contracts.Configuration.SymbolConfig
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Contracts.Configuration
+  commentId: N:MarketDataCollector.Contracts.Configuration
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Configuration
+  nameWithType: MarketDataCollector.Contracts.Configuration
+  fullName: MarketDataCollector.Contracts.Configuration
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Configuration
+    name: Configuration
+    href: MarketDataCollector.Contracts.Configuration.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Configuration
+    name: Configuration
+    href: MarketDataCollector.Contracts.Configuration.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Infrastructure.DataSources.IDepthSource.UnsubscribeMarketDepth*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDepthSource.UnsubscribeMarketDepth
+  href: MarketDataCollector.Infrastructure.DataSources.IDepthSource.html#MarketDataCollector_Infrastructure_DataSources_IDepthSource_UnsubscribeMarketDepth_System_Int32_
+  name: UnsubscribeMarketDepth
+  nameWithType: IDepthSource.UnsubscribeMarketDepth
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDepthSource.UnsubscribeMarketDepth
+- uid: MarketDataCollector.Infrastructure.DataSources.IDepthSource.DepthUpdates*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDepthSource.DepthUpdates
+  href: MarketDataCollector.Infrastructure.DataSources.IDepthSource.html#MarketDataCollector_Infrastructure_DataSources_IDepthSource_DepthUpdates
+  name: DepthUpdates
+  nameWithType: IDepthSource.DepthUpdates
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDepthSource.DepthUpdates
+- uid: System.IObservable{MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate}
+  commentId: T:System.IObservable{MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate}
+  parent: System
+  definition: System.IObservable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<RealtimeDepthUpdate>
+  nameWithType: IObservable<RealtimeDepthUpdate>
+  fullName: System.IObservable<MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate>
+  nameWithType.vb: IObservable(Of RealtimeDepthUpdate)
+  fullName.vb: System.IObservable(Of MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate)
+  name.vb: IObservable(Of RealtimeDepthUpdate)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate
+    name: RealtimeDepthUpdate
+    href: MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate
+    name: RealtimeDepthUpdate
+    href: MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate.html
+  - name: )
+- uid: System.IObservable`1
+  commentId: T:System.IObservable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<T>
+  nameWithType: IObservable<T>
+  fullName: System.IObservable<T>
+  nameWithType.vb: IObservable(Of T)
+  fullName.vb: System.IObservable(Of T)
+  name.vb: IObservable(Of T)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Infrastructure.DataSources.IDepthSource.MaxDepthLevels*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDepthSource.MaxDepthLevels
+  href: MarketDataCollector.Infrastructure.DataSources.IDepthSource.html#MarketDataCollector_Infrastructure_DataSources_IDepthSource_MaxDepthLevels
+  name: MaxDepthLevels
+  nameWithType: IDepthSource.MaxDepthLevels
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDepthSource.MaxDepthLevels

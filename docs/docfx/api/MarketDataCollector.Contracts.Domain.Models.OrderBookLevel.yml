@@ -1,0 +1,699 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel
+  commentId: T:MarketDataCollector.Contracts.Domain.Models.OrderBookLevel
+  id: OrderBookLevel
+  parent: MarketDataCollector.Contracts.Domain.Models
+  children:
+  - MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.#ctor(MarketDataCollector.Contracts.Domain.Enums.OrderBookSide,System.UInt16,System.Decimal,System.Decimal,System.String)
+  - MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Level
+  - MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.MarketMaker
+  - MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Price
+  - MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Side
+  - MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Size
+  langs:
+  - csharp
+  - vb
+  name: OrderBookLevel
+  nameWithType: OrderBookLevel
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderBookLevel.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OrderBookLevel
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderBookLevel.cs
+    startLine: 27
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  summary: One price level in an order book side. Level is 0-based (0 = best).
+  remarks: >-
+    <p>
+
+    <b>Design Notes:</b>
+
+    </p>
+
+    <ul><li>
+
+    <b>Price type:</b> Uses decimal for financial precision. This ensures accurate representation
+
+    of prices without floating-point rounding errors, which is critical for financial calculations.
+
+    </li><li>
+
+    <b>Cross-side validation:</b> Bid/ask price validation (bid &lt; ask) is performed at the
+
+    order book level rather than at the individual level, since single levels don't have
+
+    visibility into the opposite side.
+
+    </li></ul>
+  example: []
+  syntax:
+    content: 'public sealed record OrderBookLevel : IEquatable<OrderBookLevel>'
+    content.vb: Public NotInheritable Class OrderBookLevel Implements IEquatable(Of OrderBookLevel)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Contracts.Domain.Models.OrderBookLevel}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Side
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Side
+  id: Side
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel
+  langs:
+  - csharp
+  - vb
+  name: Side
+  nameWithType: OrderBookLevel.Side
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Side
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderBookLevel.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Side
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderBookLevel.cs
+    startLine: 32
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  summary: Gets the side of the order book (bid or ask).
+  example: []
+  syntax:
+    content: public OrderBookSide Side { get; init; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Contracts.Domain.Enums.OrderBookSide
+    content.vb: Public Property Side As OrderBookSide
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Side*
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Level
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Level
+  id: Level
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel
+  langs:
+  - csharp
+  - vb
+  name: Level
+  nameWithType: OrderBookLevel.Level
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Level
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderBookLevel.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Level
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderBookLevel.cs
+    startLine: 38
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  summary: >-
+    Gets the depth level in the order book (0 = best price).
+
+    Max 65,535 levels — far exceeds any real order book depth.
+  example: []
+  syntax:
+    content: public ushort Level { get; init; }
+    parameters: []
+    return:
+      type: System.UInt16
+    content.vb: Public Property Level As UShort
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Level*
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Price
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Price
+  id: Price
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel
+  langs:
+  - csharp
+  - vb
+  name: Price
+  nameWithType: OrderBookLevel.Price
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Price
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderBookLevel.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Price
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderBookLevel.cs
+    startLine: 43
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  summary: Gets the price at this level.
+  example: []
+  syntax:
+    content: public decimal Price { get; init; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: Public Property Price As Decimal
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Price*
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Size
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Size
+  id: Size
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel
+  langs:
+  - csharp
+  - vb
+  name: Size
+  nameWithType: OrderBookLevel.Size
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Size
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderBookLevel.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Size
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderBookLevel.cs
+    startLine: 48
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  summary: Gets the total size available at this price level.
+  example: []
+  syntax:
+    content: public decimal Size { get; init; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: Public Property Size As Decimal
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Size*
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.MarketMaker
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.MarketMaker
+  id: MarketMaker
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel
+  langs:
+  - csharp
+  - vb
+  name: MarketMaker
+  nameWithType: OrderBookLevel.MarketMaker
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.MarketMaker
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderBookLevel.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MarketMaker
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderBookLevel.cs
+    startLine: 53
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  summary: Gets the market maker identifier (if available).
+  example: []
+  syntax:
+    content: public string? MarketMaker { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property MarketMaker As String
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.MarketMaker*
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.#ctor(MarketDataCollector.Contracts.Domain.Enums.OrderBookSide,System.UInt16,System.Decimal,System.Decimal,System.String)
+  commentId: M:MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.#ctor(MarketDataCollector.Contracts.Domain.Enums.OrderBookSide,System.UInt16,System.Decimal,System.Decimal,System.String)
+  id: '#ctor(MarketDataCollector.Contracts.Domain.Enums.OrderBookSide,System.UInt16,System.Decimal,System.Decimal,System.String)'
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel
+  langs:
+  - csharp
+  - vb
+  name: OrderBookLevel(OrderBookSide, ushort, decimal, decimal, string?)
+  nameWithType: OrderBookLevel.OrderBookLevel(OrderBookSide, ushort, decimal, decimal, string?)
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.OrderBookLevel(MarketDataCollector.Contracts.Domain.Enums.OrderBookSide, ushort, decimal, decimal, string?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderBookLevel.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderBookLevel.cs
+    startLine: 58
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  summary: Validates order book level data at construction time to prevent corrupt datasets.
+  example: []
+  syntax:
+    content: public OrderBookLevel(OrderBookSide Side, ushort Level, decimal Price, decimal Size, string? MarketMaker = null)
+    parameters:
+    - id: Side
+      type: MarketDataCollector.Contracts.Domain.Enums.OrderBookSide
+    - id: Level
+      type: System.UInt16
+    - id: Price
+      type: System.Decimal
+    - id: Size
+      type: System.Decimal
+    - id: MarketMaker
+      type: System.String
+    content.vb: Public Sub New(Side As OrderBookSide, Level As UShort, Price As Decimal, Size As Decimal, MarketMaker As String = Nothing)
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.#ctor*
+  nameWithType.vb: OrderBookLevel.New(OrderBookSide, UShort, Decimal, Decimal, String)
+  fullName.vb: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.New(MarketDataCollector.Contracts.Domain.Enums.OrderBookSide, UShort, Decimal, Decimal, String)
+  name.vb: New(OrderBookSide, UShort, Decimal, Decimal, String)
+references:
+- uid: MarketDataCollector.Contracts.Domain.Models
+  commentId: N:MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Models
+  nameWithType: MarketDataCollector.Contracts.Domain.Models
+  fullName: MarketDataCollector.Contracts.Domain.Models
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Models
+    name: Models
+    href: MarketDataCollector.Contracts.Domain.Models.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Models
+    name: Models
+    href: MarketDataCollector.Contracts.Domain.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Contracts.Domain.Models.OrderBookLevel}
+  commentId: T:System.IEquatable{MarketDataCollector.Contracts.Domain.Models.OrderBookLevel}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<OrderBookLevel>
+  nameWithType: IEquatable<OrderBookLevel>
+  fullName: System.IEquatable<MarketDataCollector.Contracts.Domain.Models.OrderBookLevel>
+  nameWithType.vb: IEquatable(Of OrderBookLevel)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Contracts.Domain.Models.OrderBookLevel)
+  name.vb: IEquatable(Of OrderBookLevel)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel
+    name: OrderBookLevel
+    href: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel
+    name: OrderBookLevel
+    href: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Side*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Side
+  href: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.html#MarketDataCollector_Contracts_Domain_Models_OrderBookLevel_Side
+  name: Side
+  nameWithType: OrderBookLevel.Side
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Side
+- uid: MarketDataCollector.Contracts.Domain.Enums.OrderBookSide
+  commentId: T:MarketDataCollector.Contracts.Domain.Enums.OrderBookSide
+  parent: MarketDataCollector.Contracts.Domain.Enums
+  href: MarketDataCollector.Contracts.Domain.Enums.OrderBookSide.html
+  name: OrderBookSide
+  nameWithType: OrderBookSide
+  fullName: MarketDataCollector.Contracts.Domain.Enums.OrderBookSide
+- uid: MarketDataCollector.Contracts.Domain.Enums
+  commentId: N:MarketDataCollector.Contracts.Domain.Enums
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Enums
+  nameWithType: MarketDataCollector.Contracts.Domain.Enums
+  fullName: MarketDataCollector.Contracts.Domain.Enums
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Enums
+    name: Enums
+    href: MarketDataCollector.Contracts.Domain.Enums.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Enums
+    name: Enums
+    href: MarketDataCollector.Contracts.Domain.Enums.html
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Level*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Level
+  href: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.html#MarketDataCollector_Contracts_Domain_Models_OrderBookLevel_Level
+  name: Level
+  nameWithType: OrderBookLevel.Level
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Level
+- uid: System.UInt16
+  commentId: T:System.UInt16
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint16
+  name: ushort
+  nameWithType: ushort
+  fullName: ushort
+  nameWithType.vb: UShort
+  fullName.vb: UShort
+  name.vb: UShort
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Price*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Price
+  href: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.html#MarketDataCollector_Contracts_Domain_Models_OrderBookLevel_Price
+  name: Price
+  nameWithType: OrderBookLevel.Price
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Price
+- uid: System.Decimal
+  commentId: T:System.Decimal
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.decimal
+  name: decimal
+  nameWithType: decimal
+  fullName: decimal
+  nameWithType.vb: Decimal
+  fullName.vb: Decimal
+  name.vb: Decimal
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Size*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Size
+  href: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.html#MarketDataCollector_Contracts_Domain_Models_OrderBookLevel_Size
+  name: Size
+  nameWithType: OrderBookLevel.Size
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.Size
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.MarketMaker*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.MarketMaker
+  href: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.html#MarketDataCollector_Contracts_Domain_Models_OrderBookLevel_MarketMaker
+  name: MarketMaker
+  nameWithType: OrderBookLevel.MarketMaker
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.MarketMaker
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.#ctor*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.#ctor
+  href: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.html#MarketDataCollector_Contracts_Domain_Models_OrderBookLevel__ctor_MarketDataCollector_Contracts_Domain_Enums_OrderBookSide_System_UInt16_System_Decimal_System_Decimal_System_String_
+  name: OrderBookLevel
+  nameWithType: OrderBookLevel.OrderBookLevel
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.OrderBookLevel
+  nameWithType.vb: OrderBookLevel.New
+  fullName.vb: MarketDataCollector.Contracts.Domain.Models.OrderBookLevel.New
+  name.vb: New

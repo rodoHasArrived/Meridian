@@ -1,0 +1,978 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+  commentId: T:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+  id: ICanonicalSymbolRegistry
+  parent: MarketDataCollector.Contracts.Catalog
+  children:
+  - MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.Count
+  - MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetAll
+  - MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByAssetClass(System.String)
+  - MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByExchange(System.String)
+  - MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetDefinition(System.String)
+  - MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.IsKnown(System.String)
+  - MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RegisterAsync(MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition,System.Threading.CancellationToken)
+  - MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RegisterBatchAsync(System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition},System.Threading.CancellationToken)
+  - MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RemoveAsync(System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.ResolveToCanonical(System.String)
+  - MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolve(System.String,System.String)
+  - MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolveWithProvider(System.String,System.String)
+  langs:
+  - csharp
+  - vb
+  name: ICanonicalSymbolRegistry
+  nameWithType: ICanonicalSymbolRegistry
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ICanonicalSymbolRegistry
+    path: ../../src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+    startLine: 9
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Catalog
+  summary: >-
+    Service for canonical symbol naming standardization.
+
+    Provides a unified interface for resolving symbols across providers
+
+    using canonical names, aliases, and industry identifiers (ISIN, FIGI, SEDOL, CUSIP).
+  example: []
+  syntax:
+    content: public interface ICanonicalSymbolRegistry
+    content.vb: Public Interface ICanonicalSymbolRegistry
+  derivedClasses:
+  - MarketDataCollector.Application.Services.CanonicalSymbolRegistry
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.ResolveToCanonical(System.String)
+  commentId: M:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.ResolveToCanonical(System.String)
+  id: ResolveToCanonical(System.String)
+  parent: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+  langs:
+  - csharp
+  - vb
+  name: ResolveToCanonical(string)
+  nameWithType: ICanonicalSymbolRegistry.ResolveToCanonical(string)
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.ResolveToCanonical(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResolveToCanonical
+    path: ../../src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+    startLine: 15
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Catalog
+  summary: >-
+    Resolves any symbol input (alias, ISIN, FIGI, SEDOL, provider-specific format)
+
+    to its canonical representation. Returns null if no match is found.
+  example: []
+  syntax:
+    content: string? ResolveToCanonical(string input)
+    parameters:
+    - id: input
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Function ResolveToCanonical(input As String) As String
+  overload: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.ResolveToCanonical*
+  nameWithType.vb: ICanonicalSymbolRegistry.ResolveToCanonical(String)
+  fullName.vb: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.ResolveToCanonical(String)
+  name.vb: ResolveToCanonical(String)
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolve(System.String,System.String)
+  commentId: M:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolve(System.String,System.String)
+  id: TryResolve(System.String,System.String)
+  parent: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+  langs:
+  - csharp
+  - vb
+  name: TryResolve(string, string)
+  nameWithType: ICanonicalSymbolRegistry.TryResolve(string, string)
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolve(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TryResolve
+    path: ../../src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+    startLine: 24
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Catalog
+  summary: >-
+    Resolves a provider-specific symbol to canonical form.
+
+    Checks provider-specific mappings first, then falls back to generic resolution.
+  example: []
+  syntax:
+    content: string? TryResolve(string symbol, string provider)
+    parameters:
+    - id: symbol
+      type: System.String
+      description: Raw symbol from the provider.
+    - id: provider
+      type: System.String
+      description: Provider name (e.g., "ALPACA", "POLYGON", "IB").
+    return:
+      type: System.String
+      description: Canonical symbol or null if unresolved.
+    content.vb: Function TryResolve(symbol As String, provider As String) As String
+  overload: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolve*
+  nameWithType.vb: ICanonicalSymbolRegistry.TryResolve(String, String)
+  fullName.vb: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolve(String, String)
+  name.vb: TryResolve(String, String)
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RegisterAsync(MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RegisterAsync(MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition,System.Threading.CancellationToken)
+  id: RegisterAsync(MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+  langs:
+  - csharp
+  - vb
+  name: RegisterAsync(CanonicalSymbolDefinition, CancellationToken)
+  nameWithType: ICanonicalSymbolRegistry.RegisterAsync(CanonicalSymbolDefinition, CancellationToken)
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RegisterAsync(MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterAsync
+    path: ../../src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+    startLine: 29
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Catalog
+  summary: Registers a symbol with its canonical entry, updating aliases and identifier indexes.
+  example: []
+  syntax:
+    content: Task RegisterAsync(CanonicalSymbolDefinition definition, CancellationToken ct = default)
+    parameters:
+    - id: definition
+      type: MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function RegisterAsync(definition As CanonicalSymbolDefinition, ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RegisterAsync*
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RegisterBatchAsync(System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition},System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RegisterBatchAsync(System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition},System.Threading.CancellationToken)
+  id: RegisterBatchAsync(System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition},System.Threading.CancellationToken)
+  parent: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+  langs:
+  - csharp
+  - vb
+  name: RegisterBatchAsync(IEnumerable<CanonicalSymbolDefinition>, CancellationToken)
+  nameWithType: ICanonicalSymbolRegistry.RegisterBatchAsync(IEnumerable<CanonicalSymbolDefinition>, CancellationToken)
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RegisterBatchAsync(System.Collections.Generic.IEnumerable<MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition>, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterBatchAsync
+    path: ../../src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+    startLine: 34
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Catalog
+  summary: Registers multiple symbols in batch.
+  example: []
+  syntax:
+    content: Task<int> RegisterBatchAsync(IEnumerable<CanonicalSymbolDefinition> definitions, CancellationToken ct = default)
+    parameters:
+    - id: definitions
+      type: System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition}
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+    content.vb: Function RegisterBatchAsync(definitions As IEnumerable(Of CanonicalSymbolDefinition), ct As CancellationToken = Nothing) As Task(Of Integer)
+  overload: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RegisterBatchAsync*
+  nameWithType.vb: ICanonicalSymbolRegistry.RegisterBatchAsync(IEnumerable(Of CanonicalSymbolDefinition), CancellationToken)
+  fullName.vb: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RegisterBatchAsync(System.Collections.Generic.IEnumerable(Of MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition), System.Threading.CancellationToken)
+  name.vb: RegisterBatchAsync(IEnumerable(Of CanonicalSymbolDefinition), CancellationToken)
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetDefinition(System.String)
+  commentId: M:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetDefinition(System.String)
+  id: GetDefinition(System.String)
+  parent: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetDefinition(string)
+  nameWithType: ICanonicalSymbolRegistry.GetDefinition(string)
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetDefinition(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetDefinition
+    path: ../../src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+    startLine: 39
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Catalog
+  summary: Gets the canonical definition for a symbol. Accepts any known identifier.
+  example: []
+  syntax:
+    content: CanonicalSymbolDefinition? GetDefinition(string symbolOrIdentifier)
+    parameters:
+    - id: symbolOrIdentifier
+      type: System.String
+    return:
+      type: MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition
+    content.vb: Function GetDefinition(symbolOrIdentifier As String) As CanonicalSymbolDefinition
+  overload: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetDefinition*
+  nameWithType.vb: ICanonicalSymbolRegistry.GetDefinition(String)
+  fullName.vb: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetDefinition(String)
+  name.vb: GetDefinition(String)
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetAll
+  commentId: M:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetAll
+  id: GetAll
+  parent: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetAll()
+  nameWithType: ICanonicalSymbolRegistry.GetAll()
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetAll()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetAll
+    path: ../../src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+    startLine: 44
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Catalog
+  summary: Gets all registered canonical definitions.
+  example: []
+  syntax:
+    content: IReadOnlyList<CanonicalSymbolDefinition> GetAll()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition}
+    content.vb: Function GetAll() As IReadOnlyList(Of CanonicalSymbolDefinition)
+  overload: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetAll*
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByAssetClass(System.String)
+  commentId: M:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByAssetClass(System.String)
+  id: GetByAssetClass(System.String)
+  parent: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetByAssetClass(string)
+  nameWithType: ICanonicalSymbolRegistry.GetByAssetClass(string)
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByAssetClass(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetByAssetClass
+    path: ../../src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+    startLine: 49
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Catalog
+  summary: Gets canonical definitions filtered by asset class.
+  example: []
+  syntax:
+    content: IReadOnlyList<CanonicalSymbolDefinition> GetByAssetClass(string assetClass)
+    parameters:
+    - id: assetClass
+      type: System.String
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition}
+    content.vb: Function GetByAssetClass(assetClass As String) As IReadOnlyList(Of CanonicalSymbolDefinition)
+  overload: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByAssetClass*
+  nameWithType.vb: ICanonicalSymbolRegistry.GetByAssetClass(String)
+  fullName.vb: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByAssetClass(String)
+  name.vb: GetByAssetClass(String)
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByExchange(System.String)
+  commentId: M:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByExchange(System.String)
+  id: GetByExchange(System.String)
+  parent: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetByExchange(string)
+  nameWithType: ICanonicalSymbolRegistry.GetByExchange(string)
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByExchange(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetByExchange
+    path: ../../src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+    startLine: 54
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Catalog
+  summary: Gets canonical definitions filtered by exchange.
+  example: []
+  syntax:
+    content: IReadOnlyList<CanonicalSymbolDefinition> GetByExchange(string exchange)
+    parameters:
+    - id: exchange
+      type: System.String
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition}
+    content.vb: Function GetByExchange(exchange As String) As IReadOnlyList(Of CanonicalSymbolDefinition)
+  overload: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByExchange*
+  nameWithType.vb: ICanonicalSymbolRegistry.GetByExchange(String)
+  fullName.vb: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByExchange(String)
+  name.vb: GetByExchange(String)
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolveWithProvider(System.String,System.String)
+  commentId: M:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolveWithProvider(System.String,System.String)
+  id: TryResolveWithProvider(System.String,System.String)
+  parent: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+  langs:
+  - csharp
+  - vb
+  name: TryResolveWithProvider(string, string)
+  nameWithType: ICanonicalSymbolRegistry.TryResolveWithProvider(string, string)
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolveWithProvider(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TryResolveWithProvider
+    path: ../../src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+    startLine: 61
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Catalog
+  summary: >-
+    Resolves a symbol to its canonical form using a provider hint for disambiguation.
+
+    Checks provider-specific mappings first, then falls back to general resolution.
+
+    Returns null if no match is found.
+  example: []
+  syntax:
+    content: string? TryResolveWithProvider(string symbol, string provider)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: provider
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Function TryResolveWithProvider(symbol As String, provider As String) As String
+  overload: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolveWithProvider*
+  nameWithType.vb: ICanonicalSymbolRegistry.TryResolveWithProvider(String, String)
+  fullName.vb: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolveWithProvider(String, String)
+  name.vb: TryResolveWithProvider(String, String)
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.IsKnown(System.String)
+  commentId: M:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.IsKnown(System.String)
+  id: IsKnown(System.String)
+  parent: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+  langs:
+  - csharp
+  - vb
+  name: IsKnown(string)
+  nameWithType: ICanonicalSymbolRegistry.IsKnown(string)
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.IsKnown(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsKnown
+    path: ../../src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+    startLine: 66
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Catalog
+  summary: Checks if a given identifier (canonical, alias, ISIN, FIGI, etc.) is known.
+  example: []
+  syntax:
+    content: bool IsKnown(string identifier)
+    parameters:
+    - id: identifier
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Function IsKnown(identifier As String) As Boolean
+  overload: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.IsKnown*
+  nameWithType.vb: ICanonicalSymbolRegistry.IsKnown(String)
+  fullName.vb: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.IsKnown(String)
+  name.vb: IsKnown(String)
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RemoveAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RemoveAsync(System.String,System.Threading.CancellationToken)
+  id: RemoveAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+  langs:
+  - csharp
+  - vb
+  name: RemoveAsync(string, CancellationToken)
+  nameWithType: ICanonicalSymbolRegistry.RemoveAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RemoveAsync(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RemoveAsync
+    path: ../../src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+    startLine: 71
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Catalog
+  summary: Removes a symbol from the registry by its canonical name.
+  example: []
+  syntax:
+    content: Task<bool> RemoveAsync(string canonical, CancellationToken ct = default)
+    parameters:
+    - id: canonical
+      type: System.String
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Function RemoveAsync(canonical As String, ct As CancellationToken = Nothing) As Task(Of Boolean)
+  overload: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RemoveAsync*
+  nameWithType.vb: ICanonicalSymbolRegistry.RemoveAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RemoveAsync(String, System.Threading.CancellationToken)
+  name.vb: RemoveAsync(String, CancellationToken)
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.Count
+  commentId: P:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.Count
+  id: Count
+  parent: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: ICanonicalSymbolRegistry.Count
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.Count
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Count
+    path: ../../src/MarketDataCollector.Contracts/Catalog/ICanonicalSymbolRegistry.cs
+    startLine: 76
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Catalog
+  summary: Gets the total count of registered canonical symbols.
+  example: []
+  syntax:
+    content: int Count { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property Count As Integer
+  overload: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.Count*
+references:
+- uid: MarketDataCollector.Contracts.Catalog
+  commentId: N:MarketDataCollector.Contracts.Catalog
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Catalog
+  nameWithType: MarketDataCollector.Contracts.Catalog
+  fullName: MarketDataCollector.Contracts.Catalog
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Catalog
+    name: Catalog
+    href: MarketDataCollector.Contracts.Catalog.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Catalog
+    name: Catalog
+    href: MarketDataCollector.Contracts.Catalog.html
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.ResolveToCanonical*
+  commentId: Overload:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.ResolveToCanonical
+  href: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.html#MarketDataCollector_Contracts_Catalog_ICanonicalSymbolRegistry_ResolveToCanonical_System_String_
+  name: ResolveToCanonical
+  nameWithType: ICanonicalSymbolRegistry.ResolveToCanonical
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.ResolveToCanonical
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolve*
+  commentId: Overload:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolve
+  href: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.html#MarketDataCollector_Contracts_Catalog_ICanonicalSymbolRegistry_TryResolve_System_String_System_String_
+  name: TryResolve
+  nameWithType: ICanonicalSymbolRegistry.TryResolve
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolve
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RegisterAsync*
+  commentId: Overload:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RegisterAsync
+  href: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.html#MarketDataCollector_Contracts_Catalog_ICanonicalSymbolRegistry_RegisterAsync_MarketDataCollector_Contracts_Catalog_CanonicalSymbolDefinition_System_Threading_CancellationToken_
+  name: RegisterAsync
+  nameWithType: ICanonicalSymbolRegistry.RegisterAsync
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RegisterAsync
+- uid: MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition
+  commentId: T:MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition
+  parent: MarketDataCollector.Contracts.Catalog
+  href: MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition.html
+  name: CanonicalSymbolDefinition
+  nameWithType: CanonicalSymbolDefinition
+  fullName: MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RegisterBatchAsync*
+  commentId: Overload:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RegisterBatchAsync
+  href: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.html#MarketDataCollector_Contracts_Catalog_ICanonicalSymbolRegistry_RegisterBatchAsync_System_Collections_Generic_IEnumerable_MarketDataCollector_Contracts_Catalog_CanonicalSymbolDefinition__System_Threading_CancellationToken_
+  name: RegisterBatchAsync
+  nameWithType: ICanonicalSymbolRegistry.RegisterBatchAsync
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RegisterBatchAsync
+- uid: System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition}
+  commentId: T:System.Collections.Generic.IEnumerable{MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<CanonicalSymbolDefinition>
+  nameWithType: IEnumerable<CanonicalSymbolDefinition>
+  fullName: System.Collections.Generic.IEnumerable<MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition>
+  nameWithType.vb: IEnumerable(Of CanonicalSymbolDefinition)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition)
+  name.vb: IEnumerable(Of CanonicalSymbolDefinition)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition
+    name: CanonicalSymbolDefinition
+    href: MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition
+    name: CanonicalSymbolDefinition
+    href: MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition.html
+  - name: )
+- uid: System.Threading.Tasks.Task{System.Int32}
+  commentId: T:System.Threading.Tasks.Task{System.Int32}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<int>
+  nameWithType: Task<int>
+  fullName: System.Threading.Tasks.Task<int>
+  nameWithType.vb: Task(Of Integer)
+  fullName.vb: System.Threading.Tasks.Task(Of Integer)
+  name.vb: Task(Of Integer)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetDefinition*
+  commentId: Overload:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetDefinition
+  href: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.html#MarketDataCollector_Contracts_Catalog_ICanonicalSymbolRegistry_GetDefinition_System_String_
+  name: GetDefinition
+  nameWithType: ICanonicalSymbolRegistry.GetDefinition
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetDefinition
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetAll*
+  commentId: Overload:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetAll
+  href: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.html#MarketDataCollector_Contracts_Catalog_ICanonicalSymbolRegistry_GetAll
+  name: GetAll
+  nameWithType: ICanonicalSymbolRegistry.GetAll
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetAll
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<CanonicalSymbolDefinition>
+  nameWithType: IReadOnlyList<CanonicalSymbolDefinition>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition>
+  nameWithType.vb: IReadOnlyList(Of CanonicalSymbolDefinition)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition)
+  name.vb: IReadOnlyList(Of CanonicalSymbolDefinition)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition
+    name: CanonicalSymbolDefinition
+    href: MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition
+    name: CanonicalSymbolDefinition
+    href: MarketDataCollector.Contracts.Catalog.CanonicalSymbolDefinition.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByAssetClass*
+  commentId: Overload:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByAssetClass
+  href: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.html#MarketDataCollector_Contracts_Catalog_ICanonicalSymbolRegistry_GetByAssetClass_System_String_
+  name: GetByAssetClass
+  nameWithType: ICanonicalSymbolRegistry.GetByAssetClass
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByAssetClass
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByExchange*
+  commentId: Overload:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByExchange
+  href: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.html#MarketDataCollector_Contracts_Catalog_ICanonicalSymbolRegistry_GetByExchange_System_String_
+  name: GetByExchange
+  nameWithType: ICanonicalSymbolRegistry.GetByExchange
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.GetByExchange
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolveWithProvider*
+  commentId: Overload:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolveWithProvider
+  href: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.html#MarketDataCollector_Contracts_Catalog_ICanonicalSymbolRegistry_TryResolveWithProvider_System_String_System_String_
+  name: TryResolveWithProvider
+  nameWithType: ICanonicalSymbolRegistry.TryResolveWithProvider
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.TryResolveWithProvider
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.IsKnown*
+  commentId: Overload:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.IsKnown
+  href: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.html#MarketDataCollector_Contracts_Catalog_ICanonicalSymbolRegistry_IsKnown_System_String_
+  name: IsKnown
+  nameWithType: ICanonicalSymbolRegistry.IsKnown
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.IsKnown
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RemoveAsync*
+  commentId: Overload:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RemoveAsync
+  href: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.html#MarketDataCollector_Contracts_Catalog_ICanonicalSymbolRegistry_RemoveAsync_System_String_System_Threading_CancellationToken_
+  name: RemoveAsync
+  nameWithType: ICanonicalSymbolRegistry.RemoveAsync
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.RemoveAsync
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.Count*
+  commentId: Overload:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.Count
+  href: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.html#MarketDataCollector_Contracts_Catalog_ICanonicalSymbolRegistry_Count
+  name: Count
+  nameWithType: ICanonicalSymbolRegistry.Count
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.Count
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

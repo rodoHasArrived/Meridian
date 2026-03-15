@@ -1,0 +1,196 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType
+  commentId: T:MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType
+  id: IngestionWorkloadType
+  parent: MarketDataCollector.Contracts.Pipeline
+  children:
+  - MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.GapFill
+  - MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.Historical
+  - MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.Realtime
+  - MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.ScheduledBackfill
+  langs:
+  - csharp
+  - vb
+  name: IngestionWorkloadType
+  nameWithType: IngestionWorkloadType
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType
+  type: Enum
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IngestionWorkloadType
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 207
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Type of ingestion workload.
+  example: []
+  syntax:
+    content: >-
+      [JsonConverter(typeof(JsonStringEnumConverter))]
+
+      public enum IngestionWorkloadType : byte
+    content.vb: >-
+      <JsonConverter(GetType(JsonStringEnumConverter))>
+
+      Public Enum IngestionWorkloadType As Byte
+  attributes:
+  - type: System.Text.Json.Serialization.JsonConverterAttribute
+    ctor: System.Text.Json.Serialization.JsonConverterAttribute.#ctor(System.Type)
+    arguments:
+    - type: System.Type
+      value: System.Text.Json.Serialization.JsonStringEnumConverter
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.Realtime
+  commentId: F:MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.Realtime
+  id: Realtime
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType
+  langs:
+  - csharp
+  - vb
+  name: Realtime
+  nameWithType: IngestionWorkloadType.Realtime
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.Realtime
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Realtime
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 211
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Real-time streaming data collection.
+  example: []
+  syntax:
+    content: Realtime = 0
+    return:
+      type: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.Historical
+  commentId: F:MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.Historical
+  id: Historical
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType
+  langs:
+  - csharp
+  - vb
+  name: Historical
+  nameWithType: IngestionWorkloadType.Historical
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.Historical
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Historical
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 214
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Historical backfill from a provider.
+  example: []
+  syntax:
+    content: Historical = 1
+    return:
+      type: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.GapFill
+  commentId: F:MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.GapFill
+  id: GapFill
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType
+  langs:
+  - csharp
+  - vb
+  name: GapFill
+  nameWithType: IngestionWorkloadType.GapFill
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.GapFill
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GapFill
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 217
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Gap-fill for missing data periods.
+  example: []
+  syntax:
+    content: GapFill = 2
+    return:
+      type: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.ScheduledBackfill
+  commentId: F:MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.ScheduledBackfill
+  id: ScheduledBackfill
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType
+  langs:
+  - csharp
+  - vb
+  name: ScheduledBackfill
+  nameWithType: IngestionWorkloadType.ScheduledBackfill
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.ScheduledBackfill
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ScheduledBackfill
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 220
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Scheduled recurring backfill.
+  example: []
+  syntax:
+    content: ScheduledBackfill = 3
+    return:
+      type: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType
+references:
+- uid: MarketDataCollector.Contracts.Pipeline
+  commentId: N:MarketDataCollector.Contracts.Pipeline
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Pipeline
+  nameWithType: MarketDataCollector.Contracts.Pipeline
+  fullName: MarketDataCollector.Contracts.Pipeline
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Pipeline
+    name: Pipeline
+    href: MarketDataCollector.Contracts.Pipeline.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Pipeline
+    name: Pipeline
+    href: MarketDataCollector.Contracts.Pipeline.html
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType
+  commentId: T:MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType
+  parent: MarketDataCollector.Contracts.Pipeline
+  href: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.html
+  name: IngestionWorkloadType
+  nameWithType: IngestionWorkloadType
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType

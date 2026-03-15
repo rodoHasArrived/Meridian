@@ -1,0 +1,184 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Packaging.PackageLayout
+  commentId: T:MarketDataCollector.Storage.Packaging.PackageLayout
+  id: PackageLayout
+  parent: MarketDataCollector.Storage.Packaging
+  children:
+  - MarketDataCollector.Storage.Packaging.PackageLayout.ByDate
+  - MarketDataCollector.Storage.Packaging.PackageLayout.BySymbol
+  - MarketDataCollector.Storage.Packaging.PackageLayout.ByType
+  - MarketDataCollector.Storage.Packaging.PackageLayout.Flat
+  langs:
+  - csharp
+  - vb
+  name: PackageLayout
+  nameWithType: PackageLayout
+  fullName: MarketDataCollector.Storage.Packaging.PackageLayout
+  type: Enum
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Packaging/PackageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PackageLayout
+    path: ../../src/MarketDataCollector.Storage/Packaging/PackageOptions.cs
+    startLine: 208
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Packaging
+  summary: Internal file layout within the package.
+  example: []
+  syntax:
+    content: 'public enum PackageLayout : byte'
+    content.vb: Public Enum PackageLayout As Byte
+- uid: MarketDataCollector.Storage.Packaging.PackageLayout.ByDate
+  commentId: F:MarketDataCollector.Storage.Packaging.PackageLayout.ByDate
+  id: ByDate
+  parent: MarketDataCollector.Storage.Packaging.PackageLayout
+  langs:
+  - csharp
+  - vb
+  name: ByDate
+  nameWithType: PackageLayout.ByDate
+  fullName: MarketDataCollector.Storage.Packaging.PackageLayout.ByDate
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Packaging/PackageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ByDate
+    path: ../../src/MarketDataCollector.Storage/Packaging/PackageOptions.cs
+    startLine: 211
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Packaging
+  summary: 'Organize by date: data/{date}/{symbol}/{type}.jsonl'
+  example: []
+  syntax:
+    content: ByDate = 0
+    return:
+      type: MarketDataCollector.Storage.Packaging.PackageLayout
+- uid: MarketDataCollector.Storage.Packaging.PackageLayout.BySymbol
+  commentId: F:MarketDataCollector.Storage.Packaging.PackageLayout.BySymbol
+  id: BySymbol
+  parent: MarketDataCollector.Storage.Packaging.PackageLayout
+  langs:
+  - csharp
+  - vb
+  name: BySymbol
+  nameWithType: PackageLayout.BySymbol
+  fullName: MarketDataCollector.Storage.Packaging.PackageLayout.BySymbol
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Packaging/PackageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BySymbol
+    path: ../../src/MarketDataCollector.Storage/Packaging/PackageOptions.cs
+    startLine: 214
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Packaging
+  summary: 'Organize by symbol: data/{symbol}/{type}/{date}.jsonl'
+  example: []
+  syntax:
+    content: BySymbol = 1
+    return:
+      type: MarketDataCollector.Storage.Packaging.PackageLayout
+- uid: MarketDataCollector.Storage.Packaging.PackageLayout.ByType
+  commentId: F:MarketDataCollector.Storage.Packaging.PackageLayout.ByType
+  id: ByType
+  parent: MarketDataCollector.Storage.Packaging.PackageLayout
+  langs:
+  - csharp
+  - vb
+  name: ByType
+  nameWithType: PackageLayout.ByType
+  fullName: MarketDataCollector.Storage.Packaging.PackageLayout.ByType
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Packaging/PackageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ByType
+    path: ../../src/MarketDataCollector.Storage/Packaging/PackageOptions.cs
+    startLine: 217
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Packaging
+  summary: 'Organize by event type: data/{type}/{symbol}/{date}.jsonl'
+  example: []
+  syntax:
+    content: ByType = 2
+    return:
+      type: MarketDataCollector.Storage.Packaging.PackageLayout
+- uid: MarketDataCollector.Storage.Packaging.PackageLayout.Flat
+  commentId: F:MarketDataCollector.Storage.Packaging.PackageLayout.Flat
+  id: Flat
+  parent: MarketDataCollector.Storage.Packaging.PackageLayout
+  langs:
+  - csharp
+  - vb
+  name: Flat
+  nameWithType: PackageLayout.Flat
+  fullName: MarketDataCollector.Storage.Packaging.PackageLayout.Flat
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Packaging/PackageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Flat
+    path: ../../src/MarketDataCollector.Storage/Packaging/PackageOptions.cs
+    startLine: 220
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Packaging
+  summary: 'Flat structure: data/{symbol}_{type}_{date}.jsonl'
+  example: []
+  syntax:
+    content: Flat = 3
+    return:
+      type: MarketDataCollector.Storage.Packaging.PackageLayout
+references:
+- uid: MarketDataCollector.Storage.Packaging
+  commentId: N:MarketDataCollector.Storage.Packaging
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Packaging
+  nameWithType: MarketDataCollector.Storage.Packaging
+  fullName: MarketDataCollector.Storage.Packaging
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Packaging
+    name: Packaging
+    href: MarketDataCollector.Storage.Packaging.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Packaging
+    name: Packaging
+    href: MarketDataCollector.Storage.Packaging.html
+- uid: MarketDataCollector.Storage.Packaging.PackageLayout
+  commentId: T:MarketDataCollector.Storage.Packaging.PackageLayout
+  parent: MarketDataCollector.Storage.Packaging
+  href: MarketDataCollector.Storage.Packaging.PackageLayout.html
+  name: PackageLayout
+  nameWithType: PackageLayout
+  fullName: MarketDataCollector.Storage.Packaging.PackageLayout

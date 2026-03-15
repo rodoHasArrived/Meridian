@@ -1,0 +1,791 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Export.ExportVerificationResult
+  commentId: T:MarketDataCollector.Storage.Export.ExportVerificationResult
+  id: ExportVerificationResult
+  parent: MarketDataCollector.Storage.Export
+  children:
+  - MarketDataCollector.Storage.Export.ExportVerificationResult.ChecksumsValid
+  - MarketDataCollector.Storage.Export.ExportVerificationResult.Failure(System.String)
+  - MarketDataCollector.Storage.Export.ExportVerificationResult.FileResults
+  - MarketDataCollector.Storage.Export.ExportVerificationResult.IsValid
+  - MarketDataCollector.Storage.Export.ExportVerificationResult.Issues
+  - MarketDataCollector.Storage.Export.ExportVerificationResult.RecordCountsValid
+  - MarketDataCollector.Storage.Export.ExportVerificationResult.SchemaValid
+  langs:
+  - csharp
+  - vb
+  name: ExportVerificationResult
+  nameWithType: ExportVerificationResult
+  fullName: MarketDataCollector.Storage.Export.ExportVerificationResult
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportVerificationReport.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ExportVerificationResult
+    path: ../../src/MarketDataCollector.Storage/Export/ExportVerificationReport.cs
+    startLine: 202
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Aggregate result of an export verification run.
+  example: []
+  syntax:
+    content: public sealed class ExportVerificationResult
+    content.vb: Public NotInheritable Class ExportVerificationResult
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Storage.Export.ExportVerificationResult.IsValid
+  commentId: P:MarketDataCollector.Storage.Export.ExportVerificationResult.IsValid
+  id: IsValid
+  parent: MarketDataCollector.Storage.Export.ExportVerificationResult
+  langs:
+  - csharp
+  - vb
+  name: IsValid
+  nameWithType: ExportVerificationResult.IsValid
+  fullName: MarketDataCollector.Storage.Export.ExportVerificationResult.IsValid
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportVerificationReport.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsValid
+    path: ../../src/MarketDataCollector.Storage/Export/ExportVerificationReport.cs
+    startLine: 207
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: <code>true</code> when every file passed all checks.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("isValid")]
+
+      public bool IsValid { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("isValid")>
+
+      Public Property IsValid As Boolean
+  overload: MarketDataCollector.Storage.Export.ExportVerificationResult.IsValid*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: isValid
+- uid: MarketDataCollector.Storage.Export.ExportVerificationResult.ChecksumsValid
+  commentId: P:MarketDataCollector.Storage.Export.ExportVerificationResult.ChecksumsValid
+  id: ChecksumsValid
+  parent: MarketDataCollector.Storage.Export.ExportVerificationResult
+  langs:
+  - csharp
+  - vb
+  name: ChecksumsValid
+  nameWithType: ExportVerificationResult.ChecksumsValid
+  fullName: MarketDataCollector.Storage.Export.ExportVerificationResult.ChecksumsValid
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportVerificationReport.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ChecksumsValid
+    path: ../../src/MarketDataCollector.Storage/Export/ExportVerificationReport.cs
+    startLine: 213
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: <code>true</code> when all file checksums matched the manifest.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("checksumsValid")]
+
+      public bool ChecksumsValid { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("checksumsValid")>
+
+      Public Property ChecksumsValid As Boolean
+  overload: MarketDataCollector.Storage.Export.ExportVerificationResult.ChecksumsValid*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: checksumsValid
+- uid: MarketDataCollector.Storage.Export.ExportVerificationResult.RecordCountsValid
+  commentId: P:MarketDataCollector.Storage.Export.ExportVerificationResult.RecordCountsValid
+  id: RecordCountsValid
+  parent: MarketDataCollector.Storage.Export.ExportVerificationResult
+  langs:
+  - csharp
+  - vb
+  name: RecordCountsValid
+  nameWithType: ExportVerificationResult.RecordCountsValid
+  fullName: MarketDataCollector.Storage.Export.ExportVerificationResult.RecordCountsValid
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportVerificationReport.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecordCountsValid
+    path: ../../src/MarketDataCollector.Storage/Export/ExportVerificationReport.cs
+    startLine: 219
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: <code>true</code> when all record counts matched the manifest.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("recordCountsValid")]
+
+      public bool RecordCountsValid { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("recordCountsValid")>
+
+      Public Property RecordCountsValid As Boolean
+  overload: MarketDataCollector.Storage.Export.ExportVerificationResult.RecordCountsValid*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: recordCountsValid
+- uid: MarketDataCollector.Storage.Export.ExportVerificationResult.SchemaValid
+  commentId: P:MarketDataCollector.Storage.Export.ExportVerificationResult.SchemaValid
+  id: SchemaValid
+  parent: MarketDataCollector.Storage.Export.ExportVerificationResult
+  langs:
+  - csharp
+  - vb
+  name: SchemaValid
+  nameWithType: ExportVerificationResult.SchemaValid
+  fullName: MarketDataCollector.Storage.Export.ExportVerificationResult.SchemaValid
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportVerificationReport.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SchemaValid
+    path: ../../src/MarketDataCollector.Storage/Export/ExportVerificationReport.cs
+    startLine: 226
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: >-
+    <code>true</code> when schema checks passed.  Currently always <code>true</code>
+
+    (advisory — reserved for future schema-level validation).
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("schemaValid")]
+
+      public bool SchemaValid { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("schemaValid")>
+
+      Public Property SchemaValid As Boolean
+  overload: MarketDataCollector.Storage.Export.ExportVerificationResult.SchemaValid*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: schemaValid
+- uid: MarketDataCollector.Storage.Export.ExportVerificationResult.Issues
+  commentId: P:MarketDataCollector.Storage.Export.ExportVerificationResult.Issues
+  id: Issues
+  parent: MarketDataCollector.Storage.Export.ExportVerificationResult
+  langs:
+  - csharp
+  - vb
+  name: Issues
+  nameWithType: ExportVerificationResult.Issues
+  fullName: MarketDataCollector.Storage.Export.ExportVerificationResult.Issues
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportVerificationReport.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Issues
+    path: ../../src/MarketDataCollector.Storage/Export/ExportVerificationReport.cs
+    startLine: 232
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Human-readable descriptions of every issue found.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("issues")]
+
+      public IReadOnlyList<string> Issues { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: >-
+      <JsonPropertyName("issues")>
+
+      Public Property Issues As IReadOnlyList(Of String)
+  overload: MarketDataCollector.Storage.Export.ExportVerificationResult.Issues*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: issues
+- uid: MarketDataCollector.Storage.Export.ExportVerificationResult.FileResults
+  commentId: P:MarketDataCollector.Storage.Export.ExportVerificationResult.FileResults
+  id: FileResults
+  parent: MarketDataCollector.Storage.Export.ExportVerificationResult
+  langs:
+  - csharp
+  - vb
+  name: FileResults
+  nameWithType: ExportVerificationResult.FileResults
+  fullName: MarketDataCollector.Storage.Export.ExportVerificationResult.FileResults
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportVerificationReport.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FileResults
+    path: ../../src/MarketDataCollector.Storage/Export/ExportVerificationReport.cs
+    startLine: 238
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Per-file verification details.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("fileResults")]
+
+      public IReadOnlyList<ExportFileVerificationResult> FileResults { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Export.ExportFileVerificationResult}
+    content.vb: >-
+      <JsonPropertyName("fileResults")>
+
+      Public Property FileResults As IReadOnlyList(Of ExportFileVerificationResult)
+  overload: MarketDataCollector.Storage.Export.ExportVerificationResult.FileResults*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: fileResults
+- uid: MarketDataCollector.Storage.Export.ExportVerificationResult.Failure(System.String)
+  commentId: M:MarketDataCollector.Storage.Export.ExportVerificationResult.Failure(System.String)
+  id: Failure(System.String)
+  parent: MarketDataCollector.Storage.Export.ExportVerificationResult
+  langs:
+  - csharp
+  - vb
+  name: Failure(string)
+  nameWithType: ExportVerificationResult.Failure(string)
+  fullName: MarketDataCollector.Storage.Export.ExportVerificationResult.Failure(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportVerificationReport.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Failure
+    path: ../../src/MarketDataCollector.Storage/Export/ExportVerificationReport.cs
+    startLine: 245
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Creates a result that represents a top-level failure (e.g. missing manifest).
+  example: []
+  syntax:
+    content: public static ExportVerificationResult Failure(string reason)
+    parameters:
+    - id: reason
+      type: System.String
+    return:
+      type: MarketDataCollector.Storage.Export.ExportVerificationResult
+    content.vb: Public Shared Function Failure(reason As String) As ExportVerificationResult
+  overload: MarketDataCollector.Storage.Export.ExportVerificationResult.Failure*
+  nameWithType.vb: ExportVerificationResult.Failure(String)
+  fullName.vb: MarketDataCollector.Storage.Export.ExportVerificationResult.Failure(String)
+  name.vb: Failure(String)
+references:
+- uid: MarketDataCollector.Storage.Export
+  commentId: N:MarketDataCollector.Storage.Export
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Export
+  nameWithType: MarketDataCollector.Storage.Export
+  fullName: MarketDataCollector.Storage.Export
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Export
+    name: Export
+    href: MarketDataCollector.Storage.Export.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Export
+    name: Export
+    href: MarketDataCollector.Storage.Export.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Storage.Export.ExportVerificationResult.IsValid*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportVerificationResult.IsValid
+  href: MarketDataCollector.Storage.Export.ExportVerificationResult.html#MarketDataCollector_Storage_Export_ExportVerificationResult_IsValid
+  name: IsValid
+  nameWithType: ExportVerificationResult.IsValid
+  fullName: MarketDataCollector.Storage.Export.ExportVerificationResult.IsValid
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Storage.Export.ExportVerificationResult.ChecksumsValid*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportVerificationResult.ChecksumsValid
+  href: MarketDataCollector.Storage.Export.ExportVerificationResult.html#MarketDataCollector_Storage_Export_ExportVerificationResult_ChecksumsValid
+  name: ChecksumsValid
+  nameWithType: ExportVerificationResult.ChecksumsValid
+  fullName: MarketDataCollector.Storage.Export.ExportVerificationResult.ChecksumsValid
+- uid: MarketDataCollector.Storage.Export.ExportVerificationResult.RecordCountsValid*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportVerificationResult.RecordCountsValid
+  href: MarketDataCollector.Storage.Export.ExportVerificationResult.html#MarketDataCollector_Storage_Export_ExportVerificationResult_RecordCountsValid
+  name: RecordCountsValid
+  nameWithType: ExportVerificationResult.RecordCountsValid
+  fullName: MarketDataCollector.Storage.Export.ExportVerificationResult.RecordCountsValid
+- uid: MarketDataCollector.Storage.Export.ExportVerificationResult.SchemaValid*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportVerificationResult.SchemaValid
+  href: MarketDataCollector.Storage.Export.ExportVerificationResult.html#MarketDataCollector_Storage_Export_ExportVerificationResult_SchemaValid
+  name: SchemaValid
+  nameWithType: ExportVerificationResult.SchemaValid
+  fullName: MarketDataCollector.Storage.Export.ExportVerificationResult.SchemaValid
+- uid: MarketDataCollector.Storage.Export.ExportVerificationResult.Issues*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportVerificationResult.Issues
+  href: MarketDataCollector.Storage.Export.ExportVerificationResult.html#MarketDataCollector_Storage_Export_ExportVerificationResult_Issues
+  name: Issues
+  nameWithType: ExportVerificationResult.Issues
+  fullName: MarketDataCollector.Storage.Export.ExportVerificationResult.Issues
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Storage.Export.ExportVerificationResult.FileResults*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportVerificationResult.FileResults
+  href: MarketDataCollector.Storage.Export.ExportVerificationResult.html#MarketDataCollector_Storage_Export_ExportVerificationResult_FileResults
+  name: FileResults
+  nameWithType: ExportVerificationResult.FileResults
+  fullName: MarketDataCollector.Storage.Export.ExportVerificationResult.FileResults
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Export.ExportFileVerificationResult}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Export.ExportFileVerificationResult}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<ExportFileVerificationResult>
+  nameWithType: IReadOnlyList<ExportFileVerificationResult>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Storage.Export.ExportFileVerificationResult>
+  nameWithType.vb: IReadOnlyList(Of ExportFileVerificationResult)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Storage.Export.ExportFileVerificationResult)
+  name.vb: IReadOnlyList(Of ExportFileVerificationResult)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Export.ExportFileVerificationResult
+    name: ExportFileVerificationResult
+    href: MarketDataCollector.Storage.Export.ExportFileVerificationResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Export.ExportFileVerificationResult
+    name: ExportFileVerificationResult
+    href: MarketDataCollector.Storage.Export.ExportFileVerificationResult.html
+  - name: )
+- uid: MarketDataCollector.Storage.Export.ExportVerificationResult.Failure*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportVerificationResult.Failure
+  href: MarketDataCollector.Storage.Export.ExportVerificationResult.html#MarketDataCollector_Storage_Export_ExportVerificationResult_Failure_System_String_
+  name: Failure
+  nameWithType: ExportVerificationResult.Failure
+  fullName: MarketDataCollector.Storage.Export.ExportVerificationResult.Failure
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Storage.Export.ExportVerificationResult
+  commentId: T:MarketDataCollector.Storage.Export.ExportVerificationResult
+  parent: MarketDataCollector.Storage.Export
+  href: MarketDataCollector.Storage.Export.ExportVerificationResult.html
+  name: ExportVerificationResult
+  nameWithType: ExportVerificationResult
+  fullName: MarketDataCollector.Storage.Export.ExportVerificationResult

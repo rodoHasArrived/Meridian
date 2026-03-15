@@ -1,0 +1,746 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation
+  commentId: T:MarketDataCollector.Application.Monitoring.MonotonicityViolation
+  id: MonotonicityViolation
+  parent: MarketDataCollector.Application.Monitoring
+  children:
+  - MarketDataCollector.Application.Monitoring.MonotonicityViolation.#ctor(System.String,System.String,System.DateTimeOffset,System.DateTimeOffset,System.Double,System.Int32,System.Int64,System.DateTimeOffset)
+  - MarketDataCollector.Application.Monitoring.MonotonicityViolation.ConsecutiveViolations
+  - MarketDataCollector.Application.Monitoring.MonotonicityViolation.CurrentTimestamp
+  - MarketDataCollector.Application.Monitoring.MonotonicityViolation.DeltaMs
+  - MarketDataCollector.Application.Monitoring.MonotonicityViolation.DetectedAt
+  - MarketDataCollector.Application.Monitoring.MonotonicityViolation.EventType
+  - MarketDataCollector.Application.Monitoring.MonotonicityViolation.PreviousTimestamp
+  - MarketDataCollector.Application.Monitoring.MonotonicityViolation.Symbol
+  - MarketDataCollector.Application.Monitoring.MonotonicityViolation.TotalViolations
+  langs:
+  - csharp
+  - vb
+  name: MonotonicityViolation
+  nameWithType: MonotonicityViolation
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation
+  type: Struct
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MonotonicityViolation
+    path: ../../src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+    startLine: 418
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Alert for a timestamp monotonicity violation (event arrived with earlier timestamp).
+  example: []
+  syntax:
+    content: 'public readonly record struct MonotonicityViolation : IEquatable<MonotonicityViolation>'
+    content.vb: Public Structure MonotonicityViolation Implements IEquatable(Of MonotonicityViolation)
+  implements:
+  - System.IEquatable{MarketDataCollector.Application.Monitoring.MonotonicityViolation}
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.#ctor(System.String,System.String,System.DateTimeOffset,System.DateTimeOffset,System.Double,System.Int32,System.Int64,System.DateTimeOffset)
+  commentId: M:MarketDataCollector.Application.Monitoring.MonotonicityViolation.#ctor(System.String,System.String,System.DateTimeOffset,System.DateTimeOffset,System.Double,System.Int32,System.Int64,System.DateTimeOffset)
+  id: '#ctor(System.String,System.String,System.DateTimeOffset,System.DateTimeOffset,System.Double,System.Int32,System.Int64,System.DateTimeOffset)'
+  parent: MarketDataCollector.Application.Monitoring.MonotonicityViolation
+  langs:
+  - csharp
+  - vb
+  name: MonotonicityViolation(string, string, DateTimeOffset, DateTimeOffset, double, int, long, DateTimeOffset)
+  nameWithType: MonotonicityViolation.MonotonicityViolation(string, string, DateTimeOffset, DateTimeOffset, double, int, long, DateTimeOffset)
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.MonotonicityViolation(string, string, System.DateTimeOffset, System.DateTimeOffset, double, int, long, System.DateTimeOffset)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+    startLine: 418
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Alert for a timestamp monotonicity violation (event arrived with earlier timestamp).
+  example: []
+  syntax:
+    content: public MonotonicityViolation(string Symbol, string EventType, DateTimeOffset CurrentTimestamp, DateTimeOffset PreviousTimestamp, double DeltaMs, int ConsecutiveViolations, long TotalViolations, DateTimeOffset DetectedAt)
+    parameters:
+    - id: Symbol
+      type: System.String
+    - id: EventType
+      type: System.String
+    - id: CurrentTimestamp
+      type: System.DateTimeOffset
+    - id: PreviousTimestamp
+      type: System.DateTimeOffset
+    - id: DeltaMs
+      type: System.Double
+    - id: ConsecutiveViolations
+      type: System.Int32
+    - id: TotalViolations
+      type: System.Int64
+    - id: DetectedAt
+      type: System.DateTimeOffset
+    content.vb: Public Sub New(Symbol As String, EventType As String, CurrentTimestamp As DateTimeOffset, PreviousTimestamp As DateTimeOffset, DeltaMs As Double, ConsecutiveViolations As Integer, TotalViolations As Long, DetectedAt As DateTimeOffset)
+  overload: MarketDataCollector.Application.Monitoring.MonotonicityViolation.#ctor*
+  nameWithType.vb: MonotonicityViolation.New(String, String, DateTimeOffset, DateTimeOffset, Double, Integer, Long, DateTimeOffset)
+  fullName.vb: MarketDataCollector.Application.Monitoring.MonotonicityViolation.New(String, String, System.DateTimeOffset, System.DateTimeOffset, Double, Integer, Long, System.DateTimeOffset)
+  name.vb: New(String, String, DateTimeOffset, DateTimeOffset, Double, Integer, Long, DateTimeOffset)
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.Symbol
+  commentId: P:MarketDataCollector.Application.Monitoring.MonotonicityViolation.Symbol
+  id: Symbol
+  parent: MarketDataCollector.Application.Monitoring.MonotonicityViolation
+  langs:
+  - csharp
+  - vb
+  name: Symbol
+  nameWithType: MonotonicityViolation.Symbol
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.Symbol
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Symbol
+    path: ../../src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+    startLine: 419
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public string Symbol { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Symbol As String
+  overload: MarketDataCollector.Application.Monitoring.MonotonicityViolation.Symbol*
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.EventType
+  commentId: P:MarketDataCollector.Application.Monitoring.MonotonicityViolation.EventType
+  id: EventType
+  parent: MarketDataCollector.Application.Monitoring.MonotonicityViolation
+  langs:
+  - csharp
+  - vb
+  name: EventType
+  nameWithType: MonotonicityViolation.EventType
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.EventType
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: EventType
+    path: ../../src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+    startLine: 420
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public string EventType { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property EventType As String
+  overload: MarketDataCollector.Application.Monitoring.MonotonicityViolation.EventType*
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.CurrentTimestamp
+  commentId: P:MarketDataCollector.Application.Monitoring.MonotonicityViolation.CurrentTimestamp
+  id: CurrentTimestamp
+  parent: MarketDataCollector.Application.Monitoring.MonotonicityViolation
+  langs:
+  - csharp
+  - vb
+  name: CurrentTimestamp
+  nameWithType: MonotonicityViolation.CurrentTimestamp
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.CurrentTimestamp
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CurrentTimestamp
+    path: ../../src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+    startLine: 421
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public DateTimeOffset CurrentTimestamp { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property CurrentTimestamp As DateTimeOffset
+  overload: MarketDataCollector.Application.Monitoring.MonotonicityViolation.CurrentTimestamp*
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.PreviousTimestamp
+  commentId: P:MarketDataCollector.Application.Monitoring.MonotonicityViolation.PreviousTimestamp
+  id: PreviousTimestamp
+  parent: MarketDataCollector.Application.Monitoring.MonotonicityViolation
+  langs:
+  - csharp
+  - vb
+  name: PreviousTimestamp
+  nameWithType: MonotonicityViolation.PreviousTimestamp
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.PreviousTimestamp
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PreviousTimestamp
+    path: ../../src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+    startLine: 422
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public DateTimeOffset PreviousTimestamp { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property PreviousTimestamp As DateTimeOffset
+  overload: MarketDataCollector.Application.Monitoring.MonotonicityViolation.PreviousTimestamp*
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.DeltaMs
+  commentId: P:MarketDataCollector.Application.Monitoring.MonotonicityViolation.DeltaMs
+  id: DeltaMs
+  parent: MarketDataCollector.Application.Monitoring.MonotonicityViolation
+  langs:
+  - csharp
+  - vb
+  name: DeltaMs
+  nameWithType: MonotonicityViolation.DeltaMs
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.DeltaMs
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DeltaMs
+    path: ../../src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+    startLine: 423
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public double DeltaMs { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property DeltaMs As Double
+  overload: MarketDataCollector.Application.Monitoring.MonotonicityViolation.DeltaMs*
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.ConsecutiveViolations
+  commentId: P:MarketDataCollector.Application.Monitoring.MonotonicityViolation.ConsecutiveViolations
+  id: ConsecutiveViolations
+  parent: MarketDataCollector.Application.Monitoring.MonotonicityViolation
+  langs:
+  - csharp
+  - vb
+  name: ConsecutiveViolations
+  nameWithType: MonotonicityViolation.ConsecutiveViolations
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.ConsecutiveViolations
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConsecutiveViolations
+    path: ../../src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+    startLine: 424
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public int ConsecutiveViolations { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ConsecutiveViolations As Integer
+  overload: MarketDataCollector.Application.Monitoring.MonotonicityViolation.ConsecutiveViolations*
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.TotalViolations
+  commentId: P:MarketDataCollector.Application.Monitoring.MonotonicityViolation.TotalViolations
+  id: TotalViolations
+  parent: MarketDataCollector.Application.Monitoring.MonotonicityViolation
+  langs:
+  - csharp
+  - vb
+  name: TotalViolations
+  nameWithType: MonotonicityViolation.TotalViolations
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.TotalViolations
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TotalViolations
+    path: ../../src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+    startLine: 425
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public long TotalViolations { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property TotalViolations As Long
+  overload: MarketDataCollector.Application.Monitoring.MonotonicityViolation.TotalViolations*
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.DetectedAt
+  commentId: P:MarketDataCollector.Application.Monitoring.MonotonicityViolation.DetectedAt
+  id: DetectedAt
+  parent: MarketDataCollector.Application.Monitoring.MonotonicityViolation
+  langs:
+  - csharp
+  - vb
+  name: DetectedAt
+  nameWithType: MonotonicityViolation.DetectedAt
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.DetectedAt
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DetectedAt
+    path: ../../src/MarketDataCollector.Application/Monitoring/TimestampMonotonicityChecker.cs
+    startLine: 426
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public DateTimeOffset DetectedAt { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property DetectedAt As DateTimeOffset
+  overload: MarketDataCollector.Application.Monitoring.MonotonicityViolation.DetectedAt*
+references:
+- uid: MarketDataCollector.Application.Monitoring
+  commentId: N:MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring
+  nameWithType: MarketDataCollector.Application.Monitoring
+  fullName: MarketDataCollector.Application.Monitoring
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+- uid: System.IEquatable{MarketDataCollector.Application.Monitoring.MonotonicityViolation}
+  commentId: T:System.IEquatable{MarketDataCollector.Application.Monitoring.MonotonicityViolation}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<MonotonicityViolation>
+  nameWithType: IEquatable<MonotonicityViolation>
+  fullName: System.IEquatable<MarketDataCollector.Application.Monitoring.MonotonicityViolation>
+  nameWithType.vb: IEquatable(Of MonotonicityViolation)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Application.Monitoring.MonotonicityViolation)
+  name.vb: IEquatable(Of MonotonicityViolation)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation
+    name: MonotonicityViolation
+    href: MarketDataCollector.Application.Monitoring.MonotonicityViolation.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation
+    name: MonotonicityViolation
+    href: MarketDataCollector.Application.Monitoring.MonotonicityViolation.html
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.MonotonicityViolation.#ctor
+  href: MarketDataCollector.Application.Monitoring.MonotonicityViolation.html#MarketDataCollector_Application_Monitoring_MonotonicityViolation__ctor_System_String_System_String_System_DateTimeOffset_System_DateTimeOffset_System_Double_System_Int32_System_Int64_System_DateTimeOffset_
+  name: MonotonicityViolation
+  nameWithType: MonotonicityViolation.MonotonicityViolation
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.MonotonicityViolation
+  nameWithType.vb: MonotonicityViolation.New
+  fullName.vb: MarketDataCollector.Application.Monitoring.MonotonicityViolation.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.Symbol*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.MonotonicityViolation.Symbol
+  href: MarketDataCollector.Application.Monitoring.MonotonicityViolation.html#MarketDataCollector_Application_Monitoring_MonotonicityViolation_Symbol
+  name: Symbol
+  nameWithType: MonotonicityViolation.Symbol
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.Symbol
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.EventType*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.MonotonicityViolation.EventType
+  href: MarketDataCollector.Application.Monitoring.MonotonicityViolation.html#MarketDataCollector_Application_Monitoring_MonotonicityViolation_EventType
+  name: EventType
+  nameWithType: MonotonicityViolation.EventType
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.EventType
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.CurrentTimestamp*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.MonotonicityViolation.CurrentTimestamp
+  href: MarketDataCollector.Application.Monitoring.MonotonicityViolation.html#MarketDataCollector_Application_Monitoring_MonotonicityViolation_CurrentTimestamp
+  name: CurrentTimestamp
+  nameWithType: MonotonicityViolation.CurrentTimestamp
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.CurrentTimestamp
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.PreviousTimestamp*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.MonotonicityViolation.PreviousTimestamp
+  href: MarketDataCollector.Application.Monitoring.MonotonicityViolation.html#MarketDataCollector_Application_Monitoring_MonotonicityViolation_PreviousTimestamp
+  name: PreviousTimestamp
+  nameWithType: MonotonicityViolation.PreviousTimestamp
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.PreviousTimestamp
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.DeltaMs*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.MonotonicityViolation.DeltaMs
+  href: MarketDataCollector.Application.Monitoring.MonotonicityViolation.html#MarketDataCollector_Application_Monitoring_MonotonicityViolation_DeltaMs
+  name: DeltaMs
+  nameWithType: MonotonicityViolation.DeltaMs
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.DeltaMs
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.ConsecutiveViolations*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.MonotonicityViolation.ConsecutiveViolations
+  href: MarketDataCollector.Application.Monitoring.MonotonicityViolation.html#MarketDataCollector_Application_Monitoring_MonotonicityViolation_ConsecutiveViolations
+  name: ConsecutiveViolations
+  nameWithType: MonotonicityViolation.ConsecutiveViolations
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.ConsecutiveViolations
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.TotalViolations*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.MonotonicityViolation.TotalViolations
+  href: MarketDataCollector.Application.Monitoring.MonotonicityViolation.html#MarketDataCollector_Application_Monitoring_MonotonicityViolation_TotalViolations
+  name: TotalViolations
+  nameWithType: MonotonicityViolation.TotalViolations
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.TotalViolations
+- uid: MarketDataCollector.Application.Monitoring.MonotonicityViolation.DetectedAt*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.MonotonicityViolation.DetectedAt
+  href: MarketDataCollector.Application.Monitoring.MonotonicityViolation.html#MarketDataCollector_Application_Monitoring_MonotonicityViolation_DetectedAt
+  name: DetectedAt
+  nameWithType: MonotonicityViolation.DetectedAt
+  fullName: MarketDataCollector.Application.Monitoring.MonotonicityViolation.DetectedAt

@@ -1,0 +1,769 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Exceptions.SequenceValidationException
+  commentId: T:MarketDataCollector.Application.Exceptions.SequenceValidationException
+  id: SequenceValidationException
+  parent: MarketDataCollector.Application.Exceptions
+  children:
+  - MarketDataCollector.Application.Exceptions.SequenceValidationException.#ctor(System.String)
+  - MarketDataCollector.Application.Exceptions.SequenceValidationException.#ctor(System.String,System.Exception)
+  - MarketDataCollector.Application.Exceptions.SequenceValidationException.#ctor(System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64},MarketDataCollector.Application.Exceptions.SequenceValidationType)
+  - MarketDataCollector.Application.Exceptions.SequenceValidationException.ActualSequence
+  - MarketDataCollector.Application.Exceptions.SequenceValidationException.ExpectedSequence
+  - MarketDataCollector.Application.Exceptions.SequenceValidationException.Symbol
+  - MarketDataCollector.Application.Exceptions.SequenceValidationException.ValidationType
+  langs:
+  - csharp
+  - vb
+  name: SequenceValidationException
+  nameWithType: SequenceValidationException
+  fullName: MarketDataCollector.Application.Exceptions.SequenceValidationException
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Exceptions/SequenceValidationException.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SequenceValidationException
+    path: ../../src/MarketDataCollector.Core/Exceptions/SequenceValidationException.cs
+    startLine: 5
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Exceptions
+  summary: Exception thrown when sequence validation fails (gaps, out-of-order data)
+  example: []
+  syntax:
+    content: 'public sealed class SequenceValidationException : MarketDataCollectorException, ISerializable'
+    content.vb: Public NotInheritable Class SequenceValidationException Inherits MarketDataCollectorException Implements ISerializable
+  inheritance:
+  - System.Object
+  - System.Exception
+  - MarketDataCollector.Application.Exceptions.MarketDataCollectorException
+  implements:
+  - System.Runtime.Serialization.ISerializable
+  inheritedMembers:
+  - System.Exception.GetBaseException
+  - System.Exception.GetType
+  - System.Exception.ToString
+  - System.Exception.Data
+  - System.Exception.HelpLink
+  - System.Exception.HResult
+  - System.Exception.InnerException
+  - System.Exception.Message
+  - System.Exception.Source
+  - System.Exception.StackTrace
+  - System.Exception.TargetSite
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MarketDataCollector.Application.Exceptions.SequenceValidationException.Symbol
+  commentId: P:MarketDataCollector.Application.Exceptions.SequenceValidationException.Symbol
+  id: Symbol
+  parent: MarketDataCollector.Application.Exceptions.SequenceValidationException
+  langs:
+  - csharp
+  - vb
+  name: Symbol
+  nameWithType: SequenceValidationException.Symbol
+  fullName: MarketDataCollector.Application.Exceptions.SequenceValidationException.Symbol
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Exceptions/SequenceValidationException.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Symbol
+    path: ../../src/MarketDataCollector.Core/Exceptions/SequenceValidationException.cs
+    startLine: 7
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Exceptions
+  syntax:
+    content: public string? Symbol { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Symbol As String
+  overload: MarketDataCollector.Application.Exceptions.SequenceValidationException.Symbol*
+- uid: MarketDataCollector.Application.Exceptions.SequenceValidationException.ExpectedSequence
+  commentId: P:MarketDataCollector.Application.Exceptions.SequenceValidationException.ExpectedSequence
+  id: ExpectedSequence
+  parent: MarketDataCollector.Application.Exceptions.SequenceValidationException
+  langs:
+  - csharp
+  - vb
+  name: ExpectedSequence
+  nameWithType: SequenceValidationException.ExpectedSequence
+  fullName: MarketDataCollector.Application.Exceptions.SequenceValidationException.ExpectedSequence
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Exceptions/SequenceValidationException.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ExpectedSequence
+    path: ../../src/MarketDataCollector.Core/Exceptions/SequenceValidationException.cs
+    startLine: 8
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Exceptions
+  syntax:
+    content: public long? ExpectedSequence { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int64}
+    content.vb: Public ReadOnly Property ExpectedSequence As Long?
+  overload: MarketDataCollector.Application.Exceptions.SequenceValidationException.ExpectedSequence*
+- uid: MarketDataCollector.Application.Exceptions.SequenceValidationException.ActualSequence
+  commentId: P:MarketDataCollector.Application.Exceptions.SequenceValidationException.ActualSequence
+  id: ActualSequence
+  parent: MarketDataCollector.Application.Exceptions.SequenceValidationException
+  langs:
+  - csharp
+  - vb
+  name: ActualSequence
+  nameWithType: SequenceValidationException.ActualSequence
+  fullName: MarketDataCollector.Application.Exceptions.SequenceValidationException.ActualSequence
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Exceptions/SequenceValidationException.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ActualSequence
+    path: ../../src/MarketDataCollector.Core/Exceptions/SequenceValidationException.cs
+    startLine: 9
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Exceptions
+  syntax:
+    content: public long? ActualSequence { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int64}
+    content.vb: Public ReadOnly Property ActualSequence As Long?
+  overload: MarketDataCollector.Application.Exceptions.SequenceValidationException.ActualSequence*
+- uid: MarketDataCollector.Application.Exceptions.SequenceValidationException.ValidationType
+  commentId: P:MarketDataCollector.Application.Exceptions.SequenceValidationException.ValidationType
+  id: ValidationType
+  parent: MarketDataCollector.Application.Exceptions.SequenceValidationException
+  langs:
+  - csharp
+  - vb
+  name: ValidationType
+  nameWithType: SequenceValidationException.ValidationType
+  fullName: MarketDataCollector.Application.Exceptions.SequenceValidationException.ValidationType
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Exceptions/SequenceValidationException.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ValidationType
+    path: ../../src/MarketDataCollector.Core/Exceptions/SequenceValidationException.cs
+    startLine: 10
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Exceptions
+  syntax:
+    content: public SequenceValidationType ValidationType { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Exceptions.SequenceValidationType
+    content.vb: Public ReadOnly Property ValidationType As SequenceValidationType
+  overload: MarketDataCollector.Application.Exceptions.SequenceValidationException.ValidationType*
+- uid: MarketDataCollector.Application.Exceptions.SequenceValidationException.#ctor(System.String)
+  commentId: M:MarketDataCollector.Application.Exceptions.SequenceValidationException.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: MarketDataCollector.Application.Exceptions.SequenceValidationException
+  langs:
+  - csharp
+  - vb
+  name: SequenceValidationException(string)
+  nameWithType: SequenceValidationException.SequenceValidationException(string)
+  fullName: MarketDataCollector.Application.Exceptions.SequenceValidationException.SequenceValidationException(string)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Exceptions/SequenceValidationException.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Core/Exceptions/SequenceValidationException.cs
+    startLine: 12
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Exceptions
+  syntax:
+    content: public SequenceValidationException(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Public Sub New(message As String)
+  overload: MarketDataCollector.Application.Exceptions.SequenceValidationException.#ctor*
+  nameWithType.vb: SequenceValidationException.New(String)
+  fullName.vb: MarketDataCollector.Application.Exceptions.SequenceValidationException.New(String)
+  name.vb: New(String)
+- uid: MarketDataCollector.Application.Exceptions.SequenceValidationException.#ctor(System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64},MarketDataCollector.Application.Exceptions.SequenceValidationType)
+  commentId: M:MarketDataCollector.Application.Exceptions.SequenceValidationException.#ctor(System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64},MarketDataCollector.Application.Exceptions.SequenceValidationType)
+  id: '#ctor(System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64},MarketDataCollector.Application.Exceptions.SequenceValidationType)'
+  parent: MarketDataCollector.Application.Exceptions.SequenceValidationException
+  langs:
+  - csharp
+  - vb
+  name: SequenceValidationException(string, string?, long?, long?, SequenceValidationType)
+  nameWithType: SequenceValidationException.SequenceValidationException(string, string?, long?, long?, SequenceValidationType)
+  fullName: MarketDataCollector.Application.Exceptions.SequenceValidationException.SequenceValidationException(string, string?, long?, long?, MarketDataCollector.Application.Exceptions.SequenceValidationType)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Exceptions/SequenceValidationException.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Core/Exceptions/SequenceValidationException.cs
+    startLine: 16
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Exceptions
+  syntax:
+    content: public SequenceValidationException(string message, string? symbol = null, long? expectedSequence = null, long? actualSequence = null, SequenceValidationType validationType = SequenceValidationType.Unknown)
+    parameters:
+    - id: message
+      type: System.String
+    - id: symbol
+      type: System.String
+    - id: expectedSequence
+      type: System.Nullable{System.Int64}
+    - id: actualSequence
+      type: System.Nullable{System.Int64}
+    - id: validationType
+      type: MarketDataCollector.Application.Exceptions.SequenceValidationType
+    content.vb: Public Sub New(message As String, symbol As String = Nothing, expectedSequence As Long? = Nothing, actualSequence As Long? = Nothing, validationType As SequenceValidationType = SequenceValidationType.Unknown)
+  overload: MarketDataCollector.Application.Exceptions.SequenceValidationException.#ctor*
+  nameWithType.vb: SequenceValidationException.New(String, String, Long?, Long?, SequenceValidationType)
+  fullName.vb: MarketDataCollector.Application.Exceptions.SequenceValidationException.New(String, String, Long?, Long?, MarketDataCollector.Application.Exceptions.SequenceValidationType)
+  name.vb: New(String, String, Long?, Long?, SequenceValidationType)
+- uid: MarketDataCollector.Application.Exceptions.SequenceValidationException.#ctor(System.String,System.Exception)
+  commentId: M:MarketDataCollector.Application.Exceptions.SequenceValidationException.#ctor(System.String,System.Exception)
+  id: '#ctor(System.String,System.Exception)'
+  parent: MarketDataCollector.Application.Exceptions.SequenceValidationException
+  langs:
+  - csharp
+  - vb
+  name: SequenceValidationException(string, Exception)
+  nameWithType: SequenceValidationException.SequenceValidationException(string, Exception)
+  fullName: MarketDataCollector.Application.Exceptions.SequenceValidationException.SequenceValidationException(string, System.Exception)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Exceptions/SequenceValidationException.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Core/Exceptions/SequenceValidationException.cs
+    startLine: 30
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Exceptions
+  syntax:
+    content: public SequenceValidationException(string message, Exception innerException)
+    parameters:
+    - id: message
+      type: System.String
+    - id: innerException
+      type: System.Exception
+    content.vb: Public Sub New(message As String, innerException As Exception)
+  overload: MarketDataCollector.Application.Exceptions.SequenceValidationException.#ctor*
+  nameWithType.vb: SequenceValidationException.New(String, Exception)
+  fullName.vb: MarketDataCollector.Application.Exceptions.SequenceValidationException.New(String, System.Exception)
+  name.vb: New(String, Exception)
+references:
+- uid: MarketDataCollector.Application.Exceptions
+  commentId: N:MarketDataCollector.Application.Exceptions
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Exceptions
+  nameWithType: MarketDataCollector.Application.Exceptions
+  fullName: MarketDataCollector.Application.Exceptions
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Exceptions
+    name: Exceptions
+    href: MarketDataCollector.Application.Exceptions.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Exceptions
+    name: Exceptions
+    href: MarketDataCollector.Application.Exceptions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: MarketDataCollector.Application.Exceptions.MarketDataCollectorException
+  commentId: T:MarketDataCollector.Application.Exceptions.MarketDataCollectorException
+  parent: MarketDataCollector.Application.Exceptions
+  href: MarketDataCollector.Application.Exceptions.MarketDataCollectorException.html
+  name: MarketDataCollectorException
+  nameWithType: MarketDataCollectorException
+  fullName: MarketDataCollector.Application.Exceptions.MarketDataCollectorException
+- uid: System.Runtime.Serialization.ISerializable
+  commentId: T:System.Runtime.Serialization.ISerializable
+  parent: System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.iserializable
+  name: ISerializable
+  nameWithType: ISerializable
+  fullName: System.Runtime.Serialization.ISerializable
+- uid: System.Exception.GetBaseException
+  commentId: M:System.Exception.GetBaseException
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  name: GetBaseException()
+  nameWithType: Exception.GetBaseException()
+  fullName: System.Exception.GetBaseException()
+  spec.csharp:
+  - uid: System.Exception.GetBaseException
+    name: GetBaseException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.GetBaseException
+    name: GetBaseException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  - name: (
+  - name: )
+- uid: System.Exception.GetType
+  commentId: M:System.Exception.GetType
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  name: GetType()
+  nameWithType: Exception.GetType()
+  fullName: System.Exception.GetType()
+  spec.csharp:
+  - uid: System.Exception.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  - name: (
+  - name: )
+- uid: System.Exception.ToString
+  commentId: M:System.Exception.ToString
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  name: ToString()
+  nameWithType: Exception.ToString()
+  fullName: System.Exception.ToString()
+  spec.csharp:
+  - uid: System.Exception.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  - name: (
+  - name: )
+- uid: System.Exception.Data
+  commentId: P:System.Exception.Data
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.data
+  name: Data
+  nameWithType: Exception.Data
+  fullName: System.Exception.Data
+- uid: System.Exception.HelpLink
+  commentId: P:System.Exception.HelpLink
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.helplink
+  name: HelpLink
+  nameWithType: Exception.HelpLink
+  fullName: System.Exception.HelpLink
+- uid: System.Exception.HResult
+  commentId: P:System.Exception.HResult
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.hresult
+  name: HResult
+  nameWithType: Exception.HResult
+  fullName: System.Exception.HResult
+- uid: System.Exception.InnerException
+  commentId: P:System.Exception.InnerException
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.innerexception
+  name: InnerException
+  nameWithType: Exception.InnerException
+  fullName: System.Exception.InnerException
+- uid: System.Exception.Message
+  commentId: P:System.Exception.Message
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.message
+  name: Message
+  nameWithType: Exception.Message
+  fullName: System.Exception.Message
+- uid: System.Exception.Source
+  commentId: P:System.Exception.Source
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.source
+  name: Source
+  nameWithType: Exception.Source
+  fullName: System.Exception.Source
+- uid: System.Exception.StackTrace
+  commentId: P:System.Exception.StackTrace
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.stacktrace
+  name: StackTrace
+  nameWithType: Exception.StackTrace
+  fullName: System.Exception.StackTrace
+- uid: System.Exception.TargetSite
+  commentId: P:System.Exception.TargetSite
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.targetsite
+  name: TargetSite
+  nameWithType: Exception.TargetSite
+  fullName: System.Exception.TargetSite
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Runtime.Serialization
+  commentId: N:System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Runtime.Serialization
+  nameWithType: System.Runtime.Serialization
+  fullName: System.Runtime.Serialization
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+- uid: MarketDataCollector.Application.Exceptions.SequenceValidationException.Symbol*
+  commentId: Overload:MarketDataCollector.Application.Exceptions.SequenceValidationException.Symbol
+  href: MarketDataCollector.Application.Exceptions.SequenceValidationException.html#MarketDataCollector_Application_Exceptions_SequenceValidationException_Symbol
+  name: Symbol
+  nameWithType: SequenceValidationException.Symbol
+  fullName: MarketDataCollector.Application.Exceptions.SequenceValidationException.Symbol
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Application.Exceptions.SequenceValidationException.ExpectedSequence*
+  commentId: Overload:MarketDataCollector.Application.Exceptions.SequenceValidationException.ExpectedSequence
+  href: MarketDataCollector.Application.Exceptions.SequenceValidationException.html#MarketDataCollector_Application_Exceptions_SequenceValidationException_ExpectedSequence
+  name: ExpectedSequence
+  nameWithType: SequenceValidationException.ExpectedSequence
+  fullName: MarketDataCollector.Application.Exceptions.SequenceValidationException.ExpectedSequence
+- uid: System.Nullable{System.Int64}
+  commentId: T:System.Nullable{System.Int64}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long?
+  nameWithType: long?
+  fullName: long?
+  nameWithType.vb: Long?
+  fullName.vb: Long?
+  name.vb: Long?
+  spec.csharp:
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '?'
+  spec.vb:
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Exceptions.SequenceValidationException.ActualSequence*
+  commentId: Overload:MarketDataCollector.Application.Exceptions.SequenceValidationException.ActualSequence
+  href: MarketDataCollector.Application.Exceptions.SequenceValidationException.html#MarketDataCollector_Application_Exceptions_SequenceValidationException_ActualSequence
+  name: ActualSequence
+  nameWithType: SequenceValidationException.ActualSequence
+  fullName: MarketDataCollector.Application.Exceptions.SequenceValidationException.ActualSequence
+- uid: MarketDataCollector.Application.Exceptions.SequenceValidationException.ValidationType*
+  commentId: Overload:MarketDataCollector.Application.Exceptions.SequenceValidationException.ValidationType
+  href: MarketDataCollector.Application.Exceptions.SequenceValidationException.html#MarketDataCollector_Application_Exceptions_SequenceValidationException_ValidationType
+  name: ValidationType
+  nameWithType: SequenceValidationException.ValidationType
+  fullName: MarketDataCollector.Application.Exceptions.SequenceValidationException.ValidationType
+- uid: MarketDataCollector.Application.Exceptions.SequenceValidationType
+  commentId: T:MarketDataCollector.Application.Exceptions.SequenceValidationType
+  parent: MarketDataCollector.Application.Exceptions
+  href: MarketDataCollector.Application.Exceptions.SequenceValidationType.html
+  name: SequenceValidationType
+  nameWithType: SequenceValidationType
+  fullName: MarketDataCollector.Application.Exceptions.SequenceValidationType
+- uid: MarketDataCollector.Application.Exceptions.SequenceValidationException.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Exceptions.SequenceValidationException.#ctor
+  href: MarketDataCollector.Application.Exceptions.SequenceValidationException.html#MarketDataCollector_Application_Exceptions_SequenceValidationException__ctor_System_String_
+  name: SequenceValidationException
+  nameWithType: SequenceValidationException.SequenceValidationException
+  fullName: MarketDataCollector.Application.Exceptions.SequenceValidationException.SequenceValidationException
+  nameWithType.vb: SequenceValidationException.New
+  fullName.vb: MarketDataCollector.Application.Exceptions.SequenceValidationException.New
+  name.vb: New

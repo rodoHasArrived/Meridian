@@ -1,0 +1,819 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider
+  id: IOptionsChainProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  children:
+  - MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.Capabilities
+  - MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetChainSnapshotAsync(System.String,System.DateOnly,System.Nullable{System.Int32},System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetExpirationsAsync(System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetOptionQuoteAsync(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec,System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetStrikesAsync(System.String,System.DateOnly,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: IOptionsChainProvider
+  nameWithType: IOptionsChainProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IOptionsChainProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IOptionsChainProvider
+    path: ../../src/MarketDataCollector.ProviderSdk/IOptionsChainProvider.cs
+    startLine: 12
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: >-
+    Provider contract for retrieving options chain data.
+
+    Implementations supply option chain snapshots, contract discovery,
+
+    and available expirations for underlying symbols.
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-001", "Options chain data provider contract")]
+
+      [ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+
+      public interface IOptionsChainProvider : IProviderMetadata
+    content.vb: >-
+      <ImplementsAdr("ADR-001", "Options chain data provider contract")>
+
+      <ImplementsAdr("ADR-004", "All async methods support CancellationToken")>
+
+      Public Interface IOptionsChainProvider Inherits IProviderMetadata
+  inheritedMembers:
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderId
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDisplayName
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDescription
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderPriority
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCapabilities
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.RequiresCredentials
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCredentialFields
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderNotes
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderWarnings
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.SupportedDataTypes
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-001
+    - type: System.String
+      value: Options chain data provider contract
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-004
+    - type: System.String
+      value: All async methods support CancellationToken
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetExpirationsAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetExpirationsAsync(System.String,System.Threading.CancellationToken)
+  id: GetExpirationsAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider
+  langs:
+  - csharp
+  - vb
+  name: GetExpirationsAsync(string, CancellationToken)
+  nameWithType: IOptionsChainProvider.GetExpirationsAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetExpirationsAsync(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IOptionsChainProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetExpirationsAsync
+    path: ../../src/MarketDataCollector.ProviderSdk/IOptionsChainProvider.cs
+    startLine: 22
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets available expiration dates for options on the given underlying symbol.
+  example: []
+  syntax:
+    content: Task<IReadOnlyList<DateOnly>> GetExpirationsAsync(string underlyingSymbol, CancellationToken ct = default)
+    parameters:
+    - id: underlyingSymbol
+      type: System.String
+      description: The underlying symbol (e.g., "AAPL", "SPX").
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{System.DateOnly}}
+      description: Ordered list of available expiration dates.
+    content.vb: Function GetExpirationsAsync(underlyingSymbol As String, ct As CancellationToken = Nothing) As Task(Of IReadOnlyList(Of DateOnly))
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetExpirationsAsync*
+  nameWithType.vb: IOptionsChainProvider.GetExpirationsAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetExpirationsAsync(String, System.Threading.CancellationToken)
+  name.vb: GetExpirationsAsync(String, CancellationToken)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetStrikesAsync(System.String,System.DateOnly,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetStrikesAsync(System.String,System.DateOnly,System.Threading.CancellationToken)
+  id: GetStrikesAsync(System.String,System.DateOnly,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider
+  langs:
+  - csharp
+  - vb
+  name: GetStrikesAsync(string, DateOnly, CancellationToken)
+  nameWithType: IOptionsChainProvider.GetStrikesAsync(string, DateOnly, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetStrikesAsync(string, System.DateOnly, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IOptionsChainProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetStrikesAsync
+    path: ../../src/MarketDataCollector.ProviderSdk/IOptionsChainProvider.cs
+    startLine: 33
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets available strike prices for a specific underlying and expiration.
+  example: []
+  syntax:
+    content: Task<IReadOnlyList<decimal>> GetStrikesAsync(string underlyingSymbol, DateOnly expiration, CancellationToken ct = default)
+    parameters:
+    - id: underlyingSymbol
+      type: System.String
+      description: The underlying symbol.
+    - id: expiration
+      type: System.DateOnly
+      description: The expiration date.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{System.Decimal}}
+      description: Ordered list of available strike prices.
+    content.vb: Function GetStrikesAsync(underlyingSymbol As String, expiration As DateOnly, ct As CancellationToken = Nothing) As Task(Of IReadOnlyList(Of Decimal))
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetStrikesAsync*
+  nameWithType.vb: IOptionsChainProvider.GetStrikesAsync(String, DateOnly, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetStrikesAsync(String, System.DateOnly, System.Threading.CancellationToken)
+  name.vb: GetStrikesAsync(String, DateOnly, CancellationToken)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetChainSnapshotAsync(System.String,System.DateOnly,System.Nullable{System.Int32},System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetChainSnapshotAsync(System.String,System.DateOnly,System.Nullable{System.Int32},System.Threading.CancellationToken)
+  id: GetChainSnapshotAsync(System.String,System.DateOnly,System.Nullable{System.Int32},System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider
+  langs:
+  - csharp
+  - vb
+  name: GetChainSnapshotAsync(string, DateOnly, int?, CancellationToken)
+  nameWithType: IOptionsChainProvider.GetChainSnapshotAsync(string, DateOnly, int?, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetChainSnapshotAsync(string, System.DateOnly, int?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IOptionsChainProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetChainSnapshotAsync
+    path: ../../src/MarketDataCollector.ProviderSdk/IOptionsChainProvider.cs
+    startLine: 49
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets a full option chain snapshot for an underlying symbol and expiration.
+  example: []
+  syntax:
+    content: Task<OptionChainSnapshot?> GetChainSnapshotAsync(string underlyingSymbol, DateOnly expiration, int? strikeRange = null, CancellationToken ct = default)
+    parameters:
+    - id: underlyingSymbol
+      type: System.String
+      description: The underlying symbol.
+    - id: expiration
+      type: System.DateOnly
+      description: The expiration date.
+    - id: strikeRange
+      type: System.Nullable{System.Int32}
+      description: >-
+        Optional number of strikes above and below ATM to include.
+
+        If null, returns all available strikes.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot}
+      description: Option chain snapshot with calls and puts.
+    content.vb: Function GetChainSnapshotAsync(underlyingSymbol As String, expiration As DateOnly, strikeRange As Integer? = Nothing, ct As CancellationToken = Nothing) As Task(Of OptionChainSnapshot)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetChainSnapshotAsync*
+  nameWithType.vb: IOptionsChainProvider.GetChainSnapshotAsync(String, DateOnly, Integer?, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetChainSnapshotAsync(String, System.DateOnly, Integer?, System.Threading.CancellationToken)
+  name.vb: GetChainSnapshotAsync(String, DateOnly, Integer?, CancellationToken)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetOptionQuoteAsync(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetOptionQuoteAsync(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec,System.Threading.CancellationToken)
+  id: GetOptionQuoteAsync(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider
+  langs:
+  - csharp
+  - vb
+  name: GetOptionQuoteAsync(OptionContractSpec, CancellationToken)
+  nameWithType: IOptionsChainProvider.GetOptionQuoteAsync(OptionContractSpec, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetOptionQuoteAsync(MarketDataCollector.Contracts.Domain.Models.OptionContractSpec, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IOptionsChainProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetOptionQuoteAsync
+    path: ../../src/MarketDataCollector.ProviderSdk/IOptionsChainProvider.cs
+    startLine: 61
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets a quote for a specific option contract.
+  example: []
+  syntax:
+    content: Task<OptionQuote?> GetOptionQuoteAsync(OptionContractSpec contract, CancellationToken ct = default)
+    parameters:
+    - id: contract
+      type: MarketDataCollector.Contracts.Domain.Models.OptionContractSpec
+      description: The option contract specification.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Contracts.Domain.Models.OptionQuote}
+      description: Option quote, or null if unavailable.
+    content.vb: Function GetOptionQuoteAsync(contract As OptionContractSpec, ct As CancellationToken = Nothing) As Task(Of OptionQuote)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetOptionQuoteAsync*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.Capabilities
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.Capabilities
+  id: Capabilities
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider
+  langs:
+  - csharp
+  - vb
+  name: Capabilities
+  nameWithType: IOptionsChainProvider.Capabilities
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.Capabilities
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IOptionsChainProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Capabilities
+    path: ../../src/MarketDataCollector.ProviderSdk/IOptionsChainProvider.cs
+    startLine: 68
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets option chain capabilities for this provider.
+  example: []
+  syntax:
+    content: OptionsChainCapabilities Capabilities { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.OptionsChainCapabilities
+    content.vb: ReadOnly Property Capabilities As OptionsChainCapabilities
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.Capabilities*
+references:
+- uid: MarketDataCollector.Infrastructure.Adapters.Core
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Core
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Core
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderId
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderId
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderId
+  name: ProviderId
+  nameWithType: IProviderMetadata.ProviderId
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderId
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDisplayName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDisplayName
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderDisplayName
+  name: ProviderDisplayName
+  nameWithType: IProviderMetadata.ProviderDisplayName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDisplayName
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDescription
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDescription
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderDescription
+  name: ProviderDescription
+  nameWithType: IProviderMetadata.ProviderDescription
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDescription
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderPriority
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderPriority
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderPriority
+  name: ProviderPriority
+  nameWithType: IProviderMetadata.ProviderPriority
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderPriority
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCapabilities
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCapabilities
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderCapabilities
+  name: ProviderCapabilities
+  nameWithType: IProviderMetadata.ProviderCapabilities
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCapabilities
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.RequiresCredentials
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.RequiresCredentials
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_RequiresCredentials
+  name: RequiresCredentials
+  nameWithType: IProviderMetadata.RequiresCredentials
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.RequiresCredentials
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCredentialFields
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCredentialFields
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderCredentialFields
+  name: ProviderCredentialFields
+  nameWithType: IProviderMetadata.ProviderCredentialFields
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCredentialFields
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderNotes
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderNotes
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderNotes
+  name: ProviderNotes
+  nameWithType: IProviderMetadata.ProviderNotes
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderNotes
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderWarnings
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderWarnings
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderWarnings
+  name: ProviderWarnings
+  nameWithType: IProviderMetadata.ProviderWarnings
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderWarnings
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.SupportedDataTypes
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.SupportedDataTypes
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_SupportedDataTypes
+  name: SupportedDataTypes
+  nameWithType: IProviderMetadata.SupportedDataTypes
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.SupportedDataTypes
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html
+  name: IProviderMetadata
+  nameWithType: IProviderMetadata
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetExpirationsAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetExpirationsAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_IOptionsChainProvider_GetExpirationsAsync_System_String_System_Threading_CancellationToken_
+  name: GetExpirationsAsync
+  nameWithType: IOptionsChainProvider.GetExpirationsAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetExpirationsAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{System.DateOnly}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{System.DateOnly}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IReadOnlyList<DateOnly>>
+  nameWithType: Task<IReadOnlyList<DateOnly>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<System.DateOnly>>
+  nameWithType.vb: Task(Of IReadOnlyList(Of DateOnly))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IReadOnlyList(Of System.DateOnly))
+  name.vb: Task(Of IReadOnlyList(Of DateOnly))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: )
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetStrikesAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetStrikesAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_IOptionsChainProvider_GetStrikesAsync_System_String_System_DateOnly_System_Threading_CancellationToken_
+  name: GetStrikesAsync
+  nameWithType: IOptionsChainProvider.GetStrikesAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetStrikesAsync
+- uid: System.DateOnly
+  commentId: T:System.DateOnly
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  name: DateOnly
+  nameWithType: DateOnly
+  fullName: System.DateOnly
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{System.Decimal}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{System.Decimal}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IReadOnlyList<decimal>>
+  nameWithType: Task<IReadOnlyList<decimal>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<decimal>>
+  nameWithType.vb: Task(Of IReadOnlyList(Of Decimal))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IReadOnlyList(Of Decimal))
+  name.vb: Task(Of IReadOnlyList(Of Decimal))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.Decimal
+    name: decimal
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.decimal
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Decimal
+    name: Decimal
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.decimal
+  - name: )
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetChainSnapshotAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetChainSnapshotAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_IOptionsChainProvider_GetChainSnapshotAsync_System_String_System_DateOnly_System_Nullable_System_Int32__System_Threading_CancellationToken_
+  name: GetChainSnapshotAsync
+  nameWithType: IOptionsChainProvider.GetChainSnapshotAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetChainSnapshotAsync
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<OptionChainSnapshot>
+  nameWithType: Task<OptionChainSnapshot>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot>
+  nameWithType.vb: Task(Of OptionChainSnapshot)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot)
+  name.vb: Task(Of OptionChainSnapshot)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot
+    name: OptionChainSnapshot
+    href: MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot
+    name: OptionChainSnapshot
+    href: MarketDataCollector.Contracts.Domain.Models.OptionChainSnapshot.html
+  - name: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetOptionQuoteAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetOptionQuoteAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_IOptionsChainProvider_GetOptionQuoteAsync_MarketDataCollector_Contracts_Domain_Models_OptionContractSpec_System_Threading_CancellationToken_
+  name: GetOptionQuoteAsync
+  nameWithType: IOptionsChainProvider.GetOptionQuoteAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.GetOptionQuoteAsync
+- uid: MarketDataCollector.Contracts.Domain.Models.OptionContractSpec
+  commentId: T:MarketDataCollector.Contracts.Domain.Models.OptionContractSpec
+  parent: MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.Contracts.Domain.Models.OptionContractSpec.html
+  name: OptionContractSpec
+  nameWithType: OptionContractSpec
+  fullName: MarketDataCollector.Contracts.Domain.Models.OptionContractSpec
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Contracts.Domain.Models.OptionQuote}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Contracts.Domain.Models.OptionQuote}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<OptionQuote>
+  nameWithType: Task<OptionQuote>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Contracts.Domain.Models.OptionQuote>
+  nameWithType.vb: Task(Of OptionQuote)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Contracts.Domain.Models.OptionQuote)
+  name.vb: Task(Of OptionQuote)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Domain.Models.OptionQuote
+    name: OptionQuote
+    href: MarketDataCollector.Contracts.Domain.Models.OptionQuote.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Domain.Models.OptionQuote
+    name: OptionQuote
+    href: MarketDataCollector.Contracts.Domain.Models.OptionQuote.html
+  - name: )
+- uid: MarketDataCollector.Contracts.Domain.Models
+  commentId: N:MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Models
+  nameWithType: MarketDataCollector.Contracts.Domain.Models
+  fullName: MarketDataCollector.Contracts.Domain.Models
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Models
+    name: Models
+    href: MarketDataCollector.Contracts.Domain.Models.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Models
+    name: Models
+    href: MarketDataCollector.Contracts.Domain.Models.html
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.Capabilities*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.Capabilities
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_IOptionsChainProvider_Capabilities
+  name: Capabilities
+  nameWithType: IOptionsChainProvider.Capabilities
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IOptionsChainProvider.Capabilities
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.OptionsChainCapabilities
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.OptionsChainCapabilities
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.OptionsChainCapabilities.html
+  name: OptionsChainCapabilities
+  nameWithType: OptionsChainCapabilities
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.OptionsChainCapabilities

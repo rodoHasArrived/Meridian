@@ -1,0 +1,929 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+  commentId: T:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+  id: ResubscriptionMetricsSnapshot
+  parent: MarketDataCollector.Application.Subscriptions.Models
+  children:
+  - MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.#ctor(System.Int64,System.Int64,System.Int64,System.Int64,System.Int64,System.Int64,System.Int64,MarketDataCollector.Application.Subscriptions.Models.CircuitState,System.Int64,System.Int64,System.Double,System.Double,System.DateTimeOffset)
+  - MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.AverageResubscribeTimeMs
+  - MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerCloses
+  - MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerHalfOpens
+  - MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerOpens
+  - MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CurrentCircuitState
+  - MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.RateLimitedSkips
+  - MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeAttempts
+  - MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeFailures
+  - MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeSuccesses
+  - MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SuccessRate
+  - MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SymbolsCircuitOpen
+  - MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SymbolsInCooldown
+  - MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.Timestamp
+  langs:
+  - csharp
+  - vb
+  name: ResubscriptionMetricsSnapshot
+  nameWithType: ResubscriptionMetricsSnapshot
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+  type: Struct
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResubscriptionMetricsSnapshot
+    path: ../../src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+    startLine: 194
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Subscriptions.Models
+  summary: Immutable snapshot of resubscription metrics at a point in time.
+  example: []
+  syntax:
+    content: 'public readonly record struct ResubscriptionMetricsSnapshot : IEquatable<ResubscriptionMetricsSnapshot>'
+    content.vb: Public Structure ResubscriptionMetricsSnapshot Implements IEquatable(Of ResubscriptionMetricsSnapshot)
+  implements:
+  - System.IEquatable{MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot}
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.#ctor(System.Int64,System.Int64,System.Int64,System.Int64,System.Int64,System.Int64,System.Int64,MarketDataCollector.Application.Subscriptions.Models.CircuitState,System.Int64,System.Int64,System.Double,System.Double,System.DateTimeOffset)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.#ctor(System.Int64,System.Int64,System.Int64,System.Int64,System.Int64,System.Int64,System.Int64,MarketDataCollector.Application.Subscriptions.Models.CircuitState,System.Int64,System.Int64,System.Double,System.Double,System.DateTimeOffset)
+  id: '#ctor(System.Int64,System.Int64,System.Int64,System.Int64,System.Int64,System.Int64,System.Int64,MarketDataCollector.Application.Subscriptions.Models.CircuitState,System.Int64,System.Int64,System.Double,System.Double,System.DateTimeOffset)'
+  parent: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+  langs:
+  - csharp
+  - vb
+  name: ResubscriptionMetricsSnapshot(long, long, long, long, long, long, long, CircuitState, long, long, double, double, DateTimeOffset)
+  nameWithType: ResubscriptionMetricsSnapshot.ResubscriptionMetricsSnapshot(long, long, long, long, long, long, long, CircuitState, long, long, double, double, DateTimeOffset)
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscriptionMetricsSnapshot(long, long, long, long, long, long, long, MarketDataCollector.Application.Subscriptions.Models.CircuitState, long, long, double, double, System.DateTimeOffset)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+    startLine: 194
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Subscriptions.Models
+  summary: Immutable snapshot of resubscription metrics at a point in time.
+  example: []
+  syntax:
+    content: public ResubscriptionMetricsSnapshot(long ResubscribeAttempts, long ResubscribeSuccesses, long ResubscribeFailures, long RateLimitedSkips, long CircuitBreakerOpens, long CircuitBreakerCloses, long CircuitBreakerHalfOpens, CircuitState CurrentCircuitState, long SymbolsInCooldown, long SymbolsCircuitOpen, double SuccessRate, double AverageResubscribeTimeMs, DateTimeOffset Timestamp)
+    parameters:
+    - id: ResubscribeAttempts
+      type: System.Int64
+    - id: ResubscribeSuccesses
+      type: System.Int64
+    - id: ResubscribeFailures
+      type: System.Int64
+    - id: RateLimitedSkips
+      type: System.Int64
+    - id: CircuitBreakerOpens
+      type: System.Int64
+    - id: CircuitBreakerCloses
+      type: System.Int64
+    - id: CircuitBreakerHalfOpens
+      type: System.Int64
+    - id: CurrentCircuitState
+      type: MarketDataCollector.Application.Subscriptions.Models.CircuitState
+    - id: SymbolsInCooldown
+      type: System.Int64
+    - id: SymbolsCircuitOpen
+      type: System.Int64
+    - id: SuccessRate
+      type: System.Double
+    - id: AverageResubscribeTimeMs
+      type: System.Double
+    - id: Timestamp
+      type: System.DateTimeOffset
+    content.vb: Public Sub New(ResubscribeAttempts As Long, ResubscribeSuccesses As Long, ResubscribeFailures As Long, RateLimitedSkips As Long, CircuitBreakerOpens As Long, CircuitBreakerCloses As Long, CircuitBreakerHalfOpens As Long, CurrentCircuitState As CircuitState, SymbolsInCooldown As Long, SymbolsCircuitOpen As Long, SuccessRate As Double, AverageResubscribeTimeMs As Double, Timestamp As DateTimeOffset)
+  overload: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.#ctor*
+  nameWithType.vb: ResubscriptionMetricsSnapshot.New(Long, Long, Long, Long, Long, Long, Long, CircuitState, Long, Long, Double, Double, DateTimeOffset)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.New(Long, Long, Long, Long, Long, Long, Long, MarketDataCollector.Application.Subscriptions.Models.CircuitState, Long, Long, Double, Double, System.DateTimeOffset)
+  name.vb: New(Long, Long, Long, Long, Long, Long, Long, CircuitState, Long, Long, Double, Double, DateTimeOffset)
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeAttempts
+  commentId: P:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeAttempts
+  id: ResubscribeAttempts
+  parent: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+  langs:
+  - csharp
+  - vb
+  name: ResubscribeAttempts
+  nameWithType: ResubscriptionMetricsSnapshot.ResubscribeAttempts
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeAttempts
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResubscribeAttempts
+    path: ../../src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+    startLine: 195
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Subscriptions.Models
+  syntax:
+    content: public long ResubscribeAttempts { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property ResubscribeAttempts As Long
+  overload: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeAttempts*
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeSuccesses
+  commentId: P:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeSuccesses
+  id: ResubscribeSuccesses
+  parent: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+  langs:
+  - csharp
+  - vb
+  name: ResubscribeSuccesses
+  nameWithType: ResubscriptionMetricsSnapshot.ResubscribeSuccesses
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeSuccesses
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResubscribeSuccesses
+    path: ../../src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+    startLine: 196
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Subscriptions.Models
+  syntax:
+    content: public long ResubscribeSuccesses { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property ResubscribeSuccesses As Long
+  overload: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeSuccesses*
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeFailures
+  commentId: P:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeFailures
+  id: ResubscribeFailures
+  parent: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+  langs:
+  - csharp
+  - vb
+  name: ResubscribeFailures
+  nameWithType: ResubscriptionMetricsSnapshot.ResubscribeFailures
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeFailures
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResubscribeFailures
+    path: ../../src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+    startLine: 197
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Subscriptions.Models
+  syntax:
+    content: public long ResubscribeFailures { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property ResubscribeFailures As Long
+  overload: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeFailures*
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.RateLimitedSkips
+  commentId: P:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.RateLimitedSkips
+  id: RateLimitedSkips
+  parent: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+  langs:
+  - csharp
+  - vb
+  name: RateLimitedSkips
+  nameWithType: ResubscriptionMetricsSnapshot.RateLimitedSkips
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.RateLimitedSkips
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RateLimitedSkips
+    path: ../../src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+    startLine: 198
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Subscriptions.Models
+  syntax:
+    content: public long RateLimitedSkips { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property RateLimitedSkips As Long
+  overload: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.RateLimitedSkips*
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerOpens
+  commentId: P:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerOpens
+  id: CircuitBreakerOpens
+  parent: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+  langs:
+  - csharp
+  - vb
+  name: CircuitBreakerOpens
+  nameWithType: ResubscriptionMetricsSnapshot.CircuitBreakerOpens
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerOpens
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CircuitBreakerOpens
+    path: ../../src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+    startLine: 199
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Subscriptions.Models
+  syntax:
+    content: public long CircuitBreakerOpens { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property CircuitBreakerOpens As Long
+  overload: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerOpens*
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerCloses
+  commentId: P:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerCloses
+  id: CircuitBreakerCloses
+  parent: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+  langs:
+  - csharp
+  - vb
+  name: CircuitBreakerCloses
+  nameWithType: ResubscriptionMetricsSnapshot.CircuitBreakerCloses
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerCloses
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CircuitBreakerCloses
+    path: ../../src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+    startLine: 200
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Subscriptions.Models
+  syntax:
+    content: public long CircuitBreakerCloses { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property CircuitBreakerCloses As Long
+  overload: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerCloses*
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerHalfOpens
+  commentId: P:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerHalfOpens
+  id: CircuitBreakerHalfOpens
+  parent: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+  langs:
+  - csharp
+  - vb
+  name: CircuitBreakerHalfOpens
+  nameWithType: ResubscriptionMetricsSnapshot.CircuitBreakerHalfOpens
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerHalfOpens
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CircuitBreakerHalfOpens
+    path: ../../src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+    startLine: 201
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Subscriptions.Models
+  syntax:
+    content: public long CircuitBreakerHalfOpens { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property CircuitBreakerHalfOpens As Long
+  overload: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerHalfOpens*
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CurrentCircuitState
+  commentId: P:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CurrentCircuitState
+  id: CurrentCircuitState
+  parent: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+  langs:
+  - csharp
+  - vb
+  name: CurrentCircuitState
+  nameWithType: ResubscriptionMetricsSnapshot.CurrentCircuitState
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CurrentCircuitState
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CurrentCircuitState
+    path: ../../src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+    startLine: 202
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Subscriptions.Models
+  syntax:
+    content: public CircuitState CurrentCircuitState { get; init; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Subscriptions.Models.CircuitState
+    content.vb: Public Property CurrentCircuitState As CircuitState
+  overload: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CurrentCircuitState*
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SymbolsInCooldown
+  commentId: P:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SymbolsInCooldown
+  id: SymbolsInCooldown
+  parent: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+  langs:
+  - csharp
+  - vb
+  name: SymbolsInCooldown
+  nameWithType: ResubscriptionMetricsSnapshot.SymbolsInCooldown
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SymbolsInCooldown
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SymbolsInCooldown
+    path: ../../src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+    startLine: 203
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Subscriptions.Models
+  syntax:
+    content: public long SymbolsInCooldown { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property SymbolsInCooldown As Long
+  overload: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SymbolsInCooldown*
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SymbolsCircuitOpen
+  commentId: P:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SymbolsCircuitOpen
+  id: SymbolsCircuitOpen
+  parent: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+  langs:
+  - csharp
+  - vb
+  name: SymbolsCircuitOpen
+  nameWithType: ResubscriptionMetricsSnapshot.SymbolsCircuitOpen
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SymbolsCircuitOpen
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SymbolsCircuitOpen
+    path: ../../src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+    startLine: 204
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Subscriptions.Models
+  syntax:
+    content: public long SymbolsCircuitOpen { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property SymbolsCircuitOpen As Long
+  overload: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SymbolsCircuitOpen*
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SuccessRate
+  commentId: P:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SuccessRate
+  id: SuccessRate
+  parent: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+  langs:
+  - csharp
+  - vb
+  name: SuccessRate
+  nameWithType: ResubscriptionMetricsSnapshot.SuccessRate
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SuccessRate
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SuccessRate
+    path: ../../src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+    startLine: 205
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Subscriptions.Models
+  syntax:
+    content: public double SuccessRate { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property SuccessRate As Double
+  overload: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SuccessRate*
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.AverageResubscribeTimeMs
+  commentId: P:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.AverageResubscribeTimeMs
+  id: AverageResubscribeTimeMs
+  parent: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+  langs:
+  - csharp
+  - vb
+  name: AverageResubscribeTimeMs
+  nameWithType: ResubscriptionMetricsSnapshot.AverageResubscribeTimeMs
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.AverageResubscribeTimeMs
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AverageResubscribeTimeMs
+    path: ../../src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+    startLine: 206
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Subscriptions.Models
+  syntax:
+    content: public double AverageResubscribeTimeMs { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property AverageResubscribeTimeMs As Double
+  overload: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.AverageResubscribeTimeMs*
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.Timestamp
+  commentId: P:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.Timestamp
+  id: Timestamp
+  parent: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+  langs:
+  - csharp
+  - vb
+  name: Timestamp
+  nameWithType: ResubscriptionMetricsSnapshot.Timestamp
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.Timestamp
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Timestamp
+    path: ../../src/MarketDataCollector.Core/Subscriptions/Models/ResubscriptionMetrics.cs
+    startLine: 207
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Subscriptions.Models
+  syntax:
+    content: public DateTimeOffset Timestamp { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property Timestamp As DateTimeOffset
+  overload: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.Timestamp*
+references:
+- uid: MarketDataCollector.Application.Subscriptions.Models
+  commentId: N:MarketDataCollector.Application.Subscriptions.Models
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Subscriptions.Models
+  nameWithType: MarketDataCollector.Application.Subscriptions.Models
+  fullName: MarketDataCollector.Application.Subscriptions.Models
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Models
+    name: Models
+    href: MarketDataCollector.Application.Subscriptions.Models.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Models
+    name: Models
+    href: MarketDataCollector.Application.Subscriptions.Models.html
+- uid: System.IEquatable{MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot}
+  commentId: T:System.IEquatable{MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<ResubscriptionMetricsSnapshot>
+  nameWithType: IEquatable<ResubscriptionMetricsSnapshot>
+  fullName: System.IEquatable<MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot>
+  nameWithType.vb: IEquatable(Of ResubscriptionMetricsSnapshot)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot)
+  name.vb: IEquatable(Of ResubscriptionMetricsSnapshot)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+    name: ResubscriptionMetricsSnapshot
+    href: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot
+    name: ResubscriptionMetricsSnapshot
+    href: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.html
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.#ctor
+  href: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.html#MarketDataCollector_Application_Subscriptions_Models_ResubscriptionMetricsSnapshot__ctor_System_Int64_System_Int64_System_Int64_System_Int64_System_Int64_System_Int64_System_Int64_MarketDataCollector_Application_Subscriptions_Models_CircuitState_System_Int64_System_Int64_System_Double_System_Double_System_DateTimeOffset_
+  name: ResubscriptionMetricsSnapshot
+  nameWithType: ResubscriptionMetricsSnapshot.ResubscriptionMetricsSnapshot
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscriptionMetricsSnapshot
+  nameWithType.vb: ResubscriptionMetricsSnapshot.New
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.New
+  name.vb: New
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Application.Subscriptions.Models.CircuitState
+  commentId: T:MarketDataCollector.Application.Subscriptions.Models.CircuitState
+  parent: MarketDataCollector.Application.Subscriptions.Models
+  href: MarketDataCollector.Application.Subscriptions.Models.CircuitState.html
+  name: CircuitState
+  nameWithType: CircuitState
+  fullName: MarketDataCollector.Application.Subscriptions.Models.CircuitState
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeAttempts*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeAttempts
+  href: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.html#MarketDataCollector_Application_Subscriptions_Models_ResubscriptionMetricsSnapshot_ResubscribeAttempts
+  name: ResubscribeAttempts
+  nameWithType: ResubscriptionMetricsSnapshot.ResubscribeAttempts
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeAttempts
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeSuccesses*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeSuccesses
+  href: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.html#MarketDataCollector_Application_Subscriptions_Models_ResubscriptionMetricsSnapshot_ResubscribeSuccesses
+  name: ResubscribeSuccesses
+  nameWithType: ResubscriptionMetricsSnapshot.ResubscribeSuccesses
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeSuccesses
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeFailures*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeFailures
+  href: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.html#MarketDataCollector_Application_Subscriptions_Models_ResubscriptionMetricsSnapshot_ResubscribeFailures
+  name: ResubscribeFailures
+  nameWithType: ResubscriptionMetricsSnapshot.ResubscribeFailures
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.ResubscribeFailures
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.RateLimitedSkips*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.RateLimitedSkips
+  href: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.html#MarketDataCollector_Application_Subscriptions_Models_ResubscriptionMetricsSnapshot_RateLimitedSkips
+  name: RateLimitedSkips
+  nameWithType: ResubscriptionMetricsSnapshot.RateLimitedSkips
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.RateLimitedSkips
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerOpens*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerOpens
+  href: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.html#MarketDataCollector_Application_Subscriptions_Models_ResubscriptionMetricsSnapshot_CircuitBreakerOpens
+  name: CircuitBreakerOpens
+  nameWithType: ResubscriptionMetricsSnapshot.CircuitBreakerOpens
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerOpens
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerCloses*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerCloses
+  href: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.html#MarketDataCollector_Application_Subscriptions_Models_ResubscriptionMetricsSnapshot_CircuitBreakerCloses
+  name: CircuitBreakerCloses
+  nameWithType: ResubscriptionMetricsSnapshot.CircuitBreakerCloses
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerCloses
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerHalfOpens*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerHalfOpens
+  href: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.html#MarketDataCollector_Application_Subscriptions_Models_ResubscriptionMetricsSnapshot_CircuitBreakerHalfOpens
+  name: CircuitBreakerHalfOpens
+  nameWithType: ResubscriptionMetricsSnapshot.CircuitBreakerHalfOpens
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CircuitBreakerHalfOpens
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CurrentCircuitState*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CurrentCircuitState
+  href: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.html#MarketDataCollector_Application_Subscriptions_Models_ResubscriptionMetricsSnapshot_CurrentCircuitState
+  name: CurrentCircuitState
+  nameWithType: ResubscriptionMetricsSnapshot.CurrentCircuitState
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.CurrentCircuitState
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SymbolsInCooldown*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SymbolsInCooldown
+  href: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.html#MarketDataCollector_Application_Subscriptions_Models_ResubscriptionMetricsSnapshot_SymbolsInCooldown
+  name: SymbolsInCooldown
+  nameWithType: ResubscriptionMetricsSnapshot.SymbolsInCooldown
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SymbolsInCooldown
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SymbolsCircuitOpen*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SymbolsCircuitOpen
+  href: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.html#MarketDataCollector_Application_Subscriptions_Models_ResubscriptionMetricsSnapshot_SymbolsCircuitOpen
+  name: SymbolsCircuitOpen
+  nameWithType: ResubscriptionMetricsSnapshot.SymbolsCircuitOpen
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SymbolsCircuitOpen
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SuccessRate*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SuccessRate
+  href: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.html#MarketDataCollector_Application_Subscriptions_Models_ResubscriptionMetricsSnapshot_SuccessRate
+  name: SuccessRate
+  nameWithType: ResubscriptionMetricsSnapshot.SuccessRate
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.SuccessRate
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.AverageResubscribeTimeMs*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.AverageResubscribeTimeMs
+  href: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.html#MarketDataCollector_Application_Subscriptions_Models_ResubscriptionMetricsSnapshot_AverageResubscribeTimeMs
+  name: AverageResubscribeTimeMs
+  nameWithType: ResubscriptionMetricsSnapshot.AverageResubscribeTimeMs
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.AverageResubscribeTimeMs
+- uid: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.Timestamp*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.Timestamp
+  href: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.html#MarketDataCollector_Application_Subscriptions_Models_ResubscriptionMetricsSnapshot_Timestamp
+  name: Timestamp
+  nameWithType: ResubscriptionMetricsSnapshot.Timestamp
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ResubscriptionMetricsSnapshot.Timestamp

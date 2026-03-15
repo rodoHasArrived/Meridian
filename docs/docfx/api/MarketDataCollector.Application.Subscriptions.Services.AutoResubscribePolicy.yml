@@ -1,0 +1,1163 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy
+  commentId: T:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy
+  id: AutoResubscribePolicy
+  parent: MarketDataCollector.Application.Subscriptions.Services
+  children:
+  - MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.#ctor(MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator,MarketDataCollector.Application.Subscriptions.Services.AutoResubscribeOptions,Serilog.ILogger)
+  - MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.CurrentCircuitState
+  - MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.DisposeAsync
+  - MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnDepthIntegrityEventAsync(MarketDataCollector.Contracts.Domain.Models.DepthIntegrityEvent,MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnIntegrityEventAsync(System.String,MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity,MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnTradeIntegrityEventAsync(MarketDataCollector.Contracts.Domain.Models.IntegrityEvent,MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.ResetCircuitBreaker
+  - MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.ResetSymbolCircuit(System.String)
+  - MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.SymbolsInCooldown
+  - MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.SymbolsWithOpenCircuit
+  langs:
+  - csharp
+  - vb
+  name: AutoResubscribePolicy
+  nameWithType: AutoResubscribePolicy
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AutoResubscribePolicy
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+    startLine: 21
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: >-
+    Auto-resubscribe policy that triggers resubscription when integrity events occur.
+
+    Implements rate limiting and circuit breaker pattern to prevent cascading failures.
+
+
+    Flow:
+
+    1. Integrity event received → check rate limit → check circuit breaker → resubscribe
+
+    2. If resubscription fails → increment failure count → possibly open circuit
+
+    3. Circuit opens after threshold failures → waits break duration → half-open → test
+  example: []
+  syntax:
+    content: 'public sealed class AutoResubscribePolicy : IAsyncDisposable'
+    content.vb: Public NotInheritable Class AutoResubscribePolicy Implements IAsyncDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IAsyncDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.#ctor(MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator,MarketDataCollector.Application.Subscriptions.Services.AutoResubscribeOptions,Serilog.ILogger)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.#ctor(MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator,MarketDataCollector.Application.Subscriptions.Services.AutoResubscribeOptions,Serilog.ILogger)
+  id: '#ctor(MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator,MarketDataCollector.Application.Subscriptions.Services.AutoResubscribeOptions,Serilog.ILogger)'
+  parent: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy
+  langs:
+  - csharp
+  - vb
+  name: AutoResubscribePolicy(SubscriptionOrchestrator, AutoResubscribeOptions?, ILogger?)
+  nameWithType: AutoResubscribePolicy.AutoResubscribePolicy(SubscriptionOrchestrator, AutoResubscribeOptions?, ILogger?)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.AutoResubscribePolicy(MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator, MarketDataCollector.Application.Subscriptions.Services.AutoResubscribeOptions?, Serilog.ILogger?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+    startLine: 41
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  syntax:
+    content: public AutoResubscribePolicy(SubscriptionOrchestrator subscriptionManager, AutoResubscribeOptions? options = null, ILogger? log = null)
+    parameters:
+    - id: subscriptionManager
+      type: MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator
+    - id: options
+      type: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribeOptions
+    - id: log
+      type: Serilog.ILogger
+    content.vb: Public Sub New(subscriptionManager As SubscriptionOrchestrator, options As AutoResubscribeOptions = Nothing, log As ILogger = Nothing)
+  overload: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.#ctor*
+  nameWithType.vb: AutoResubscribePolicy.New(SubscriptionOrchestrator, AutoResubscribeOptions, ILogger)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.New(MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator, MarketDataCollector.Application.Subscriptions.Services.AutoResubscribeOptions, Serilog.ILogger)
+  name.vb: New(SubscriptionOrchestrator, AutoResubscribeOptions, ILogger)
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.CurrentCircuitState
+  commentId: P:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.CurrentCircuitState
+  id: CurrentCircuitState
+  parent: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy
+  langs:
+  - csharp
+  - vb
+  name: CurrentCircuitState
+  nameWithType: AutoResubscribePolicy.CurrentCircuitState
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.CurrentCircuitState
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CurrentCircuitState
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+    startLine: 65
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Current state of the global circuit breaker.
+  example: []
+  syntax:
+    content: public CircuitState CurrentCircuitState { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Subscriptions.Models.CircuitState
+    content.vb: Public ReadOnly Property CurrentCircuitState As CircuitState
+  overload: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.CurrentCircuitState*
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.SymbolsInCooldown
+  commentId: P:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.SymbolsInCooldown
+  id: SymbolsInCooldown
+  parent: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy
+  langs:
+  - csharp
+  - vb
+  name: SymbolsInCooldown
+  nameWithType: AutoResubscribePolicy.SymbolsInCooldown
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.SymbolsInCooldown
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SymbolsInCooldown
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+    startLine: 73
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Number of symbols currently in cooldown.
+  example: []
+  syntax:
+    content: public int SymbolsInCooldown { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SymbolsInCooldown As Integer
+  overload: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.SymbolsInCooldown*
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.SymbolsWithOpenCircuit
+  commentId: P:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.SymbolsWithOpenCircuit
+  id: SymbolsWithOpenCircuit
+  parent: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy
+  langs:
+  - csharp
+  - vb
+  name: SymbolsWithOpenCircuit
+  nameWithType: AutoResubscribePolicy.SymbolsWithOpenCircuit
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.SymbolsWithOpenCircuit
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SymbolsWithOpenCircuit
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+    startLine: 78
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Number of symbols with open circuit breakers.
+  example: []
+  syntax:
+    content: public int SymbolsWithOpenCircuit { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SymbolsWithOpenCircuit As Integer
+  overload: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.SymbolsWithOpenCircuit*
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnIntegrityEventAsync(System.String,MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity,MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnIntegrityEventAsync(System.String,MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity,MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  id: OnIntegrityEventAsync(System.String,MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity,MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy
+  langs:
+  - csharp
+  - vb
+  name: OnIntegrityEventAsync(string, IntegritySeverity, AppConfig, CancellationToken)
+  nameWithType: AutoResubscribePolicy.OnIntegrityEventAsync(string, IntegritySeverity, AppConfig, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnIntegrityEventAsync(string, MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity, MarketDataCollector.Application.Config.AppConfig, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnIntegrityEventAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+    startLine: 89
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: >-
+    Handles an integrity event and potentially triggers resubscription.
+
+    This is the main entry point for the policy.
+  example: []
+  syntax:
+    content: public Task<bool> OnIntegrityEventAsync(string symbol, IntegritySeverity severity, AppConfig config, CancellationToken ct = default)
+    parameters:
+    - id: symbol
+      type: System.String
+      description: The symbol that experienced the integrity event.
+    - id: severity
+      type: MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity
+      description: Severity of the integrity event.
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+      description: Current symbol configuration for resubscription.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: True if resubscription was triggered, false if skipped.
+    content.vb: Public Function OnIntegrityEventAsync(symbol As String, severity As IntegritySeverity, config As AppConfig, ct As CancellationToken = Nothing) As Task(Of Boolean)
+  overload: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnIntegrityEventAsync*
+  nameWithType.vb: AutoResubscribePolicy.OnIntegrityEventAsync(String, IntegritySeverity, AppConfig, CancellationToken)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnIntegrityEventAsync(String, MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity, MarketDataCollector.Application.Config.AppConfig, System.Threading.CancellationToken)
+  name.vb: OnIntegrityEventAsync(String, IntegritySeverity, AppConfig, CancellationToken)
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnDepthIntegrityEventAsync(MarketDataCollector.Contracts.Domain.Models.DepthIntegrityEvent,MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnDepthIntegrityEventAsync(MarketDataCollector.Contracts.Domain.Models.DepthIntegrityEvent,MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  id: OnDepthIntegrityEventAsync(MarketDataCollector.Contracts.Domain.Models.DepthIntegrityEvent,MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy
+  langs:
+  - csharp
+  - vb
+  name: OnDepthIntegrityEventAsync(DepthIntegrityEvent, AppConfig, CancellationToken)
+  nameWithType: AutoResubscribePolicy.OnDepthIntegrityEventAsync(DepthIntegrityEvent, AppConfig, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnDepthIntegrityEventAsync(MarketDataCollector.Contracts.Domain.Models.DepthIntegrityEvent, MarketDataCollector.Application.Config.AppConfig, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnDepthIntegrityEventAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+    startLine: 176
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Handles a depth integrity event.
+  example: []
+  syntax:
+    content: public Task<bool> OnDepthIntegrityEventAsync(DepthIntegrityEvent evt, AppConfig config, CancellationToken ct = default)
+    parameters:
+    - id: evt
+      type: MarketDataCollector.Contracts.Domain.Models.DepthIntegrityEvent
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function OnDepthIntegrityEventAsync(evt As DepthIntegrityEvent, config As AppConfig, ct As CancellationToken = Nothing) As Task(Of Boolean)
+  overload: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnDepthIntegrityEventAsync*
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnTradeIntegrityEventAsync(MarketDataCollector.Contracts.Domain.Models.IntegrityEvent,MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnTradeIntegrityEventAsync(MarketDataCollector.Contracts.Domain.Models.IntegrityEvent,MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  id: OnTradeIntegrityEventAsync(MarketDataCollector.Contracts.Domain.Models.IntegrityEvent,MarketDataCollector.Application.Config.AppConfig,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy
+  langs:
+  - csharp
+  - vb
+  name: OnTradeIntegrityEventAsync(IntegrityEvent, AppConfig, CancellationToken)
+  nameWithType: AutoResubscribePolicy.OnTradeIntegrityEventAsync(IntegrityEvent, AppConfig, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnTradeIntegrityEventAsync(MarketDataCollector.Contracts.Domain.Models.IntegrityEvent, MarketDataCollector.Application.Config.AppConfig, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnTradeIntegrityEventAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+    startLine: 200
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Handles a trade integrity event.
+  example: []
+  syntax:
+    content: public Task<bool> OnTradeIntegrityEventAsync(IntegrityEvent evt, AppConfig config, CancellationToken ct = default)
+    parameters:
+    - id: evt
+      type: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function OnTradeIntegrityEventAsync(evt As IntegrityEvent, config As AppConfig, ct As CancellationToken = Nothing) As Task(Of Boolean)
+  overload: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnTradeIntegrityEventAsync*
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.ResetCircuitBreaker
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.ResetCircuitBreaker
+  id: ResetCircuitBreaker
+  parent: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy
+  langs:
+  - csharp
+  - vb
+  name: ResetCircuitBreaker()
+  nameWithType: AutoResubscribePolicy.ResetCircuitBreaker()
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.ResetCircuitBreaker()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResetCircuitBreaker
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+    startLine: 212
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: >-
+    Manually resets the circuit breaker to closed state.
+
+    Use with caution.
+  example: []
+  syntax:
+    content: public void ResetCircuitBreaker()
+    content.vb: Public Sub ResetCircuitBreaker()
+  overload: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.ResetCircuitBreaker*
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.ResetSymbolCircuit(System.String)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.ResetSymbolCircuit(System.String)
+  id: ResetSymbolCircuit(System.String)
+  parent: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy
+  langs:
+  - csharp
+  - vb
+  name: ResetSymbolCircuit(string)
+  nameWithType: AutoResubscribePolicy.ResetSymbolCircuit(string)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.ResetSymbolCircuit(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResetSymbolCircuit
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+    startLine: 226
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Resets the circuit breaker for a specific symbol.
+  example: []
+  syntax:
+    content: public void ResetSymbolCircuit(string symbol)
+    parameters:
+    - id: symbol
+      type: System.String
+    content.vb: Public Sub ResetSymbolCircuit(symbol As String)
+  overload: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.ResetSymbolCircuit*
+  nameWithType.vb: AutoResubscribePolicy.ResetSymbolCircuit(String)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.ResetSymbolCircuit(String)
+  name.vb: ResetSymbolCircuit(String)
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.DisposeAsync
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.DisposeAsync
+  id: DisposeAsync
+  parent: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy
+  langs:
+  - csharp
+  - vb
+  name: DisposeAsync()
+  nameWithType: AutoResubscribePolicy.DisposeAsync()
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.DisposeAsync()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisposeAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/AutoResubscribePolicy.cs
+    startLine: 355
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: >-
+    Performs application-defined tasks associated with freeing, releasing, or
+
+    resetting unmanaged resources asynchronously.
+  example: []
+  syntax:
+    content: public ValueTask DisposeAsync()
+    return:
+      type: System.Threading.Tasks.ValueTask
+      description: A task that represents the asynchronous dispose operation.
+    content.vb: Public Function DisposeAsync() As ValueTask
+  overload: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.DisposeAsync*
+  implements:
+  - System.IAsyncDisposable.DisposeAsync
+references:
+- uid: MarketDataCollector.Application.Subscriptions.Services
+  commentId: N:MarketDataCollector.Application.Subscriptions.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Subscriptions.Services
+  nameWithType: MarketDataCollector.Application.Subscriptions.Services
+  fullName: MarketDataCollector.Application.Subscriptions.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Services
+    name: Services
+    href: MarketDataCollector.Application.Subscriptions.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Services
+    name: Services
+    href: MarketDataCollector.Application.Subscriptions.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IAsyncDisposable
+  commentId: T:System.IAsyncDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
+  name: IAsyncDisposable
+  nameWithType: IAsyncDisposable
+  fullName: System.IAsyncDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.#ctor
+  href: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.html#MarketDataCollector_Application_Subscriptions_Services_AutoResubscribePolicy__ctor_MarketDataCollector_Application_Subscriptions_SubscriptionOrchestrator_MarketDataCollector_Application_Subscriptions_Services_AutoResubscribeOptions_Serilog_ILogger_
+  name: AutoResubscribePolicy
+  nameWithType: AutoResubscribePolicy.AutoResubscribePolicy
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.AutoResubscribePolicy
+  nameWithType.vb: AutoResubscribePolicy.New
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.New
+  name.vb: New
+- uid: MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator
+  commentId: T:MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator
+  parent: MarketDataCollector.Application.Subscriptions
+  href: MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator.html
+  name: SubscriptionOrchestrator
+  nameWithType: SubscriptionOrchestrator
+  fullName: MarketDataCollector.Application.Subscriptions.SubscriptionOrchestrator
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribeOptions
+  commentId: T:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribeOptions
+  parent: MarketDataCollector.Application.Subscriptions.Services
+  href: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribeOptions.html
+  name: AutoResubscribeOptions
+  nameWithType: AutoResubscribeOptions
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribeOptions
+- uid: Serilog.ILogger
+  commentId: T:Serilog.ILogger
+  parent: Serilog
+  isExternal: true
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Serilog.ILogger
+- uid: MarketDataCollector.Application.Subscriptions
+  commentId: N:MarketDataCollector.Application.Subscriptions
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Subscriptions
+  nameWithType: MarketDataCollector.Application.Subscriptions
+  fullName: MarketDataCollector.Application.Subscriptions
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+- uid: Serilog
+  commentId: N:Serilog
+  isExternal: true
+  name: Serilog
+  nameWithType: Serilog
+  fullName: Serilog
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.CurrentCircuitState*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.CurrentCircuitState
+  href: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.html#MarketDataCollector_Application_Subscriptions_Services_AutoResubscribePolicy_CurrentCircuitState
+  name: CurrentCircuitState
+  nameWithType: AutoResubscribePolicy.CurrentCircuitState
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.CurrentCircuitState
+- uid: MarketDataCollector.Application.Subscriptions.Models.CircuitState
+  commentId: T:MarketDataCollector.Application.Subscriptions.Models.CircuitState
+  parent: MarketDataCollector.Application.Subscriptions.Models
+  href: MarketDataCollector.Application.Subscriptions.Models.CircuitState.html
+  name: CircuitState
+  nameWithType: CircuitState
+  fullName: MarketDataCollector.Application.Subscriptions.Models.CircuitState
+- uid: MarketDataCollector.Application.Subscriptions.Models
+  commentId: N:MarketDataCollector.Application.Subscriptions.Models
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Subscriptions.Models
+  nameWithType: MarketDataCollector.Application.Subscriptions.Models
+  fullName: MarketDataCollector.Application.Subscriptions.Models
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Models
+    name: Models
+    href: MarketDataCollector.Application.Subscriptions.Models.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Models
+    name: Models
+    href: MarketDataCollector.Application.Subscriptions.Models.html
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.SymbolsInCooldown*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.SymbolsInCooldown
+  href: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.html#MarketDataCollector_Application_Subscriptions_Services_AutoResubscribePolicy_SymbolsInCooldown
+  name: SymbolsInCooldown
+  nameWithType: AutoResubscribePolicy.SymbolsInCooldown
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.SymbolsInCooldown
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.SymbolsWithOpenCircuit*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.SymbolsWithOpenCircuit
+  href: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.html#MarketDataCollector_Application_Subscriptions_Services_AutoResubscribePolicy_SymbolsWithOpenCircuit
+  name: SymbolsWithOpenCircuit
+  nameWithType: AutoResubscribePolicy.SymbolsWithOpenCircuit
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.SymbolsWithOpenCircuit
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnIntegrityEventAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnIntegrityEventAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.html#MarketDataCollector_Application_Subscriptions_Services_AutoResubscribePolicy_OnIntegrityEventAsync_System_String_MarketDataCollector_Contracts_Domain_Enums_IntegritySeverity_MarketDataCollector_Application_Config_AppConfig_System_Threading_CancellationToken_
+  name: OnIntegrityEventAsync
+  nameWithType: AutoResubscribePolicy.OnIntegrityEventAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnIntegrityEventAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity
+  commentId: T:MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity
+  parent: MarketDataCollector.Contracts.Domain.Enums
+  href: MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity.html
+  name: IntegritySeverity
+  nameWithType: IntegritySeverity
+  fullName: MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity
+- uid: MarketDataCollector.Application.Config.AppConfig
+  commentId: T:MarketDataCollector.Application.Config.AppConfig
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.AppConfig.html
+  name: AppConfig
+  nameWithType: AppConfig
+  fullName: MarketDataCollector.Application.Config.AppConfig
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: MarketDataCollector.Contracts.Domain.Enums
+  commentId: N:MarketDataCollector.Contracts.Domain.Enums
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Enums
+  nameWithType: MarketDataCollector.Contracts.Domain.Enums
+  fullName: MarketDataCollector.Contracts.Domain.Enums
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Enums
+    name: Enums
+    href: MarketDataCollector.Contracts.Domain.Enums.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Enums
+    name: Enums
+    href: MarketDataCollector.Contracts.Domain.Enums.html
+- uid: MarketDataCollector.Application.Config
+  commentId: N:MarketDataCollector.Application.Config
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config
+  nameWithType: MarketDataCollector.Application.Config
+  fullName: MarketDataCollector.Application.Config
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnDepthIntegrityEventAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnDepthIntegrityEventAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.html#MarketDataCollector_Application_Subscriptions_Services_AutoResubscribePolicy_OnDepthIntegrityEventAsync_MarketDataCollector_Contracts_Domain_Models_DepthIntegrityEvent_MarketDataCollector_Application_Config_AppConfig_System_Threading_CancellationToken_
+  name: OnDepthIntegrityEventAsync
+  nameWithType: AutoResubscribePolicy.OnDepthIntegrityEventAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnDepthIntegrityEventAsync
+- uid: MarketDataCollector.Contracts.Domain.Models.DepthIntegrityEvent
+  commentId: T:MarketDataCollector.Contracts.Domain.Models.DepthIntegrityEvent
+  parent: MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.Contracts.Domain.Models.DepthIntegrityEvent.html
+  name: DepthIntegrityEvent
+  nameWithType: DepthIntegrityEvent
+  fullName: MarketDataCollector.Contracts.Domain.Models.DepthIntegrityEvent
+- uid: MarketDataCollector.Contracts.Domain.Models
+  commentId: N:MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Models
+  nameWithType: MarketDataCollector.Contracts.Domain.Models
+  fullName: MarketDataCollector.Contracts.Domain.Models
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Models
+    name: Models
+    href: MarketDataCollector.Contracts.Domain.Models.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Models
+    name: Models
+    href: MarketDataCollector.Contracts.Domain.Models.html
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnTradeIntegrityEventAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnTradeIntegrityEventAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.html#MarketDataCollector_Application_Subscriptions_Services_AutoResubscribePolicy_OnTradeIntegrityEventAsync_MarketDataCollector_Contracts_Domain_Models_IntegrityEvent_MarketDataCollector_Application_Config_AppConfig_System_Threading_CancellationToken_
+  name: OnTradeIntegrityEventAsync
+  nameWithType: AutoResubscribePolicy.OnTradeIntegrityEventAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.OnTradeIntegrityEventAsync
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  commentId: T:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  parent: MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html
+  name: IntegrityEvent
+  nameWithType: IntegrityEvent
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.ResetCircuitBreaker*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.ResetCircuitBreaker
+  href: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.html#MarketDataCollector_Application_Subscriptions_Services_AutoResubscribePolicy_ResetCircuitBreaker
+  name: ResetCircuitBreaker
+  nameWithType: AutoResubscribePolicy.ResetCircuitBreaker
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.ResetCircuitBreaker
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.ResetSymbolCircuit*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.ResetSymbolCircuit
+  href: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.html#MarketDataCollector_Application_Subscriptions_Services_AutoResubscribePolicy_ResetSymbolCircuit_System_String_
+  name: ResetSymbolCircuit
+  nameWithType: AutoResubscribePolicy.ResetSymbolCircuit
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.ResetSymbolCircuit
+- uid: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.DisposeAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.DisposeAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.html#MarketDataCollector_Application_Subscriptions_Services_AutoResubscribePolicy_DisposeAsync
+  name: DisposeAsync
+  nameWithType: AutoResubscribePolicy.DisposeAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.AutoResubscribePolicy.DisposeAsync
+- uid: System.IAsyncDisposable.DisposeAsync
+  commentId: M:System.IAsyncDisposable.DisposeAsync
+  parent: System.IAsyncDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  name: DisposeAsync()
+  nameWithType: IAsyncDisposable.DisposeAsync()
+  fullName: System.IAsyncDisposable.DisposeAsync()
+  spec.csharp:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+- uid: System.Threading.Tasks.ValueTask
+  commentId: T:System.Threading.Tasks.ValueTask
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask
+  name: ValueTask
+  nameWithType: ValueTask
+  fullName: System.Threading.Tasks.ValueTask

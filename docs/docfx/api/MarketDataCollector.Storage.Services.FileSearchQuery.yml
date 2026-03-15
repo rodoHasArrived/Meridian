@@ -1,0 +1,1053 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery
+  commentId: T:MarketDataCollector.Storage.Services.FileSearchQuery
+  id: FileSearchQuery
+  parent: MarketDataCollector.Storage.Services
+  children:
+  - MarketDataCollector.Storage.Services.FileSearchQuery.#ctor(System.String[],MarketDataCollector.Contracts.Domain.Enums.MarketEventType[],System.String[],System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset},System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Double},System.String,MarketDataCollector.Storage.Services.SortField,System.Boolean,System.Int32,System.Int32)
+  - MarketDataCollector.Storage.Services.FileSearchQuery.Descending
+  - MarketDataCollector.Storage.Services.FileSearchQuery.From
+  - MarketDataCollector.Storage.Services.FileSearchQuery.MaxSize
+  - MarketDataCollector.Storage.Services.FileSearchQuery.MinQualityScore
+  - MarketDataCollector.Storage.Services.FileSearchQuery.MinSize
+  - MarketDataCollector.Storage.Services.FileSearchQuery.PathPattern
+  - MarketDataCollector.Storage.Services.FileSearchQuery.Skip
+  - MarketDataCollector.Storage.Services.FileSearchQuery.SortBy
+  - MarketDataCollector.Storage.Services.FileSearchQuery.Sources
+  - MarketDataCollector.Storage.Services.FileSearchQuery.Symbols
+  - MarketDataCollector.Storage.Services.FileSearchQuery.Take
+  - MarketDataCollector.Storage.Services.FileSearchQuery.To
+  - MarketDataCollector.Storage.Services.FileSearchQuery.Types
+  langs:
+  - csharp
+  - vb
+  name: FileSearchQuery
+  nameWithType: FileSearchQuery
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FileSearchQuery
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 595
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: 'public sealed record FileSearchQuery : IEquatable<FileSearchQuery>'
+    content.vb: Public NotInheritable Class FileSearchQuery Implements IEquatable(Of FileSearchQuery)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Storage.Services.FileSearchQuery}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.#ctor(System.String[],MarketDataCollector.Contracts.Domain.Enums.MarketEventType[],System.String[],System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset},System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Double},System.String,MarketDataCollector.Storage.Services.SortField,System.Boolean,System.Int32,System.Int32)
+  commentId: M:MarketDataCollector.Storage.Services.FileSearchQuery.#ctor(System.String[],MarketDataCollector.Contracts.Domain.Enums.MarketEventType[],System.String[],System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset},System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Double},System.String,MarketDataCollector.Storage.Services.SortField,System.Boolean,System.Int32,System.Int32)
+  id: '#ctor(System.String[],MarketDataCollector.Contracts.Domain.Enums.MarketEventType[],System.String[],System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset},System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Double},System.String,MarketDataCollector.Storage.Services.SortField,System.Boolean,System.Int32,System.Int32)'
+  parent: MarketDataCollector.Storage.Services.FileSearchQuery
+  langs:
+  - csharp
+  - vb
+  name: FileSearchQuery(string[]?, MarketEventType[]?, string[]?, DateTimeOffset?, DateTimeOffset?, long?, long?, double?, string?, SortField, bool, int, int)
+  nameWithType: FileSearchQuery.FileSearchQuery(string[]?, MarketEventType[]?, string[]?, DateTimeOffset?, DateTimeOffset?, long?, long?, double?, string?, SortField, bool, int, int)
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.FileSearchQuery(string[]?, MarketDataCollector.Contracts.Domain.Enums.MarketEventType[]?, string[]?, System.DateTimeOffset?, System.DateTimeOffset?, long?, long?, double?, string?, MarketDataCollector.Storage.Services.SortField, bool, int, int)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 595
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public FileSearchQuery(string[]? Symbols = null, MarketEventType[]? Types = null, string[]? Sources = null, DateTimeOffset? From = null, DateTimeOffset? To = null, long? MinSize = null, long? MaxSize = null, double? MinQualityScore = null, string? PathPattern = null, SortField SortBy = SortField.Date, bool Descending = true, int Skip = 0, int Take = 100)
+    parameters:
+    - id: Symbols
+      type: System.String[]
+    - id: Types
+      type: MarketDataCollector.Contracts.Domain.Enums.MarketEventType[]
+    - id: Sources
+      type: System.String[]
+    - id: From
+      type: System.Nullable{System.DateTimeOffset}
+    - id: To
+      type: System.Nullable{System.DateTimeOffset}
+    - id: MinSize
+      type: System.Nullable{System.Int64}
+    - id: MaxSize
+      type: System.Nullable{System.Int64}
+    - id: MinQualityScore
+      type: System.Nullable{System.Double}
+    - id: PathPattern
+      type: System.String
+    - id: SortBy
+      type: MarketDataCollector.Storage.Services.SortField
+    - id: Descending
+      type: System.Boolean
+    - id: Skip
+      type: System.Int32
+    - id: Take
+      type: System.Int32
+    content.vb: Public Sub New(Symbols As String() = Nothing, Types As MarketEventType() = Nothing, Sources As String() = Nothing, From As DateTimeOffset? = Nothing, [To] As DateTimeOffset? = Nothing, MinSize As Long? = Nothing, MaxSize As Long? = Nothing, MinQualityScore As Double? = Nothing, PathPattern As String = Nothing, SortBy As SortField = SortField.Date, Descending As Boolean = True, Skip As Integer = 0, Take As Integer = 100)
+  overload: MarketDataCollector.Storage.Services.FileSearchQuery.#ctor*
+  nameWithType.vb: FileSearchQuery.New(String(), MarketEventType(), String(), DateTimeOffset?, DateTimeOffset?, Long?, Long?, Double?, String, SortField, Boolean, Integer, Integer)
+  fullName.vb: MarketDataCollector.Storage.Services.FileSearchQuery.New(String(), MarketDataCollector.Contracts.Domain.Enums.MarketEventType(), String(), System.DateTimeOffset?, System.DateTimeOffset?, Long?, Long?, Double?, String, MarketDataCollector.Storage.Services.SortField, Boolean, Integer, Integer)
+  name.vb: New(String(), MarketEventType(), String(), DateTimeOffset?, DateTimeOffset?, Long?, Long?, Double?, String, SortField, Boolean, Integer, Integer)
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.Symbols
+  commentId: P:MarketDataCollector.Storage.Services.FileSearchQuery.Symbols
+  id: Symbols
+  parent: MarketDataCollector.Storage.Services.FileSearchQuery
+  langs:
+  - csharp
+  - vb
+  name: Symbols
+  nameWithType: FileSearchQuery.Symbols
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.Symbols
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Symbols
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 596
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public string[]? Symbols { get; init; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: Public Property Symbols As String()
+  overload: MarketDataCollector.Storage.Services.FileSearchQuery.Symbols*
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.Types
+  commentId: P:MarketDataCollector.Storage.Services.FileSearchQuery.Types
+  id: Types
+  parent: MarketDataCollector.Storage.Services.FileSearchQuery
+  langs:
+  - csharp
+  - vb
+  name: Types
+  nameWithType: FileSearchQuery.Types
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.Types
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Types
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 597
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public MarketEventType[]? Types { get; init; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Contracts.Domain.Enums.MarketEventType[]
+    content.vb: Public Property Types As MarketEventType()
+  overload: MarketDataCollector.Storage.Services.FileSearchQuery.Types*
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.Sources
+  commentId: P:MarketDataCollector.Storage.Services.FileSearchQuery.Sources
+  id: Sources
+  parent: MarketDataCollector.Storage.Services.FileSearchQuery
+  langs:
+  - csharp
+  - vb
+  name: Sources
+  nameWithType: FileSearchQuery.Sources
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.Sources
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Sources
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 598
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public string[]? Sources { get; init; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: Public Property Sources As String()
+  overload: MarketDataCollector.Storage.Services.FileSearchQuery.Sources*
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.From
+  commentId: P:MarketDataCollector.Storage.Services.FileSearchQuery.From
+  id: From
+  parent: MarketDataCollector.Storage.Services.FileSearchQuery
+  langs:
+  - csharp
+  - vb
+  name: From
+  nameWithType: FileSearchQuery.From
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.From
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: From
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 599
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public DateTimeOffset? From { get; init; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTimeOffset}
+    content.vb: Public Property From As DateTimeOffset?
+  overload: MarketDataCollector.Storage.Services.FileSearchQuery.From*
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.To
+  commentId: P:MarketDataCollector.Storage.Services.FileSearchQuery.To
+  id: To
+  parent: MarketDataCollector.Storage.Services.FileSearchQuery
+  langs:
+  - csharp
+  - vb
+  name: To
+  nameWithType: FileSearchQuery.To
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.To
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: To
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 600
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public DateTimeOffset? To { get; init; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTimeOffset}
+    content.vb: Public Property [To] As DateTimeOffset?
+  overload: MarketDataCollector.Storage.Services.FileSearchQuery.To*
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.MinSize
+  commentId: P:MarketDataCollector.Storage.Services.FileSearchQuery.MinSize
+  id: MinSize
+  parent: MarketDataCollector.Storage.Services.FileSearchQuery
+  langs:
+  - csharp
+  - vb
+  name: MinSize
+  nameWithType: FileSearchQuery.MinSize
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.MinSize
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MinSize
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 601
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public long? MinSize { get; init; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int64}
+    content.vb: Public Property MinSize As Long?
+  overload: MarketDataCollector.Storage.Services.FileSearchQuery.MinSize*
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.MaxSize
+  commentId: P:MarketDataCollector.Storage.Services.FileSearchQuery.MaxSize
+  id: MaxSize
+  parent: MarketDataCollector.Storage.Services.FileSearchQuery
+  langs:
+  - csharp
+  - vb
+  name: MaxSize
+  nameWithType: FileSearchQuery.MaxSize
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.MaxSize
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MaxSize
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 602
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public long? MaxSize { get; init; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int64}
+    content.vb: Public Property MaxSize As Long?
+  overload: MarketDataCollector.Storage.Services.FileSearchQuery.MaxSize*
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.MinQualityScore
+  commentId: P:MarketDataCollector.Storage.Services.FileSearchQuery.MinQualityScore
+  id: MinQualityScore
+  parent: MarketDataCollector.Storage.Services.FileSearchQuery
+  langs:
+  - csharp
+  - vb
+  name: MinQualityScore
+  nameWithType: FileSearchQuery.MinQualityScore
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.MinQualityScore
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MinQualityScore
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 603
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public double? MinQualityScore { get; init; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public Property MinQualityScore As Double?
+  overload: MarketDataCollector.Storage.Services.FileSearchQuery.MinQualityScore*
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.PathPattern
+  commentId: P:MarketDataCollector.Storage.Services.FileSearchQuery.PathPattern
+  id: PathPattern
+  parent: MarketDataCollector.Storage.Services.FileSearchQuery
+  langs:
+  - csharp
+  - vb
+  name: PathPattern
+  nameWithType: FileSearchQuery.PathPattern
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.PathPattern
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PathPattern
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 604
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public string? PathPattern { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property PathPattern As String
+  overload: MarketDataCollector.Storage.Services.FileSearchQuery.PathPattern*
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.SortBy
+  commentId: P:MarketDataCollector.Storage.Services.FileSearchQuery.SortBy
+  id: SortBy
+  parent: MarketDataCollector.Storage.Services.FileSearchQuery
+  langs:
+  - csharp
+  - vb
+  name: SortBy
+  nameWithType: FileSearchQuery.SortBy
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.SortBy
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SortBy
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 605
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public SortField SortBy { get; init; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Storage.Services.SortField
+    content.vb: Public Property SortBy As SortField
+  overload: MarketDataCollector.Storage.Services.FileSearchQuery.SortBy*
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.Descending
+  commentId: P:MarketDataCollector.Storage.Services.FileSearchQuery.Descending
+  id: Descending
+  parent: MarketDataCollector.Storage.Services.FileSearchQuery
+  langs:
+  - csharp
+  - vb
+  name: Descending
+  nameWithType: FileSearchQuery.Descending
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.Descending
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Descending
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 606
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public bool Descending { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Descending As Boolean
+  overload: MarketDataCollector.Storage.Services.FileSearchQuery.Descending*
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.Skip
+  commentId: P:MarketDataCollector.Storage.Services.FileSearchQuery.Skip
+  id: Skip
+  parent: MarketDataCollector.Storage.Services.FileSearchQuery
+  langs:
+  - csharp
+  - vb
+  name: Skip
+  nameWithType: FileSearchQuery.Skip
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.Skip
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Skip
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 607
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public int Skip { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Skip As Integer
+  overload: MarketDataCollector.Storage.Services.FileSearchQuery.Skip*
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.Take
+  commentId: P:MarketDataCollector.Storage.Services.FileSearchQuery.Take
+  id: Take
+  parent: MarketDataCollector.Storage.Services.FileSearchQuery
+  langs:
+  - csharp
+  - vb
+  name: Take
+  nameWithType: FileSearchQuery.Take
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.Take
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Take
+    path: ../../src/MarketDataCollector.Storage/Services/StorageSearchService.cs
+    startLine: 608
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public int Take { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Take As Integer
+  overload: MarketDataCollector.Storage.Services.FileSearchQuery.Take*
+references:
+- uid: MarketDataCollector.Storage.Services
+  commentId: N:MarketDataCollector.Storage.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Services
+  nameWithType: MarketDataCollector.Storage.Services
+  fullName: MarketDataCollector.Storage.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Storage.Services.FileSearchQuery}
+  commentId: T:System.IEquatable{MarketDataCollector.Storage.Services.FileSearchQuery}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<FileSearchQuery>
+  nameWithType: IEquatable<FileSearchQuery>
+  fullName: System.IEquatable<MarketDataCollector.Storage.Services.FileSearchQuery>
+  nameWithType.vb: IEquatable(Of FileSearchQuery)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Storage.Services.FileSearchQuery)
+  name.vb: IEquatable(Of FileSearchQuery)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.FileSearchQuery
+    name: FileSearchQuery
+    href: MarketDataCollector.Storage.Services.FileSearchQuery.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.FileSearchQuery
+    name: FileSearchQuery
+    href: MarketDataCollector.Storage.Services.FileSearchQuery.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.#ctor*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileSearchQuery.#ctor
+  href: MarketDataCollector.Storage.Services.FileSearchQuery.html#MarketDataCollector_Storage_Services_FileSearchQuery__ctor_System_String___MarketDataCollector_Contracts_Domain_Enums_MarketEventType___System_String___System_Nullable_System_DateTimeOffset__System_Nullable_System_DateTimeOffset__System_Nullable_System_Int64__System_Nullable_System_Int64__System_Nullable_System_Double__System_String_MarketDataCollector_Storage_Services_SortField_System_Boolean_System_Int32_System_Int32_
+  name: FileSearchQuery
+  nameWithType: FileSearchQuery.FileSearchQuery
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.FileSearchQuery
+  nameWithType.vb: FileSearchQuery.New
+  fullName.vb: MarketDataCollector.Storage.Services.FileSearchQuery.New
+  name.vb: New
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Contracts.Domain.Enums.MarketEventType[]
+  isExternal: true
+  name: MarketEventType[]
+  nameWithType: MarketEventType[]
+  fullName: MarketDataCollector.Contracts.Domain.Enums.MarketEventType[]
+  nameWithType.vb: MarketEventType()
+  fullName.vb: MarketDataCollector.Contracts.Domain.Enums.MarketEventType()
+  name.vb: MarketEventType()
+  spec.csharp:
+  - uid: MarketDataCollector.Contracts.Domain.Enums.MarketEventType
+    name: MarketEventType
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: MarketDataCollector.Contracts.Domain.Enums.MarketEventType
+    name: MarketEventType
+  - name: (
+  - name: )
+- uid: System.Nullable{System.DateTimeOffset}
+  commentId: T:System.Nullable{System.DateTimeOffset}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset?
+  nameWithType: DateTimeOffset?
+  fullName: System.DateTimeOffset?
+  spec.csharp:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+- uid: System.Nullable{System.Int64}
+  commentId: T:System.Nullable{System.Int64}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long?
+  nameWithType: long?
+  fullName: long?
+  nameWithType.vb: Long?
+  fullName.vb: Long?
+  name.vb: Long?
+  spec.csharp:
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '?'
+  spec.vb:
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '?'
+- uid: System.Nullable{System.Double}
+  commentId: T:System.Nullable{System.Double}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double?
+  nameWithType: double?
+  fullName: double?
+  nameWithType.vb: Double?
+  fullName.vb: Double?
+  name.vb: Double?
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Storage.Services.SortField
+  commentId: T:MarketDataCollector.Storage.Services.SortField
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.SortField.html
+  name: SortField
+  nameWithType: SortField
+  fullName: MarketDataCollector.Storage.Services.SortField
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.Symbols*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileSearchQuery.Symbols
+  href: MarketDataCollector.Storage.Services.FileSearchQuery.html#MarketDataCollector_Storage_Services_FileSearchQuery_Symbols
+  name: Symbols
+  nameWithType: FileSearchQuery.Symbols
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.Symbols
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.Types*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileSearchQuery.Types
+  href: MarketDataCollector.Storage.Services.FileSearchQuery.html#MarketDataCollector_Storage_Services_FileSearchQuery_Types
+  name: Types
+  nameWithType: FileSearchQuery.Types
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.Types
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.Sources*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileSearchQuery.Sources
+  href: MarketDataCollector.Storage.Services.FileSearchQuery.html#MarketDataCollector_Storage_Services_FileSearchQuery_Sources
+  name: Sources
+  nameWithType: FileSearchQuery.Sources
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.Sources
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.From*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileSearchQuery.From
+  href: MarketDataCollector.Storage.Services.FileSearchQuery.html#MarketDataCollector_Storage_Services_FileSearchQuery_From
+  name: From
+  nameWithType: FileSearchQuery.From
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.From
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.To*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileSearchQuery.To
+  href: MarketDataCollector.Storage.Services.FileSearchQuery.html#MarketDataCollector_Storage_Services_FileSearchQuery_To
+  name: To
+  nameWithType: FileSearchQuery.To
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.To
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.MinSize*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileSearchQuery.MinSize
+  href: MarketDataCollector.Storage.Services.FileSearchQuery.html#MarketDataCollector_Storage_Services_FileSearchQuery_MinSize
+  name: MinSize
+  nameWithType: FileSearchQuery.MinSize
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.MinSize
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.MaxSize*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileSearchQuery.MaxSize
+  href: MarketDataCollector.Storage.Services.FileSearchQuery.html#MarketDataCollector_Storage_Services_FileSearchQuery_MaxSize
+  name: MaxSize
+  nameWithType: FileSearchQuery.MaxSize
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.MaxSize
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.MinQualityScore*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileSearchQuery.MinQualityScore
+  href: MarketDataCollector.Storage.Services.FileSearchQuery.html#MarketDataCollector_Storage_Services_FileSearchQuery_MinQualityScore
+  name: MinQualityScore
+  nameWithType: FileSearchQuery.MinQualityScore
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.MinQualityScore
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.PathPattern*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileSearchQuery.PathPattern
+  href: MarketDataCollector.Storage.Services.FileSearchQuery.html#MarketDataCollector_Storage_Services_FileSearchQuery_PathPattern
+  name: PathPattern
+  nameWithType: FileSearchQuery.PathPattern
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.PathPattern
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.SortBy*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileSearchQuery.SortBy
+  href: MarketDataCollector.Storage.Services.FileSearchQuery.html#MarketDataCollector_Storage_Services_FileSearchQuery_SortBy
+  name: SortBy
+  nameWithType: FileSearchQuery.SortBy
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.SortBy
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.Descending*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileSearchQuery.Descending
+  href: MarketDataCollector.Storage.Services.FileSearchQuery.html#MarketDataCollector_Storage_Services_FileSearchQuery_Descending
+  name: Descending
+  nameWithType: FileSearchQuery.Descending
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.Descending
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.Skip*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileSearchQuery.Skip
+  href: MarketDataCollector.Storage.Services.FileSearchQuery.html#MarketDataCollector_Storage_Services_FileSearchQuery_Skip
+  name: Skip
+  nameWithType: FileSearchQuery.Skip
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.Skip
+- uid: MarketDataCollector.Storage.Services.FileSearchQuery.Take*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileSearchQuery.Take
+  href: MarketDataCollector.Storage.Services.FileSearchQuery.html#MarketDataCollector_Storage_Services_FileSearchQuery_Take
+  name: Take
+  nameWithType: FileSearchQuery.Take
+  fullName: MarketDataCollector.Storage.Services.FileSearchQuery.Take

@@ -1,0 +1,862 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices
+  id: BackfillServices
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  children:
+  - MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.#ctor(MarketDataCollector.Infrastructure.Adapters.Core.BackfillJobManager,MarketDataCollector.Infrastructure.Adapters.Core.BackfillRequestQueue,MarketDataCollector.Infrastructure.Adapters.Core.DataGapAnalyzer,MarketDataCollector.Infrastructure.Adapters.Core.ProviderRateLimitTracker,MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider,MarketDataCollector.Infrastructure.Adapters.Core.BackfillWorkerService)
+  - MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Dispose
+  - MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.GapAnalyzer
+  - MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.InitializeAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.JobManager
+  - MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Provider
+  - MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.RateLimitTracker
+  - MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.RequestQueue
+  - MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.StartWorker
+  - MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.StopWorkerAsync
+  - MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Worker
+  langs:
+  - csharp
+  - vb
+  name: BackfillServices
+  nameWithType: BackfillServices
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BackfillServices
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+    startLine: 707
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Container for all backfill-related services.
+  example: []
+  syntax:
+    content: 'public sealed class BackfillServices : IDisposable'
+    content.vb: Public NotInheritable Class BackfillServices Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.JobManager
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.JobManager
+  id: JobManager
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices
+  langs:
+  - csharp
+  - vb
+  name: JobManager
+  nameWithType: BackfillServices.JobManager
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.JobManager
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: JobManager
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+    startLine: 709
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  syntax:
+    content: public BackfillJobManager JobManager { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.BackfillJobManager
+    content.vb: Public ReadOnly Property JobManager As BackfillJobManager
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.JobManager*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.RequestQueue
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.RequestQueue
+  id: RequestQueue
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices
+  langs:
+  - csharp
+  - vb
+  name: RequestQueue
+  nameWithType: BackfillServices.RequestQueue
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.RequestQueue
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RequestQueue
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+    startLine: 710
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  syntax:
+    content: public BackfillRequestQueue RequestQueue { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.BackfillRequestQueue
+    content.vb: Public ReadOnly Property RequestQueue As BackfillRequestQueue
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.RequestQueue*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.GapAnalyzer
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.GapAnalyzer
+  id: GapAnalyzer
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices
+  langs:
+  - csharp
+  - vb
+  name: GapAnalyzer
+  nameWithType: BackfillServices.GapAnalyzer
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.GapAnalyzer
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GapAnalyzer
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+    startLine: 711
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  syntax:
+    content: public DataGapAnalyzer GapAnalyzer { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.DataGapAnalyzer
+    content.vb: Public ReadOnly Property GapAnalyzer As DataGapAnalyzer
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.GapAnalyzer*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.RateLimitTracker
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.RateLimitTracker
+  id: RateLimitTracker
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices
+  langs:
+  - csharp
+  - vb
+  name: RateLimitTracker
+  nameWithType: BackfillServices.RateLimitTracker
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.RateLimitTracker
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RateLimitTracker
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+    startLine: 712
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  syntax:
+    content: public ProviderRateLimitTracker RateLimitTracker { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRateLimitTracker
+    content.vb: Public ReadOnly Property RateLimitTracker As ProviderRateLimitTracker
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.RateLimitTracker*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Provider
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Provider
+  id: Provider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices
+  langs:
+  - csharp
+  - vb
+  name: Provider
+  nameWithType: BackfillServices.Provider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Provider
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Provider
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+    startLine: 713
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  syntax:
+    content: public CompositeHistoricalDataProvider Provider { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider
+    content.vb: Public ReadOnly Property Provider As CompositeHistoricalDataProvider
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Provider*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Worker
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Worker
+  id: Worker
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices
+  langs:
+  - csharp
+  - vb
+  name: Worker
+  nameWithType: BackfillServices.Worker
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Worker
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Worker
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+    startLine: 714
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  syntax:
+    content: public BackfillWorkerService Worker { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.BackfillWorkerService
+    content.vb: Public ReadOnly Property Worker As BackfillWorkerService
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Worker*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.#ctor(MarketDataCollector.Infrastructure.Adapters.Core.BackfillJobManager,MarketDataCollector.Infrastructure.Adapters.Core.BackfillRequestQueue,MarketDataCollector.Infrastructure.Adapters.Core.DataGapAnalyzer,MarketDataCollector.Infrastructure.Adapters.Core.ProviderRateLimitTracker,MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider,MarketDataCollector.Infrastructure.Adapters.Core.BackfillWorkerService)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.#ctor(MarketDataCollector.Infrastructure.Adapters.Core.BackfillJobManager,MarketDataCollector.Infrastructure.Adapters.Core.BackfillRequestQueue,MarketDataCollector.Infrastructure.Adapters.Core.DataGapAnalyzer,MarketDataCollector.Infrastructure.Adapters.Core.ProviderRateLimitTracker,MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider,MarketDataCollector.Infrastructure.Adapters.Core.BackfillWorkerService)
+  id: '#ctor(MarketDataCollector.Infrastructure.Adapters.Core.BackfillJobManager,MarketDataCollector.Infrastructure.Adapters.Core.BackfillRequestQueue,MarketDataCollector.Infrastructure.Adapters.Core.DataGapAnalyzer,MarketDataCollector.Infrastructure.Adapters.Core.ProviderRateLimitTracker,MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider,MarketDataCollector.Infrastructure.Adapters.Core.BackfillWorkerService)'
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices
+  langs:
+  - csharp
+  - vb
+  name: BackfillServices(BackfillJobManager, BackfillRequestQueue, DataGapAnalyzer, ProviderRateLimitTracker, CompositeHistoricalDataProvider, BackfillWorkerService)
+  nameWithType: BackfillServices.BackfillServices(BackfillJobManager, BackfillRequestQueue, DataGapAnalyzer, ProviderRateLimitTracker, CompositeHistoricalDataProvider, BackfillWorkerService)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.BackfillServices(MarketDataCollector.Infrastructure.Adapters.Core.BackfillJobManager, MarketDataCollector.Infrastructure.Adapters.Core.BackfillRequestQueue, MarketDataCollector.Infrastructure.Adapters.Core.DataGapAnalyzer, MarketDataCollector.Infrastructure.Adapters.Core.ProviderRateLimitTracker, MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider, MarketDataCollector.Infrastructure.Adapters.Core.BackfillWorkerService)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+    startLine: 716
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  syntax:
+    content: public BackfillServices(BackfillJobManager jobManager, BackfillRequestQueue requestQueue, DataGapAnalyzer gapAnalyzer, ProviderRateLimitTracker rateLimitTracker, CompositeHistoricalDataProvider provider, BackfillWorkerService worker)
+    parameters:
+    - id: jobManager
+      type: MarketDataCollector.Infrastructure.Adapters.Core.BackfillJobManager
+    - id: requestQueue
+      type: MarketDataCollector.Infrastructure.Adapters.Core.BackfillRequestQueue
+    - id: gapAnalyzer
+      type: MarketDataCollector.Infrastructure.Adapters.Core.DataGapAnalyzer
+    - id: rateLimitTracker
+      type: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRateLimitTracker
+    - id: provider
+      type: MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider
+    - id: worker
+      type: MarketDataCollector.Infrastructure.Adapters.Core.BackfillWorkerService
+    content.vb: Public Sub New(jobManager As BackfillJobManager, requestQueue As BackfillRequestQueue, gapAnalyzer As DataGapAnalyzer, rateLimitTracker As ProviderRateLimitTracker, provider As CompositeHistoricalDataProvider, worker As BackfillWorkerService)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.#ctor*
+  nameWithType.vb: BackfillServices.New(BackfillJobManager, BackfillRequestQueue, DataGapAnalyzer, ProviderRateLimitTracker, CompositeHistoricalDataProvider, BackfillWorkerService)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.New(MarketDataCollector.Infrastructure.Adapters.Core.BackfillJobManager, MarketDataCollector.Infrastructure.Adapters.Core.BackfillRequestQueue, MarketDataCollector.Infrastructure.Adapters.Core.DataGapAnalyzer, MarketDataCollector.Infrastructure.Adapters.Core.ProviderRateLimitTracker, MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider, MarketDataCollector.Infrastructure.Adapters.Core.BackfillWorkerService)
+  name.vb: New(BackfillJobManager, BackfillRequestQueue, DataGapAnalyzer, ProviderRateLimitTracker, CompositeHistoricalDataProvider, BackfillWorkerService)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.InitializeAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.InitializeAsync(System.Threading.CancellationToken)
+  id: InitializeAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices
+  langs:
+  - csharp
+  - vb
+  name: InitializeAsync(CancellationToken)
+  nameWithType: BackfillServices.InitializeAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.InitializeAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: InitializeAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+    startLine: 735
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Initialize services (load persisted jobs).
+  example: []
+  syntax:
+    content: public Task InitializeAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function InitializeAsync(ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.InitializeAsync*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.StartWorker
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.StartWorker
+  id: StartWorker
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices
+  langs:
+  - csharp
+  - vb
+  name: StartWorker()
+  nameWithType: BackfillServices.StartWorker()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.StartWorker()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StartWorker
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+    startLine: 743
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Start the worker service.
+  example: []
+  syntax:
+    content: public void StartWorker()
+    content.vb: Public Sub StartWorker()
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.StartWorker*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.StopWorkerAsync
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.StopWorkerAsync
+  id: StopWorkerAsync
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices
+  langs:
+  - csharp
+  - vb
+  name: StopWorkerAsync()
+  nameWithType: BackfillServices.StopWorkerAsync()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.StopWorkerAsync()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StopWorkerAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+    startLine: 751
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Stop the worker service.
+  example: []
+  syntax:
+    content: public Task StopWorkerAsync()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function StopWorkerAsync() As Task
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.StopWorkerAsync*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Dispose
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Dispose
+  id: Dispose
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: BackfillServices.Dispose()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Dispose
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/Backfill/BackfillWorkerService.cs
+    startLine: 756
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: MarketDataCollector.Infrastructure.Adapters.Core
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Core
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Core
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.JobManager*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.JobManager
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.html#MarketDataCollector_Infrastructure_Adapters_Core_BackfillServices_JobManager
+  name: JobManager
+  nameWithType: BackfillServices.JobManager
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.JobManager
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillJobManager
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.BackfillJobManager
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BackfillJobManager.html
+  name: BackfillJobManager
+  nameWithType: BackfillJobManager
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillJobManager
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.RequestQueue*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.RequestQueue
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.html#MarketDataCollector_Infrastructure_Adapters_Core_BackfillServices_RequestQueue
+  name: RequestQueue
+  nameWithType: BackfillServices.RequestQueue
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.RequestQueue
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillRequestQueue
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.BackfillRequestQueue
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BackfillRequestQueue.html
+  name: BackfillRequestQueue
+  nameWithType: BackfillRequestQueue
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillRequestQueue
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.GapAnalyzer*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.GapAnalyzer
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.html#MarketDataCollector_Infrastructure_Adapters_Core_BackfillServices_GapAnalyzer
+  name: GapAnalyzer
+  nameWithType: BackfillServices.GapAnalyzer
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.GapAnalyzer
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.DataGapAnalyzer
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.DataGapAnalyzer
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.DataGapAnalyzer.html
+  name: DataGapAnalyzer
+  nameWithType: DataGapAnalyzer
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.DataGapAnalyzer
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.RateLimitTracker*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.RateLimitTracker
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.html#MarketDataCollector_Infrastructure_Adapters_Core_BackfillServices_RateLimitTracker
+  name: RateLimitTracker
+  nameWithType: BackfillServices.RateLimitTracker
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.RateLimitTracker
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRateLimitTracker
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRateLimitTracker
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRateLimitTracker.html
+  name: ProviderRateLimitTracker
+  nameWithType: ProviderRateLimitTracker
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRateLimitTracker
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Provider*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Provider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.html#MarketDataCollector_Infrastructure_Adapters_Core_BackfillServices_Provider
+  name: Provider
+  nameWithType: BackfillServices.Provider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Provider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider.html
+  name: CompositeHistoricalDataProvider
+  nameWithType: CompositeHistoricalDataProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Worker*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Worker
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.html#MarketDataCollector_Infrastructure_Adapters_Core_BackfillServices_Worker
+  name: Worker
+  nameWithType: BackfillServices.Worker
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Worker
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillWorkerService
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.BackfillWorkerService
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BackfillWorkerService.html
+  name: BackfillWorkerService
+  nameWithType: BackfillWorkerService
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillWorkerService
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.#ctor*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.#ctor
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.html#MarketDataCollector_Infrastructure_Adapters_Core_BackfillServices__ctor_MarketDataCollector_Infrastructure_Adapters_Core_BackfillJobManager_MarketDataCollector_Infrastructure_Adapters_Core_BackfillRequestQueue_MarketDataCollector_Infrastructure_Adapters_Core_DataGapAnalyzer_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRateLimitTracker_MarketDataCollector_Infrastructure_Adapters_Core_CompositeHistoricalDataProvider_MarketDataCollector_Infrastructure_Adapters_Core_BackfillWorkerService_
+  name: BackfillServices
+  nameWithType: BackfillServices.BackfillServices
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.BackfillServices
+  nameWithType.vb: BackfillServices.New
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.New
+  name.vb: New
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.InitializeAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.InitializeAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.html#MarketDataCollector_Infrastructure_Adapters_Core_BackfillServices_InitializeAsync_System_Threading_CancellationToken_
+  name: InitializeAsync
+  nameWithType: BackfillServices.InitializeAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.InitializeAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.StartWorker*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.StartWorker
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.html#MarketDataCollector_Infrastructure_Adapters_Core_BackfillServices_StartWorker
+  name: StartWorker
+  nameWithType: BackfillServices.StartWorker
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.StartWorker
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.StopWorkerAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.StopWorkerAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.html#MarketDataCollector_Infrastructure_Adapters_Core_BackfillServices_StopWorkerAsync
+  name: StopWorkerAsync
+  nameWithType: BackfillServices.StopWorkerAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.StopWorkerAsync
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Dispose*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Dispose
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.html#MarketDataCollector_Infrastructure_Adapters_Core_BackfillServices_Dispose
+  name: Dispose
+  nameWithType: BackfillServices.Dispose
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BackfillServices.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

@@ -1,0 +1,221 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SlaState
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.SlaState
+  id: SlaState
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  children:
+  - MarketDataCollector.Application.Monitoring.DataQuality.SlaState.Healthy
+  - MarketDataCollector.Application.Monitoring.DataQuality.SlaState.NoData
+  - MarketDataCollector.Application.Monitoring.DataQuality.SlaState.OutsideMarketHours
+  - MarketDataCollector.Application.Monitoring.DataQuality.SlaState.Violation
+  - MarketDataCollector.Application.Monitoring.DataQuality.SlaState.Warning
+  langs:
+  - csharp
+  - vb
+  name: SlaState
+  nameWithType: SlaState
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SlaState
+  type: Enum
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SlaState
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 84
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: SLA state enumeration.
+  example: []
+  syntax:
+    content: 'public enum SlaState : byte'
+    content.vb: Public Enum SlaState As Byte
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SlaState.Healthy
+  commentId: F:MarketDataCollector.Application.Monitoring.DataQuality.SlaState.Healthy
+  id: Healthy
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SlaState
+  langs:
+  - csharp
+  - vb
+  name: Healthy
+  nameWithType: SlaState.Healthy
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SlaState.Healthy
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Healthy
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 87
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Data is fresh and within SLA.
+  example: []
+  syntax:
+    content: Healthy = 0
+    return:
+      type: MarketDataCollector.Application.Monitoring.DataQuality.SlaState
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SlaState.Warning
+  commentId: F:MarketDataCollector.Application.Monitoring.DataQuality.SlaState.Warning
+  id: Warning
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SlaState
+  langs:
+  - csharp
+  - vb
+  name: Warning
+  nameWithType: SlaState.Warning
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SlaState.Warning
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Warning
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 89
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Data is approaching staleness threshold.
+  example: []
+  syntax:
+    content: Warning = 1
+    return:
+      type: MarketDataCollector.Application.Monitoring.DataQuality.SlaState
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SlaState.Violation
+  commentId: F:MarketDataCollector.Application.Monitoring.DataQuality.SlaState.Violation
+  id: Violation
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SlaState
+  langs:
+  - csharp
+  - vb
+  name: Violation
+  nameWithType: SlaState.Violation
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SlaState.Violation
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Violation
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 91
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Data has exceeded the freshness threshold - SLA violation.
+  example: []
+  syntax:
+    content: Violation = 2
+    return:
+      type: MarketDataCollector.Application.Monitoring.DataQuality.SlaState
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SlaState.NoData
+  commentId: F:MarketDataCollector.Application.Monitoring.DataQuality.SlaState.NoData
+  id: NoData
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SlaState
+  langs:
+  - csharp
+  - vb
+  name: NoData
+  nameWithType: SlaState.NoData
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SlaState.NoData
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: NoData
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 93
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: No data has been received yet.
+  example: []
+  syntax:
+    content: NoData = 3
+    return:
+      type: MarketDataCollector.Application.Monitoring.DataQuality.SlaState
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SlaState.OutsideMarketHours
+  commentId: F:MarketDataCollector.Application.Monitoring.DataQuality.SlaState.OutsideMarketHours
+  id: OutsideMarketHours
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.SlaState
+  langs:
+  - csharp
+  - vb
+  name: OutsideMarketHours
+  nameWithType: SlaState.OutsideMarketHours
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SlaState.OutsideMarketHours
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OutsideMarketHours
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 95
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Outside market hours, SLA not applicable.
+  example: []
+  syntax:
+    content: OutsideMarketHours = 4
+    return:
+      type: MarketDataCollector.Application.Monitoring.DataQuality.SlaState
+references:
+- uid: MarketDataCollector.Application.Monitoring.DataQuality
+  commentId: N:MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring.DataQuality
+  nameWithType: MarketDataCollector.Application.Monitoring.DataQuality
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality
+    name: DataQuality
+    href: MarketDataCollector.Application.Monitoring.DataQuality.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality
+    name: DataQuality
+    href: MarketDataCollector.Application.Monitoring.DataQuality.html
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SlaState
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.SlaState
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SlaState.html
+  name: SlaState
+  nameWithType: SlaState
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SlaState

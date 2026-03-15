@@ -1,0 +1,1171 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.IDataSource
+  id: IDataSource
+  parent: MarketDataCollector.Infrastructure.DataSources
+  children:
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.Capabilities
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.CapabilityInfo
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.Category
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.Description
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.DisplayName
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.Health
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.HealthChanges
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.Id
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.InitializeAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.Priority
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.RateLimitState
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.Status
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedAssetClasses
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedMarkets
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.TestConnectivityAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.Type
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.ValidateCredentialsAsync(System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: IDataSource
+  nameWithType: IDataSource
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IDataSource
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 10
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: >-
+    Unified base interface for all data sources (real-time and historical).
+
+    Provides a common abstraction for provider discovery, health monitoring,
+
+    and lifecycle management.
+  example: []
+  syntax:
+    content: 'public interface IDataSource : IAsyncDisposable'
+    content.vb: Public Interface IDataSource Inherits IAsyncDisposable
+  derivedClasses:
+  - MarketDataCollector.Infrastructure.Adapters.NYSE.NYSEDataSource
+  - MarketDataCollector.Infrastructure.DataSources.DataSourceBase
+  inheritedMembers:
+  - System.IAsyncDisposable.DisposeAsync
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Id
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.Id
+  id: Id
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: IDataSource.Id
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Id
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Id
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 17
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Unique identifier for this data source (e.g., "alpaca", "yahoo", "ib").
+  example: []
+  syntax:
+    content: string Id { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Id As String
+  overload: MarketDataCollector.Infrastructure.DataSources.IDataSource.Id*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.DisplayName
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.DisplayName
+  id: DisplayName
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  langs:
+  - csharp
+  - vb
+  name: DisplayName
+  nameWithType: IDataSource.DisplayName
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.DisplayName
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisplayName
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 22
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Human-readable display name.
+  example: []
+  syntax:
+    content: string DisplayName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property DisplayName As String
+  overload: MarketDataCollector.Infrastructure.DataSources.IDataSource.DisplayName*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Description
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.Description
+  id: Description
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: IDataSource.Description
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Description
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Description
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 27
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Description of the data source and its capabilities.
+  example: []
+  syntax:
+    content: string Description { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Description As String
+  overload: MarketDataCollector.Infrastructure.DataSources.IDataSource.Description*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Type
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.Type
+  id: Type
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: IDataSource.Type
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Type
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Type
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 36
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: 'Type of data provided: Realtime, Historical, or Hybrid.'
+  example: []
+  syntax:
+    content: DataSourceType Type { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.DataSources.DataSourceType
+    content.vb: ReadOnly Property Type As DataSourceType
+  overload: MarketDataCollector.Infrastructure.DataSources.IDataSource.Type*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Category
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.Category
+  id: Category
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  langs:
+  - csharp
+  - vb
+  name: Category
+  nameWithType: IDataSource.Category
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Category
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Category
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 41
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: 'Category of the data source: Exchange, Broker, Aggregator, Free, Premium.'
+  example: []
+  syntax:
+    content: DataSourceCategory Category { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+    content.vb: ReadOnly Property Category As DataSourceCategory
+  overload: MarketDataCollector.Infrastructure.DataSources.IDataSource.Category*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Priority
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.Priority
+  id: Priority
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  langs:
+  - csharp
+  - vb
+  name: Priority
+  nameWithType: IDataSource.Priority
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Priority
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Priority
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 46
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Priority for source selection (lower = higher priority, tried first).
+  example: []
+  syntax:
+    content: int Priority { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property Priority As Integer
+  overload: MarketDataCollector.Infrastructure.DataSources.IDataSource.Priority*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Capabilities
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.Capabilities
+  id: Capabilities
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  langs:
+  - csharp
+  - vb
+  name: Capabilities
+  nameWithType: IDataSource.Capabilities
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Capabilities
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Capabilities
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 55
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Bitwise capabilities supported by this source.
+  example: []
+  syntax:
+    content: DataSourceCapabilities Capabilities { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.DataSources.DataSourceCapabilities
+    content.vb: ReadOnly Property Capabilities As DataSourceCapabilities
+  overload: MarketDataCollector.Infrastructure.DataSources.IDataSource.Capabilities*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.CapabilityInfo
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.CapabilityInfo
+  id: CapabilityInfo
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  langs:
+  - csharp
+  - vb
+  name: CapabilityInfo
+  nameWithType: IDataSource.CapabilityInfo
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.CapabilityInfo
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CapabilityInfo
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 60
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Detailed capability information including limits and supported features.
+  example: []
+  syntax:
+    content: DataSourceCapabilityInfo CapabilityInfo { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.DataSources.DataSourceCapabilityInfo
+    content.vb: ReadOnly Property CapabilityInfo As DataSourceCapabilityInfo
+  overload: MarketDataCollector.Infrastructure.DataSources.IDataSource.CapabilityInfo*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedMarkets
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedMarkets
+  id: SupportedMarkets
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  langs:
+  - csharp
+  - vb
+  name: SupportedMarkets
+  nameWithType: IDataSource.SupportedMarkets
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedMarkets
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SupportedMarkets
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 65
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Market regions/countries supported (e.g., "US", "UK", "DE").
+  example: []
+  syntax:
+    content: IReadOnlySet<string> SupportedMarkets { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlySet{System.String}
+    content.vb: ReadOnly Property SupportedMarkets As IReadOnlySet(Of String)
+  overload: MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedMarkets*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedAssetClasses
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedAssetClasses
+  id: SupportedAssetClasses
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  langs:
+  - csharp
+  - vb
+  name: SupportedAssetClasses
+  nameWithType: IDataSource.SupportedAssetClasses
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedAssetClasses
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SupportedAssetClasses
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 70
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Asset classes supported by this source.
+  example: []
+  syntax:
+    content: IReadOnlySet<AssetClass> SupportedAssetClasses { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlySet{MarketDataCollector.Infrastructure.DataSources.AssetClass}
+    content.vb: ReadOnly Property SupportedAssetClasses As IReadOnlySet(Of AssetClass)
+  overload: MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedAssetClasses*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Health
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.Health
+  id: Health
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  langs:
+  - csharp
+  - vb
+  name: Health
+  nameWithType: IDataSource.Health
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Health
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Health
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 79
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Current health status including score and recent errors.
+  example: []
+  syntax:
+    content: DataSourceHealth Health { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.DataSources.DataSourceHealth
+    content.vb: ReadOnly Property Health As DataSourceHealth
+  overload: MarketDataCollector.Infrastructure.DataSources.IDataSource.Health*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Status
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.Status
+  id: Status
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  langs:
+  - csharp
+  - vb
+  name: Status
+  nameWithType: IDataSource.Status
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Status
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Status
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 84
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Current connection/availability status.
+  example: []
+  syntax:
+    content: DataSourceStatus Status { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.DataSources.DataSourceStatus
+    content.vb: ReadOnly Property Status As DataSourceStatus
+  overload: MarketDataCollector.Infrastructure.DataSources.IDataSource.Status*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.RateLimitState
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.RateLimitState
+  id: RateLimitState
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  langs:
+  - csharp
+  - vb
+  name: RateLimitState
+  nameWithType: IDataSource.RateLimitState
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.RateLimitState
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RateLimitState
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 89
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Current rate limit state for this source.
+  example: []
+  syntax:
+    content: RateLimitState RateLimitState { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.DataSources.RateLimitState
+    content.vb: ReadOnly Property RateLimitState As RateLimitState
+  overload: MarketDataCollector.Infrastructure.DataSources.IDataSource.RateLimitState*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.HealthChanges
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.HealthChanges
+  id: HealthChanges
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  langs:
+  - csharp
+  - vb
+  name: HealthChanges
+  nameWithType: IDataSource.HealthChanges
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.HealthChanges
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HealthChanges
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 94
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Observable stream of health changes for this source.
+  example: []
+  syntax:
+    content: IObservable<DataSourceHealthChanged> HealthChanges { get; }
+    parameters: []
+    return:
+      type: System.IObservable{MarketDataCollector.Infrastructure.DataSources.DataSourceHealthChanged}
+    content.vb: ReadOnly Property HealthChanges As IObservable(Of DataSourceHealthChanged)
+  overload: MarketDataCollector.Infrastructure.DataSources.IDataSource.HealthChanges*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.InitializeAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IDataSource.InitializeAsync(System.Threading.CancellationToken)
+  id: InitializeAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  langs:
+  - csharp
+  - vb
+  name: InitializeAsync(CancellationToken)
+  nameWithType: IDataSource.InitializeAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.InitializeAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: InitializeAsync
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 103
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Initializes the data source, validates credentials, and tests connectivity.
+  example: []
+  syntax:
+    content: Task InitializeAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function InitializeAsync(ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Infrastructure.DataSources.IDataSource.InitializeAsync*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.ValidateCredentialsAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IDataSource.ValidateCredentialsAsync(System.Threading.CancellationToken)
+  id: ValidateCredentialsAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  langs:
+  - csharp
+  - vb
+  name: ValidateCredentialsAsync(CancellationToken)
+  nameWithType: IDataSource.ValidateCredentialsAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.ValidateCredentialsAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ValidateCredentialsAsync
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 109
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: >-
+    Validates that credentials are properly configured.
+
+    Returns true if no credentials are required or if they are valid.
+  example: []
+  syntax:
+    content: Task<bool> ValidateCredentialsAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Function ValidateCredentialsAsync(ct As CancellationToken = Nothing) As Task(Of Boolean)
+  overload: MarketDataCollector.Infrastructure.DataSources.IDataSource.ValidateCredentialsAsync*
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.TestConnectivityAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IDataSource.TestConnectivityAsync(System.Threading.CancellationToken)
+  id: TestConnectivityAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  langs:
+  - csharp
+  - vb
+  name: TestConnectivityAsync(CancellationToken)
+  nameWithType: IDataSource.TestConnectivityAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.TestConnectivityAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TestConnectivityAsync
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 114
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Tests connectivity to the data source.
+  example: []
+  syntax:
+    content: Task<bool> TestConnectivityAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Function TestConnectivityAsync(ct As CancellationToken = Nothing) As Task(Of Boolean)
+  overload: MarketDataCollector.Infrastructure.DataSources.IDataSource.TestConnectivityAsync*
+references:
+- uid: MarketDataCollector.Infrastructure.DataSources
+  commentId: N:MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.DataSources
+  nameWithType: MarketDataCollector.Infrastructure.DataSources
+  fullName: MarketDataCollector.Infrastructure.DataSources
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.DataSources
+    name: DataSources
+    href: MarketDataCollector.Infrastructure.DataSources.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.DataSources
+    name: DataSources
+    href: MarketDataCollector.Infrastructure.DataSources.html
+- uid: System.IAsyncDisposable.DisposeAsync
+  commentId: M:System.IAsyncDisposable.DisposeAsync
+  parent: System.IAsyncDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  name: DisposeAsync()
+  nameWithType: IAsyncDisposable.DisposeAsync()
+  fullName: System.IAsyncDisposable.DisposeAsync()
+  spec.csharp:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+- uid: System.IAsyncDisposable
+  commentId: T:System.IAsyncDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
+  name: IAsyncDisposable
+  nameWithType: IAsyncDisposable
+  fullName: System.IAsyncDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Id*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDataSource.Id
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_Id
+  name: Id
+  nameWithType: IDataSource.Id
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Id
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.DisplayName*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDataSource.DisplayName
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_DisplayName
+  name: DisplayName
+  nameWithType: IDataSource.DisplayName
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.DisplayName
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Description*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDataSource.Description
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_Description
+  name: Description
+  nameWithType: IDataSource.Description
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Description
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Type*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDataSource.Type
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_Type
+  name: Type
+  nameWithType: IDataSource.Type
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Type
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceType
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.DataSourceType
+  parent: MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.Infrastructure.DataSources.DataSourceType.html
+  name: DataSourceType
+  nameWithType: DataSourceType
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceType
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Category*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDataSource.Category
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_Category
+  name: Category
+  nameWithType: IDataSource.Category
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Category
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+  parent: MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.html
+  name: DataSourceCategory
+  nameWithType: DataSourceCategory
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Priority*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDataSource.Priority
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_Priority
+  name: Priority
+  nameWithType: IDataSource.Priority
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Priority
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Capabilities*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDataSource.Capabilities
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_Capabilities
+  name: Capabilities
+  nameWithType: IDataSource.Capabilities
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Capabilities
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceCapabilities
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.DataSourceCapabilities
+  parent: MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.Infrastructure.DataSources.DataSourceCapabilities.html
+  name: DataSourceCapabilities
+  nameWithType: DataSourceCapabilities
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceCapabilities
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.CapabilityInfo*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDataSource.CapabilityInfo
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_CapabilityInfo
+  name: CapabilityInfo
+  nameWithType: IDataSource.CapabilityInfo
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.CapabilityInfo
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceCapabilityInfo
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.DataSourceCapabilityInfo
+  parent: MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.Infrastructure.DataSources.DataSourceCapabilityInfo.html
+  name: DataSourceCapabilityInfo
+  nameWithType: DataSourceCapabilityInfo
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceCapabilityInfo
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedMarkets*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedMarkets
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_SupportedMarkets
+  name: SupportedMarkets
+  nameWithType: IDataSource.SupportedMarkets
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedMarkets
+- uid: System.Collections.Generic.IReadOnlySet{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlySet{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlySet`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  name: IReadOnlySet<string>
+  nameWithType: IReadOnlySet<string>
+  fullName: System.Collections.Generic.IReadOnlySet<string>
+  nameWithType.vb: IReadOnlySet(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlySet(Of String)
+  name.vb: IReadOnlySet(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlySet`1
+  commentId: T:System.Collections.Generic.IReadOnlySet`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  name: IReadOnlySet<T>
+  nameWithType: IReadOnlySet<T>
+  fullName: System.Collections.Generic.IReadOnlySet<T>
+  nameWithType.vb: IReadOnlySet(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlySet(Of T)
+  name.vb: IReadOnlySet(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedAssetClasses*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedAssetClasses
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_SupportedAssetClasses
+  name: SupportedAssetClasses
+  nameWithType: IDataSource.SupportedAssetClasses
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedAssetClasses
+- uid: System.Collections.Generic.IReadOnlySet{MarketDataCollector.Infrastructure.DataSources.AssetClass}
+  commentId: T:System.Collections.Generic.IReadOnlySet{MarketDataCollector.Infrastructure.DataSources.AssetClass}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlySet`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  name: IReadOnlySet<AssetClass>
+  nameWithType: IReadOnlySet<AssetClass>
+  fullName: System.Collections.Generic.IReadOnlySet<MarketDataCollector.Infrastructure.DataSources.AssetClass>
+  nameWithType.vb: IReadOnlySet(Of AssetClass)
+  fullName.vb: System.Collections.Generic.IReadOnlySet(Of MarketDataCollector.Infrastructure.DataSources.AssetClass)
+  name.vb: IReadOnlySet(Of AssetClass)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.DataSources.AssetClass
+    name: AssetClass
+    href: MarketDataCollector.Infrastructure.DataSources.AssetClass.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.DataSources.AssetClass
+    name: AssetClass
+    href: MarketDataCollector.Infrastructure.DataSources.AssetClass.html
+  - name: )
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Health*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDataSource.Health
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_Health
+  name: Health
+  nameWithType: IDataSource.Health
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Health
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceHealth
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.DataSourceHealth
+  parent: MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.Infrastructure.DataSources.DataSourceHealth.html
+  name: DataSourceHealth
+  nameWithType: DataSourceHealth
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceHealth
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Status*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDataSource.Status
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_Status
+  name: Status
+  nameWithType: IDataSource.Status
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Status
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceStatus
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.DataSourceStatus
+  parent: MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.Infrastructure.DataSources.DataSourceStatus.html
+  name: DataSourceStatus
+  nameWithType: DataSourceStatus
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceStatus
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.RateLimitState*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDataSource.RateLimitState
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_RateLimitState
+  name: RateLimitState
+  nameWithType: IDataSource.RateLimitState
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.RateLimitState
+- uid: MarketDataCollector.Infrastructure.DataSources.RateLimitState
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.RateLimitState
+  parent: MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.Infrastructure.DataSources.RateLimitState.html
+  name: RateLimitState
+  nameWithType: RateLimitState
+  fullName: MarketDataCollector.Infrastructure.DataSources.RateLimitState
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.HealthChanges*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDataSource.HealthChanges
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_HealthChanges
+  name: HealthChanges
+  nameWithType: IDataSource.HealthChanges
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.HealthChanges
+- uid: System.IObservable{MarketDataCollector.Infrastructure.DataSources.DataSourceHealthChanged}
+  commentId: T:System.IObservable{MarketDataCollector.Infrastructure.DataSources.DataSourceHealthChanged}
+  parent: System
+  definition: System.IObservable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<DataSourceHealthChanged>
+  nameWithType: IObservable<DataSourceHealthChanged>
+  fullName: System.IObservable<MarketDataCollector.Infrastructure.DataSources.DataSourceHealthChanged>
+  nameWithType.vb: IObservable(Of DataSourceHealthChanged)
+  fullName.vb: System.IObservable(Of MarketDataCollector.Infrastructure.DataSources.DataSourceHealthChanged)
+  name.vb: IObservable(Of DataSourceHealthChanged)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.DataSources.DataSourceHealthChanged
+    name: DataSourceHealthChanged
+    href: MarketDataCollector.Infrastructure.DataSources.DataSourceHealthChanged.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.DataSources.DataSourceHealthChanged
+    name: DataSourceHealthChanged
+    href: MarketDataCollector.Infrastructure.DataSources.DataSourceHealthChanged.html
+  - name: )
+- uid: System.IObservable`1
+  commentId: T:System.IObservable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<T>
+  nameWithType: IObservable<T>
+  fullName: System.IObservable<T>
+  nameWithType.vb: IObservable(Of T)
+  fullName.vb: System.IObservable(Of T)
+  name.vb: IObservable(Of T)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.InitializeAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDataSource.InitializeAsync
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_InitializeAsync_System_Threading_CancellationToken_
+  name: InitializeAsync
+  nameWithType: IDataSource.InitializeAsync
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.InitializeAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.ValidateCredentialsAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDataSource.ValidateCredentialsAsync
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_ValidateCredentialsAsync_System_Threading_CancellationToken_
+  name: ValidateCredentialsAsync
+  nameWithType: IDataSource.ValidateCredentialsAsync
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.ValidateCredentialsAsync
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.TestConnectivityAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IDataSource.TestConnectivityAsync
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_TestConnectivityAsync_System_Threading_CancellationToken_
+  name: TestConnectivityAsync
+  nameWithType: IDataSource.TestConnectivityAsync
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.TestConnectivityAsync

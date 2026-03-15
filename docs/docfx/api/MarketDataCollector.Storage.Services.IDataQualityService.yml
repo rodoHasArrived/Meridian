@@ -1,0 +1,804 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Services.IDataQualityService
+  commentId: T:MarketDataCollector.Storage.Services.IDataQualityService
+  id: IDataQualityService
+  parent: MarketDataCollector.Storage.Services
+  children:
+  - MarketDataCollector.Storage.Services.IDataQualityService.CreateGoldenRecordAsync(System.String,System.DateTimeOffset,MarketDataCollector.Storage.Services.ConsolidationOptions,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.IDataQualityService.GenerateReportAsync(MarketDataCollector.Storage.Services.QualityReportOptions,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.IDataQualityService.GetHistoricalScoresAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.IDataQualityService.GetQualityAlertsAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.IDataQualityService.GetTrendAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.IDataQualityService.RankSourcesAsync(System.String,System.DateTimeOffset,MarketDataCollector.Contracts.Domain.Enums.MarketEventType,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.IDataQualityService.ScoreAsync(System.String,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: IDataQualityService
+  nameWithType: IDataQualityService
+  fullName: MarketDataCollector.Storage.Services.IDataQualityService
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IDataQualityService
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityService.cs
+    startLine: 576
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Interface for data quality service.
+  example: []
+  syntax:
+    content: public interface IDataQualityService
+    content.vb: Public Interface IDataQualityService
+  derivedClasses:
+  - MarketDataCollector.Storage.Services.DataQualityService
+- uid: MarketDataCollector.Storage.Services.IDataQualityService.ScoreAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IDataQualityService.ScoreAsync(System.String,System.Threading.CancellationToken)
+  id: ScoreAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IDataQualityService
+  langs:
+  - csharp
+  - vb
+  name: ScoreAsync(string, CancellationToken)
+  nameWithType: IDataQualityService.ScoreAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IDataQualityService.ScoreAsync(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ScoreAsync
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityService.cs
+    startLine: 578
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: Task<DataQualityScore> ScoreAsync(string path, CancellationToken ct = default)
+    parameters:
+    - id: path
+      type: System.String
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DataQualityScore}
+    content.vb: Function ScoreAsync(path As String, ct As CancellationToken = Nothing) As Task(Of DataQualityScore)
+  overload: MarketDataCollector.Storage.Services.IDataQualityService.ScoreAsync*
+  nameWithType.vb: IDataQualityService.ScoreAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Services.IDataQualityService.ScoreAsync(String, System.Threading.CancellationToken)
+  name.vb: ScoreAsync(String, CancellationToken)
+- uid: MarketDataCollector.Storage.Services.IDataQualityService.GenerateReportAsync(MarketDataCollector.Storage.Services.QualityReportOptions,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IDataQualityService.GenerateReportAsync(MarketDataCollector.Storage.Services.QualityReportOptions,System.Threading.CancellationToken)
+  id: GenerateReportAsync(MarketDataCollector.Storage.Services.QualityReportOptions,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IDataQualityService
+  langs:
+  - csharp
+  - vb
+  name: GenerateReportAsync(QualityReportOptions, CancellationToken)
+  nameWithType: IDataQualityService.GenerateReportAsync(QualityReportOptions, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IDataQualityService.GenerateReportAsync(MarketDataCollector.Storage.Services.QualityReportOptions, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GenerateReportAsync
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityService.cs
+    startLine: 579
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: Task<DataQualityReport> GenerateReportAsync(QualityReportOptions options, CancellationToken ct = default)
+    parameters:
+    - id: options
+      type: MarketDataCollector.Storage.Services.QualityReportOptions
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DataQualityReport}
+    content.vb: Function GenerateReportAsync(options As QualityReportOptions, ct As CancellationToken = Nothing) As Task(Of DataQualityReport)
+  overload: MarketDataCollector.Storage.Services.IDataQualityService.GenerateReportAsync*
+- uid: MarketDataCollector.Storage.Services.IDataQualityService.GetHistoricalScoresAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IDataQualityService.GetHistoricalScoresAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  id: GetHistoricalScoresAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IDataQualityService
+  langs:
+  - csharp
+  - vb
+  name: GetHistoricalScoresAsync(string, TimeSpan, CancellationToken)
+  nameWithType: IDataQualityService.GetHistoricalScoresAsync(string, TimeSpan, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IDataQualityService.GetHistoricalScoresAsync(string, System.TimeSpan, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetHistoricalScoresAsync
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityService.cs
+    startLine: 580
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: Task<DataQualityScore[]> GetHistoricalScoresAsync(string path, TimeSpan window, CancellationToken ct = default)
+    parameters:
+    - id: path
+      type: System.String
+    - id: window
+      type: System.TimeSpan
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DataQualityScore[]}
+    content.vb: Function GetHistoricalScoresAsync(path As String, window As TimeSpan, ct As CancellationToken = Nothing) As Task(Of DataQualityScore())
+  overload: MarketDataCollector.Storage.Services.IDataQualityService.GetHistoricalScoresAsync*
+  nameWithType.vb: IDataQualityService.GetHistoricalScoresAsync(String, TimeSpan, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Services.IDataQualityService.GetHistoricalScoresAsync(String, System.TimeSpan, System.Threading.CancellationToken)
+  name.vb: GetHistoricalScoresAsync(String, TimeSpan, CancellationToken)
+- uid: MarketDataCollector.Storage.Services.IDataQualityService.RankSourcesAsync(System.String,System.DateTimeOffset,MarketDataCollector.Contracts.Domain.Enums.MarketEventType,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IDataQualityService.RankSourcesAsync(System.String,System.DateTimeOffset,MarketDataCollector.Contracts.Domain.Enums.MarketEventType,System.Threading.CancellationToken)
+  id: RankSourcesAsync(System.String,System.DateTimeOffset,MarketDataCollector.Contracts.Domain.Enums.MarketEventType,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IDataQualityService
+  langs:
+  - csharp
+  - vb
+  name: RankSourcesAsync(string, DateTimeOffset, MarketEventType, CancellationToken)
+  nameWithType: IDataQualityService.RankSourcesAsync(string, DateTimeOffset, MarketEventType, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IDataQualityService.RankSourcesAsync(string, System.DateTimeOffset, MarketDataCollector.Contracts.Domain.Enums.MarketEventType, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RankSourcesAsync
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityService.cs
+    startLine: 581
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: Task<SourceRanking[]> RankSourcesAsync(string symbol, DateTimeOffset date, MarketEventType type, CancellationToken ct = default)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: date
+      type: System.DateTimeOffset
+    - id: type
+      type: MarketDataCollector.Contracts.Domain.Enums.MarketEventType
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.SourceRanking[]}
+    content.vb: Function RankSourcesAsync(symbol As String, [date] As DateTimeOffset, type As MarketEventType, ct As CancellationToken = Nothing) As Task(Of SourceRanking())
+  overload: MarketDataCollector.Storage.Services.IDataQualityService.RankSourcesAsync*
+  nameWithType.vb: IDataQualityService.RankSourcesAsync(String, DateTimeOffset, MarketEventType, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Services.IDataQualityService.RankSourcesAsync(String, System.DateTimeOffset, MarketDataCollector.Contracts.Domain.Enums.MarketEventType, System.Threading.CancellationToken)
+  name.vb: RankSourcesAsync(String, DateTimeOffset, MarketEventType, CancellationToken)
+- uid: MarketDataCollector.Storage.Services.IDataQualityService.CreateGoldenRecordAsync(System.String,System.DateTimeOffset,MarketDataCollector.Storage.Services.ConsolidationOptions,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IDataQualityService.CreateGoldenRecordAsync(System.String,System.DateTimeOffset,MarketDataCollector.Storage.Services.ConsolidationOptions,System.Threading.CancellationToken)
+  id: CreateGoldenRecordAsync(System.String,System.DateTimeOffset,MarketDataCollector.Storage.Services.ConsolidationOptions,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IDataQualityService
+  langs:
+  - csharp
+  - vb
+  name: CreateGoldenRecordAsync(string, DateTimeOffset, ConsolidationOptions, CancellationToken)
+  nameWithType: IDataQualityService.CreateGoldenRecordAsync(string, DateTimeOffset, ConsolidationOptions, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IDataQualityService.CreateGoldenRecordAsync(string, System.DateTimeOffset, MarketDataCollector.Storage.Services.ConsolidationOptions, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateGoldenRecordAsync
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityService.cs
+    startLine: 582
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: Task<ConsolidatedDataset> CreateGoldenRecordAsync(string symbol, DateTimeOffset date, ConsolidationOptions options, CancellationToken ct = default)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: date
+      type: System.DateTimeOffset
+    - id: options
+      type: MarketDataCollector.Storage.Services.ConsolidationOptions
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.ConsolidatedDataset}
+    content.vb: Function CreateGoldenRecordAsync(symbol As String, [date] As DateTimeOffset, options As ConsolidationOptions, ct As CancellationToken = Nothing) As Task(Of ConsolidatedDataset)
+  overload: MarketDataCollector.Storage.Services.IDataQualityService.CreateGoldenRecordAsync*
+  nameWithType.vb: IDataQualityService.CreateGoldenRecordAsync(String, DateTimeOffset, ConsolidationOptions, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Services.IDataQualityService.CreateGoldenRecordAsync(String, System.DateTimeOffset, MarketDataCollector.Storage.Services.ConsolidationOptions, System.Threading.CancellationToken)
+  name.vb: CreateGoldenRecordAsync(String, DateTimeOffset, ConsolidationOptions, CancellationToken)
+- uid: MarketDataCollector.Storage.Services.IDataQualityService.GetTrendAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IDataQualityService.GetTrendAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  id: GetTrendAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IDataQualityService
+  langs:
+  - csharp
+  - vb
+  name: GetTrendAsync(string, TimeSpan, CancellationToken)
+  nameWithType: IDataQualityService.GetTrendAsync(string, TimeSpan, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IDataQualityService.GetTrendAsync(string, System.TimeSpan, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetTrendAsync
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityService.cs
+    startLine: 583
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: Task<QualityTrend> GetTrendAsync(string symbol, TimeSpan window, CancellationToken ct = default)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: window
+      type: System.TimeSpan
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.QualityTrend}
+    content.vb: Function GetTrendAsync(symbol As String, window As TimeSpan, ct As CancellationToken = Nothing) As Task(Of QualityTrend)
+  overload: MarketDataCollector.Storage.Services.IDataQualityService.GetTrendAsync*
+  nameWithType.vb: IDataQualityService.GetTrendAsync(String, TimeSpan, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Services.IDataQualityService.GetTrendAsync(String, System.TimeSpan, System.Threading.CancellationToken)
+  name.vb: GetTrendAsync(String, TimeSpan, CancellationToken)
+- uid: MarketDataCollector.Storage.Services.IDataQualityService.GetQualityAlertsAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IDataQualityService.GetQualityAlertsAsync(System.Threading.CancellationToken)
+  id: GetQualityAlertsAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IDataQualityService
+  langs:
+  - csharp
+  - vb
+  name: GetQualityAlertsAsync(CancellationToken)
+  nameWithType: IDataQualityService.GetQualityAlertsAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IDataQualityService.GetQualityAlertsAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetQualityAlertsAsync
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityService.cs
+    startLine: 584
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: Task<QualityAlert[]> GetQualityAlertsAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.QualityAlert[]}
+    content.vb: Function GetQualityAlertsAsync(ct As CancellationToken = Nothing) As Task(Of QualityAlert())
+  overload: MarketDataCollector.Storage.Services.IDataQualityService.GetQualityAlertsAsync*
+references:
+- uid: MarketDataCollector.Storage.Services
+  commentId: N:MarketDataCollector.Storage.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Services
+  nameWithType: MarketDataCollector.Storage.Services
+  fullName: MarketDataCollector.Storage.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+- uid: MarketDataCollector.Storage.Services.IDataQualityService.ScoreAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.IDataQualityService.ScoreAsync
+  href: MarketDataCollector.Storage.Services.IDataQualityService.html#MarketDataCollector_Storage_Services_IDataQualityService_ScoreAsync_System_String_System_Threading_CancellationToken_
+  name: ScoreAsync
+  nameWithType: IDataQualityService.ScoreAsync
+  fullName: MarketDataCollector.Storage.Services.IDataQualityService.ScoreAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DataQualityScore}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DataQualityScore}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<DataQualityScore>
+  nameWithType: Task<DataQualityScore>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.DataQualityScore>
+  nameWithType.vb: Task(Of DataQualityScore)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.DataQualityScore)
+  name.vb: Task(Of DataQualityScore)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.DataQualityScore
+    name: DataQualityScore
+    href: MarketDataCollector.Storage.Services.DataQualityScore.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.DataQualityScore
+    name: DataQualityScore
+    href: MarketDataCollector.Storage.Services.DataQualityScore.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Storage.Services.IDataQualityService.GenerateReportAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.IDataQualityService.GenerateReportAsync
+  href: MarketDataCollector.Storage.Services.IDataQualityService.html#MarketDataCollector_Storage_Services_IDataQualityService_GenerateReportAsync_MarketDataCollector_Storage_Services_QualityReportOptions_System_Threading_CancellationToken_
+  name: GenerateReportAsync
+  nameWithType: IDataQualityService.GenerateReportAsync
+  fullName: MarketDataCollector.Storage.Services.IDataQualityService.GenerateReportAsync
+- uid: MarketDataCollector.Storage.Services.QualityReportOptions
+  commentId: T:MarketDataCollector.Storage.Services.QualityReportOptions
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.QualityReportOptions.html
+  name: QualityReportOptions
+  nameWithType: QualityReportOptions
+  fullName: MarketDataCollector.Storage.Services.QualityReportOptions
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DataQualityReport}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DataQualityReport}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<DataQualityReport>
+  nameWithType: Task<DataQualityReport>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.DataQualityReport>
+  nameWithType.vb: Task(Of DataQualityReport)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.DataQualityReport)
+  name.vb: Task(Of DataQualityReport)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.DataQualityReport
+    name: DataQualityReport
+    href: MarketDataCollector.Storage.Services.DataQualityReport.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.DataQualityReport
+    name: DataQualityReport
+    href: MarketDataCollector.Storage.Services.DataQualityReport.html
+  - name: )
+- uid: MarketDataCollector.Storage.Services.IDataQualityService.GetHistoricalScoresAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.IDataQualityService.GetHistoricalScoresAsync
+  href: MarketDataCollector.Storage.Services.IDataQualityService.html#MarketDataCollector_Storage_Services_IDataQualityService_GetHistoricalScoresAsync_System_String_System_TimeSpan_System_Threading_CancellationToken_
+  name: GetHistoricalScoresAsync
+  nameWithType: IDataQualityService.GetHistoricalScoresAsync
+  fullName: MarketDataCollector.Storage.Services.IDataQualityService.GetHistoricalScoresAsync
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DataQualityScore[]}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DataQualityScore[]}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<DataQualityScore[]>
+  nameWithType: Task<DataQualityScore[]>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.DataQualityScore[]>
+  nameWithType.vb: Task(Of DataQualityScore())
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.DataQualityScore())
+  name.vb: Task(Of DataQualityScore())
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.DataQualityScore
+    name: DataQualityScore
+    href: MarketDataCollector.Storage.Services.DataQualityScore.html
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.DataQualityScore
+    name: DataQualityScore
+    href: MarketDataCollector.Storage.Services.DataQualityScore.html
+  - name: (
+  - name: )
+  - name: )
+- uid: MarketDataCollector.Storage.Services.IDataQualityService.RankSourcesAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.IDataQualityService.RankSourcesAsync
+  href: MarketDataCollector.Storage.Services.IDataQualityService.html#MarketDataCollector_Storage_Services_IDataQualityService_RankSourcesAsync_System_String_System_DateTimeOffset_MarketDataCollector_Contracts_Domain_Enums_MarketEventType_System_Threading_CancellationToken_
+  name: RankSourcesAsync
+  nameWithType: IDataQualityService.RankSourcesAsync
+  fullName: MarketDataCollector.Storage.Services.IDataQualityService.RankSourcesAsync
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: MarketDataCollector.Contracts.Domain.Enums.MarketEventType
+  commentId: T:MarketDataCollector.Contracts.Domain.Enums.MarketEventType
+  parent: MarketDataCollector.Contracts.Domain.Enums
+  href: MarketDataCollector.Contracts.Domain.Enums.MarketEventType.html
+  name: MarketEventType
+  nameWithType: MarketEventType
+  fullName: MarketDataCollector.Contracts.Domain.Enums.MarketEventType
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.SourceRanking[]}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.SourceRanking[]}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<SourceRanking[]>
+  nameWithType: Task<SourceRanking[]>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.SourceRanking[]>
+  nameWithType.vb: Task(Of SourceRanking())
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.SourceRanking())
+  name.vb: Task(Of SourceRanking())
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.SourceRanking
+    name: SourceRanking
+    href: MarketDataCollector.Storage.Services.SourceRanking.html
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.SourceRanking
+    name: SourceRanking
+    href: MarketDataCollector.Storage.Services.SourceRanking.html
+  - name: (
+  - name: )
+  - name: )
+- uid: MarketDataCollector.Contracts.Domain.Enums
+  commentId: N:MarketDataCollector.Contracts.Domain.Enums
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Enums
+  nameWithType: MarketDataCollector.Contracts.Domain.Enums
+  fullName: MarketDataCollector.Contracts.Domain.Enums
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Enums
+    name: Enums
+    href: MarketDataCollector.Contracts.Domain.Enums.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Enums
+    name: Enums
+    href: MarketDataCollector.Contracts.Domain.Enums.html
+- uid: MarketDataCollector.Storage.Services.IDataQualityService.CreateGoldenRecordAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.IDataQualityService.CreateGoldenRecordAsync
+  href: MarketDataCollector.Storage.Services.IDataQualityService.html#MarketDataCollector_Storage_Services_IDataQualityService_CreateGoldenRecordAsync_System_String_System_DateTimeOffset_MarketDataCollector_Storage_Services_ConsolidationOptions_System_Threading_CancellationToken_
+  name: CreateGoldenRecordAsync
+  nameWithType: IDataQualityService.CreateGoldenRecordAsync
+  fullName: MarketDataCollector.Storage.Services.IDataQualityService.CreateGoldenRecordAsync
+- uid: MarketDataCollector.Storage.Services.ConsolidationOptions
+  commentId: T:MarketDataCollector.Storage.Services.ConsolidationOptions
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.ConsolidationOptions.html
+  name: ConsolidationOptions
+  nameWithType: ConsolidationOptions
+  fullName: MarketDataCollector.Storage.Services.ConsolidationOptions
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.ConsolidatedDataset}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.ConsolidatedDataset}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<ConsolidatedDataset>
+  nameWithType: Task<ConsolidatedDataset>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.ConsolidatedDataset>
+  nameWithType.vb: Task(Of ConsolidatedDataset)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.ConsolidatedDataset)
+  name.vb: Task(Of ConsolidatedDataset)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.ConsolidatedDataset
+    name: ConsolidatedDataset
+    href: MarketDataCollector.Storage.Services.ConsolidatedDataset.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.ConsolidatedDataset
+    name: ConsolidatedDataset
+    href: MarketDataCollector.Storage.Services.ConsolidatedDataset.html
+  - name: )
+- uid: MarketDataCollector.Storage.Services.IDataQualityService.GetTrendAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.IDataQualityService.GetTrendAsync
+  href: MarketDataCollector.Storage.Services.IDataQualityService.html#MarketDataCollector_Storage_Services_IDataQualityService_GetTrendAsync_System_String_System_TimeSpan_System_Threading_CancellationToken_
+  name: GetTrendAsync
+  nameWithType: IDataQualityService.GetTrendAsync
+  fullName: MarketDataCollector.Storage.Services.IDataQualityService.GetTrendAsync
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.QualityTrend}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.QualityTrend}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<QualityTrend>
+  nameWithType: Task<QualityTrend>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.QualityTrend>
+  nameWithType.vb: Task(Of QualityTrend)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.QualityTrend)
+  name.vb: Task(Of QualityTrend)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.QualityTrend
+    name: QualityTrend
+    href: MarketDataCollector.Storage.Services.QualityTrend.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.QualityTrend
+    name: QualityTrend
+    href: MarketDataCollector.Storage.Services.QualityTrend.html
+  - name: )
+- uid: MarketDataCollector.Storage.Services.IDataQualityService.GetQualityAlertsAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.IDataQualityService.GetQualityAlertsAsync
+  href: MarketDataCollector.Storage.Services.IDataQualityService.html#MarketDataCollector_Storage_Services_IDataQualityService_GetQualityAlertsAsync_System_Threading_CancellationToken_
+  name: GetQualityAlertsAsync
+  nameWithType: IDataQualityService.GetQualityAlertsAsync
+  fullName: MarketDataCollector.Storage.Services.IDataQualityService.GetQualityAlertsAsync
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.QualityAlert[]}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.QualityAlert[]}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<QualityAlert[]>
+  nameWithType: Task<QualityAlert[]>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.QualityAlert[]>
+  nameWithType.vb: Task(Of QualityAlert())
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.QualityAlert())
+  name.vb: Task(Of QualityAlert())
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.QualityAlert
+    name: QualityAlert
+    href: MarketDataCollector.Storage.Services.QualityAlert.html
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.QualityAlert
+    name: QualityAlert
+    href: MarketDataCollector.Storage.Services.QualityAlert.html
+  - name: (
+  - name: )
+  - name: )

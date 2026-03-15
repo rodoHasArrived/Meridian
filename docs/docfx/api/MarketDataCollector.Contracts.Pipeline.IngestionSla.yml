@@ -1,0 +1,506 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionSla
+  commentId: T:MarketDataCollector.Contracts.Pipeline.IngestionSla
+  id: IngestionSla
+  parent: MarketDataCollector.Contracts.Pipeline
+  children:
+  - MarketDataCollector.Contracts.Pipeline.IngestionSla.CompletionDeadline
+  - MarketDataCollector.Contracts.Pipeline.IngestionSla.FreshnessTargetSeconds
+  - MarketDataCollector.Contracts.Pipeline.IngestionSla.MinimumCompleteness
+  langs:
+  - csharp
+  - vb
+  name: IngestionSla
+  nameWithType: IngestionSla
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionSla
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IngestionSla
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 311
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: SLA expectations for an ingestion job.
+  example: []
+  syntax:
+    content: public sealed class IngestionSla
+    content.vb: Public NotInheritable Class IngestionSla
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionSla.FreshnessTargetSeconds
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionSla.FreshnessTargetSeconds
+  id: FreshnessTargetSeconds
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionSla
+  langs:
+  - csharp
+  - vb
+  name: FreshnessTargetSeconds
+  nameWithType: IngestionSla.FreshnessTargetSeconds
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionSla.FreshnessTargetSeconds
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FreshnessTargetSeconds
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 316
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Target data freshness in seconds (how stale data can be before violation).
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("freshnessTargetSeconds")]
+
+      public int FreshnessTargetSeconds { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonPropertyName("freshnessTargetSeconds")>
+
+      Public Property FreshnessTargetSeconds As Integer
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionSla.FreshnessTargetSeconds*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: freshnessTargetSeconds
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionSla.CompletionDeadline
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionSla.CompletionDeadline
+  id: CompletionDeadline
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionSla
+  langs:
+  - csharp
+  - vb
+  name: CompletionDeadline
+  nameWithType: IngestionSla.CompletionDeadline
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionSla.CompletionDeadline
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CompletionDeadline
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 322
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Deadline by which the job must complete (for historical workloads).
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("completionDeadline")]
+
+      public DateTime? CompletionDeadline { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: >-
+      <JsonPropertyName("completionDeadline")>
+
+      Public Property CompletionDeadline As Date?
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionSla.CompletionDeadline*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: completionDeadline
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionSla.MinimumCompleteness
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionSla.MinimumCompleteness
+  id: MinimumCompleteness
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionSla
+  langs:
+  - csharp
+  - vb
+  name: MinimumCompleteness
+  nameWithType: IngestionSla.MinimumCompleteness
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionSla.MinimumCompleteness
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MinimumCompleteness
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 328
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Minimum completeness ratio (0.0 to 1.0) required for the job to be considered successful.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("minimumCompleteness")]
+
+      public float MinimumCompleteness { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonPropertyName("minimumCompleteness")>
+
+      Public Property MinimumCompleteness As Single
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionSla.MinimumCompleteness*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: minimumCompleteness
+references:
+- uid: MarketDataCollector.Contracts.Pipeline
+  commentId: N:MarketDataCollector.Contracts.Pipeline
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Pipeline
+  nameWithType: MarketDataCollector.Contracts.Pipeline
+  fullName: MarketDataCollector.Contracts.Pipeline
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Pipeline
+    name: Pipeline
+    href: MarketDataCollector.Contracts.Pipeline.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Pipeline
+    name: Pipeline
+    href: MarketDataCollector.Contracts.Pipeline.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionSla.FreshnessTargetSeconds*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionSla.FreshnessTargetSeconds
+  href: MarketDataCollector.Contracts.Pipeline.IngestionSla.html#MarketDataCollector_Contracts_Pipeline_IngestionSla_FreshnessTargetSeconds
+  name: FreshnessTargetSeconds
+  nameWithType: IngestionSla.FreshnessTargetSeconds
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionSla.FreshnessTargetSeconds
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionSla.CompletionDeadline*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionSla.CompletionDeadline
+  href: MarketDataCollector.Contracts.Pipeline.IngestionSla.html#MarketDataCollector_Contracts_Pipeline_IngestionSla_CompletionDeadline
+  name: CompletionDeadline
+  nameWithType: IngestionSla.CompletionDeadline
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionSla.CompletionDeadline
+- uid: System.Nullable{System.DateTime}
+  commentId: T:System.Nullable{System.DateTime}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime?
+  nameWithType: DateTime?
+  fullName: System.DateTime?
+  nameWithType.vb: Date?
+  fullName.vb: Date?
+  name.vb: Date?
+  spec.csharp:
+  - uid: System.DateTime
+    name: DateTime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTime
+    name: Date
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionSla.MinimumCompleteness*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionSla.MinimumCompleteness
+  href: MarketDataCollector.Contracts.Pipeline.IngestionSla.html#MarketDataCollector_Contracts_Pipeline_IngestionSla_MinimumCompleteness
+  name: MinimumCompleteness
+  nameWithType: IngestionSla.MinimumCompleteness
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionSla.MinimumCompleteness
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single

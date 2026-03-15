@@ -1,0 +1,1494 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Services.ServiceRegistry
+  commentId: T:MarketDataCollector.Application.Services.ServiceRegistry
+  id: ServiceRegistry
+  parent: MarketDataCollector.Application.Services
+  children:
+  - MarketDataCollector.Application.Services.ServiceRegistry.#ctor(Serilog.ILogger)
+  - MarketDataCollector.Application.Services.ServiceRegistry.Dispose
+  - MarketDataCollector.Application.Services.ServiceRegistry.GetAll
+  - MarketDataCollector.Application.Services.ServiceRegistry.GetByCategory(MarketDataCollector.Application.Services.ServiceCategory)
+  - MarketDataCollector.Application.Services.ServiceRegistry.GetSummary
+  - MarketDataCollector.Application.Services.ServiceRegistry.Get``1
+  - MarketDataCollector.Application.Services.ServiceRegistry.Register``1(``0,MarketDataCollector.Application.Services.ServiceCategory,System.String)
+  langs:
+  - csharp
+  - vb
+  name: ServiceRegistry
+  nameWithType: ServiceRegistry
+  fullName: MarketDataCollector.Application.Services.ServiceRegistry
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ServiceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ServiceRegistry
+    path: ../../src/MarketDataCollector.Application/Services/ServiceRegistry.cs
+    startLine: 69
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Centralized registry for application services providing discovery,
+
+    categorization, and dependency resolution capabilities.
+  remarks: >-
+    The service registry provides:
+
+    - Service discovery by category
+
+    - Service metadata for documentation
+
+    - Centralized access to common services
+
+    - Health check aggregation for services
+
+
+    Services are organized into logical categories:
+
+    - Setup: ConfigurationWizard, AutoConfigurationService, ConfigEnvironmentOverride
+
+    - Validation: CredentialValidationService, ConnectivityTestService, PreflightChecker
+
+    - Diagnostics: DiagnosticBundleService, ErrorTracker, FriendlyErrorFormatter
+
+    - Lifecycle: GracefulShutdownService, StartupSummary
+
+    - Data: HistoricalDataQueryService, DryRunService, SampleDataGenerator
+
+    - Calendar: TradingCalendar
+
+    - Reporting: ProgressDisplayService, DailySummaryWebhook, ApiDocumentationService
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-001", "Centralized service registry for organization and discovery")]
+
+      public sealed class ServiceRegistry : IDisposable
+    content.vb: >-
+      <ImplementsAdr("ADR-001", "Centralized service registry for organization and discovery")>
+
+      Public NotInheritable Class ServiceRegistry Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MarketDataCollector.Application.Services.ServiceRegistry.MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterCalendarServices(MarketDataCollector.Application.Services.TradingCalendar)
+  - MarketDataCollector.Application.Services.ServiceRegistry.MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDataServices(MarketDataCollector.Application.Services.HistoricalDataQueryService,MarketDataCollector.Application.Services.SampleDataGenerator)
+  - MarketDataCollector.Application.Services.ServiceRegistry.MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDiagnosticServices(MarketDataCollector.Application.Services.DiagnosticBundleService,MarketDataCollector.Application.Services.ErrorTracker)
+  - MarketDataCollector.Application.Services.ServiceRegistry.MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterLifecycleServices(MarketDataCollector.Application.Services.GracefulShutdownService)
+  - MarketDataCollector.Application.Services.ServiceRegistry.MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterReportingServices(MarketDataCollector.Application.Services.ProgressDisplayService,MarketDataCollector.Application.Services.ApiDocumentationService)
+  - MarketDataCollector.Application.Services.ServiceRegistry.MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterSetupServices(MarketDataCollector.Application.Services.ConfigurationWizard,MarketDataCollector.Application.Services.AutoConfigurationService)
+  - MarketDataCollector.Application.Services.ServiceRegistry.MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterValidationServices(MarketDataCollector.Application.Services.CredentialValidationService,MarketDataCollector.Application.Services.ConnectivityTestService,MarketDataCollector.Application.Services.PreflightChecker)
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-001
+    - type: System.String
+      value: Centralized service registry for organization and discovery
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.#ctor(Serilog.ILogger)
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistry.#ctor(Serilog.ILogger)
+  id: '#ctor(Serilog.ILogger)'
+  parent: MarketDataCollector.Application.Services.ServiceRegistry
+  langs:
+  - csharp
+  - vb
+  name: ServiceRegistry(ILogger?)
+  nameWithType: ServiceRegistry.ServiceRegistry(ILogger?)
+  fullName: MarketDataCollector.Application.Services.ServiceRegistry.ServiceRegistry(Serilog.ILogger?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ServiceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Services/ServiceRegistry.cs
+    startLine: 77
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  syntax:
+    content: public ServiceRegistry(ILogger? log = null)
+    parameters:
+    - id: log
+      type: Serilog.ILogger
+    content.vb: Public Sub New(log As ILogger = Nothing)
+  overload: MarketDataCollector.Application.Services.ServiceRegistry.#ctor*
+  nameWithType.vb: ServiceRegistry.New(ILogger)
+  fullName.vb: MarketDataCollector.Application.Services.ServiceRegistry.New(Serilog.ILogger)
+  name.vb: New(ILogger)
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.Register``1(``0,MarketDataCollector.Application.Services.ServiceCategory,System.String)
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistry.Register``1(``0,MarketDataCollector.Application.Services.ServiceCategory,System.String)
+  id: Register``1(``0,MarketDataCollector.Application.Services.ServiceCategory,System.String)
+  parent: MarketDataCollector.Application.Services.ServiceRegistry
+  langs:
+  - csharp
+  - vb
+  name: Register<T>(T, ServiceCategory, string)
+  nameWithType: ServiceRegistry.Register<T>(T, ServiceCategory, string)
+  fullName: MarketDataCollector.Application.Services.ServiceRegistry.Register<T>(T, MarketDataCollector.Application.Services.ServiceCategory, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ServiceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Register
+    path: ../../src/MarketDataCollector.Application/Services/ServiceRegistry.cs
+    startLine: 89
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Registers a service with metadata.
+  example: []
+  syntax:
+    content: 'public void Register<T>(T instance, ServiceCategory category, string description) where T : class'
+    parameters:
+    - id: instance
+      type: '{T}'
+      description: Service instance.
+    - id: category
+      type: MarketDataCollector.Application.Services.ServiceCategory
+      description: Service category.
+    - id: description
+      type: System.String
+      description: Service description.
+    typeParameters:
+    - id: T
+      description: Service type.
+    content.vb: Public Sub Register(Of T As Class)(instance As T, category As ServiceCategory, description As String)
+  overload: MarketDataCollector.Application.Services.ServiceRegistry.Register*
+  nameWithType.vb: ServiceRegistry.Register(Of T)(T, ServiceCategory, String)
+  fullName.vb: MarketDataCollector.Application.Services.ServiceRegistry.Register(Of T)(T, MarketDataCollector.Application.Services.ServiceCategory, String)
+  name.vb: Register(Of T)(T, ServiceCategory, String)
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.Get``1
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistry.Get``1
+  id: Get``1
+  parent: MarketDataCollector.Application.Services.ServiceRegistry
+  langs:
+  - csharp
+  - vb
+  name: Get<T>()
+  nameWithType: ServiceRegistry.Get<T>()
+  fullName: MarketDataCollector.Application.Services.ServiceRegistry.Get<T>()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ServiceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Get
+    path: ../../src/MarketDataCollector.Application/Services/ServiceRegistry.cs
+    startLine: 105
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets a service by type.
+  example: []
+  syntax:
+    content: 'public T? Get<T>() where T : class'
+    typeParameters:
+    - id: T
+      description: Service type.
+    return:
+      type: '{T}'
+      description: Service instance or null if not registered.
+    content.vb: Public Function [Get](Of T As Class)() As T
+  overload: MarketDataCollector.Application.Services.ServiceRegistry.Get*
+  nameWithType.vb: ServiceRegistry.Get(Of T)()
+  fullName.vb: MarketDataCollector.Application.Services.ServiceRegistry.Get(Of T)()
+  name.vb: Get(Of T)()
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.GetByCategory(MarketDataCollector.Application.Services.ServiceCategory)
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistry.GetByCategory(MarketDataCollector.Application.Services.ServiceCategory)
+  id: GetByCategory(MarketDataCollector.Application.Services.ServiceCategory)
+  parent: MarketDataCollector.Application.Services.ServiceRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetByCategory(ServiceCategory)
+  nameWithType: ServiceRegistry.GetByCategory(ServiceCategory)
+  fullName: MarketDataCollector.Application.Services.ServiceRegistry.GetByCategory(MarketDataCollector.Application.Services.ServiceCategory)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ServiceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetByCategory
+    path: ../../src/MarketDataCollector.Application/Services/ServiceRegistry.cs
+    startLine: 115
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets all services in a category.
+  example: []
+  syntax:
+    content: public IReadOnlyList<ServiceInfo> GetByCategory(ServiceCategory category)
+    parameters:
+    - id: category
+      type: MarketDataCollector.Application.Services.ServiceCategory
+      description: Category to filter by.
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.ServiceInfo}
+      description: Services in the category.
+    content.vb: Public Function GetByCategory(category As ServiceCategory) As IReadOnlyList(Of ServiceInfo)
+  overload: MarketDataCollector.Application.Services.ServiceRegistry.GetByCategory*
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.GetAll
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistry.GetAll
+  id: GetAll
+  parent: MarketDataCollector.Application.Services.ServiceRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetAll()
+  nameWithType: ServiceRegistry.GetAll()
+  fullName: MarketDataCollector.Application.Services.ServiceRegistry.GetAll()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ServiceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetAll
+    path: ../../src/MarketDataCollector.Application/Services/ServiceRegistry.cs
+    startLine: 124
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets all registered services.
+  example: []
+  syntax:
+    content: public IReadOnlyList<ServiceInfo> GetAll()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.ServiceInfo}
+      description: All registered services.
+    content.vb: Public Function GetAll() As IReadOnlyList(Of ServiceInfo)
+  overload: MarketDataCollector.Application.Services.ServiceRegistry.GetAll*
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.GetSummary
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistry.GetSummary
+  id: GetSummary
+  parent: MarketDataCollector.Application.Services.ServiceRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetSummary()
+  nameWithType: ServiceRegistry.GetSummary()
+  fullName: MarketDataCollector.Application.Services.ServiceRegistry.GetSummary()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ServiceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSummary
+    path: ../../src/MarketDataCollector.Application/Services/ServiceRegistry.cs
+    startLine: 133
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets a summary of registered services by category.
+  example: []
+  syntax:
+    content: public IReadOnlyDictionary<ServiceCategory, int> GetSummary()
+    return:
+      type: System.Collections.Generic.IReadOnlyDictionary{MarketDataCollector.Application.Services.ServiceCategory,System.Int32}
+      description: Dictionary of category to service count.
+    content.vb: Public Function GetSummary() As IReadOnlyDictionary(Of ServiceCategory, Integer)
+  overload: MarketDataCollector.Application.Services.ServiceRegistry.GetSummary*
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.Dispose
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistry.Dispose
+  id: Dispose
+  parent: MarketDataCollector.Application.Services.ServiceRegistry
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: ServiceRegistry.Dispose()
+  fullName: MarketDataCollector.Application.Services.ServiceRegistry.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ServiceRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Dispose
+    path: ../../src/MarketDataCollector.Application/Services/ServiceRegistry.cs
+    startLine: 140
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MarketDataCollector.Application.Services.ServiceRegistry.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: MarketDataCollector.Application.Services
+  commentId: N:MarketDataCollector.Application.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Services
+  nameWithType: MarketDataCollector.Application.Services
+  fullName: MarketDataCollector.Application.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterCalendarServices(MarketDataCollector.Application.Services.TradingCalendar)
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterCalendarServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.TradingCalendar)
+  parent: MarketDataCollector.Application.Services.ServiceRegistryExtensions
+  definition: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterCalendarServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.TradingCalendar)
+  href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterCalendarServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_TradingCalendar_
+  name: RegisterCalendarServices(ServiceRegistry, TradingCalendar)
+  nameWithType: ServiceRegistryExtensions.RegisterCalendarServices(ServiceRegistry, TradingCalendar)
+  fullName: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterCalendarServices(MarketDataCollector.Application.Services.ServiceRegistry, MarketDataCollector.Application.Services.TradingCalendar)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterCalendarServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.TradingCalendar)
+    name: RegisterCalendarServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterCalendarServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_TradingCalendar_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.TradingCalendar
+    name: TradingCalendar
+    href: MarketDataCollector.Application.Services.TradingCalendar.html
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterCalendarServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.TradingCalendar)
+    name: RegisterCalendarServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterCalendarServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_TradingCalendar_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.TradingCalendar
+    name: TradingCalendar
+    href: MarketDataCollector.Application.Services.TradingCalendar.html
+  - name: )
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDataServices(MarketDataCollector.Application.Services.HistoricalDataQueryService,MarketDataCollector.Application.Services.SampleDataGenerator)
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDataServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.HistoricalDataQueryService,MarketDataCollector.Application.Services.SampleDataGenerator)
+  parent: MarketDataCollector.Application.Services.ServiceRegistryExtensions
+  definition: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDataServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.HistoricalDataQueryService,MarketDataCollector.Application.Services.SampleDataGenerator)
+  href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterDataServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_HistoricalDataQueryService_MarketDataCollector_Application_Services_SampleDataGenerator_
+  name: RegisterDataServices(ServiceRegistry, HistoricalDataQueryService, SampleDataGenerator)
+  nameWithType: ServiceRegistryExtensions.RegisterDataServices(ServiceRegistry, HistoricalDataQueryService, SampleDataGenerator)
+  fullName: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDataServices(MarketDataCollector.Application.Services.ServiceRegistry, MarketDataCollector.Application.Services.HistoricalDataQueryService, MarketDataCollector.Application.Services.SampleDataGenerator)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDataServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.HistoricalDataQueryService,MarketDataCollector.Application.Services.SampleDataGenerator)
+    name: RegisterDataServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterDataServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_HistoricalDataQueryService_MarketDataCollector_Application_Services_SampleDataGenerator_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.HistoricalDataQueryService
+    name: HistoricalDataQueryService
+    href: MarketDataCollector.Application.Services.HistoricalDataQueryService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.SampleDataGenerator
+    name: SampleDataGenerator
+    href: MarketDataCollector.Application.Services.SampleDataGenerator.html
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDataServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.HistoricalDataQueryService,MarketDataCollector.Application.Services.SampleDataGenerator)
+    name: RegisterDataServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterDataServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_HistoricalDataQueryService_MarketDataCollector_Application_Services_SampleDataGenerator_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.HistoricalDataQueryService
+    name: HistoricalDataQueryService
+    href: MarketDataCollector.Application.Services.HistoricalDataQueryService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.SampleDataGenerator
+    name: SampleDataGenerator
+    href: MarketDataCollector.Application.Services.SampleDataGenerator.html
+  - name: )
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDiagnosticServices(MarketDataCollector.Application.Services.DiagnosticBundleService,MarketDataCollector.Application.Services.ErrorTracker)
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDiagnosticServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.DiagnosticBundleService,MarketDataCollector.Application.Services.ErrorTracker)
+  parent: MarketDataCollector.Application.Services.ServiceRegistryExtensions
+  definition: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDiagnosticServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.DiagnosticBundleService,MarketDataCollector.Application.Services.ErrorTracker)
+  href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterDiagnosticServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_DiagnosticBundleService_MarketDataCollector_Application_Services_ErrorTracker_
+  name: RegisterDiagnosticServices(ServiceRegistry, DiagnosticBundleService, ErrorTracker)
+  nameWithType: ServiceRegistryExtensions.RegisterDiagnosticServices(ServiceRegistry, DiagnosticBundleService, ErrorTracker)
+  fullName: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDiagnosticServices(MarketDataCollector.Application.Services.ServiceRegistry, MarketDataCollector.Application.Services.DiagnosticBundleService, MarketDataCollector.Application.Services.ErrorTracker)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDiagnosticServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.DiagnosticBundleService,MarketDataCollector.Application.Services.ErrorTracker)
+    name: RegisterDiagnosticServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterDiagnosticServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_DiagnosticBundleService_MarketDataCollector_Application_Services_ErrorTracker_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.DiagnosticBundleService
+    name: DiagnosticBundleService
+    href: MarketDataCollector.Application.Services.DiagnosticBundleService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ErrorTracker
+    name: ErrorTracker
+    href: MarketDataCollector.Application.Services.ErrorTracker.html
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDiagnosticServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.DiagnosticBundleService,MarketDataCollector.Application.Services.ErrorTracker)
+    name: RegisterDiagnosticServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterDiagnosticServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_DiagnosticBundleService_MarketDataCollector_Application_Services_ErrorTracker_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.DiagnosticBundleService
+    name: DiagnosticBundleService
+    href: MarketDataCollector.Application.Services.DiagnosticBundleService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ErrorTracker
+    name: ErrorTracker
+    href: MarketDataCollector.Application.Services.ErrorTracker.html
+  - name: )
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterLifecycleServices(MarketDataCollector.Application.Services.GracefulShutdownService)
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterLifecycleServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.GracefulShutdownService)
+  parent: MarketDataCollector.Application.Services.ServiceRegistryExtensions
+  definition: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterLifecycleServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.GracefulShutdownService)
+  href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterLifecycleServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_GracefulShutdownService_
+  name: RegisterLifecycleServices(ServiceRegistry, GracefulShutdownService)
+  nameWithType: ServiceRegistryExtensions.RegisterLifecycleServices(ServiceRegistry, GracefulShutdownService)
+  fullName: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterLifecycleServices(MarketDataCollector.Application.Services.ServiceRegistry, MarketDataCollector.Application.Services.GracefulShutdownService)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterLifecycleServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.GracefulShutdownService)
+    name: RegisterLifecycleServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterLifecycleServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_GracefulShutdownService_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.GracefulShutdownService
+    name: GracefulShutdownService
+    href: MarketDataCollector.Application.Services.GracefulShutdownService.html
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterLifecycleServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.GracefulShutdownService)
+    name: RegisterLifecycleServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterLifecycleServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_GracefulShutdownService_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.GracefulShutdownService
+    name: GracefulShutdownService
+    href: MarketDataCollector.Application.Services.GracefulShutdownService.html
+  - name: )
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterReportingServices(MarketDataCollector.Application.Services.ProgressDisplayService,MarketDataCollector.Application.Services.ApiDocumentationService)
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterReportingServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.ProgressDisplayService,MarketDataCollector.Application.Services.ApiDocumentationService)
+  parent: MarketDataCollector.Application.Services.ServiceRegistryExtensions
+  definition: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterReportingServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.ProgressDisplayService,MarketDataCollector.Application.Services.ApiDocumentationService)
+  href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterReportingServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_ProgressDisplayService_MarketDataCollector_Application_Services_ApiDocumentationService_
+  name: RegisterReportingServices(ServiceRegistry, ProgressDisplayService, ApiDocumentationService)
+  nameWithType: ServiceRegistryExtensions.RegisterReportingServices(ServiceRegistry, ProgressDisplayService, ApiDocumentationService)
+  fullName: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterReportingServices(MarketDataCollector.Application.Services.ServiceRegistry, MarketDataCollector.Application.Services.ProgressDisplayService, MarketDataCollector.Application.Services.ApiDocumentationService)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterReportingServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.ProgressDisplayService,MarketDataCollector.Application.Services.ApiDocumentationService)
+    name: RegisterReportingServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterReportingServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_ProgressDisplayService_MarketDataCollector_Application_Services_ApiDocumentationService_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ProgressDisplayService
+    name: ProgressDisplayService
+    href: MarketDataCollector.Application.Services.ProgressDisplayService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ApiDocumentationService
+    name: ApiDocumentationService
+    href: MarketDataCollector.Application.Services.ApiDocumentationService.html
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterReportingServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.ProgressDisplayService,MarketDataCollector.Application.Services.ApiDocumentationService)
+    name: RegisterReportingServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterReportingServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_ProgressDisplayService_MarketDataCollector_Application_Services_ApiDocumentationService_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ProgressDisplayService
+    name: ProgressDisplayService
+    href: MarketDataCollector.Application.Services.ProgressDisplayService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ApiDocumentationService
+    name: ApiDocumentationService
+    href: MarketDataCollector.Application.Services.ApiDocumentationService.html
+  - name: )
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterSetupServices(MarketDataCollector.Application.Services.ConfigurationWizard,MarketDataCollector.Application.Services.AutoConfigurationService)
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterSetupServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.ConfigurationWizard,MarketDataCollector.Application.Services.AutoConfigurationService)
+  parent: MarketDataCollector.Application.Services.ServiceRegistryExtensions
+  definition: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterSetupServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.ConfigurationWizard,MarketDataCollector.Application.Services.AutoConfigurationService)
+  href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterSetupServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_ConfigurationWizard_MarketDataCollector_Application_Services_AutoConfigurationService_
+  name: RegisterSetupServices(ServiceRegistry, ConfigurationWizard, AutoConfigurationService)
+  nameWithType: ServiceRegistryExtensions.RegisterSetupServices(ServiceRegistry, ConfigurationWizard, AutoConfigurationService)
+  fullName: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterSetupServices(MarketDataCollector.Application.Services.ServiceRegistry, MarketDataCollector.Application.Services.ConfigurationWizard, MarketDataCollector.Application.Services.AutoConfigurationService)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterSetupServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.ConfigurationWizard,MarketDataCollector.Application.Services.AutoConfigurationService)
+    name: RegisterSetupServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterSetupServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_ConfigurationWizard_MarketDataCollector_Application_Services_AutoConfigurationService_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ConfigurationWizard
+    name: ConfigurationWizard
+    href: MarketDataCollector.Application.Services.ConfigurationWizard.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService
+    name: AutoConfigurationService
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.html
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterSetupServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.ConfigurationWizard,MarketDataCollector.Application.Services.AutoConfigurationService)
+    name: RegisterSetupServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterSetupServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_ConfigurationWizard_MarketDataCollector_Application_Services_AutoConfigurationService_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ConfigurationWizard
+    name: ConfigurationWizard
+    href: MarketDataCollector.Application.Services.ConfigurationWizard.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService
+    name: AutoConfigurationService
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.html
+  - name: )
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterValidationServices(MarketDataCollector.Application.Services.CredentialValidationService,MarketDataCollector.Application.Services.ConnectivityTestService,MarketDataCollector.Application.Services.PreflightChecker)
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterValidationServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.CredentialValidationService,MarketDataCollector.Application.Services.ConnectivityTestService,MarketDataCollector.Application.Services.PreflightChecker)
+  parent: MarketDataCollector.Application.Services.ServiceRegistryExtensions
+  definition: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterValidationServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.CredentialValidationService,MarketDataCollector.Application.Services.ConnectivityTestService,MarketDataCollector.Application.Services.PreflightChecker)
+  href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterValidationServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_CredentialValidationService_MarketDataCollector_Application_Services_ConnectivityTestService_MarketDataCollector_Application_Services_PreflightChecker_
+  name: RegisterValidationServices(ServiceRegistry, CredentialValidationService, ConnectivityTestService, PreflightChecker)
+  nameWithType: ServiceRegistryExtensions.RegisterValidationServices(ServiceRegistry, CredentialValidationService, ConnectivityTestService, PreflightChecker)
+  fullName: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterValidationServices(MarketDataCollector.Application.Services.ServiceRegistry, MarketDataCollector.Application.Services.CredentialValidationService, MarketDataCollector.Application.Services.ConnectivityTestService, MarketDataCollector.Application.Services.PreflightChecker)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterValidationServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.CredentialValidationService,MarketDataCollector.Application.Services.ConnectivityTestService,MarketDataCollector.Application.Services.PreflightChecker)
+    name: RegisterValidationServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterValidationServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_CredentialValidationService_MarketDataCollector_Application_Services_ConnectivityTestService_MarketDataCollector_Application_Services_PreflightChecker_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.CredentialValidationService
+    name: CredentialValidationService
+    href: MarketDataCollector.Application.Services.CredentialValidationService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ConnectivityTestService
+    name: ConnectivityTestService
+    href: MarketDataCollector.Application.Services.ConnectivityTestService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.PreflightChecker
+    name: PreflightChecker
+    href: MarketDataCollector.Application.Services.PreflightChecker.html
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterValidationServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.CredentialValidationService,MarketDataCollector.Application.Services.ConnectivityTestService,MarketDataCollector.Application.Services.PreflightChecker)
+    name: RegisterValidationServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterValidationServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_CredentialValidationService_MarketDataCollector_Application_Services_ConnectivityTestService_MarketDataCollector_Application_Services_PreflightChecker_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.CredentialValidationService
+    name: CredentialValidationService
+    href: MarketDataCollector.Application.Services.CredentialValidationService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ConnectivityTestService
+    name: ConnectivityTestService
+    href: MarketDataCollector.Application.Services.ConnectivityTestService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.PreflightChecker
+    name: PreflightChecker
+    href: MarketDataCollector.Application.Services.PreflightChecker.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterCalendarServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.TradingCalendar)
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterCalendarServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.TradingCalendar)
+  href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterCalendarServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_TradingCalendar_
+  name: RegisterCalendarServices(ServiceRegistry, TradingCalendar)
+  nameWithType: ServiceRegistryExtensions.RegisterCalendarServices(ServiceRegistry, TradingCalendar)
+  fullName: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterCalendarServices(MarketDataCollector.Application.Services.ServiceRegistry, MarketDataCollector.Application.Services.TradingCalendar)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterCalendarServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.TradingCalendar)
+    name: RegisterCalendarServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterCalendarServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_TradingCalendar_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.TradingCalendar
+    name: TradingCalendar
+    href: MarketDataCollector.Application.Services.TradingCalendar.html
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterCalendarServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.TradingCalendar)
+    name: RegisterCalendarServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterCalendarServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_TradingCalendar_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.TradingCalendar
+    name: TradingCalendar
+    href: MarketDataCollector.Application.Services.TradingCalendar.html
+  - name: )
+- uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions
+  commentId: T:MarketDataCollector.Application.Services.ServiceRegistryExtensions
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html
+  name: ServiceRegistryExtensions
+  nameWithType: ServiceRegistryExtensions
+  fullName: MarketDataCollector.Application.Services.ServiceRegistryExtensions
+- uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDataServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.HistoricalDataQueryService,MarketDataCollector.Application.Services.SampleDataGenerator)
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDataServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.HistoricalDataQueryService,MarketDataCollector.Application.Services.SampleDataGenerator)
+  href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterDataServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_HistoricalDataQueryService_MarketDataCollector_Application_Services_SampleDataGenerator_
+  name: RegisterDataServices(ServiceRegistry, HistoricalDataQueryService, SampleDataGenerator)
+  nameWithType: ServiceRegistryExtensions.RegisterDataServices(ServiceRegistry, HistoricalDataQueryService, SampleDataGenerator)
+  fullName: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDataServices(MarketDataCollector.Application.Services.ServiceRegistry, MarketDataCollector.Application.Services.HistoricalDataQueryService, MarketDataCollector.Application.Services.SampleDataGenerator)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDataServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.HistoricalDataQueryService,MarketDataCollector.Application.Services.SampleDataGenerator)
+    name: RegisterDataServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterDataServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_HistoricalDataQueryService_MarketDataCollector_Application_Services_SampleDataGenerator_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.HistoricalDataQueryService
+    name: HistoricalDataQueryService
+    href: MarketDataCollector.Application.Services.HistoricalDataQueryService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.SampleDataGenerator
+    name: SampleDataGenerator
+    href: MarketDataCollector.Application.Services.SampleDataGenerator.html
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDataServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.HistoricalDataQueryService,MarketDataCollector.Application.Services.SampleDataGenerator)
+    name: RegisterDataServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterDataServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_HistoricalDataQueryService_MarketDataCollector_Application_Services_SampleDataGenerator_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.HistoricalDataQueryService
+    name: HistoricalDataQueryService
+    href: MarketDataCollector.Application.Services.HistoricalDataQueryService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.SampleDataGenerator
+    name: SampleDataGenerator
+    href: MarketDataCollector.Application.Services.SampleDataGenerator.html
+  - name: )
+- uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDiagnosticServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.DiagnosticBundleService,MarketDataCollector.Application.Services.ErrorTracker)
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDiagnosticServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.DiagnosticBundleService,MarketDataCollector.Application.Services.ErrorTracker)
+  href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterDiagnosticServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_DiagnosticBundleService_MarketDataCollector_Application_Services_ErrorTracker_
+  name: RegisterDiagnosticServices(ServiceRegistry, DiagnosticBundleService, ErrorTracker)
+  nameWithType: ServiceRegistryExtensions.RegisterDiagnosticServices(ServiceRegistry, DiagnosticBundleService, ErrorTracker)
+  fullName: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDiagnosticServices(MarketDataCollector.Application.Services.ServiceRegistry, MarketDataCollector.Application.Services.DiagnosticBundleService, MarketDataCollector.Application.Services.ErrorTracker)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDiagnosticServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.DiagnosticBundleService,MarketDataCollector.Application.Services.ErrorTracker)
+    name: RegisterDiagnosticServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterDiagnosticServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_DiagnosticBundleService_MarketDataCollector_Application_Services_ErrorTracker_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.DiagnosticBundleService
+    name: DiagnosticBundleService
+    href: MarketDataCollector.Application.Services.DiagnosticBundleService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ErrorTracker
+    name: ErrorTracker
+    href: MarketDataCollector.Application.Services.ErrorTracker.html
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterDiagnosticServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.DiagnosticBundleService,MarketDataCollector.Application.Services.ErrorTracker)
+    name: RegisterDiagnosticServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterDiagnosticServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_DiagnosticBundleService_MarketDataCollector_Application_Services_ErrorTracker_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.DiagnosticBundleService
+    name: DiagnosticBundleService
+    href: MarketDataCollector.Application.Services.DiagnosticBundleService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ErrorTracker
+    name: ErrorTracker
+    href: MarketDataCollector.Application.Services.ErrorTracker.html
+  - name: )
+- uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterLifecycleServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.GracefulShutdownService)
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterLifecycleServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.GracefulShutdownService)
+  href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterLifecycleServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_GracefulShutdownService_
+  name: RegisterLifecycleServices(ServiceRegistry, GracefulShutdownService)
+  nameWithType: ServiceRegistryExtensions.RegisterLifecycleServices(ServiceRegistry, GracefulShutdownService)
+  fullName: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterLifecycleServices(MarketDataCollector.Application.Services.ServiceRegistry, MarketDataCollector.Application.Services.GracefulShutdownService)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterLifecycleServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.GracefulShutdownService)
+    name: RegisterLifecycleServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterLifecycleServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_GracefulShutdownService_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.GracefulShutdownService
+    name: GracefulShutdownService
+    href: MarketDataCollector.Application.Services.GracefulShutdownService.html
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterLifecycleServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.GracefulShutdownService)
+    name: RegisterLifecycleServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterLifecycleServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_GracefulShutdownService_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.GracefulShutdownService
+    name: GracefulShutdownService
+    href: MarketDataCollector.Application.Services.GracefulShutdownService.html
+  - name: )
+- uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterReportingServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.ProgressDisplayService,MarketDataCollector.Application.Services.ApiDocumentationService)
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterReportingServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.ProgressDisplayService,MarketDataCollector.Application.Services.ApiDocumentationService)
+  href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterReportingServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_ProgressDisplayService_MarketDataCollector_Application_Services_ApiDocumentationService_
+  name: RegisterReportingServices(ServiceRegistry, ProgressDisplayService, ApiDocumentationService)
+  nameWithType: ServiceRegistryExtensions.RegisterReportingServices(ServiceRegistry, ProgressDisplayService, ApiDocumentationService)
+  fullName: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterReportingServices(MarketDataCollector.Application.Services.ServiceRegistry, MarketDataCollector.Application.Services.ProgressDisplayService, MarketDataCollector.Application.Services.ApiDocumentationService)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterReportingServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.ProgressDisplayService,MarketDataCollector.Application.Services.ApiDocumentationService)
+    name: RegisterReportingServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterReportingServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_ProgressDisplayService_MarketDataCollector_Application_Services_ApiDocumentationService_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ProgressDisplayService
+    name: ProgressDisplayService
+    href: MarketDataCollector.Application.Services.ProgressDisplayService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ApiDocumentationService
+    name: ApiDocumentationService
+    href: MarketDataCollector.Application.Services.ApiDocumentationService.html
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterReportingServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.ProgressDisplayService,MarketDataCollector.Application.Services.ApiDocumentationService)
+    name: RegisterReportingServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterReportingServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_ProgressDisplayService_MarketDataCollector_Application_Services_ApiDocumentationService_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ProgressDisplayService
+    name: ProgressDisplayService
+    href: MarketDataCollector.Application.Services.ProgressDisplayService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ApiDocumentationService
+    name: ApiDocumentationService
+    href: MarketDataCollector.Application.Services.ApiDocumentationService.html
+  - name: )
+- uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterSetupServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.ConfigurationWizard,MarketDataCollector.Application.Services.AutoConfigurationService)
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterSetupServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.ConfigurationWizard,MarketDataCollector.Application.Services.AutoConfigurationService)
+  href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterSetupServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_ConfigurationWizard_MarketDataCollector_Application_Services_AutoConfigurationService_
+  name: RegisterSetupServices(ServiceRegistry, ConfigurationWizard, AutoConfigurationService)
+  nameWithType: ServiceRegistryExtensions.RegisterSetupServices(ServiceRegistry, ConfigurationWizard, AutoConfigurationService)
+  fullName: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterSetupServices(MarketDataCollector.Application.Services.ServiceRegistry, MarketDataCollector.Application.Services.ConfigurationWizard, MarketDataCollector.Application.Services.AutoConfigurationService)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterSetupServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.ConfigurationWizard,MarketDataCollector.Application.Services.AutoConfigurationService)
+    name: RegisterSetupServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterSetupServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_ConfigurationWizard_MarketDataCollector_Application_Services_AutoConfigurationService_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ConfigurationWizard
+    name: ConfigurationWizard
+    href: MarketDataCollector.Application.Services.ConfigurationWizard.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService
+    name: AutoConfigurationService
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.html
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterSetupServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.ConfigurationWizard,MarketDataCollector.Application.Services.AutoConfigurationService)
+    name: RegisterSetupServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterSetupServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_ConfigurationWizard_MarketDataCollector_Application_Services_AutoConfigurationService_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ConfigurationWizard
+    name: ConfigurationWizard
+    href: MarketDataCollector.Application.Services.ConfigurationWizard.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService
+    name: AutoConfigurationService
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.html
+  - name: )
+- uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterValidationServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.CredentialValidationService,MarketDataCollector.Application.Services.ConnectivityTestService,MarketDataCollector.Application.Services.PreflightChecker)
+  commentId: M:MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterValidationServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.CredentialValidationService,MarketDataCollector.Application.Services.ConnectivityTestService,MarketDataCollector.Application.Services.PreflightChecker)
+  href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterValidationServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_CredentialValidationService_MarketDataCollector_Application_Services_ConnectivityTestService_MarketDataCollector_Application_Services_PreflightChecker_
+  name: RegisterValidationServices(ServiceRegistry, CredentialValidationService, ConnectivityTestService, PreflightChecker)
+  nameWithType: ServiceRegistryExtensions.RegisterValidationServices(ServiceRegistry, CredentialValidationService, ConnectivityTestService, PreflightChecker)
+  fullName: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterValidationServices(MarketDataCollector.Application.Services.ServiceRegistry, MarketDataCollector.Application.Services.CredentialValidationService, MarketDataCollector.Application.Services.ConnectivityTestService, MarketDataCollector.Application.Services.PreflightChecker)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterValidationServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.CredentialValidationService,MarketDataCollector.Application.Services.ConnectivityTestService,MarketDataCollector.Application.Services.PreflightChecker)
+    name: RegisterValidationServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterValidationServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_CredentialValidationService_MarketDataCollector_Application_Services_ConnectivityTestService_MarketDataCollector_Application_Services_PreflightChecker_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.CredentialValidationService
+    name: CredentialValidationService
+    href: MarketDataCollector.Application.Services.CredentialValidationService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ConnectivityTestService
+    name: ConnectivityTestService
+    href: MarketDataCollector.Application.Services.ConnectivityTestService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.PreflightChecker
+    name: PreflightChecker
+    href: MarketDataCollector.Application.Services.PreflightChecker.html
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.ServiceRegistryExtensions.RegisterValidationServices(MarketDataCollector.Application.Services.ServiceRegistry,MarketDataCollector.Application.Services.CredentialValidationService,MarketDataCollector.Application.Services.ConnectivityTestService,MarketDataCollector.Application.Services.PreflightChecker)
+    name: RegisterValidationServices
+    href: MarketDataCollector.Application.Services.ServiceRegistryExtensions.html#MarketDataCollector_Application_Services_ServiceRegistryExtensions_RegisterValidationServices_MarketDataCollector_Application_Services_ServiceRegistry_MarketDataCollector_Application_Services_CredentialValidationService_MarketDataCollector_Application_Services_ConnectivityTestService_MarketDataCollector_Application_Services_PreflightChecker_
+  - name: (
+  - uid: MarketDataCollector.Application.Services.ServiceRegistry
+    name: ServiceRegistry
+    href: MarketDataCollector.Application.Services.ServiceRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.CredentialValidationService
+    name: CredentialValidationService
+    href: MarketDataCollector.Application.Services.CredentialValidationService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ConnectivityTestService
+    name: ConnectivityTestService
+    href: MarketDataCollector.Application.Services.ConnectivityTestService.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.PreflightChecker
+    name: PreflightChecker
+    href: MarketDataCollector.Application.Services.PreflightChecker.html
+  - name: )
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Services.ServiceRegistry.#ctor
+  href: MarketDataCollector.Application.Services.ServiceRegistry.html#MarketDataCollector_Application_Services_ServiceRegistry__ctor_Serilog_ILogger_
+  name: ServiceRegistry
+  nameWithType: ServiceRegistry.ServiceRegistry
+  fullName: MarketDataCollector.Application.Services.ServiceRegistry.ServiceRegistry
+  nameWithType.vb: ServiceRegistry.New
+  fullName.vb: MarketDataCollector.Application.Services.ServiceRegistry.New
+  name.vb: New
+- uid: Serilog.ILogger
+  commentId: T:Serilog.ILogger
+  parent: Serilog
+  isExternal: true
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Serilog.ILogger
+- uid: Serilog
+  commentId: N:Serilog
+  isExternal: true
+  name: Serilog
+  nameWithType: Serilog
+  fullName: Serilog
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.Register*
+  commentId: Overload:MarketDataCollector.Application.Services.ServiceRegistry.Register
+  href: MarketDataCollector.Application.Services.ServiceRegistry.html#MarketDataCollector_Application_Services_ServiceRegistry_Register__1___0_MarketDataCollector_Application_Services_ServiceCategory_System_String_
+  name: Register
+  nameWithType: ServiceRegistry.Register
+  fullName: MarketDataCollector.Application.Services.ServiceRegistry.Register
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: MarketDataCollector.Application.Services.ServiceCategory
+  commentId: T:MarketDataCollector.Application.Services.ServiceCategory
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.ServiceCategory.html
+  name: ServiceCategory
+  nameWithType: ServiceCategory
+  fullName: MarketDataCollector.Application.Services.ServiceCategory
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.Get*
+  commentId: Overload:MarketDataCollector.Application.Services.ServiceRegistry.Get
+  href: MarketDataCollector.Application.Services.ServiceRegistry.html#MarketDataCollector_Application_Services_ServiceRegistry_Get__1
+  name: Get
+  nameWithType: ServiceRegistry.Get
+  fullName: MarketDataCollector.Application.Services.ServiceRegistry.Get
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.GetByCategory*
+  commentId: Overload:MarketDataCollector.Application.Services.ServiceRegistry.GetByCategory
+  href: MarketDataCollector.Application.Services.ServiceRegistry.html#MarketDataCollector_Application_Services_ServiceRegistry_GetByCategory_MarketDataCollector_Application_Services_ServiceCategory_
+  name: GetByCategory
+  nameWithType: ServiceRegistry.GetByCategory
+  fullName: MarketDataCollector.Application.Services.ServiceRegistry.GetByCategory
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.ServiceInfo}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.ServiceInfo}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<ServiceInfo>
+  nameWithType: IReadOnlyList<ServiceInfo>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Services.ServiceInfo>
+  nameWithType.vb: IReadOnlyList(Of ServiceInfo)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Services.ServiceInfo)
+  name.vb: IReadOnlyList(Of ServiceInfo)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Application.Services.ServiceInfo
+    name: ServiceInfo
+    href: MarketDataCollector.Application.Services.ServiceInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ServiceInfo
+    name: ServiceInfo
+    href: MarketDataCollector.Application.Services.ServiceInfo.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.GetAll*
+  commentId: Overload:MarketDataCollector.Application.Services.ServiceRegistry.GetAll
+  href: MarketDataCollector.Application.Services.ServiceRegistry.html#MarketDataCollector_Application_Services_ServiceRegistry_GetAll
+  name: GetAll
+  nameWithType: ServiceRegistry.GetAll
+  fullName: MarketDataCollector.Application.Services.ServiceRegistry.GetAll
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.GetSummary*
+  commentId: Overload:MarketDataCollector.Application.Services.ServiceRegistry.GetSummary
+  href: MarketDataCollector.Application.Services.ServiceRegistry.html#MarketDataCollector_Application_Services_ServiceRegistry_GetSummary
+  name: GetSummary
+  nameWithType: ServiceRegistry.GetSummary
+  fullName: MarketDataCollector.Application.Services.ServiceRegistry.GetSummary
+- uid: System.Collections.Generic.IReadOnlyDictionary{MarketDataCollector.Application.Services.ServiceCategory,System.Int32}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{MarketDataCollector.Application.Services.ServiceCategory,System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<ServiceCategory, int>
+  nameWithType: IReadOnlyDictionary<ServiceCategory, int>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<MarketDataCollector.Application.Services.ServiceCategory, int>
+  nameWithType.vb: IReadOnlyDictionary(Of ServiceCategory, Integer)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of MarketDataCollector.Application.Services.ServiceCategory, Integer)
+  name.vb: IReadOnlyDictionary(Of ServiceCategory, Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: MarketDataCollector.Application.Services.ServiceCategory
+    name: ServiceCategory
+    href: MarketDataCollector.Application.Services.ServiceCategory.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.ServiceCategory
+    name: ServiceCategory
+    href: MarketDataCollector.Application.Services.ServiceCategory.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: MarketDataCollector.Application.Services.ServiceRegistry.Dispose*
+  commentId: Overload:MarketDataCollector.Application.Services.ServiceRegistry.Dispose
+  href: MarketDataCollector.Application.Services.ServiceRegistry.html#MarketDataCollector_Application_Services_ServiceRegistry_Dispose
+  name: Dispose
+  nameWithType: ServiceRegistry.Dispose
+  fullName: MarketDataCollector.Application.Services.ServiceRegistry.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

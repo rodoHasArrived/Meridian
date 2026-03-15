@@ -1,0 +1,693 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Services.CliModeResolver
+  commentId: T:MarketDataCollector.Application.Services.CliModeResolver
+  id: CliModeResolver
+  parent: MarketDataCollector.Application.Services
+  children:
+  - MarketDataCollector.Application.Services.CliModeResolver.GetArgValue(System.String[],System.String)
+  - MarketDataCollector.Application.Services.CliModeResolver.HasFlag(System.String[],System.String)
+  - MarketDataCollector.Application.Services.CliModeResolver.Resolve(System.String[])
+  - MarketDataCollector.Application.Services.CliModeResolver.ResolveWithError(System.String[])
+  - MarketDataCollector.Application.Services.CliModeResolver.TranslateLegacyFlags(System.String[])
+  langs:
+  - csharp
+  - vb
+  name: CliModeResolver
+  nameWithType: CliModeResolver
+  fullName: MarketDataCollector.Application.Services.CliModeResolver
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/CliModeResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CliModeResolver
+    path: ../../src/MarketDataCollector.Application/Services/CliModeResolver.cs
+    startLine: 6
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Resolves the application run mode from CLI arguments.
+
+    Handles translation of legacy flags to unified --mode system.
+  example: []
+  syntax:
+    content: public static class CliModeResolver
+    content.vb: Public Module CliModeResolver
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Services.CliModeResolver.TranslateLegacyFlags(System.String[])
+  commentId: M:MarketDataCollector.Application.Services.CliModeResolver.TranslateLegacyFlags(System.String[])
+  id: TranslateLegacyFlags(System.String[])
+  parent: MarketDataCollector.Application.Services.CliModeResolver
+  langs:
+  - csharp
+  - vb
+  name: TranslateLegacyFlags(string[])
+  nameWithType: CliModeResolver.TranslateLegacyFlags(string[])
+  fullName: MarketDataCollector.Application.Services.CliModeResolver.TranslateLegacyFlags(string[])
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/CliModeResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TranslateLegacyFlags
+    path: ../../src/MarketDataCollector.Application/Services/CliModeResolver.cs
+    startLine: 31
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Translates legacy CLI flags to the unified --mode system.
+
+    This provides backwards compatibility while funneling all modes through a single code path.
+  remarks: >-
+    Legacy flag mappings:
+
+    - --ui → --mode web
+  example: []
+  syntax:
+    content: public static string? TranslateLegacyFlags(string[] args)
+    parameters:
+    - id: args
+      type: System.String[]
+      description: Command line arguments.
+    return:
+      type: System.String
+      description: The effective mode string, or null for headless.
+    content.vb: Public Shared Function TranslateLegacyFlags(args As String()) As String
+  overload: MarketDataCollector.Application.Services.CliModeResolver.TranslateLegacyFlags*
+  nameWithType.vb: CliModeResolver.TranslateLegacyFlags(String())
+  fullName.vb: MarketDataCollector.Application.Services.CliModeResolver.TranslateLegacyFlags(String())
+  name.vb: TranslateLegacyFlags(String())
+- uid: MarketDataCollector.Application.Services.CliModeResolver.Resolve(System.String[])
+  commentId: M:MarketDataCollector.Application.Services.CliModeResolver.Resolve(System.String[])
+  id: Resolve(System.String[])
+  parent: MarketDataCollector.Application.Services.CliModeResolver
+  langs:
+  - csharp
+  - vb
+  name: Resolve(string[])
+  nameWithType: CliModeResolver.Resolve(string[])
+  fullName: MarketDataCollector.Application.Services.CliModeResolver.Resolve(string[])
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/CliModeResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Resolve
+    path: ../../src/MarketDataCollector.Application/Services/CliModeResolver.cs
+    startLine: 50
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Resolves the run mode from CLI arguments.
+  example: []
+  syntax:
+    content: public static CliModeResolver.RunMode Resolve(string[] args)
+    parameters:
+    - id: args
+      type: System.String[]
+      description: Command line arguments.
+    return:
+      type: MarketDataCollector.Application.Services.CliModeResolver.RunMode
+      description: The resolved run mode.
+    content.vb: Public Shared Function Resolve(args As String()) As CliModeResolver.RunMode
+  overload: MarketDataCollector.Application.Services.CliModeResolver.Resolve*
+  nameWithType.vb: CliModeResolver.Resolve(String())
+  fullName.vb: MarketDataCollector.Application.Services.CliModeResolver.Resolve(String())
+  name.vb: Resolve(String())
+- uid: MarketDataCollector.Application.Services.CliModeResolver.ResolveWithError(System.String[])
+  commentId: M:MarketDataCollector.Application.Services.CliModeResolver.ResolveWithError(System.String[])
+  id: ResolveWithError(System.String[])
+  parent: MarketDataCollector.Application.Services.CliModeResolver
+  langs:
+  - csharp
+  - vb
+  name: ResolveWithError(string[])
+  nameWithType: CliModeResolver.ResolveWithError(string[])
+  fullName: MarketDataCollector.Application.Services.CliModeResolver.ResolveWithError(string[])
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/CliModeResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResolveWithError
+    path: ../../src/MarketDataCollector.Application/Services/CliModeResolver.cs
+    startLine: 61
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Resolves the run mode from CLI arguments, returning any error message.
+  example: []
+  syntax:
+    content: public static (CliModeResolver.RunMode Mode, string? Error) ResolveWithError(string[] args)
+    parameters:
+    - id: args
+      type: System.String[]
+      description: Command line arguments.
+    return:
+      type: System.ValueTuple{MarketDataCollector.Application.Services.CliModeResolver.RunMode,System.String}
+      description: Tuple of resolved mode and any error message.
+    content.vb: Public Shared Function ResolveWithError(args As String()) As (Mode As CliModeResolver.RunMode, [Error] As String)
+  overload: MarketDataCollector.Application.Services.CliModeResolver.ResolveWithError*
+  nameWithType.vb: CliModeResolver.ResolveWithError(String())
+  fullName.vb: MarketDataCollector.Application.Services.CliModeResolver.ResolveWithError(String())
+  name.vb: ResolveWithError(String())
+- uid: MarketDataCollector.Application.Services.CliModeResolver.HasFlag(System.String[],System.String)
+  commentId: M:MarketDataCollector.Application.Services.CliModeResolver.HasFlag(System.String[],System.String)
+  id: HasFlag(System.String[],System.String)
+  parent: MarketDataCollector.Application.Services.CliModeResolver
+  langs:
+  - csharp
+  - vb
+  name: HasFlag(string[], string)
+  nameWithType: CliModeResolver.HasFlag(string[], string)
+  fullName: MarketDataCollector.Application.Services.CliModeResolver.HasFlag(string[], string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/CliModeResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HasFlag
+    path: ../../src/MarketDataCollector.Application/Services/CliModeResolver.cs
+    startLine: 80
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Checks if a specific flag is present in the arguments.
+  example: []
+  syntax:
+    content: public static bool HasFlag(string[] args, string flag)
+    parameters:
+    - id: args
+      type: System.String[]
+    - id: flag
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasFlag(args As String(), flag As String) As Boolean
+  overload: MarketDataCollector.Application.Services.CliModeResolver.HasFlag*
+  nameWithType.vb: CliModeResolver.HasFlag(String(), String)
+  fullName.vb: MarketDataCollector.Application.Services.CliModeResolver.HasFlag(String(), String)
+  name.vb: HasFlag(String(), String)
+- uid: MarketDataCollector.Application.Services.CliModeResolver.GetArgValue(System.String[],System.String)
+  commentId: M:MarketDataCollector.Application.Services.CliModeResolver.GetArgValue(System.String[],System.String)
+  id: GetArgValue(System.String[],System.String)
+  parent: MarketDataCollector.Application.Services.CliModeResolver
+  langs:
+  - csharp
+  - vb
+  name: GetArgValue(string[], string)
+  nameWithType: CliModeResolver.GetArgValue(string[], string)
+  fullName: MarketDataCollector.Application.Services.CliModeResolver.GetArgValue(string[], string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/CliModeResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetArgValue
+    path: ../../src/MarketDataCollector.Application/Services/CliModeResolver.cs
+    startLine: 86
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets the value following a specific argument key.
+  example: []
+  syntax:
+    content: public static string? GetArgValue(string[] args, string key)
+    parameters:
+    - id: args
+      type: System.String[]
+    - id: key
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Shared Function GetArgValue(args As String(), key As String) As String
+  overload: MarketDataCollector.Application.Services.CliModeResolver.GetArgValue*
+  nameWithType.vb: CliModeResolver.GetArgValue(String(), String)
+  fullName.vb: MarketDataCollector.Application.Services.CliModeResolver.GetArgValue(String(), String)
+  name.vb: GetArgValue(String(), String)
+references:
+- uid: MarketDataCollector.Application.Services
+  commentId: N:MarketDataCollector.Application.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Services
+  nameWithType: MarketDataCollector.Application.Services
+  fullName: MarketDataCollector.Application.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Services.CliModeResolver.TranslateLegacyFlags*
+  commentId: Overload:MarketDataCollector.Application.Services.CliModeResolver.TranslateLegacyFlags
+  href: MarketDataCollector.Application.Services.CliModeResolver.html#MarketDataCollector_Application_Services_CliModeResolver_TranslateLegacyFlags_System_String___
+  name: TranslateLegacyFlags
+  nameWithType: CliModeResolver.TranslateLegacyFlags
+  fullName: MarketDataCollector.Application.Services.CliModeResolver.TranslateLegacyFlags
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Application.Services.CliModeResolver.Resolve*
+  commentId: Overload:MarketDataCollector.Application.Services.CliModeResolver.Resolve
+  href: MarketDataCollector.Application.Services.CliModeResolver.html#MarketDataCollector_Application_Services_CliModeResolver_Resolve_System_String___
+  name: Resolve
+  nameWithType: CliModeResolver.Resolve
+  fullName: MarketDataCollector.Application.Services.CliModeResolver.Resolve
+- uid: MarketDataCollector.Application.Services.CliModeResolver.RunMode
+  commentId: T:MarketDataCollector.Application.Services.CliModeResolver.RunMode
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.CliModeResolver.html
+  name: CliModeResolver.RunMode
+  nameWithType: CliModeResolver.RunMode
+  fullName: MarketDataCollector.Application.Services.CliModeResolver.RunMode
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.CliModeResolver
+    name: CliModeResolver
+    href: MarketDataCollector.Application.Services.CliModeResolver.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services.CliModeResolver.RunMode
+    name: RunMode
+    href: MarketDataCollector.Application.Services.CliModeResolver.RunMode.html
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.CliModeResolver
+    name: CliModeResolver
+    href: MarketDataCollector.Application.Services.CliModeResolver.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services.CliModeResolver.RunMode
+    name: RunMode
+    href: MarketDataCollector.Application.Services.CliModeResolver.RunMode.html
+- uid: MarketDataCollector.Application.Services.CliModeResolver.ResolveWithError*
+  commentId: Overload:MarketDataCollector.Application.Services.CliModeResolver.ResolveWithError
+  href: MarketDataCollector.Application.Services.CliModeResolver.html#MarketDataCollector_Application_Services_CliModeResolver_ResolveWithError_System_String___
+  name: ResolveWithError
+  nameWithType: CliModeResolver.ResolveWithError
+  fullName: MarketDataCollector.Application.Services.CliModeResolver.ResolveWithError
+- uid: System.ValueTuple{MarketDataCollector.Application.Services.CliModeResolver.RunMode,System.String}
+  commentId: T:System.ValueTuple{MarketDataCollector.Application.Services.CliModeResolver.RunMode,System.String}
+  parent: System
+  definition: System.ValueTuple`2
+  href: MarketDataCollector.Application.Services.CliModeResolver.html
+  name: (CliModeResolver.RunMode Mode, string Error)
+  nameWithType: (CliModeResolver.RunMode Mode, string Error)
+  fullName: (MarketDataCollector.Application.Services.CliModeResolver.RunMode Mode, string Error)
+  nameWithType.vb: (Mode As CliModeResolver.RunMode, Error As String)
+  fullName.vb: (Mode As MarketDataCollector.Application.Services.CliModeResolver.RunMode, Error As String)
+  name.vb: (Mode As CliModeResolver.RunMode, Error As String)
+  spec.csharp:
+  - name: (
+  - uid: MarketDataCollector.Application.Services.CliModeResolver
+    name: CliModeResolver
+    href: MarketDataCollector.Application.Services.CliModeResolver.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services.CliModeResolver.RunMode
+    name: RunMode
+    href: MarketDataCollector.Application.Services.CliModeResolver.RunMode.html
+  - name: " "
+  - uid: System.ValueTuple{MarketDataCollector.Application.Services.CliModeResolver.RunMode,System.String}.Mode
+    name: Mode
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-marketdatacollector.application.services.climoderesolver.runmode,system.string-.mode
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{MarketDataCollector.Application.Services.CliModeResolver.RunMode,System.String}.Error
+    name: Error
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-marketdatacollector.application.services.climoderesolver.runmode,system.string-.error
+  - name: )
+  spec.vb:
+  - name: (
+  - uid: System.ValueTuple{MarketDataCollector.Application.Services.CliModeResolver.RunMode,System.String}.Mode
+    name: Mode
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-marketdatacollector.application.services.climoderesolver.runmode,system.string-.mode
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.CliModeResolver
+    name: CliModeResolver
+    href: MarketDataCollector.Application.Services.CliModeResolver.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services.CliModeResolver.RunMode
+    name: RunMode
+    href: MarketDataCollector.Application.Services.CliModeResolver.RunMode.html
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{MarketDataCollector.Application.Services.CliModeResolver.RunMode,System.String}.Error
+    name: Error
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-marketdatacollector.application.services.climoderesolver.runmode,system.string-.error
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.ValueTuple`2
+  commentId: T:System.ValueTuple`2
+  name: (T1, T2)
+  nameWithType: (T1, T2)
+  fullName: (T1, T2)
+  spec.csharp:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+  spec.vb:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+- uid: MarketDataCollector.Application.Services.CliModeResolver.HasFlag*
+  commentId: Overload:MarketDataCollector.Application.Services.CliModeResolver.HasFlag
+  href: MarketDataCollector.Application.Services.CliModeResolver.html#MarketDataCollector_Application_Services_CliModeResolver_HasFlag_System_String___System_String_
+  name: HasFlag
+  nameWithType: CliModeResolver.HasFlag
+  fullName: MarketDataCollector.Application.Services.CliModeResolver.HasFlag
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Application.Services.CliModeResolver.GetArgValue*
+  commentId: Overload:MarketDataCollector.Application.Services.CliModeResolver.GetArgValue
+  href: MarketDataCollector.Application.Services.CliModeResolver.html#MarketDataCollector_Application_Services_CliModeResolver_GetArgValue_System_String___System_String_
+  name: GetArgValue
+  nameWithType: CliModeResolver.GetArgValue
+  fullName: MarketDataCollector.Application.Services.CliModeResolver.GetArgValue

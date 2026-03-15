@@ -1,0 +1,1186 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService
+  commentId: T:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService
+  id: MetadataEnrichmentService
+  parent: MarketDataCollector.Application.Subscriptions.Services
+  children:
+  - MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.#ctor(System.String,Serilog.ILogger)
+  - MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.CategorizeMarketCap(System.Decimal)
+  - MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.FilterSymbolsAsync(MarketDataCollector.Application.Subscriptions.Models.SymbolMetadataFilter,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetAvailableIndustriesAsync(System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetAvailableSectorsAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataAsync(System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataBatchAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.UpdateMetadataAsync(MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.UpdateMetadataBatchAsync(System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata},System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: MetadataEnrichmentService
+  nameWithType: MetadataEnrichmentService
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MetadataEnrichmentService
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+    startLine: 13
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: >-
+    Service for enriching symbols with metadata (industry, sector, market cap).
+
+    Provides filtering capabilities based on symbol metadata.
+  example: []
+  syntax:
+    content: public sealed class MetadataEnrichmentService
+    content.vb: Public NotInheritable Class MetadataEnrichmentService
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.#ctor(System.String,Serilog.ILogger)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.#ctor(System.String,Serilog.ILogger)
+  id: '#ctor(System.String,Serilog.ILogger)'
+  parent: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService
+  langs:
+  - csharp
+  - vb
+  name: MetadataEnrichmentService(string?, ILogger?)
+  nameWithType: MetadataEnrichmentService.MetadataEnrichmentService(string?, ILogger?)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.MetadataEnrichmentService(string?, Serilog.ILogger?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+    startLine: 24
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  syntax:
+    content: public MetadataEnrichmentService(string? cachePath = null, ILogger? log = null)
+    parameters:
+    - id: cachePath
+      type: System.String
+    - id: log
+      type: Serilog.ILogger
+    content.vb: Public Sub New(cachePath As String = Nothing, log As ILogger = Nothing)
+  overload: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.#ctor*
+  nameWithType.vb: MetadataEnrichmentService.New(String, ILogger)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.New(String, Serilog.ILogger)
+  name.vb: New(String, ILogger)
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataAsync(System.String,System.Threading.CancellationToken)
+  id: GetMetadataAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService
+  langs:
+  - csharp
+  - vb
+  name: GetMetadataAsync(string, CancellationToken)
+  nameWithType: MetadataEnrichmentService.GetMetadataAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataAsync(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetMetadataAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+    startLine: 36
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Get metadata for a specific symbol.
+  example: []
+  syntax:
+    content: public Task<SymbolMetadata?> GetMetadataAsync(string symbol, CancellationToken ct = default)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata}
+    content.vb: Public Function GetMetadataAsync(symbol As String, ct As CancellationToken = Nothing) As Task(Of SymbolMetadata)
+  overload: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataAsync*
+  nameWithType.vb: MetadataEnrichmentService.GetMetadataAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataAsync(String, System.Threading.CancellationToken)
+  name.vb: GetMetadataAsync(String, CancellationToken)
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataBatchAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataBatchAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
+  id: GetMetadataBatchAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService
+  langs:
+  - csharp
+  - vb
+  name: GetMetadataBatchAsync(IEnumerable<string>, CancellationToken)
+  nameWithType: MetadataEnrichmentService.GetMetadataBatchAsync(IEnumerable<string>, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataBatchAsync(System.Collections.Generic.IEnumerable<string>, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetMetadataBatchAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+    startLine: 55
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Get metadata for multiple symbols.
+  example: []
+  syntax:
+    content: public Task<IReadOnlyDictionary<string, SymbolMetadata>> GetMetadataBatchAsync(IEnumerable<string> symbols, CancellationToken ct = default)
+    parameters:
+    - id: symbols
+      type: System.Collections.Generic.IEnumerable{System.String}
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyDictionary{System.String,MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata}}
+    content.vb: Public Function GetMetadataBatchAsync(symbols As IEnumerable(Of String), ct As CancellationToken = Nothing) As Task(Of IReadOnlyDictionary(Of String, SymbolMetadata))
+  overload: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataBatchAsync*
+  nameWithType.vb: MetadataEnrichmentService.GetMetadataBatchAsync(IEnumerable(Of String), CancellationToken)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataBatchAsync(System.Collections.Generic.IEnumerable(Of String), System.Threading.CancellationToken)
+  name.vb: GetMetadataBatchAsync(IEnumerable(Of String), CancellationToken)
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.FilterSymbolsAsync(MarketDataCollector.Application.Subscriptions.Models.SymbolMetadataFilter,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.FilterSymbolsAsync(MarketDataCollector.Application.Subscriptions.Models.SymbolMetadataFilter,System.Threading.CancellationToken)
+  id: FilterSymbolsAsync(MarketDataCollector.Application.Subscriptions.Models.SymbolMetadataFilter,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService
+  langs:
+  - csharp
+  - vb
+  name: FilterSymbolsAsync(SymbolMetadataFilter, CancellationToken)
+  nameWithType: MetadataEnrichmentService.FilterSymbolsAsync(SymbolMetadataFilter, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.FilterSymbolsAsync(MarketDataCollector.Application.Subscriptions.Models.SymbolMetadataFilter, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FilterSymbolsAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+    startLine: 76
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Filter symbols based on metadata criteria.
+  example: []
+  syntax:
+    content: public Task<MetadataFilterResult> FilterSymbolsAsync(SymbolMetadataFilter filter, CancellationToken ct = default)
+    parameters:
+    - id: filter
+      type: MarketDataCollector.Application.Subscriptions.Models.SymbolMetadataFilter
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.MetadataFilterResult}
+    content.vb: Public Function FilterSymbolsAsync(filter As SymbolMetadataFilter, ct As CancellationToken = Nothing) As Task(Of MetadataFilterResult)
+  overload: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.FilterSymbolsAsync*
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetAvailableSectorsAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetAvailableSectorsAsync(System.Threading.CancellationToken)
+  id: GetAvailableSectorsAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService
+  langs:
+  - csharp
+  - vb
+  name: GetAvailableSectorsAsync(CancellationToken)
+  nameWithType: MetadataEnrichmentService.GetAvailableSectorsAsync(CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetAvailableSectorsAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetAvailableSectorsAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+    startLine: 151
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Get available sectors from cached metadata.
+  example: []
+  syntax:
+    content: public Task<IReadOnlyList<string>> GetAvailableSectorsAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{System.String}}
+    content.vb: Public Function GetAvailableSectorsAsync(ct As CancellationToken = Nothing) As Task(Of IReadOnlyList(Of String))
+  overload: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetAvailableSectorsAsync*
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetAvailableIndustriesAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetAvailableIndustriesAsync(System.String,System.Threading.CancellationToken)
+  id: GetAvailableIndustriesAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService
+  langs:
+  - csharp
+  - vb
+  name: GetAvailableIndustriesAsync(string?, CancellationToken)
+  nameWithType: MetadataEnrichmentService.GetAvailableIndustriesAsync(string?, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetAvailableIndustriesAsync(string?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetAvailableIndustriesAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+    startLine: 166
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Get available industries from cached metadata.
+  example: []
+  syntax:
+    content: public Task<IReadOnlyList<string>> GetAvailableIndustriesAsync(string? sector = null, CancellationToken ct = default)
+    parameters:
+    - id: sector
+      type: System.String
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{System.String}}
+    content.vb: Public Function GetAvailableIndustriesAsync(sector As String = Nothing, ct As CancellationToken = Nothing) As Task(Of IReadOnlyList(Of String))
+  overload: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetAvailableIndustriesAsync*
+  nameWithType.vb: MetadataEnrichmentService.GetAvailableIndustriesAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetAvailableIndustriesAsync(String, System.Threading.CancellationToken)
+  name.vb: GetAvailableIndustriesAsync(String, CancellationToken)
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.UpdateMetadataAsync(MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.UpdateMetadataAsync(MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata,System.Threading.CancellationToken)
+  id: UpdateMetadataAsync(MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService
+  langs:
+  - csharp
+  - vb
+  name: UpdateMetadataAsync(SymbolMetadata, CancellationToken)
+  nameWithType: MetadataEnrichmentService.UpdateMetadataAsync(SymbolMetadata, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.UpdateMetadataAsync(MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UpdateMetadataAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+    startLine: 191
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Update metadata for a symbol.
+  example: []
+  syntax:
+    content: public Task UpdateMetadataAsync(SymbolMetadata metadata, CancellationToken ct = default)
+    parameters:
+    - id: metadata
+      type: MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function UpdateMetadataAsync(metadata As SymbolMetadata, ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.UpdateMetadataAsync*
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.UpdateMetadataBatchAsync(System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata},System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.UpdateMetadataBatchAsync(System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata},System.Threading.CancellationToken)
+  id: UpdateMetadataBatchAsync(System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata},System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService
+  langs:
+  - csharp
+  - vb
+  name: UpdateMetadataBatchAsync(IEnumerable<SymbolMetadata>, CancellationToken)
+  nameWithType: MetadataEnrichmentService.UpdateMetadataBatchAsync(IEnumerable<SymbolMetadata>, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.UpdateMetadataBatchAsync(System.Collections.Generic.IEnumerable<MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata>, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UpdateMetadataBatchAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+    startLine: 201
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Update metadata for multiple symbols.
+  example: []
+  syntax:
+    content: public Task UpdateMetadataBatchAsync(IEnumerable<SymbolMetadata> metadataList, CancellationToken ct = default)
+    parameters:
+    - id: metadataList
+      type: System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata}
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function UpdateMetadataBatchAsync(metadataList As IEnumerable(Of SymbolMetadata), ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.UpdateMetadataBatchAsync*
+  nameWithType.vb: MetadataEnrichmentService.UpdateMetadataBatchAsync(IEnumerable(Of SymbolMetadata), CancellationToken)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.UpdateMetadataBatchAsync(System.Collections.Generic.IEnumerable(Of MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata), System.Threading.CancellationToken)
+  name.vb: UpdateMetadataBatchAsync(IEnumerable(Of SymbolMetadata), CancellationToken)
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.CategorizeMarketCap(System.Decimal)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.CategorizeMarketCap(System.Decimal)
+  id: CategorizeMarketCap(System.Decimal)
+  parent: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService
+  langs:
+  - csharp
+  - vb
+  name: CategorizeMarketCap(decimal)
+  nameWithType: MetadataEnrichmentService.CategorizeMarketCap(decimal)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.CategorizeMarketCap(decimal)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CategorizeMarketCap
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/MetadataEnrichmentService.cs
+    startLine: 217
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Categorize market cap value.
+  example: []
+  syntax:
+    content: public static MarketCapCategory CategorizeMarketCap(decimal marketCap)
+    parameters:
+    - id: marketCap
+      type: System.Decimal
+    return:
+      type: MarketDataCollector.Application.Subscriptions.Models.MarketCapCategory
+    content.vb: Public Shared Function CategorizeMarketCap(marketCap As Decimal) As MarketCapCategory
+  overload: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.CategorizeMarketCap*
+  nameWithType.vb: MetadataEnrichmentService.CategorizeMarketCap(Decimal)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.CategorizeMarketCap(Decimal)
+  name.vb: CategorizeMarketCap(Decimal)
+references:
+- uid: MarketDataCollector.Application.Subscriptions.Services
+  commentId: N:MarketDataCollector.Application.Subscriptions.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Subscriptions.Services
+  nameWithType: MarketDataCollector.Application.Subscriptions.Services
+  fullName: MarketDataCollector.Application.Subscriptions.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Services
+    name: Services
+    href: MarketDataCollector.Application.Subscriptions.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Services
+    name: Services
+    href: MarketDataCollector.Application.Subscriptions.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.#ctor
+  href: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.html#MarketDataCollector_Application_Subscriptions_Services_MetadataEnrichmentService__ctor_System_String_Serilog_ILogger_
+  name: MetadataEnrichmentService
+  nameWithType: MetadataEnrichmentService.MetadataEnrichmentService
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.MetadataEnrichmentService
+  nameWithType.vb: MetadataEnrichmentService.New
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Serilog.ILogger
+  commentId: T:Serilog.ILogger
+  parent: Serilog
+  isExternal: true
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Serilog.ILogger
+- uid: Serilog
+  commentId: N:Serilog
+  isExternal: true
+  name: Serilog
+  nameWithType: Serilog
+  fullName: Serilog
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.html#MarketDataCollector_Application_Subscriptions_Services_MetadataEnrichmentService_GetMetadataAsync_System_String_System_Threading_CancellationToken_
+  name: GetMetadataAsync
+  nameWithType: MetadataEnrichmentService.GetMetadataAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<SymbolMetadata>
+  nameWithType: Task<SymbolMetadata>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata>
+  nameWithType.vb: Task(Of SymbolMetadata)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata)
+  name.vb: Task(Of SymbolMetadata)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata
+    name: SymbolMetadata
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata
+    name: SymbolMetadata
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataBatchAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataBatchAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.html#MarketDataCollector_Application_Subscriptions_Services_MetadataEnrichmentService_GetMetadataBatchAsync_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_
+  name: GetMetadataBatchAsync
+  nameWithType: MetadataEnrichmentService.GetMetadataBatchAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetMetadataBatchAsync
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<string>
+  nameWithType: IEnumerable<string>
+  fullName: System.Collections.Generic.IEnumerable<string>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyDictionary{System.String,MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyDictionary{System.String,MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IReadOnlyDictionary<string, SymbolMetadata>>
+  nameWithType: Task<IReadOnlyDictionary<string, SymbolMetadata>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string, MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata>>
+  nameWithType.vb: Task(Of IReadOnlyDictionary(Of String, SymbolMetadata))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IReadOnlyDictionary(Of String, MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata))
+  name.vb: Task(Of IReadOnlyDictionary(Of String, SymbolMetadata))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata
+    name: SymbolMetadata
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata
+    name: SymbolMetadata
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.FilterSymbolsAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.FilterSymbolsAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.html#MarketDataCollector_Application_Subscriptions_Services_MetadataEnrichmentService_FilterSymbolsAsync_MarketDataCollector_Application_Subscriptions_Models_SymbolMetadataFilter_System_Threading_CancellationToken_
+  name: FilterSymbolsAsync
+  nameWithType: MetadataEnrichmentService.FilterSymbolsAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.FilterSymbolsAsync
+- uid: MarketDataCollector.Application.Subscriptions.Models.SymbolMetadataFilter
+  commentId: T:MarketDataCollector.Application.Subscriptions.Models.SymbolMetadataFilter
+  parent: MarketDataCollector.Application.Subscriptions.Models
+  href: MarketDataCollector.Application.Subscriptions.Models.SymbolMetadataFilter.html
+  name: SymbolMetadataFilter
+  nameWithType: SymbolMetadataFilter
+  fullName: MarketDataCollector.Application.Subscriptions.Models.SymbolMetadataFilter
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.MetadataFilterResult}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.MetadataFilterResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<MetadataFilterResult>
+  nameWithType: Task<MetadataFilterResult>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Subscriptions.Models.MetadataFilterResult>
+  nameWithType.vb: Task(Of MetadataFilterResult)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Subscriptions.Models.MetadataFilterResult)
+  name.vb: Task(Of MetadataFilterResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Subscriptions.Models.MetadataFilterResult
+    name: MetadataFilterResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.MetadataFilterResult
+    name: MetadataFilterResult
+  - name: )
+- uid: MarketDataCollector.Application.Subscriptions.Models
+  commentId: N:MarketDataCollector.Application.Subscriptions.Models
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Subscriptions.Models
+  nameWithType: MarketDataCollector.Application.Subscriptions.Models
+  fullName: MarketDataCollector.Application.Subscriptions.Models
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Models
+    name: Models
+    href: MarketDataCollector.Application.Subscriptions.Models.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Models
+    name: Models
+    href: MarketDataCollector.Application.Subscriptions.Models.html
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetAvailableSectorsAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetAvailableSectorsAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.html#MarketDataCollector_Application_Subscriptions_Services_MetadataEnrichmentService_GetAvailableSectorsAsync_System_Threading_CancellationToken_
+  name: GetAvailableSectorsAsync
+  nameWithType: MetadataEnrichmentService.GetAvailableSectorsAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetAvailableSectorsAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{System.String}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{System.String}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IReadOnlyList<string>>
+  nameWithType: Task<IReadOnlyList<string>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<string>>
+  nameWithType.vb: Task(Of IReadOnlyList(Of String))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IReadOnlyList(Of String))
+  name.vb: Task(Of IReadOnlyList(Of String))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetAvailableIndustriesAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetAvailableIndustriesAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.html#MarketDataCollector_Application_Subscriptions_Services_MetadataEnrichmentService_GetAvailableIndustriesAsync_System_String_System_Threading_CancellationToken_
+  name: GetAvailableIndustriesAsync
+  nameWithType: MetadataEnrichmentService.GetAvailableIndustriesAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.GetAvailableIndustriesAsync
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.UpdateMetadataAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.UpdateMetadataAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.html#MarketDataCollector_Application_Subscriptions_Services_MetadataEnrichmentService_UpdateMetadataAsync_MarketDataCollector_Application_Subscriptions_Models_SymbolMetadata_System_Threading_CancellationToken_
+  name: UpdateMetadataAsync
+  nameWithType: MetadataEnrichmentService.UpdateMetadataAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.UpdateMetadataAsync
+- uid: MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata
+  commentId: T:MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata
+  parent: MarketDataCollector.Application.Subscriptions.Models
+  href: MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata.html
+  name: SymbolMetadata
+  nameWithType: SymbolMetadata
+  fullName: MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.UpdateMetadataBatchAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.UpdateMetadataBatchAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.html#MarketDataCollector_Application_Subscriptions_Services_MetadataEnrichmentService_UpdateMetadataBatchAsync_System_Collections_Generic_IEnumerable_MarketDataCollector_Application_Subscriptions_Models_SymbolMetadata__System_Threading_CancellationToken_
+  name: UpdateMetadataBatchAsync
+  nameWithType: MetadataEnrichmentService.UpdateMetadataBatchAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.UpdateMetadataBatchAsync
+- uid: System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata}
+  commentId: T:System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<SymbolMetadata>
+  nameWithType: IEnumerable<SymbolMetadata>
+  fullName: System.Collections.Generic.IEnumerable<MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata>
+  nameWithType.vb: IEnumerable(Of SymbolMetadata)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata)
+  name.vb: IEnumerable(Of SymbolMetadata)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata
+    name: SymbolMetadata
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolMetadata
+    name: SymbolMetadata
+  - name: )
+- uid: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.CategorizeMarketCap*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.CategorizeMarketCap
+  href: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.html#MarketDataCollector_Application_Subscriptions_Services_MetadataEnrichmentService_CategorizeMarketCap_System_Decimal_
+  name: CategorizeMarketCap
+  nameWithType: MetadataEnrichmentService.CategorizeMarketCap
+  fullName: MarketDataCollector.Application.Subscriptions.Services.MetadataEnrichmentService.CategorizeMarketCap
+- uid: System.Decimal
+  commentId: T:System.Decimal
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.decimal
+  name: decimal
+  nameWithType: decimal
+  fullName: decimal
+  nameWithType.vb: Decimal
+  fullName.vb: Decimal
+  name.vb: Decimal
+- uid: MarketDataCollector.Application.Subscriptions.Models.MarketCapCategory
+  commentId: T:MarketDataCollector.Application.Subscriptions.Models.MarketCapCategory
+  parent: MarketDataCollector.Application.Subscriptions.Models
+  href: MarketDataCollector.Application.Subscriptions.Models.MarketCapCategory.html
+  name: MarketCapCategory
+  nameWithType: MarketCapCategory
+  fullName: MarketDataCollector.Application.Subscriptions.Models.MarketCapCategory

@@ -1,0 +1,822 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto
+  commentId: T:MarketDataCollector.Contracts.Api.ConnectionHealthDto
+  id: ConnectionHealthDto
+  parent: MarketDataCollector.Contracts.Api
+  children:
+  - MarketDataCollector.Contracts.Api.ConnectionHealthDto.AverageLatencyMs
+  - MarketDataCollector.Contracts.Api.ConnectionHealthDto.ConnectionId
+  - MarketDataCollector.Contracts.Api.ConnectionHealthDto.IsConnected
+  - MarketDataCollector.Contracts.Api.ConnectionHealthDto.IsHealthy
+  - MarketDataCollector.Contracts.Api.ConnectionHealthDto.LastHeartbeatTime
+  - MarketDataCollector.Contracts.Api.ConnectionHealthDto.MissedHeartbeats
+  - MarketDataCollector.Contracts.Api.ConnectionHealthDto.ProviderName
+  - MarketDataCollector.Contracts.Api.ConnectionHealthDto.UptimeSeconds
+  langs:
+  - csharp
+  - vb
+  name: ConnectionHealthDto
+  nameWithType: ConnectionHealthDto
+  fullName: MarketDataCollector.Contracts.Api.ConnectionHealthDto
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConnectionHealthDto
+    path: ../../src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+    startLine: 139
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  summary: Individual connection health information.
+  example: []
+  syntax:
+    content: 'public sealed record ConnectionHealthDto : IEquatable<ConnectionHealthDto>'
+    content.vb: Public NotInheritable Class ConnectionHealthDto Implements IEquatable(Of ConnectionHealthDto)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Contracts.Api.ConnectionHealthDto}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto.ConnectionId
+  commentId: P:MarketDataCollector.Contracts.Api.ConnectionHealthDto.ConnectionId
+  id: ConnectionId
+  parent: MarketDataCollector.Contracts.Api.ConnectionHealthDto
+  langs:
+  - csharp
+  - vb
+  name: ConnectionId
+  nameWithType: ConnectionHealthDto.ConnectionId
+  fullName: MarketDataCollector.Contracts.Api.ConnectionHealthDto.ConnectionId
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConnectionId
+    path: ../../src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+    startLine: 141
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: >-
+      [JsonPropertyName("connectionId")]
+
+      public string ConnectionId { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("connectionId")>
+
+      Public Property ConnectionId As String
+  overload: MarketDataCollector.Contracts.Api.ConnectionHealthDto.ConnectionId*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: connectionId
+- uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto.ProviderName
+  commentId: P:MarketDataCollector.Contracts.Api.ConnectionHealthDto.ProviderName
+  id: ProviderName
+  parent: MarketDataCollector.Contracts.Api.ConnectionHealthDto
+  langs:
+  - csharp
+  - vb
+  name: ProviderName
+  nameWithType: ConnectionHealthDto.ProviderName
+  fullName: MarketDataCollector.Contracts.Api.ConnectionHealthDto.ProviderName
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderName
+    path: ../../src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+    startLine: 144
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: >-
+      [JsonPropertyName("providerName")]
+
+      public string ProviderName { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("providerName")>
+
+      Public Property ProviderName As String
+  overload: MarketDataCollector.Contracts.Api.ConnectionHealthDto.ProviderName*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: providerName
+- uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto.IsConnected
+  commentId: P:MarketDataCollector.Contracts.Api.ConnectionHealthDto.IsConnected
+  id: IsConnected
+  parent: MarketDataCollector.Contracts.Api.ConnectionHealthDto
+  langs:
+  - csharp
+  - vb
+  name: IsConnected
+  nameWithType: ConnectionHealthDto.IsConnected
+  fullName: MarketDataCollector.Contracts.Api.ConnectionHealthDto.IsConnected
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsConnected
+    path: ../../src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+    startLine: 147
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: >-
+      [JsonPropertyName("isConnected")]
+
+      public bool IsConnected { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("isConnected")>
+
+      Public Property IsConnected As Boolean
+  overload: MarketDataCollector.Contracts.Api.ConnectionHealthDto.IsConnected*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: isConnected
+- uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto.IsHealthy
+  commentId: P:MarketDataCollector.Contracts.Api.ConnectionHealthDto.IsHealthy
+  id: IsHealthy
+  parent: MarketDataCollector.Contracts.Api.ConnectionHealthDto
+  langs:
+  - csharp
+  - vb
+  name: IsHealthy
+  nameWithType: ConnectionHealthDto.IsHealthy
+  fullName: MarketDataCollector.Contracts.Api.ConnectionHealthDto.IsHealthy
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsHealthy
+    path: ../../src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+    startLine: 150
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: >-
+      [JsonPropertyName("isHealthy")]
+
+      public bool IsHealthy { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("isHealthy")>
+
+      Public Property IsHealthy As Boolean
+  overload: MarketDataCollector.Contracts.Api.ConnectionHealthDto.IsHealthy*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: isHealthy
+- uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto.LastHeartbeatTime
+  commentId: P:MarketDataCollector.Contracts.Api.ConnectionHealthDto.LastHeartbeatTime
+  id: LastHeartbeatTime
+  parent: MarketDataCollector.Contracts.Api.ConnectionHealthDto
+  langs:
+  - csharp
+  - vb
+  name: LastHeartbeatTime
+  nameWithType: ConnectionHealthDto.LastHeartbeatTime
+  fullName: MarketDataCollector.Contracts.Api.ConnectionHealthDto.LastHeartbeatTime
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LastHeartbeatTime
+    path: ../../src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+    startLine: 153
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: >-
+      [JsonPropertyName("lastHeartbeatTime")]
+
+      public DateTimeOffset? LastHeartbeatTime { get; init; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTimeOffset}
+    content.vb: >-
+      <JsonPropertyName("lastHeartbeatTime")>
+
+      Public Property LastHeartbeatTime As DateTimeOffset?
+  overload: MarketDataCollector.Contracts.Api.ConnectionHealthDto.LastHeartbeatTime*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: lastHeartbeatTime
+- uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto.MissedHeartbeats
+  commentId: P:MarketDataCollector.Contracts.Api.ConnectionHealthDto.MissedHeartbeats
+  id: MissedHeartbeats
+  parent: MarketDataCollector.Contracts.Api.ConnectionHealthDto
+  langs:
+  - csharp
+  - vb
+  name: MissedHeartbeats
+  nameWithType: ConnectionHealthDto.MissedHeartbeats
+  fullName: MarketDataCollector.Contracts.Api.ConnectionHealthDto.MissedHeartbeats
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MissedHeartbeats
+    path: ../../src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+    startLine: 156
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: >-
+      [JsonPropertyName("missedHeartbeats")]
+
+      public int MissedHeartbeats { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonPropertyName("missedHeartbeats")>
+
+      Public Property MissedHeartbeats As Integer
+  overload: MarketDataCollector.Contracts.Api.ConnectionHealthDto.MissedHeartbeats*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: missedHeartbeats
+- uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto.UptimeSeconds
+  commentId: P:MarketDataCollector.Contracts.Api.ConnectionHealthDto.UptimeSeconds
+  id: UptimeSeconds
+  parent: MarketDataCollector.Contracts.Api.ConnectionHealthDto
+  langs:
+  - csharp
+  - vb
+  name: UptimeSeconds
+  nameWithType: ConnectionHealthDto.UptimeSeconds
+  fullName: MarketDataCollector.Contracts.Api.ConnectionHealthDto.UptimeSeconds
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UptimeSeconds
+    path: ../../src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+    startLine: 159
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: >-
+      [JsonPropertyName("uptimeSeconds")]
+
+      public float UptimeSeconds { get; init; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonPropertyName("uptimeSeconds")>
+
+      Public Property UptimeSeconds As Single
+  overload: MarketDataCollector.Contracts.Api.ConnectionHealthDto.UptimeSeconds*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: uptimeSeconds
+- uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto.AverageLatencyMs
+  commentId: P:MarketDataCollector.Contracts.Api.ConnectionHealthDto.AverageLatencyMs
+  id: AverageLatencyMs
+  parent: MarketDataCollector.Contracts.Api.ConnectionHealthDto
+  langs:
+  - csharp
+  - vb
+  name: AverageLatencyMs
+  nameWithType: ConnectionHealthDto.AverageLatencyMs
+  fullName: MarketDataCollector.Contracts.Api.ConnectionHealthDto.AverageLatencyMs
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AverageLatencyMs
+    path: ../../src/MarketDataCollector.Contracts/Api/StatusEndpointModels.cs
+    startLine: 162
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: >-
+      [JsonPropertyName("averageLatencyMs")]
+
+      public float AverageLatencyMs { get; init; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonPropertyName("averageLatencyMs")>
+
+      Public Property AverageLatencyMs As Single
+  overload: MarketDataCollector.Contracts.Api.ConnectionHealthDto.AverageLatencyMs*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: averageLatencyMs
+references:
+- uid: MarketDataCollector.Contracts.Api
+  commentId: N:MarketDataCollector.Contracts.Api
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Api
+  nameWithType: MarketDataCollector.Contracts.Api
+  fullName: MarketDataCollector.Contracts.Api
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Api
+    name: Api
+    href: MarketDataCollector.Contracts.Api.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Api
+    name: Api
+    href: MarketDataCollector.Contracts.Api.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Contracts.Api.ConnectionHealthDto}
+  commentId: T:System.IEquatable{MarketDataCollector.Contracts.Api.ConnectionHealthDto}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<ConnectionHealthDto>
+  nameWithType: IEquatable<ConnectionHealthDto>
+  fullName: System.IEquatable<MarketDataCollector.Contracts.Api.ConnectionHealthDto>
+  nameWithType.vb: IEquatable(Of ConnectionHealthDto)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Contracts.Api.ConnectionHealthDto)
+  name.vb: IEquatable(Of ConnectionHealthDto)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto
+    name: ConnectionHealthDto
+    href: MarketDataCollector.Contracts.Api.ConnectionHealthDto.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto
+    name: ConnectionHealthDto
+    href: MarketDataCollector.Contracts.Api.ConnectionHealthDto.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto.ConnectionId*
+  commentId: Overload:MarketDataCollector.Contracts.Api.ConnectionHealthDto.ConnectionId
+  href: MarketDataCollector.Contracts.Api.ConnectionHealthDto.html#MarketDataCollector_Contracts_Api_ConnectionHealthDto_ConnectionId
+  name: ConnectionId
+  nameWithType: ConnectionHealthDto.ConnectionId
+  fullName: MarketDataCollector.Contracts.Api.ConnectionHealthDto.ConnectionId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto.ProviderName*
+  commentId: Overload:MarketDataCollector.Contracts.Api.ConnectionHealthDto.ProviderName
+  href: MarketDataCollector.Contracts.Api.ConnectionHealthDto.html#MarketDataCollector_Contracts_Api_ConnectionHealthDto_ProviderName
+  name: ProviderName
+  nameWithType: ConnectionHealthDto.ProviderName
+  fullName: MarketDataCollector.Contracts.Api.ConnectionHealthDto.ProviderName
+- uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto.IsConnected*
+  commentId: Overload:MarketDataCollector.Contracts.Api.ConnectionHealthDto.IsConnected
+  href: MarketDataCollector.Contracts.Api.ConnectionHealthDto.html#MarketDataCollector_Contracts_Api_ConnectionHealthDto_IsConnected
+  name: IsConnected
+  nameWithType: ConnectionHealthDto.IsConnected
+  fullName: MarketDataCollector.Contracts.Api.ConnectionHealthDto.IsConnected
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto.IsHealthy*
+  commentId: Overload:MarketDataCollector.Contracts.Api.ConnectionHealthDto.IsHealthy
+  href: MarketDataCollector.Contracts.Api.ConnectionHealthDto.html#MarketDataCollector_Contracts_Api_ConnectionHealthDto_IsHealthy
+  name: IsHealthy
+  nameWithType: ConnectionHealthDto.IsHealthy
+  fullName: MarketDataCollector.Contracts.Api.ConnectionHealthDto.IsHealthy
+- uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto.LastHeartbeatTime*
+  commentId: Overload:MarketDataCollector.Contracts.Api.ConnectionHealthDto.LastHeartbeatTime
+  href: MarketDataCollector.Contracts.Api.ConnectionHealthDto.html#MarketDataCollector_Contracts_Api_ConnectionHealthDto_LastHeartbeatTime
+  name: LastHeartbeatTime
+  nameWithType: ConnectionHealthDto.LastHeartbeatTime
+  fullName: MarketDataCollector.Contracts.Api.ConnectionHealthDto.LastHeartbeatTime
+- uid: System.Nullable{System.DateTimeOffset}
+  commentId: T:System.Nullable{System.DateTimeOffset}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset?
+  nameWithType: DateTimeOffset?
+  fullName: System.DateTimeOffset?
+  spec.csharp:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto.MissedHeartbeats*
+  commentId: Overload:MarketDataCollector.Contracts.Api.ConnectionHealthDto.MissedHeartbeats
+  href: MarketDataCollector.Contracts.Api.ConnectionHealthDto.html#MarketDataCollector_Contracts_Api_ConnectionHealthDto_MissedHeartbeats
+  name: MissedHeartbeats
+  nameWithType: ConnectionHealthDto.MissedHeartbeats
+  fullName: MarketDataCollector.Contracts.Api.ConnectionHealthDto.MissedHeartbeats
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto.UptimeSeconds*
+  commentId: Overload:MarketDataCollector.Contracts.Api.ConnectionHealthDto.UptimeSeconds
+  href: MarketDataCollector.Contracts.Api.ConnectionHealthDto.html#MarketDataCollector_Contracts_Api_ConnectionHealthDto_UptimeSeconds
+  name: UptimeSeconds
+  nameWithType: ConnectionHealthDto.UptimeSeconds
+  fullName: MarketDataCollector.Contracts.Api.ConnectionHealthDto.UptimeSeconds
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: MarketDataCollector.Contracts.Api.ConnectionHealthDto.AverageLatencyMs*
+  commentId: Overload:MarketDataCollector.Contracts.Api.ConnectionHealthDto.AverageLatencyMs
+  href: MarketDataCollector.Contracts.Api.ConnectionHealthDto.html#MarketDataCollector_Contracts_Api_ConnectionHealthDto_AverageLatencyMs
+  name: AverageLatencyMs
+  nameWithType: ConnectionHealthDto.AverageLatencyMs
+  fullName: MarketDataCollector.Contracts.Api.ConnectionHealthDto.AverageLatencyMs

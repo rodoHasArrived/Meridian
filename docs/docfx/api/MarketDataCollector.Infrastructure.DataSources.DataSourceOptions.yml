@@ -1,0 +1,617 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.DataSourceOptions
+  id: DataSourceOptions
+  parent: MarketDataCollector.Infrastructure.DataSources
+  children:
+  - MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.#ctor(System.Int32,MarketDataCollector.Infrastructure.DataSources.RetryPolicyOptions,MarketDataCollector.Infrastructure.DataSources.RateLimitOptions,MarketDataCollector.Infrastructure.DataSources.HealthCheckOptions)
+  - MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.Default
+  - MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.HealthCheck
+  - MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.Priority
+  - MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.RateLimits
+  - MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: DataSourceOptions
+  nameWithType: DataSourceOptions
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/DataSources/DataSourceBase.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DataSourceOptions
+    path: ../../src/MarketDataCollector.Infrastructure/DataSources/DataSourceBase.cs
+    startLine: 516
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Configuration options for a data source.
+  example: []
+  syntax:
+    content: 'public sealed record DataSourceOptions : IEquatable<DataSourceOptions>'
+    content.vb: Public NotInheritable Class DataSourceOptions Implements IEquatable(Of DataSourceOptions)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Infrastructure.DataSources.DataSourceOptions}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.#ctor(System.Int32,MarketDataCollector.Infrastructure.DataSources.RetryPolicyOptions,MarketDataCollector.Infrastructure.DataSources.RateLimitOptions,MarketDataCollector.Infrastructure.DataSources.HealthCheckOptions)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.#ctor(System.Int32,MarketDataCollector.Infrastructure.DataSources.RetryPolicyOptions,MarketDataCollector.Infrastructure.DataSources.RateLimitOptions,MarketDataCollector.Infrastructure.DataSources.HealthCheckOptions)
+  id: '#ctor(System.Int32,MarketDataCollector.Infrastructure.DataSources.RetryPolicyOptions,MarketDataCollector.Infrastructure.DataSources.RateLimitOptions,MarketDataCollector.Infrastructure.DataSources.HealthCheckOptions)'
+  parent: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions
+  langs:
+  - csharp
+  - vb
+  name: DataSourceOptions(int, RetryPolicyOptions?, RateLimitOptions?, HealthCheckOptions?)
+  nameWithType: DataSourceOptions.DataSourceOptions(int, RetryPolicyOptions?, RateLimitOptions?, HealthCheckOptions?)
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.DataSourceOptions(int, MarketDataCollector.Infrastructure.DataSources.RetryPolicyOptions?, MarketDataCollector.Infrastructure.DataSources.RateLimitOptions?, MarketDataCollector.Infrastructure.DataSources.HealthCheckOptions?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/DataSources/DataSourceBase.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Infrastructure/DataSources/DataSourceBase.cs
+    startLine: 516
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Configuration options for a data source.
+  example: []
+  syntax:
+    content: public DataSourceOptions(int Priority = 100, RetryPolicyOptions? RetryPolicy = null, RateLimitOptions? RateLimits = null, HealthCheckOptions? HealthCheck = null)
+    parameters:
+    - id: Priority
+      type: System.Int32
+    - id: RetryPolicy
+      type: MarketDataCollector.Infrastructure.DataSources.RetryPolicyOptions
+    - id: RateLimits
+      type: MarketDataCollector.Infrastructure.DataSources.RateLimitOptions
+    - id: HealthCheck
+      type: MarketDataCollector.Infrastructure.DataSources.HealthCheckOptions
+    content.vb: Public Sub New(Priority As Integer = 100, RetryPolicy As RetryPolicyOptions = Nothing, RateLimits As RateLimitOptions = Nothing, HealthCheck As HealthCheckOptions = Nothing)
+  overload: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.#ctor*
+  nameWithType.vb: DataSourceOptions.New(Integer, RetryPolicyOptions, RateLimitOptions, HealthCheckOptions)
+  fullName.vb: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.New(Integer, MarketDataCollector.Infrastructure.DataSources.RetryPolicyOptions, MarketDataCollector.Infrastructure.DataSources.RateLimitOptions, MarketDataCollector.Infrastructure.DataSources.HealthCheckOptions)
+  name.vb: New(Integer, RetryPolicyOptions, RateLimitOptions, HealthCheckOptions)
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.Priority
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.Priority
+  id: Priority
+  parent: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions
+  langs:
+  - csharp
+  - vb
+  name: Priority
+  nameWithType: DataSourceOptions.Priority
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.Priority
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/DataSources/DataSourceBase.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Priority
+    path: ../../src/MarketDataCollector.Infrastructure/DataSources/DataSourceBase.cs
+    startLine: 517
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  syntax:
+    content: public int Priority { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Priority As Integer
+  overload: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.Priority*
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.RetryPolicy
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.RetryPolicy
+  id: RetryPolicy
+  parent: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions
+  langs:
+  - csharp
+  - vb
+  name: RetryPolicy
+  nameWithType: DataSourceOptions.RetryPolicy
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.RetryPolicy
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/DataSources/DataSourceBase.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RetryPolicy
+    path: ../../src/MarketDataCollector.Infrastructure/DataSources/DataSourceBase.cs
+    startLine: 523
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  syntax:
+    content: public RetryPolicyOptions RetryPolicy { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.DataSources.RetryPolicyOptions
+    content.vb: Public ReadOnly Property RetryPolicy As RetryPolicyOptions
+  overload: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.RetryPolicy*
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.RateLimits
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.RateLimits
+  id: RateLimits
+  parent: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions
+  langs:
+  - csharp
+  - vb
+  name: RateLimits
+  nameWithType: DataSourceOptions.RateLimits
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.RateLimits
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/DataSources/DataSourceBase.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RateLimits
+    path: ../../src/MarketDataCollector.Infrastructure/DataSources/DataSourceBase.cs
+    startLine: 524
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  syntax:
+    content: public RateLimitOptions RateLimits { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.DataSources.RateLimitOptions
+    content.vb: Public ReadOnly Property RateLimits As RateLimitOptions
+  overload: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.RateLimits*
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.HealthCheck
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.HealthCheck
+  id: HealthCheck
+  parent: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions
+  langs:
+  - csharp
+  - vb
+  name: HealthCheck
+  nameWithType: DataSourceOptions.HealthCheck
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.HealthCheck
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/DataSources/DataSourceBase.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HealthCheck
+    path: ../../src/MarketDataCollector.Infrastructure/DataSources/DataSourceBase.cs
+    startLine: 525
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  syntax:
+    content: public HealthCheckOptions HealthCheck { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.DataSources.HealthCheckOptions
+    content.vb: Public ReadOnly Property HealthCheck As HealthCheckOptions
+  overload: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.HealthCheck*
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.Default
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.Default
+  id: Default
+  parent: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: DataSourceOptions.Default
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.Default
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/DataSources/DataSourceBase.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Default
+    path: ../../src/MarketDataCollector.Infrastructure/DataSources/DataSourceBase.cs
+    startLine: 530
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Creates default options.
+  example: []
+  syntax:
+    content: public static DataSourceOptions Default { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions
+    content.vb: Public Shared ReadOnly Property [Default] As DataSourceOptions
+  overload: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.Default*
+references:
+- uid: MarketDataCollector.Infrastructure.DataSources
+  commentId: N:MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.DataSources
+  nameWithType: MarketDataCollector.Infrastructure.DataSources
+  fullName: MarketDataCollector.Infrastructure.DataSources
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.DataSources
+    name: DataSources
+    href: MarketDataCollector.Infrastructure.DataSources.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.DataSources
+    name: DataSources
+    href: MarketDataCollector.Infrastructure.DataSources.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Infrastructure.DataSources.DataSourceOptions}
+  commentId: T:System.IEquatable{MarketDataCollector.Infrastructure.DataSources.DataSourceOptions}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<DataSourceOptions>
+  nameWithType: IEquatable<DataSourceOptions>
+  fullName: System.IEquatable<MarketDataCollector.Infrastructure.DataSources.DataSourceOptions>
+  nameWithType.vb: IEquatable(Of DataSourceOptions)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Infrastructure.DataSources.DataSourceOptions)
+  name.vb: IEquatable(Of DataSourceOptions)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions
+    name: DataSourceOptions
+    href: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions
+    name: DataSourceOptions
+    href: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.#ctor*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.#ctor
+  href: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.html#MarketDataCollector_Infrastructure_DataSources_DataSourceOptions__ctor_System_Int32_MarketDataCollector_Infrastructure_DataSources_RetryPolicyOptions_MarketDataCollector_Infrastructure_DataSources_RateLimitOptions_MarketDataCollector_Infrastructure_DataSources_HealthCheckOptions_
+  name: DataSourceOptions
+  nameWithType: DataSourceOptions.DataSourceOptions
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.DataSourceOptions
+  nameWithType.vb: DataSourceOptions.New
+  fullName.vb: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Infrastructure.DataSources.RetryPolicyOptions
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.RetryPolicyOptions
+  parent: MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.Infrastructure.DataSources.RetryPolicyOptions.html
+  name: RetryPolicyOptions
+  nameWithType: RetryPolicyOptions
+  fullName: MarketDataCollector.Infrastructure.DataSources.RetryPolicyOptions
+- uid: MarketDataCollector.Infrastructure.DataSources.RateLimitOptions
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.RateLimitOptions
+  parent: MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.Infrastructure.DataSources.RateLimitOptions.html
+  name: RateLimitOptions
+  nameWithType: RateLimitOptions
+  fullName: MarketDataCollector.Infrastructure.DataSources.RateLimitOptions
+- uid: MarketDataCollector.Infrastructure.DataSources.HealthCheckOptions
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.HealthCheckOptions
+  parent: MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.Infrastructure.DataSources.HealthCheckOptions.html
+  name: HealthCheckOptions
+  nameWithType: HealthCheckOptions
+  fullName: MarketDataCollector.Infrastructure.DataSources.HealthCheckOptions
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.Priority*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.Priority
+  href: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.html#MarketDataCollector_Infrastructure_DataSources_DataSourceOptions_Priority
+  name: Priority
+  nameWithType: DataSourceOptions.Priority
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.Priority
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.RetryPolicy*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.RetryPolicy
+  href: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.html#MarketDataCollector_Infrastructure_DataSources_DataSourceOptions_RetryPolicy
+  name: RetryPolicy
+  nameWithType: DataSourceOptions.RetryPolicy
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.RetryPolicy
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.RateLimits*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.RateLimits
+  href: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.html#MarketDataCollector_Infrastructure_DataSources_DataSourceOptions_RateLimits
+  name: RateLimits
+  nameWithType: DataSourceOptions.RateLimits
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.RateLimits
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.HealthCheck*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.HealthCheck
+  href: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.html#MarketDataCollector_Infrastructure_DataSources_DataSourceOptions_HealthCheck
+  name: HealthCheck
+  nameWithType: DataSourceOptions.HealthCheck
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.HealthCheck
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.Default*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.Default
+  href: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.html#MarketDataCollector_Infrastructure_DataSources_DataSourceOptions_Default
+  name: Default
+  nameWithType: DataSourceOptions.Default
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.Default
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.DataSourceOptions
+  parent: MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions.html
+  name: DataSourceOptions
+  nameWithType: DataSourceOptions
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceOptions

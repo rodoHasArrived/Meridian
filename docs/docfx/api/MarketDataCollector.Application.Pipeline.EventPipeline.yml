@@ -1,0 +1,2288 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline
+  commentId: T:MarketDataCollector.Application.Pipeline.EventPipeline
+  id: EventPipeline
+  parent: MarketDataCollector.Application.Pipeline
+  children:
+  - MarketDataCollector.Application.Pipeline.EventPipeline.#ctor(MarketDataCollector.Storage.Interfaces.IStorageSink,MarketDataCollector.Application.Pipeline.EventPipelinePolicy,System.Nullable{System.TimeSpan},System.Int32,System.Boolean,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.EventPipeline},MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail,MarketDataCollector.Storage.Archival.WriteAheadLog,MarketDataCollector.Application.Monitoring.IEventMetrics,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan},MarketDataCollector.Application.Pipeline.IEventValidator,MarketDataCollector.Application.Pipeline.DeadLetterSink,MarketDataCollector.Application.Pipeline.PersistentDedupLedger)
+  - MarketDataCollector.Application.Pipeline.EventPipeline.#ctor(MarketDataCollector.Storage.Interfaces.IStorageSink,System.Int32,System.Threading.Channels.BoundedChannelFullMode,System.Nullable{System.TimeSpan},System.Int32,System.Boolean,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.EventPipeline},MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail,MarketDataCollector.Storage.Archival.WriteAheadLog,MarketDataCollector.Application.Monitoring.IEventMetrics,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan},MarketDataCollector.Application.Pipeline.IEventValidator,MarketDataCollector.Application.Pipeline.DeadLetterSink,MarketDataCollector.Application.Pipeline.PersistentDedupLedger)
+  - MarketDataCollector.Application.Pipeline.EventPipeline.AuditTrail
+  - MarketDataCollector.Application.Pipeline.EventPipeline.AverageProcessingTimeUs
+  - MarketDataCollector.Application.Pipeline.EventPipeline.Complete
+  - MarketDataCollector.Application.Pipeline.EventPipeline.ConsumedCount
+  - MarketDataCollector.Application.Pipeline.EventPipeline.CurrentQueueSize
+  - MarketDataCollector.Application.Pipeline.EventPipeline.DeduplicatedCount
+  - MarketDataCollector.Application.Pipeline.EventPipeline.DisposeAsync
+  - MarketDataCollector.Application.Pipeline.EventPipeline.DroppedCount
+  - MarketDataCollector.Application.Pipeline.EventPipeline.EventMetrics
+  - MarketDataCollector.Application.Pipeline.EventPipeline.FlushAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Pipeline.EventPipeline.GetStatistics
+  - MarketDataCollector.Application.Pipeline.EventPipeline.IsDeduplicationEnabled
+  - MarketDataCollector.Application.Pipeline.EventPipeline.IsUnderPressure
+  - MarketDataCollector.Application.Pipeline.EventPipeline.IsValidationEnabled
+  - MarketDataCollector.Application.Pipeline.EventPipeline.IsWalEnabled
+  - MarketDataCollector.Application.Pipeline.EventPipeline.PeakQueueSize
+  - MarketDataCollector.Application.Pipeline.EventPipeline.PublishAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Pipeline.EventPipeline.PublishedCount
+  - MarketDataCollector.Application.Pipeline.EventPipeline.QueueCapacity
+  - MarketDataCollector.Application.Pipeline.EventPipeline.QueueUtilization
+  - MarketDataCollector.Application.Pipeline.EventPipeline.RecoverAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Pipeline.EventPipeline.RecoveredCount
+  - MarketDataCollector.Application.Pipeline.EventPipeline.RejectedCount
+  - MarketDataCollector.Application.Pipeline.EventPipeline.TimeSinceLastFlush
+  - MarketDataCollector.Application.Pipeline.EventPipeline.TryPublish(MarketDataCollector.Domain.Events.MarketEvent@)
+  - MarketDataCollector.Application.Pipeline.EventPipeline.TryPublishWithResult(MarketDataCollector.Domain.Events.MarketEvent@)
+  langs:
+  - csharp
+  - vb
+  name: EventPipeline
+  nameWithType: EventPipeline
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: EventPipeline
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 30
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: >-
+    High-throughput, backpressured pipeline that decouples producers from storage sinks.
+
+    Includes periodic flushing, capacity monitoring, performance metrics, and optional
+
+    Write-Ahead Log (WAL) integration for crash-safe durability.
+  remarks: >-
+    When a <xref href="MarketDataCollector.Storage.Archival.WriteAheadLog" data-throw-if-not-resolved="false"></xref> is provided, the pipeline ensures events are
+
+    persisted to the WAL before being written to the primary storage sink. On startup,
+
+    <xref href="MarketDataCollector.Application.Pipeline.EventPipeline.RecoverAsync(System.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref> replays any uncommitted WAL records to the sink, preventing
+
+    data loss from crashes. The consumer writes each event to the WAL, then to the sink,
+
+    and commits the WAL after each batch is flushed. Both <xref href="MarketDataCollector.Application.Pipeline.EventPipeline.TryPublish(MarketDataCollector.Domain.Events.MarketEvent%40)" data-throw-if-not-resolved="false"></xref> and
+
+    <xref href="MarketDataCollector.Application.Pipeline.EventPipeline.PublishAsync(MarketDataCollector.Domain.Events.MarketEvent%2cSystem.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref> defer WAL writes to the consumer to ensure each event is
+
+    recorded exactly once, preventing duplicate records during recovery.
+  example: []
+  syntax:
+    content: 'public sealed class EventPipeline : IMarketEventPublisher, IBackpressureSignal, IAsyncDisposable, IFlushable'
+    content.vb: Public NotInheritable Class EventPipeline Implements IMarketEventPublisher, IBackpressureSignal, IAsyncDisposable, IFlushable
+  inheritance:
+  - System.Object
+  implements:
+  - MarketDataCollector.Domain.Events.IMarketEventPublisher
+  - MarketDataCollector.Domain.Events.IBackpressureSignal
+  - System.IAsyncDisposable
+  - MarketDataCollector.Application.Services.IFlushable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.#ctor(MarketDataCollector.Storage.Interfaces.IStorageSink,System.Int32,System.Threading.Channels.BoundedChannelFullMode,System.Nullable{System.TimeSpan},System.Int32,System.Boolean,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.EventPipeline},MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail,MarketDataCollector.Storage.Archival.WriteAheadLog,MarketDataCollector.Application.Monitoring.IEventMetrics,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan},MarketDataCollector.Application.Pipeline.IEventValidator,MarketDataCollector.Application.Pipeline.DeadLetterSink,MarketDataCollector.Application.Pipeline.PersistentDedupLedger)
+  commentId: M:MarketDataCollector.Application.Pipeline.EventPipeline.#ctor(MarketDataCollector.Storage.Interfaces.IStorageSink,System.Int32,System.Threading.Channels.BoundedChannelFullMode,System.Nullable{System.TimeSpan},System.Int32,System.Boolean,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.EventPipeline},MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail,MarketDataCollector.Storage.Archival.WriteAheadLog,MarketDataCollector.Application.Monitoring.IEventMetrics,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan},MarketDataCollector.Application.Pipeline.IEventValidator,MarketDataCollector.Application.Pipeline.DeadLetterSink,MarketDataCollector.Application.Pipeline.PersistentDedupLedger)
+  id: '#ctor(MarketDataCollector.Storage.Interfaces.IStorageSink,System.Int32,System.Threading.Channels.BoundedChannelFullMode,System.Nullable{System.TimeSpan},System.Int32,System.Boolean,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.EventPipeline},MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail,MarketDataCollector.Storage.Archival.WriteAheadLog,MarketDataCollector.Application.Monitoring.IEventMetrics,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan},MarketDataCollector.Application.Pipeline.IEventValidator,MarketDataCollector.Application.Pipeline.DeadLetterSink,MarketDataCollector.Application.Pipeline.PersistentDedupLedger)'
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: EventPipeline(IStorageSink, int, BoundedChannelFullMode, TimeSpan?, int, bool, ILogger<EventPipeline>?, DroppedEventAuditTrail?, WriteAheadLog?, IEventMetrics?, TimeSpan?, TimeSpan?, IEventValidator?, DeadLetterSink?, PersistentDedupLedger?)
+  nameWithType: EventPipeline.EventPipeline(IStorageSink, int, BoundedChannelFullMode, TimeSpan?, int, bool, ILogger<EventPipeline>?, DroppedEventAuditTrail?, WriteAheadLog?, IEventMetrics?, TimeSpan?, TimeSpan?, IEventValidator?, DeadLetterSink?, PersistentDedupLedger?)
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.EventPipeline(MarketDataCollector.Storage.Interfaces.IStorageSink, int, System.Threading.Channels.BoundedChannelFullMode, System.TimeSpan?, int, bool, Microsoft.Extensions.Logging.ILogger<MarketDataCollector.Application.Pipeline.EventPipeline>?, MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail?, MarketDataCollector.Storage.Archival.WriteAheadLog?, MarketDataCollector.Application.Monitoring.IEventMetrics?, System.TimeSpan?, System.TimeSpan?, MarketDataCollector.Application.Pipeline.IEventValidator?, MarketDataCollector.Application.Pipeline.DeadLetterSink?, MarketDataCollector.Application.Pipeline.PersistentDedupLedger?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 113
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Creates a new EventPipeline with configurable capacity and flush behavior.
+  example: []
+  syntax:
+    content: public EventPipeline(IStorageSink sink, int capacity = 100000, BoundedChannelFullMode fullMode = BoundedChannelFullMode.DropOldest, TimeSpan? flushInterval = null, int batchSize = 100, bool enablePeriodicFlush = true, ILogger<EventPipeline>? logger = null, DroppedEventAuditTrail? auditTrail = null, WriteAheadLog? wal = null, IEventMetrics? metrics = null, TimeSpan? finalFlushTimeout = null, TimeSpan? sinkFlushTimeout = null, IEventValidator? validator = null, DeadLetterSink? deadLetterSink = null, PersistentDedupLedger? dedupLedger = null)
+    parameters:
+    - id: sink
+      type: MarketDataCollector.Storage.Interfaces.IStorageSink
+      description: The storage sink for persisting events.
+    - id: capacity
+      type: System.Int32
+      description: Maximum number of events the queue can hold. Default is 100,000.
+    - id: fullMode
+      type: System.Threading.Channels.BoundedChannelFullMode
+      description: Behavior when the queue is full. Default is DropOldest.
+    - id: flushInterval
+      type: System.Nullable{System.TimeSpan}
+      description: Interval between periodic flushes. Default is 5 seconds.
+    - id: batchSize
+      type: System.Int32
+      description: Number of events to batch before writing. Default is 100.
+    - id: enablePeriodicFlush
+      type: System.Boolean
+      description: Whether to enable periodic flushing. Default is true.
+    - id: logger
+      type: Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.EventPipeline}
+      description: Optional logger for error reporting. When provided, enables logging for flush failures and disposal errors.
+    - id: auditTrail
+      type: MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail
+      description: Optional audit trail for tracking dropped events.
+    - id: wal
+      type: MarketDataCollector.Storage.Archival.WriteAheadLog
+      description: >-
+        Optional Write-Ahead Log for crash-safe durability. When provided, events
+            are written to the WAL before the primary sink. Call <xref href="MarketDataCollector.Application.Pipeline.EventPipeline.RecoverAsync(System.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref> on startup
+            to replay any uncommitted records from a prior crash.
+    - id: metrics
+      type: MarketDataCollector.Application.Monitoring.IEventMetrics
+      description: Optional event metrics for tracking pipeline throughput.
+    - id: finalFlushTimeout
+      type: System.Nullable{System.TimeSpan}
+      description: Optional timeout for the final flush during shutdown. Defaults to 30 seconds.
+    - id: sinkFlushTimeout
+      type: System.Nullable{System.TimeSpan}
+      description: Optional per-call timeout for periodic sink flushes. Prevents a hung sink from stalling the pipeline indefinitely. Defaults to 60 seconds.
+    - id: validator
+      type: MarketDataCollector.Application.Pipeline.IEventValidator
+      description: Optional event validator for pre-persistence validation.
+    - id: deadLetterSink
+      type: MarketDataCollector.Application.Pipeline.DeadLetterSink
+      description: Optional dead-letter sink for rejected events.
+    - id: dedupLedger
+      type: MarketDataCollector.Application.Pipeline.PersistentDedupLedger
+    content.vb: Public Sub New(sink As IStorageSink, capacity As Integer = 100000, fullMode As BoundedChannelFullMode = BoundedChannelFullMode.DropOldest, flushInterval As TimeSpan? = Nothing, batchSize As Integer = 100, enablePeriodicFlush As Boolean = True, logger As ILogger(Of EventPipeline) = Nothing, auditTrail As DroppedEventAuditTrail = Nothing, wal As WriteAheadLog = Nothing, metrics As IEventMetrics = Nothing, finalFlushTimeout As TimeSpan? = Nothing, sinkFlushTimeout As TimeSpan? = Nothing, validator As IEventValidator = Nothing, deadLetterSink As DeadLetterSink = Nothing, dedupLedger As PersistentDedupLedger = Nothing)
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.#ctor*
+  nameWithType.vb: EventPipeline.New(IStorageSink, Integer, BoundedChannelFullMode, TimeSpan?, Integer, Boolean, ILogger(Of EventPipeline), DroppedEventAuditTrail, WriteAheadLog, IEventMetrics, TimeSpan?, TimeSpan?, IEventValidator, DeadLetterSink, PersistentDedupLedger)
+  fullName.vb: MarketDataCollector.Application.Pipeline.EventPipeline.New(MarketDataCollector.Storage.Interfaces.IStorageSink, Integer, System.Threading.Channels.BoundedChannelFullMode, System.TimeSpan?, Integer, Boolean, Microsoft.Extensions.Logging.ILogger(Of MarketDataCollector.Application.Pipeline.EventPipeline), MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail, MarketDataCollector.Storage.Archival.WriteAheadLog, MarketDataCollector.Application.Monitoring.IEventMetrics, System.TimeSpan?, System.TimeSpan?, MarketDataCollector.Application.Pipeline.IEventValidator, MarketDataCollector.Application.Pipeline.DeadLetterSink, MarketDataCollector.Application.Pipeline.PersistentDedupLedger)
+  name.vb: New(IStorageSink, Integer, BoundedChannelFullMode, TimeSpan?, Integer, Boolean, ILogger(Of EventPipeline), DroppedEventAuditTrail, WriteAheadLog, IEventMetrics, TimeSpan?, TimeSpan?, IEventValidator, DeadLetterSink, PersistentDedupLedger)
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.#ctor(MarketDataCollector.Storage.Interfaces.IStorageSink,MarketDataCollector.Application.Pipeline.EventPipelinePolicy,System.Nullable{System.TimeSpan},System.Int32,System.Boolean,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.EventPipeline},MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail,MarketDataCollector.Storage.Archival.WriteAheadLog,MarketDataCollector.Application.Monitoring.IEventMetrics,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan},MarketDataCollector.Application.Pipeline.IEventValidator,MarketDataCollector.Application.Pipeline.DeadLetterSink,MarketDataCollector.Application.Pipeline.PersistentDedupLedger)
+  commentId: M:MarketDataCollector.Application.Pipeline.EventPipeline.#ctor(MarketDataCollector.Storage.Interfaces.IStorageSink,MarketDataCollector.Application.Pipeline.EventPipelinePolicy,System.Nullable{System.TimeSpan},System.Int32,System.Boolean,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.EventPipeline},MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail,MarketDataCollector.Storage.Archival.WriteAheadLog,MarketDataCollector.Application.Monitoring.IEventMetrics,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan},MarketDataCollector.Application.Pipeline.IEventValidator,MarketDataCollector.Application.Pipeline.DeadLetterSink,MarketDataCollector.Application.Pipeline.PersistentDedupLedger)
+  id: '#ctor(MarketDataCollector.Storage.Interfaces.IStorageSink,MarketDataCollector.Application.Pipeline.EventPipelinePolicy,System.Nullable{System.TimeSpan},System.Int32,System.Boolean,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.EventPipeline},MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail,MarketDataCollector.Storage.Archival.WriteAheadLog,MarketDataCollector.Application.Monitoring.IEventMetrics,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan},MarketDataCollector.Application.Pipeline.IEventValidator,MarketDataCollector.Application.Pipeline.DeadLetterSink,MarketDataCollector.Application.Pipeline.PersistentDedupLedger)'
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: EventPipeline(IStorageSink, EventPipelinePolicy, TimeSpan?, int, bool, ILogger<EventPipeline>?, DroppedEventAuditTrail?, WriteAheadLog?, IEventMetrics?, TimeSpan?, TimeSpan?, IEventValidator?, DeadLetterSink?, PersistentDedupLedger?)
+  nameWithType: EventPipeline.EventPipeline(IStorageSink, EventPipelinePolicy, TimeSpan?, int, bool, ILogger<EventPipeline>?, DroppedEventAuditTrail?, WriteAheadLog?, IEventMetrics?, TimeSpan?, TimeSpan?, IEventValidator?, DeadLetterSink?, PersistentDedupLedger?)
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.EventPipeline(MarketDataCollector.Storage.Interfaces.IStorageSink, MarketDataCollector.Application.Pipeline.EventPipelinePolicy, System.TimeSpan?, int, bool, Microsoft.Extensions.Logging.ILogger<MarketDataCollector.Application.Pipeline.EventPipeline>?, MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail?, MarketDataCollector.Storage.Archival.WriteAheadLog?, MarketDataCollector.Application.Monitoring.IEventMetrics?, System.TimeSpan?, System.TimeSpan?, MarketDataCollector.Application.Pipeline.IEventValidator?, MarketDataCollector.Application.Pipeline.DeadLetterSink?, MarketDataCollector.Application.Pipeline.PersistentDedupLedger?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 154
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Creates a new EventPipeline with a shared policy for capacity and backpressure.
+  example: []
+  syntax:
+    content: public EventPipeline(IStorageSink sink, EventPipelinePolicy policy, TimeSpan? flushInterval = null, int batchSize = 100, bool enablePeriodicFlush = true, ILogger<EventPipeline>? logger = null, DroppedEventAuditTrail? auditTrail = null, WriteAheadLog? wal = null, IEventMetrics? metrics = null, TimeSpan? finalFlushTimeout = null, TimeSpan? sinkFlushTimeout = null, IEventValidator? validator = null, DeadLetterSink? deadLetterSink = null, PersistentDedupLedger? dedupLedger = null)
+    parameters:
+    - id: sink
+      type: MarketDataCollector.Storage.Interfaces.IStorageSink
+    - id: policy
+      type: MarketDataCollector.Application.Pipeline.EventPipelinePolicy
+    - id: flushInterval
+      type: System.Nullable{System.TimeSpan}
+    - id: batchSize
+      type: System.Int32
+    - id: enablePeriodicFlush
+      type: System.Boolean
+    - id: logger
+      type: Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.EventPipeline}
+    - id: auditTrail
+      type: MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail
+    - id: wal
+      type: MarketDataCollector.Storage.Archival.WriteAheadLog
+    - id: metrics
+      type: MarketDataCollector.Application.Monitoring.IEventMetrics
+    - id: finalFlushTimeout
+      type: System.Nullable{System.TimeSpan}
+    - id: sinkFlushTimeout
+      type: System.Nullable{System.TimeSpan}
+      description: Optional per-call timeout for periodic sink flushes. Defaults to 60 seconds.
+    - id: validator
+      type: MarketDataCollector.Application.Pipeline.IEventValidator
+      description: >-
+        Optional event validator. When provided, events that fail validation
+            are routed to the <code class="paramref">deadLetterSink</code> and excluded from primary storage.
+    - id: deadLetterSink
+      type: MarketDataCollector.Application.Pipeline.DeadLetterSink
+      description: Optional dead-letter sink for events rejected by the validator.
+    - id: dedupLedger
+      type: MarketDataCollector.Application.Pipeline.PersistentDedupLedger
+    content.vb: Public Sub New(sink As IStorageSink, policy As EventPipelinePolicy, flushInterval As TimeSpan? = Nothing, batchSize As Integer = 100, enablePeriodicFlush As Boolean = True, logger As ILogger(Of EventPipeline) = Nothing, auditTrail As DroppedEventAuditTrail = Nothing, wal As WriteAheadLog = Nothing, metrics As IEventMetrics = Nothing, finalFlushTimeout As TimeSpan? = Nothing, sinkFlushTimeout As TimeSpan? = Nothing, validator As IEventValidator = Nothing, deadLetterSink As DeadLetterSink = Nothing, dedupLedger As PersistentDedupLedger = Nothing)
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.#ctor*
+  nameWithType.vb: EventPipeline.New(IStorageSink, EventPipelinePolicy, TimeSpan?, Integer, Boolean, ILogger(Of EventPipeline), DroppedEventAuditTrail, WriteAheadLog, IEventMetrics, TimeSpan?, TimeSpan?, IEventValidator, DeadLetterSink, PersistentDedupLedger)
+  fullName.vb: MarketDataCollector.Application.Pipeline.EventPipeline.New(MarketDataCollector.Storage.Interfaces.IStorageSink, MarketDataCollector.Application.Pipeline.EventPipelinePolicy, System.TimeSpan?, Integer, Boolean, Microsoft.Extensions.Logging.ILogger(Of MarketDataCollector.Application.Pipeline.EventPipeline), MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail, MarketDataCollector.Storage.Archival.WriteAheadLog, MarketDataCollector.Application.Monitoring.IEventMetrics, System.TimeSpan?, System.TimeSpan?, MarketDataCollector.Application.Pipeline.IEventValidator, MarketDataCollector.Application.Pipeline.DeadLetterSink, MarketDataCollector.Application.Pipeline.PersistentDedupLedger)
+  name.vb: New(IStorageSink, EventPipelinePolicy, TimeSpan?, Integer, Boolean, ILogger(Of EventPipeline), DroppedEventAuditTrail, WriteAheadLog, IEventMetrics, TimeSpan?, TimeSpan?, IEventValidator, DeadLetterSink, PersistentDedupLedger)
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.PublishedCount
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.PublishedCount
+  id: PublishedCount
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: PublishedCount
+  nameWithType: EventPipeline.PublishedCount
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.PublishedCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PublishedCount
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 213
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets the total number of events successfully published to the pipeline.
+  example: []
+  syntax:
+    content: public long PublishedCount { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property PublishedCount As Long
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.PublishedCount*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.DroppedCount
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.DroppedCount
+  id: DroppedCount
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: DroppedCount
+  nameWithType: EventPipeline.DroppedCount
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.DroppedCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DroppedCount
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 216
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets the total number of events dropped due to backpressure.
+  example: []
+  syntax:
+    content: public long DroppedCount { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property DroppedCount As Long
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.DroppedCount*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.ConsumedCount
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.ConsumedCount
+  id: ConsumedCount
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: ConsumedCount
+  nameWithType: EventPipeline.ConsumedCount
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.ConsumedCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConsumedCount
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 219
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets the total number of events consumed and written to storage.
+  example: []
+  syntax:
+    content: public long ConsumedCount { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property ConsumedCount As Long
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.ConsumedCount*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.RecoveredCount
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.RecoveredCount
+  id: RecoveredCount
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: RecoveredCount
+  nameWithType: EventPipeline.RecoveredCount
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.RecoveredCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecoveredCount
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 222
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets the total number of events recovered from WAL on startup.
+  example: []
+  syntax:
+    content: public long RecoveredCount { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property RecoveredCount As Long
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.RecoveredCount*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.RejectedCount
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.RejectedCount
+  id: RejectedCount
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: RejectedCount
+  nameWithType: EventPipeline.RejectedCount
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.RejectedCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RejectedCount
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 225
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets the total number of events rejected by the validator and sent to the dead-letter sink.
+  example: []
+  syntax:
+    content: public long RejectedCount { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property RejectedCount As Long
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.RejectedCount*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.DeduplicatedCount
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.DeduplicatedCount
+  id: DeduplicatedCount
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: DeduplicatedCount
+  nameWithType: EventPipeline.DeduplicatedCount
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.DeduplicatedCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DeduplicatedCount
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 228
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets the total number of duplicate events filtered by the dedup ledger.
+  example: []
+  syntax:
+    content: public long DeduplicatedCount { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property DeduplicatedCount As Long
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.DeduplicatedCount*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.IsDeduplicationEnabled
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.IsDeduplicationEnabled
+  id: IsDeduplicationEnabled
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: IsDeduplicationEnabled
+  nameWithType: EventPipeline.IsDeduplicationEnabled
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.IsDeduplicationEnabled
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsDeduplicationEnabled
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 231
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets whether deduplication is enabled for this pipeline.
+  example: []
+  syntax:
+    content: public bool IsDeduplicationEnabled { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsDeduplicationEnabled As Boolean
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.IsDeduplicationEnabled*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.PeakQueueSize
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.PeakQueueSize
+  id: PeakQueueSize
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: PeakQueueSize
+  nameWithType: EventPipeline.PeakQueueSize
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.PeakQueueSize
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PeakQueueSize
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 234
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets the peak queue size observed during operation.
+  example: []
+  syntax:
+    content: public long PeakQueueSize { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property PeakQueueSize As Long
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.PeakQueueSize*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.CurrentQueueSize
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.CurrentQueueSize
+  id: CurrentQueueSize
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: CurrentQueueSize
+  nameWithType: EventPipeline.CurrentQueueSize
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.CurrentQueueSize
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CurrentQueueSize
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 237
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets the current number of events in the queue.
+  example: []
+  syntax:
+    content: public int CurrentQueueSize { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property CurrentQueueSize As Integer
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.CurrentQueueSize*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.QueueUtilization
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.QueueUtilization
+  id: QueueUtilization
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: QueueUtilization
+  nameWithType: EventPipeline.QueueUtilization
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.QueueUtilization
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: QueueUtilization
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 240
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets the queue capacity utilization as a percentage (0-100).
+  example: []
+  syntax:
+    content: public double QueueUtilization { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public ReadOnly Property QueueUtilization As Double
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.QueueUtilization*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.AverageProcessingTimeUs
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.AverageProcessingTimeUs
+  id: AverageProcessingTimeUs
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: AverageProcessingTimeUs
+  nameWithType: EventPipeline.AverageProcessingTimeUs
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.AverageProcessingTimeUs
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AverageProcessingTimeUs
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 243
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets the average processing time per event in microseconds.
+  example: []
+  syntax:
+    content: public double AverageProcessingTimeUs { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public ReadOnly Property AverageProcessingTimeUs As Double
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.AverageProcessingTimeUs*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.TimeSinceLastFlush
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.TimeSinceLastFlush
+  id: TimeSinceLastFlush
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: TimeSinceLastFlush
+  nameWithType: EventPipeline.TimeSinceLastFlush
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.TimeSinceLastFlush
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TimeSinceLastFlush
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 255
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets the time since the last flush operation.
+  example: []
+  syntax:
+    content: public TimeSpan TimeSinceLastFlush { get; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public ReadOnly Property TimeSinceLastFlush As TimeSpan
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.TimeSinceLastFlush*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.IsWalEnabled
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.IsWalEnabled
+  id: IsWalEnabled
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: IsWalEnabled
+  nameWithType: EventPipeline.IsWalEnabled
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.IsWalEnabled
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsWalEnabled
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 266
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets whether a WAL is configured for this pipeline.
+  example: []
+  syntax:
+    content: public bool IsWalEnabled { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsWalEnabled As Boolean
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.IsWalEnabled*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.IsValidationEnabled
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.IsValidationEnabled
+  id: IsValidationEnabled
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: IsValidationEnabled
+  nameWithType: EventPipeline.IsValidationEnabled
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.IsValidationEnabled
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsValidationEnabled
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 269
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets whether event validation is enabled for this pipeline.
+  example: []
+  syntax:
+    content: public bool IsValidationEnabled { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsValidationEnabled As Boolean
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.IsValidationEnabled*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.IsUnderPressure
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.IsUnderPressure
+  id: IsUnderPressure
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: IsUnderPressure
+  nameWithType: EventPipeline.IsUnderPressure
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.IsUnderPressure
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsUnderPressure
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 275
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: >-
+    Returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the queue utilization has reached or exceeded 80 %.
+
+    Upstream producers should observe this signal and slow down publishing to avoid data loss.
+  example: []
+  syntax:
+    content: public bool IsUnderPressure { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsUnderPressure As Boolean
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.IsUnderPressure*
+  implements:
+  - MarketDataCollector.Domain.Events.IBackpressureSignal.IsUnderPressure
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.RecoverAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Pipeline.EventPipeline.RecoverAsync(System.Threading.CancellationToken)
+  id: RecoverAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: RecoverAsync(CancellationToken)
+  nameWithType: EventPipeline.RecoverAsync(CancellationToken)
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.RecoverAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecoverAsync
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 294
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: >-
+    Recovers uncommitted events from the WAL and replays them to the storage sink.
+
+    Call this method once on startup, before publishing new events, to ensure
+
+    data from a prior crash is not lost.
+  remarks: >-
+    This method initializes the WAL and reads any records that were written
+
+    but not committed (i.e., not yet confirmed persisted to the primary sink).
+
+    Each recovered event is written to the sink and then the WAL is committed.
+
+    If no WAL is configured, this method is a no-op.
+  example: []
+  syntax:
+    content: public Task RecoverAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function RecoverAsync(ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.RecoverAsync*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.TryPublish(MarketDataCollector.Domain.Events.MarketEvent@)
+  commentId: M:MarketDataCollector.Application.Pipeline.EventPipeline.TryPublish(MarketDataCollector.Domain.Events.MarketEvent@)
+  id: TryPublish(MarketDataCollector.Domain.Events.MarketEvent@)
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: TryPublish(in MarketEvent)
+  nameWithType: EventPipeline.TryPublish(in MarketEvent)
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.TryPublish(in MarketDataCollector.Domain.Events.MarketEvent)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TryPublish
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 357
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: >-
+    Attempts to publish an event to the pipeline without blocking.
+
+    Returns false if the queue is full (event will be dropped based on FullMode).
+  remarks: >-
+    When WAL is enabled, the WAL write occurs in the consumer task (not at publish time)
+
+    to preserve the non-blocking contract of this method. Events are WAL-protected
+
+    once they reach the consumer. For full publish-time WAL protection, use
+
+    <xref href="MarketDataCollector.Application.Pipeline.EventPipeline.PublishAsync(MarketDataCollector.Domain.Events.MarketEvent%2cSystem.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref> instead.
+  example: []
+  syntax:
+    content: public bool TryPublish(in MarketEvent evt)
+    parameters:
+    - id: evt
+      type: MarketDataCollector.Domain.Events.MarketEvent
+    return:
+      type: System.Boolean
+    content.vb: Public Function TryPublish(evt As MarketEvent) As Boolean
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.TryPublish*
+  implements:
+  - MarketDataCollector.Domain.Events.IMarketEventPublisher.TryPublish(MarketDataCollector.Domain.Events.MarketEvent@)
+  nameWithType.vb: EventPipeline.TryPublish(MarketEvent)
+  fullName.vb: MarketDataCollector.Application.Pipeline.EventPipeline.TryPublish(MarketDataCollector.Domain.Events.MarketEvent)
+  name.vb: TryPublish(MarketEvent)
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.TryPublishWithResult(MarketDataCollector.Domain.Events.MarketEvent@)
+  commentId: M:MarketDataCollector.Application.Pipeline.EventPipeline.TryPublishWithResult(MarketDataCollector.Domain.Events.MarketEvent@)
+  id: TryPublishWithResult(MarketDataCollector.Domain.Events.MarketEvent@)
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: TryPublishWithResult(in MarketEvent)
+  nameWithType: EventPipeline.TryPublishWithResult(in MarketEvent)
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.TryPublishWithResult(in MarketDataCollector.Domain.Events.MarketEvent)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TryPublishWithResult
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 433
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: >-
+    Attempts to publish an event and returns a <xref href="MarketDataCollector.Domain.Events.PublishResult" data-throw-if-not-resolved="false"></xref> that describes
+
+    the outcome in detail — accepted, accepted under pressure, or dropped.
+  remarks: >-
+    Use this method when the caller needs to react to backpressure (e.g. pause a subscription,
+
+    log a drop, or adjust polling rate). For fire-and-forget callers the original
+
+    <xref href="MarketDataCollector.Application.Pipeline.EventPipeline.TryPublish(MarketDataCollector.Domain.Events.MarketEvent%40)" data-throw-if-not-resolved="false"></xref> remains the recommended hot-path method.
+  example: []
+  syntax:
+    content: public PublishResult TryPublishWithResult(in MarketEvent evt)
+    parameters:
+    - id: evt
+      type: MarketDataCollector.Domain.Events.MarketEvent
+    return:
+      type: MarketDataCollector.Domain.Events.PublishResult
+    content.vb: Public Function TryPublishWithResult(evt As MarketEvent) As PublishResult
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.TryPublishWithResult*
+  nameWithType.vb: EventPipeline.TryPublishWithResult(MarketEvent)
+  fullName.vb: MarketDataCollector.Application.Pipeline.EventPipeline.TryPublishWithResult(MarketDataCollector.Domain.Events.MarketEvent)
+  name.vb: TryPublishWithResult(MarketEvent)
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.PublishAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Pipeline.EventPipeline.PublishAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  id: PublishAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: PublishAsync(MarketEvent, CancellationToken)
+  nameWithType: EventPipeline.PublishAsync(MarketEvent, CancellationToken)
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.PublishAsync(MarketDataCollector.Domain.Events.MarketEvent, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PublishAsync
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 476
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: >-
+    Publishes an event to the pipeline, waiting if necessary.
+
+    When WAL is enabled, the WAL write is performed by the consumer task
+
+    to avoid duplicate records during recovery.
+  example: []
+  syntax:
+    content: public ValueTask PublishAsync(MarketEvent evt, CancellationToken ct = default)
+    parameters:
+    - id: evt
+      type: MarketDataCollector.Domain.Events.MarketEvent
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.ValueTask
+    content.vb: Public Function PublishAsync(evt As MarketEvent, ct As CancellationToken = Nothing) As ValueTask
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.PublishAsync*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.Complete
+  commentId: M:MarketDataCollector.Application.Pipeline.EventPipeline.Complete
+  id: Complete
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: Complete()
+  nameWithType: EventPipeline.Complete()
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.Complete()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Complete
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 489
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Signals that no more events will be published.
+  example: []
+  syntax:
+    content: public void Complete()
+    content.vb: Public Sub Complete()
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.Complete*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.FlushAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Pipeline.EventPipeline.FlushAsync(System.Threading.CancellationToken)
+  id: FlushAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: FlushAsync(CancellationToken)
+  nameWithType: EventPipeline.FlushAsync(CancellationToken)
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.FlushAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FlushAsync
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 501
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: >-
+    Waits for the consumer to process all currently-queued events, then forces
+
+    an immediate flush of buffered data to storage.
+  remarks: >-
+    If events were dropped due to backpressure during the flush window, a warning
+
+    is logged. The flush still writes all events that <em>were</em> consumed to
+
+    storage — it does not suppress the flush because of drops — but callers should
+
+    treat the warning as an indication that the result set is incomplete.
+  example: []
+  syntax:
+    content: public Task FlushAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function FlushAsync(ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.FlushAsync*
+  implements:
+  - MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.GetStatistics
+  commentId: M:MarketDataCollector.Application.Pipeline.EventPipeline.GetStatistics
+  id: GetStatistics
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: GetStatistics()
+  nameWithType: EventPipeline.GetStatistics()
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.GetStatistics()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetStatistics
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 563
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets a snapshot of current pipeline statistics.
+  example: []
+  syntax:
+    content: public PipelineStatistics GetStatistics()
+    return:
+      type: MarketDataCollector.Application.Pipeline.PipelineStatistics
+    content.vb: Public Function GetStatistics() As PipelineStatistics
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.GetStatistics*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.DisposeAsync
+  commentId: M:MarketDataCollector.Application.Pipeline.EventPipeline.DisposeAsync
+  id: DisposeAsync
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: DisposeAsync()
+  nameWithType: EventPipeline.DisposeAsync()
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.DisposeAsync()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisposeAsync
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 741
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: >-
+    Performs application-defined tasks associated with freeing, releasing, or
+
+    resetting unmanaged resources asynchronously.
+  example: []
+  syntax:
+    content: public ValueTask DisposeAsync()
+    return:
+      type: System.Threading.Tasks.ValueTask
+      description: A task that represents the asynchronous dispose operation.
+    content.vb: Public Function DisposeAsync() As ValueTask
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.DisposeAsync*
+  implements:
+  - System.IAsyncDisposable.DisposeAsync
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.AuditTrail
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.AuditTrail
+  id: AuditTrail
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: AuditTrail
+  nameWithType: EventPipeline.AuditTrail
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.AuditTrail
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AuditTrail
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 829
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets the dropped event audit trail, if configured.
+  example: []
+  syntax:
+    content: public DroppedEventAuditTrail? AuditTrail { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail
+    content.vb: Public ReadOnly Property AuditTrail As DroppedEventAuditTrail
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.AuditTrail*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.QueueCapacity
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.QueueCapacity
+  id: QueueCapacity
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: QueueCapacity
+  nameWithType: EventPipeline.QueueCapacity
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.QueueCapacity
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: QueueCapacity
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 834
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets the queue capacity.
+  example: []
+  syntax:
+    content: public int QueueCapacity { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property QueueCapacity As Integer
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.QueueCapacity*
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.EventMetrics
+  commentId: P:MarketDataCollector.Application.Pipeline.EventPipeline.EventMetrics
+  id: EventMetrics
+  parent: MarketDataCollector.Application.Pipeline.EventPipeline
+  langs:
+  - csharp
+  - vb
+  name: EventMetrics
+  nameWithType: EventPipeline.EventMetrics
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.EventMetrics
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: EventMetrics
+    path: ../../src/MarketDataCollector.Application/Pipeline/EventPipeline.cs
+    startLine: 839
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Gets the injected event metrics instance.
+  example: []
+  syntax:
+    content: public IEventMetrics EventMetrics { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Monitoring.IEventMetrics
+    content.vb: Public ReadOnly Property EventMetrics As IEventMetrics
+  overload: MarketDataCollector.Application.Pipeline.EventPipeline.EventMetrics*
+references:
+- uid: MarketDataCollector.Storage.Archival.WriteAheadLog
+  commentId: T:MarketDataCollector.Storage.Archival.WriteAheadLog
+  parent: MarketDataCollector.Storage.Archival
+  href: MarketDataCollector.Storage.Archival.WriteAheadLog.html
+  name: WriteAheadLog
+  nameWithType: WriteAheadLog
+  fullName: MarketDataCollector.Storage.Archival.WriteAheadLog
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.RecoverAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Pipeline.EventPipeline.RecoverAsync(System.Threading.CancellationToken)
+  isExternal: true
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_RecoverAsync_System_Threading_CancellationToken_
+  name: RecoverAsync(CancellationToken)
+  nameWithType: EventPipeline.RecoverAsync(CancellationToken)
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.RecoverAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Pipeline.EventPipeline.RecoverAsync(System.Threading.CancellationToken)
+    name: RecoverAsync
+    href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_RecoverAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Pipeline.EventPipeline.RecoverAsync(System.Threading.CancellationToken)
+    name: RecoverAsync
+    href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_RecoverAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.TryPublish(MarketDataCollector.Domain.Events.MarketEvent@)
+  commentId: M:MarketDataCollector.Application.Pipeline.EventPipeline.TryPublish(MarketDataCollector.Domain.Events.MarketEvent@)
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_TryPublish_MarketDataCollector_Domain_Events_MarketEvent__
+  name: TryPublish(in MarketEvent)
+  nameWithType: EventPipeline.TryPublish(in MarketEvent)
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.TryPublish(in MarketDataCollector.Domain.Events.MarketEvent)
+  nameWithType.vb: EventPipeline.TryPublish(MarketEvent)
+  fullName.vb: MarketDataCollector.Application.Pipeline.EventPipeline.TryPublish(MarketDataCollector.Domain.Events.MarketEvent)
+  name.vb: TryPublish(MarketEvent)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Pipeline.EventPipeline.TryPublish(MarketDataCollector.Domain.Events.MarketEvent@)
+    name: TryPublish
+    href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_TryPublish_MarketDataCollector_Domain_Events_MarketEvent__
+  - name: (
+  - name: in
+  - name: " "
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Pipeline.EventPipeline.TryPublish(MarketDataCollector.Domain.Events.MarketEvent@)
+    name: TryPublish
+    href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_TryPublish_MarketDataCollector_Domain_Events_MarketEvent__
+  - name: (
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+  - name: )
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.PublishAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Pipeline.EventPipeline.PublishAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  isExternal: true
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_PublishAsync_MarketDataCollector_Domain_Events_MarketEvent_System_Threading_CancellationToken_
+  name: PublishAsync(MarketEvent, CancellationToken)
+  nameWithType: EventPipeline.PublishAsync(MarketEvent, CancellationToken)
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.PublishAsync(MarketDataCollector.Domain.Events.MarketEvent, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Pipeline.EventPipeline.PublishAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+    name: PublishAsync
+    href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_PublishAsync_MarketDataCollector_Domain_Events_MarketEvent_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Pipeline.EventPipeline.PublishAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+    name: PublishAsync
+    href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_PublishAsync_MarketDataCollector_Domain_Events_MarketEvent_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Application.Pipeline
+  commentId: N:MarketDataCollector.Application.Pipeline
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Pipeline
+  nameWithType: MarketDataCollector.Application.Pipeline
+  fullName: MarketDataCollector.Application.Pipeline
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Pipeline
+    name: Pipeline
+    href: MarketDataCollector.Application.Pipeline.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Pipeline
+    name: Pipeline
+    href: MarketDataCollector.Application.Pipeline.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Domain.Events.IMarketEventPublisher
+  commentId: T:MarketDataCollector.Domain.Events.IMarketEventPublisher
+  parent: MarketDataCollector.Domain.Events
+  href: MarketDataCollector.Domain.Events.IMarketEventPublisher.html
+  name: IMarketEventPublisher
+  nameWithType: IMarketEventPublisher
+  fullName: MarketDataCollector.Domain.Events.IMarketEventPublisher
+- uid: MarketDataCollector.Domain.Events.IBackpressureSignal
+  commentId: T:MarketDataCollector.Domain.Events.IBackpressureSignal
+  parent: MarketDataCollector.Domain.Events
+  href: MarketDataCollector.Domain.Events.IBackpressureSignal.html
+  name: IBackpressureSignal
+  nameWithType: IBackpressureSignal
+  fullName: MarketDataCollector.Domain.Events.IBackpressureSignal
+- uid: System.IAsyncDisposable
+  commentId: T:System.IAsyncDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
+  name: IAsyncDisposable
+  nameWithType: IAsyncDisposable
+  fullName: System.IAsyncDisposable
+- uid: MarketDataCollector.Application.Services.IFlushable
+  commentId: T:MarketDataCollector.Application.Services.IFlushable
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.IFlushable.html
+  name: IFlushable
+  nameWithType: IFlushable
+  fullName: MarketDataCollector.Application.Services.IFlushable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Storage.Archival
+  commentId: N:MarketDataCollector.Storage.Archival
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Archival
+  nameWithType: MarketDataCollector.Storage.Archival
+  fullName: MarketDataCollector.Storage.Archival
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Archival
+    name: Archival
+    href: MarketDataCollector.Storage.Archival.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Archival
+    name: Archival
+    href: MarketDataCollector.Storage.Archival.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Domain.Events
+  commentId: N:MarketDataCollector.Domain.Events
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Events
+  nameWithType: MarketDataCollector.Domain.Events
+  fullName: MarketDataCollector.Domain.Events
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+- uid: MarketDataCollector.Application.Services
+  commentId: N:MarketDataCollector.Application.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Services
+  nameWithType: MarketDataCollector.Application.Services
+  fullName: MarketDataCollector.Application.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.#ctor
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline__ctor_MarketDataCollector_Storage_Interfaces_IStorageSink_System_Int32_System_Threading_Channels_BoundedChannelFullMode_System_Nullable_System_TimeSpan__System_Int32_System_Boolean_Microsoft_Extensions_Logging_ILogger_MarketDataCollector_Application_Pipeline_EventPipeline__MarketDataCollector_Application_Pipeline_DroppedEventAuditTrail_MarketDataCollector_Storage_Archival_WriteAheadLog_MarketDataCollector_Application_Monitoring_IEventMetrics_System_Nullable_System_TimeSpan__System_Nullable_System_TimeSpan__MarketDataCollector_Application_Pipeline_IEventValidator_MarketDataCollector_Application_Pipeline_DeadLetterSink_MarketDataCollector_Application_Pipeline_PersistentDedupLedger_
+  name: EventPipeline
+  nameWithType: EventPipeline.EventPipeline
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.EventPipeline
+  nameWithType.vb: EventPipeline.New
+  fullName.vb: MarketDataCollector.Application.Pipeline.EventPipeline.New
+  name.vb: New
+- uid: MarketDataCollector.Storage.Interfaces.IStorageSink
+  commentId: T:MarketDataCollector.Storage.Interfaces.IStorageSink
+  parent: MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.Storage.Interfaces.IStorageSink.html
+  name: IStorageSink
+  nameWithType: IStorageSink
+  fullName: MarketDataCollector.Storage.Interfaces.IStorageSink
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Threading.Channels.BoundedChannelFullMode
+  commentId: T:System.Threading.Channels.BoundedChannelFullMode
+  parent: System.Threading.Channels
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.channels.boundedchannelfullmode
+  name: BoundedChannelFullMode
+  nameWithType: BoundedChannelFullMode
+  fullName: System.Threading.Channels.BoundedChannelFullMode
+- uid: System.Nullable{System.TimeSpan}
+  commentId: T:System.Nullable{System.TimeSpan}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan?
+  nameWithType: TimeSpan?
+  fullName: System.TimeSpan?
+  spec.csharp:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+  spec.vb:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.EventPipeline}
+  commentId: T:Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.EventPipeline}
+  parent: Microsoft.Extensions.Logging
+  definition: Microsoft.Extensions.Logging.ILogger`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<EventPipeline>
+  nameWithType: ILogger<EventPipeline>
+  fullName: Microsoft.Extensions.Logging.ILogger<MarketDataCollector.Application.Pipeline.EventPipeline>
+  nameWithType.vb: ILogger(Of EventPipeline)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of MarketDataCollector.Application.Pipeline.EventPipeline)
+  name.vb: ILogger(Of EventPipeline)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - uid: MarketDataCollector.Application.Pipeline.EventPipeline
+    name: EventPipeline
+    href: MarketDataCollector.Application.Pipeline.EventPipeline.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Pipeline.EventPipeline
+    name: EventPipeline
+    href: MarketDataCollector.Application.Pipeline.EventPipeline.html
+  - name: )
+- uid: MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail
+  commentId: T:MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail
+  parent: MarketDataCollector.Application.Pipeline
+  href: MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail.html
+  name: DroppedEventAuditTrail
+  nameWithType: DroppedEventAuditTrail
+  fullName: MarketDataCollector.Application.Pipeline.DroppedEventAuditTrail
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics
+  commentId: T:MarketDataCollector.Application.Monitoring.IEventMetrics
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html
+  name: IEventMetrics
+  nameWithType: IEventMetrics
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics
+- uid: MarketDataCollector.Application.Pipeline.IEventValidator
+  commentId: T:MarketDataCollector.Application.Pipeline.IEventValidator
+  parent: MarketDataCollector.Application.Pipeline
+  href: MarketDataCollector.Application.Pipeline.IEventValidator.html
+  name: IEventValidator
+  nameWithType: IEventValidator
+  fullName: MarketDataCollector.Application.Pipeline.IEventValidator
+- uid: MarketDataCollector.Application.Pipeline.DeadLetterSink
+  commentId: T:MarketDataCollector.Application.Pipeline.DeadLetterSink
+  parent: MarketDataCollector.Application.Pipeline
+  href: MarketDataCollector.Application.Pipeline.DeadLetterSink.html
+  name: DeadLetterSink
+  nameWithType: DeadLetterSink
+  fullName: MarketDataCollector.Application.Pipeline.DeadLetterSink
+- uid: MarketDataCollector.Application.Pipeline.PersistentDedupLedger
+  commentId: T:MarketDataCollector.Application.Pipeline.PersistentDedupLedger
+  parent: MarketDataCollector.Application.Pipeline
+  href: MarketDataCollector.Application.Pipeline.PersistentDedupLedger.html
+  name: PersistentDedupLedger
+  nameWithType: PersistentDedupLedger
+  fullName: MarketDataCollector.Application.Pipeline.PersistentDedupLedger
+- uid: MarketDataCollector.Storage.Interfaces
+  commentId: N:MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Interfaces
+  nameWithType: MarketDataCollector.Storage.Interfaces
+  fullName: MarketDataCollector.Storage.Interfaces
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Interfaces
+    name: Interfaces
+    href: MarketDataCollector.Storage.Interfaces.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Interfaces
+    name: Interfaces
+    href: MarketDataCollector.Storage.Interfaces.html
+- uid: System.Threading.Channels
+  commentId: N:System.Threading.Channels
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Channels
+  nameWithType: System.Threading.Channels
+  fullName: System.Threading.Channels
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Channels
+    name: Channels
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.channels
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Channels
+    name: Channels
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.channels
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Microsoft.Extensions.Logging.ILogger`1
+  commentId: T:Microsoft.Extensions.Logging.ILogger`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<TCategoryName>
+  nameWithType: ILogger<TCategoryName>
+  fullName: Microsoft.Extensions.Logging.ILogger<TCategoryName>
+  nameWithType.vb: ILogger(Of TCategoryName)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of TCategoryName)
+  name.vb: ILogger(Of TCategoryName)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - name: TCategoryName
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TCategoryName
+  - name: )
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: MarketDataCollector.Application.Monitoring
+  commentId: N:MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring
+  nameWithType: MarketDataCollector.Application.Monitoring
+  fullName: MarketDataCollector.Application.Monitoring
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+- uid: MarketDataCollector.Application.Pipeline.EventPipelinePolicy
+  commentId: T:MarketDataCollector.Application.Pipeline.EventPipelinePolicy
+  parent: MarketDataCollector.Application.Pipeline
+  href: MarketDataCollector.Application.Pipeline.EventPipelinePolicy.html
+  name: EventPipelinePolicy
+  nameWithType: EventPipelinePolicy
+  fullName: MarketDataCollector.Application.Pipeline.EventPipelinePolicy
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.PublishedCount*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.PublishedCount
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_PublishedCount
+  name: PublishedCount
+  nameWithType: EventPipeline.PublishedCount
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.PublishedCount
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.DroppedCount*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.DroppedCount
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_DroppedCount
+  name: DroppedCount
+  nameWithType: EventPipeline.DroppedCount
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.DroppedCount
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.ConsumedCount*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.ConsumedCount
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_ConsumedCount
+  name: ConsumedCount
+  nameWithType: EventPipeline.ConsumedCount
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.ConsumedCount
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.RecoveredCount*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.RecoveredCount
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_RecoveredCount
+  name: RecoveredCount
+  nameWithType: EventPipeline.RecoveredCount
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.RecoveredCount
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.RejectedCount*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.RejectedCount
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_RejectedCount
+  name: RejectedCount
+  nameWithType: EventPipeline.RejectedCount
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.RejectedCount
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.DeduplicatedCount*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.DeduplicatedCount
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_DeduplicatedCount
+  name: DeduplicatedCount
+  nameWithType: EventPipeline.DeduplicatedCount
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.DeduplicatedCount
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.IsDeduplicationEnabled*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.IsDeduplicationEnabled
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_IsDeduplicationEnabled
+  name: IsDeduplicationEnabled
+  nameWithType: EventPipeline.IsDeduplicationEnabled
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.IsDeduplicationEnabled
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.PeakQueueSize*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.PeakQueueSize
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_PeakQueueSize
+  name: PeakQueueSize
+  nameWithType: EventPipeline.PeakQueueSize
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.PeakQueueSize
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.CurrentQueueSize*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.CurrentQueueSize
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_CurrentQueueSize
+  name: CurrentQueueSize
+  nameWithType: EventPipeline.CurrentQueueSize
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.CurrentQueueSize
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.QueueUtilization*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.QueueUtilization
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_QueueUtilization
+  name: QueueUtilization
+  nameWithType: EventPipeline.QueueUtilization
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.QueueUtilization
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.AverageProcessingTimeUs*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.AverageProcessingTimeUs
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_AverageProcessingTimeUs
+  name: AverageProcessingTimeUs
+  nameWithType: EventPipeline.AverageProcessingTimeUs
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.AverageProcessingTimeUs
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.TimeSinceLastFlush*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.TimeSinceLastFlush
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_TimeSinceLastFlush
+  name: TimeSinceLastFlush
+  nameWithType: EventPipeline.TimeSinceLastFlush
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.TimeSinceLastFlush
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.IsWalEnabled*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.IsWalEnabled
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_IsWalEnabled
+  name: IsWalEnabled
+  nameWithType: EventPipeline.IsWalEnabled
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.IsWalEnabled
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.IsValidationEnabled*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.IsValidationEnabled
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_IsValidationEnabled
+  name: IsValidationEnabled
+  nameWithType: EventPipeline.IsValidationEnabled
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.IsValidationEnabled
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.IsUnderPressure*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.IsUnderPressure
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_IsUnderPressure
+  name: IsUnderPressure
+  nameWithType: EventPipeline.IsUnderPressure
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.IsUnderPressure
+- uid: MarketDataCollector.Domain.Events.IBackpressureSignal.IsUnderPressure
+  commentId: P:MarketDataCollector.Domain.Events.IBackpressureSignal.IsUnderPressure
+  parent: MarketDataCollector.Domain.Events.IBackpressureSignal
+  href: MarketDataCollector.Domain.Events.IBackpressureSignal.html#MarketDataCollector_Domain_Events_IBackpressureSignal_IsUnderPressure
+  name: IsUnderPressure
+  nameWithType: IBackpressureSignal.IsUnderPressure
+  fullName: MarketDataCollector.Domain.Events.IBackpressureSignal.IsUnderPressure
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.RecoverAsync*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.RecoverAsync
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_RecoverAsync_System_Threading_CancellationToken_
+  name: RecoverAsync
+  nameWithType: EventPipeline.RecoverAsync
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.RecoverAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.TryPublish*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.TryPublish
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_TryPublish_MarketDataCollector_Domain_Events_MarketEvent__
+  name: TryPublish
+  nameWithType: EventPipeline.TryPublish
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.TryPublish
+- uid: MarketDataCollector.Domain.Events.IMarketEventPublisher.TryPublish(MarketDataCollector.Domain.Events.MarketEvent@)
+  commentId: M:MarketDataCollector.Domain.Events.IMarketEventPublisher.TryPublish(MarketDataCollector.Domain.Events.MarketEvent@)
+  parent: MarketDataCollector.Domain.Events.IMarketEventPublisher
+  href: MarketDataCollector.Domain.Events.IMarketEventPublisher.html#MarketDataCollector_Domain_Events_IMarketEventPublisher_TryPublish_MarketDataCollector_Domain_Events_MarketEvent__
+  name: TryPublish(in MarketEvent)
+  nameWithType: IMarketEventPublisher.TryPublish(in MarketEvent)
+  fullName: MarketDataCollector.Domain.Events.IMarketEventPublisher.TryPublish(in MarketDataCollector.Domain.Events.MarketEvent)
+  nameWithType.vb: IMarketEventPublisher.TryPublish(MarketEvent)
+  fullName.vb: MarketDataCollector.Domain.Events.IMarketEventPublisher.TryPublish(MarketDataCollector.Domain.Events.MarketEvent)
+  name.vb: TryPublish(MarketEvent)
+  spec.csharp:
+  - uid: MarketDataCollector.Domain.Events.IMarketEventPublisher.TryPublish(MarketDataCollector.Domain.Events.MarketEvent@)
+    name: TryPublish
+    href: MarketDataCollector.Domain.Events.IMarketEventPublisher.html#MarketDataCollector_Domain_Events_IMarketEventPublisher_TryPublish_MarketDataCollector_Domain_Events_MarketEvent__
+  - name: (
+  - name: in
+  - name: " "
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+    href: MarketDataCollector.Domain.Events.MarketEvent.html
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Domain.Events.IMarketEventPublisher.TryPublish(MarketDataCollector.Domain.Events.MarketEvent@)
+    name: TryPublish
+    href: MarketDataCollector.Domain.Events.IMarketEventPublisher.html#MarketDataCollector_Domain_Events_IMarketEventPublisher_TryPublish_MarketDataCollector_Domain_Events_MarketEvent__
+  - name: (
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+    href: MarketDataCollector.Domain.Events.MarketEvent.html
+  - name: )
+- uid: MarketDataCollector.Domain.Events.MarketEvent
+  commentId: T:MarketDataCollector.Domain.Events.MarketEvent
+  parent: MarketDataCollector.Domain.Events
+  href: MarketDataCollector.Domain.Events.MarketEvent.html
+  name: MarketEvent
+  nameWithType: MarketEvent
+  fullName: MarketDataCollector.Domain.Events.MarketEvent
+- uid: MarketDataCollector.Domain.Events.PublishResult
+  commentId: T:MarketDataCollector.Domain.Events.PublishResult
+  parent: MarketDataCollector.Domain.Events
+  href: MarketDataCollector.Domain.Events.PublishResult.html
+  name: PublishResult
+  nameWithType: PublishResult
+  fullName: MarketDataCollector.Domain.Events.PublishResult
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.TryPublishWithResult*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.TryPublishWithResult
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_TryPublishWithResult_MarketDataCollector_Domain_Events_MarketEvent__
+  name: TryPublishWithResult
+  nameWithType: EventPipeline.TryPublishWithResult
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.TryPublishWithResult
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.PublishAsync*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.PublishAsync
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_PublishAsync_MarketDataCollector_Domain_Events_MarketEvent_System_Threading_CancellationToken_
+  name: PublishAsync
+  nameWithType: EventPipeline.PublishAsync
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.PublishAsync
+- uid: System.Threading.Tasks.ValueTask
+  commentId: T:System.Threading.Tasks.ValueTask
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask
+  name: ValueTask
+  nameWithType: ValueTask
+  fullName: System.Threading.Tasks.ValueTask
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.Complete*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.Complete
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_Complete
+  name: Complete
+  nameWithType: EventPipeline.Complete
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.Complete
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.FlushAsync*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.FlushAsync
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_FlushAsync_System_Threading_CancellationToken_
+  name: FlushAsync
+  nameWithType: EventPipeline.FlushAsync
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.FlushAsync
+- uid: MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Services.IFlushable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: FlushAsync(CancellationToken)
+  nameWithType: IFlushable.FlushAsync(CancellationToken)
+  fullName: MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+    name: FlushAsync
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+    name: FlushAsync
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.GetStatistics*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.GetStatistics
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_GetStatistics
+  name: GetStatistics
+  nameWithType: EventPipeline.GetStatistics
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.GetStatistics
+- uid: MarketDataCollector.Application.Pipeline.PipelineStatistics
+  commentId: T:MarketDataCollector.Application.Pipeline.PipelineStatistics
+  parent: MarketDataCollector.Application.Pipeline
+  href: MarketDataCollector.Application.Pipeline.PipelineStatistics.html
+  name: PipelineStatistics
+  nameWithType: PipelineStatistics
+  fullName: MarketDataCollector.Application.Pipeline.PipelineStatistics
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.DisposeAsync*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.DisposeAsync
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_DisposeAsync
+  name: DisposeAsync
+  nameWithType: EventPipeline.DisposeAsync
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.DisposeAsync
+- uid: System.IAsyncDisposable.DisposeAsync
+  commentId: M:System.IAsyncDisposable.DisposeAsync
+  parent: System.IAsyncDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  name: DisposeAsync()
+  nameWithType: IAsyncDisposable.DisposeAsync()
+  fullName: System.IAsyncDisposable.DisposeAsync()
+  spec.csharp:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.AuditTrail*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.AuditTrail
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_AuditTrail
+  name: AuditTrail
+  nameWithType: EventPipeline.AuditTrail
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.AuditTrail
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.QueueCapacity*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.QueueCapacity
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_QueueCapacity
+  name: QueueCapacity
+  nameWithType: EventPipeline.QueueCapacity
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.QueueCapacity
+- uid: MarketDataCollector.Application.Pipeline.EventPipeline.EventMetrics*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.EventPipeline.EventMetrics
+  href: MarketDataCollector.Application.Pipeline.EventPipeline.html#MarketDataCollector_Application_Pipeline_EventPipeline_EventMetrics
+  name: EventMetrics
+  nameWithType: EventPipeline.EventMetrics
+  fullName: MarketDataCollector.Application.Pipeline.EventPipeline.EventMetrics

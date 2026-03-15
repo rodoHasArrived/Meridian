@@ -1,0 +1,961 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Composition.HostBuilder
+  commentId: T:MarketDataCollector.Application.Composition.HostBuilder
+  id: HostBuilder
+  parent: MarketDataCollector.Application.Composition
+  children:
+  - MarketDataCollector.Application.Composition.HostBuilder.AsBackfill
+  - MarketDataCollector.Application.Composition.HostBuilder.AsConsole(System.Boolean)
+  - MarketDataCollector.Application.Composition.HostBuilder.AsDesktop(System.Int32)
+  - MarketDataCollector.Application.Composition.HostBuilder.AsStreaming(System.Boolean,System.Nullable{System.Int32})
+  - MarketDataCollector.Application.Composition.HostBuilder.AsWebDashboard(System.Int32,MarketDataCollector.Application.UI.StatusEndpointHandlers)
+  - MarketDataCollector.Application.Composition.HostBuilder.Build
+  - MarketDataCollector.Application.Composition.HostBuilder.Create(System.String[],MarketDataCollector.Application.Composition.CompositionOptions)
+  - MarketDataCollector.Application.Composition.HostBuilder.CreateForBackfill(System.String)
+  - MarketDataCollector.Application.Composition.HostBuilder.CreateForStreaming(System.String,System.Nullable{System.Int32})
+  - MarketDataCollector.Application.Composition.HostBuilder.CreateForWeb(System.String,System.Int32)
+  - MarketDataCollector.Application.Composition.HostBuilder.WithAdapter(MarketDataCollector.Application.Composition.IHostAdapter)
+  langs:
+  - csharp
+  - vb
+  name: HostBuilder
+  nameWithType: HostBuilder
+  fullName: MarketDataCollector.Application.Composition.HostBuilder
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostAdapters.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HostBuilder
+    path: ../../src/MarketDataCollector.Application/Composition/HostAdapters.cs
+    startLine: 284
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Builder for creating configured web applications using the composition root and host adapters.
+  example: []
+  syntax:
+    content: public sealed class HostBuilder
+    content.vb: Public NotInheritable Class HostBuilder
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Composition.HostBuilder.Create(System.String[],MarketDataCollector.Application.Composition.CompositionOptions)
+  commentId: M:MarketDataCollector.Application.Composition.HostBuilder.Create(System.String[],MarketDataCollector.Application.Composition.CompositionOptions)
+  id: Create(System.String[],MarketDataCollector.Application.Composition.CompositionOptions)
+  parent: MarketDataCollector.Application.Composition.HostBuilder
+  langs:
+  - csharp
+  - vb
+  name: Create(string[]?, CompositionOptions?)
+  nameWithType: HostBuilder.Create(string[]?, CompositionOptions?)
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.Create(string[]?, MarketDataCollector.Application.Composition.CompositionOptions?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostAdapters.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Create
+    path: ../../src/MarketDataCollector.Application/Composition/HostAdapters.cs
+    startLine: 299
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Creates a new host builder with the specified composition options.
+  example: []
+  syntax:
+    content: public static HostBuilder Create(string[]? args = null, CompositionOptions? options = null)
+    parameters:
+    - id: args
+      type: System.String[]
+    - id: options
+      type: MarketDataCollector.Application.Composition.CompositionOptions
+    return:
+      type: MarketDataCollector.Application.Composition.HostBuilder
+    content.vb: Public Shared Function Create(args As String() = Nothing, options As CompositionOptions = Nothing) As HostBuilder
+  overload: MarketDataCollector.Application.Composition.HostBuilder.Create*
+  nameWithType.vb: HostBuilder.Create(String(), CompositionOptions)
+  fullName.vb: MarketDataCollector.Application.Composition.HostBuilder.Create(String(), MarketDataCollector.Application.Composition.CompositionOptions)
+  name.vb: Create(String(), CompositionOptions)
+- uid: MarketDataCollector.Application.Composition.HostBuilder.CreateForWeb(System.String,System.Int32)
+  commentId: M:MarketDataCollector.Application.Composition.HostBuilder.CreateForWeb(System.String,System.Int32)
+  id: CreateForWeb(System.String,System.Int32)
+  parent: MarketDataCollector.Application.Composition.HostBuilder
+  langs:
+  - csharp
+  - vb
+  name: CreateForWeb(string, int)
+  nameWithType: HostBuilder.CreateForWeb(string, int)
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.CreateForWeb(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostAdapters.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateForWeb
+    path: ../../src/MarketDataCollector.Application/Composition/HostAdapters.cs
+    startLine: 308
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Creates a new host builder for web dashboard mode.
+  example: []
+  syntax:
+    content: public static HostBuilder CreateForWeb(string configPath, int port = 8080)
+    parameters:
+    - id: configPath
+      type: System.String
+    - id: port
+      type: System.Int32
+    return:
+      type: MarketDataCollector.Application.Composition.HostBuilder
+    content.vb: Public Shared Function CreateForWeb(configPath As String, port As Integer = 8080) As HostBuilder
+  overload: MarketDataCollector.Application.Composition.HostBuilder.CreateForWeb*
+  nameWithType.vb: HostBuilder.CreateForWeb(String, Integer)
+  fullName.vb: MarketDataCollector.Application.Composition.HostBuilder.CreateForWeb(String, Integer)
+  name.vb: CreateForWeb(String, Integer)
+- uid: MarketDataCollector.Application.Composition.HostBuilder.CreateForStreaming(System.String,System.Nullable{System.Int32})
+  commentId: M:MarketDataCollector.Application.Composition.HostBuilder.CreateForStreaming(System.String,System.Nullable{System.Int32})
+  id: CreateForStreaming(System.String,System.Nullable{System.Int32})
+  parent: MarketDataCollector.Application.Composition.HostBuilder
+  langs:
+  - csharp
+  - vb
+  name: CreateForStreaming(string, int?)
+  nameWithType: HostBuilder.CreateForStreaming(string, int?)
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.CreateForStreaming(string, int?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostAdapters.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateForStreaming
+    path: ../../src/MarketDataCollector.Application/Composition/HostAdapters.cs
+    startLine: 321
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Creates a new host builder for streaming/data collection mode.
+  example: []
+  syntax:
+    content: public static HostBuilder CreateForStreaming(string configPath, int? httpPort = null)
+    parameters:
+    - id: configPath
+      type: System.String
+    - id: httpPort
+      type: System.Nullable{System.Int32}
+    return:
+      type: MarketDataCollector.Application.Composition.HostBuilder
+    content.vb: Public Shared Function CreateForStreaming(configPath As String, httpPort As Integer? = Nothing) As HostBuilder
+  overload: MarketDataCollector.Application.Composition.HostBuilder.CreateForStreaming*
+  nameWithType.vb: HostBuilder.CreateForStreaming(String, Integer?)
+  fullName.vb: MarketDataCollector.Application.Composition.HostBuilder.CreateForStreaming(String, Integer?)
+  name.vb: CreateForStreaming(String, Integer?)
+- uid: MarketDataCollector.Application.Composition.HostBuilder.CreateForBackfill(System.String)
+  commentId: M:MarketDataCollector.Application.Composition.HostBuilder.CreateForBackfill(System.String)
+  id: CreateForBackfill(System.String)
+  parent: MarketDataCollector.Application.Composition.HostBuilder
+  langs:
+  - csharp
+  - vb
+  name: CreateForBackfill(string)
+  nameWithType: HostBuilder.CreateForBackfill(string)
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.CreateForBackfill(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostAdapters.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateForBackfill
+    path: ../../src/MarketDataCollector.Application/Composition/HostAdapters.cs
+    startLine: 337
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Creates a new host builder for backfill-only mode.
+  example: []
+  syntax:
+    content: public static HostBuilder CreateForBackfill(string configPath)
+    parameters:
+    - id: configPath
+      type: System.String
+    return:
+      type: MarketDataCollector.Application.Composition.HostBuilder
+    content.vb: Public Shared Function CreateForBackfill(configPath As String) As HostBuilder
+  overload: MarketDataCollector.Application.Composition.HostBuilder.CreateForBackfill*
+  nameWithType.vb: HostBuilder.CreateForBackfill(String)
+  fullName.vb: MarketDataCollector.Application.Composition.HostBuilder.CreateForBackfill(String)
+  name.vb: CreateForBackfill(String)
+- uid: MarketDataCollector.Application.Composition.HostBuilder.WithAdapter(MarketDataCollector.Application.Composition.IHostAdapter)
+  commentId: M:MarketDataCollector.Application.Composition.HostBuilder.WithAdapter(MarketDataCollector.Application.Composition.IHostAdapter)
+  id: WithAdapter(MarketDataCollector.Application.Composition.IHostAdapter)
+  parent: MarketDataCollector.Application.Composition.HostBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithAdapter(IHostAdapter)
+  nameWithType: HostBuilder.WithAdapter(IHostAdapter)
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.WithAdapter(MarketDataCollector.Application.Composition.IHostAdapter)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostAdapters.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: WithAdapter
+    path: ../../src/MarketDataCollector.Application/Composition/HostAdapters.cs
+    startLine: 349
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Configures the host with a specific adapter.
+  example: []
+  syntax:
+    content: public HostBuilder WithAdapter(IHostAdapter adapter)
+    parameters:
+    - id: adapter
+      type: MarketDataCollector.Application.Composition.IHostAdapter
+    return:
+      type: MarketDataCollector.Application.Composition.HostBuilder
+    content.vb: Public Function WithAdapter(adapter As IHostAdapter) As HostBuilder
+  overload: MarketDataCollector.Application.Composition.HostBuilder.WithAdapter*
+- uid: MarketDataCollector.Application.Composition.HostBuilder.AsWebDashboard(System.Int32,MarketDataCollector.Application.UI.StatusEndpointHandlers)
+  commentId: M:MarketDataCollector.Application.Composition.HostBuilder.AsWebDashboard(System.Int32,MarketDataCollector.Application.UI.StatusEndpointHandlers)
+  id: AsWebDashboard(System.Int32,MarketDataCollector.Application.UI.StatusEndpointHandlers)
+  parent: MarketDataCollector.Application.Composition.HostBuilder
+  langs:
+  - csharp
+  - vb
+  name: AsWebDashboard(int, StatusEndpointHandlers?)
+  nameWithType: HostBuilder.AsWebDashboard(int, StatusEndpointHandlers?)
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.AsWebDashboard(int, MarketDataCollector.Application.UI.StatusEndpointHandlers?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostAdapters.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AsWebDashboard
+    path: ../../src/MarketDataCollector.Application/Composition/HostAdapters.cs
+    startLine: 358
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Configures the host for web dashboard mode.
+  example: []
+  syntax:
+    content: public HostBuilder AsWebDashboard(int port = 8080, StatusEndpointHandlers? statusHandlers = null)
+    parameters:
+    - id: port
+      type: System.Int32
+    - id: statusHandlers
+      type: MarketDataCollector.Application.UI.StatusEndpointHandlers
+    return:
+      type: MarketDataCollector.Application.Composition.HostBuilder
+    content.vb: Public Function AsWebDashboard(port As Integer = 8080, statusHandlers As StatusEndpointHandlers = Nothing) As HostBuilder
+  overload: MarketDataCollector.Application.Composition.HostBuilder.AsWebDashboard*
+  nameWithType.vb: HostBuilder.AsWebDashboard(Integer, StatusEndpointHandlers)
+  fullName.vb: MarketDataCollector.Application.Composition.HostBuilder.AsWebDashboard(Integer, MarketDataCollector.Application.UI.StatusEndpointHandlers)
+  name.vb: AsWebDashboard(Integer, StatusEndpointHandlers)
+- uid: MarketDataCollector.Application.Composition.HostBuilder.AsConsole(System.Boolean)
+  commentId: M:MarketDataCollector.Application.Composition.HostBuilder.AsConsole(System.Boolean)
+  id: AsConsole(System.Boolean)
+  parent: MarketDataCollector.Application.Composition.HostBuilder
+  langs:
+  - csharp
+  - vb
+  name: AsConsole(bool)
+  nameWithType: HostBuilder.AsConsole(bool)
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.AsConsole(bool)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostAdapters.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AsConsole
+    path: ../../src/MarketDataCollector.Application/Composition/HostAdapters.cs
+    startLine: 367
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Configures the host for console/headless mode.
+  example: []
+  syntax:
+    content: public HostBuilder AsConsole(bool enableHealthEndpoints = true)
+    parameters:
+    - id: enableHealthEndpoints
+      type: System.Boolean
+    return:
+      type: MarketDataCollector.Application.Composition.HostBuilder
+    content.vb: Public Function AsConsole(enableHealthEndpoints As Boolean = True) As HostBuilder
+  overload: MarketDataCollector.Application.Composition.HostBuilder.AsConsole*
+  nameWithType.vb: HostBuilder.AsConsole(Boolean)
+  fullName.vb: MarketDataCollector.Application.Composition.HostBuilder.AsConsole(Boolean)
+  name.vb: AsConsole(Boolean)
+- uid: MarketDataCollector.Application.Composition.HostBuilder.AsDesktop(System.Int32)
+  commentId: M:MarketDataCollector.Application.Composition.HostBuilder.AsDesktop(System.Int32)
+  id: AsDesktop(System.Int32)
+  parent: MarketDataCollector.Application.Composition.HostBuilder
+  langs:
+  - csharp
+  - vb
+  name: AsDesktop(int)
+  nameWithType: HostBuilder.AsDesktop(int)
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.AsDesktop(int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostAdapters.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AsDesktop
+    path: ../../src/MarketDataCollector.Application/Composition/HostAdapters.cs
+    startLine: 376
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Configures the host for desktop mode.
+  example: []
+  syntax:
+    content: public HostBuilder AsDesktop(int port = 8080)
+    parameters:
+    - id: port
+      type: System.Int32
+    return:
+      type: MarketDataCollector.Application.Composition.HostBuilder
+    content.vb: Public Function AsDesktop(port As Integer = 8080) As HostBuilder
+  overload: MarketDataCollector.Application.Composition.HostBuilder.AsDesktop*
+  nameWithType.vb: HostBuilder.AsDesktop(Integer)
+  fullName.vb: MarketDataCollector.Application.Composition.HostBuilder.AsDesktop(Integer)
+  name.vb: AsDesktop(Integer)
+- uid: MarketDataCollector.Application.Composition.HostBuilder.AsStreaming(System.Boolean,System.Nullable{System.Int32})
+  commentId: M:MarketDataCollector.Application.Composition.HostBuilder.AsStreaming(System.Boolean,System.Nullable{System.Int32})
+  id: AsStreaming(System.Boolean,System.Nullable{System.Int32})
+  parent: MarketDataCollector.Application.Composition.HostBuilder
+  langs:
+  - csharp
+  - vb
+  name: AsStreaming(bool, int?)
+  nameWithType: HostBuilder.AsStreaming(bool, int?)
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.AsStreaming(bool, int?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostAdapters.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AsStreaming
+    path: ../../src/MarketDataCollector.Application/Composition/HostAdapters.cs
+    startLine: 385
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Configures the host for streaming/data collection mode.
+  example: []
+  syntax:
+    content: public HostBuilder AsStreaming(bool enableHealthEndpoints = true, int? httpPort = null)
+    parameters:
+    - id: enableHealthEndpoints
+      type: System.Boolean
+    - id: httpPort
+      type: System.Nullable{System.Int32}
+    return:
+      type: MarketDataCollector.Application.Composition.HostBuilder
+    content.vb: Public Function AsStreaming(enableHealthEndpoints As Boolean = True, httpPort As Integer? = Nothing) As HostBuilder
+  overload: MarketDataCollector.Application.Composition.HostBuilder.AsStreaming*
+  nameWithType.vb: HostBuilder.AsStreaming(Boolean, Integer?)
+  fullName.vb: MarketDataCollector.Application.Composition.HostBuilder.AsStreaming(Boolean, Integer?)
+  name.vb: AsStreaming(Boolean, Integer?)
+- uid: MarketDataCollector.Application.Composition.HostBuilder.AsBackfill
+  commentId: M:MarketDataCollector.Application.Composition.HostBuilder.AsBackfill
+  id: AsBackfill
+  parent: MarketDataCollector.Application.Composition.HostBuilder
+  langs:
+  - csharp
+  - vb
+  name: AsBackfill()
+  nameWithType: HostBuilder.AsBackfill()
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.AsBackfill()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostAdapters.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AsBackfill
+    path: ../../src/MarketDataCollector.Application/Composition/HostAdapters.cs
+    startLine: 394
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Configures the host for backfill-only mode.
+  example: []
+  syntax:
+    content: public HostBuilder AsBackfill()
+    return:
+      type: MarketDataCollector.Application.Composition.HostBuilder
+    content.vb: Public Function AsBackfill() As HostBuilder
+  overload: MarketDataCollector.Application.Composition.HostBuilder.AsBackfill*
+- uid: MarketDataCollector.Application.Composition.HostBuilder.Build
+  commentId: M:MarketDataCollector.Application.Composition.HostBuilder.Build
+  id: Build
+  parent: MarketDataCollector.Application.Composition.HostBuilder
+  langs:
+  - csharp
+  - vb
+  name: Build()
+  nameWithType: HostBuilder.Build()
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.Build()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Composition/HostAdapters.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Build
+    path: ../../src/MarketDataCollector.Application/Composition/HostAdapters.cs
+    startLine: 403
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Composition
+  summary: Builds the configured web application.
+  example: []
+  syntax:
+    content: public WebApplication Build()
+    return:
+      type: Microsoft.AspNetCore.Builder.WebApplication
+    content.vb: Public Function Build() As WebApplication
+  overload: MarketDataCollector.Application.Composition.HostBuilder.Build*
+references:
+- uid: MarketDataCollector.Application.Composition
+  commentId: N:MarketDataCollector.Application.Composition
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Composition
+  nameWithType: MarketDataCollector.Application.Composition
+  fullName: MarketDataCollector.Application.Composition
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Composition
+    name: Composition
+    href: MarketDataCollector.Application.Composition.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Composition
+    name: Composition
+    href: MarketDataCollector.Application.Composition.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Composition.HostBuilder.Create*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostBuilder.Create
+  href: MarketDataCollector.Application.Composition.HostBuilder.html#MarketDataCollector_Application_Composition_HostBuilder_Create_System_String___MarketDataCollector_Application_Composition_CompositionOptions_
+  name: Create
+  nameWithType: HostBuilder.Create
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.Create
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Composition.CompositionOptions
+  commentId: T:MarketDataCollector.Application.Composition.CompositionOptions
+  parent: MarketDataCollector.Application.Composition
+  href: MarketDataCollector.Application.Composition.CompositionOptions.html
+  name: CompositionOptions
+  nameWithType: CompositionOptions
+  fullName: MarketDataCollector.Application.Composition.CompositionOptions
+- uid: MarketDataCollector.Application.Composition.HostBuilder
+  commentId: T:MarketDataCollector.Application.Composition.HostBuilder
+  parent: MarketDataCollector.Application.Composition
+  href: MarketDataCollector.Application.Composition.HostBuilder.html
+  name: HostBuilder
+  nameWithType: HostBuilder
+  fullName: MarketDataCollector.Application.Composition.HostBuilder
+- uid: MarketDataCollector.Application.Composition.HostBuilder.CreateForWeb*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostBuilder.CreateForWeb
+  href: MarketDataCollector.Application.Composition.HostBuilder.html#MarketDataCollector_Application_Composition_HostBuilder_CreateForWeb_System_String_System_Int32_
+  name: CreateForWeb
+  nameWithType: HostBuilder.CreateForWeb
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.CreateForWeb
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Application.Composition.HostBuilder.CreateForStreaming*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostBuilder.CreateForStreaming
+  href: MarketDataCollector.Application.Composition.HostBuilder.html#MarketDataCollector_Application_Composition_HostBuilder_CreateForStreaming_System_String_System_Nullable_System_Int32__
+  name: CreateForStreaming
+  nameWithType: HostBuilder.CreateForStreaming
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.CreateForStreaming
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Composition.HostBuilder.CreateForBackfill*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostBuilder.CreateForBackfill
+  href: MarketDataCollector.Application.Composition.HostBuilder.html#MarketDataCollector_Application_Composition_HostBuilder_CreateForBackfill_System_String_
+  name: CreateForBackfill
+  nameWithType: HostBuilder.CreateForBackfill
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.CreateForBackfill
+- uid: MarketDataCollector.Application.Composition.HostBuilder.WithAdapter*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostBuilder.WithAdapter
+  href: MarketDataCollector.Application.Composition.HostBuilder.html#MarketDataCollector_Application_Composition_HostBuilder_WithAdapter_MarketDataCollector_Application_Composition_IHostAdapter_
+  name: WithAdapter
+  nameWithType: HostBuilder.WithAdapter
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.WithAdapter
+- uid: MarketDataCollector.Application.Composition.IHostAdapter
+  commentId: T:MarketDataCollector.Application.Composition.IHostAdapter
+  parent: MarketDataCollector.Application.Composition
+  href: MarketDataCollector.Application.Composition.IHostAdapter.html
+  name: IHostAdapter
+  nameWithType: IHostAdapter
+  fullName: MarketDataCollector.Application.Composition.IHostAdapter
+- uid: MarketDataCollector.Application.Composition.HostBuilder.AsWebDashboard*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostBuilder.AsWebDashboard
+  href: MarketDataCollector.Application.Composition.HostBuilder.html#MarketDataCollector_Application_Composition_HostBuilder_AsWebDashboard_System_Int32_MarketDataCollector_Application_UI_StatusEndpointHandlers_
+  name: AsWebDashboard
+  nameWithType: HostBuilder.AsWebDashboard
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.AsWebDashboard
+- uid: MarketDataCollector.Application.UI.StatusEndpointHandlers
+  commentId: T:MarketDataCollector.Application.UI.StatusEndpointHandlers
+  parent: MarketDataCollector.Application.UI
+  href: MarketDataCollector.Application.UI.StatusEndpointHandlers.html
+  name: StatusEndpointHandlers
+  nameWithType: StatusEndpointHandlers
+  fullName: MarketDataCollector.Application.UI.StatusEndpointHandlers
+- uid: MarketDataCollector.Application.UI
+  commentId: N:MarketDataCollector.Application.UI
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.UI
+  nameWithType: MarketDataCollector.Application.UI
+  fullName: MarketDataCollector.Application.UI
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.UI
+    name: UI
+    href: MarketDataCollector.Application.UI.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.UI
+    name: UI
+    href: MarketDataCollector.Application.UI.html
+- uid: MarketDataCollector.Application.Composition.HostBuilder.AsConsole*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostBuilder.AsConsole
+  href: MarketDataCollector.Application.Composition.HostBuilder.html#MarketDataCollector_Application_Composition_HostBuilder_AsConsole_System_Boolean_
+  name: AsConsole
+  nameWithType: HostBuilder.AsConsole
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.AsConsole
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Application.Composition.HostBuilder.AsDesktop*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostBuilder.AsDesktop
+  href: MarketDataCollector.Application.Composition.HostBuilder.html#MarketDataCollector_Application_Composition_HostBuilder_AsDesktop_System_Int32_
+  name: AsDesktop
+  nameWithType: HostBuilder.AsDesktop
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.AsDesktop
+- uid: MarketDataCollector.Application.Composition.HostBuilder.AsStreaming*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostBuilder.AsStreaming
+  href: MarketDataCollector.Application.Composition.HostBuilder.html#MarketDataCollector_Application_Composition_HostBuilder_AsStreaming_System_Boolean_System_Nullable_System_Int32__
+  name: AsStreaming
+  nameWithType: HostBuilder.AsStreaming
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.AsStreaming
+- uid: MarketDataCollector.Application.Composition.HostBuilder.AsBackfill*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostBuilder.AsBackfill
+  href: MarketDataCollector.Application.Composition.HostBuilder.html#MarketDataCollector_Application_Composition_HostBuilder_AsBackfill
+  name: AsBackfill
+  nameWithType: HostBuilder.AsBackfill
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.AsBackfill
+- uid: MarketDataCollector.Application.Composition.HostBuilder.Build*
+  commentId: Overload:MarketDataCollector.Application.Composition.HostBuilder.Build
+  href: MarketDataCollector.Application.Composition.HostBuilder.html#MarketDataCollector_Application_Composition_HostBuilder_Build
+  name: Build
+  nameWithType: HostBuilder.Build
+  fullName: MarketDataCollector.Application.Composition.HostBuilder.Build
+- uid: Microsoft.AspNetCore.Builder.WebApplication
+  commentId: T:Microsoft.AspNetCore.Builder.WebApplication
+  parent: Microsoft.AspNetCore.Builder
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.webapplication
+  name: WebApplication
+  nameWithType: WebApplication
+  fullName: Microsoft.AspNetCore.Builder.WebApplication
+- uid: Microsoft.AspNetCore.Builder
+  commentId: N:Microsoft.AspNetCore.Builder
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.AspNetCore.Builder
+  nameWithType: Microsoft.AspNetCore.Builder
+  fullName: Microsoft.AspNetCore.Builder
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Builder
+    name: Builder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Builder
+    name: Builder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder

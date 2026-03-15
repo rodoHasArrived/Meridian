@@ -1,0 +1,603 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Canonicalization.EventCanonicalizer
+  commentId: T:MarketDataCollector.Application.Canonicalization.EventCanonicalizer
+  id: EventCanonicalizer
+  parent: MarketDataCollector.Application.Canonicalization
+  children:
+  - MarketDataCollector.Application.Canonicalization.EventCanonicalizer.#ctor(MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry,MarketDataCollector.Application.Canonicalization.ConditionCodeMapper,MarketDataCollector.Application.Canonicalization.VenueMicMapper,System.Byte)
+  - MarketDataCollector.Application.Canonicalization.EventCanonicalizer.Canonicalize(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: EventCanonicalizer
+  nameWithType: EventCanonicalizer
+  fullName: MarketDataCollector.Application.Canonicalization.EventCanonicalizer
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Canonicalization/EventCanonicalizer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: EventCanonicalizer
+    path: ../../src/MarketDataCollector.Application/Canonicalization/EventCanonicalizer.cs
+    startLine: 16
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Canonicalization
+  summary: >-
+    Default canonicalization implementation that resolves symbols, maps condition codes,
+
+    and normalizes venue identifiers using in-memory lookup tables.
+
+    Follows the <code>with</code> expression pattern established by <xref href="MarketDataCollector.Domain.Events.MarketEvent.StampReceiveTime(System.Nullable%7bSystem.DateTimeOffset%7d)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: 'public sealed class EventCanonicalizer : IEventCanonicalizer'
+    content.vb: Public NotInheritable Class EventCanonicalizer Implements IEventCanonicalizer
+  inheritance:
+  - System.Object
+  implements:
+  - MarketDataCollector.Application.Canonicalization.IEventCanonicalizer
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Canonicalization.EventCanonicalizer.#ctor(MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry,MarketDataCollector.Application.Canonicalization.ConditionCodeMapper,MarketDataCollector.Application.Canonicalization.VenueMicMapper,System.Byte)
+  commentId: M:MarketDataCollector.Application.Canonicalization.EventCanonicalizer.#ctor(MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry,MarketDataCollector.Application.Canonicalization.ConditionCodeMapper,MarketDataCollector.Application.Canonicalization.VenueMicMapper,System.Byte)
+  id: '#ctor(MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry,MarketDataCollector.Application.Canonicalization.ConditionCodeMapper,MarketDataCollector.Application.Canonicalization.VenueMicMapper,System.Byte)'
+  parent: MarketDataCollector.Application.Canonicalization.EventCanonicalizer
+  langs:
+  - csharp
+  - vb
+  name: EventCanonicalizer(ICanonicalSymbolRegistry, ConditionCodeMapper, VenueMicMapper, byte)
+  nameWithType: EventCanonicalizer.EventCanonicalizer(ICanonicalSymbolRegistry, ConditionCodeMapper, VenueMicMapper, byte)
+  fullName: MarketDataCollector.Application.Canonicalization.EventCanonicalizer.EventCanonicalizer(MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry, MarketDataCollector.Application.Canonicalization.ConditionCodeMapper, MarketDataCollector.Application.Canonicalization.VenueMicMapper, byte)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Canonicalization/EventCanonicalizer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Canonicalization/EventCanonicalizer.cs
+    startLine: 24
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Canonicalization
+  syntax:
+    content: public EventCanonicalizer(ICanonicalSymbolRegistry symbols, ConditionCodeMapper conditions, VenueMicMapper venues, byte version = 1)
+    parameters:
+    - id: symbols
+      type: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+    - id: conditions
+      type: MarketDataCollector.Application.Canonicalization.ConditionCodeMapper
+    - id: venues
+      type: MarketDataCollector.Application.Canonicalization.VenueMicMapper
+    - id: version
+      type: System.Byte
+    content.vb: Public Sub New(symbols As ICanonicalSymbolRegistry, conditions As ConditionCodeMapper, venues As VenueMicMapper, version As Byte = 1)
+  overload: MarketDataCollector.Application.Canonicalization.EventCanonicalizer.#ctor*
+  nameWithType.vb: EventCanonicalizer.New(ICanonicalSymbolRegistry, ConditionCodeMapper, VenueMicMapper, Byte)
+  fullName.vb: MarketDataCollector.Application.Canonicalization.EventCanonicalizer.New(MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry, MarketDataCollector.Application.Canonicalization.ConditionCodeMapper, MarketDataCollector.Application.Canonicalization.VenueMicMapper, Byte)
+  name.vb: New(ICanonicalSymbolRegistry, ConditionCodeMapper, VenueMicMapper, Byte)
+- uid: MarketDataCollector.Application.Canonicalization.EventCanonicalizer.Canonicalize(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Canonicalization.EventCanonicalizer.Canonicalize(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  id: Canonicalize(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Canonicalization.EventCanonicalizer
+  langs:
+  - csharp
+  - vb
+  name: Canonicalize(MarketEvent, CancellationToken)
+  nameWithType: EventCanonicalizer.Canonicalize(MarketEvent, CancellationToken)
+  fullName: MarketDataCollector.Application.Canonicalization.EventCanonicalizer.Canonicalize(MarketDataCollector.Domain.Events.MarketEvent, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Canonicalization/EventCanonicalizer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Canonicalize
+    path: ../../src/MarketDataCollector.Application/Canonicalization/EventCanonicalizer.cs
+    startLine: 37
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Canonicalization
+  summary: >-
+    Canonicalizes a raw market event. Returns the enriched event with canonical fields populated.
+
+    The original <xref href="MarketDataCollector.Domain.Events.MarketEvent.Symbol" data-throw-if-not-resolved="false"></xref> is never mutated.
+  example: []
+  syntax:
+    content: public MarketEvent Canonicalize(MarketEvent raw, CancellationToken ct = default)
+    parameters:
+    - id: raw
+      type: MarketDataCollector.Domain.Events.MarketEvent
+      description: The raw event from a provider adapter.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: MarketDataCollector.Domain.Events.MarketEvent
+      description: The canonicalized event with <xref href="MarketDataCollector.Domain.Events.MarketEvent.Tier" data-throw-if-not-resolved="false"></xref> set to <code>Enriched</code>.
+    content.vb: Public Function Canonicalize(raw As MarketEvent, ct As CancellationToken = Nothing) As MarketEvent
+  overload: MarketDataCollector.Application.Canonicalization.EventCanonicalizer.Canonicalize*
+  implements:
+  - MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.Canonicalize(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+references:
+- uid: MarketDataCollector.Domain.Events.MarketEvent.StampReceiveTime(System.Nullable{System.DateTimeOffset})
+  commentId: M:MarketDataCollector.Domain.Events.MarketEvent.StampReceiveTime(System.Nullable{System.DateTimeOffset})
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: StampReceiveTime(DateTimeOffset?)
+  nameWithType: MarketEvent.StampReceiveTime(DateTimeOffset?)
+  fullName: MarketDataCollector.Domain.Events.MarketEvent.StampReceiveTime(System.DateTimeOffset?)
+  spec.csharp:
+  - uid: MarketDataCollector.Domain.Events.MarketEvent.StampReceiveTime(System.Nullable{System.DateTimeOffset})
+    name: StampReceiveTime
+  - name: (
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Domain.Events.MarketEvent.StampReceiveTime(System.Nullable{System.DateTimeOffset})
+    name: StampReceiveTime
+  - name: (
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+  - name: )
+- uid: MarketDataCollector.Application.Canonicalization
+  commentId: N:MarketDataCollector.Application.Canonicalization
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Canonicalization
+  nameWithType: MarketDataCollector.Application.Canonicalization
+  fullName: MarketDataCollector.Application.Canonicalization
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Canonicalization
+    name: Canonicalization
+    href: MarketDataCollector.Application.Canonicalization.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Canonicalization
+    name: Canonicalization
+    href: MarketDataCollector.Application.Canonicalization.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer
+  commentId: T:MarketDataCollector.Application.Canonicalization.IEventCanonicalizer
+  parent: MarketDataCollector.Application.Canonicalization
+  href: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.html
+  name: IEventCanonicalizer
+  nameWithType: IEventCanonicalizer
+  fullName: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Canonicalization.EventCanonicalizer.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Canonicalization.EventCanonicalizer.#ctor
+  href: MarketDataCollector.Application.Canonicalization.EventCanonicalizer.html#MarketDataCollector_Application_Canonicalization_EventCanonicalizer__ctor_MarketDataCollector_Contracts_Catalog_ICanonicalSymbolRegistry_MarketDataCollector_Application_Canonicalization_ConditionCodeMapper_MarketDataCollector_Application_Canonicalization_VenueMicMapper_System_Byte_
+  name: EventCanonicalizer
+  nameWithType: EventCanonicalizer.EventCanonicalizer
+  fullName: MarketDataCollector.Application.Canonicalization.EventCanonicalizer.EventCanonicalizer
+  nameWithType.vb: EventCanonicalizer.New
+  fullName.vb: MarketDataCollector.Application.Canonicalization.EventCanonicalizer.New
+  name.vb: New
+- uid: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+  commentId: T:MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+  parent: MarketDataCollector.Contracts.Catalog
+  href: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry.html
+  name: ICanonicalSymbolRegistry
+  nameWithType: ICanonicalSymbolRegistry
+  fullName: MarketDataCollector.Contracts.Catalog.ICanonicalSymbolRegistry
+- uid: MarketDataCollector.Application.Canonicalization.ConditionCodeMapper
+  commentId: T:MarketDataCollector.Application.Canonicalization.ConditionCodeMapper
+  parent: MarketDataCollector.Application.Canonicalization
+  href: MarketDataCollector.Application.Canonicalization.ConditionCodeMapper.html
+  name: ConditionCodeMapper
+  nameWithType: ConditionCodeMapper
+  fullName: MarketDataCollector.Application.Canonicalization.ConditionCodeMapper
+- uid: MarketDataCollector.Application.Canonicalization.VenueMicMapper
+  commentId: T:MarketDataCollector.Application.Canonicalization.VenueMicMapper
+  parent: MarketDataCollector.Application.Canonicalization
+  href: MarketDataCollector.Application.Canonicalization.VenueMicMapper.html
+  name: VenueMicMapper
+  nameWithType: VenueMicMapper
+  fullName: MarketDataCollector.Application.Canonicalization.VenueMicMapper
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: MarketDataCollector.Contracts.Catalog
+  commentId: N:MarketDataCollector.Contracts.Catalog
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Catalog
+  nameWithType: MarketDataCollector.Contracts.Catalog
+  fullName: MarketDataCollector.Contracts.Catalog
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Catalog
+    name: Catalog
+    href: MarketDataCollector.Contracts.Catalog.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Catalog
+    name: Catalog
+    href: MarketDataCollector.Contracts.Catalog.html
+- uid: MarketDataCollector.Domain.Events.MarketEvent.Symbol
+  commentId: P:MarketDataCollector.Domain.Events.MarketEvent.Symbol
+  href: MarketDataCollector.Domain.Events.MarketEvent.html#MarketDataCollector_Domain_Events_MarketEvent_Symbol
+  name: Symbol
+  nameWithType: MarketEvent.Symbol
+  fullName: MarketDataCollector.Domain.Events.MarketEvent.Symbol
+- uid: MarketDataCollector.Domain.Events.MarketEvent.Tier
+  commentId: P:MarketDataCollector.Domain.Events.MarketEvent.Tier
+  name: Tier
+  nameWithType: MarketEvent.Tier
+  fullName: MarketDataCollector.Domain.Events.MarketEvent.Tier
+- uid: MarketDataCollector.Application.Canonicalization.EventCanonicalizer.Canonicalize*
+  commentId: Overload:MarketDataCollector.Application.Canonicalization.EventCanonicalizer.Canonicalize
+  href: MarketDataCollector.Application.Canonicalization.EventCanonicalizer.html#MarketDataCollector_Application_Canonicalization_EventCanonicalizer_Canonicalize_MarketDataCollector_Domain_Events_MarketEvent_System_Threading_CancellationToken_
+  name: Canonicalize
+  nameWithType: EventCanonicalizer.Canonicalize
+  fullName: MarketDataCollector.Application.Canonicalization.EventCanonicalizer.Canonicalize
+- uid: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.Canonicalize(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.Canonicalize(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer
+  isExternal: true
+  href: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.html#MarketDataCollector_Application_Canonicalization_IEventCanonicalizer_Canonicalize_MarketDataCollector_Domain_Events_MarketEvent_System_Threading_CancellationToken_
+  name: Canonicalize(MarketEvent, CancellationToken)
+  nameWithType: IEventCanonicalizer.Canonicalize(MarketEvent, CancellationToken)
+  fullName: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.Canonicalize(MarketDataCollector.Domain.Events.MarketEvent, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.Canonicalize(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+    name: Canonicalize
+    href: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.html#MarketDataCollector_Application_Canonicalization_IEventCanonicalizer_Canonicalize_MarketDataCollector_Domain_Events_MarketEvent_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.Canonicalize(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+    name: Canonicalize
+    href: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.html#MarketDataCollector_Application_Canonicalization_IEventCanonicalizer_Canonicalize_MarketDataCollector_Domain_Events_MarketEvent_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Domain.Events.MarketEvent
+  commentId: T:MarketDataCollector.Domain.Events.MarketEvent
+  parent: MarketDataCollector.Domain.Events
+  href: MarketDataCollector.Domain.Events.MarketEvent.html
+  name: MarketEvent
+  nameWithType: MarketEvent
+  fullName: MarketDataCollector.Domain.Events.MarketEvent
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: MarketDataCollector.Domain.Events
+  commentId: N:MarketDataCollector.Domain.Events
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Events
+  nameWithType: MarketDataCollector.Domain.Events
+  fullName: MarketDataCollector.Domain.Events
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading

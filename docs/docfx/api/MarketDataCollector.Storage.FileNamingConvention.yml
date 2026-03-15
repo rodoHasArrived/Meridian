@@ -1,0 +1,332 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.FileNamingConvention
+  commentId: T:MarketDataCollector.Storage.FileNamingConvention
+  id: FileNamingConvention
+  parent: MarketDataCollector.Storage
+  children:
+  - MarketDataCollector.Storage.FileNamingConvention.ByAssetClass
+  - MarketDataCollector.Storage.FileNamingConvention.ByDate
+  - MarketDataCollector.Storage.FileNamingConvention.BySource
+  - MarketDataCollector.Storage.FileNamingConvention.BySymbol
+  - MarketDataCollector.Storage.FileNamingConvention.ByType
+  - MarketDataCollector.Storage.FileNamingConvention.Canonical
+  - MarketDataCollector.Storage.FileNamingConvention.Flat
+  - MarketDataCollector.Storage.FileNamingConvention.Hierarchical
+  langs:
+  - csharp
+  - vb
+  name: FileNamingConvention
+  nameWithType: FileNamingConvention
+  fullName: MarketDataCollector.Storage.FileNamingConvention
+  type: Enum
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FileNamingConvention
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 109
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: File naming and directory structure conventions.
+  example: []
+  syntax:
+    content: 'public enum FileNamingConvention : byte'
+    content.vb: Public Enum FileNamingConvention As Byte
+- uid: MarketDataCollector.Storage.FileNamingConvention.Flat
+  commentId: F:MarketDataCollector.Storage.FileNamingConvention.Flat
+  id: Flat
+  parent: MarketDataCollector.Storage.FileNamingConvention
+  langs:
+  - csharp
+  - vb
+  name: Flat
+  nameWithType: FileNamingConvention.Flat
+  fullName: MarketDataCollector.Storage.FileNamingConvention.Flat
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Flat
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 116
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: >-
+    Flat structure: {root}/{symbol}_{type}_{date}.jsonl
+
+    All files in root directory, good for small datasets.
+
+    Example: data/AAPL_Trade_2024-01-15.jsonl
+  example: []
+  syntax:
+    content: Flat = 0
+    return:
+      type: MarketDataCollector.Storage.FileNamingConvention
+- uid: MarketDataCollector.Storage.FileNamingConvention.BySymbol
+  commentId: F:MarketDataCollector.Storage.FileNamingConvention.BySymbol
+  id: BySymbol
+  parent: MarketDataCollector.Storage.FileNamingConvention
+  langs:
+  - csharp
+  - vb
+  name: BySymbol
+  nameWithType: FileNamingConvention.BySymbol
+  fullName: MarketDataCollector.Storage.FileNamingConvention.BySymbol
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BySymbol
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 123
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: >-
+    Organize by symbol first: {root}/{symbol}/{type}/{date}.jsonl
+
+    Best when analyzing individual symbols over time.
+
+    Example: data/AAPL/Trade/2024-01-15.jsonl
+  example: []
+  syntax:
+    content: BySymbol = 1
+    return:
+      type: MarketDataCollector.Storage.FileNamingConvention
+- uid: MarketDataCollector.Storage.FileNamingConvention.ByDate
+  commentId: F:MarketDataCollector.Storage.FileNamingConvention.ByDate
+  id: ByDate
+  parent: MarketDataCollector.Storage.FileNamingConvention
+  langs:
+  - csharp
+  - vb
+  name: ByDate
+  nameWithType: FileNamingConvention.ByDate
+  fullName: MarketDataCollector.Storage.FileNamingConvention.ByDate
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ByDate
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 130
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: >-
+    Organize by date first: {root}/{date}/{symbol}/{type}.jsonl
+
+    Best for daily batch processing and archival.
+
+    Example: data/2024-01-15/AAPL/Trade.jsonl
+  example: []
+  syntax:
+    content: ByDate = 2
+    return:
+      type: MarketDataCollector.Storage.FileNamingConvention
+- uid: MarketDataCollector.Storage.FileNamingConvention.ByType
+  commentId: F:MarketDataCollector.Storage.FileNamingConvention.ByType
+  id: ByType
+  parent: MarketDataCollector.Storage.FileNamingConvention
+  langs:
+  - csharp
+  - vb
+  name: ByType
+  nameWithType: FileNamingConvention.ByType
+  fullName: MarketDataCollector.Storage.FileNamingConvention.ByType
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ByType
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 137
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: >-
+    Organize by event type first: {root}/{type}/{symbol}/{date}.jsonl
+
+    Best when analyzing specific event types across symbols.
+
+    Example: data/Trade/AAPL/2024-01-15.jsonl
+  example: []
+  syntax:
+    content: ByType = 3
+    return:
+      type: MarketDataCollector.Storage.FileNamingConvention
+- uid: MarketDataCollector.Storage.FileNamingConvention.BySource
+  commentId: F:MarketDataCollector.Storage.FileNamingConvention.BySource
+  id: BySource
+  parent: MarketDataCollector.Storage.FileNamingConvention
+  langs:
+  - csharp
+  - vb
+  name: BySource
+  nameWithType: FileNamingConvention.BySource
+  fullName: MarketDataCollector.Storage.FileNamingConvention.BySource
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BySource
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 144
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: >-
+    Organize by data source: {root}/{source}/{symbol}/{type}/{date}.jsonl
+
+    Best when comparing data across multiple providers.
+
+    Example: data/alpaca/AAPL/Trade/2024-01-15.jsonl
+  example: []
+  syntax:
+    content: BySource = 4
+    return:
+      type: MarketDataCollector.Storage.FileNamingConvention
+- uid: MarketDataCollector.Storage.FileNamingConvention.ByAssetClass
+  commentId: F:MarketDataCollector.Storage.FileNamingConvention.ByAssetClass
+  id: ByAssetClass
+  parent: MarketDataCollector.Storage.FileNamingConvention
+  langs:
+  - csharp
+  - vb
+  name: ByAssetClass
+  nameWithType: FileNamingConvention.ByAssetClass
+  fullName: MarketDataCollector.Storage.FileNamingConvention.ByAssetClass
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ByAssetClass
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 151
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: >-
+    Organize by asset class: {root}/{asset_class}/{symbol}/{type}/{date}.jsonl
+
+    Best when managing multiple asset classes.
+
+    Example: data/equity/AAPL/Trade/2024-01-15.jsonl
+  example: []
+  syntax:
+    content: ByAssetClass = 5
+    return:
+      type: MarketDataCollector.Storage.FileNamingConvention
+- uid: MarketDataCollector.Storage.FileNamingConvention.Hierarchical
+  commentId: F:MarketDataCollector.Storage.FileNamingConvention.Hierarchical
+  id: Hierarchical
+  parent: MarketDataCollector.Storage.FileNamingConvention
+  langs:
+  - csharp
+  - vb
+  name: Hierarchical
+  nameWithType: FileNamingConvention.Hierarchical
+  fullName: MarketDataCollector.Storage.FileNamingConvention.Hierarchical
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Hierarchical
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 158
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: >-
+    Full hierarchical taxonomy: {root}/{source}/{asset_class}/{symbol}/{type}/{date}.jsonl
+
+    Best for enterprise multi-source, multi-asset deployments.
+
+    Example: data/alpaca/equity/AAPL/Trade/2024-01-15.jsonl
+  example: []
+  syntax:
+    content: Hierarchical = 6
+    return:
+      type: MarketDataCollector.Storage.FileNamingConvention
+- uid: MarketDataCollector.Storage.FileNamingConvention.Canonical
+  commentId: F:MarketDataCollector.Storage.FileNamingConvention.Canonical
+  id: Canonical
+  parent: MarketDataCollector.Storage.FileNamingConvention
+  langs:
+  - csharp
+  - vb
+  name: Canonical
+  nameWithType: FileNamingConvention.Canonical
+  fullName: MarketDataCollector.Storage.FileNamingConvention.Canonical
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Canonical
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 165
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: >-
+    Canonical time-based: {root}/{year}/{month}/{day}/{source}/{symbol}/{type}.jsonl
+
+    Best for time-series analysis and archival.
+
+    Example: data/2024/01/15/alpaca/AAPL/Trade.jsonl
+  example: []
+  syntax:
+    content: Canonical = 7
+    return:
+      type: MarketDataCollector.Storage.FileNamingConvention
+references:
+- uid: MarketDataCollector.Storage
+  commentId: N:MarketDataCollector.Storage
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage
+  nameWithType: MarketDataCollector.Storage
+  fullName: MarketDataCollector.Storage
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+- uid: MarketDataCollector.Storage.FileNamingConvention
+  commentId: T:MarketDataCollector.Storage.FileNamingConvention
+  parent: MarketDataCollector.Storage
+  href: MarketDataCollector.Storage.FileNamingConvention.html
+  name: FileNamingConvention
+  nameWithType: FileNamingConvention
+  fullName: MarketDataCollector.Storage.FileNamingConvention

@@ -1,0 +1,1186 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Services.LifecyclePolicyEngine
+  commentId: T:MarketDataCollector.Storage.Services.LifecyclePolicyEngine
+  id: LifecyclePolicyEngine
+  parent: MarketDataCollector.Storage.Services
+  children:
+  - MarketDataCollector.Storage.Services.LifecyclePolicyEngine.#ctor(MarketDataCollector.Storage.StorageOptions,MarketDataCollector.Storage.Services.ITierMigrationService,MarketDataCollector.Storage.Services.IFileMaintenanceService,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.LifecyclePolicyEngine})
+  - MarketDataCollector.Storage.Services.LifecyclePolicyEngine.EvaluateAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ExecuteAsync(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.LifecycleAction},System.Boolean,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.LifecyclePolicyEngine.GetTierStatistics
+  - MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ResolvePolicy(System.String)
+  langs:
+  - csharp
+  - vb
+  name: LifecyclePolicyEngine
+  nameWithType: LifecyclePolicyEngine
+  fullName: MarketDataCollector.Storage.Services.LifecyclePolicyEngine
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/LifecyclePolicyEngine.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LifecyclePolicyEngine
+    path: ../../src/MarketDataCollector.Storage/Services/LifecyclePolicyEngine.cs
+    startLine: 11
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: >-
+    Engine that enforces tier-based lifecycle policies on stored data.
+
+    Evaluates files against their configured StoragePolicyConfig and orchestrates
+
+    tier migrations, compression upgrades, and retention enforcement.
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-002", "Tiered storage lifecycle enforcement")]
+
+      public sealed class LifecyclePolicyEngine : ILifecyclePolicyEngine
+    content.vb: >-
+      <ImplementsAdr("ADR-002", "Tiered storage lifecycle enforcement")>
+
+      Public NotInheritable Class LifecyclePolicyEngine Implements ILifecyclePolicyEngine
+  inheritance:
+  - System.Object
+  implements:
+  - MarketDataCollector.Storage.Services.ILifecyclePolicyEngine
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-002
+    - type: System.String
+      value: Tiered storage lifecycle enforcement
+- uid: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.#ctor(MarketDataCollector.Storage.StorageOptions,MarketDataCollector.Storage.Services.ITierMigrationService,MarketDataCollector.Storage.Services.IFileMaintenanceService,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.LifecyclePolicyEngine})
+  commentId: M:MarketDataCollector.Storage.Services.LifecyclePolicyEngine.#ctor(MarketDataCollector.Storage.StorageOptions,MarketDataCollector.Storage.Services.ITierMigrationService,MarketDataCollector.Storage.Services.IFileMaintenanceService,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.LifecyclePolicyEngine})
+  id: '#ctor(MarketDataCollector.Storage.StorageOptions,MarketDataCollector.Storage.Services.ITierMigrationService,MarketDataCollector.Storage.Services.IFileMaintenanceService,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.LifecyclePolicyEngine})'
+  parent: MarketDataCollector.Storage.Services.LifecyclePolicyEngine
+  langs:
+  - csharp
+  - vb
+  name: LifecyclePolicyEngine(StorageOptions, ITierMigrationService, IFileMaintenanceService, ILogger<LifecyclePolicyEngine>)
+  nameWithType: LifecyclePolicyEngine.LifecyclePolicyEngine(StorageOptions, ITierMigrationService, IFileMaintenanceService, ILogger<LifecyclePolicyEngine>)
+  fullName: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.LifecyclePolicyEngine(MarketDataCollector.Storage.StorageOptions, MarketDataCollector.Storage.Services.ITierMigrationService, MarketDataCollector.Storage.Services.IFileMaintenanceService, Microsoft.Extensions.Logging.ILogger<MarketDataCollector.Storage.Services.LifecyclePolicyEngine>)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/LifecyclePolicyEngine.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Storage/Services/LifecyclePolicyEngine.cs
+    startLine: 22
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public LifecyclePolicyEngine(StorageOptions options, ITierMigrationService tierMigration, IFileMaintenanceService maintenanceService, ILogger<LifecyclePolicyEngine> logger)
+    parameters:
+    - id: options
+      type: MarketDataCollector.Storage.StorageOptions
+    - id: tierMigration
+      type: MarketDataCollector.Storage.Services.ITierMigrationService
+    - id: maintenanceService
+      type: MarketDataCollector.Storage.Services.IFileMaintenanceService
+    - id: logger
+      type: Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.LifecyclePolicyEngine}
+    content.vb: Public Sub New(options As StorageOptions, tierMigration As ITierMigrationService, maintenanceService As IFileMaintenanceService, logger As ILogger(Of LifecyclePolicyEngine))
+  overload: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.#ctor*
+  nameWithType.vb: LifecyclePolicyEngine.New(StorageOptions, ITierMigrationService, IFileMaintenanceService, ILogger(Of LifecyclePolicyEngine))
+  fullName.vb: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.New(MarketDataCollector.Storage.StorageOptions, MarketDataCollector.Storage.Services.ITierMigrationService, MarketDataCollector.Storage.Services.IFileMaintenanceService, Microsoft.Extensions.Logging.ILogger(Of MarketDataCollector.Storage.Services.LifecyclePolicyEngine))
+  name.vb: New(StorageOptions, ITierMigrationService, IFileMaintenanceService, ILogger(Of LifecyclePolicyEngine))
+- uid: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.EvaluateAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.LifecyclePolicyEngine.EvaluateAsync(System.Threading.CancellationToken)
+  id: EvaluateAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.LifecyclePolicyEngine
+  langs:
+  - csharp
+  - vb
+  name: EvaluateAsync(CancellationToken)
+  nameWithType: LifecyclePolicyEngine.EvaluateAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.EvaluateAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/LifecyclePolicyEngine.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: EvaluateAsync
+    path: ../../src/MarketDataCollector.Storage/Services/LifecyclePolicyEngine.cs
+    startLine: 35
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  example: []
+  syntax:
+    content: public Task<LifecycleEvaluationResult> EvaluateAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.LifecycleEvaluationResult}
+    content.vb: Public Function EvaluateAsync(ct As CancellationToken = Nothing) As Task(Of LifecycleEvaluationResult)
+  overload: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.EvaluateAsync*
+  implements:
+  - MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.EvaluateAsync(System.Threading.CancellationToken)
+- uid: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ExecuteAsync(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.LifecycleAction},System.Boolean,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ExecuteAsync(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.LifecycleAction},System.Boolean,System.Threading.CancellationToken)
+  id: ExecuteAsync(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.LifecycleAction},System.Boolean,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.LifecyclePolicyEngine
+  langs:
+  - csharp
+  - vb
+  name: ExecuteAsync(IReadOnlyList<LifecycleAction>, bool, CancellationToken)
+  nameWithType: LifecyclePolicyEngine.ExecuteAsync(IReadOnlyList<LifecycleAction>, bool, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ExecuteAsync(System.Collections.Generic.IReadOnlyList<MarketDataCollector.Storage.Services.LifecycleAction>, bool, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/LifecyclePolicyEngine.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ExecuteAsync
+    path: ../../src/MarketDataCollector.Storage/Services/LifecyclePolicyEngine.cs
+    startLine: 127
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  example: []
+  syntax:
+    content: public Task<LifecycleExecutionResult> ExecuteAsync(IReadOnlyList<LifecycleAction> actions, bool dryRun = false, CancellationToken ct = default)
+    parameters:
+    - id: actions
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.LifecycleAction}
+    - id: dryRun
+      type: System.Boolean
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.LifecycleExecutionResult}
+    content.vb: Public Function ExecuteAsync(actions As IReadOnlyList(Of LifecycleAction), dryRun As Boolean = False, ct As CancellationToken = Nothing) As Task(Of LifecycleExecutionResult)
+  overload: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ExecuteAsync*
+  implements:
+  - MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.ExecuteAsync(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.LifecycleAction},System.Boolean,System.Threading.CancellationToken)
+  nameWithType.vb: LifecyclePolicyEngine.ExecuteAsync(IReadOnlyList(Of LifecycleAction), Boolean, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ExecuteAsync(System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Storage.Services.LifecycleAction), Boolean, System.Threading.CancellationToken)
+  name.vb: ExecuteAsync(IReadOnlyList(Of LifecycleAction), Boolean, CancellationToken)
+- uid: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ResolvePolicy(System.String)
+  commentId: M:MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ResolvePolicy(System.String)
+  id: ResolvePolicy(System.String)
+  parent: MarketDataCollector.Storage.Services.LifecyclePolicyEngine
+  langs:
+  - csharp
+  - vb
+  name: ResolvePolicy(string)
+  nameWithType: LifecyclePolicyEngine.ResolvePolicy(string)
+  fullName: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ResolvePolicy(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/LifecyclePolicyEngine.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResolvePolicy
+    path: ../../src/MarketDataCollector.Storage/Services/LifecyclePolicyEngine.cs
+    startLine: 226
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  example: []
+  syntax:
+    content: public StoragePolicyConfig ResolvePolicy(string filePath)
+    parameters:
+    - id: filePath
+      type: System.String
+    return:
+      type: MarketDataCollector.Storage.StoragePolicyConfig
+    content.vb: Public Function ResolvePolicy(filePath As String) As StoragePolicyConfig
+  overload: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ResolvePolicy*
+  implements:
+  - MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.ResolvePolicy(System.String)
+  nameWithType.vb: LifecyclePolicyEngine.ResolvePolicy(String)
+  fullName.vb: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ResolvePolicy(String)
+  name.vb: ResolvePolicy(String)
+- uid: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.GetTierStatistics
+  commentId: M:MarketDataCollector.Storage.Services.LifecyclePolicyEngine.GetTierStatistics
+  id: GetTierStatistics
+  parent: MarketDataCollector.Storage.Services.LifecyclePolicyEngine
+  langs:
+  - csharp
+  - vb
+  name: GetTierStatistics()
+  nameWithType: LifecyclePolicyEngine.GetTierStatistics()
+  fullName: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.GetTierStatistics()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/LifecyclePolicyEngine.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetTierStatistics
+    path: ../../src/MarketDataCollector.Storage/Services/LifecyclePolicyEngine.cs
+    startLine: 251
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  example: []
+  syntax:
+    content: public IReadOnlyDictionary<StorageTier, LifecycleTierInfo> GetTierStatistics()
+    return:
+      type: System.Collections.Generic.IReadOnlyDictionary{MarketDataCollector.Storage.StorageTier,MarketDataCollector.Storage.Services.LifecycleTierInfo}
+    content.vb: Public Function GetTierStatistics() As IReadOnlyDictionary(Of StorageTier, LifecycleTierInfo)
+  overload: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.GetTierStatistics*
+  implements:
+  - MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.GetTierStatistics
+references:
+- uid: MarketDataCollector.Storage.Services
+  commentId: N:MarketDataCollector.Storage.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Services
+  nameWithType: MarketDataCollector.Storage.Services
+  fullName: MarketDataCollector.Storage.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine
+  commentId: T:MarketDataCollector.Storage.Services.ILifecyclePolicyEngine
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.html
+  name: ILifecyclePolicyEngine
+  nameWithType: ILifecyclePolicyEngine
+  fullName: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.#ctor*
+  commentId: Overload:MarketDataCollector.Storage.Services.LifecyclePolicyEngine.#ctor
+  href: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.html#MarketDataCollector_Storage_Services_LifecyclePolicyEngine__ctor_MarketDataCollector_Storage_StorageOptions_MarketDataCollector_Storage_Services_ITierMigrationService_MarketDataCollector_Storage_Services_IFileMaintenanceService_Microsoft_Extensions_Logging_ILogger_MarketDataCollector_Storage_Services_LifecyclePolicyEngine__
+  name: LifecyclePolicyEngine
+  nameWithType: LifecyclePolicyEngine.LifecyclePolicyEngine
+  fullName: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.LifecyclePolicyEngine
+  nameWithType.vb: LifecyclePolicyEngine.New
+  fullName.vb: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.New
+  name.vb: New
+- uid: MarketDataCollector.Storage.StorageOptions
+  commentId: T:MarketDataCollector.Storage.StorageOptions
+  parent: MarketDataCollector.Storage
+  href: MarketDataCollector.Storage.StorageOptions.html
+  name: StorageOptions
+  nameWithType: StorageOptions
+  fullName: MarketDataCollector.Storage.StorageOptions
+- uid: MarketDataCollector.Storage.Services.ITierMigrationService
+  commentId: T:MarketDataCollector.Storage.Services.ITierMigrationService
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.ITierMigrationService.html
+  name: ITierMigrationService
+  nameWithType: ITierMigrationService
+  fullName: MarketDataCollector.Storage.Services.ITierMigrationService
+- uid: MarketDataCollector.Storage.Services.IFileMaintenanceService
+  commentId: T:MarketDataCollector.Storage.Services.IFileMaintenanceService
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.IFileMaintenanceService.html
+  name: IFileMaintenanceService
+  nameWithType: IFileMaintenanceService
+  fullName: MarketDataCollector.Storage.Services.IFileMaintenanceService
+- uid: Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.LifecyclePolicyEngine}
+  commentId: T:Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.LifecyclePolicyEngine}
+  parent: Microsoft.Extensions.Logging
+  definition: Microsoft.Extensions.Logging.ILogger`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<LifecyclePolicyEngine>
+  nameWithType: ILogger<LifecyclePolicyEngine>
+  fullName: Microsoft.Extensions.Logging.ILogger<MarketDataCollector.Storage.Services.LifecyclePolicyEngine>
+  nameWithType.vb: ILogger(Of LifecyclePolicyEngine)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of MarketDataCollector.Storage.Services.LifecyclePolicyEngine)
+  name.vb: ILogger(Of LifecyclePolicyEngine)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.LifecyclePolicyEngine
+    name: LifecyclePolicyEngine
+    href: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.LifecyclePolicyEngine
+    name: LifecyclePolicyEngine
+    href: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.html
+  - name: )
+- uid: MarketDataCollector.Storage
+  commentId: N:MarketDataCollector.Storage
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage
+  nameWithType: MarketDataCollector.Storage
+  fullName: MarketDataCollector.Storage
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+- uid: Microsoft.Extensions.Logging.ILogger`1
+  commentId: T:Microsoft.Extensions.Logging.ILogger`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<TCategoryName>
+  nameWithType: ILogger<TCategoryName>
+  fullName: Microsoft.Extensions.Logging.ILogger<TCategoryName>
+  nameWithType.vb: ILogger(Of TCategoryName)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of TCategoryName)
+  name.vb: ILogger(Of TCategoryName)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - name: TCategoryName
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TCategoryName
+  - name: )
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.EvaluateAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.LifecyclePolicyEngine.EvaluateAsync
+  href: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.html#MarketDataCollector_Storage_Services_LifecyclePolicyEngine_EvaluateAsync_System_Threading_CancellationToken_
+  name: EvaluateAsync
+  nameWithType: LifecyclePolicyEngine.EvaluateAsync
+  fullName: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.EvaluateAsync
+- uid: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.EvaluateAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.EvaluateAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine
+  isExternal: true
+  href: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.html#MarketDataCollector_Storage_Services_ILifecyclePolicyEngine_EvaluateAsync_System_Threading_CancellationToken_
+  name: EvaluateAsync(CancellationToken)
+  nameWithType: ILifecyclePolicyEngine.EvaluateAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.EvaluateAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.EvaluateAsync(System.Threading.CancellationToken)
+    name: EvaluateAsync
+    href: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.html#MarketDataCollector_Storage_Services_ILifecyclePolicyEngine_EvaluateAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.EvaluateAsync(System.Threading.CancellationToken)
+    name: EvaluateAsync
+    href: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.html#MarketDataCollector_Storage_Services_ILifecyclePolicyEngine_EvaluateAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.LifecycleEvaluationResult}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.LifecycleEvaluationResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<LifecycleEvaluationResult>
+  nameWithType: Task<LifecycleEvaluationResult>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.LifecycleEvaluationResult>
+  nameWithType.vb: Task(Of LifecycleEvaluationResult)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.LifecycleEvaluationResult)
+  name.vb: Task(Of LifecycleEvaluationResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.LifecycleEvaluationResult
+    name: LifecycleEvaluationResult
+    href: MarketDataCollector.Storage.Services.LifecycleEvaluationResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.LifecycleEvaluationResult
+    name: LifecycleEvaluationResult
+    href: MarketDataCollector.Storage.Services.LifecycleEvaluationResult.html
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ExecuteAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ExecuteAsync
+  href: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.html#MarketDataCollector_Storage_Services_LifecyclePolicyEngine_ExecuteAsync_System_Collections_Generic_IReadOnlyList_MarketDataCollector_Storage_Services_LifecycleAction__System_Boolean_System_Threading_CancellationToken_
+  name: ExecuteAsync
+  nameWithType: LifecyclePolicyEngine.ExecuteAsync
+  fullName: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ExecuteAsync
+- uid: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.ExecuteAsync(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.LifecycleAction},System.Boolean,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.ExecuteAsync(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.LifecycleAction},System.Boolean,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine
+  isExternal: true
+  href: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.html#MarketDataCollector_Storage_Services_ILifecyclePolicyEngine_ExecuteAsync_System_Collections_Generic_IReadOnlyList_MarketDataCollector_Storage_Services_LifecycleAction__System_Boolean_System_Threading_CancellationToken_
+  name: ExecuteAsync(IReadOnlyList<LifecycleAction>, bool, CancellationToken)
+  nameWithType: ILifecyclePolicyEngine.ExecuteAsync(IReadOnlyList<LifecycleAction>, bool, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.ExecuteAsync(System.Collections.Generic.IReadOnlyList<MarketDataCollector.Storage.Services.LifecycleAction>, bool, System.Threading.CancellationToken)
+  nameWithType.vb: ILifecyclePolicyEngine.ExecuteAsync(IReadOnlyList(Of LifecycleAction), Boolean, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.ExecuteAsync(System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Storage.Services.LifecycleAction), Boolean, System.Threading.CancellationToken)
+  name.vb: ExecuteAsync(IReadOnlyList(Of LifecycleAction), Boolean, CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.ExecuteAsync(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.LifecycleAction},System.Boolean,System.Threading.CancellationToken)
+    name: ExecuteAsync
+    href: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.html#MarketDataCollector_Storage_Services_ILifecyclePolicyEngine_ExecuteAsync_System_Collections_Generic_IReadOnlyList_MarketDataCollector_Storage_Services_LifecycleAction__System_Boolean_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.LifecycleAction
+    name: LifecycleAction
+    href: MarketDataCollector.Storage.Services.LifecycleAction.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.ExecuteAsync(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.LifecycleAction},System.Boolean,System.Threading.CancellationToken)
+    name: ExecuteAsync
+    href: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.html#MarketDataCollector_Storage_Services_ILifecyclePolicyEngine_ExecuteAsync_System_Collections_Generic_IReadOnlyList_MarketDataCollector_Storage_Services_LifecycleAction__System_Boolean_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.LifecycleAction
+    name: LifecycleAction
+    href: MarketDataCollector.Storage.Services.LifecycleAction.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.LifecycleAction}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.LifecycleAction}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<LifecycleAction>
+  nameWithType: IReadOnlyList<LifecycleAction>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Storage.Services.LifecycleAction>
+  nameWithType.vb: IReadOnlyList(Of LifecycleAction)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Storage.Services.LifecycleAction)
+  name.vb: IReadOnlyList(Of LifecycleAction)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.LifecycleAction
+    name: LifecycleAction
+    href: MarketDataCollector.Storage.Services.LifecycleAction.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.LifecycleAction
+    name: LifecycleAction
+    href: MarketDataCollector.Storage.Services.LifecycleAction.html
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.LifecycleExecutionResult}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.LifecycleExecutionResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<LifecycleExecutionResult>
+  nameWithType: Task<LifecycleExecutionResult>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.LifecycleExecutionResult>
+  nameWithType.vb: Task(Of LifecycleExecutionResult)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.LifecycleExecutionResult)
+  name.vb: Task(Of LifecycleExecutionResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.LifecycleExecutionResult
+    name: LifecycleExecutionResult
+    href: MarketDataCollector.Storage.Services.LifecycleExecutionResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.LifecycleExecutionResult
+    name: LifecycleExecutionResult
+    href: MarketDataCollector.Storage.Services.LifecycleExecutionResult.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ResolvePolicy*
+  commentId: Overload:MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ResolvePolicy
+  href: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.html#MarketDataCollector_Storage_Services_LifecyclePolicyEngine_ResolvePolicy_System_String_
+  name: ResolvePolicy
+  nameWithType: LifecyclePolicyEngine.ResolvePolicy
+  fullName: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.ResolvePolicy
+- uid: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.ResolvePolicy(System.String)
+  commentId: M:MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.ResolvePolicy(System.String)
+  parent: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine
+  isExternal: true
+  href: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.html#MarketDataCollector_Storage_Services_ILifecyclePolicyEngine_ResolvePolicy_System_String_
+  name: ResolvePolicy(string)
+  nameWithType: ILifecyclePolicyEngine.ResolvePolicy(string)
+  fullName: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.ResolvePolicy(string)
+  nameWithType.vb: ILifecyclePolicyEngine.ResolvePolicy(String)
+  fullName.vb: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.ResolvePolicy(String)
+  name.vb: ResolvePolicy(String)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.ResolvePolicy(System.String)
+    name: ResolvePolicy
+    href: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.html#MarketDataCollector_Storage_Services_ILifecyclePolicyEngine_ResolvePolicy_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.ResolvePolicy(System.String)
+    name: ResolvePolicy
+    href: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.html#MarketDataCollector_Storage_Services_ILifecyclePolicyEngine_ResolvePolicy_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Storage.StoragePolicyConfig
+  commentId: T:MarketDataCollector.Storage.StoragePolicyConfig
+  parent: MarketDataCollector.Storage
+  href: MarketDataCollector.Storage.StoragePolicyConfig.html
+  name: StoragePolicyConfig
+  nameWithType: StoragePolicyConfig
+  fullName: MarketDataCollector.Storage.StoragePolicyConfig
+- uid: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.GetTierStatistics*
+  commentId: Overload:MarketDataCollector.Storage.Services.LifecyclePolicyEngine.GetTierStatistics
+  href: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.html#MarketDataCollector_Storage_Services_LifecyclePolicyEngine_GetTierStatistics
+  name: GetTierStatistics
+  nameWithType: LifecyclePolicyEngine.GetTierStatistics
+  fullName: MarketDataCollector.Storage.Services.LifecyclePolicyEngine.GetTierStatistics
+- uid: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.GetTierStatistics
+  commentId: M:MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.GetTierStatistics
+  parent: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine
+  href: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.html#MarketDataCollector_Storage_Services_ILifecyclePolicyEngine_GetTierStatistics
+  name: GetTierStatistics()
+  nameWithType: ILifecyclePolicyEngine.GetTierStatistics()
+  fullName: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.GetTierStatistics()
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.GetTierStatistics
+    name: GetTierStatistics
+    href: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.html#MarketDataCollector_Storage_Services_ILifecyclePolicyEngine_GetTierStatistics
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.GetTierStatistics
+    name: GetTierStatistics
+    href: MarketDataCollector.Storage.Services.ILifecyclePolicyEngine.html#MarketDataCollector_Storage_Services_ILifecyclePolicyEngine_GetTierStatistics
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary{MarketDataCollector.Storage.StorageTier,MarketDataCollector.Storage.Services.LifecycleTierInfo}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{MarketDataCollector.Storage.StorageTier,MarketDataCollector.Storage.Services.LifecycleTierInfo}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<StorageTier, LifecycleTierInfo>
+  nameWithType: IReadOnlyDictionary<StorageTier, LifecycleTierInfo>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<MarketDataCollector.Storage.StorageTier, MarketDataCollector.Storage.Services.LifecycleTierInfo>
+  nameWithType.vb: IReadOnlyDictionary(Of StorageTier, LifecycleTierInfo)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of MarketDataCollector.Storage.StorageTier, MarketDataCollector.Storage.Services.LifecycleTierInfo)
+  name.vb: IReadOnlyDictionary(Of StorageTier, LifecycleTierInfo)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: MarketDataCollector.Storage.StorageTier
+    name: StorageTier
+    href: MarketDataCollector.Storage.StorageTier.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.LifecycleTierInfo
+    name: LifecycleTierInfo
+    href: MarketDataCollector.Storage.Services.LifecycleTierInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.StorageTier
+    name: StorageTier
+    href: MarketDataCollector.Storage.StorageTier.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.LifecycleTierInfo
+    name: LifecycleTierInfo
+    href: MarketDataCollector.Storage.Services.LifecycleTierInfo.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
