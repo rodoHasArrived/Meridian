@@ -1,3 +1,4 @@
+using System.Buffers;
 using System.Collections.Concurrent;
 using MarketDataCollector.Contracts.Domain;
 using MarketDataCollector.Contracts.Domain.Enums;
@@ -188,25 +189,59 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
         /// </summary>
         public LOBSnapshot? GetSnapshot(string symbol)
         {
+            int bidCount = 0, askCount = 0;
+            bool empty, stale = false;
+            long seqNum = 0;
+            DateTimeOffset ts = default;
+            string? streamId = null, venue = null;
+            OrderBookLevel[]? rentedBids = null;
+            OrderBookLevel[]? rentedAsks = null;
+
             _rwLock.EnterReadLock();
             try
             {
-                if (_bids.Count == 0 && _asks.Count == 0)
-                    return null;
+                empty = _bids.Count == 0 && _asks.Count == 0;
+                if (!empty)
+                {
+                    bidCount = _bids.Count;
+                    askCount = _asks.Count;
+                    stale = _stale;
+                    seqNum = _lastAppliedSequenceNumber;
+                    ts = _lastUpdateTimestamp == default ? DateTimeOffset.UtcNow : _lastUpdateTimestamp;
+                    streamId = _lastStreamId;
+                    venue = _lastVenue;
 
-                var bidsCopy = _bids.ToArray();
-                var asksCopy = _asks.ToArray();
-                var stale = _stale;
-                var seqNum = _lastAppliedSequenceNumber;
-                var ts = _lastUpdateTimestamp == default ? DateTimeOffset.UtcNow : _lastUpdateTimestamp;
-                var streamId = _lastStreamId;
-                var venue = _lastVenue;
+                    // Rent pool buffers inside the lock for a zero-GC copy.
+                    // The lock hold time is reduced to a fast memory copy;
+                    // the final heap allocations and snapshot construction happen outside.
+                    rentedBids = ArrayPool<OrderBookLevel>.Shared.Rent(bidCount);
+                    rentedAsks = ArrayPool<OrderBookLevel>.Shared.Rent(askCount);
+                    _bids.CopyTo(rentedBids, 0);
+                    _asks.CopyTo(rentedAsks, 0);
+                }
+            }
+            finally
+            {
+                _rwLock.ExitReadLock();
+            }
+
+            if (empty)
+                return null;
+
+            // Build the snapshot outside the lock — pool buffers are already captured.
+            try
+            {
+                var bidsCopy = new OrderBookLevel[bidCount];
+                rentedBids!.AsSpan(0, bidCount).CopyTo(bidsCopy);
+                var asksCopy = new OrderBookLevel[askCount];
+                rentedAsks!.AsSpan(0, askCount).CopyTo(asksCopy);
 
                 return BuildSnapshotFromCopies(symbol, ts, seqNum, streamId, venue, stale, bidsCopy, asksCopy);
             }
             finally
             {
-                _rwLock.ExitReadLock();
+                if (rentedBids != null) ArrayPool<OrderBookLevel>.Shared.Return(rentedBids, clearArray: true);
+                if (rentedAsks != null) ArrayPool<OrderBookLevel>.Shared.Return(rentedAsks, clearArray: true);
             }
         }
 
@@ -219,9 +254,10 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
             string? venue = null;
             bool stale = false;
 
-            // Capture these outside the lock so we can build the snapshot after releasing the lock.
-            OrderBookLevel[]? bidsCopy = null;
-            OrderBookLevel[]? asksCopy = null;
+            // Pool buffers filled inside the write lock; counts needed outside to slice them.
+            OrderBookLevel[]? rentedBids = null;
+            OrderBookLevel[]? rentedAsks = null;
+            int bidCount = 0, askCount = 0;
 
             _rwLock.EnterWriteLock();
             try
@@ -322,20 +358,38 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
 
                 LastErrorDescription = null;
 
-                // Copy bids/asks while still holding the write lock to guarantee consistency
-                // with the book modification above. The LOBSnapshot record itself is constructed
-                // OUTSIDE the lock to reduce lock hold time (avoids decimal arithmetic and record
-                // allocation while other threads wait to acquire the write lock).
-                bidsCopy = _bids.ToArray();
-                asksCopy = _asks.ToArray();
+                // Rent pool buffers inside the write lock for a zero-GC copy of bids/asks.
+                // The lock hold time is reduced to a fast memory copy; the final heap
+                // allocations and LOBSnapshot construction happen outside the lock.
+                bidCount = _bids.Count;
+                askCount = _asks.Count;
+                rentedBids = ArrayPool<OrderBookLevel>.Shared.Rent(bidCount);
+                rentedAsks = ArrayPool<OrderBookLevel>.Shared.Rent(askCount);
+                _bids.CopyTo(rentedBids, 0);
+                _asks.CopyTo(rentedAsks, 0);
             }
             finally
             {
                 _rwLock.ExitWriteLock();
             }
 
-            // Build snapshot outside the write lock — all data was captured under the lock above.
-            snapshot = BuildSnapshotFromCopies(upd.Symbol, lastUpdateTimestamp, seqNum, streamId, venue, stale, bidsCopy!, asksCopy!);
+            // Build snapshot outside the write lock — pool buffers already captured under the lock.
+            // Create the final heap arrays here so GC pressure stays off the locked region.
+            try
+            {
+                var bidsCopy = new OrderBookLevel[bidCount];
+                rentedBids!.AsSpan(0, bidCount).CopyTo(bidsCopy);
+                var asksCopy = new OrderBookLevel[askCount];
+                rentedAsks!.AsSpan(0, askCount).CopyTo(asksCopy);
+
+                snapshot = BuildSnapshotFromCopies(upd.Symbol, lastUpdateTimestamp, seqNum, streamId, venue, stale, bidsCopy, asksCopy);
+            }
+            finally
+            {
+                if (rentedBids != null) ArrayPool<OrderBookLevel>.Shared.Return(rentedBids, clearArray: true);
+                if (rentedAsks != null) ArrayPool<OrderBookLevel>.Shared.Return(rentedAsks, clearArray: true);
+            }
+
             return DepthIntegrityKind.Ok;
         }
 
@@ -350,14 +404,6 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
             if (levels.Count <= _maxDepth)
                 return;
             levels.RemoveRange(_maxDepth, levels.Count - _maxDepth);
-        }
-
-        private LOBSnapshot BuildSnapshot(string symbol, DateTimeOffset timestamp, long seqNum, string? streamId, string? venue)
-        {
-            var bidsCopy = _bids.ToArray();
-            var asksCopy = _asks.ToArray();
-
-            return BuildSnapshotFromCopies(symbol, timestamp, seqNum, streamId, venue, _stale, bidsCopy, asksCopy);
         }
 
         private static LOBSnapshot BuildSnapshotFromCopies(
