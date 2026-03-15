@@ -1,7 +1,7 @@
 # Market Data Collector Documentation
 
-**Version:** 1.7.0
-**Last Updated:** 2026-03-04
+**Version:** 1.7.0  
+**Last Updated:** 2026-03-15
 
 Welcome to the Market Data Collector documentation. This guide will help you find the information you need, whether you're a developer, operator, or user.
 
@@ -14,7 +14,21 @@ Welcome to the Market Data Collector documentation. This guide will help you fin
 - **New Users** → [Getting Started Guide](getting-started/README.md)
 - **Developers** → [Repository Organization Guide](development/repository-organization-guide.md)
 - **Operators** → [Operator Runbook](operations/operator-runbook.md)
-- **Contributors** → See [Contributing](#contributing) section below
+- **Contributors** → See [Contributing](#contributing) section below or [Where should this doc go?](development/documentation-contribution-guide.md#where-should-this-doc-go)
+
+---
+
+## Documentation Zones
+
+The documentation is organized into three zones by audience and purpose:
+
+| Zone | Folders | Audience |
+|------|---------|----------|
+| **Product** | `getting-started/`, `providers/`, `operations/` | Users and Operators |
+| **Engineering** | `architecture/`, `adr/`, `development/`, `integrations/`, `reference/`, `diagrams/` | Developers |
+| **Governance** | `status/`, `evaluations/`, `audits/`, `security/` | Core Team, Stakeholders |
+
+> **Generated docs:** The `generated/` directory contains auto-generated files. **Do not edit them manually** — they are overwritten on each generation run. See [Generated Documentation](generated/README.md) for details.
 
 ---
 
@@ -102,9 +116,8 @@ Understanding system design.
 - [Data Uniformity](reference/data-uniformity.md) — Consistency guidelines
 - [Environment Variables](reference/environment-variables.md) — Credential and config reference
 - [Dependencies Reference](DEPENDENCIES.md) — Third-party package inventory
-- [Generated Documentation](generated/) — Auto-generated docs
-- [Diagrams](diagrams/) — System diagrams (DOT, PNG, SVG)
-- [UML Diagrams](uml/) — UML sequence, state, and activity diagrams
+- [Generated Documentation](generated/) — Auto-generated docs (do not edit manually)
+- [Diagrams](diagrams/) — System diagrams: Graphviz DOT (C4, data flow) and [UML](diagrams/uml/) (sequence, state, activity)
 
 ---
 
@@ -120,7 +133,9 @@ Understanding system design.
 
 In-depth assessments of architecture, providers, and code quality.
 
-- [Evaluations & Audits Summary](status/EVALUATIONS_AND_AUDITS.md) — Consolidated overview
+> Both `evaluations/` and `audits/` serve the **Governance zone**. Use `evaluations/` for technology and architecture evaluations, brainstorms, and improvement proposals. Use `audits/` for targeted code-quality audits and cleanup analyses.
+
+- [Evaluations & Audits Summary](status/EVALUATIONS_AND_AUDITS.md) — Consolidated overview (start here)
 - [Evaluations](evaluations/README.md) — Technology and architecture evaluations
 - [Code Audits](audits/README.md) — Code quality audits and cleanup opportunities
 
@@ -205,26 +220,36 @@ When you update docs in a PR:
 
 ```
 docs/
-├── adr/                    # Architecture Decision Records
-├── ai/                     # AI assistant instructions
-├── architecture/           # Architecture documentation
-├── archived/               # Historical/superseded docs
-├── audits/                 # Code audits
-├── development/            # Developer guides & tooling
-├── diagrams/               # Generated diagrams
-├── docfx/                  # DocFX API documentation config
-├── evaluations/            # Technology evaluations
-├── generated/              # Auto-generated docs
-├── getting-started/        # User onboarding
-├── integrations/           # Integration guides
-├── operations/             # Operational guides
-├── providers/              # Provider-specific docs
-├── reference/              # API and data references
+│
+│  ── PRODUCT ZONE (user- and operator-facing) ──────────────────────
+├── getting-started/        # Quick start guides for new users
+├── providers/              # Provider-specific setup guides
+├── operations/             # Deployment and maintenance guides
+│
+│  ── ENGINEERING ZONE (developers and architects) ──────────────────
+├── architecture/           # Architecture documentation and design rationale
+├── adr/                    # Architecture Decision Records (numbered)
+├── development/            # Developer guides, tooling, CI/CD
+├── integrations/           # Integration guides (QuantConnect Lean, F#)
+├── reference/              # API docs, data dictionary, env variables
+├── diagrams/               # All visual assets
+│   └── uml/                # UML diagrams (PlantUML sources + PNGs)
+│
+│  ── GOVERNANCE ZONE (status, reviews, security) ────────────────────
+├── status/                 # Active project tracking (roadmap, changelog)
+├── evaluations/            # Technology and architecture evaluations
+├── audits/                 # Code quality audits and cleanup analyses
 ├── security/               # Security documentation
-├── status/                 # Project status tracking
-├── uml/                    # UML diagrams
+│
+│  ── TOOLING / META ─────────────────────────────────────────────────
+├── ai/                     # AI assistant instructions and guides
+├── generated/              # Auto-generated docs (do not edit manually)
+├── archived/               # Historical documents (see INDEX.md)
+├── docfx/                  # DocFX API documentation config
 └── README.md               # This file
 ```
+
+> **Note on `docs/uml/`:** The `uml/` directory is kept as a redirect for backwards compatibility. The canonical location for UML diagrams is now `docs/diagrams/uml/`.
 
 ---
 

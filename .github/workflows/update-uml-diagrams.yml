@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'docs/uml/*.puml'
+      - 'docs/diagrams/uml/*.puml'
   workflow_dispatch:
 
 permissions:
@@ -36,10 +36,10 @@ jobs:
           set -euo pipefail
 
           shopt -s nullglob
-          puml_files=(docs/uml/*.puml)
+          puml_files=(docs/diagrams/uml/*.puml)
 
           if [ ${#puml_files[@]} -eq 0 ]; then
-            echo "No PlantUML files found in docs/uml"
+            echo "No PlantUML files found in docs/diagrams/uml"
             exit 0
           fi
 
@@ -52,4 +52,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'docs(uml): regenerate PNG diagrams from PlantUML sources'
-          file_pattern: docs/uml/*.png
+          file_pattern: docs/diagrams/uml/*.png

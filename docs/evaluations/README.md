@@ -1,6 +1,18 @@
 # Technology Evaluations
 
-This directory contains in-depth evaluations of architecture components, providers, and improvement proposals. For a consolidated summary, see [Evaluations & Audits Summary](../status/EVALUATIONS_AND_AUDITS.md).
+**Owner:** Core Team  
+**Scope:** Governance — Architecture Reviews  
+**Review Cadence:** As evaluations are completed or superseded
+
+This directory contains in-depth evaluations of architecture components, providers, and improvement proposals.
+
+> **Governance Zone:** Evaluations belong to the governance zone alongside `audits/`. The distinction:
+> - **`evaluations/`** — Technology and architecture evaluations, improvement brainstorms, capability proposals
+> - **`audits/`** — Targeted code-quality audits, cleanup analyses, and hygiene assessments
+>
+> For a consolidated view of all reviews, see [Evaluations & Audits Summary](../status/EVALUATIONS_AND_AUDITS.md).
+
+---
 
 ## Architecture Evaluations
 
@@ -34,5 +46,5 @@ This directory contains in-depth evaluations of architecture components, provide
 ## Related
 
 - [Evaluations & Audits Summary](../status/EVALUATIONS_AND_AUDITS.md) — Consolidated overview of all evaluations
-- [Code Audits](../audits/README.md) — Code quality audits
+- [Code Audits](../audits/README.md) — Code quality audits (see audits/ for targeted hygiene analyses)
 - [Roadmap](../status/ROADMAP.md) — How evaluations feed into planning

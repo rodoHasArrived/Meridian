@@ -1,8 +1,15 @@
 # Architecture Diagrams
 
+**Status:** Active  
+**Owner:** Core Team  
+**Reviewed:** 2026-03-15
+
 **Status:** Updated to reflect the current monolithic runtime, UI options, and provider list.
 
-This folder contains architecture diagrams for the Market Data Collector system in Graphviz DOT format.
+This folder contains architecture diagrams for the Market Data Collector system. It is the single home for all visual assets:
+
+- **Graphviz DOT diagrams** — C4 context/container/component, data flow, provider and storage architecture (files in this directory)
+- **UML diagrams** — Sequence, state, activity, timing, and communication diagrams in [`uml/`](uml/README.md)
 
 ---
 
@@ -280,6 +287,24 @@ These diagrams follow the [C4 Model](https://c4model.com/) notation:
 
 ---
 
+## UML Diagrams (PlantUML)
+
+UML diagrams using PlantUML (`.puml` sources + `.png` artifacts) live in [`uml/`](uml/README.md):
+
+| Diagram Type | Description |
+|---|---|
+| Use Case | System actors and high-level use cases |
+| Sequence | Real-time data collection and backfill flows |
+| Activity | Main collection and backfill processes |
+| State | Provider connection, order book, trade sequence, backfill lifecycles |
+| Communication | Component-level message exchange |
+| Interaction Overview | High-level workflow orchestration |
+| Timing | Real-time event and backfill operation timing |
+
+See [uml/README.md](uml/README.md) for the full inventory and rendering instructions.
+
+---
+
 ## Related Documentation
 
 - [Architecture Overview](../architecture/overview.md)
@@ -289,6 +314,6 @@ These diagrams follow the [C4 Model](https://c4model.com/) notation:
 
 ---
 
-*Diagrams generated with Graphviz DOT language*
+*Graphviz diagrams generated with DOT language. UML diagrams generated with PlantUML.*
 
-*Last Updated: 2026-02-21*
+*Last Updated: 2026-03-15*
