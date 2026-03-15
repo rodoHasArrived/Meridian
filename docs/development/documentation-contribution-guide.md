@@ -1,7 +1,7 @@
 # Documentation Contribution Guide
 
-**Version:** 1.0  
-**Last Updated:** 2026-02-13  
+**Version:** 1.1  
+**Last Updated:** 2026-03-15  
 **Status:** Active, Continuously Updated
 
 This guide provides standards and best practices for creating, organizing, and maintaining documentation in the Market Data Collector project.
@@ -12,6 +12,8 @@ This guide provides standards and best practices for creating, organizing, and m
 
 - [Documentation Principles](#documentation-principles)
 - [Documentation Structure](#documentation-structure)
+- [Where Should This Doc Go?](#where-should-this-doc-go)
+- [Lifecycle Tags](#lifecycle-tags)
 - [Writing Standards](#writing-standards)
 - [File Naming Conventions](#file-naming-conventions)
 - [Cross-References and Links](#cross-references-and-links)
@@ -58,24 +60,37 @@ Documentation debt is real. When making code changes:
 
 ### Directory Organization
 
+The `docs/` tree is organized into three zones by audience and purpose:
+
 ```
 docs/
-├── README.md                  # Master documentation index (START HERE)
+│
+│  ── PRODUCT ZONE (users and operators) ────────────────────────────
 ├── getting-started/           # Quick start guides for new users
-├── development/               # Developer guides and patterns
-├── operations/                # Deployment and maintenance
-├── architecture/              # System design and ADRs
-├── adr/                       # Architecture Decision Records
-├── reference/                 # API docs, data dictionary
 ├── providers/                 # Provider-specific setup guides
+├── operations/                # Deployment and maintenance
+│
+│  ── ENGINEERING ZONE (developers and architects) ──────────────────
+├── architecture/              # System design and design rationale
+├── adr/                       # Architecture Decision Records
+├── development/               # Developer guides and patterns
 ├── integrations/              # Integration guides (Lean, F#)
+├── reference/                 # API docs, data dictionary
+├── diagrams/                  # All visual assets
+│   └── uml/                   # UML diagrams (PlantUML sources + PNGs)
+│
+│  ── GOVERNANCE ZONE (status, reviews, security) ────────────────────
 ├── status/                    # Project status, roadmap, TODO
-├── generated/                 # Auto-generated documentation
-├── archived/                  # Historical documents (see INDEX.md)
+├── evaluations/               # Technology and architecture evaluations
 ├── audits/                    # Code quality audits
-├── evaluations/              # Technology evaluations
-├── diagrams/                  # Visual diagrams (DOT, PNG, SVG)
-└── uml/                       # UML diagrams
+├── security/                  # Security documentation
+│
+│  ── META / TOOLING ─────────────────────────────────────────────────
+├── ai/                        # AI assistant instructions
+├── generated/                 # Auto-generated documentation (do not edit)
+├── archived/                  # Historical documents (see INDEX.md)
+├── docfx/                     # DocFX API docs config
+└── README.md                  # Master documentation index (START HERE)
 ```
 
 ### Document Categories
@@ -89,24 +104,128 @@ docs/
 
 ---
 
+## Where Should This Doc Go?
+
+Use this decision tree when you're unsure where a new document belongs.
+
+```
+Is it a step-by-step guide for end users or operators?
+├── Yes → Is it about a data provider?
+│   ├── Yes → docs/providers/
+│   └── No, it's about deploying or maintaining the system → docs/operations/
+│              Or it's about getting started → docs/getting-started/
+└── No →
+    Is it an architecture narrative, design rationale, or ADR?
+    ├── Architecture overview or layer rules → docs/architecture/
+    ├── Numbered decision record → docs/adr/
+    └── No →
+        Is it a developer guide (build, test, CI, extend)?
+        ├── Yes → docs/development/
+        └── No →
+            Is it a lookup reference (API, data dict, env vars)?
+            ├── Yes → docs/reference/
+            └── No →
+                Is it an integration guide (Lean, F#)?
+                ├── Yes → docs/integrations/
+                └── No →
+                    Is it about project status, roadmap, or active tracking?
+                    ├── Yes → docs/status/
+                    └── No →
+                        Is it an evaluation, brainstorm, or improvement proposal?
+                        ├── Yes → docs/evaluations/
+                        └── No →
+                            Is it a targeted code-quality or hygiene audit?
+                            ├── Yes → docs/audits/
+                            └── No →
+                                Is it superseded or historical? → docs/archived/
+```
+
+### Quick Lookup
+
+| If the doc is about… | Put it in… |
+|----------------------|------------|
+| Getting started for users | `getting-started/` |
+| Provider setup / credentials | `providers/` |
+| Deployment, operations, runbooks | `operations/` |
+| System design, why architecture decisions were made | `architecture/` |
+| A numbered architectural decision | `adr/` |
+| Developer how-to, build tooling, CI, testing | `development/` |
+| API endpoints, data fields, env variables | `reference/` |
+| Integration with Lean, F# domain models | `integrations/` |
+| Project roadmap, changelog, TODO, feature inventory | `status/` |
+| Technology evaluation, brainstorm, improvement proposal | `evaluations/` |
+| Code quality audit, cleanup analysis | `audits/` |
+| Security vulnerabilities, known issues | `security/` |
+| AI assistant guides and known errors | `ai/` |
+| Auto-generated output (do not edit) | `generated/` |
+| Outdated / superseded content | `archived/` |
+| Diagrams (DOT/Graphviz) | `diagrams/` |
+| UML diagrams (PlantUML) | `diagrams/uml/` |
+
+---
+
+## Lifecycle Tags
+
+Every document should include lifecycle metadata to help identify stale content and ownership.
+
+### Required Fields
+
+Add these fields in the front matter section at the top of new documents:
+
+```markdown
+**Status:** active | draft | deprecated | archived  
+**Owner:** core-team | <team-alias>  
+**Reviewed:** YYYY-MM-DD
+```
+
+### Status Values
+
+| Status | Meaning |
+|--------|---------|
+| `active` | Current and maintained |
+| `draft` | Work in progress, may be incomplete |
+| `deprecated` | Superseded — follow links to replacement |
+| `archived` | Historical record, no longer maintained |
+
+### Review Cadence Guidelines
+
+| Folder | Suggested Review Cadence |
+|--------|-------------------------|
+| `getting-started/`, `providers/`, `operations/` | Every release or when behavior changes |
+| `architecture/`, `adr/` | Quarterly or when architectural decisions are revised |
+| `development/` | As tooling and conventions evolve |
+| `reference/` | When APIs or configuration options change |
+| `status/` | Weekly (roadmap) or per-release (changelog) |
+| `evaluations/`, `audits/` | When superseded by new analysis |
+
+### Stale Detection
+
+Documents older than **180 days** without a `Reviewed` update are considered candidates for review. The CI documentation workflow checks for stale metadata (see `.github/workflows/documentation.yml`).
+
+---
+
 ## Writing Standards
 
 ### Markdown Format
 
 All documentation uses **GitHub Flavored Markdown** (GFM).
 
-#### Front Matter (Optional but Recommended)
+#### Front Matter (Recommended)
 
 ```markdown
 # Document Title
 
 **Version:** 1.0  
-**Last Updated:** 2026-02-12  
-**Status:** Active | Draft | Archived  
+**Last Updated:** 2026-03-15  
+**Status:** active | draft | deprecated | archived  
+**Owner:** core-team | <team-alias>  
+**Reviewed:** YYYY-MM-DD  
 **Audience:** Users | Developers | Operators
 
 Brief summary of what this document covers.
 ```
+
+See [Lifecycle Tags](#lifecycle-tags) for the full standard and valid values.
 
 #### Headings
 
@@ -375,7 +494,7 @@ Use diagrams for:
 - **System architecture** (C4 diagrams in `docs/diagrams/`)
 - **Flow charts** (process flows, decision trees)
 - **Sequence diagrams** (interactions between components)
-- **UML diagrams** (class structures)
+- **UML diagrams** (class structures, state machines)
 
 ### Diagram Formats
 
@@ -388,9 +507,16 @@ Use diagrams for:
 
 ### Diagram Files
 
-- Source: `docs/diagrams/*.dot`, `docs/uml/*.puml`
-- Generated: `docs/diagrams/*.png`, `docs/diagrams/*.svg`
-- Both source and generated files should be committed
+All visual assets live under `docs/diagrams/`:
+
+- Graphviz DOT sources: `docs/diagrams/*.dot`
+- Graphviz rendered PNGs/SVGs: `docs/diagrams/*.png`, `docs/diagrams/*.svg`
+- PlantUML sources: `docs/diagrams/uml/*.puml`
+- PlantUML rendered PNGs: `docs/diagrams/uml/*.png`
+
+Both source and rendered files should be committed.
+
+> **Note:** The legacy `docs/uml/` directory is kept for backwards compatibility. All new UML diagrams go in `docs/diagrams/uml/`.
 
 ### Example Mermaid Diagram
 

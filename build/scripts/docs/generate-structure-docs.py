@@ -20,6 +20,13 @@ from fnmatch import fnmatch
 from pathlib import Path
 from typing import Any
 
+# Standard banner prepended to all generated output files
+AUTO_GENERATED_BANNER = """> **AUTO-GENERATED — DO NOT EDIT**
+> This file is generated automatically. Manual edits will be overwritten.
+> See `docs/generated/README.md` for details on how generation works.
+
+"""
+
 
 # Directories to exclude from structure generation
 EXCLUDE_DIRS = {
@@ -192,7 +199,7 @@ def generate_structure_markdown(root: Path, max_depth: int = 4) -> str:
     """Generate repository structure in markdown format."""
     tree = get_directory_tree(root, max_depth)
 
-    content = f"""# Repository Structure
+    content = AUTO_GENERATED_BANNER + f"""# Repository Structure
 
 > Auto-generated on {format_timestamp()}
 
@@ -359,7 +366,7 @@ def generate_provider_registry(root: Path, extract_attrs: bool = False) -> str:
     realtime_providers = [p for p in all_providers if _is_realtime(p)]
     historical_providers = [p for p in all_providers if _is_historical(p) and not _is_realtime(p)]
 
-    content = f"""# Provider Registry
+    content = AUTO_GENERATED_BANNER + f"""# Provider Registry
 
 > Auto-generated on {format_timestamp()}
 
@@ -458,7 +465,7 @@ def generate_workflows_overview(root: Path) -> str:
     """Generate workflows overview documentation."""
     workflows = extract_workflows(root)
 
-    content = f"""# GitHub Workflows Overview
+    content = AUTO_GENERATED_BANNER + f"""# GitHub Workflows Overview
 
 > Auto-generated on {format_timestamp()}
 

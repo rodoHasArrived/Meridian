@@ -1,16 +1,14 @@
-# UML Diagrams — Moved
+# UML Diagrams
 
-> **⚠️ MOVED:** UML diagrams have been consolidated under `docs/diagrams/uml/` to keep all visual assets in one place.
->
-> **New location:** [`docs/diagrams/uml/`](../diagrams/uml/README.md)
->
-> The files in this directory are kept as copies for backwards compatibility with any existing bookmarks or links. The canonical source is now `docs/diagrams/uml/`.
-
----
-
-# UML Diagrams - Market Data Collector
+**Status:** Active  
+**Owner:** Core Team  
+**Reviewed:** 2026-03-15
 
 This directory contains PlantUML source files (`.puml`) and committed PNG artifacts (`.png`) for architecture and workflow documentation.
+
+> **📁 New Location:** These UML diagrams have been moved from `docs/uml/` to `docs/diagrams/uml/` to consolidate all visual assets under a single `docs/diagrams/` home.
+
+---
 
 ## Diagram Inventory
 
@@ -32,50 +30,61 @@ This directory contains PlantUML source files (`.puml`) and committed PNG artifa
 
 **Totals:** 13 PlantUML sources + 13 PNG artifacts.
 
+---
+
 ## How to Render Locally
 
 ### Option 1: PlantUML CLI
+
 ```bash
 # Install PlantUML (Java required)
 brew install plantuml   # macOS
 sudo apt-get install -y plantuml  # Ubuntu/Debian
 
 # Render all diagrams to PNG in place
-plantuml -tpng docs/uml/*.puml
+plantuml -tpng docs/diagrams/uml/*.puml
 ```
 
 ### Option 2: Docker
+
 ```bash
-docker run --rm -v "$(pwd)/docs/uml:/data" plantuml/plantuml -tpng /data/*.puml
+docker run --rm -v "$(pwd)/docs/diagrams/uml:/data" plantuml/plantuml -tpng /data/*.puml
 ```
 
 ### Option 3: VS Code Preview
+
 Install the PlantUML extension (`jebbs.plantuml`) and preview with `Alt+D`.
+
+---
 
 ## Automated Maintenance Workflow (GitHub Actions)
 
 The repository includes `.github/workflows/update-uml-diagrams.yml` to keep committed PNG artifacts in sync:
 
-- Triggered on pushes to `main` that modify `docs/uml/*.puml`
+- Triggered on pushes to `main` that modify `docs/diagrams/uml/*.puml`
 - Triggered manually via **Actions → Update UML Diagram Artifacts**
-- Installs PlantUML and re-renders `docs/uml/*.png`
+- Installs PlantUML and re-renders `docs/diagrams/uml/*.png`
 - Auto-commits changed PNG files back to the branch
+
+---
 
 ## Recommended Update Process
 
 When editing UML docs:
 
-1. Update the relevant `docs/uml/*.puml` source files.
-2. Re-render PNGs locally (`plantuml -tpng docs/uml/*.puml`) **or** use the Actions workflow.
+1. Update the relevant `docs/diagrams/uml/*.puml` source files.
+2. Re-render PNGs locally (`plantuml -tpng docs/diagrams/uml/*.puml`) **or** use the Actions workflow.
 3. Verify each changed diagram is readable and semantically correct.
 4. If files are added/renamed, update this README inventory table.
 
+---
+
 ## Related Documentation
 
-- [Architecture Overview](../architecture/overview.md)
-- [Domain Contracts](../architecture/domains.md)
-- [Diagrams Folder](../diagrams/README.md)
+- [Architecture Overview](../../architecture/overview.md)
+- [Domain Contracts](../../architecture/domains.md)
+- [Diagrams Index](../README.md) — Graphviz DOT diagrams (C4, data flow, etc.)
 
 ---
 
-*Last Updated: 2026-02-13*
+*Last Updated: 2026-03-15*

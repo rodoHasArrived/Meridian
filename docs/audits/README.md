@@ -1,8 +1,16 @@
 # Audits Directory
 
+**Owner:** Core Team  
+**Scope:** Governance — Code Quality  
+**Review Cadence:** As hygiene audits are completed
+
 This directory contains comprehensive audits and assessments of the Market Data Collector codebase.
 
-**Consolidated Reference:** For a single-page summary of all evaluations and audits, see [`docs/status/EVALUATIONS_AND_AUDITS.md`](../status/EVALUATIONS_AND_AUDITS.md).
+> **Governance Zone:** Audits belong to the governance zone alongside `evaluations/`. The distinction:
+> - **`audits/`** — Targeted code-quality audits, cleanup analyses, and hygiene assessments
+> - **`evaluations/`** — Technology and architecture evaluations, improvement brainstorms, capability proposals
+>
+> **Consolidated Reference:** For a single-page summary of all evaluations and audits, see [`docs/status/EVALUATIONS_AND_AUDITS.md`](../status/EVALUATIONS_AND_AUDITS.md).
 
 ## Contents
 
@@ -54,6 +62,7 @@ When creating new audits, follow these guidelines:
 ## Related Documentation
 
 - [`docs/status/EVALUATIONS_AND_AUDITS.md`](../status/EVALUATIONS_AND_AUDITS.md) - Consolidated evaluations and audits
+- [`docs/evaluations/README.md`](../evaluations/README.md) - Technology and architecture evaluations (see evaluations/ for brainstorms and proposals)
 - [`docs/status/IMPROVEMENTS.md`](../status/IMPROVEMENTS.md) - Improvement tracking (35 items)
 - [`docs/status/ROADMAP.md`](../status/ROADMAP.md) - Project roadmap
 - [`docs/development/`](../development/) - Development guides and best practices
