@@ -1,7 +1,7 @@
 # Market Data Collector Documentation
 
 **Version:** 1.7.0
-**Last Updated:** 2026-03-04
+**Last Updated:** 2026-03-15
 
 Welcome to the Market Data Collector documentation. This guide will help you find the information you need, whether you're a developer, operator, or user.
 
@@ -45,6 +45,7 @@ Building, extending, and testing the system.
 - [GitHub Actions Summary](development/github-actions-summary.md) — CI/CD overview
 - [Build Observability](development/build-observability.md) — Build metrics and diagnostics
 - [Documentation Contribution Guide](development/documentation-contribution-guide.md) — Writing and maintenance standards
+- [Documentation Folder Organization Recommendations](development/documentation-folder-organization-recommendations.md) — Suggested structure improvements for `docs/`
 - [Documentation Automation](development/documentation-automation.md) — Auto-generation scripts
 - [Adding Custom Rules](development/adding-custom-rules.md) — Build system rule customization
 - [Expanding Scripts](development/expanding-scripts.md) — Script development patterns
@@ -228,4 +229,4 @@ docs/
 
 ---
 
-*Documentation maintained by core team. Last update: 2026-03-04*
+*Documentation maintained by core team. Last update: 2026-03-15*
