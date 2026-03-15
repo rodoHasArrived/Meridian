@@ -4,9 +4,7 @@
 **Owner:** Core Team  
 **Reviewed:** 2026-03-15
 
-**Status:** Updated to reflect the current monolithic runtime, UI options, and provider list.
-
-This folder contains architecture diagrams for the Market Data Collector system. It is the single home for all visual assets:
+This folder contains architecture diagrams for the Market Data Collector system, updated to reflect the current monolithic runtime, UI options, and provider list. It is the single home for all visual assets:
 
 - **Graphviz DOT diagrams** — C4 context/container/component, data flow, provider and storage architecture (files in this directory)
 - **UML diagrams** — Sequence, state, activity, timing, and communication diagrams in [`uml/`](uml/README.md)
