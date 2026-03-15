@@ -1,0 +1,918 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse
+  commentId: T:MarketDataCollector.Contracts.Api.LiveDataHealthResponse
+  id: LiveDataHealthResponse
+  parent: MarketDataCollector.Contracts.Api
+  children:
+  - MarketDataCollector.Contracts.Api.LiveDataHealthResponse.#ctor(System.DateTimeOffset,System.Boolean,System.Int32,System.Int32,System.Int64,System.Int64,System.Int64,System.Int32,System.Double,System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Api.SymbolDataHealthDto})
+  - MarketDataCollector.Contracts.Api.LiveDataHealthResponse.CollectorsAvailable
+  - MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineConsumed
+  - MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineDropped
+  - MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelinePublished
+  - MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineQueueSize
+  - MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineUtilization
+  - MarketDataCollector.Contracts.Api.LiveDataHealthResponse.Symbols
+  - MarketDataCollector.Contracts.Api.LiveDataHealthResponse.SymbolsWithDepth
+  - MarketDataCollector.Contracts.Api.LiveDataHealthResponse.SymbolsWithQuotes
+  - MarketDataCollector.Contracts.Api.LiveDataHealthResponse.Timestamp
+  langs:
+  - csharp
+  - vb
+  name: LiveDataHealthResponse
+  nameWithType: LiveDataHealthResponse
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LiveDataHealthResponse
+    path: ../../src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+    startLine: 131
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  summary: Response DTO for live data health.
+  example: []
+  syntax:
+    content: 'public sealed record LiveDataHealthResponse : IEquatable<LiveDataHealthResponse>'
+    content.vb: Public NotInheritable Class LiveDataHealthResponse Implements IEquatable(Of LiveDataHealthResponse)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Contracts.Api.LiveDataHealthResponse}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.#ctor(System.DateTimeOffset,System.Boolean,System.Int32,System.Int32,System.Int64,System.Int64,System.Int64,System.Int32,System.Double,System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Api.SymbolDataHealthDto})
+  commentId: M:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.#ctor(System.DateTimeOffset,System.Boolean,System.Int32,System.Int32,System.Int64,System.Int64,System.Int64,System.Int32,System.Double,System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Api.SymbolDataHealthDto})
+  id: '#ctor(System.DateTimeOffset,System.Boolean,System.Int32,System.Int32,System.Int64,System.Int64,System.Int64,System.Int32,System.Double,System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Api.SymbolDataHealthDto})'
+  parent: MarketDataCollector.Contracts.Api.LiveDataHealthResponse
+  langs:
+  - csharp
+  - vb
+  name: LiveDataHealthResponse(DateTimeOffset, bool, int, int, long, long, long, int, double, IReadOnlyList<SymbolDataHealthDto>)
+  nameWithType: LiveDataHealthResponse.LiveDataHealthResponse(DateTimeOffset, bool, int, int, long, long, long, int, double, IReadOnlyList<SymbolDataHealthDto>)
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.LiveDataHealthResponse(System.DateTimeOffset, bool, int, int, long, long, long, int, double, System.Collections.Generic.IReadOnlyList<MarketDataCollector.Contracts.Api.SymbolDataHealthDto>)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+    startLine: 131
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  summary: Response DTO for live data health.
+  example: []
+  syntax:
+    content: public LiveDataHealthResponse(DateTimeOffset Timestamp, bool CollectorsAvailable, int SymbolsWithQuotes, int SymbolsWithDepth, long PipelinePublished, long PipelineDropped, long PipelineConsumed, int PipelineQueueSize, double PipelineUtilization, IReadOnlyList<SymbolDataHealthDto> Symbols)
+    parameters:
+    - id: Timestamp
+      type: System.DateTimeOffset
+    - id: CollectorsAvailable
+      type: System.Boolean
+    - id: SymbolsWithQuotes
+      type: System.Int32
+    - id: SymbolsWithDepth
+      type: System.Int32
+    - id: PipelinePublished
+      type: System.Int64
+    - id: PipelineDropped
+      type: System.Int64
+    - id: PipelineConsumed
+      type: System.Int64
+    - id: PipelineQueueSize
+      type: System.Int32
+    - id: PipelineUtilization
+      type: System.Double
+    - id: Symbols
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Api.SymbolDataHealthDto}
+    content.vb: Public Sub New(Timestamp As DateTimeOffset, CollectorsAvailable As Boolean, SymbolsWithQuotes As Integer, SymbolsWithDepth As Integer, PipelinePublished As Long, PipelineDropped As Long, PipelineConsumed As Long, PipelineQueueSize As Integer, PipelineUtilization As Double, Symbols As IReadOnlyList(Of SymbolDataHealthDto))
+  overload: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.#ctor*
+  nameWithType.vb: LiveDataHealthResponse.New(DateTimeOffset, Boolean, Integer, Integer, Long, Long, Long, Integer, Double, IReadOnlyList(Of SymbolDataHealthDto))
+  fullName.vb: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.New(System.DateTimeOffset, Boolean, Integer, Integer, Long, Long, Long, Integer, Double, System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Contracts.Api.SymbolDataHealthDto))
+  name.vb: New(DateTimeOffset, Boolean, Integer, Integer, Long, Long, Long, Integer, Double, IReadOnlyList(Of SymbolDataHealthDto))
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.Timestamp
+  commentId: P:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.Timestamp
+  id: Timestamp
+  parent: MarketDataCollector.Contracts.Api.LiveDataHealthResponse
+  langs:
+  - csharp
+  - vb
+  name: Timestamp
+  nameWithType: LiveDataHealthResponse.Timestamp
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.Timestamp
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Timestamp
+    path: ../../src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+    startLine: 132
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: public DateTimeOffset Timestamp { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property Timestamp As DateTimeOffset
+  overload: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.Timestamp*
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.CollectorsAvailable
+  commentId: P:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.CollectorsAvailable
+  id: CollectorsAvailable
+  parent: MarketDataCollector.Contracts.Api.LiveDataHealthResponse
+  langs:
+  - csharp
+  - vb
+  name: CollectorsAvailable
+  nameWithType: LiveDataHealthResponse.CollectorsAvailable
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.CollectorsAvailable
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CollectorsAvailable
+    path: ../../src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+    startLine: 133
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: public bool CollectorsAvailable { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property CollectorsAvailable As Boolean
+  overload: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.CollectorsAvailable*
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.SymbolsWithQuotes
+  commentId: P:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.SymbolsWithQuotes
+  id: SymbolsWithQuotes
+  parent: MarketDataCollector.Contracts.Api.LiveDataHealthResponse
+  langs:
+  - csharp
+  - vb
+  name: SymbolsWithQuotes
+  nameWithType: LiveDataHealthResponse.SymbolsWithQuotes
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.SymbolsWithQuotes
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SymbolsWithQuotes
+    path: ../../src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+    startLine: 134
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: public int SymbolsWithQuotes { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property SymbolsWithQuotes As Integer
+  overload: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.SymbolsWithQuotes*
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.SymbolsWithDepth
+  commentId: P:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.SymbolsWithDepth
+  id: SymbolsWithDepth
+  parent: MarketDataCollector.Contracts.Api.LiveDataHealthResponse
+  langs:
+  - csharp
+  - vb
+  name: SymbolsWithDepth
+  nameWithType: LiveDataHealthResponse.SymbolsWithDepth
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.SymbolsWithDepth
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SymbolsWithDepth
+    path: ../../src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+    startLine: 135
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: public int SymbolsWithDepth { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property SymbolsWithDepth As Integer
+  overload: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.SymbolsWithDepth*
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelinePublished
+  commentId: P:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelinePublished
+  id: PipelinePublished
+  parent: MarketDataCollector.Contracts.Api.LiveDataHealthResponse
+  langs:
+  - csharp
+  - vb
+  name: PipelinePublished
+  nameWithType: LiveDataHealthResponse.PipelinePublished
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelinePublished
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PipelinePublished
+    path: ../../src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+    startLine: 136
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: public long PipelinePublished { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property PipelinePublished As Long
+  overload: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelinePublished*
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineDropped
+  commentId: P:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineDropped
+  id: PipelineDropped
+  parent: MarketDataCollector.Contracts.Api.LiveDataHealthResponse
+  langs:
+  - csharp
+  - vb
+  name: PipelineDropped
+  nameWithType: LiveDataHealthResponse.PipelineDropped
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineDropped
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PipelineDropped
+    path: ../../src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+    startLine: 137
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: public long PipelineDropped { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property PipelineDropped As Long
+  overload: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineDropped*
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineConsumed
+  commentId: P:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineConsumed
+  id: PipelineConsumed
+  parent: MarketDataCollector.Contracts.Api.LiveDataHealthResponse
+  langs:
+  - csharp
+  - vb
+  name: PipelineConsumed
+  nameWithType: LiveDataHealthResponse.PipelineConsumed
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineConsumed
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PipelineConsumed
+    path: ../../src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+    startLine: 138
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: public long PipelineConsumed { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property PipelineConsumed As Long
+  overload: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineConsumed*
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineQueueSize
+  commentId: P:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineQueueSize
+  id: PipelineQueueSize
+  parent: MarketDataCollector.Contracts.Api.LiveDataHealthResponse
+  langs:
+  - csharp
+  - vb
+  name: PipelineQueueSize
+  nameWithType: LiveDataHealthResponse.PipelineQueueSize
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineQueueSize
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PipelineQueueSize
+    path: ../../src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+    startLine: 139
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: public int PipelineQueueSize { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property PipelineQueueSize As Integer
+  overload: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineQueueSize*
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineUtilization
+  commentId: P:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineUtilization
+  id: PipelineUtilization
+  parent: MarketDataCollector.Contracts.Api.LiveDataHealthResponse
+  langs:
+  - csharp
+  - vb
+  name: PipelineUtilization
+  nameWithType: LiveDataHealthResponse.PipelineUtilization
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineUtilization
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PipelineUtilization
+    path: ../../src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+    startLine: 140
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: public double PipelineUtilization { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property PipelineUtilization As Double
+  overload: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineUtilization*
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.Symbols
+  commentId: P:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.Symbols
+  id: Symbols
+  parent: MarketDataCollector.Contracts.Api.LiveDataHealthResponse
+  langs:
+  - csharp
+  - vb
+  name: Symbols
+  nameWithType: LiveDataHealthResponse.Symbols
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.Symbols
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Symbols
+    path: ../../src/MarketDataCollector.Contracts/Api/LiveDataModels.cs
+    startLine: 141
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Api
+  syntax:
+    content: public IReadOnlyList<SymbolDataHealthDto> Symbols { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Api.SymbolDataHealthDto}
+    content.vb: Public Property Symbols As IReadOnlyList(Of SymbolDataHealthDto)
+  overload: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.Symbols*
+references:
+- uid: MarketDataCollector.Contracts.Api
+  commentId: N:MarketDataCollector.Contracts.Api
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Api
+  nameWithType: MarketDataCollector.Contracts.Api
+  fullName: MarketDataCollector.Contracts.Api
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Api
+    name: Api
+    href: MarketDataCollector.Contracts.Api.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Api
+    name: Api
+    href: MarketDataCollector.Contracts.Api.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Contracts.Api.LiveDataHealthResponse}
+  commentId: T:System.IEquatable{MarketDataCollector.Contracts.Api.LiveDataHealthResponse}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<LiveDataHealthResponse>
+  nameWithType: IEquatable<LiveDataHealthResponse>
+  fullName: System.IEquatable<MarketDataCollector.Contracts.Api.LiveDataHealthResponse>
+  nameWithType.vb: IEquatable(Of LiveDataHealthResponse)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Contracts.Api.LiveDataHealthResponse)
+  name.vb: IEquatable(Of LiveDataHealthResponse)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse
+    name: LiveDataHealthResponse
+    href: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse
+    name: LiveDataHealthResponse
+    href: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.#ctor*
+  commentId: Overload:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.#ctor
+  href: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.html#MarketDataCollector_Contracts_Api_LiveDataHealthResponse__ctor_System_DateTimeOffset_System_Boolean_System_Int32_System_Int32_System_Int64_System_Int64_System_Int64_System_Int32_System_Double_System_Collections_Generic_IReadOnlyList_MarketDataCollector_Contracts_Api_SymbolDataHealthDto__
+  name: LiveDataHealthResponse
+  nameWithType: LiveDataHealthResponse.LiveDataHealthResponse
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.LiveDataHealthResponse
+  nameWithType.vb: LiveDataHealthResponse.New
+  fullName.vb: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.New
+  name.vb: New
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Api.SymbolDataHealthDto}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Api.SymbolDataHealthDto}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<SymbolDataHealthDto>
+  nameWithType: IReadOnlyList<SymbolDataHealthDto>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Contracts.Api.SymbolDataHealthDto>
+  nameWithType.vb: IReadOnlyList(Of SymbolDataHealthDto)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Contracts.Api.SymbolDataHealthDto)
+  name.vb: IReadOnlyList(Of SymbolDataHealthDto)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Api.SymbolDataHealthDto
+    name: SymbolDataHealthDto
+    href: MarketDataCollector.Contracts.Api.SymbolDataHealthDto.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Api.SymbolDataHealthDto
+    name: SymbolDataHealthDto
+    href: MarketDataCollector.Contracts.Api.SymbolDataHealthDto.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.Timestamp*
+  commentId: Overload:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.Timestamp
+  href: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.html#MarketDataCollector_Contracts_Api_LiveDataHealthResponse_Timestamp
+  name: Timestamp
+  nameWithType: LiveDataHealthResponse.Timestamp
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.Timestamp
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.CollectorsAvailable*
+  commentId: Overload:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.CollectorsAvailable
+  href: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.html#MarketDataCollector_Contracts_Api_LiveDataHealthResponse_CollectorsAvailable
+  name: CollectorsAvailable
+  nameWithType: LiveDataHealthResponse.CollectorsAvailable
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.CollectorsAvailable
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.SymbolsWithQuotes*
+  commentId: Overload:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.SymbolsWithQuotes
+  href: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.html#MarketDataCollector_Contracts_Api_LiveDataHealthResponse_SymbolsWithQuotes
+  name: SymbolsWithQuotes
+  nameWithType: LiveDataHealthResponse.SymbolsWithQuotes
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.SymbolsWithQuotes
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.SymbolsWithDepth*
+  commentId: Overload:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.SymbolsWithDepth
+  href: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.html#MarketDataCollector_Contracts_Api_LiveDataHealthResponse_SymbolsWithDepth
+  name: SymbolsWithDepth
+  nameWithType: LiveDataHealthResponse.SymbolsWithDepth
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.SymbolsWithDepth
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelinePublished*
+  commentId: Overload:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelinePublished
+  href: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.html#MarketDataCollector_Contracts_Api_LiveDataHealthResponse_PipelinePublished
+  name: PipelinePublished
+  nameWithType: LiveDataHealthResponse.PipelinePublished
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelinePublished
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineDropped*
+  commentId: Overload:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineDropped
+  href: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.html#MarketDataCollector_Contracts_Api_LiveDataHealthResponse_PipelineDropped
+  name: PipelineDropped
+  nameWithType: LiveDataHealthResponse.PipelineDropped
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineDropped
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineConsumed*
+  commentId: Overload:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineConsumed
+  href: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.html#MarketDataCollector_Contracts_Api_LiveDataHealthResponse_PipelineConsumed
+  name: PipelineConsumed
+  nameWithType: LiveDataHealthResponse.PipelineConsumed
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineConsumed
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineQueueSize*
+  commentId: Overload:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineQueueSize
+  href: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.html#MarketDataCollector_Contracts_Api_LiveDataHealthResponse_PipelineQueueSize
+  name: PipelineQueueSize
+  nameWithType: LiveDataHealthResponse.PipelineQueueSize
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineQueueSize
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineUtilization*
+  commentId: Overload:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineUtilization
+  href: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.html#MarketDataCollector_Contracts_Api_LiveDataHealthResponse_PipelineUtilization
+  name: PipelineUtilization
+  nameWithType: LiveDataHealthResponse.PipelineUtilization
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.PipelineUtilization
+- uid: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.Symbols*
+  commentId: Overload:MarketDataCollector.Contracts.Api.LiveDataHealthResponse.Symbols
+  href: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.html#MarketDataCollector_Contracts_Api_LiveDataHealthResponse_Symbols
+  name: Symbols
+  nameWithType: LiveDataHealthResponse.Symbols
+  fullName: MarketDataCollector.Contracts.Api.LiveDataHealthResponse.Symbols

@@ -1,0 +1,1428 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  commentId: T:MarketDataCollector.Contracts.Backfill.BackfillProgress
+  id: BackfillProgress
+  parent: MarketDataCollector.Contracts.Backfill
+  children:
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.BarsPerSecond
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.BarsProgressPercent
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.CompletedAt
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.CompletedSymbols
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.CurrentProvider
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.DownloadedBars
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.Elapsed
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.ErrorMessage
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.EstimatedSecondsRemaining
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.FailedSymbols
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.IsComplete
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.JobId
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.ProgressPercent
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.RemainingSymbols
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.StartedAt
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.Status
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.SymbolProgress
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.TotalBars
+  - MarketDataCollector.Contracts.Backfill.BackfillProgress.TotalSymbols
+  langs:
+  - csharp
+  - vb
+  name: BackfillProgress
+  nameWithType: BackfillProgress
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BackfillProgress
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 99
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: >-
+    Tracks overall progress of a backfill job.
+
+    This is the primary contract for communicating backfill status to clients.
+  remarks: >-
+    This class is designed for JSON serialization and API responses.
+
+    For provider-specific progress tracking, see ProviderBackfillProgress in Infrastructure.
+  example: []
+  syntax:
+    content: public sealed class BackfillProgress
+    content.vb: Public NotInheritable Class BackfillProgress
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.JobId
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.JobId
+  id: JobId
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: JobId
+  nameWithType: BackfillProgress.JobId
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.JobId
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: JobId
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 111
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: Unique identifier for the backfill job.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("jobId")]
+
+      public string JobId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("jobId")>
+
+      Public Property JobId As String
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.JobId*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: jobId
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.Status
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.Status
+  id: Status
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: Status
+  nameWithType: BackfillProgress.Status
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.Status
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Status
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 117
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: Current status of the job. Use <xref href="MarketDataCollector.Contracts.Backfill.BackfillJobStatus" data-throw-if-not-resolved="false"></xref> constants.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("status")]
+
+      public string Status { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("status")>
+
+      Public Property Status As String
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.Status*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: status
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.TotalSymbols
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.TotalSymbols
+  id: TotalSymbols
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: TotalSymbols
+  nameWithType: BackfillProgress.TotalSymbols
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.TotalSymbols
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TotalSymbols
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 127
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: Total number of symbols to process in this job.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("totalSymbols")]
+
+      public int TotalSymbols { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonPropertyName("totalSymbols")>
+
+      Public Property TotalSymbols As Integer
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.TotalSymbols*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: totalSymbols
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.CompletedSymbols
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.CompletedSymbols
+  id: CompletedSymbols
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: CompletedSymbols
+  nameWithType: BackfillProgress.CompletedSymbols
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.CompletedSymbols
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CompletedSymbols
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 137
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: Number of symbols successfully completed.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("completedSymbols")]
+
+      public int CompletedSymbols { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonPropertyName("completedSymbols")>
+
+      Public Property CompletedSymbols As Integer
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.CompletedSymbols*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: completedSymbols
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.FailedSymbols
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.FailedSymbols
+  id: FailedSymbols
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: FailedSymbols
+  nameWithType: BackfillProgress.FailedSymbols
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.FailedSymbols
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FailedSymbols
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 147
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: Number of symbols that failed after all retries.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("failedSymbols")]
+
+      public int FailedSymbols { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonPropertyName("failedSymbols")>
+
+      Public Property FailedSymbols As Integer
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.FailedSymbols*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: failedSymbols
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.TotalBars
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.TotalBars
+  id: TotalBars
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: TotalBars
+  nameWithType: BackfillProgress.TotalBars
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.TotalBars
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TotalBars
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 158
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: >-
+    Expected total number of bars across all symbols.
+
+    May be zero if not known in advance.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("totalBars")]
+
+      public long TotalBars { get; set; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: >-
+      <JsonPropertyName("totalBars")>
+
+      Public Property TotalBars As Long
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.TotalBars*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: totalBars
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.DownloadedBars
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.DownloadedBars
+  id: DownloadedBars
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: DownloadedBars
+  nameWithType: BackfillProgress.DownloadedBars
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.DownloadedBars
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DownloadedBars
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 168
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: Number of bars successfully downloaded so far.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("downloadedBars")]
+
+      public long DownloadedBars { get; set; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: >-
+      <JsonPropertyName("downloadedBars")>
+
+      Public Property DownloadedBars As Long
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.DownloadedBars*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: downloadedBars
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.BarsPerSecond
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.BarsPerSecond
+  id: BarsPerSecond
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: BarsPerSecond
+  nameWithType: BackfillProgress.BarsPerSecond
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.BarsPerSecond
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BarsPerSecond
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 178
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: Current throughput in bars per second.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("barsPerSecond")]
+
+      public float BarsPerSecond { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonPropertyName("barsPerSecond")>
+
+      Public Property BarsPerSecond As Single
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.BarsPerSecond*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: barsPerSecond
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.EstimatedSecondsRemaining
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.EstimatedSecondsRemaining
+  id: EstimatedSecondsRemaining
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: EstimatedSecondsRemaining
+  nameWithType: BackfillProgress.EstimatedSecondsRemaining
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.EstimatedSecondsRemaining
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: EstimatedSecondsRemaining
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 185
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: >-
+    Estimated seconds remaining based on current throughput.
+
+    Null if not enough data to estimate.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("estimatedSecondsRemaining")]
+
+      public int? EstimatedSecondsRemaining { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: >-
+      <JsonPropertyName("estimatedSecondsRemaining")>
+
+      Public Property EstimatedSecondsRemaining As Integer?
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.EstimatedSecondsRemaining*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: estimatedSecondsRemaining
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.StartedAt
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.StartedAt
+  id: StartedAt
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: StartedAt
+  nameWithType: BackfillProgress.StartedAt
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.StartedAt
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StartedAt
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 191
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: UTC timestamp when the job started.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("startedAt")]
+
+      public DateTime StartedAt { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: >-
+      <JsonPropertyName("startedAt")>
+
+      Public Property StartedAt As Date
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.StartedAt*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: startedAt
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.CompletedAt
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.CompletedAt
+  id: CompletedAt
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: CompletedAt
+  nameWithType: BackfillProgress.CompletedAt
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.CompletedAt
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CompletedAt
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 198
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: >-
+    UTC timestamp when the job completed (or failed/cancelled).
+
+    Null if still in progress.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("completedAt")]
+
+      public DateTime? CompletedAt { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: >-
+      <JsonPropertyName("completedAt")>
+
+      Public Property CompletedAt As Date?
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.CompletedAt*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: completedAt
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.SymbolProgress
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.SymbolProgress
+  id: SymbolProgress
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: SymbolProgress
+  nameWithType: BackfillProgress.SymbolProgress
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.SymbolProgress
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SymbolProgress
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 205
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: >-
+    Per-symbol progress details.
+
+    May be null for summary-only responses.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("symbolProgress")]
+
+      public SymbolBackfillProgress[]? SymbolProgress { get; set; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Contracts.Backfill.SymbolBackfillProgress[]
+    content.vb: >-
+      <JsonPropertyName("symbolProgress")>
+
+      Public Property SymbolProgress As SymbolBackfillProgress()
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.SymbolProgress*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: symbolProgress
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.CurrentProvider
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.CurrentProvider
+  id: CurrentProvider
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: CurrentProvider
+  nameWithType: BackfillProgress.CurrentProvider
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.CurrentProvider
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CurrentProvider
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 211
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: Name of the provider currently being used.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("currentProvider")]
+
+      public string? CurrentProvider { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("currentProvider")>
+
+      Public Property CurrentProvider As String
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.CurrentProvider*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: currentProvider
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.ErrorMessage
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.ErrorMessage
+  id: ErrorMessage
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: ErrorMessage
+  nameWithType: BackfillProgress.ErrorMessage
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.ErrorMessage
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ErrorMessage
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 217
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: Error message if the job failed.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("errorMessage")]
+
+      public string? ErrorMessage { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("errorMessage")>
+
+      Public Property ErrorMessage As String
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.ErrorMessage*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: errorMessage
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.ProgressPercent
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.ProgressPercent
+  id: ProgressPercent
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: ProgressPercent
+  nameWithType: BackfillProgress.ProgressPercent
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.ProgressPercent
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProgressPercent
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 223
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: Gets the overall progress percentage based on completed symbols.
+  example: []
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public double ProgressPercent { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property ProgressPercent As Double
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.ProgressPercent*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.BarsProgressPercent
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.BarsProgressPercent
+  id: BarsProgressPercent
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: BarsProgressPercent
+  nameWithType: BackfillProgress.BarsProgressPercent
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.BarsProgressPercent
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BarsProgressPercent
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 229
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: Gets the progress percentage based on downloaded bars.
+  example: []
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public double BarsProgressPercent { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property BarsProgressPercent As Double
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.BarsProgressPercent*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.Elapsed
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.Elapsed
+  id: Elapsed
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: Elapsed
+  nameWithType: BackfillProgress.Elapsed
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.Elapsed
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Elapsed
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 235
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: Gets the elapsed time since the job started.
+  example: []
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public TimeSpan Elapsed { get; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property Elapsed As TimeSpan
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.Elapsed*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.IsComplete
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.IsComplete
+  id: IsComplete
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: IsComplete
+  nameWithType: BackfillProgress.IsComplete
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.IsComplete
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsComplete
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 241
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: Gets whether the job is in a terminal state.
+  example: []
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public bool IsComplete { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property IsComplete As Boolean
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.IsComplete*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.RemainingSymbols
+  commentId: P:MarketDataCollector.Contracts.Backfill.BackfillProgress.RemainingSymbols
+  id: RemainingSymbols
+  parent: MarketDataCollector.Contracts.Backfill.BackfillProgress
+  langs:
+  - csharp
+  - vb
+  name: RemainingSymbols
+  nameWithType: BackfillProgress.RemainingSymbols
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.RemainingSymbols
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RemainingSymbols
+    path: ../../src/MarketDataCollector.Contracts/Backfill/BackfillProgress.cs
+    startLine: 247
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Backfill
+  summary: Gets the number of remaining symbols to process.
+  example: []
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public int RemainingSymbols { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property RemainingSymbols As Integer
+  overload: MarketDataCollector.Contracts.Backfill.BackfillProgress.RemainingSymbols*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+references:
+- uid: MarketDataCollector.Contracts.Backfill
+  commentId: N:MarketDataCollector.Contracts.Backfill
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Backfill
+  nameWithType: MarketDataCollector.Contracts.Backfill
+  fullName: MarketDataCollector.Contracts.Backfill
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Backfill
+    name: Backfill
+    href: MarketDataCollector.Contracts.Backfill.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Backfill
+    name: Backfill
+    href: MarketDataCollector.Contracts.Backfill.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.JobId*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.JobId
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_JobId
+  name: JobId
+  nameWithType: BackfillProgress.JobId
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.JobId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Contracts.Backfill.BackfillJobStatus
+  commentId: T:MarketDataCollector.Contracts.Backfill.BackfillJobStatus
+  href: MarketDataCollector.Contracts.Backfill.BackfillJobStatus.html
+  name: BackfillJobStatus
+  nameWithType: BackfillJobStatus
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillJobStatus
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.Status*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.Status
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_Status
+  name: Status
+  nameWithType: BackfillProgress.Status
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.Status
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.TotalSymbols*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.TotalSymbols
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_TotalSymbols
+  name: TotalSymbols
+  nameWithType: BackfillProgress.TotalSymbols
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.TotalSymbols
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.CompletedSymbols*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.CompletedSymbols
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_CompletedSymbols
+  name: CompletedSymbols
+  nameWithType: BackfillProgress.CompletedSymbols
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.CompletedSymbols
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.FailedSymbols*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.FailedSymbols
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_FailedSymbols
+  name: FailedSymbols
+  nameWithType: BackfillProgress.FailedSymbols
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.FailedSymbols
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.TotalBars*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.TotalBars
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_TotalBars
+  name: TotalBars
+  nameWithType: BackfillProgress.TotalBars
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.TotalBars
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.DownloadedBars*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.DownloadedBars
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_DownloadedBars
+  name: DownloadedBars
+  nameWithType: BackfillProgress.DownloadedBars
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.DownloadedBars
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.BarsPerSecond*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.BarsPerSecond
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_BarsPerSecond
+  name: BarsPerSecond
+  nameWithType: BackfillProgress.BarsPerSecond
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.BarsPerSecond
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.EstimatedSecondsRemaining*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.EstimatedSecondsRemaining
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_EstimatedSecondsRemaining
+  name: EstimatedSecondsRemaining
+  nameWithType: BackfillProgress.EstimatedSecondsRemaining
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.EstimatedSecondsRemaining
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.StartedAt*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.StartedAt
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_StartedAt
+  name: StartedAt
+  nameWithType: BackfillProgress.StartedAt
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.StartedAt
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.CompletedAt*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.CompletedAt
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_CompletedAt
+  name: CompletedAt
+  nameWithType: BackfillProgress.CompletedAt
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.CompletedAt
+- uid: System.Nullable{System.DateTime}
+  commentId: T:System.Nullable{System.DateTime}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime?
+  nameWithType: DateTime?
+  fullName: System.DateTime?
+  nameWithType.vb: Date?
+  fullName.vb: Date?
+  name.vb: Date?
+  spec.csharp:
+  - uid: System.DateTime
+    name: DateTime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTime
+    name: Date
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.SymbolProgress*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.SymbolProgress
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_SymbolProgress
+  name: SymbolProgress
+  nameWithType: BackfillProgress.SymbolProgress
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.SymbolProgress
+- uid: MarketDataCollector.Contracts.Backfill.SymbolBackfillProgress[]
+  isExternal: true
+  href: MarketDataCollector.Contracts.Backfill.SymbolBackfillProgress.html
+  name: SymbolBackfillProgress[]
+  nameWithType: SymbolBackfillProgress[]
+  fullName: MarketDataCollector.Contracts.Backfill.SymbolBackfillProgress[]
+  nameWithType.vb: SymbolBackfillProgress()
+  fullName.vb: MarketDataCollector.Contracts.Backfill.SymbolBackfillProgress()
+  name.vb: SymbolBackfillProgress()
+  spec.csharp:
+  - uid: MarketDataCollector.Contracts.Backfill.SymbolBackfillProgress
+    name: SymbolBackfillProgress
+    href: MarketDataCollector.Contracts.Backfill.SymbolBackfillProgress.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: MarketDataCollector.Contracts.Backfill.SymbolBackfillProgress
+    name: SymbolBackfillProgress
+    href: MarketDataCollector.Contracts.Backfill.SymbolBackfillProgress.html
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.CurrentProvider*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.CurrentProvider
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_CurrentProvider
+  name: CurrentProvider
+  nameWithType: BackfillProgress.CurrentProvider
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.CurrentProvider
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.ErrorMessage*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.ErrorMessage
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_ErrorMessage
+  name: ErrorMessage
+  nameWithType: BackfillProgress.ErrorMessage
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.ErrorMessage
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.ProgressPercent*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.ProgressPercent
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_ProgressPercent
+  name: ProgressPercent
+  nameWithType: BackfillProgress.ProgressPercent
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.ProgressPercent
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.BarsProgressPercent*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.BarsProgressPercent
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_BarsProgressPercent
+  name: BarsProgressPercent
+  nameWithType: BackfillProgress.BarsProgressPercent
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.BarsProgressPercent
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.Elapsed*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.Elapsed
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_Elapsed
+  name: Elapsed
+  nameWithType: BackfillProgress.Elapsed
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.Elapsed
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.IsComplete*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.IsComplete
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_IsComplete
+  name: IsComplete
+  nameWithType: BackfillProgress.IsComplete
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.IsComplete
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Contracts.Backfill.BackfillProgress.RemainingSymbols*
+  commentId: Overload:MarketDataCollector.Contracts.Backfill.BackfillProgress.RemainingSymbols
+  href: MarketDataCollector.Contracts.Backfill.BackfillProgress.html#MarketDataCollector_Contracts_Backfill_BackfillProgress_RemainingSymbols
+  name: RemainingSymbols
+  nameWithType: BackfillProgress.RemainingSymbols
+  fullName: MarketDataCollector.Contracts.Backfill.BackfillProgress.RemainingSymbols

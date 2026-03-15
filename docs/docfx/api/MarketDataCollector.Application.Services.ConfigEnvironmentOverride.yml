@@ -1,0 +1,576 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Services.ConfigEnvironmentOverride
+  commentId: T:MarketDataCollector.Application.Services.ConfigEnvironmentOverride
+  id: ConfigEnvironmentOverride
+  parent: MarketDataCollector.Application.Services
+  children:
+  - MarketDataCollector.Application.Services.ConfigEnvironmentOverride.ApplyOverrides(MarketDataCollector.Application.Config.AppConfig)
+  - MarketDataCollector.Application.Services.ConfigEnvironmentOverride.EnvPrefix
+  - MarketDataCollector.Application.Services.ConfigEnvironmentOverride.GetDocumentation
+  - MarketDataCollector.Application.Services.ConfigEnvironmentOverride.GetRecognizedVariables
+  langs:
+  - csharp
+  - vb
+  name: ConfigEnvironmentOverride
+  nameWithType: ConfigEnvironmentOverride
+  fullName: MarketDataCollector.Application.Services.ConfigEnvironmentOverride
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigEnvironmentOverride.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConfigEnvironmentOverride
+    path: ../../src/MarketDataCollector.Application/Services/ConfigEnvironmentOverride.cs
+    startLine: 12
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Service for applying environment variable overrides to configuration.
+
+    Implements QW-25: Config Environment Override.
+  example: []
+  syntax:
+    content: public sealed class ConfigEnvironmentOverride
+    content.vb: Public NotInheritable Class ConfigEnvironmentOverride
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.EnvPrefix
+  commentId: F:MarketDataCollector.Application.Services.ConfigEnvironmentOverride.EnvPrefix
+  id: EnvPrefix
+  parent: MarketDataCollector.Application.Services.ConfigEnvironmentOverride
+  langs:
+  - csharp
+  - vb
+  name: EnvPrefix
+  nameWithType: ConfigEnvironmentOverride.EnvPrefix
+  fullName: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.EnvPrefix
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigEnvironmentOverride.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: EnvPrefix
+    path: ../../src/MarketDataCollector.Application/Services/ConfigEnvironmentOverride.cs
+    startLine: 19
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Environment variable prefix for configuration overrides.
+  example: []
+  syntax:
+    content: public const string EnvPrefix = "MDC_"
+    return:
+      type: System.String
+    content.vb: Public Const EnvPrefix As String = "MDC_"
+- uid: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.ApplyOverrides(MarketDataCollector.Application.Config.AppConfig)
+  commentId: M:MarketDataCollector.Application.Services.ConfigEnvironmentOverride.ApplyOverrides(MarketDataCollector.Application.Config.AppConfig)
+  id: ApplyOverrides(MarketDataCollector.Application.Config.AppConfig)
+  parent: MarketDataCollector.Application.Services.ConfigEnvironmentOverride
+  langs:
+  - csharp
+  - vb
+  name: ApplyOverrides(AppConfig)
+  nameWithType: ConfigEnvironmentOverride.ApplyOverrides(AppConfig)
+  fullName: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.ApplyOverrides(MarketDataCollector.Application.Config.AppConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigEnvironmentOverride.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ApplyOverrides
+    path: ../../src/MarketDataCollector.Application/Services/ConfigEnvironmentOverride.cs
+    startLine: 100
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Applies environment variable overrides to configuration.
+  example: []
+  syntax:
+    content: public AppConfig ApplyOverrides(AppConfig config)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    return:
+      type: MarketDataCollector.Application.Config.AppConfig
+    content.vb: Public Function ApplyOverrides(config As AppConfig) As AppConfig
+  overload: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.ApplyOverrides*
+- uid: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.GetRecognizedVariables
+  commentId: M:MarketDataCollector.Application.Services.ConfigEnvironmentOverride.GetRecognizedVariables
+  id: GetRecognizedVariables
+  parent: MarketDataCollector.Application.Services.ConfigEnvironmentOverride
+  langs:
+  - csharp
+  - vb
+  name: GetRecognizedVariables()
+  nameWithType: ConfigEnvironmentOverride.GetRecognizedVariables()
+  fullName: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.GetRecognizedVariables()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigEnvironmentOverride.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetRecognizedVariables
+    path: ../../src/MarketDataCollector.Application/Services/ConfigEnvironmentOverride.cs
+    startLine: 161
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets all recognized environment variables and their current values.
+  example: []
+  syntax:
+    content: public IReadOnlyList<EnvironmentOverrideInfo> GetRecognizedVariables()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.EnvironmentOverrideInfo}
+    content.vb: Public Function GetRecognizedVariables() As IReadOnlyList(Of EnvironmentOverrideInfo)
+  overload: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.GetRecognizedVariables*
+- uid: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.GetDocumentation
+  commentId: M:MarketDataCollector.Application.Services.ConfigEnvironmentOverride.GetDocumentation
+  id: GetDocumentation
+  parent: MarketDataCollector.Application.Services.ConfigEnvironmentOverride
+  langs:
+  - csharp
+  - vb
+  name: GetDocumentation()
+  nameWithType: ConfigEnvironmentOverride.GetDocumentation()
+  fullName: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.GetDocumentation()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/ConfigEnvironmentOverride.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetDocumentation
+    path: ../../src/MarketDataCollector.Application/Services/ConfigEnvironmentOverride.cs
+    startLine: 186
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets documentation for all supported environment variables.
+  example: []
+  syntax:
+    content: public string GetDocumentation()
+    return:
+      type: System.String
+    content.vb: Public Function GetDocumentation() As String
+  overload: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.GetDocumentation*
+references:
+- uid: MarketDataCollector.Application.Services
+  commentId: N:MarketDataCollector.Application.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Services
+  nameWithType: MarketDataCollector.Application.Services
+  fullName: MarketDataCollector.Application.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.ApplyOverrides*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigEnvironmentOverride.ApplyOverrides
+  href: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.html#MarketDataCollector_Application_Services_ConfigEnvironmentOverride_ApplyOverrides_MarketDataCollector_Application_Config_AppConfig_
+  name: ApplyOverrides
+  nameWithType: ConfigEnvironmentOverride.ApplyOverrides
+  fullName: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.ApplyOverrides
+- uid: MarketDataCollector.Application.Config.AppConfig
+  commentId: T:MarketDataCollector.Application.Config.AppConfig
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.AppConfig.html
+  name: AppConfig
+  nameWithType: AppConfig
+  fullName: MarketDataCollector.Application.Config.AppConfig
+- uid: MarketDataCollector.Application.Config
+  commentId: N:MarketDataCollector.Application.Config
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config
+  nameWithType: MarketDataCollector.Application.Config
+  fullName: MarketDataCollector.Application.Config
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+- uid: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.GetRecognizedVariables*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigEnvironmentOverride.GetRecognizedVariables
+  href: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.html#MarketDataCollector_Application_Services_ConfigEnvironmentOverride_GetRecognizedVariables
+  name: GetRecognizedVariables
+  nameWithType: ConfigEnvironmentOverride.GetRecognizedVariables
+  fullName: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.GetRecognizedVariables
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.EnvironmentOverrideInfo}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.EnvironmentOverrideInfo}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<EnvironmentOverrideInfo>
+  nameWithType: IReadOnlyList<EnvironmentOverrideInfo>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Services.EnvironmentOverrideInfo>
+  nameWithType.vb: IReadOnlyList(Of EnvironmentOverrideInfo)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Services.EnvironmentOverrideInfo)
+  name.vb: IReadOnlyList(Of EnvironmentOverrideInfo)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Application.Services.EnvironmentOverrideInfo
+    name: EnvironmentOverrideInfo
+    href: MarketDataCollector.Application.Services.EnvironmentOverrideInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.EnvironmentOverrideInfo
+    name: EnvironmentOverrideInfo
+    href: MarketDataCollector.Application.Services.EnvironmentOverrideInfo.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.GetDocumentation*
+  commentId: Overload:MarketDataCollector.Application.Services.ConfigEnvironmentOverride.GetDocumentation
+  href: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.html#MarketDataCollector_Application_Services_ConfigEnvironmentOverride_GetDocumentation
+  name: GetDocumentation
+  nameWithType: ConfigEnvironmentOverride.GetDocumentation
+  fullName: MarketDataCollector.Application.Services.ConfigEnvironmentOverride.GetDocumentation

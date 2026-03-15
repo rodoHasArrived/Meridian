@@ -1,0 +1,176 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Archival.WalCorruptionMode
+  commentId: T:MarketDataCollector.Storage.Archival.WalCorruptionMode
+  id: WalCorruptionMode
+  parent: MarketDataCollector.Storage.Archival
+  children:
+  - MarketDataCollector.Storage.Archival.WalCorruptionMode.Alert
+  - MarketDataCollector.Storage.Archival.WalCorruptionMode.Halt
+  - MarketDataCollector.Storage.Archival.WalCorruptionMode.Skip
+  langs:
+  - csharp
+  - vb
+  name: WalCorruptionMode
+  nameWithType: WalCorruptionMode
+  fullName: MarketDataCollector.Storage.Archival.WalCorruptionMode
+  type: Enum
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Archival/WriteAheadLog.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: WalCorruptionMode
+    path: ../../src/MarketDataCollector.Storage/Archival/WriteAheadLog.cs
+    startLine: 911
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Archival
+  summary: Controls how the WAL responds when corrupted records are detected during recovery.
+  example: []
+  syntax:
+    content: public enum WalCorruptionMode
+    content.vb: Public Enum WalCorruptionMode
+- uid: MarketDataCollector.Storage.Archival.WalCorruptionMode.Skip
+  commentId: F:MarketDataCollector.Storage.Archival.WalCorruptionMode.Skip
+  id: Skip
+  parent: MarketDataCollector.Storage.Archival.WalCorruptionMode
+  langs:
+  - csharp
+  - vb
+  name: Skip
+  nameWithType: WalCorruptionMode.Skip
+  fullName: MarketDataCollector.Storage.Archival.WalCorruptionMode.Skip
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Archival/WriteAheadLog.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Skip
+    path: ../../src/MarketDataCollector.Storage/Archival/WriteAheadLog.cs
+    startLine: 916
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Archival
+  summary: Silently skip corrupt records and continue recovery (legacy behaviour).
+  example: []
+  syntax:
+    content: Skip = 0
+    return:
+      type: MarketDataCollector.Storage.Archival.WalCorruptionMode
+- uid: MarketDataCollector.Storage.Archival.WalCorruptionMode.Alert
+  commentId: F:MarketDataCollector.Storage.Archival.WalCorruptionMode.Alert
+  id: Alert
+  parent: MarketDataCollector.Storage.Archival.WalCorruptionMode
+  langs:
+  - csharp
+  - vb
+  name: Alert
+  nameWithType: WalCorruptionMode.Alert
+  fullName: MarketDataCollector.Storage.Archival.WalCorruptionMode.Alert
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Archival/WriteAheadLog.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Alert
+    path: ../../src/MarketDataCollector.Storage/Archival/WriteAheadLog.cs
+    startLine: 922
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Archival
+  summary: >-
+    Skip corrupt records but fire the <xref href="MarketDataCollector.Storage.Archival.WriteAheadLog.CorruptionDetected" data-throw-if-not-resolved="false"></xref> event
+
+    so monitoring systems can alert operators. Recommended for production deployments.
+  example: []
+  syntax:
+    content: Alert = 1
+    return:
+      type: MarketDataCollector.Storage.Archival.WalCorruptionMode
+- uid: MarketDataCollector.Storage.Archival.WalCorruptionMode.Halt
+  commentId: F:MarketDataCollector.Storage.Archival.WalCorruptionMode.Halt
+  id: Halt
+  parent: MarketDataCollector.Storage.Archival.WalCorruptionMode
+  langs:
+  - csharp
+  - vb
+  name: Halt
+  nameWithType: WalCorruptionMode.Halt
+  fullName: MarketDataCollector.Storage.Archival.WalCorruptionMode.Halt
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Archival/WriteAheadLog.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Halt
+    path: ../../src/MarketDataCollector.Storage/Archival/WriteAheadLog.cs
+    startLine: 929
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Archival
+  summary: >-
+    Throw an <xref href="System.IO.InvalidDataException" data-throw-if-not-resolved="false"></xref> when any corrupt record is found.
+
+    Use this when data integrity is non-negotiable and manual operator review
+
+    is required before the application can start.
+  example: []
+  syntax:
+    content: Halt = 2
+    return:
+      type: MarketDataCollector.Storage.Archival.WalCorruptionMode
+references:
+- uid: MarketDataCollector.Storage.Archival
+  commentId: N:MarketDataCollector.Storage.Archival
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Archival
+  nameWithType: MarketDataCollector.Storage.Archival
+  fullName: MarketDataCollector.Storage.Archival
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Archival
+    name: Archival
+    href: MarketDataCollector.Storage.Archival.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Archival
+    name: Archival
+    href: MarketDataCollector.Storage.Archival.html
+- uid: MarketDataCollector.Storage.Archival.WalCorruptionMode
+  commentId: T:MarketDataCollector.Storage.Archival.WalCorruptionMode
+  parent: MarketDataCollector.Storage.Archival
+  href: MarketDataCollector.Storage.Archival.WalCorruptionMode.html
+  name: WalCorruptionMode
+  nameWithType: WalCorruptionMode
+  fullName: MarketDataCollector.Storage.Archival.WalCorruptionMode
+- uid: MarketDataCollector.Storage.Archival.WriteAheadLog.CorruptionDetected
+  commentId: E:MarketDataCollector.Storage.Archival.WriteAheadLog.CorruptionDetected
+  href: MarketDataCollector.Storage.Archival.WriteAheadLog.html#MarketDataCollector_Storage_Archival_WriteAheadLog_CorruptionDetected
+  name: CorruptionDetected
+  nameWithType: WriteAheadLog.CorruptionDetected
+  fullName: MarketDataCollector.Storage.Archival.WriteAheadLog.CorruptionDetected
+- uid: System.IO.InvalidDataException
+  commentId: T:System.IO.InvalidDataException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.invaliddataexception
+  name: InvalidDataException
+  nameWithType: InvalidDataException
+  fullName: System.IO.InvalidDataException

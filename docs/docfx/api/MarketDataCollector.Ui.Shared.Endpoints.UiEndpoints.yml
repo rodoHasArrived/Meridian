@@ -1,0 +1,958 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints
+  commentId: T:MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints
+  id: UiEndpoints
+  parent: MarketDataCollector.Ui.Shared.Endpoints
+  children:
+  - MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.AddUiSharedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,MarketDataCollector.Application.UI.StatusEndpointHandlers,System.String)
+  - MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.AddUiSharedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)
+  - MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.BuildUiHost(Microsoft.AspNetCore.Builder.WebApplicationBuilder,MarketDataCollector.Application.UI.StatusEndpointHandlers,System.String)
+  - MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.BuildUiHost(Microsoft.AspNetCore.Builder.WebApplicationBuilder,System.String)
+  - MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapAllUiEndpoints(Microsoft.AspNetCore.Builder.WebApplication)
+  - MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapDashboard(Microsoft.AspNetCore.Builder.WebApplication)
+  - MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpoints(Microsoft.AspNetCore.Builder.WebApplication)
+  - MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpoints(Microsoft.AspNetCore.Builder.WebApplication,System.Text.Json.JsonSerializerOptions,System.Text.Json.JsonSerializerOptions)
+  - MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpointsWithStatus(Microsoft.AspNetCore.Builder.WebApplication,MarketDataCollector.Application.UI.StatusEndpointHandlers)
+  - MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MutationRateLimitPolicy
+  langs:
+  - csharp
+  - vb
+  name: UiEndpoints
+  nameWithType: UiEndpoints
+  fullName: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UiEndpoints
+    path: ../../src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+    startLine: 22
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Endpoints
+  summary: >-
+    Master extension methods for registering all UI API endpoints.
+
+    Provides a single entry point for mapping all shared endpoints.
+
+    Uses ServiceCompositionRoot for centralized service registration.
+  example: []
+  syntax:
+    content: public static class UiEndpoints
+    content.vb: Public Module UiEndpoints
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.BuildUiHost(Microsoft.AspNetCore.Builder.WebApplicationBuilder,System.String)
+  commentId: M:MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.BuildUiHost(Microsoft.AspNetCore.Builder.WebApplicationBuilder,System.String)
+  id: BuildUiHost(Microsoft.AspNetCore.Builder.WebApplicationBuilder,System.String)
+  isExtensionMethod: true
+  parent: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints
+  langs:
+  - csharp
+  - vb
+  name: BuildUiHost(WebApplicationBuilder, string?)
+  nameWithType: UiEndpoints.BuildUiHost(WebApplicationBuilder, string?)
+  fullName: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.BuildUiHost(Microsoft.AspNetCore.Builder.WebApplicationBuilder, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BuildUiHost
+    path: ../../src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+    startLine: 34
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Endpoints
+  summary: >-
+    Configures the application with all UI services and endpoints.
+
+    This is the single entry point for setting up the UI host and should be used
+
+    instead of calling AddUiSharedServices and MapAllUiEndpoints separately.
+  example: []
+  syntax:
+    content: public static WebApplication BuildUiHost(this WebApplicationBuilder builder, string? configPath = null)
+    parameters:
+    - id: builder
+      type: Microsoft.AspNetCore.Builder.WebApplicationBuilder
+      description: The web application builder.
+    - id: configPath
+      type: System.String
+      description: Optional path to configuration file.
+    return:
+      type: Microsoft.AspNetCore.Builder.WebApplication
+      description: A configured WebApplication ready to run.
+    content.vb: Public Shared Function BuildUiHost(builder As WebApplicationBuilder, configPath As String = Nothing) As WebApplication
+  overload: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.BuildUiHost*
+  nameWithType.vb: UiEndpoints.BuildUiHost(WebApplicationBuilder, String)
+  fullName.vb: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.BuildUiHost(Microsoft.AspNetCore.Builder.WebApplicationBuilder, String)
+  name.vb: BuildUiHost(WebApplicationBuilder, String)
+- uid: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.BuildUiHost(Microsoft.AspNetCore.Builder.WebApplicationBuilder,MarketDataCollector.Application.UI.StatusEndpointHandlers,System.String)
+  commentId: M:MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.BuildUiHost(Microsoft.AspNetCore.Builder.WebApplicationBuilder,MarketDataCollector.Application.UI.StatusEndpointHandlers,System.String)
+  id: BuildUiHost(Microsoft.AspNetCore.Builder.WebApplicationBuilder,MarketDataCollector.Application.UI.StatusEndpointHandlers,System.String)
+  isExtensionMethod: true
+  parent: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints
+  langs:
+  - csharp
+  - vb
+  name: BuildUiHost(WebApplicationBuilder, StatusEndpointHandlers, string?)
+  nameWithType: UiEndpoints.BuildUiHost(WebApplicationBuilder, StatusEndpointHandlers, string?)
+  fullName: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.BuildUiHost(Microsoft.AspNetCore.Builder.WebApplicationBuilder, MarketDataCollector.Application.UI.StatusEndpointHandlers, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BuildUiHost
+    path: ../../src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+    startLine: 76
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Endpoints
+  summary: >-
+    Configures the application with UI services, endpoints, and shared status handlers.
+
+    This overload allows sharing StatusEndpointHandlers with StatusHttpServer.
+  example: []
+  syntax:
+    content: public static WebApplication BuildUiHost(this WebApplicationBuilder builder, StatusEndpointHandlers statusHandlers, string? configPath = null)
+    parameters:
+    - id: builder
+      type: Microsoft.AspNetCore.Builder.WebApplicationBuilder
+      description: The web application builder.
+    - id: statusHandlers
+      type: MarketDataCollector.Application.UI.StatusEndpointHandlers
+      description: Pre-configured status endpoint handlers to share.
+    - id: configPath
+      type: System.String
+      description: Optional path to configuration file.
+    return:
+      type: Microsoft.AspNetCore.Builder.WebApplication
+      description: A configured WebApplication ready to run.
+    content.vb: Public Shared Function BuildUiHost(builder As WebApplicationBuilder, statusHandlers As StatusEndpointHandlers, configPath As String = Nothing) As WebApplication
+  overload: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.BuildUiHost*
+  nameWithType.vb: UiEndpoints.BuildUiHost(WebApplicationBuilder, StatusEndpointHandlers, String)
+  fullName.vb: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.BuildUiHost(Microsoft.AspNetCore.Builder.WebApplicationBuilder, MarketDataCollector.Application.UI.StatusEndpointHandlers, String)
+  name.vb: BuildUiHost(WebApplicationBuilder, StatusEndpointHandlers, String)
+- uid: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.AddUiSharedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)
+  commentId: M:MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.AddUiSharedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)
+  id: AddUiSharedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)
+  isExtensionMethod: true
+  parent: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints
+  langs:
+  - csharp
+  - vb
+  name: AddUiSharedServices(IServiceCollection, string?)
+  nameWithType: UiEndpoints.AddUiSharedServices(IServiceCollection, string?)
+  fullName: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.AddUiSharedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AddUiSharedServices
+    path: ../../src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+    startLine: 101
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Endpoints
+  summary: >-
+    Registers all shared services required by UI endpoints using the centralized composition root.
+
+    Replaces the core BackfillCoordinator with the UI-extended version that includes preview functionality.
+  example: []
+  syntax:
+    content: public static IServiceCollection AddUiSharedServices(this IServiceCollection services, string? configPath = null)
+    parameters:
+    - id: services
+      type: Microsoft.Extensions.DependencyInjection.IServiceCollection
+      description: The service collection.
+    - id: configPath
+      type: System.String
+      description: Optional path to configuration file.
+    return:
+      type: Microsoft.Extensions.DependencyInjection.IServiceCollection
+    content.vb: Public Shared Function AddUiSharedServices(services As IServiceCollection, configPath As String = Nothing) As IServiceCollection
+  overload: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.AddUiSharedServices*
+  nameWithType.vb: UiEndpoints.AddUiSharedServices(IServiceCollection, String)
+  fullName.vb: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.AddUiSharedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection, String)
+  name.vb: AddUiSharedServices(IServiceCollection, String)
+- uid: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.AddUiSharedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,MarketDataCollector.Application.UI.StatusEndpointHandlers,System.String)
+  commentId: M:MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.AddUiSharedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,MarketDataCollector.Application.UI.StatusEndpointHandlers,System.String)
+  id: AddUiSharedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,MarketDataCollector.Application.UI.StatusEndpointHandlers,System.String)
+  isExtensionMethod: true
+  parent: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints
+  langs:
+  - csharp
+  - vb
+  name: AddUiSharedServices(IServiceCollection, StatusEndpointHandlers, string?)
+  nameWithType: UiEndpoints.AddUiSharedServices(IServiceCollection, StatusEndpointHandlers, string?)
+  fullName: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.AddUiSharedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection, MarketDataCollector.Application.UI.StatusEndpointHandlers, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AddUiSharedServices
+    path: ../../src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+    startLine: 134
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Endpoints
+  summary: >-
+    Registers shared services with a pre-configured StatusEndpointHandlers instance.
+
+    Use this when you want to share the same handlers with StatusHttpServer.
+  example: []
+  syntax:
+    content: public static IServiceCollection AddUiSharedServices(this IServiceCollection services, StatusEndpointHandlers statusHandlers, string? configPath = null)
+    parameters:
+    - id: services
+      type: Microsoft.Extensions.DependencyInjection.IServiceCollection
+      description: The service collection.
+    - id: statusHandlers
+      type: MarketDataCollector.Application.UI.StatusEndpointHandlers
+      description: Status endpoint handlers to register.
+    - id: configPath
+      type: System.String
+      description: Optional path to configuration file.
+    return:
+      type: Microsoft.Extensions.DependencyInjection.IServiceCollection
+    content.vb: Public Shared Function AddUiSharedServices(services As IServiceCollection, statusHandlers As StatusEndpointHandlers, configPath As String = Nothing) As IServiceCollection
+  overload: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.AddUiSharedServices*
+  nameWithType.vb: UiEndpoints.AddUiSharedServices(IServiceCollection, StatusEndpointHandlers, String)
+  fullName.vb: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.AddUiSharedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection, MarketDataCollector.Application.UI.StatusEndpointHandlers, String)
+  name.vb: AddUiSharedServices(IServiceCollection, StatusEndpointHandlers, String)
+- uid: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpoints(Microsoft.AspNetCore.Builder.WebApplication)
+  commentId: M:MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpoints(Microsoft.AspNetCore.Builder.WebApplication)
+  id: MapUiEndpoints(Microsoft.AspNetCore.Builder.WebApplication)
+  isExtensionMethod: true
+  parent: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints
+  langs:
+  - csharp
+  - vb
+  name: MapUiEndpoints(WebApplication)
+  nameWithType: UiEndpoints.MapUiEndpoints(WebApplication)
+  fullName: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpoints(Microsoft.AspNetCore.Builder.WebApplication)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MapUiEndpoints
+    path: ../../src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+    startLine: 167
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Endpoints
+  summary: Maps all UI API endpoints using default JSON serializer options.
+  example: []
+  syntax:
+    content: public static WebApplication MapUiEndpoints(this WebApplication app)
+    parameters:
+    - id: app
+      type: Microsoft.AspNetCore.Builder.WebApplication
+    return:
+      type: Microsoft.AspNetCore.Builder.WebApplication
+    content.vb: Public Shared Function MapUiEndpoints(app As WebApplication) As WebApplication
+  overload: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpoints*
+- uid: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpoints(Microsoft.AspNetCore.Builder.WebApplication,System.Text.Json.JsonSerializerOptions,System.Text.Json.JsonSerializerOptions)
+  commentId: M:MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpoints(Microsoft.AspNetCore.Builder.WebApplication,System.Text.Json.JsonSerializerOptions,System.Text.Json.JsonSerializerOptions)
+  id: MapUiEndpoints(Microsoft.AspNetCore.Builder.WebApplication,System.Text.Json.JsonSerializerOptions,System.Text.Json.JsonSerializerOptions)
+  isExtensionMethod: true
+  parent: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints
+  langs:
+  - csharp
+  - vb
+  name: MapUiEndpoints(WebApplication, JsonSerializerOptions, JsonSerializerOptions?)
+  nameWithType: UiEndpoints.MapUiEndpoints(WebApplication, JsonSerializerOptions, JsonSerializerOptions?)
+  fullName: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpoints(Microsoft.AspNetCore.Builder.WebApplication, System.Text.Json.JsonSerializerOptions, System.Text.Json.JsonSerializerOptions?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MapUiEndpoints
+    path: ../../src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+    startLine: 182
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Endpoints
+  summary: Maps all UI API endpoints with custom JSON serializer options.
+  example: []
+  syntax:
+    content: public static WebApplication MapUiEndpoints(this WebApplication app, JsonSerializerOptions jsonOptions, JsonSerializerOptions? jsonOptionsIndented = null)
+    parameters:
+    - id: app
+      type: Microsoft.AspNetCore.Builder.WebApplication
+    - id: jsonOptions
+      type: System.Text.Json.JsonSerializerOptions
+    - id: jsonOptionsIndented
+      type: System.Text.Json.JsonSerializerOptions
+    return:
+      type: Microsoft.AspNetCore.Builder.WebApplication
+    content.vb: Public Shared Function MapUiEndpoints(app As WebApplication, jsonOptions As JsonSerializerOptions, jsonOptionsIndented As JsonSerializerOptions = Nothing) As WebApplication
+  overload: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpoints*
+  nameWithType.vb: UiEndpoints.MapUiEndpoints(WebApplication, JsonSerializerOptions, JsonSerializerOptions)
+  fullName.vb: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpoints(Microsoft.AspNetCore.Builder.WebApplication, System.Text.Json.JsonSerializerOptions, System.Text.Json.JsonSerializerOptions)
+  name.vb: MapUiEndpoints(WebApplication, JsonSerializerOptions, JsonSerializerOptions)
+- uid: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpointsWithStatus(Microsoft.AspNetCore.Builder.WebApplication,MarketDataCollector.Application.UI.StatusEndpointHandlers)
+  commentId: M:MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpointsWithStatus(Microsoft.AspNetCore.Builder.WebApplication,MarketDataCollector.Application.UI.StatusEndpointHandlers)
+  id: MapUiEndpointsWithStatus(Microsoft.AspNetCore.Builder.WebApplication,MarketDataCollector.Application.UI.StatusEndpointHandlers)
+  isExtensionMethod: true
+  parent: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints
+  langs:
+  - csharp
+  - vb
+  name: MapUiEndpointsWithStatus(WebApplication, StatusEndpointHandlers)
+  nameWithType: UiEndpoints.MapUiEndpointsWithStatus(WebApplication, StatusEndpointHandlers)
+  fullName: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpointsWithStatus(Microsoft.AspNetCore.Builder.WebApplication, MarketDataCollector.Application.UI.StatusEndpointHandlers)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MapUiEndpointsWithStatus
+    path: ../../src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+    startLine: 266
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Endpoints
+  summary: >-
+    Maps all UI API endpoints including status endpoints.
+
+    Use this when StatusEndpointHandlers has been registered in DI.
+  example: []
+  syntax:
+    content: public static WebApplication MapUiEndpointsWithStatus(this WebApplication app, StatusEndpointHandlers statusHandlers)
+    parameters:
+    - id: app
+      type: Microsoft.AspNetCore.Builder.WebApplication
+    - id: statusHandlers
+      type: MarketDataCollector.Application.UI.StatusEndpointHandlers
+    return:
+      type: Microsoft.AspNetCore.Builder.WebApplication
+    content.vb: Public Shared Function MapUiEndpointsWithStatus(app As WebApplication, statusHandlers As StatusEndpointHandlers) As WebApplication
+  overload: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpointsWithStatus*
+- uid: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapDashboard(Microsoft.AspNetCore.Builder.WebApplication)
+  commentId: M:MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapDashboard(Microsoft.AspNetCore.Builder.WebApplication)
+  id: MapDashboard(Microsoft.AspNetCore.Builder.WebApplication)
+  isExtensionMethod: true
+  parent: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints
+  langs:
+  - csharp
+  - vb
+  name: MapDashboard(WebApplication)
+  nameWithType: UiEndpoints.MapDashboard(WebApplication)
+  fullName: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapDashboard(Microsoft.AspNetCore.Builder.WebApplication)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MapDashboard
+    path: ../../src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+    startLine: 354
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Endpoints
+  summary: Maps the dashboard HTML endpoint at the root path.
+  example: []
+  syntax:
+    content: public static WebApplication MapDashboard(this WebApplication app)
+    parameters:
+    - id: app
+      type: Microsoft.AspNetCore.Builder.WebApplication
+    return:
+      type: Microsoft.AspNetCore.Builder.WebApplication
+    content.vb: Public Shared Function MapDashboard(app As WebApplication) As WebApplication
+  overload: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapDashboard*
+- uid: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapAllUiEndpoints(Microsoft.AspNetCore.Builder.WebApplication)
+  commentId: M:MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapAllUiEndpoints(Microsoft.AspNetCore.Builder.WebApplication)
+  id: MapAllUiEndpoints(Microsoft.AspNetCore.Builder.WebApplication)
+  isExtensionMethod: true
+  parent: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints
+  langs:
+  - csharp
+  - vb
+  name: MapAllUiEndpoints(WebApplication)
+  nameWithType: UiEndpoints.MapAllUiEndpoints(WebApplication)
+  fullName: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapAllUiEndpoints(Microsoft.AspNetCore.Builder.WebApplication)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MapAllUiEndpoints
+    path: ../../src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+    startLine: 369
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Endpoints
+  summary: >-
+    Maps all UI endpoints including the dashboard.
+
+    Convenience method that combines MapUiEndpoints and MapDashboard.
+  example: []
+  syntax:
+    content: public static WebApplication MapAllUiEndpoints(this WebApplication app)
+    parameters:
+    - id: app
+      type: Microsoft.AspNetCore.Builder.WebApplication
+    return:
+      type: Microsoft.AspNetCore.Builder.WebApplication
+    content.vb: Public Shared Function MapAllUiEndpoints(app As WebApplication) As WebApplication
+  overload: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapAllUiEndpoints*
+- uid: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MutationRateLimitPolicy
+  commentId: F:MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MutationRateLimitPolicy
+  id: MutationRateLimitPolicy
+  parent: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints
+  langs:
+  - csharp
+  - vb
+  name: MutationRateLimitPolicy
+  nameWithType: UiEndpoints.MutationRateLimitPolicy
+  fullName: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MutationRateLimitPolicy
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MutationRateLimitPolicy
+    path: ../../src/MarketDataCollector.Ui.Shared/Endpoints/UiEndpoints.cs
+    startLine: 383
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Endpoints
+  summary: Rate limiting policy name applied to mutation (POST/PUT/DELETE) endpoints.
+  example: []
+  syntax:
+    content: public const string MutationRateLimitPolicy = "mutation"
+    return:
+      type: System.String
+    content.vb: Public Const MutationRateLimitPolicy As String = "mutation"
+references:
+- uid: MarketDataCollector.Ui.Shared.Endpoints
+  commentId: N:MarketDataCollector.Ui.Shared.Endpoints
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Ui.Shared.Endpoints
+  nameWithType: MarketDataCollector.Ui.Shared.Endpoints
+  fullName: MarketDataCollector.Ui.Shared.Endpoints
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Ui
+    name: Ui
+    href: MarketDataCollector.Ui.html
+  - name: .
+  - uid: MarketDataCollector.Ui.Shared
+    name: Shared
+    href: MarketDataCollector.Ui.Shared.html
+  - name: .
+  - uid: MarketDataCollector.Ui.Shared.Endpoints
+    name: Endpoints
+    href: MarketDataCollector.Ui.Shared.Endpoints.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Ui
+    name: Ui
+    href: MarketDataCollector.Ui.html
+  - name: .
+  - uid: MarketDataCollector.Ui.Shared
+    name: Shared
+    href: MarketDataCollector.Ui.Shared.html
+  - name: .
+  - uid: MarketDataCollector.Ui.Shared.Endpoints
+    name: Endpoints
+    href: MarketDataCollector.Ui.Shared.Endpoints.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.BuildUiHost*
+  commentId: Overload:MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.BuildUiHost
+  href: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.html#MarketDataCollector_Ui_Shared_Endpoints_UiEndpoints_BuildUiHost_Microsoft_AspNetCore_Builder_WebApplicationBuilder_System_String_
+  name: BuildUiHost
+  nameWithType: UiEndpoints.BuildUiHost
+  fullName: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.BuildUiHost
+- uid: Microsoft.AspNetCore.Builder.WebApplicationBuilder
+  commentId: T:Microsoft.AspNetCore.Builder.WebApplicationBuilder
+  parent: Microsoft.AspNetCore.Builder
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.webapplicationbuilder
+  name: WebApplicationBuilder
+  nameWithType: WebApplicationBuilder
+  fullName: Microsoft.AspNetCore.Builder.WebApplicationBuilder
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Microsoft.AspNetCore.Builder.WebApplication
+  commentId: T:Microsoft.AspNetCore.Builder.WebApplication
+  parent: Microsoft.AspNetCore.Builder
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.webapplication
+  name: WebApplication
+  nameWithType: WebApplication
+  fullName: Microsoft.AspNetCore.Builder.WebApplication
+- uid: Microsoft.AspNetCore.Builder
+  commentId: N:Microsoft.AspNetCore.Builder
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.AspNetCore.Builder
+  nameWithType: Microsoft.AspNetCore.Builder
+  fullName: Microsoft.AspNetCore.Builder
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Builder
+    name: Builder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Builder
+    name: Builder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder
+- uid: MarketDataCollector.Application.UI.StatusEndpointHandlers
+  commentId: T:MarketDataCollector.Application.UI.StatusEndpointHandlers
+  parent: MarketDataCollector.Application.UI
+  href: MarketDataCollector.Application.UI.StatusEndpointHandlers.html
+  name: StatusEndpointHandlers
+  nameWithType: StatusEndpointHandlers
+  fullName: MarketDataCollector.Application.UI.StatusEndpointHandlers
+- uid: MarketDataCollector.Application.UI
+  commentId: N:MarketDataCollector.Application.UI
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.UI
+  nameWithType: MarketDataCollector.Application.UI
+  fullName: MarketDataCollector.Application.UI
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.UI
+    name: UI
+    href: MarketDataCollector.Application.UI.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.UI
+    name: UI
+    href: MarketDataCollector.Application.UI.html
+- uid: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.AddUiSharedServices*
+  commentId: Overload:MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.AddUiSharedServices
+  href: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.html#MarketDataCollector_Ui_Shared_Endpoints_UiEndpoints_AddUiSharedServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_
+  name: AddUiSharedServices
+  nameWithType: UiEndpoints.AddUiSharedServices
+  fullName: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.AddUiSharedServices
+- uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+  commentId: T:Microsoft.Extensions.DependencyInjection.IServiceCollection
+  parent: Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  name: IServiceCollection
+  nameWithType: IServiceCollection
+  fullName: Microsoft.Extensions.DependencyInjection.IServiceCollection
+- uid: Microsoft.Extensions.DependencyInjection
+  commentId: N:Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.DependencyInjection
+  nameWithType: Microsoft.Extensions.DependencyInjection
+  fullName: Microsoft.Extensions.DependencyInjection
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+- uid: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpoints*
+  commentId: Overload:MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpoints
+  href: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.html#MarketDataCollector_Ui_Shared_Endpoints_UiEndpoints_MapUiEndpoints_Microsoft_AspNetCore_Builder_WebApplication_
+  name: MapUiEndpoints
+  nameWithType: UiEndpoints.MapUiEndpoints
+  fullName: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpoints
+- uid: System.Text.Json.JsonSerializerOptions
+  commentId: T:System.Text.Json.JsonSerializerOptions
+  parent: System.Text.Json
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.jsonserializeroptions
+  name: JsonSerializerOptions
+  nameWithType: JsonSerializerOptions
+  fullName: System.Text.Json.JsonSerializerOptions
+- uid: System.Text.Json
+  commentId: N:System.Text.Json
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Text.Json
+  nameWithType: System.Text.Json
+  fullName: System.Text.Json
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  - name: .
+  - uid: System.Text.Json
+    name: Json
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  - name: .
+  - uid: System.Text.Json
+    name: Json
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json
+- uid: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpointsWithStatus*
+  commentId: Overload:MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpointsWithStatus
+  href: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.html#MarketDataCollector_Ui_Shared_Endpoints_UiEndpoints_MapUiEndpointsWithStatus_Microsoft_AspNetCore_Builder_WebApplication_MarketDataCollector_Application_UI_StatusEndpointHandlers_
+  name: MapUiEndpointsWithStatus
+  nameWithType: UiEndpoints.MapUiEndpointsWithStatus
+  fullName: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapUiEndpointsWithStatus
+- uid: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapDashboard*
+  commentId: Overload:MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapDashboard
+  href: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.html#MarketDataCollector_Ui_Shared_Endpoints_UiEndpoints_MapDashboard_Microsoft_AspNetCore_Builder_WebApplication_
+  name: MapDashboard
+  nameWithType: UiEndpoints.MapDashboard
+  fullName: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapDashboard
+- uid: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapAllUiEndpoints*
+  commentId: Overload:MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapAllUiEndpoints
+  href: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.html#MarketDataCollector_Ui_Shared_Endpoints_UiEndpoints_MapAllUiEndpoints_Microsoft_AspNetCore_Builder_WebApplication_
+  name: MapAllUiEndpoints
+  nameWithType: UiEndpoints.MapAllUiEndpoints
+  fullName: MarketDataCollector.Ui.Shared.Endpoints.UiEndpoints.MapAllUiEndpoints

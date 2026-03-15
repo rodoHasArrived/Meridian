@@ -1,0 +1,155 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Archival.WalSyncMode
+  commentId: T:MarketDataCollector.Storage.Archival.WalSyncMode
+  id: WalSyncMode
+  parent: MarketDataCollector.Storage.Archival
+  children:
+  - MarketDataCollector.Storage.Archival.WalSyncMode.BatchedSync
+  - MarketDataCollector.Storage.Archival.WalSyncMode.EveryWrite
+  - MarketDataCollector.Storage.Archival.WalSyncMode.NoSync
+  langs:
+  - csharp
+  - vb
+  name: WalSyncMode
+  nameWithType: WalSyncMode
+  fullName: MarketDataCollector.Storage.Archival.WalSyncMode
+  type: Enum
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Archival/WriteAheadLog.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: WalSyncMode
+    path: ../../src/MarketDataCollector.Storage/Archival/WriteAheadLog.cs
+    startLine: 890
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Archival
+  summary: WAL synchronization modes.
+  example: []
+  syntax:
+    content: 'public enum WalSyncMode : byte'
+    content.vb: Public Enum WalSyncMode As Byte
+- uid: MarketDataCollector.Storage.Archival.WalSyncMode.NoSync
+  commentId: F:MarketDataCollector.Storage.Archival.WalSyncMode.NoSync
+  id: NoSync
+  parent: MarketDataCollector.Storage.Archival.WalSyncMode
+  langs:
+  - csharp
+  - vb
+  name: NoSync
+  nameWithType: WalSyncMode.NoSync
+  fullName: MarketDataCollector.Storage.Archival.WalSyncMode.NoSync
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Archival/WriteAheadLog.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: NoSync
+    path: ../../src/MarketDataCollector.Storage/Archival/WriteAheadLog.cs
+    startLine: 895
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Archival
+  summary: No explicit sync - relies on OS buffering (fastest, least durable).
+  example: []
+  syntax:
+    content: NoSync = 0
+    return:
+      type: MarketDataCollector.Storage.Archival.WalSyncMode
+- uid: MarketDataCollector.Storage.Archival.WalSyncMode.BatchedSync
+  commentId: F:MarketDataCollector.Storage.Archival.WalSyncMode.BatchedSync
+  id: BatchedSync
+  parent: MarketDataCollector.Storage.Archival.WalSyncMode
+  langs:
+  - csharp
+  - vb
+  name: BatchedSync
+  nameWithType: WalSyncMode.BatchedSync
+  fullName: MarketDataCollector.Storage.Archival.WalSyncMode.BatchedSync
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Archival/WriteAheadLog.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BatchedSync
+    path: ../../src/MarketDataCollector.Storage/Archival/WriteAheadLog.cs
+    startLine: 900
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Archival
+  summary: Sync after batches of writes (balanced).
+  example: []
+  syntax:
+    content: BatchedSync = 1
+    return:
+      type: MarketDataCollector.Storage.Archival.WalSyncMode
+- uid: MarketDataCollector.Storage.Archival.WalSyncMode.EveryWrite
+  commentId: F:MarketDataCollector.Storage.Archival.WalSyncMode.EveryWrite
+  id: EveryWrite
+  parent: MarketDataCollector.Storage.Archival.WalSyncMode
+  langs:
+  - csharp
+  - vb
+  name: EveryWrite
+  nameWithType: WalSyncMode.EveryWrite
+  fullName: MarketDataCollector.Storage.Archival.WalSyncMode.EveryWrite
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Archival/WriteAheadLog.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: EveryWrite
+    path: ../../src/MarketDataCollector.Storage/Archival/WriteAheadLog.cs
+    startLine: 905
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Archival
+  summary: Sync after every write (slowest, most durable).
+  example: []
+  syntax:
+    content: EveryWrite = 2
+    return:
+      type: MarketDataCollector.Storage.Archival.WalSyncMode
+references:
+- uid: MarketDataCollector.Storage.Archival
+  commentId: N:MarketDataCollector.Storage.Archival
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Archival
+  nameWithType: MarketDataCollector.Storage.Archival
+  fullName: MarketDataCollector.Storage.Archival
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Archival
+    name: Archival
+    href: MarketDataCollector.Storage.Archival.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Archival
+    name: Archival
+    href: MarketDataCollector.Storage.Archival.html
+- uid: MarketDataCollector.Storage.Archival.WalSyncMode
+  commentId: T:MarketDataCollector.Storage.Archival.WalSyncMode
+  parent: MarketDataCollector.Storage.Archival
+  href: MarketDataCollector.Storage.Archival.WalSyncMode.html
+  name: WalSyncMode
+  nameWithType: WalSyncMode
+  fullName: MarketDataCollector.Storage.Archival.WalSyncMode

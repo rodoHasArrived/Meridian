@@ -1,0 +1,632 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Services.RetentionComplianceReporter
+  commentId: T:MarketDataCollector.Storage.Services.RetentionComplianceReporter
+  id: RetentionComplianceReporter
+  parent: MarketDataCollector.Storage.Services
+  children:
+  - MarketDataCollector.Storage.Services.RetentionComplianceReporter.#ctor(MarketDataCollector.Storage.StorageOptions,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.RetentionComplianceReporter})
+  - MarketDataCollector.Storage.Services.RetentionComplianceReporter.GenerateReportAsync(System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: RetentionComplianceReporter
+  nameWithType: RetentionComplianceReporter
+  fullName: MarketDataCollector.Storage.Services.RetentionComplianceReporter
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/RetentionComplianceReporter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RetentionComplianceReporter
+    path: ../../src/MarketDataCollector.Storage/Services/RetentionComplianceReporter.cs
+    startLine: 9
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: >-
+    Generates retention compliance reports by scanning stored data against
+
+    configured retention policies. Outputs machine-readable and human-readable
+
+    reports suitable for regulatory audits.
+  example: []
+  syntax:
+    content: public sealed class RetentionComplianceReporter
+    content.vb: Public NotInheritable Class RetentionComplianceReporter
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Storage.Services.RetentionComplianceReporter.#ctor(MarketDataCollector.Storage.StorageOptions,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.RetentionComplianceReporter})
+  commentId: M:MarketDataCollector.Storage.Services.RetentionComplianceReporter.#ctor(MarketDataCollector.Storage.StorageOptions,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.RetentionComplianceReporter})
+  id: '#ctor(MarketDataCollector.Storage.StorageOptions,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.RetentionComplianceReporter})'
+  parent: MarketDataCollector.Storage.Services.RetentionComplianceReporter
+  langs:
+  - csharp
+  - vb
+  name: RetentionComplianceReporter(StorageOptions, ILogger<RetentionComplianceReporter>)
+  nameWithType: RetentionComplianceReporter.RetentionComplianceReporter(StorageOptions, ILogger<RetentionComplianceReporter>)
+  fullName: MarketDataCollector.Storage.Services.RetentionComplianceReporter.RetentionComplianceReporter(MarketDataCollector.Storage.StorageOptions, Microsoft.Extensions.Logging.ILogger<MarketDataCollector.Storage.Services.RetentionComplianceReporter>)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/RetentionComplianceReporter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Storage/Services/RetentionComplianceReporter.cs
+    startLine: 16
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public RetentionComplianceReporter(StorageOptions options, ILogger<RetentionComplianceReporter> logger)
+    parameters:
+    - id: options
+      type: MarketDataCollector.Storage.StorageOptions
+    - id: logger
+      type: Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.RetentionComplianceReporter}
+    content.vb: Public Sub New(options As StorageOptions, logger As ILogger(Of RetentionComplianceReporter))
+  overload: MarketDataCollector.Storage.Services.RetentionComplianceReporter.#ctor*
+  nameWithType.vb: RetentionComplianceReporter.New(StorageOptions, ILogger(Of RetentionComplianceReporter))
+  fullName.vb: MarketDataCollector.Storage.Services.RetentionComplianceReporter.New(MarketDataCollector.Storage.StorageOptions, Microsoft.Extensions.Logging.ILogger(Of MarketDataCollector.Storage.Services.RetentionComplianceReporter))
+  name.vb: New(StorageOptions, ILogger(Of RetentionComplianceReporter))
+- uid: MarketDataCollector.Storage.Services.RetentionComplianceReporter.GenerateReportAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.RetentionComplianceReporter.GenerateReportAsync(System.Threading.CancellationToken)
+  id: GenerateReportAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.RetentionComplianceReporter
+  langs:
+  - csharp
+  - vb
+  name: GenerateReportAsync(CancellationToken)
+  nameWithType: RetentionComplianceReporter.GenerateReportAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.RetentionComplianceReporter.GenerateReportAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/RetentionComplianceReporter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GenerateReportAsync
+    path: ../../src/MarketDataCollector.Storage/Services/RetentionComplianceReporter.cs
+    startLine: 27
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Generates a retention compliance report.
+  example: []
+  syntax:
+    content: public Task<RetentionComplianceReport> GenerateReportAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.RetentionComplianceReport}
+    content.vb: Public Function GenerateReportAsync(ct As CancellationToken = Nothing) As Task(Of RetentionComplianceReport)
+  overload: MarketDataCollector.Storage.Services.RetentionComplianceReporter.GenerateReportAsync*
+references:
+- uid: MarketDataCollector.Storage.Services
+  commentId: N:MarketDataCollector.Storage.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Services
+  nameWithType: MarketDataCollector.Storage.Services
+  fullName: MarketDataCollector.Storage.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Storage.Services.RetentionComplianceReporter.#ctor*
+  commentId: Overload:MarketDataCollector.Storage.Services.RetentionComplianceReporter.#ctor
+  href: MarketDataCollector.Storage.Services.RetentionComplianceReporter.html#MarketDataCollector_Storage_Services_RetentionComplianceReporter__ctor_MarketDataCollector_Storage_StorageOptions_Microsoft_Extensions_Logging_ILogger_MarketDataCollector_Storage_Services_RetentionComplianceReporter__
+  name: RetentionComplianceReporter
+  nameWithType: RetentionComplianceReporter.RetentionComplianceReporter
+  fullName: MarketDataCollector.Storage.Services.RetentionComplianceReporter.RetentionComplianceReporter
+  nameWithType.vb: RetentionComplianceReporter.New
+  fullName.vb: MarketDataCollector.Storage.Services.RetentionComplianceReporter.New
+  name.vb: New
+- uid: MarketDataCollector.Storage.StorageOptions
+  commentId: T:MarketDataCollector.Storage.StorageOptions
+  parent: MarketDataCollector.Storage
+  href: MarketDataCollector.Storage.StorageOptions.html
+  name: StorageOptions
+  nameWithType: StorageOptions
+  fullName: MarketDataCollector.Storage.StorageOptions
+- uid: Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.RetentionComplianceReporter}
+  commentId: T:Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.RetentionComplianceReporter}
+  parent: Microsoft.Extensions.Logging
+  definition: Microsoft.Extensions.Logging.ILogger`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<RetentionComplianceReporter>
+  nameWithType: ILogger<RetentionComplianceReporter>
+  fullName: Microsoft.Extensions.Logging.ILogger<MarketDataCollector.Storage.Services.RetentionComplianceReporter>
+  nameWithType.vb: ILogger(Of RetentionComplianceReporter)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of MarketDataCollector.Storage.Services.RetentionComplianceReporter)
+  name.vb: ILogger(Of RetentionComplianceReporter)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.RetentionComplianceReporter
+    name: RetentionComplianceReporter
+    href: MarketDataCollector.Storage.Services.RetentionComplianceReporter.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.RetentionComplianceReporter
+    name: RetentionComplianceReporter
+    href: MarketDataCollector.Storage.Services.RetentionComplianceReporter.html
+  - name: )
+- uid: MarketDataCollector.Storage
+  commentId: N:MarketDataCollector.Storage
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage
+  nameWithType: MarketDataCollector.Storage
+  fullName: MarketDataCollector.Storage
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+- uid: Microsoft.Extensions.Logging.ILogger`1
+  commentId: T:Microsoft.Extensions.Logging.ILogger`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<TCategoryName>
+  nameWithType: ILogger<TCategoryName>
+  fullName: Microsoft.Extensions.Logging.ILogger<TCategoryName>
+  nameWithType.vb: ILogger(Of TCategoryName)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of TCategoryName)
+  name.vb: ILogger(Of TCategoryName)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - name: TCategoryName
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TCategoryName
+  - name: )
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: MarketDataCollector.Storage.Services.RetentionComplianceReporter.GenerateReportAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.RetentionComplianceReporter.GenerateReportAsync
+  href: MarketDataCollector.Storage.Services.RetentionComplianceReporter.html#MarketDataCollector_Storage_Services_RetentionComplianceReporter_GenerateReportAsync_System_Threading_CancellationToken_
+  name: GenerateReportAsync
+  nameWithType: RetentionComplianceReporter.GenerateReportAsync
+  fullName: MarketDataCollector.Storage.Services.RetentionComplianceReporter.GenerateReportAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.RetentionComplianceReport}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.RetentionComplianceReport}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<RetentionComplianceReport>
+  nameWithType: Task<RetentionComplianceReport>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.RetentionComplianceReport>
+  nameWithType.vb: Task(Of RetentionComplianceReport)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.RetentionComplianceReport)
+  name.vb: Task(Of RetentionComplianceReport)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.RetentionComplianceReport
+    name: RetentionComplianceReport
+    href: MarketDataCollector.Storage.Services.RetentionComplianceReport.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.RetentionComplianceReport
+    name: RetentionComplianceReport
+    href: MarketDataCollector.Storage.Services.RetentionComplianceReport.html
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

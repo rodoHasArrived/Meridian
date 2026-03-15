@@ -1,0 +1,868 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory
+  id: ProviderFactory
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  children:
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.#ctor(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateAndRegisterAllAsync(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateBackfillProviders
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateCompositeBackfillProvider(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider})
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateSymbolSearchProviders
+  langs:
+  - csharp
+  - vb
+  name: ProviderFactory
+  nameWithType: ProviderFactory
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderFactory.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderFactory
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderFactory.cs
+    startLine: 35
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: >-
+    Unified factory for creating and registering all provider types (streaming, backfill, symbol search).
+
+    This replaces scattered provider creation logic with a single entry point.
+  remarks: >-
+    The factory uses capability-driven registration where all providers implement
+
+    <xref href="MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata" data-throw-if-not-resolved="false"></xref> and are registered in a unified <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-001", "Unified provider factory for capability-driven registration")]
+
+      public sealed class ProviderFactory
+    content.vb: >-
+      <ImplementsAdr("ADR-001", "Unified provider factory for capability-driven registration")>
+
+      Public NotInheritable Class ProviderFactory
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-001
+    - type: System.String
+      value: Unified provider factory for capability-driven registration
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.#ctor(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.#ctor(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  id: '#ctor(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)'
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory
+  langs:
+  - csharp
+  - vb
+  name: ProviderFactory(AppConfig, ICredentialResolver, ILogger?)
+  nameWithType: ProviderFactory.ProviderFactory(AppConfig, ICredentialResolver, ILogger?)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.ProviderFactory(MarketDataCollector.Application.Config.AppConfig, MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver, Serilog.ILogger?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderFactory.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderFactory.cs
+    startLine: 42
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  syntax:
+    content: public ProviderFactory(AppConfig config, ICredentialResolver credentialResolver, ILogger? log = null)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    - id: credentialResolver
+      type: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver
+    - id: log
+      type: Serilog.ILogger
+    content.vb: Public Sub New(config As AppConfig, credentialResolver As ICredentialResolver, log As ILogger = Nothing)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.#ctor*
+  nameWithType.vb: ProviderFactory.New(AppConfig, ICredentialResolver, ILogger)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.New(MarketDataCollector.Application.Config.AppConfig, MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver, Serilog.ILogger)
+  name.vb: New(AppConfig, ICredentialResolver, ILogger)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateAndRegisterAllAsync(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateAndRegisterAllAsync(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,System.Threading.CancellationToken)
+  id: CreateAndRegisterAllAsync(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateAndRegisterAllAsync(ProviderRegistry, CancellationToken)
+  nameWithType: ProviderFactory.CreateAndRegisterAllAsync(ProviderRegistry, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateAndRegisterAllAsync(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderFactory.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateAndRegisterAllAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderFactory.cs
+    startLine: 59
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: >-
+    Creates backfill and symbol search providers and registers them with the provided registry.
+
+    Streaming providers are registered separately via ProviderRegistry factory functions.
+  example: []
+  syntax:
+    content: public Task<ProviderCreationResult> CreateAndRegisterAllAsync(ProviderRegistry registry, CancellationToken ct = default)
+    parameters:
+    - id: registry
+      type: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+      description: The registry to register providers with.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Infrastructure.Adapters.Core.ProviderCreationResult}
+      description: Summary of created providers.
+    content.vb: Public Function CreateAndRegisterAllAsync(registry As ProviderRegistry, ct As CancellationToken = Nothing) As Task(Of ProviderCreationResult)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateAndRegisterAllAsync*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateBackfillProviders
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateBackfillProviders
+  id: CreateBackfillProviders
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateBackfillProviders()
+  nameWithType: ProviderFactory.CreateBackfillProviders()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateBackfillProviders()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderFactory.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateBackfillProviders
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderFactory.cs
+    startLine: 99
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Creates all configured backfill providers.
+  example: []
+  syntax:
+    content: public IReadOnlyList<IHistoricalDataProvider> CreateBackfillProviders()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider}
+    content.vb: Public Function CreateBackfillProviders() As IReadOnlyList(Of IHistoricalDataProvider)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateBackfillProviders*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateSymbolSearchProviders
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateSymbolSearchProviders
+  id: CreateSymbolSearchProviders
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateSymbolSearchProviders()
+  nameWithType: ProviderFactory.CreateSymbolSearchProviders()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateSymbolSearchProviders()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderFactory.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateSymbolSearchProviders
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderFactory.cs
+    startLine: 237
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: >-
+    Creates all configured symbol search providers.
+
+    Symbol search uses the same credentials as backfill providers.
+  example: []
+  syntax:
+    content: public IReadOnlyList<ISymbolSearchProvider> CreateSymbolSearchProviders()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider}
+    content.vb: Public Function CreateSymbolSearchProviders() As IReadOnlyList(Of ISymbolSearchProvider)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateSymbolSearchProviders*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateCompositeBackfillProvider(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider})
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateCompositeBackfillProvider(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider})
+  id: CreateCompositeBackfillProvider(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider})
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateCompositeBackfillProvider(IReadOnlyList<IHistoricalDataProvider>)
+  nameWithType: ProviderFactory.CreateCompositeBackfillProvider(IReadOnlyList<IHistoricalDataProvider>)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateCompositeBackfillProvider(System.Collections.Generic.IReadOnlyList<MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider>)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderFactory.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateCompositeBackfillProvider
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderFactory.cs
+    startLine: 310
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Creates a composite backfill provider with automatic failover.
+  example: []
+  syntax:
+    content: public CompositeHistoricalDataProvider CreateCompositeBackfillProvider(IReadOnlyList<IHistoricalDataProvider> providers)
+    parameters:
+    - id: providers
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider}
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider
+    content.vb: Public Function CreateCompositeBackfillProvider(providers As IReadOnlyList(Of IHistoricalDataProvider)) As CompositeHistoricalDataProvider
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateCompositeBackfillProvider*
+  nameWithType.vb: ProviderFactory.CreateCompositeBackfillProvider(IReadOnlyList(Of IHistoricalDataProvider))
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateCompositeBackfillProvider(System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider))
+  name.vb: CreateCompositeBackfillProvider(IReadOnlyList(Of IHistoricalDataProvider))
+references:
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html
+  name: IProviderMetadata
+  nameWithType: IProviderMetadata
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  name: ProviderRegistry
+  nameWithType: ProviderRegistry
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+- uid: MarketDataCollector.Infrastructure.Adapters.Core
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Core
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Core
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.#ctor*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.#ctor
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderFactory__ctor_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  name: ProviderFactory
+  nameWithType: ProviderFactory.ProviderFactory
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.ProviderFactory
+  nameWithType.vb: ProviderFactory.New
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.New
+  name.vb: New
+- uid: MarketDataCollector.Application.Config.AppConfig
+  commentId: T:MarketDataCollector.Application.Config.AppConfig
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.AppConfig.html
+  name: AppConfig
+  nameWithType: AppConfig
+  fullName: MarketDataCollector.Application.Config.AppConfig
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver.html
+  name: ICredentialResolver
+  nameWithType: ICredentialResolver
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver
+- uid: Serilog.ILogger
+  commentId: T:Serilog.ILogger
+  parent: Serilog
+  isExternal: true
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Serilog.ILogger
+- uid: MarketDataCollector.Application.Config
+  commentId: N:MarketDataCollector.Application.Config
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config
+  nameWithType: MarketDataCollector.Application.Config
+  fullName: MarketDataCollector.Application.Config
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+- uid: Serilog
+  commentId: N:Serilog
+  isExternal: true
+  name: Serilog
+  nameWithType: Serilog
+  fullName: Serilog
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateAndRegisterAllAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateAndRegisterAllAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderFactory_CreateAndRegisterAllAsync_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_System_Threading_CancellationToken_
+  name: CreateAndRegisterAllAsync
+  nameWithType: ProviderFactory.CreateAndRegisterAllAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateAndRegisterAllAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Infrastructure.Adapters.Core.ProviderCreationResult}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Infrastructure.Adapters.Core.ProviderCreationResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<ProviderCreationResult>
+  nameWithType: Task<ProviderCreationResult>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Infrastructure.Adapters.Core.ProviderCreationResult>
+  nameWithType.vb: Task(Of ProviderCreationResult)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Infrastructure.Adapters.Core.ProviderCreationResult)
+  name.vb: Task(Of ProviderCreationResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCreationResult
+    name: ProviderCreationResult
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCreationResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCreationResult
+    name: ProviderCreationResult
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCreationResult.html
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateBackfillProviders*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateBackfillProviders
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderFactory_CreateBackfillProviders
+  name: CreateBackfillProviders
+  nameWithType: ProviderFactory.CreateBackfillProviders
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateBackfillProviders
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<IHistoricalDataProvider>
+  nameWithType: IReadOnlyList<IHistoricalDataProvider>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider>
+  nameWithType.vb: IReadOnlyList(Of IHistoricalDataProvider)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider)
+  name.vb: IReadOnlyList(Of IHistoricalDataProvider)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider
+    name: IHistoricalDataProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider
+    name: IHistoricalDataProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateSymbolSearchProviders*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateSymbolSearchProviders
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderFactory_CreateSymbolSearchProviders
+  name: CreateSymbolSearchProviders
+  nameWithType: ProviderFactory.CreateSymbolSearchProviders
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateSymbolSearchProviders
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<ISymbolSearchProvider>
+  nameWithType: IReadOnlyList<ISymbolSearchProvider>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider>
+  nameWithType.vb: IReadOnlyList(Of ISymbolSearchProvider)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider)
+  name.vb: IReadOnlyList(Of ISymbolSearchProvider)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+    name: ISymbolSearchProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+    name: ISymbolSearchProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.html
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateCompositeBackfillProvider*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateCompositeBackfillProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderFactory_CreateCompositeBackfillProvider_System_Collections_Generic_IReadOnlyList_MarketDataCollector_Infrastructure_Adapters_Core_IHistoricalDataProvider__
+  name: CreateCompositeBackfillProvider
+  nameWithType: ProviderFactory.CreateCompositeBackfillProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.CreateCompositeBackfillProvider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider.html
+  name: CompositeHistoricalDataProvider
+  nameWithType: CompositeHistoricalDataProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.CompositeHistoricalDataProvider

@@ -1,0 +1,251 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+  commentId: T:MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+  id: LiquidityProfile
+  parent: MarketDataCollector.Contracts.Domain.Enums
+  children:
+  - MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.High
+  - MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.Low
+  - MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.Minimal
+  - MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.Normal
+  - MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.VeryLow
+  langs:
+  - csharp
+  - vb
+  name: LiquidityProfile
+  nameWithType: LiquidityProfile
+  fullName: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+  type: Enum
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Enums/LiquidityProfile.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LiquidityProfile
+    path: ../../src/MarketDataCollector.Contracts/Domain/Enums/LiquidityProfile.cs
+    startLine: 7
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Enums
+  summary: >-
+    Classification of expected trading activity for a symbol.
+
+    Determines monitoring thresholds for gap detection, completeness scoring,
+
+    SLA freshness, and anomaly detection.
+  example: []
+  syntax:
+    content: 'public enum LiquidityProfile : byte'
+    content.vb: Public Enum LiquidityProfile As Byte
+- uid: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.High
+  commentId: F:MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.High
+  id: High
+  parent: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+  langs:
+  - csharp
+  - vb
+  name: High
+  nameWithType: LiquidityProfile.High
+  fullName: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.High
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Enums/LiquidityProfile.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: High
+    path: ../../src/MarketDataCollector.Contracts/Domain/Enums/LiquidityProfile.cs
+    startLine: 14
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Enums
+  summary: >-
+    High liquidity - large cap equities, major ETFs, FX majors.
+
+    Continuous quoting, hundreds of trades per minute.
+
+    Gap threshold ~60s, expected ~1000+ events/hour.
+  example: []
+  syntax:
+    content: High = 0
+    return:
+      type: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+- uid: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.Normal
+  commentId: F:MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.Normal
+  id: Normal
+  parent: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+  langs:
+  - csharp
+  - vb
+  name: Normal
+  nameWithType: LiquidityProfile.Normal
+  fullName: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.Normal
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Enums/LiquidityProfile.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Normal
+    path: ../../src/MarketDataCollector.Contracts/Domain/Enums/LiquidityProfile.cs
+    startLine: 21
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Enums
+  summary: >-
+    Normal liquidity - mid-cap equities, sector ETFs, active options.
+
+    Regular but not constant activity.
+
+    Gap threshold ~120s, expected ~200 events/hour.
+  example: []
+  syntax:
+    content: Normal = 1
+    return:
+      type: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+- uid: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.Low
+  commentId: F:MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.Low
+  id: Low
+  parent: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+  langs:
+  - csharp
+  - vb
+  name: Low
+  nameWithType: LiquidityProfile.Low
+  fullName: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.Low
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Enums/LiquidityProfile.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Low
+    path: ../../src/MarketDataCollector.Contracts/Domain/Enums/LiquidityProfile.cs
+    startLine: 28
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Enums
+  summary: >-
+    Low liquidity - small-cap stocks, less active options, single-stock futures.
+
+    Trades may be minutes apart during quiet periods.
+
+    Gap threshold ~600s, expected ~20 events/hour.
+  example: []
+  syntax:
+    content: Low = 2
+    return:
+      type: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+- uid: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.VeryLow
+  commentId: F:MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.VeryLow
+  id: VeryLow
+  parent: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+  langs:
+  - csharp
+  - vb
+  name: VeryLow
+  nameWithType: LiquidityProfile.VeryLow
+  fullName: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.VeryLow
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Enums/LiquidityProfile.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: VeryLow
+    path: ../../src/MarketDataCollector.Contracts/Domain/Enums/LiquidityProfile.cs
+    startLine: 35
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Enums
+  summary: >-
+    Very low liquidity - OTC stocks, thinly-traded options, illiquid bonds.
+
+    Trades may be 10+ minutes apart; wide spreads are normal.
+
+    Gap threshold ~1800s, expected ~5 events/hour.
+  example: []
+  syntax:
+    content: VeryLow = 3
+    return:
+      type: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+- uid: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.Minimal
+  commentId: F:MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.Minimal
+  id: Minimal
+  parent: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+  langs:
+  - csharp
+  - vb
+  name: Minimal
+  nameWithType: LiquidityProfile.Minimal
+  fullName: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.Minimal
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Enums/LiquidityProfile.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Minimal
+    path: ../../src/MarketDataCollector.Contracts/Domain/Enums/LiquidityProfile.cs
+    startLine: 42
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Enums
+  summary: >-
+    Minimal activity - deep OTC, far out-of-money options, exotic instruments.
+
+    May have fewer than a handful of trades per day.
+
+    Gap threshold ~3600s, expected ~1 event/hour.
+  example: []
+  syntax:
+    content: Minimal = 4
+    return:
+      type: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+references:
+- uid: MarketDataCollector.Contracts.Domain.Enums
+  commentId: N:MarketDataCollector.Contracts.Domain.Enums
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Enums
+  nameWithType: MarketDataCollector.Contracts.Domain.Enums
+  fullName: MarketDataCollector.Contracts.Domain.Enums
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Enums
+    name: Enums
+    href: MarketDataCollector.Contracts.Domain.Enums.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Enums
+    name: Enums
+    href: MarketDataCollector.Contracts.Domain.Enums.html
+- uid: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+  commentId: T:MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+  parent: MarketDataCollector.Contracts.Domain.Enums
+  href: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.html
+  name: LiquidityProfile
+  nameWithType: LiquidityProfile
+  fullName: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile

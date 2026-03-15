@@ -1,0 +1,629 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Config.ConfigurationProviderExtensions
+  commentId: T:MarketDataCollector.Application.Config.ConfigurationProviderExtensions
+  id: ConfigurationProviderExtensions
+  parent: MarketDataCollector.Application.Config
+  children:
+  - MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetBackfillConfig``1(MarketDataCollector.Application.Config.IConfigurationProvider)
+  - MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetConnectionString(MarketDataCollector.Application.Config.IConfigurationProvider,System.String)
+  - MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetProviderOptions``1(MarketDataCollector.Application.Config.IConfigurationProvider,System.String)
+  - MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetStorageConfig``1(MarketDataCollector.Application.Config.IConfigurationProvider)
+  - MarketDataCollector.Application.Config.ConfigurationProviderExtensions.IsFeatureEnabled(MarketDataCollector.Application.Config.IConfigurationProvider,System.String)
+  - MarketDataCollector.Application.Config.ConfigurationProviderExtensions.RegisterProviderConfig``1(MarketDataCollector.Application.Config.IConfigurationProvider,System.String,System.String,System.Boolean)
+  langs:
+  - csharp
+  - vb
+  name: ConfigurationProviderExtensions
+  nameWithType: ConfigurationProviderExtensions
+  fullName: MarketDataCollector.Application.Config.ConfigurationProviderExtensions
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/IConfigurationProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConfigurationProviderExtensions
+    path: ../../src/MarketDataCollector.Core/Config/IConfigurationProvider.cs
+    startLine: 208
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Extension methods for common configuration patterns.
+  example: []
+  syntax:
+    content: public static class ConfigurationProviderExtensions
+    content.vb: Public Module ConfigurationProviderExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetConnectionString(MarketDataCollector.Application.Config.IConfigurationProvider,System.String)
+  commentId: M:MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetConnectionString(MarketDataCollector.Application.Config.IConfigurationProvider,System.String)
+  id: GetConnectionString(MarketDataCollector.Application.Config.IConfigurationProvider,System.String)
+  isExtensionMethod: true
+  parent: MarketDataCollector.Application.Config.ConfigurationProviderExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetConnectionString(IConfigurationProvider, string)
+  nameWithType: ConfigurationProviderExtensions.GetConnectionString(IConfigurationProvider, string)
+  fullName: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetConnectionString(MarketDataCollector.Application.Config.IConfigurationProvider, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/IConfigurationProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetConnectionString
+    path: ../../src/MarketDataCollector.Core/Config/IConfigurationProvider.cs
+    startLine: 213
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Gets a connection string.
+  example: []
+  syntax:
+    content: public static string? GetConnectionString(this IConfigurationProvider config, string name)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.IConfigurationProvider
+    - id: name
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Shared Function GetConnectionString(config As IConfigurationProvider, name As String) As String
+  overload: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetConnectionString*
+  nameWithType.vb: ConfigurationProviderExtensions.GetConnectionString(IConfigurationProvider, String)
+  fullName.vb: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetConnectionString(MarketDataCollector.Application.Config.IConfigurationProvider, String)
+  name.vb: GetConnectionString(IConfigurationProvider, String)
+- uid: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetProviderOptions``1(MarketDataCollector.Application.Config.IConfigurationProvider,System.String)
+  commentId: M:MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetProviderOptions``1(MarketDataCollector.Application.Config.IConfigurationProvider,System.String)
+  id: GetProviderOptions``1(MarketDataCollector.Application.Config.IConfigurationProvider,System.String)
+  isExtensionMethod: true
+  parent: MarketDataCollector.Application.Config.ConfigurationProviderExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetProviderOptions<T>(IConfigurationProvider, string)
+  nameWithType: ConfigurationProviderExtensions.GetProviderOptions<T>(IConfigurationProvider, string)
+  fullName: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetProviderOptions<T>(MarketDataCollector.Application.Config.IConfigurationProvider, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/IConfigurationProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetProviderOptions
+    path: ../../src/MarketDataCollector.Core/Config/IConfigurationProvider.cs
+    startLine: 219
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Gets provider options.
+  example: []
+  syntax:
+    content: 'public static T GetProviderOptions<T>(this IConfigurationProvider config, string providerName) where T : class, new()'
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.IConfigurationProvider
+    - id: providerName
+      type: System.String
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function GetProviderOptions(Of T As {Class, New})(config As IConfigurationProvider, providerName As String) As T
+  overload: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetProviderOptions*
+  nameWithType.vb: ConfigurationProviderExtensions.GetProviderOptions(Of T)(IConfigurationProvider, String)
+  fullName.vb: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetProviderOptions(Of T)(MarketDataCollector.Application.Config.IConfigurationProvider, String)
+  name.vb: GetProviderOptions(Of T)(IConfigurationProvider, String)
+- uid: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.IsFeatureEnabled(MarketDataCollector.Application.Config.IConfigurationProvider,System.String)
+  commentId: M:MarketDataCollector.Application.Config.ConfigurationProviderExtensions.IsFeatureEnabled(MarketDataCollector.Application.Config.IConfigurationProvider,System.String)
+  id: IsFeatureEnabled(MarketDataCollector.Application.Config.IConfigurationProvider,System.String)
+  isExtensionMethod: true
+  parent: MarketDataCollector.Application.Config.ConfigurationProviderExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsFeatureEnabled(IConfigurationProvider, string)
+  nameWithType: ConfigurationProviderExtensions.IsFeatureEnabled(IConfigurationProvider, string)
+  fullName: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.IsFeatureEnabled(MarketDataCollector.Application.Config.IConfigurationProvider, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/IConfigurationProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsFeatureEnabled
+    path: ../../src/MarketDataCollector.Core/Config/IConfigurationProvider.cs
+    startLine: 226
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Checks if a feature is enabled.
+  example: []
+  syntax:
+    content: public static bool IsFeatureEnabled(this IConfigurationProvider config, string featureName)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.IConfigurationProvider
+    - id: featureName
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function IsFeatureEnabled(config As IConfigurationProvider, featureName As String) As Boolean
+  overload: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.IsFeatureEnabled*
+  nameWithType.vb: ConfigurationProviderExtensions.IsFeatureEnabled(IConfigurationProvider, String)
+  fullName.vb: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.IsFeatureEnabled(MarketDataCollector.Application.Config.IConfigurationProvider, String)
+  name.vb: IsFeatureEnabled(IConfigurationProvider, String)
+- uid: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetStorageConfig``1(MarketDataCollector.Application.Config.IConfigurationProvider)
+  commentId: M:MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetStorageConfig``1(MarketDataCollector.Application.Config.IConfigurationProvider)
+  id: GetStorageConfig``1(MarketDataCollector.Application.Config.IConfigurationProvider)
+  isExtensionMethod: true
+  parent: MarketDataCollector.Application.Config.ConfigurationProviderExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetStorageConfig<T>(IConfigurationProvider)
+  nameWithType: ConfigurationProviderExtensions.GetStorageConfig<T>(IConfigurationProvider)
+  fullName: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetStorageConfig<T>(MarketDataCollector.Application.Config.IConfigurationProvider)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/IConfigurationProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetStorageConfig
+    path: ../../src/MarketDataCollector.Core/Config/IConfigurationProvider.cs
+    startLine: 232
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Gets storage configuration.
+  example: []
+  syntax:
+    content: 'public static T GetStorageConfig<T>(this IConfigurationProvider config) where T : class, new()'
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.IConfigurationProvider
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function GetStorageConfig(Of T As {Class, New})(config As IConfigurationProvider) As T
+  overload: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetStorageConfig*
+  nameWithType.vb: ConfigurationProviderExtensions.GetStorageConfig(Of T)(IConfigurationProvider)
+  fullName.vb: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetStorageConfig(Of T)(MarketDataCollector.Application.Config.IConfigurationProvider)
+  name.vb: GetStorageConfig(Of T)(IConfigurationProvider)
+- uid: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetBackfillConfig``1(MarketDataCollector.Application.Config.IConfigurationProvider)
+  commentId: M:MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetBackfillConfig``1(MarketDataCollector.Application.Config.IConfigurationProvider)
+  id: GetBackfillConfig``1(MarketDataCollector.Application.Config.IConfigurationProvider)
+  isExtensionMethod: true
+  parent: MarketDataCollector.Application.Config.ConfigurationProviderExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetBackfillConfig<T>(IConfigurationProvider)
+  nameWithType: ConfigurationProviderExtensions.GetBackfillConfig<T>(IConfigurationProvider)
+  fullName: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetBackfillConfig<T>(MarketDataCollector.Application.Config.IConfigurationProvider)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/IConfigurationProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetBackfillConfig
+    path: ../../src/MarketDataCollector.Core/Config/IConfigurationProvider.cs
+    startLine: 239
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Gets backfill configuration.
+  example: []
+  syntax:
+    content: 'public static T GetBackfillConfig<T>(this IConfigurationProvider config) where T : class, new()'
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.IConfigurationProvider
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function GetBackfillConfig(Of T As {Class, New})(config As IConfigurationProvider) As T
+  overload: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetBackfillConfig*
+  nameWithType.vb: ConfigurationProviderExtensions.GetBackfillConfig(Of T)(IConfigurationProvider)
+  fullName.vb: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetBackfillConfig(Of T)(MarketDataCollector.Application.Config.IConfigurationProvider)
+  name.vb: GetBackfillConfig(Of T)(IConfigurationProvider)
+- uid: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.RegisterProviderConfig``1(MarketDataCollector.Application.Config.IConfigurationProvider,System.String,System.String,System.Boolean)
+  commentId: M:MarketDataCollector.Application.Config.ConfigurationProviderExtensions.RegisterProviderConfig``1(MarketDataCollector.Application.Config.IConfigurationProvider,System.String,System.String,System.Boolean)
+  id: RegisterProviderConfig``1(MarketDataCollector.Application.Config.IConfigurationProvider,System.String,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: MarketDataCollector.Application.Config.ConfigurationProviderExtensions
+  langs:
+  - csharp
+  - vb
+  name: RegisterProviderConfig<T>(IConfigurationProvider, string, string, bool)
+  nameWithType: ConfigurationProviderExtensions.RegisterProviderConfig<T>(IConfigurationProvider, string, string, bool)
+  fullName: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.RegisterProviderConfig<T>(MarketDataCollector.Application.Config.IConfigurationProvider, string, string, bool)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/IConfigurationProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterProviderConfig
+    path: ../../src/MarketDataCollector.Core/Config/IConfigurationProvider.cs
+    startLine: 246
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Registers provider options metadata.
+  example: []
+  syntax:
+    content: public static void RegisterProviderConfig<T>(this IConfigurationProvider config, string providerName, string description, bool required = false)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.IConfigurationProvider
+    - id: providerName
+      type: System.String
+    - id: description
+      type: System.String
+    - id: required
+      type: System.Boolean
+    typeParameters:
+    - id: T
+    content.vb: Public Shared Sub RegisterProviderConfig(Of T)(config As IConfigurationProvider, providerName As String, description As String, required As Boolean = False)
+  overload: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.RegisterProviderConfig*
+  nameWithType.vb: ConfigurationProviderExtensions.RegisterProviderConfig(Of T)(IConfigurationProvider, String, String, Boolean)
+  fullName.vb: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.RegisterProviderConfig(Of T)(MarketDataCollector.Application.Config.IConfigurationProvider, String, String, Boolean)
+  name.vb: RegisterProviderConfig(Of T)(IConfigurationProvider, String, String, Boolean)
+references:
+- uid: MarketDataCollector.Application.Config
+  commentId: N:MarketDataCollector.Application.Config
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config
+  nameWithType: MarketDataCollector.Application.Config
+  fullName: MarketDataCollector.Application.Config
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetConnectionString*
+  commentId: Overload:MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetConnectionString
+  href: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.html#MarketDataCollector_Application_Config_ConfigurationProviderExtensions_GetConnectionString_MarketDataCollector_Application_Config_IConfigurationProvider_System_String_
+  name: GetConnectionString
+  nameWithType: ConfigurationProviderExtensions.GetConnectionString
+  fullName: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetConnectionString
+- uid: MarketDataCollector.Application.Config.IConfigurationProvider
+  commentId: T:MarketDataCollector.Application.Config.IConfigurationProvider
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.IConfigurationProvider.html
+  name: IConfigurationProvider
+  nameWithType: IConfigurationProvider
+  fullName: MarketDataCollector.Application.Config.IConfigurationProvider
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetProviderOptions*
+  commentId: Overload:MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetProviderOptions
+  href: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.html#MarketDataCollector_Application_Config_ConfigurationProviderExtensions_GetProviderOptions__1_MarketDataCollector_Application_Config_IConfigurationProvider_System_String_
+  name: GetProviderOptions
+  nameWithType: ConfigurationProviderExtensions.GetProviderOptions
+  fullName: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetProviderOptions
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.IsFeatureEnabled*
+  commentId: Overload:MarketDataCollector.Application.Config.ConfigurationProviderExtensions.IsFeatureEnabled
+  href: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.html#MarketDataCollector_Application_Config_ConfigurationProviderExtensions_IsFeatureEnabled_MarketDataCollector_Application_Config_IConfigurationProvider_System_String_
+  name: IsFeatureEnabled
+  nameWithType: ConfigurationProviderExtensions.IsFeatureEnabled
+  fullName: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.IsFeatureEnabled
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetStorageConfig*
+  commentId: Overload:MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetStorageConfig
+  href: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.html#MarketDataCollector_Application_Config_ConfigurationProviderExtensions_GetStorageConfig__1_MarketDataCollector_Application_Config_IConfigurationProvider_
+  name: GetStorageConfig
+  nameWithType: ConfigurationProviderExtensions.GetStorageConfig
+  fullName: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetStorageConfig
+- uid: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetBackfillConfig*
+  commentId: Overload:MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetBackfillConfig
+  href: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.html#MarketDataCollector_Application_Config_ConfigurationProviderExtensions_GetBackfillConfig__1_MarketDataCollector_Application_Config_IConfigurationProvider_
+  name: GetBackfillConfig
+  nameWithType: ConfigurationProviderExtensions.GetBackfillConfig
+  fullName: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.GetBackfillConfig
+- uid: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.RegisterProviderConfig*
+  commentId: Overload:MarketDataCollector.Application.Config.ConfigurationProviderExtensions.RegisterProviderConfig
+  href: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.html#MarketDataCollector_Application_Config_ConfigurationProviderExtensions_RegisterProviderConfig__1_MarketDataCollector_Application_Config_IConfigurationProvider_System_String_System_String_System_Boolean_
+  name: RegisterProviderConfig
+  nameWithType: ConfigurationProviderExtensions.RegisterProviderConfig
+  fullName: MarketDataCollector.Application.Config.ConfigurationProviderExtensions.RegisterProviderConfig

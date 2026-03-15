@@ -1,0 +1,782 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Domain.Collectors.TradeDataCollector
+  commentId: T:MarketDataCollector.Domain.Collectors.TradeDataCollector
+  id: TradeDataCollector
+  parent: MarketDataCollector.Domain.Collectors
+  children:
+  - MarketDataCollector.Domain.Collectors.TradeDataCollector.#ctor(MarketDataCollector.Domain.Events.IMarketEventPublisher,MarketDataCollector.Domain.Collectors.IQuoteStateStore)
+  - MarketDataCollector.Domain.Collectors.TradeDataCollector.GetOrderFlowSnapshot(System.String)
+  - MarketDataCollector.Domain.Collectors.TradeDataCollector.GetRecentTrades(System.String,System.Int32)
+  - MarketDataCollector.Domain.Collectors.TradeDataCollector.GetTrackedSymbols
+  - MarketDataCollector.Domain.Collectors.TradeDataCollector.OnTrade(MarketDataCollector.Domain.Models.MarketTradeUpdate)
+  langs:
+  - csharp
+  - vb
+  name: TradeDataCollector
+  nameWithType: TradeDataCollector
+  fullName: MarketDataCollector.Domain.Collectors.TradeDataCollector
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/TradeDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TradeDataCollector
+    path: ../../src/MarketDataCollector.Domain/Collectors/TradeDataCollector.cs
+    startLine: 13
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: >-
+    Captures tick-by-tick trades, maintains rolling order-flow statistics,
+
+    and emits unified MarketEvents with strongly-typed payloads.
+  example: []
+  syntax:
+    content: public sealed class TradeDataCollector
+    content.vb: Public NotInheritable Class TradeDataCollector
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Domain.Collectors.TradeDataCollector.#ctor(MarketDataCollector.Domain.Events.IMarketEventPublisher,MarketDataCollector.Domain.Collectors.IQuoteStateStore)
+  commentId: M:MarketDataCollector.Domain.Collectors.TradeDataCollector.#ctor(MarketDataCollector.Domain.Events.IMarketEventPublisher,MarketDataCollector.Domain.Collectors.IQuoteStateStore)
+  id: '#ctor(MarketDataCollector.Domain.Events.IMarketEventPublisher,MarketDataCollector.Domain.Collectors.IQuoteStateStore)'
+  parent: MarketDataCollector.Domain.Collectors.TradeDataCollector
+  langs:
+  - csharp
+  - vb
+  name: TradeDataCollector(IMarketEventPublisher, IQuoteStateStore?)
+  nameWithType: TradeDataCollector.TradeDataCollector(IMarketEventPublisher, IQuoteStateStore?)
+  fullName: MarketDataCollector.Domain.Collectors.TradeDataCollector.TradeDataCollector(MarketDataCollector.Domain.Events.IMarketEventPublisher, MarketDataCollector.Domain.Collectors.IQuoteStateStore?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/TradeDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Domain/Collectors/TradeDataCollector.cs
+    startLine: 60
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  syntax:
+    content: public TradeDataCollector(IMarketEventPublisher publisher, IQuoteStateStore? quotes = null)
+    parameters:
+    - id: publisher
+      type: MarketDataCollector.Domain.Events.IMarketEventPublisher
+    - id: quotes
+      type: MarketDataCollector.Domain.Collectors.IQuoteStateStore
+    content.vb: Public Sub New(publisher As IMarketEventPublisher, quotes As IQuoteStateStore = Nothing)
+  overload: MarketDataCollector.Domain.Collectors.TradeDataCollector.#ctor*
+  nameWithType.vb: TradeDataCollector.New(IMarketEventPublisher, IQuoteStateStore)
+  fullName.vb: MarketDataCollector.Domain.Collectors.TradeDataCollector.New(MarketDataCollector.Domain.Events.IMarketEventPublisher, MarketDataCollector.Domain.Collectors.IQuoteStateStore)
+  name.vb: New(IMarketEventPublisher, IQuoteStateStore)
+- uid: MarketDataCollector.Domain.Collectors.TradeDataCollector.OnTrade(MarketDataCollector.Domain.Models.MarketTradeUpdate)
+  commentId: M:MarketDataCollector.Domain.Collectors.TradeDataCollector.OnTrade(MarketDataCollector.Domain.Models.MarketTradeUpdate)
+  id: OnTrade(MarketDataCollector.Domain.Models.MarketTradeUpdate)
+  parent: MarketDataCollector.Domain.Collectors.TradeDataCollector
+  langs:
+  - csharp
+  - vb
+  name: OnTrade(MarketTradeUpdate)
+  nameWithType: TradeDataCollector.OnTrade(MarketTradeUpdate)
+  fullName: MarketDataCollector.Domain.Collectors.TradeDataCollector.OnTrade(MarketDataCollector.Domain.Models.MarketTradeUpdate)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/TradeDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnTrade
+    path: ../../src/MarketDataCollector.Domain/Collectors/TradeDataCollector.cs
+    startLine: 100
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: >-
+    Entry point from router/adapter layer.
+
+    Performs sequence continuity checks, emits Integrity events on anomalies,
+
+    emits Trade + OrderFlow events on accepted updates.
+  example: []
+  syntax:
+    content: public void OnTrade(MarketTradeUpdate update)
+    parameters:
+    - id: update
+      type: MarketDataCollector.Domain.Models.MarketTradeUpdate
+    content.vb: Public Sub OnTrade(update As MarketTradeUpdate)
+  overload: MarketDataCollector.Domain.Collectors.TradeDataCollector.OnTrade*
+- uid: MarketDataCollector.Domain.Collectors.TradeDataCollector.GetRecentTrades(System.String,System.Int32)
+  commentId: M:MarketDataCollector.Domain.Collectors.TradeDataCollector.GetRecentTrades(System.String,System.Int32)
+  id: GetRecentTrades(System.String,System.Int32)
+  parent: MarketDataCollector.Domain.Collectors.TradeDataCollector
+  langs:
+  - csharp
+  - vb
+  name: GetRecentTrades(string, int)
+  nameWithType: TradeDataCollector.GetRecentTrades(string, int)
+  fullName: MarketDataCollector.Domain.Collectors.TradeDataCollector.GetRecentTrades(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/TradeDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetRecentTrades
+    path: ../../src/MarketDataCollector.Domain/Collectors/TradeDataCollector.cs
+    startLine: 232
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: >-
+    Returns the most recent trades for a symbol (newest first), up to <code class="paramref">limit</code>.
+
+    Returns an empty list if no trades have been recorded for the symbol.
+  example: []
+  syntax:
+    content: public IReadOnlyList<Trade> GetRecentTrades(string symbol, int limit = 50)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: limit
+      type: System.Int32
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.Trade}
+    content.vb: Public Function GetRecentTrades(symbol As String, limit As Integer = 50) As IReadOnlyList(Of Trade)
+  overload: MarketDataCollector.Domain.Collectors.TradeDataCollector.GetRecentTrades*
+  nameWithType.vb: TradeDataCollector.GetRecentTrades(String, Integer)
+  fullName.vb: MarketDataCollector.Domain.Collectors.TradeDataCollector.GetRecentTrades(String, Integer)
+  name.vb: GetRecentTrades(String, Integer)
+- uid: MarketDataCollector.Domain.Collectors.TradeDataCollector.GetOrderFlowSnapshot(System.String)
+  commentId: M:MarketDataCollector.Domain.Collectors.TradeDataCollector.GetOrderFlowSnapshot(System.String)
+  id: GetOrderFlowSnapshot(System.String)
+  parent: MarketDataCollector.Domain.Collectors.TradeDataCollector
+  langs:
+  - csharp
+  - vb
+  name: GetOrderFlowSnapshot(string)
+  nameWithType: TradeDataCollector.GetOrderFlowSnapshot(string)
+  fullName: MarketDataCollector.Domain.Collectors.TradeDataCollector.GetOrderFlowSnapshot(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/TradeDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetOrderFlowSnapshot
+    path: ../../src/MarketDataCollector.Domain/Collectors/TradeDataCollector.cs
+    startLine: 243
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Returns the current rolling order-flow statistics for a symbol, or null if no trades recorded.
+  example: []
+  syntax:
+    content: public OrderFlowStatistics? GetOrderFlowSnapshot(string symbol)
+    parameters:
+    - id: symbol
+      type: System.String
+    return:
+      type: MarketDataCollector.Contracts.Domain.Models.OrderFlowStatistics
+    content.vb: Public Function GetOrderFlowSnapshot(symbol As String) As OrderFlowStatistics
+  overload: MarketDataCollector.Domain.Collectors.TradeDataCollector.GetOrderFlowSnapshot*
+  nameWithType.vb: TradeDataCollector.GetOrderFlowSnapshot(String)
+  fullName.vb: MarketDataCollector.Domain.Collectors.TradeDataCollector.GetOrderFlowSnapshot(String)
+  name.vb: GetOrderFlowSnapshot(String)
+- uid: MarketDataCollector.Domain.Collectors.TradeDataCollector.GetTrackedSymbols
+  commentId: M:MarketDataCollector.Domain.Collectors.TradeDataCollector.GetTrackedSymbols
+  id: GetTrackedSymbols
+  parent: MarketDataCollector.Domain.Collectors.TradeDataCollector
+  langs:
+  - csharp
+  - vb
+  name: GetTrackedSymbols()
+  nameWithType: TradeDataCollector.GetTrackedSymbols()
+  fullName: MarketDataCollector.Domain.Collectors.TradeDataCollector.GetTrackedSymbols()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Collectors/TradeDataCollector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetTrackedSymbols
+    path: ../../src/MarketDataCollector.Domain/Collectors/TradeDataCollector.cs
+    startLine: 264
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Collectors
+  summary: Returns all symbols that currently have trade data.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> GetTrackedSymbols()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public Function GetTrackedSymbols() As IReadOnlyList(Of String)
+  overload: MarketDataCollector.Domain.Collectors.TradeDataCollector.GetTrackedSymbols*
+references:
+- uid: MarketDataCollector.Domain.Collectors
+  commentId: N:MarketDataCollector.Domain.Collectors
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Collectors
+  nameWithType: MarketDataCollector.Domain.Collectors
+  fullName: MarketDataCollector.Domain.Collectors
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Collectors
+    name: Collectors
+    href: MarketDataCollector.Domain.Collectors.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Collectors
+    name: Collectors
+    href: MarketDataCollector.Domain.Collectors.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Domain.Collectors.TradeDataCollector.#ctor*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.TradeDataCollector.#ctor
+  href: MarketDataCollector.Domain.Collectors.TradeDataCollector.html#MarketDataCollector_Domain_Collectors_TradeDataCollector__ctor_MarketDataCollector_Domain_Events_IMarketEventPublisher_MarketDataCollector_Domain_Collectors_IQuoteStateStore_
+  name: TradeDataCollector
+  nameWithType: TradeDataCollector.TradeDataCollector
+  fullName: MarketDataCollector.Domain.Collectors.TradeDataCollector.TradeDataCollector
+  nameWithType.vb: TradeDataCollector.New
+  fullName.vb: MarketDataCollector.Domain.Collectors.TradeDataCollector.New
+  name.vb: New
+- uid: MarketDataCollector.Domain.Events.IMarketEventPublisher
+  commentId: T:MarketDataCollector.Domain.Events.IMarketEventPublisher
+  parent: MarketDataCollector.Domain.Events
+  href: MarketDataCollector.Domain.Events.IMarketEventPublisher.html
+  name: IMarketEventPublisher
+  nameWithType: IMarketEventPublisher
+  fullName: MarketDataCollector.Domain.Events.IMarketEventPublisher
+- uid: MarketDataCollector.Domain.Collectors.IQuoteStateStore
+  commentId: T:MarketDataCollector.Domain.Collectors.IQuoteStateStore
+  parent: MarketDataCollector.Domain.Collectors
+  href: MarketDataCollector.Domain.Collectors.IQuoteStateStore.html
+  name: IQuoteStateStore
+  nameWithType: IQuoteStateStore
+  fullName: MarketDataCollector.Domain.Collectors.IQuoteStateStore
+- uid: MarketDataCollector.Domain.Events
+  commentId: N:MarketDataCollector.Domain.Events
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Events
+  nameWithType: MarketDataCollector.Domain.Events
+  fullName: MarketDataCollector.Domain.Events
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+- uid: MarketDataCollector.Domain.Collectors.TradeDataCollector.OnTrade*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.TradeDataCollector.OnTrade
+  href: MarketDataCollector.Domain.Collectors.TradeDataCollector.html#MarketDataCollector_Domain_Collectors_TradeDataCollector_OnTrade_MarketDataCollector_Domain_Models_MarketTradeUpdate_
+  name: OnTrade
+  nameWithType: TradeDataCollector.OnTrade
+  fullName: MarketDataCollector.Domain.Collectors.TradeDataCollector.OnTrade
+- uid: MarketDataCollector.Domain.Models.MarketTradeUpdate
+  commentId: T:MarketDataCollector.Domain.Models.MarketTradeUpdate
+  parent: MarketDataCollector.Domain.Models
+  href: MarketDataCollector.Domain.Models.MarketTradeUpdate.html
+  name: MarketTradeUpdate
+  nameWithType: MarketTradeUpdate
+  fullName: MarketDataCollector.Domain.Models.MarketTradeUpdate
+- uid: MarketDataCollector.Domain.Models
+  commentId: N:MarketDataCollector.Domain.Models
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Models
+  nameWithType: MarketDataCollector.Domain.Models
+  fullName: MarketDataCollector.Domain.Models
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Models
+    name: Models
+    href: MarketDataCollector.Domain.Models.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Models
+    name: Models
+    href: MarketDataCollector.Domain.Models.html
+- uid: MarketDataCollector.Domain.Collectors.TradeDataCollector.GetRecentTrades*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.TradeDataCollector.GetRecentTrades
+  href: MarketDataCollector.Domain.Collectors.TradeDataCollector.html#MarketDataCollector_Domain_Collectors_TradeDataCollector_GetRecentTrades_System_String_System_Int32_
+  name: GetRecentTrades
+  nameWithType: TradeDataCollector.GetRecentTrades
+  fullName: MarketDataCollector.Domain.Collectors.TradeDataCollector.GetRecentTrades
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.Trade}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Domain.Models.Trade}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<Trade>
+  nameWithType: IReadOnlyList<Trade>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Contracts.Domain.Models.Trade>
+  nameWithType.vb: IReadOnlyList(Of Trade)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Contracts.Domain.Models.Trade)
+  name.vb: IReadOnlyList(Of Trade)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Domain.Models.Trade
+    name: Trade
+    href: MarketDataCollector.Contracts.Domain.Models.Trade.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Domain.Models.Trade
+    name: Trade
+    href: MarketDataCollector.Contracts.Domain.Models.Trade.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Domain.Collectors.TradeDataCollector.GetOrderFlowSnapshot*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.TradeDataCollector.GetOrderFlowSnapshot
+  href: MarketDataCollector.Domain.Collectors.TradeDataCollector.html#MarketDataCollector_Domain_Collectors_TradeDataCollector_GetOrderFlowSnapshot_System_String_
+  name: GetOrderFlowSnapshot
+  nameWithType: TradeDataCollector.GetOrderFlowSnapshot
+  fullName: MarketDataCollector.Domain.Collectors.TradeDataCollector.GetOrderFlowSnapshot
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderFlowStatistics
+  commentId: T:MarketDataCollector.Contracts.Domain.Models.OrderFlowStatistics
+  parent: MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.Contracts.Domain.Models.OrderFlowStatistics.html
+  name: OrderFlowStatistics
+  nameWithType: OrderFlowStatistics
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderFlowStatistics
+- uid: MarketDataCollector.Contracts.Domain.Models
+  commentId: N:MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Models
+  nameWithType: MarketDataCollector.Contracts.Domain.Models
+  fullName: MarketDataCollector.Contracts.Domain.Models
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Models
+    name: Models
+    href: MarketDataCollector.Contracts.Domain.Models.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Models
+    name: Models
+    href: MarketDataCollector.Contracts.Domain.Models.html
+- uid: MarketDataCollector.Domain.Collectors.TradeDataCollector.GetTrackedSymbols*
+  commentId: Overload:MarketDataCollector.Domain.Collectors.TradeDataCollector.GetTrackedSymbols
+  href: MarketDataCollector.Domain.Collectors.TradeDataCollector.html#MarketDataCollector_Domain_Collectors_TradeDataCollector_GetTrackedSymbols
+  name: GetTrackedSymbols
+  nameWithType: TradeDataCollector.GetTrackedSymbols
+  fullName: MarketDataCollector.Domain.Collectors.TradeDataCollector.GetTrackedSymbols
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )

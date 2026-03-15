@@ -1,0 +1,621 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider
+  commentId: T:MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider
+  id: MarketDataCollectorDataProvider
+  parent: MarketDataCollector.Integrations.Lean
+  children:
+  - MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.#ctor(System.String)
+  - MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.Dispose
+  - MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.Fetch(System.String)
+  - MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.NewDataRequest
+  langs:
+  - csharp
+  - vb
+  name: MarketDataCollectorDataProvider
+  nameWithType: MarketDataCollectorDataProvider
+  fullName: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector/Integrations/Lean/MarketDataCollectorDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MarketDataCollectorDataProvider
+    path: ../../src/MarketDataCollector/Integrations/Lean/MarketDataCollectorDataProvider.cs
+    startLine: 12
+  assemblies:
+  - MarketDataCollector
+  namespace: MarketDataCollector.Integrations.Lean
+  summary: >-
+    Custom IDataProvider implementation that reads market data from MarketDataCollector's JSONL files.
+
+    Supports both compressed (.jsonl.gz) and uncompressed (.jsonl) files.
+  example: []
+  syntax:
+    content: 'public sealed class MarketDataCollectorDataProvider : IDataProvider'
+    content.vb: Public NotInheritable Class MarketDataCollectorDataProvider Implements IDataProvider
+  inheritance:
+  - System.Object
+  implements:
+  - QuantConnect.Interfaces.IDataProvider
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.NewDataRequest
+  commentId: E:MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.NewDataRequest
+  id: NewDataRequest
+  parent: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider
+  langs:
+  - csharp
+  - vb
+  name: NewDataRequest
+  nameWithType: MarketDataCollectorDataProvider.NewDataRequest
+  fullName: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.NewDataRequest
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector/Integrations/Lean/MarketDataCollectorDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: NewDataRequest
+    path: ../../src/MarketDataCollector/Integrations/Lean/MarketDataCollectorDataProvider.cs
+    startLine: 19
+  assemblies:
+  - MarketDataCollector
+  namespace: MarketDataCollector.Integrations.Lean
+  summary: Event raised each time data fetch is finished (successfully or not).
+  example: []
+  syntax:
+    content: public event EventHandler<DataProviderNewDataRequestEventArgs>? NewDataRequest
+    return:
+      type: System.EventHandler{QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs}
+    content.vb: Public Event NewDataRequest As EventHandler(Of DataProviderNewDataRequestEventArgs)
+  implements:
+  - QuantConnect.Interfaces.IDataProvider.NewDataRequest
+- uid: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.#ctor(System.String)
+  commentId: M:MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider
+  langs:
+  - csharp
+  - vb
+  name: MarketDataCollectorDataProvider(string?)
+  nameWithType: MarketDataCollectorDataProvider.MarketDataCollectorDataProvider(string?)
+  fullName: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.MarketDataCollectorDataProvider(string?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector/Integrations/Lean/MarketDataCollectorDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector/Integrations/Lean/MarketDataCollectorDataProvider.cs
+    startLine: 25
+  assemblies:
+  - MarketDataCollector
+  namespace: MarketDataCollector.Integrations.Lean
+  summary: Creates a new instance of the MarketDataCollector data provider.
+  example: []
+  syntax:
+    content: public MarketDataCollectorDataProvider(string? dataRoot = null)
+    parameters:
+    - id: dataRoot
+      type: System.String
+      description: Root directory where MarketDataCollector stores JSONL files (defaults to ./data)
+    content.vb: Public Sub New(dataRoot As String = Nothing)
+  overload: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.#ctor*
+  nameWithType.vb: MarketDataCollectorDataProvider.New(String)
+  fullName.vb: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.New(String)
+  name.vb: New(String)
+- uid: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.Fetch(System.String)
+  commentId: M:MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.Fetch(System.String)
+  id: Fetch(System.String)
+  parent: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider
+  langs:
+  - csharp
+  - vb
+  name: Fetch(string)
+  nameWithType: MarketDataCollectorDataProvider.Fetch(string)
+  fullName: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.Fetch(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector/Integrations/Lean/MarketDataCollectorDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Fetch
+    path: ../../src/MarketDataCollector/Integrations/Lean/MarketDataCollectorDataProvider.cs
+    startLine: 36
+  assemblies:
+  - MarketDataCollector
+  namespace: MarketDataCollector.Integrations.Lean
+  summary: Fetches data from the MarketDataCollector JSONL storage.
+  example: []
+  syntax:
+    content: public Stream Fetch(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: The file path to fetch
+    return:
+      type: System.IO.Stream
+      description: Stream containing the file data, or null if not found
+    content.vb: Public Function Fetch(key As String) As Stream
+  overload: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.Fetch*
+  implements:
+  - QuantConnect.Interfaces.IDataProvider.Fetch(System.String)
+  nameWithType.vb: MarketDataCollectorDataProvider.Fetch(String)
+  fullName.vb: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.Fetch(String)
+  name.vb: Fetch(String)
+- uid: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.Dispose
+  commentId: M:MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.Dispose
+  id: Dispose
+  parent: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: MarketDataCollectorDataProvider.Dispose()
+  fullName: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector/Integrations/Lean/MarketDataCollectorDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Dispose
+    path: ../../src/MarketDataCollector/Integrations/Lean/MarketDataCollectorDataProvider.cs
+    startLine: 107
+  assemblies:
+  - MarketDataCollector
+  namespace: MarketDataCollector.Integrations.Lean
+  summary: Disposes of the data provider resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.Dispose*
+references:
+- uid: MarketDataCollector.Integrations.Lean
+  commentId: N:MarketDataCollector.Integrations.Lean
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Integrations.Lean
+  nameWithType: MarketDataCollector.Integrations.Lean
+  fullName: MarketDataCollector.Integrations.Lean
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Integrations
+    name: Integrations
+    href: MarketDataCollector.Integrations.html
+  - name: .
+  - uid: MarketDataCollector.Integrations.Lean
+    name: Lean
+    href: MarketDataCollector.Integrations.Lean.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Integrations
+    name: Integrations
+    href: MarketDataCollector.Integrations.html
+  - name: .
+  - uid: MarketDataCollector.Integrations.Lean
+    name: Lean
+    href: MarketDataCollector.Integrations.Lean.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: QuantConnect.Interfaces.IDataProvider
+  commentId: T:QuantConnect.Interfaces.IDataProvider
+  parent: QuantConnect.Interfaces
+  isExternal: true
+  name: IDataProvider
+  nameWithType: IDataProvider
+  fullName: QuantConnect.Interfaces.IDataProvider
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: QuantConnect.Interfaces
+  commentId: N:QuantConnect.Interfaces
+  isExternal: true
+  name: QuantConnect.Interfaces
+  nameWithType: QuantConnect.Interfaces
+  fullName: QuantConnect.Interfaces
+  spec.csharp:
+  - uid: QuantConnect
+    name: QuantConnect
+    isExternal: true
+  - name: .
+  - uid: QuantConnect.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: QuantConnect
+    name: QuantConnect
+    isExternal: true
+  - name: .
+  - uid: QuantConnect.Interfaces
+    name: Interfaces
+    isExternal: true
+- uid: QuantConnect.Interfaces.IDataProvider.NewDataRequest
+  commentId: E:QuantConnect.Interfaces.IDataProvider.NewDataRequest
+  parent: QuantConnect.Interfaces.IDataProvider
+  isExternal: true
+  name: NewDataRequest
+  nameWithType: IDataProvider.NewDataRequest
+  fullName: QuantConnect.Interfaces.IDataProvider.NewDataRequest
+- uid: System.EventHandler{QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs}
+  commentId: T:System.EventHandler{QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs}
+  parent: System
+  definition: System.EventHandler`1
+  href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  name: EventHandler<DataProviderNewDataRequestEventArgs>
+  nameWithType: EventHandler<DataProviderNewDataRequestEventArgs>
+  fullName: System.EventHandler<QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs>
+  nameWithType.vb: EventHandler(Of DataProviderNewDataRequestEventArgs)
+  fullName.vb: System.EventHandler(Of QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs)
+  name.vb: EventHandler(Of DataProviderNewDataRequestEventArgs)
+  spec.csharp:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: <
+  - uid: QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs
+    name: DataProviderNewDataRequestEventArgs
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs
+    name: DataProviderNewDataRequestEventArgs
+    isExternal: true
+  - name: )
+- uid: System.EventHandler`1
+  commentId: T:System.EventHandler`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  name: EventHandler<TEventArgs>
+  nameWithType: EventHandler<TEventArgs>
+  fullName: System.EventHandler<TEventArgs>
+  nameWithType.vb: EventHandler(Of TEventArgs)
+  fullName.vb: System.EventHandler(Of TEventArgs)
+  name.vb: EventHandler(Of TEventArgs)
+  spec.csharp:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: <
+  - name: TEventArgs
+  - name: '>'
+  spec.vb:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventArgs
+  - name: )
+- uid: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.#ctor*
+  commentId: Overload:MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.#ctor
+  href: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.html#MarketDataCollector_Integrations_Lean_MarketDataCollectorDataProvider__ctor_System_String_
+  name: MarketDataCollectorDataProvider
+  nameWithType: MarketDataCollectorDataProvider.MarketDataCollectorDataProvider
+  fullName: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.MarketDataCollectorDataProvider
+  nameWithType.vb: MarketDataCollectorDataProvider.New
+  fullName.vb: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.Fetch*
+  commentId: Overload:MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.Fetch
+  href: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.html#MarketDataCollector_Integrations_Lean_MarketDataCollectorDataProvider_Fetch_System_String_
+  name: Fetch
+  nameWithType: MarketDataCollectorDataProvider.Fetch
+  fullName: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.Fetch
+- uid: QuantConnect.Interfaces.IDataProvider.Fetch(System.String)
+  commentId: M:QuantConnect.Interfaces.IDataProvider.Fetch(System.String)
+  parent: QuantConnect.Interfaces.IDataProvider
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: Fetch(string)
+  nameWithType: IDataProvider.Fetch(string)
+  fullName: QuantConnect.Interfaces.IDataProvider.Fetch(string)
+  nameWithType.vb: IDataProvider.Fetch(String)
+  fullName.vb: QuantConnect.Interfaces.IDataProvider.Fetch(String)
+  name.vb: Fetch(String)
+  spec.csharp:
+  - uid: QuantConnect.Interfaces.IDataProvider.Fetch(System.String)
+    name: Fetch
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: QuantConnect.Interfaces.IDataProvider.Fetch(System.String)
+    name: Fetch
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.stream
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.Dispose*
+  commentId: Overload:MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.Dispose
+  href: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.html#MarketDataCollector_Integrations_Lean_MarketDataCollectorDataProvider_Dispose
+  name: Dispose
+  nameWithType: MarketDataCollectorDataProvider.Dispose
+  fullName: MarketDataCollector.Integrations.Lean.MarketDataCollectorDataProvider.Dispose

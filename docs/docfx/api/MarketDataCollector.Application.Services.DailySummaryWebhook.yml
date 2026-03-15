@@ -1,0 +1,1012 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Services.DailySummaryWebhook
+  commentId: T:MarketDataCollector.Application.Services.DailySummaryWebhook
+  id: DailySummaryWebhook
+  parent: MarketDataCollector.Application.Services
+  children:
+  - MarketDataCollector.Application.Services.DailySummaryWebhook.#ctor(MarketDataCollector.Application.Services.DailySummaryWebhookConfig,MarketDataCollector.Application.Services.TradingCalendar)
+  - MarketDataCollector.Application.Services.DailySummaryWebhook.DisposeAsync
+  - MarketDataCollector.Application.Services.DailySummaryWebhook.OnSummaryFailed
+  - MarketDataCollector.Application.Services.DailySummaryWebhook.OnSummarySent
+  - MarketDataCollector.Application.Services.DailySummaryWebhook.RegisterStatisticsProviders(System.Func{MarketDataCollector.Application.Pipeline.PipelineStatistics},System.Func{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly}},System.Func{MarketDataCollector.Application.Monitoring.SystemHealthSnapshot})
+  - MarketDataCollector.Application.Services.DailySummaryWebhook.SendMessageAsync(System.String,System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Services.DailySummaryWebhook.SendSummaryAsync(System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: DailySummaryWebhook
+  nameWithType: DailySummaryWebhook
+  fullName: MarketDataCollector.Application.Services.DailySummaryWebhook
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/DailySummaryWebhook.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DailySummaryWebhook
+    path: ../../src/MarketDataCollector.Application/Services/DailySummaryWebhook.cs
+    startLine: 21
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Sends end-of-day summary digests via webhook to external services.
+
+    Supports Slack, Discord, Microsoft Teams, and generic JSON webhooks.
+  example: []
+  syntax:
+    content: 'public sealed class DailySummaryWebhook : IAsyncDisposable'
+    content.vb: Public NotInheritable Class DailySummaryWebhook Implements IAsyncDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IAsyncDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Services.DailySummaryWebhook.OnSummarySent
+  commentId: E:MarketDataCollector.Application.Services.DailySummaryWebhook.OnSummarySent
+  id: OnSummarySent
+  parent: MarketDataCollector.Application.Services.DailySummaryWebhook
+  langs:
+  - csharp
+  - vb
+  name: OnSummarySent
+  nameWithType: DailySummaryWebhook.OnSummarySent
+  fullName: MarketDataCollector.Application.Services.DailySummaryWebhook.OnSummarySent
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/DailySummaryWebhook.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnSummarySent
+    path: ../../src/MarketDataCollector.Application/Services/DailySummaryWebhook.cs
+    startLine: 38
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Event raised when a summary is sent successfully.
+  example: []
+  syntax:
+    content: public event Action<DailySummaryResult>? OnSummarySent
+    return:
+      type: System.Action{MarketDataCollector.Application.Services.DailySummaryResult}
+    content.vb: Public Event OnSummarySent As Action(Of DailySummaryResult)
+- uid: MarketDataCollector.Application.Services.DailySummaryWebhook.OnSummaryFailed
+  commentId: E:MarketDataCollector.Application.Services.DailySummaryWebhook.OnSummaryFailed
+  id: OnSummaryFailed
+  parent: MarketDataCollector.Application.Services.DailySummaryWebhook
+  langs:
+  - csharp
+  - vb
+  name: OnSummaryFailed
+  nameWithType: DailySummaryWebhook.OnSummaryFailed
+  fullName: MarketDataCollector.Application.Services.DailySummaryWebhook.OnSummaryFailed
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/DailySummaryWebhook.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnSummaryFailed
+    path: ../../src/MarketDataCollector.Application/Services/DailySummaryWebhook.cs
+    startLine: 43
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Event raised when a summary fails to send.
+  example: []
+  syntax:
+    content: public event Action<DailySummaryResult>? OnSummaryFailed
+    return:
+      type: System.Action{MarketDataCollector.Application.Services.DailySummaryResult}
+    content.vb: Public Event OnSummaryFailed As Action(Of DailySummaryResult)
+- uid: MarketDataCollector.Application.Services.DailySummaryWebhook.#ctor(MarketDataCollector.Application.Services.DailySummaryWebhookConfig,MarketDataCollector.Application.Services.TradingCalendar)
+  commentId: M:MarketDataCollector.Application.Services.DailySummaryWebhook.#ctor(MarketDataCollector.Application.Services.DailySummaryWebhookConfig,MarketDataCollector.Application.Services.TradingCalendar)
+  id: '#ctor(MarketDataCollector.Application.Services.DailySummaryWebhookConfig,MarketDataCollector.Application.Services.TradingCalendar)'
+  parent: MarketDataCollector.Application.Services.DailySummaryWebhook
+  langs:
+  - csharp
+  - vb
+  name: DailySummaryWebhook(DailySummaryWebhookConfig, TradingCalendar?)
+  nameWithType: DailySummaryWebhook.DailySummaryWebhook(DailySummaryWebhookConfig, TradingCalendar?)
+  fullName: MarketDataCollector.Application.Services.DailySummaryWebhook.DailySummaryWebhook(MarketDataCollector.Application.Services.DailySummaryWebhookConfig, MarketDataCollector.Application.Services.TradingCalendar?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/DailySummaryWebhook.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Services/DailySummaryWebhook.cs
+    startLine: 45
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  syntax:
+    content: public DailySummaryWebhook(DailySummaryWebhookConfig config, TradingCalendar? tradingCalendar = null)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Services.DailySummaryWebhookConfig
+    - id: tradingCalendar
+      type: MarketDataCollector.Application.Services.TradingCalendar
+    content.vb: Public Sub New(config As DailySummaryWebhookConfig, tradingCalendar As TradingCalendar = Nothing)
+  overload: MarketDataCollector.Application.Services.DailySummaryWebhook.#ctor*
+  nameWithType.vb: DailySummaryWebhook.New(DailySummaryWebhookConfig, TradingCalendar)
+  fullName.vb: MarketDataCollector.Application.Services.DailySummaryWebhook.New(MarketDataCollector.Application.Services.DailySummaryWebhookConfig, MarketDataCollector.Application.Services.TradingCalendar)
+  name.vb: New(DailySummaryWebhookConfig, TradingCalendar)
+- uid: MarketDataCollector.Application.Services.DailySummaryWebhook.RegisterStatisticsProviders(System.Func{MarketDataCollector.Application.Pipeline.PipelineStatistics},System.Func{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly}},System.Func{MarketDataCollector.Application.Monitoring.SystemHealthSnapshot})
+  commentId: M:MarketDataCollector.Application.Services.DailySummaryWebhook.RegisterStatisticsProviders(System.Func{MarketDataCollector.Application.Pipeline.PipelineStatistics},System.Func{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly}},System.Func{MarketDataCollector.Application.Monitoring.SystemHealthSnapshot})
+  id: RegisterStatisticsProviders(System.Func{MarketDataCollector.Application.Pipeline.PipelineStatistics},System.Func{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly}},System.Func{MarketDataCollector.Application.Monitoring.SystemHealthSnapshot})
+  parent: MarketDataCollector.Application.Services.DailySummaryWebhook
+  langs:
+  - csharp
+  - vb
+  name: RegisterStatisticsProviders(Func<PipelineStatistics>?, Func<IReadOnlyList<DataAnomaly>>?, Func<SystemHealthSnapshot>?)
+  nameWithType: DailySummaryWebhook.RegisterStatisticsProviders(Func<PipelineStatistics>?, Func<IReadOnlyList<DataAnomaly>>?, Func<SystemHealthSnapshot>?)
+  fullName: MarketDataCollector.Application.Services.DailySummaryWebhook.RegisterStatisticsProviders(System.Func<MarketDataCollector.Application.Pipeline.PipelineStatistics>?, System.Func<System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly>>?, System.Func<MarketDataCollector.Application.Monitoring.SystemHealthSnapshot>?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/DailySummaryWebhook.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterStatisticsProviders
+    path: ../../src/MarketDataCollector.Application/Services/DailySummaryWebhook.cs
+    startLine: 66
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Registers statistics providers for inclusion in the summary.
+  example: []
+  syntax:
+    content: public void RegisterStatisticsProviders(Func<PipelineStatistics>? pipelineStats = null, Func<IReadOnlyList<DataAnomaly>>? staleSymbols = null, Func<SystemHealthSnapshot>? healthSnapshot = null)
+    parameters:
+    - id: pipelineStats
+      type: System.Func{MarketDataCollector.Application.Pipeline.PipelineStatistics}
+    - id: staleSymbols
+      type: System.Func{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly}}
+    - id: healthSnapshot
+      type: System.Func{MarketDataCollector.Application.Monitoring.SystemHealthSnapshot}
+    content.vb: Public Sub RegisterStatisticsProviders(pipelineStats As Func(Of PipelineStatistics) = Nothing, staleSymbols As Func(Of IReadOnlyList(Of DataAnomaly)) = Nothing, healthSnapshot As Func(Of SystemHealthSnapshot) = Nothing)
+  overload: MarketDataCollector.Application.Services.DailySummaryWebhook.RegisterStatisticsProviders*
+  nameWithType.vb: DailySummaryWebhook.RegisterStatisticsProviders(Func(Of PipelineStatistics), Func(Of IReadOnlyList(Of DataAnomaly)), Func(Of SystemHealthSnapshot))
+  fullName.vb: MarketDataCollector.Application.Services.DailySummaryWebhook.RegisterStatisticsProviders(System.Func(Of MarketDataCollector.Application.Pipeline.PipelineStatistics), System.Func(Of System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly)), System.Func(Of MarketDataCollector.Application.Monitoring.SystemHealthSnapshot))
+  name.vb: RegisterStatisticsProviders(Func(Of PipelineStatistics), Func(Of IReadOnlyList(Of DataAnomaly)), Func(Of SystemHealthSnapshot))
+- uid: MarketDataCollector.Application.Services.DailySummaryWebhook.SendSummaryAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Services.DailySummaryWebhook.SendSummaryAsync(System.Threading.CancellationToken)
+  id: SendSummaryAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Services.DailySummaryWebhook
+  langs:
+  - csharp
+  - vb
+  name: SendSummaryAsync(CancellationToken)
+  nameWithType: DailySummaryWebhook.SendSummaryAsync(CancellationToken)
+  fullName: MarketDataCollector.Application.Services.DailySummaryWebhook.SendSummaryAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/DailySummaryWebhook.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SendSummaryAsync
+    path: ../../src/MarketDataCollector.Application/Services/DailySummaryWebhook.cs
+    startLine: 79
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Sends a daily summary immediately to all configured webhooks.
+  example: []
+  syntax:
+    content: public Task<DailySummaryResult> SendSummaryAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Services.DailySummaryResult}
+    content.vb: Public Function SendSummaryAsync(ct As CancellationToken = Nothing) As Task(Of DailySummaryResult)
+  overload: MarketDataCollector.Application.Services.DailySummaryWebhook.SendSummaryAsync*
+- uid: MarketDataCollector.Application.Services.DailySummaryWebhook.SendMessageAsync(System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Services.DailySummaryWebhook.SendMessageAsync(System.String,System.String,System.Threading.CancellationToken)
+  id: SendMessageAsync(System.String,System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Services.DailySummaryWebhook
+  langs:
+  - csharp
+  - vb
+  name: SendMessageAsync(string, string?, CancellationToken)
+  nameWithType: DailySummaryWebhook.SendMessageAsync(string, string?, CancellationToken)
+  fullName: MarketDataCollector.Application.Services.DailySummaryWebhook.SendMessageAsync(string, string?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/DailySummaryWebhook.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SendMessageAsync
+    path: ../../src/MarketDataCollector.Application/Services/DailySummaryWebhook.cs
+    startLine: 136
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Sends a custom message to all configured webhooks.
+  example: []
+  syntax:
+    content: public Task<IReadOnlyList<WebhookDeliveryResult>> SendMessageAsync(string message, string? title = null, CancellationToken ct = default)
+    parameters:
+    - id: message
+      type: System.String
+    - id: title
+      type: System.String
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.WebhookDeliveryResult}}
+    content.vb: Public Function SendMessageAsync(message As String, title As String = Nothing, ct As CancellationToken = Nothing) As Task(Of IReadOnlyList(Of WebhookDeliveryResult))
+  overload: MarketDataCollector.Application.Services.DailySummaryWebhook.SendMessageAsync*
+  nameWithType.vb: DailySummaryWebhook.SendMessageAsync(String, String, CancellationToken)
+  fullName.vb: MarketDataCollector.Application.Services.DailySummaryWebhook.SendMessageAsync(String, String, System.Threading.CancellationToken)
+  name.vb: SendMessageAsync(String, String, CancellationToken)
+- uid: MarketDataCollector.Application.Services.DailySummaryWebhook.DisposeAsync
+  commentId: M:MarketDataCollector.Application.Services.DailySummaryWebhook.DisposeAsync
+  id: DisposeAsync
+  parent: MarketDataCollector.Application.Services.DailySummaryWebhook
+  langs:
+  - csharp
+  - vb
+  name: DisposeAsync()
+  nameWithType: DailySummaryWebhook.DisposeAsync()
+  fullName: MarketDataCollector.Application.Services.DailySummaryWebhook.DisposeAsync()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/DailySummaryWebhook.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisposeAsync
+    path: ../../src/MarketDataCollector.Application/Services/DailySummaryWebhook.cs
+    startLine: 507
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Performs application-defined tasks associated with freeing, releasing, or
+
+    resetting unmanaged resources asynchronously.
+  example: []
+  syntax:
+    content: public ValueTask DisposeAsync()
+    return:
+      type: System.Threading.Tasks.ValueTask
+      description: A task that represents the asynchronous dispose operation.
+    content.vb: Public Function DisposeAsync() As ValueTask
+  overload: MarketDataCollector.Application.Services.DailySummaryWebhook.DisposeAsync*
+  implements:
+  - System.IAsyncDisposable.DisposeAsync
+references:
+- uid: MarketDataCollector.Application.Services
+  commentId: N:MarketDataCollector.Application.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Services
+  nameWithType: MarketDataCollector.Application.Services
+  fullName: MarketDataCollector.Application.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IAsyncDisposable
+  commentId: T:System.IAsyncDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
+  name: IAsyncDisposable
+  nameWithType: IAsyncDisposable
+  fullName: System.IAsyncDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Action{MarketDataCollector.Application.Services.DailySummaryResult}
+  commentId: T:System.Action{MarketDataCollector.Application.Services.DailySummaryResult}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<DailySummaryResult>
+  nameWithType: Action<DailySummaryResult>
+  fullName: System.Action<MarketDataCollector.Application.Services.DailySummaryResult>
+  nameWithType.vb: Action(Of DailySummaryResult)
+  fullName.vb: System.Action(Of MarketDataCollector.Application.Services.DailySummaryResult)
+  name.vb: Action(Of DailySummaryResult)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MarketDataCollector.Application.Services.DailySummaryResult
+    name: DailySummaryResult
+    href: MarketDataCollector.Application.Services.DailySummaryResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.DailySummaryResult
+    name: DailySummaryResult
+    href: MarketDataCollector.Application.Services.DailySummaryResult.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Services.DailySummaryWebhook.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Services.DailySummaryWebhook.#ctor
+  href: MarketDataCollector.Application.Services.DailySummaryWebhook.html#MarketDataCollector_Application_Services_DailySummaryWebhook__ctor_MarketDataCollector_Application_Services_DailySummaryWebhookConfig_MarketDataCollector_Application_Services_TradingCalendar_
+  name: DailySummaryWebhook
+  nameWithType: DailySummaryWebhook.DailySummaryWebhook
+  fullName: MarketDataCollector.Application.Services.DailySummaryWebhook.DailySummaryWebhook
+  nameWithType.vb: DailySummaryWebhook.New
+  fullName.vb: MarketDataCollector.Application.Services.DailySummaryWebhook.New
+  name.vb: New
+- uid: MarketDataCollector.Application.Services.DailySummaryWebhookConfig
+  commentId: T:MarketDataCollector.Application.Services.DailySummaryWebhookConfig
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.DailySummaryWebhookConfig.html
+  name: DailySummaryWebhookConfig
+  nameWithType: DailySummaryWebhookConfig
+  fullName: MarketDataCollector.Application.Services.DailySummaryWebhookConfig
+- uid: MarketDataCollector.Application.Services.TradingCalendar
+  commentId: T:MarketDataCollector.Application.Services.TradingCalendar
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.TradingCalendar.html
+  name: TradingCalendar
+  nameWithType: TradingCalendar
+  fullName: MarketDataCollector.Application.Services.TradingCalendar
+- uid: MarketDataCollector.Application.Services.DailySummaryWebhook.RegisterStatisticsProviders*
+  commentId: Overload:MarketDataCollector.Application.Services.DailySummaryWebhook.RegisterStatisticsProviders
+  href: MarketDataCollector.Application.Services.DailySummaryWebhook.html#MarketDataCollector_Application_Services_DailySummaryWebhook_RegisterStatisticsProviders_System_Func_MarketDataCollector_Application_Pipeline_PipelineStatistics__System_Func_System_Collections_Generic_IReadOnlyList_MarketDataCollector_Application_Monitoring_DataQuality_DataAnomaly___System_Func_MarketDataCollector_Application_Monitoring_SystemHealthSnapshot__
+  name: RegisterStatisticsProviders
+  nameWithType: DailySummaryWebhook.RegisterStatisticsProviders
+  fullName: MarketDataCollector.Application.Services.DailySummaryWebhook.RegisterStatisticsProviders
+- uid: System.Func{MarketDataCollector.Application.Pipeline.PipelineStatistics}
+  commentId: T:System.Func{MarketDataCollector.Application.Pipeline.PipelineStatistics}
+  parent: System
+  definition: System.Func`1
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<PipelineStatistics>
+  nameWithType: Func<PipelineStatistics>
+  fullName: System.Func<MarketDataCollector.Application.Pipeline.PipelineStatistics>
+  nameWithType.vb: Func(Of PipelineStatistics)
+  fullName.vb: System.Func(Of MarketDataCollector.Application.Pipeline.PipelineStatistics)
+  name.vb: Func(Of PipelineStatistics)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: MarketDataCollector.Application.Pipeline.PipelineStatistics
+    name: PipelineStatistics
+    href: MarketDataCollector.Application.Pipeline.PipelineStatistics.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Pipeline.PipelineStatistics
+    name: PipelineStatistics
+    href: MarketDataCollector.Application.Pipeline.PipelineStatistics.html
+  - name: )
+- uid: System.Func{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly}}
+  commentId: T:System.Func{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly}}
+  parent: System
+  definition: System.Func`1
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<IReadOnlyList<DataAnomaly>>
+  nameWithType: Func<IReadOnlyList<DataAnomaly>>
+  fullName: System.Func<System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly>>
+  nameWithType.vb: Func(Of IReadOnlyList(Of DataAnomaly))
+  fullName.vb: System.Func(Of System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly))
+  name.vb: Func(Of IReadOnlyList(Of DataAnomaly))
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+    name: DataAnomaly
+    href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly
+    name: DataAnomaly
+    href: MarketDataCollector.Application.Monitoring.DataQuality.DataAnomaly.html
+  - name: )
+  - name: )
+- uid: System.Func{MarketDataCollector.Application.Monitoring.SystemHealthSnapshot}
+  commentId: T:System.Func{MarketDataCollector.Application.Monitoring.SystemHealthSnapshot}
+  parent: System
+  definition: System.Func`1
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<SystemHealthSnapshot>
+  nameWithType: Func<SystemHealthSnapshot>
+  fullName: System.Func<MarketDataCollector.Application.Monitoring.SystemHealthSnapshot>
+  nameWithType.vb: Func(Of SystemHealthSnapshot)
+  fullName.vb: System.Func(Of MarketDataCollector.Application.Monitoring.SystemHealthSnapshot)
+  name.vb: Func(Of SystemHealthSnapshot)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.SystemHealthSnapshot
+    name: SystemHealthSnapshot
+    href: MarketDataCollector.Application.Monitoring.SystemHealthSnapshot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.SystemHealthSnapshot
+    name: SystemHealthSnapshot
+    href: MarketDataCollector.Application.Monitoring.SystemHealthSnapshot.html
+  - name: )
+- uid: System.Func`1
+  commentId: T:System.Func`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<TResult>
+  nameWithType: Func<TResult>
+  fullName: System.Func<TResult>
+  nameWithType.vb: Func(Of TResult)
+  fullName.vb: System.Func(Of TResult)
+  name.vb: Func(Of TResult)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: MarketDataCollector.Application.Services.DailySummaryWebhook.SendSummaryAsync*
+  commentId: Overload:MarketDataCollector.Application.Services.DailySummaryWebhook.SendSummaryAsync
+  href: MarketDataCollector.Application.Services.DailySummaryWebhook.html#MarketDataCollector_Application_Services_DailySummaryWebhook_SendSummaryAsync_System_Threading_CancellationToken_
+  name: SendSummaryAsync
+  nameWithType: DailySummaryWebhook.SendSummaryAsync
+  fullName: MarketDataCollector.Application.Services.DailySummaryWebhook.SendSummaryAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Services.DailySummaryResult}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Services.DailySummaryResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<DailySummaryResult>
+  nameWithType: Task<DailySummaryResult>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Services.DailySummaryResult>
+  nameWithType.vb: Task(Of DailySummaryResult)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Services.DailySummaryResult)
+  name.vb: Task(Of DailySummaryResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Services.DailySummaryResult
+    name: DailySummaryResult
+    href: MarketDataCollector.Application.Services.DailySummaryResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.DailySummaryResult
+    name: DailySummaryResult
+    href: MarketDataCollector.Application.Services.DailySummaryResult.html
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Application.Services.DailySummaryWebhook.SendMessageAsync*
+  commentId: Overload:MarketDataCollector.Application.Services.DailySummaryWebhook.SendMessageAsync
+  href: MarketDataCollector.Application.Services.DailySummaryWebhook.html#MarketDataCollector_Application_Services_DailySummaryWebhook_SendMessageAsync_System_String_System_String_System_Threading_CancellationToken_
+  name: SendMessageAsync
+  nameWithType: DailySummaryWebhook.SendMessageAsync
+  fullName: MarketDataCollector.Application.Services.DailySummaryWebhook.SendMessageAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.WebhookDeliveryResult}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.WebhookDeliveryResult}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IReadOnlyList<WebhookDeliveryResult>>
+  nameWithType: Task<IReadOnlyList<WebhookDeliveryResult>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Services.WebhookDeliveryResult>>
+  nameWithType.vb: Task(Of IReadOnlyList(Of WebhookDeliveryResult))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Services.WebhookDeliveryResult))
+  name.vb: Task(Of IReadOnlyList(Of WebhookDeliveryResult))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Application.Services.WebhookDeliveryResult
+    name: WebhookDeliveryResult
+    href: MarketDataCollector.Application.Services.WebhookDeliveryResult.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.WebhookDeliveryResult
+    name: WebhookDeliveryResult
+    href: MarketDataCollector.Application.Services.WebhookDeliveryResult.html
+  - name: )
+  - name: )
+- uid: MarketDataCollector.Application.Services.DailySummaryWebhook.DisposeAsync*
+  commentId: Overload:MarketDataCollector.Application.Services.DailySummaryWebhook.DisposeAsync
+  href: MarketDataCollector.Application.Services.DailySummaryWebhook.html#MarketDataCollector_Application_Services_DailySummaryWebhook_DisposeAsync
+  name: DisposeAsync
+  nameWithType: DailySummaryWebhook.DisposeAsync
+  fullName: MarketDataCollector.Application.Services.DailySummaryWebhook.DisposeAsync
+- uid: System.IAsyncDisposable.DisposeAsync
+  commentId: M:System.IAsyncDisposable.DisposeAsync
+  parent: System.IAsyncDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  name: DisposeAsync()
+  nameWithType: IAsyncDisposable.DisposeAsync()
+  fullName: System.IAsyncDisposable.DisposeAsync()
+  spec.csharp:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+- uid: System.Threading.Tasks.ValueTask
+  commentId: T:System.Threading.Tasks.ValueTask
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask
+  name: ValueTask
+  nameWithType: ValueTask
+  fullName: System.Threading.Tasks.ValueTask

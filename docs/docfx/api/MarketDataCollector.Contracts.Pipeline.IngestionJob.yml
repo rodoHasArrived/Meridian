@@ -1,0 +1,1471 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  commentId: T:MarketDataCollector.Contracts.Pipeline.IngestionJob
+  id: IngestionJob
+  parent: MarketDataCollector.Contracts.Pipeline
+  children:
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.CheckpointToken
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.CompletedAt
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.CreatedAt
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.ErrorMessage
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.FromDate
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.IsResumable
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.IsTerminal
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.IsValidTransition(MarketDataCollector.Contracts.Pipeline.IngestionJobState,MarketDataCollector.Contracts.Pipeline.IngestionJobState)
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.JobId
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.Provider
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.RetryEnvelope
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.Sla
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.StartedAt
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.State
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.SymbolProgress
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.Symbols
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.ToDate
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.TryTransition(MarketDataCollector.Contracts.Pipeline.IngestionJobState)
+  - MarketDataCollector.Contracts.Pipeline.IngestionJob.WorkloadType
+  langs:
+  - csharp
+  - vb
+  name: IngestionJob
+  nameWithType: IngestionJob
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IngestionJob
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 17
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: >-
+    Unified ingestion job state machine that applies to both realtime and historical flows.
+
+    Implements a single contract for all ingestion workload types, ensuring consistent
+
+    status tracking, checkpoint semantics, and retry behavior.
+  remarks: >-
+    State transitions:
+      Draft → Queued → Running → Paused → Completed | Failed | Cancelled
+
+    Resume behavior by workload type:
+      Realtime: restart from latest stream + gap-fill window
+      Historical: resume from last committed bar cursor (checkpoint token)
+  example: []
+  syntax:
+    content: public sealed class IngestionJob
+    content.vb: Public NotInheritable Class IngestionJob
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.JobId
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionJob.JobId
+  id: JobId
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: JobId
+  nameWithType: IngestionJob.JobId
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.JobId
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: JobId
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 22
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Unique identifier for this ingestion job.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("jobId")]
+
+      public string JobId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("jobId")>
+
+      Public Property JobId As String
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.JobId*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: jobId
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.WorkloadType
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionJob.WorkloadType
+  id: WorkloadType
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: WorkloadType
+  nameWithType: IngestionJob.WorkloadType
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.WorkloadType
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: WorkloadType
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 28
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: The type of ingestion workload.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("workloadType")]
+
+      public IngestionWorkloadType WorkloadType { get; set; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType
+    content.vb: >-
+      <JsonPropertyName("workloadType")>
+
+      Public Property WorkloadType As IngestionWorkloadType
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.WorkloadType*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: workloadType
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.State
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionJob.State
+  id: State
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: State
+  nameWithType: IngestionJob.State
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.State
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: State
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 34
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Current state of the job in the state machine.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("state")]
+
+      public IngestionJobState State { get; set; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Contracts.Pipeline.IngestionJobState
+    content.vb: >-
+      <JsonPropertyName("state")>
+
+      Public Property State As IngestionJobState
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.State*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: state
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.Symbols
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionJob.Symbols
+  id: Symbols
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: Symbols
+  nameWithType: IngestionJob.Symbols
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.Symbols
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Symbols
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 40
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Symbols targeted by this job.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("symbols")]
+
+      public string[] Symbols { get; set; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: >-
+      <JsonPropertyName("symbols")>
+
+      Public Property Symbols As String()
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.Symbols*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: symbols
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.Provider
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionJob.Provider
+  id: Provider
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: Provider
+  nameWithType: IngestionJob.Provider
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.Provider
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Provider
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 46
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: The data provider executing this job.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("provider")]
+
+      public string Provider { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("provider")>
+
+      Public Property Provider As String
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.Provider*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: provider
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.FromDate
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionJob.FromDate
+  id: FromDate
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: FromDate
+  nameWithType: IngestionJob.FromDate
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.FromDate
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FromDate
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 52
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Optional time range start (historical workloads).
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("fromDate")]
+
+      public DateTime? FromDate { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: >-
+      <JsonPropertyName("fromDate")>
+
+      Public Property FromDate As Date?
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.FromDate*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: fromDate
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.ToDate
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionJob.ToDate
+  id: ToDate
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: ToDate
+  nameWithType: IngestionJob.ToDate
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.ToDate
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ToDate
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 58
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Optional time range end (historical workloads).
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("toDate")]
+
+      public DateTime? ToDate { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: >-
+      <JsonPropertyName("toDate")>
+
+      Public Property ToDate As Date?
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.ToDate*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: toDate
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.CheckpointToken
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionJob.CheckpointToken
+  id: CheckpointToken
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: CheckpointToken
+  nameWithType: IngestionJob.CheckpointToken
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.CheckpointToken
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CheckpointToken
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 66
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: >-
+    Checkpoint token enabling resume from last durable offset.
+
+    For historical: last committed bar cursor (symbol/date).
+
+    For realtime: latest stream offset + gap-fill window.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("checkpointToken")]
+
+      public IngestionCheckpointToken? CheckpointToken { get; set; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Contracts.Pipeline.IngestionCheckpointToken
+    content.vb: >-
+      <JsonPropertyName("checkpointToken")>
+
+      Public Property CheckpointToken As IngestionCheckpointToken
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.CheckpointToken*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: checkpointToken
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.RetryEnvelope
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionJob.RetryEnvelope
+  id: RetryEnvelope
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: RetryEnvelope
+  nameWithType: IngestionJob.RetryEnvelope
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.RetryEnvelope
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RetryEnvelope
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 72
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Retry envelope tracking attempt count, schedule, and policy.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("retryEnvelope")]
+
+      public RetryEnvelope RetryEnvelope { get; set; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Contracts.Pipeline.RetryEnvelope
+    content.vb: >-
+      <JsonPropertyName("retryEnvelope")>
+
+      Public Property RetryEnvelope As RetryEnvelope
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.RetryEnvelope*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: retryEnvelope
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.Sla
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionJob.Sla
+  id: Sla
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: Sla
+  nameWithType: IngestionJob.Sla
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.Sla
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Sla
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 78
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: SLA expectations for this job.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("sla")]
+
+      public IngestionSla? Sla { get; set; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Contracts.Pipeline.IngestionSla
+    content.vb: >-
+      <JsonPropertyName("sla")>
+
+      Public Property Sla As IngestionSla
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.Sla*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: sla
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.CreatedAt
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionJob.CreatedAt
+  id: CreatedAt
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: CreatedAt
+  nameWithType: IngestionJob.CreatedAt
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.CreatedAt
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreatedAt
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 84
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: UTC timestamp when the job was created.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("createdAt")]
+
+      public DateTime CreatedAt { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: >-
+      <JsonPropertyName("createdAt")>
+
+      Public Property CreatedAt As Date
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.CreatedAt*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: createdAt
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.StartedAt
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionJob.StartedAt
+  id: StartedAt
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: StartedAt
+  nameWithType: IngestionJob.StartedAt
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.StartedAt
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StartedAt
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 90
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: UTC timestamp when the job started running.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("startedAt")]
+
+      public DateTime? StartedAt { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: >-
+      <JsonPropertyName("startedAt")>
+
+      Public Property StartedAt As Date?
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.StartedAt*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: startedAt
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.CompletedAt
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionJob.CompletedAt
+  id: CompletedAt
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: CompletedAt
+  nameWithType: IngestionJob.CompletedAt
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.CompletedAt
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CompletedAt
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 96
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: UTC timestamp when the job reached a terminal state.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("completedAt")]
+
+      public DateTime? CompletedAt { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: >-
+      <JsonPropertyName("completedAt")>
+
+      Public Property CompletedAt As Date?
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.CompletedAt*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: completedAt
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.ErrorMessage
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionJob.ErrorMessage
+  id: ErrorMessage
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: ErrorMessage
+  nameWithType: IngestionJob.ErrorMessage
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.ErrorMessage
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ErrorMessage
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 102
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Error message if the job failed.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("errorMessage")]
+
+      public string? ErrorMessage { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("errorMessage")>
+
+      Public Property ErrorMessage As String
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.ErrorMessage*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: errorMessage
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.SymbolProgress
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionJob.SymbolProgress
+  id: SymbolProgress
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: SymbolProgress
+  nameWithType: IngestionJob.SymbolProgress
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.SymbolProgress
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SymbolProgress
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 108
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Per-symbol progress details.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("symbolProgress")]
+
+      public List<IngestionSymbolProgress> SymbolProgress { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{MarketDataCollector.Contracts.Pipeline.IngestionSymbolProgress}
+    content.vb: >-
+      <JsonPropertyName("symbolProgress")>
+
+      Public Property SymbolProgress As List(Of IngestionSymbolProgress)
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.SymbolProgress*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: symbolProgress
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.IsTerminal
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionJob.IsTerminal
+  id: IsTerminal
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: IsTerminal
+  nameWithType: IngestionJob.IsTerminal
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.IsTerminal
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsTerminal
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 114
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Gets whether the job is in a terminal state.
+  example: []
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public bool IsTerminal { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property IsTerminal As Boolean
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.IsTerminal*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.IsResumable
+  commentId: P:MarketDataCollector.Contracts.Pipeline.IngestionJob.IsResumable
+  id: IsResumable
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: IsResumable
+  nameWithType: IngestionJob.IsResumable
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.IsResumable
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsResumable
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 122
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Gets whether the job can be resumed.
+  example: []
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public bool IsResumable { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property IsResumable As Boolean
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.IsResumable*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.TryTransition(MarketDataCollector.Contracts.Pipeline.IngestionJobState)
+  commentId: M:MarketDataCollector.Contracts.Pipeline.IngestionJob.TryTransition(MarketDataCollector.Contracts.Pipeline.IngestionJobState)
+  id: TryTransition(MarketDataCollector.Contracts.Pipeline.IngestionJobState)
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: TryTransition(IngestionJobState)
+  nameWithType: IngestionJob.TryTransition(IngestionJobState)
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.TryTransition(MarketDataCollector.Contracts.Pipeline.IngestionJobState)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TryTransition
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 131
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: >-
+    Attempts to transition the job to a new state.
+
+    Returns false if the transition is invalid.
+  example: []
+  syntax:
+    content: public bool TryTransition(IngestionJobState newState)
+    parameters:
+    - id: newState
+      type: MarketDataCollector.Contracts.Pipeline.IngestionJobState
+    return:
+      type: System.Boolean
+    content.vb: Public Function TryTransition(newState As IngestionJobState) As Boolean
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.TryTransition*
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.IsValidTransition(MarketDataCollector.Contracts.Pipeline.IngestionJobState,MarketDataCollector.Contracts.Pipeline.IngestionJobState)
+  commentId: M:MarketDataCollector.Contracts.Pipeline.IngestionJob.IsValidTransition(MarketDataCollector.Contracts.Pipeline.IngestionJobState,MarketDataCollector.Contracts.Pipeline.IngestionJobState)
+  id: IsValidTransition(MarketDataCollector.Contracts.Pipeline.IngestionJobState,MarketDataCollector.Contracts.Pipeline.IngestionJobState)
+  parent: MarketDataCollector.Contracts.Pipeline.IngestionJob
+  langs:
+  - csharp
+  - vb
+  name: IsValidTransition(IngestionJobState, IngestionJobState)
+  nameWithType: IngestionJob.IsValidTransition(IngestionJobState, IngestionJobState)
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.IsValidTransition(MarketDataCollector.Contracts.Pipeline.IngestionJobState, MarketDataCollector.Contracts.Pipeline.IngestionJobState)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsValidTransition
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/IngestionJob.cs
+    startLine: 157
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Validates whether a state transition is allowed.
+  example: []
+  syntax:
+    content: public static bool IsValidTransition(IngestionJobState from, IngestionJobState to)
+    parameters:
+    - id: from
+      type: MarketDataCollector.Contracts.Pipeline.IngestionJobState
+    - id: to
+      type: MarketDataCollector.Contracts.Pipeline.IngestionJobState
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function IsValidTransition(from As IngestionJobState, [to] As IngestionJobState) As Boolean
+  overload: MarketDataCollector.Contracts.Pipeline.IngestionJob.IsValidTransition*
+references:
+- uid: MarketDataCollector.Contracts.Pipeline
+  commentId: N:MarketDataCollector.Contracts.Pipeline
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Pipeline
+  nameWithType: MarketDataCollector.Contracts.Pipeline
+  fullName: MarketDataCollector.Contracts.Pipeline
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Pipeline
+    name: Pipeline
+    href: MarketDataCollector.Contracts.Pipeline.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Pipeline
+    name: Pipeline
+    href: MarketDataCollector.Contracts.Pipeline.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.JobId*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.JobId
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_JobId
+  name: JobId
+  nameWithType: IngestionJob.JobId
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.JobId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.WorkloadType*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.WorkloadType
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_WorkloadType
+  name: WorkloadType
+  nameWithType: IngestionJob.WorkloadType
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.WorkloadType
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType
+  commentId: T:MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType
+  parent: MarketDataCollector.Contracts.Pipeline
+  href: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType.html
+  name: IngestionWorkloadType
+  nameWithType: IngestionWorkloadType
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionWorkloadType
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.State*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.State
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_State
+  name: State
+  nameWithType: IngestionJob.State
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.State
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJobState
+  commentId: T:MarketDataCollector.Contracts.Pipeline.IngestionJobState
+  parent: MarketDataCollector.Contracts.Pipeline
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJobState.html
+  name: IngestionJobState
+  nameWithType: IngestionJobState
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJobState
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.Symbols*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.Symbols
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_Symbols
+  name: Symbols
+  nameWithType: IngestionJob.Symbols
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.Symbols
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.Provider*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.Provider
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_Provider
+  name: Provider
+  nameWithType: IngestionJob.Provider
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.Provider
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.FromDate*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.FromDate
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_FromDate
+  name: FromDate
+  nameWithType: IngestionJob.FromDate
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.FromDate
+- uid: System.Nullable{System.DateTime}
+  commentId: T:System.Nullable{System.DateTime}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime?
+  nameWithType: DateTime?
+  fullName: System.DateTime?
+  nameWithType.vb: Date?
+  fullName.vb: Date?
+  name.vb: Date?
+  spec.csharp:
+  - uid: System.DateTime
+    name: DateTime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTime
+    name: Date
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.ToDate*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.ToDate
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_ToDate
+  name: ToDate
+  nameWithType: IngestionJob.ToDate
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.ToDate
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.CheckpointToken*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.CheckpointToken
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_CheckpointToken
+  name: CheckpointToken
+  nameWithType: IngestionJob.CheckpointToken
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.CheckpointToken
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionCheckpointToken
+  commentId: T:MarketDataCollector.Contracts.Pipeline.IngestionCheckpointToken
+  parent: MarketDataCollector.Contracts.Pipeline
+  href: MarketDataCollector.Contracts.Pipeline.IngestionCheckpointToken.html
+  name: IngestionCheckpointToken
+  nameWithType: IngestionCheckpointToken
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionCheckpointToken
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.RetryEnvelope*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.RetryEnvelope
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_RetryEnvelope
+  name: RetryEnvelope
+  nameWithType: IngestionJob.RetryEnvelope
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.RetryEnvelope
+- uid: MarketDataCollector.Contracts.Pipeline.RetryEnvelope
+  commentId: T:MarketDataCollector.Contracts.Pipeline.RetryEnvelope
+  parent: MarketDataCollector.Contracts.Pipeline
+  href: MarketDataCollector.Contracts.Pipeline.RetryEnvelope.html
+  name: RetryEnvelope
+  nameWithType: RetryEnvelope
+  fullName: MarketDataCollector.Contracts.Pipeline.RetryEnvelope
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.Sla*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.Sla
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_Sla
+  name: Sla
+  nameWithType: IngestionJob.Sla
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.Sla
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionSla
+  commentId: T:MarketDataCollector.Contracts.Pipeline.IngestionSla
+  parent: MarketDataCollector.Contracts.Pipeline
+  href: MarketDataCollector.Contracts.Pipeline.IngestionSla.html
+  name: IngestionSla
+  nameWithType: IngestionSla
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionSla
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.CreatedAt*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.CreatedAt
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_CreatedAt
+  name: CreatedAt
+  nameWithType: IngestionJob.CreatedAt
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.CreatedAt
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.StartedAt*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.StartedAt
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_StartedAt
+  name: StartedAt
+  nameWithType: IngestionJob.StartedAt
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.StartedAt
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.CompletedAt*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.CompletedAt
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_CompletedAt
+  name: CompletedAt
+  nameWithType: IngestionJob.CompletedAt
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.CompletedAt
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.ErrorMessage*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.ErrorMessage
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_ErrorMessage
+  name: ErrorMessage
+  nameWithType: IngestionJob.ErrorMessage
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.ErrorMessage
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.SymbolProgress*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.SymbolProgress
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_SymbolProgress
+  name: SymbolProgress
+  nameWithType: IngestionJob.SymbolProgress
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.SymbolProgress
+- uid: System.Collections.Generic.List{MarketDataCollector.Contracts.Pipeline.IngestionSymbolProgress}
+  commentId: T:System.Collections.Generic.List{MarketDataCollector.Contracts.Pipeline.IngestionSymbolProgress}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<IngestionSymbolProgress>
+  nameWithType: List<IngestionSymbolProgress>
+  fullName: System.Collections.Generic.List<MarketDataCollector.Contracts.Pipeline.IngestionSymbolProgress>
+  nameWithType.vb: List(Of IngestionSymbolProgress)
+  fullName.vb: System.Collections.Generic.List(Of MarketDataCollector.Contracts.Pipeline.IngestionSymbolProgress)
+  name.vb: List(Of IngestionSymbolProgress)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Pipeline.IngestionSymbolProgress
+    name: IngestionSymbolProgress
+    href: MarketDataCollector.Contracts.Pipeline.IngestionSymbolProgress.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Pipeline.IngestionSymbolProgress
+    name: IngestionSymbolProgress
+    href: MarketDataCollector.Contracts.Pipeline.IngestionSymbolProgress.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.IsTerminal*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.IsTerminal
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_IsTerminal
+  name: IsTerminal
+  nameWithType: IngestionJob.IsTerminal
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.IsTerminal
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.IsResumable*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.IsResumable
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_IsResumable
+  name: IsResumable
+  nameWithType: IngestionJob.IsResumable
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.IsResumable
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.TryTransition*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.TryTransition
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_TryTransition_MarketDataCollector_Contracts_Pipeline_IngestionJobState_
+  name: TryTransition
+  nameWithType: IngestionJob.TryTransition
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.TryTransition
+- uid: MarketDataCollector.Contracts.Pipeline.IngestionJob.IsValidTransition*
+  commentId: Overload:MarketDataCollector.Contracts.Pipeline.IngestionJob.IsValidTransition
+  href: MarketDataCollector.Contracts.Pipeline.IngestionJob.html#MarketDataCollector_Contracts_Pipeline_IngestionJob_IsValidTransition_MarketDataCollector_Contracts_Pipeline_IngestionJobState_MarketDataCollector_Contracts_Pipeline_IngestionJobState_
+  name: IsValidTransition
+  nameWithType: IngestionJob.IsValidTransition
+  fullName: MarketDataCollector.Contracts.Pipeline.IngestionJob.IsValidTransition

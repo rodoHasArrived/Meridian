@@ -1,0 +1,1992 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  id: FinnhubSymbolSearchProviderRefactored
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  children:
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.#ctor(System.String,System.Net.Http.HttpClient,Serilog.ILogger)
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.ApiKeyEnvVar
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BaseUrl
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildDetailsUrl(System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildSearchUrl(System.String,System.String,System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.ConfigureHttpClientHeaders
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeSearchResults(System.String,System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DisplayName
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.HttpClientName
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.MaxRequestsPerWindow
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.MinRequestDelay
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.Name
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.Priority
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.RateLimitWindow
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.SupportedAssetTypes
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.SupportedExchanges
+  langs:
+  - csharp
+  - vb
+  name: FinnhubSymbolSearchProviderRefactored
+  nameWithType: FinnhubSymbolSearchProviderRefactored
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FinnhubSymbolSearchProviderRefactored
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 18
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  summary: >-
+    Refactored symbol search provider using Finnhub API, now extending BaseSymbolSearchProvider.
+
+    Provides symbol search and company profiles with generous free tier (60 calls/min).
+  remarks: >-
+    This refactored version eliminates ~200 lines of boilerplate code by leveraging
+
+    the BaseSymbolSearchProvider abstract class for common functionality.
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-001", "Finnhub symbol search provider implementation")]
+
+      public sealed class FinnhubSymbolSearchProviderRefactored : BaseSymbolSearchProvider, IFilterableSymbolSearchProvider, ISymbolSearchProvider, IProviderMetadata, IDisposable
+    content.vb: >-
+      <ImplementsAdr("ADR-001", "Finnhub symbol search provider implementation")>
+
+      Public NotInheritable Class FinnhubSymbolSearchProviderRefactored Inherits BaseSymbolSearchProvider Implements IFilterableSymbolSearchProvider, ISymbolSearchProvider, IProviderMetadata, IDisposable
+  inheritance:
+  - System.Object
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  implements:
+  - MarketDataCollector.Infrastructure.Adapters.Core.IFilterableSymbolSearchProvider
+  - MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  - System.IDisposable
+  inheritedMembers:
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.String,System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.GetDetailsAsync(System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Dispose
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-001
+    - type: System.String
+      value: Finnhub symbol search provider implementation
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.Name
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.Name
+  id: Name
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: FinnhubSymbolSearchProviderRefactored.Name
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.Name
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Name
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 21
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  summary: Unique identifier for the provider (e.g., "alpaca", "finnhub").
+  example: []
+  syntax:
+    content: public override string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Overrides ReadOnly Property Name As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Name
+  overload: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.Name*
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DisplayName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DisplayName
+  id: DisplayName
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: DisplayName
+  nameWithType: FinnhubSymbolSearchProviderRefactored.DisplayName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DisplayName
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisplayName
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 22
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  summary: Human-readable display name for the provider.
+  example: []
+  syntax:
+    content: public override string DisplayName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Overrides ReadOnly Property DisplayName As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DisplayName
+  overload: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DisplayName*
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.Priority
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.Priority
+  id: Priority
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: Priority
+  nameWithType: FinnhubSymbolSearchProviderRefactored.Priority
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.Priority
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Priority
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 23
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  summary: >-
+    Priority for this provider (lower = higher priority).
+
+    Default is 50.
+  example: []
+  syntax:
+    content: public override int Priority { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Overrides ReadOnly Property Priority As Integer
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Priority
+  overload: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.Priority*
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.HttpClientName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.HttpClientName
+  id: HttpClientName
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: HttpClientName
+  nameWithType: FinnhubSymbolSearchProviderRefactored.HttpClientName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.HttpClientName
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HttpClientName
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 25
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  summary: Named HTTP client identifier from HttpClientNames.
+  example: []
+  syntax:
+    content: protected override string HttpClientName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Protected Overrides ReadOnly Property HttpClientName As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.HttpClientName
+  overload: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.HttpClientName*
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BaseUrl
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BaseUrl
+  id: BaseUrl
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: BaseUrl
+  nameWithType: FinnhubSymbolSearchProviderRefactored.BaseUrl
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BaseUrl
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BaseUrl
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 26
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  summary: Base URL for the provider's API.
+  example: []
+  syntax:
+    content: protected override string BaseUrl { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Protected Overrides ReadOnly Property BaseUrl As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BaseUrl
+  overload: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BaseUrl*
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.ApiKeyEnvVar
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.ApiKeyEnvVar
+  id: ApiKeyEnvVar
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: ApiKeyEnvVar
+  nameWithType: FinnhubSymbolSearchProviderRefactored.ApiKeyEnvVar
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.ApiKeyEnvVar
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ApiKeyEnvVar
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 27
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  summary: Environment variable name for the API key.
+  example: []
+  syntax:
+    content: protected override string ApiKeyEnvVar { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Protected Overrides ReadOnly Property ApiKeyEnvVar As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ApiKeyEnvVar
+  overload: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.ApiKeyEnvVar*
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.MaxRequestsPerWindow
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.MaxRequestsPerWindow
+  id: MaxRequestsPerWindow
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: MaxRequestsPerWindow
+  nameWithType: FinnhubSymbolSearchProviderRefactored.MaxRequestsPerWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.MaxRequestsPerWindow
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MaxRequestsPerWindow
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 29
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  summary: Maximum requests allowed per rate limit window.
+  example: []
+  syntax:
+    content: protected override int MaxRequestsPerWindow { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Protected Overrides ReadOnly Property MaxRequestsPerWindow As Integer
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.MaxRequestsPerWindow
+  overload: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.MaxRequestsPerWindow*
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.RateLimitWindow
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.RateLimitWindow
+  id: RateLimitWindow
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: RateLimitWindow
+  nameWithType: FinnhubSymbolSearchProviderRefactored.RateLimitWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.RateLimitWindow
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RateLimitWindow
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 30
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  summary: Duration of the rate limit window.
+  example: []
+  syntax:
+    content: protected override TimeSpan RateLimitWindow { get; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Protected Overrides ReadOnly Property RateLimitWindow As TimeSpan
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.RateLimitWindow
+  overload: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.RateLimitWindow*
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.MinRequestDelay
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.MinRequestDelay
+  id: MinRequestDelay
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: MinRequestDelay
+  nameWithType: FinnhubSymbolSearchProviderRefactored.MinRequestDelay
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.MinRequestDelay
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MinRequestDelay
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 31
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  summary: Minimum delay between requests.
+  example: []
+  syntax:
+    content: protected override TimeSpan MinRequestDelay { get; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Protected Overrides ReadOnly Property MinRequestDelay As TimeSpan
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.MinRequestDelay
+  overload: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.MinRequestDelay*
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.SupportedAssetTypes
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.SupportedAssetTypes
+  id: SupportedAssetTypes
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: SupportedAssetTypes
+  nameWithType: FinnhubSymbolSearchProviderRefactored.SupportedAssetTypes
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.SupportedAssetTypes
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SupportedAssetTypes
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 33
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  summary: Supported asset types for filtering.
+  example: []
+  syntax:
+    content: public override IReadOnlyList<string> SupportedAssetTypes { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public Overrides ReadOnly Property SupportedAssetTypes As IReadOnlyList(Of String)
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SupportedAssetTypes
+  overload: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.SupportedAssetTypes*
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.SupportedExchanges
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.SupportedExchanges
+  id: SupportedExchanges
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: SupportedExchanges
+  nameWithType: FinnhubSymbolSearchProviderRefactored.SupportedExchanges
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.SupportedExchanges
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SupportedExchanges
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 39
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  summary: Supported exchanges for filtering.
+  example: []
+  syntax:
+    content: public override IReadOnlyList<string> SupportedExchanges { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public Overrides ReadOnly Property SupportedExchanges As IReadOnlyList(Of String)
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SupportedExchanges
+  overload: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.SupportedExchanges*
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.#ctor(System.String,System.Net.Http.HttpClient,Serilog.ILogger)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.#ctor(System.String,System.Net.Http.HttpClient,Serilog.ILogger)
+  id: '#ctor(System.String,System.Net.Http.HttpClient,Serilog.ILogger)'
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: FinnhubSymbolSearchProviderRefactored(string?, HttpClient?, ILogger?)
+  nameWithType: FinnhubSymbolSearchProviderRefactored.FinnhubSymbolSearchProviderRefactored(string?, HttpClient?, ILogger?)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.FinnhubSymbolSearchProviderRefactored(string?, System.Net.Http.HttpClient?, Serilog.ILogger?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 45
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  syntax:
+    content: public FinnhubSymbolSearchProviderRefactored(string? apiKey = null, HttpClient? httpClient = null, ILogger? log = null)
+    parameters:
+    - id: apiKey
+      type: System.String
+    - id: httpClient
+      type: System.Net.Http.HttpClient
+    - id: log
+      type: Serilog.ILogger
+    content.vb: Public Sub New(apiKey As String = Nothing, httpClient As HttpClient = Nothing, log As ILogger = Nothing)
+  overload: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.#ctor*
+  nameWithType.vb: FinnhubSymbolSearchProviderRefactored.New(String, HttpClient, ILogger)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.New(String, System.Net.Http.HttpClient, Serilog.ILogger)
+  name.vb: New(String, HttpClient, ILogger)
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.ConfigureHttpClientHeaders
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.ConfigureHttpClientHeaders
+  id: ConfigureHttpClientHeaders
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: ConfigureHttpClientHeaders()
+  nameWithType: FinnhubSymbolSearchProviderRefactored.ConfigureHttpClientHeaders()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.ConfigureHttpClientHeaders()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConfigureHttpClientHeaders
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 53
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  summary: Configure HTTP client headers. Override to add provider-specific headers.
+  example: []
+  syntax:
+    content: protected override void ConfigureHttpClientHeaders()
+    content.vb: Protected Overrides Sub ConfigureHttpClientHeaders()
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ConfigureHttpClientHeaders
+  overload: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.ConfigureHttpClientHeaders*
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildSearchUrl(System.String,System.String,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildSearchUrl(System.String,System.String,System.String)
+  id: BuildSearchUrl(System.String,System.String,System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: BuildSearchUrl(string, string?, string?)
+  nameWithType: FinnhubSymbolSearchProviderRefactored.BuildSearchUrl(string, string?, string?)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildSearchUrl(string, string?, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BuildSearchUrl
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 63
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  summary: Build the URL for a search request.
+  example: []
+  syntax:
+    content: protected override string BuildSearchUrl(string query, string? assetType, string? exchange)
+    parameters:
+    - id: query
+      type: System.String
+      description: Search query.
+    - id: assetType
+      type: System.String
+      description: Optional asset type filter.
+    - id: exchange
+      type: System.String
+      description: Optional exchange filter.
+    return:
+      type: System.String
+      description: Complete URL for the search request.
+    content.vb: Protected Overrides Function BuildSearchUrl(query As String, assetType As String, exchange As String) As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildSearchUrl(System.String,System.String,System.String)
+  overload: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildSearchUrl*
+  nameWithType.vb: FinnhubSymbolSearchProviderRefactored.BuildSearchUrl(String, String, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildSearchUrl(String, String, String)
+  name.vb: BuildSearchUrl(String, String, String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildDetailsUrl(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildDetailsUrl(System.String)
+  id: BuildDetailsUrl(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: BuildDetailsUrl(string)
+  nameWithType: FinnhubSymbolSearchProviderRefactored.BuildDetailsUrl(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildDetailsUrl(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BuildDetailsUrl
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 70
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  summary: Build the URL for a symbol details request.
+  example: []
+  syntax:
+    content: protected override string BuildDetailsUrl(string symbol)
+    parameters:
+    - id: symbol
+      type: System.String
+      description: Normalized symbol.
+    return:
+      type: System.String
+      description: Complete URL for the details request.
+    content.vb: Protected Overrides Function BuildDetailsUrl(symbol As String) As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildDetailsUrl(System.String)
+  overload: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildDetailsUrl*
+  nameWithType.vb: FinnhubSymbolSearchProviderRefactored.BuildDetailsUrl(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildDetailsUrl(String)
+  name.vb: BuildDetailsUrl(String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeSearchResults(System.String,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeSearchResults(System.String,System.String)
+  id: DeserializeSearchResults(System.String,System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: DeserializeSearchResults(string, string)
+  nameWithType: FinnhubSymbolSearchProviderRefactored.DeserializeSearchResults(string, string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeSearchResults(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DeserializeSearchResults
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 75
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  summary: Deserialize the search response JSON into results.
+  example: []
+  syntax:
+    content: protected override IEnumerable<SymbolSearchResult> DeserializeSearchResults(string json, string query)
+    parameters:
+    - id: json
+      type: System.String
+      description: Response JSON.
+    - id: query
+      type: System.String
+      description: Original search query (for match scoring).
+    return:
+      type: System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult}
+      description: List of search results.
+    content.vb: Protected Overrides Function DeserializeSearchResults(json As String, query As String) As IEnumerable(Of SymbolSearchResult)
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeSearchResults(System.String,System.String)
+  overload: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeSearchResults*
+  nameWithType.vb: FinnhubSymbolSearchProviderRefactored.DeserializeSearchResults(String, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeSearchResults(String, String)
+  name.vb: DeserializeSearchResults(String, String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+  id: DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  langs:
+  - csharp
+  - vb
+  name: DeserializeDetailsAsync(string, string, CancellationToken)
+  nameWithType: FinnhubSymbolSearchProviderRefactored.DeserializeDetailsAsync(string, string, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeDetailsAsync(string, string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DeserializeDetailsAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Finnhub/FinnhubSymbolSearchProviderRefactored.cs
+    startLine: 96
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  summary: Deserialize the details response JSON into a SymbolDetails object.
+  example: []
+  syntax:
+    content: protected override Task<SymbolDetails?> DeserializeDetailsAsync(string json, string symbol, CancellationToken ct)
+    parameters:
+    - id: json
+      type: System.String
+      description: Response JSON.
+    - id: symbol
+      type: System.String
+      description: Normalized symbol.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.SymbolDetails}
+      description: Symbol details or null if not found.
+    content.vb: Protected Overrides Function DeserializeDetailsAsync(json As String, symbol As String, ct As CancellationToken) As Task(Of SymbolDetails)
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+  overload: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeDetailsAsync*
+  nameWithType.vb: FinnhubSymbolSearchProviderRefactored.DeserializeDetailsAsync(String, String, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeDetailsAsync(String, String, System.Threading.CancellationToken)
+  name.vb: DeserializeDetailsAsync(String, String, CancellationToken)
+references:
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Finnhub
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Finnhub
+    name: Finnhub
+    href: MarketDataCollector.Infrastructure.Adapters.Finnhub.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Finnhub
+    name: Finnhub
+    href: MarketDataCollector.Infrastructure.Adapters.Finnhub.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html
+  name: BaseSymbolSearchProvider
+  nameWithType: BaseSymbolSearchProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IFilterableSymbolSearchProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.IFilterableSymbolSearchProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IFilterableSymbolSearchProvider.html
+  name: IFilterableSymbolSearchProvider
+  nameWithType: IFilterableSymbolSearchProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IFilterableSymbolSearchProvider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.html
+  name: ISymbolSearchProvider
+  nameWithType: ISymbolSearchProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html
+  name: IProviderMetadata
+  nameWithType: IProviderMetadata
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_IsAvailableAsync_System_Threading_CancellationToken_
+  name: IsAvailableAsync(CancellationToken)
+  nameWithType: BaseSymbolSearchProvider.IsAvailableAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.IsAvailableAsync(System.Threading.CancellationToken)
+    name: IsAvailableAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_IsAvailableAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.IsAvailableAsync(System.Threading.CancellationToken)
+    name: IsAvailableAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_IsAvailableAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_SearchAsync_System_String_System_Int32_System_Threading_CancellationToken_
+  name: SearchAsync(string, int, CancellationToken)
+  nameWithType: BaseSymbolSearchProvider.SearchAsync(string, int, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(string, int, System.Threading.CancellationToken)
+  nameWithType.vb: BaseSymbolSearchProvider.SearchAsync(String, Integer, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(String, Integer, System.Threading.CancellationToken)
+  name.vb: SearchAsync(String, Integer, CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.Threading.CancellationToken)
+    name: SearchAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_SearchAsync_System_String_System_Int32_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.Threading.CancellationToken)
+    name: SearchAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_SearchAsync_System_String_System_Int32_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.String,System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_SearchAsync_System_String_System_Int32_System_String_System_String_System_Threading_CancellationToken_
+  name: SearchAsync(string, int, string, string, CancellationToken)
+  nameWithType: BaseSymbolSearchProvider.SearchAsync(string, int, string, string, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(string, int, string, string, System.Threading.CancellationToken)
+  nameWithType.vb: BaseSymbolSearchProvider.SearchAsync(String, Integer, String, String, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(String, Integer, String, String, System.Threading.CancellationToken)
+  name.vb: SearchAsync(String, Integer, String, String, CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.String,System.String,System.Threading.CancellationToken)
+    name: SearchAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_SearchAsync_System_String_System_Int32_System_String_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SearchAsync(System.String,System.Int32,System.String,System.String,System.Threading.CancellationToken)
+    name: SearchAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_SearchAsync_System_String_System_Int32_System_String_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.GetDetailsAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.GetDetailsAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_GetDetailsAsync_System_String_System_Threading_CancellationToken_
+  name: GetDetailsAsync(string, CancellationToken)
+  nameWithType: BaseSymbolSearchProvider.GetDetailsAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.GetDetailsAsync(string, System.Threading.CancellationToken)
+  nameWithType.vb: BaseSymbolSearchProvider.GetDetailsAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.GetDetailsAsync(String, System.Threading.CancellationToken)
+  name.vb: GetDetailsAsync(String, CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.GetDetailsAsync(System.String,System.Threading.CancellationToken)
+    name: GetDetailsAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_GetDetailsAsync_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.GetDetailsAsync(System.String,System.Threading.CancellationToken)
+    name: GetDetailsAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_GetDetailsAsync_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Dispose
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Dispose
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_Dispose
+  name: Dispose()
+  nameWithType: BaseSymbolSearchProvider.Dispose()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Dispose()
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Dispose
+    name: Dispose
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Dispose
+    name: Dispose
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_Dispose
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Infrastructure.Adapters.Core
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Core
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Core
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Name
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Name
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_Name
+  name: Name
+  nameWithType: BaseSymbolSearchProvider.Name
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Name
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.Name*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.Name
+  href: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Finnhub_FinnhubSymbolSearchProviderRefactored_Name
+  name: Name
+  nameWithType: FinnhubSymbolSearchProviderRefactored.Name
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DisplayName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DisplayName
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_DisplayName
+  name: DisplayName
+  nameWithType: BaseSymbolSearchProvider.DisplayName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DisplayName
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DisplayName*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DisplayName
+  href: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Finnhub_FinnhubSymbolSearchProviderRefactored_DisplayName
+  name: DisplayName
+  nameWithType: FinnhubSymbolSearchProviderRefactored.DisplayName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DisplayName
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Priority
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Priority
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_Priority
+  name: Priority
+  nameWithType: BaseSymbolSearchProvider.Priority
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.Priority
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.Priority*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.Priority
+  href: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Finnhub_FinnhubSymbolSearchProviderRefactored_Priority
+  name: Priority
+  nameWithType: FinnhubSymbolSearchProviderRefactored.Priority
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.Priority
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.HttpClientName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.HttpClientName
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_HttpClientName
+  name: HttpClientName
+  nameWithType: BaseSymbolSearchProvider.HttpClientName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.HttpClientName
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.HttpClientName*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.HttpClientName
+  href: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Finnhub_FinnhubSymbolSearchProviderRefactored_HttpClientName
+  name: HttpClientName
+  nameWithType: FinnhubSymbolSearchProviderRefactored.HttpClientName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.HttpClientName
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BaseUrl
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BaseUrl
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_BaseUrl
+  name: BaseUrl
+  nameWithType: BaseSymbolSearchProvider.BaseUrl
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BaseUrl
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BaseUrl*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BaseUrl
+  href: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Finnhub_FinnhubSymbolSearchProviderRefactored_BaseUrl
+  name: BaseUrl
+  nameWithType: FinnhubSymbolSearchProviderRefactored.BaseUrl
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BaseUrl
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ApiKeyEnvVar
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ApiKeyEnvVar
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_ApiKeyEnvVar
+  name: ApiKeyEnvVar
+  nameWithType: BaseSymbolSearchProvider.ApiKeyEnvVar
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ApiKeyEnvVar
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.ApiKeyEnvVar*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.ApiKeyEnvVar
+  href: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Finnhub_FinnhubSymbolSearchProviderRefactored_ApiKeyEnvVar
+  name: ApiKeyEnvVar
+  nameWithType: FinnhubSymbolSearchProviderRefactored.ApiKeyEnvVar
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.ApiKeyEnvVar
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.MaxRequestsPerWindow
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.MaxRequestsPerWindow
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_MaxRequestsPerWindow
+  name: MaxRequestsPerWindow
+  nameWithType: BaseSymbolSearchProvider.MaxRequestsPerWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.MaxRequestsPerWindow
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.MaxRequestsPerWindow*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.MaxRequestsPerWindow
+  href: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Finnhub_FinnhubSymbolSearchProviderRefactored_MaxRequestsPerWindow
+  name: MaxRequestsPerWindow
+  nameWithType: FinnhubSymbolSearchProviderRefactored.MaxRequestsPerWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.MaxRequestsPerWindow
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.RateLimitWindow
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.RateLimitWindow
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_RateLimitWindow
+  name: RateLimitWindow
+  nameWithType: BaseSymbolSearchProvider.RateLimitWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.RateLimitWindow
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.RateLimitWindow*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.RateLimitWindow
+  href: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Finnhub_FinnhubSymbolSearchProviderRefactored_RateLimitWindow
+  name: RateLimitWindow
+  nameWithType: FinnhubSymbolSearchProviderRefactored.RateLimitWindow
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.RateLimitWindow
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.MinRequestDelay
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.MinRequestDelay
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_MinRequestDelay
+  name: MinRequestDelay
+  nameWithType: BaseSymbolSearchProvider.MinRequestDelay
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.MinRequestDelay
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.MinRequestDelay*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.MinRequestDelay
+  href: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Finnhub_FinnhubSymbolSearchProviderRefactored_MinRequestDelay
+  name: MinRequestDelay
+  nameWithType: FinnhubSymbolSearchProviderRefactored.MinRequestDelay
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.MinRequestDelay
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SupportedAssetTypes
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SupportedAssetTypes
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_SupportedAssetTypes
+  name: SupportedAssetTypes
+  nameWithType: BaseSymbolSearchProvider.SupportedAssetTypes
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SupportedAssetTypes
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.SupportedAssetTypes*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.SupportedAssetTypes
+  href: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Finnhub_FinnhubSymbolSearchProviderRefactored_SupportedAssetTypes
+  name: SupportedAssetTypes
+  nameWithType: FinnhubSymbolSearchProviderRefactored.SupportedAssetTypes
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.SupportedAssetTypes
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SupportedExchanges
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SupportedExchanges
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_SupportedExchanges
+  name: SupportedExchanges
+  nameWithType: BaseSymbolSearchProvider.SupportedExchanges
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.SupportedExchanges
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.SupportedExchanges*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.SupportedExchanges
+  href: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Finnhub_FinnhubSymbolSearchProviderRefactored_SupportedExchanges
+  name: SupportedExchanges
+  nameWithType: FinnhubSymbolSearchProviderRefactored.SupportedExchanges
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.SupportedExchanges
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.#ctor*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.#ctor
+  href: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Finnhub_FinnhubSymbolSearchProviderRefactored__ctor_System_String_System_Net_Http_HttpClient_Serilog_ILogger_
+  name: FinnhubSymbolSearchProviderRefactored
+  nameWithType: FinnhubSymbolSearchProviderRefactored.FinnhubSymbolSearchProviderRefactored
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.FinnhubSymbolSearchProviderRefactored
+  nameWithType.vb: FinnhubSymbolSearchProviderRefactored.New
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.New
+  name.vb: New
+- uid: System.Net.Http.HttpClient
+  commentId: T:System.Net.Http.HttpClient
+  parent: System.Net.Http
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.http.httpclient
+  name: HttpClient
+  nameWithType: HttpClient
+  fullName: System.Net.Http.HttpClient
+- uid: Serilog.ILogger
+  commentId: T:Serilog.ILogger
+  parent: Serilog
+  isExternal: true
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Serilog.ILogger
+- uid: System.Net.Http
+  commentId: N:System.Net.Http
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Net.Http
+  nameWithType: System.Net.Http
+  fullName: System.Net.Http
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Http
+    name: Http
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Http
+    name: Http
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http
+- uid: Serilog
+  commentId: N:Serilog
+  isExternal: true
+  name: Serilog
+  nameWithType: Serilog
+  fullName: Serilog
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ConfigureHttpClientHeaders
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ConfigureHttpClientHeaders
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_ConfigureHttpClientHeaders
+  name: ConfigureHttpClientHeaders()
+  nameWithType: BaseSymbolSearchProvider.ConfigureHttpClientHeaders()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ConfigureHttpClientHeaders()
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ConfigureHttpClientHeaders
+    name: ConfigureHttpClientHeaders
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_ConfigureHttpClientHeaders
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.ConfigureHttpClientHeaders
+    name: ConfigureHttpClientHeaders
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_ConfigureHttpClientHeaders
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.ConfigureHttpClientHeaders*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.ConfigureHttpClientHeaders
+  href: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Finnhub_FinnhubSymbolSearchProviderRefactored_ConfigureHttpClientHeaders
+  name: ConfigureHttpClientHeaders
+  nameWithType: FinnhubSymbolSearchProviderRefactored.ConfigureHttpClientHeaders
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.ConfigureHttpClientHeaders
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildSearchUrl(System.String,System.String,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildSearchUrl(System.String,System.String,System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_BuildSearchUrl_System_String_System_String_System_String_
+  name: BuildSearchUrl(string, string, string)
+  nameWithType: BaseSymbolSearchProvider.BuildSearchUrl(string, string, string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildSearchUrl(string, string, string)
+  nameWithType.vb: BaseSymbolSearchProvider.BuildSearchUrl(String, String, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildSearchUrl(String, String, String)
+  name.vb: BuildSearchUrl(String, String, String)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildSearchUrl(System.String,System.String,System.String)
+    name: BuildSearchUrl
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_BuildSearchUrl_System_String_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildSearchUrl(System.String,System.String,System.String)
+    name: BuildSearchUrl
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_BuildSearchUrl_System_String_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildSearchUrl*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildSearchUrl
+  href: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Finnhub_FinnhubSymbolSearchProviderRefactored_BuildSearchUrl_System_String_System_String_System_String_
+  name: BuildSearchUrl
+  nameWithType: FinnhubSymbolSearchProviderRefactored.BuildSearchUrl
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildSearchUrl
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildDetailsUrl(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildDetailsUrl(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_BuildDetailsUrl_System_String_
+  name: BuildDetailsUrl(string)
+  nameWithType: BaseSymbolSearchProvider.BuildDetailsUrl(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildDetailsUrl(string)
+  nameWithType.vb: BaseSymbolSearchProvider.BuildDetailsUrl(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildDetailsUrl(String)
+  name.vb: BuildDetailsUrl(String)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildDetailsUrl(System.String)
+    name: BuildDetailsUrl
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_BuildDetailsUrl_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.BuildDetailsUrl(System.String)
+    name: BuildDetailsUrl
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_BuildDetailsUrl_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildDetailsUrl*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildDetailsUrl
+  href: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Finnhub_FinnhubSymbolSearchProviderRefactored_BuildDetailsUrl_System_String_
+  name: BuildDetailsUrl
+  nameWithType: FinnhubSymbolSearchProviderRefactored.BuildDetailsUrl
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.BuildDetailsUrl
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeSearchResults(System.String,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeSearchResults(System.String,System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_DeserializeSearchResults_System_String_System_String_
+  name: DeserializeSearchResults(string, string)
+  nameWithType: BaseSymbolSearchProvider.DeserializeSearchResults(string, string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeSearchResults(string, string)
+  nameWithType.vb: BaseSymbolSearchProvider.DeserializeSearchResults(String, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeSearchResults(String, String)
+  name.vb: DeserializeSearchResults(String, String)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeSearchResults(System.String,System.String)
+    name: DeserializeSearchResults
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_DeserializeSearchResults_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeSearchResults(System.String,System.String)
+    name: DeserializeSearchResults
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_DeserializeSearchResults_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeSearchResults*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeSearchResults
+  href: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Finnhub_FinnhubSymbolSearchProviderRefactored_DeserializeSearchResults_System_String_System_String_
+  name: DeserializeSearchResults
+  nameWithType: FinnhubSymbolSearchProviderRefactored.DeserializeSearchResults
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeSearchResults
+- uid: System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult}
+  commentId: T:System.Collections.Generic.IEnumerable{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<SymbolSearchResult>
+  nameWithType: IEnumerable<SymbolSearchResult>
+  fullName: System.Collections.Generic.IEnumerable<MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult>
+  nameWithType.vb: IEnumerable(Of SymbolSearchResult)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult)
+  name.vb: IEnumerable(Of SymbolSearchResult)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult
+    name: SymbolSearchResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult
+    name: SymbolSearchResult
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_DeserializeDetailsAsync_System_String_System_String_System_Threading_CancellationToken_
+  name: DeserializeDetailsAsync(string, string, CancellationToken)
+  nameWithType: BaseSymbolSearchProvider.DeserializeDetailsAsync(string, string, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeDetailsAsync(string, string, System.Threading.CancellationToken)
+  nameWithType.vb: BaseSymbolSearchProvider.DeserializeDetailsAsync(String, String, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeDetailsAsync(String, String, System.Threading.CancellationToken)
+  name.vb: DeserializeDetailsAsync(String, String, CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+    name: DeserializeDetailsAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_DeserializeDetailsAsync_System_String_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.DeserializeDetailsAsync(System.String,System.String,System.Threading.CancellationToken)
+    name: DeserializeDetailsAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_BaseSymbolSearchProvider_DeserializeDetailsAsync_System_String_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeDetailsAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeDetailsAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.html#MarketDataCollector_Infrastructure_Adapters_Finnhub_FinnhubSymbolSearchProviderRefactored_DeserializeDetailsAsync_System_String_System_String_System_Threading_CancellationToken_
+  name: DeserializeDetailsAsync
+  nameWithType: FinnhubSymbolSearchProviderRefactored.DeserializeDetailsAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored.DeserializeDetailsAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.SymbolDetails}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.SymbolDetails}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<SymbolDetails>
+  nameWithType: Task<SymbolDetails>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Subscriptions.Models.SymbolDetails>
+  nameWithType.vb: Task(Of SymbolDetails)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Subscriptions.Models.SymbolDetails)
+  name.vb: Task(Of SymbolDetails)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolDetails
+    name: SymbolDetails
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolDetails
+    name: SymbolDetails
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

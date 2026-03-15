@@ -1,0 +1,1074 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader
+  commentId: T:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader
+  id: MemoryMappedJsonlReader
+  parent: MarketDataCollector.Storage.Replay
+  children:
+  - MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.#ctor(System.String)
+  - MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.#ctor(System.String,MarketDataCollector.Storage.Replay.MemoryMappedReaderOptions)
+  - MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.BytesRead
+  - MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.EventsRead
+  - MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.FilesRead
+  - MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.GetFileStatistics
+  - MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.MemoryMappedFilesUsed
+  - MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsBatchedAsync(System.Int32,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsForSymbolsAsync(System.Collections.Generic.IReadOnlySet{System.String},System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsInRangeAsync(System.DateTimeOffset,System.DateTimeOffset,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadFileAsync(System.String,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: MemoryMappedJsonlReader
+  nameWithType: MemoryMappedJsonlReader
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MemoryMappedJsonlReader
+    path: ../../src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+    startLine: 77
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Replay
+  summary: >-
+    High-performance JSONL reader using memory-mapped files for large file reading.
+
+    Provides significantly faster reads for large files by mapping directly into virtual memory.
+
+    Falls back to streaming for compressed files and small files.
+  example: []
+  syntax:
+    content: public sealed class MemoryMappedJsonlReader
+    content.vb: Public NotInheritable Class MemoryMappedJsonlReader
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.FilesRead
+  commentId: P:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.FilesRead
+  id: FilesRead
+  parent: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader
+  langs:
+  - csharp
+  - vb
+  name: FilesRead
+  nameWithType: MemoryMappedJsonlReader.FilesRead
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.FilesRead
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FilesRead
+    path: ../../src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+    startLine: 91
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Replay
+  summary: Total files read.
+  example: []
+  syntax:
+    content: public long FilesRead { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property FilesRead As Long
+  overload: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.FilesRead*
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.BytesRead
+  commentId: P:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.BytesRead
+  id: BytesRead
+  parent: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader
+  langs:
+  - csharp
+  - vb
+  name: BytesRead
+  nameWithType: MemoryMappedJsonlReader.BytesRead
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.BytesRead
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BytesRead
+    path: ../../src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+    startLine: 96
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Replay
+  summary: Total bytes read.
+  example: []
+  syntax:
+    content: public long BytesRead { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property BytesRead As Long
+  overload: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.BytesRead*
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.EventsRead
+  commentId: P:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.EventsRead
+  id: EventsRead
+  parent: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader
+  langs:
+  - csharp
+  - vb
+  name: EventsRead
+  nameWithType: MemoryMappedJsonlReader.EventsRead
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.EventsRead
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: EventsRead
+    path: ../../src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+    startLine: 101
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Replay
+  summary: Total events successfully deserialized.
+  example: []
+  syntax:
+    content: public long EventsRead { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property EventsRead As Long
+  overload: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.EventsRead*
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.MemoryMappedFilesUsed
+  commentId: P:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.MemoryMappedFilesUsed
+  id: MemoryMappedFilesUsed
+  parent: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader
+  langs:
+  - csharp
+  - vb
+  name: MemoryMappedFilesUsed
+  nameWithType: MemoryMappedJsonlReader.MemoryMappedFilesUsed
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.MemoryMappedFilesUsed
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MemoryMappedFilesUsed
+    path: ../../src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+    startLine: 106
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Replay
+  summary: Number of files read using memory mapping.
+  example: []
+  syntax:
+    content: public long MemoryMappedFilesUsed { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property MemoryMappedFilesUsed As Long
+  overload: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.MemoryMappedFilesUsed*
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.#ctor(System.String)
+  commentId: M:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader
+  langs:
+  - csharp
+  - vb
+  name: MemoryMappedJsonlReader(string)
+  nameWithType: MemoryMappedJsonlReader.MemoryMappedJsonlReader(string)
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.MemoryMappedJsonlReader(string)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+    startLine: 111
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Replay
+  summary: Creates a new MemoryMappedJsonlReader with default options.
+  example: []
+  syntax:
+    content: public MemoryMappedJsonlReader(string root)
+    parameters:
+    - id: root
+      type: System.String
+    content.vb: Public Sub New(root As String)
+  overload: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.#ctor*
+  nameWithType.vb: MemoryMappedJsonlReader.New(String)
+  fullName.vb: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.New(String)
+  name.vb: New(String)
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.#ctor(System.String,MarketDataCollector.Storage.Replay.MemoryMappedReaderOptions)
+  commentId: M:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.#ctor(System.String,MarketDataCollector.Storage.Replay.MemoryMappedReaderOptions)
+  id: '#ctor(System.String,MarketDataCollector.Storage.Replay.MemoryMappedReaderOptions)'
+  parent: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader
+  langs:
+  - csharp
+  - vb
+  name: MemoryMappedJsonlReader(string, MemoryMappedReaderOptions)
+  nameWithType: MemoryMappedJsonlReader.MemoryMappedJsonlReader(string, MemoryMappedReaderOptions)
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.MemoryMappedJsonlReader(string, MarketDataCollector.Storage.Replay.MemoryMappedReaderOptions)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+    startLine: 119
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Replay
+  summary: Creates a new MemoryMappedJsonlReader with custom options.
+  example: []
+  syntax:
+    content: public MemoryMappedJsonlReader(string root, MemoryMappedReaderOptions options)
+    parameters:
+    - id: root
+      type: System.String
+    - id: options
+      type: MarketDataCollector.Storage.Replay.MemoryMappedReaderOptions
+    content.vb: Public Sub New(root As String, options As MemoryMappedReaderOptions)
+  overload: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.#ctor*
+  nameWithType.vb: MemoryMappedJsonlReader.New(String, MemoryMappedReaderOptions)
+  fullName.vb: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.New(String, MarketDataCollector.Storage.Replay.MemoryMappedReaderOptions)
+  name.vb: New(String, MemoryMappedReaderOptions)
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsAsync(System.Threading.CancellationToken)
+  id: ReadEventsAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader
+  langs:
+  - csharp
+  - vb
+  name: ReadEventsAsync(CancellationToken)
+  nameWithType: MemoryMappedJsonlReader.ReadEventsAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ReadEventsAsync
+    path: ../../src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+    startLine: 129
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Replay
+  summary: >-
+    Reads all events from JSONL files in the root directory.
+
+    Uses memory-mapped files for large uncompressed files.
+  example: []
+  syntax:
+    content: public IAsyncEnumerable<MarketEvent> ReadEventsAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Collections.Generic.IAsyncEnumerable{MarketDataCollector.Domain.Events.MarketEvent}
+    content.vb: Public Function ReadEventsAsync(ct As CancellationToken = Nothing) As IAsyncEnumerable(Of MarketEvent)
+  overload: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsAsync*
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadFileAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadFileAsync(System.String,System.Threading.CancellationToken)
+  id: ReadFileAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader
+  langs:
+  - csharp
+  - vb
+  name: ReadFileAsync(string, CancellationToken)
+  nameWithType: MemoryMappedJsonlReader.ReadFileAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadFileAsync(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ReadFileAsync
+    path: ../../src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+    startLine: 150
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Replay
+  summary: Reads events from a single file using the most efficient method.
+  example: []
+  syntax:
+    content: public IAsyncEnumerable<MarketEvent> ReadFileAsync(string file, CancellationToken ct = default)
+    parameters:
+    - id: file
+      type: System.String
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Collections.Generic.IAsyncEnumerable{MarketDataCollector.Domain.Events.MarketEvent}
+    content.vb: Public Function ReadFileAsync(file As String, ct As CancellationToken = Nothing) As IAsyncEnumerable(Of MarketEvent)
+  overload: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadFileAsync*
+  nameWithType.vb: MemoryMappedJsonlReader.ReadFileAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadFileAsync(String, System.Threading.CancellationToken)
+  name.vb: ReadFileAsync(String, CancellationToken)
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsBatchedAsync(System.Int32,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsBatchedAsync(System.Int32,System.Threading.CancellationToken)
+  id: ReadEventsBatchedAsync(System.Int32,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader
+  langs:
+  - csharp
+  - vb
+  name: ReadEventsBatchedAsync(int, CancellationToken)
+  nameWithType: MemoryMappedJsonlReader.ReadEventsBatchedAsync(int, CancellationToken)
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsBatchedAsync(int, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ReadEventsBatchedAsync
+    path: ../../src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+    startLine: 179
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Replay
+  summary: Reads events from JSONL files in batches for better memory efficiency.
+  example: []
+  syntax:
+    content: public IAsyncEnumerable<IReadOnlyList<MarketEvent>> ReadEventsBatchedAsync(int batchSize = 1000, CancellationToken ct = default)
+    parameters:
+    - id: batchSize
+      type: System.Int32
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Collections.Generic.IAsyncEnumerable{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Domain.Events.MarketEvent}}
+    content.vb: Public Function ReadEventsBatchedAsync(batchSize As Integer = 1000, ct As CancellationToken = Nothing) As IAsyncEnumerable(Of IReadOnlyList(Of MarketEvent))
+  overload: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsBatchedAsync*
+  nameWithType.vb: MemoryMappedJsonlReader.ReadEventsBatchedAsync(Integer, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsBatchedAsync(Integer, System.Threading.CancellationToken)
+  name.vb: ReadEventsBatchedAsync(Integer, CancellationToken)
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsInRangeAsync(System.DateTimeOffset,System.DateTimeOffset,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsInRangeAsync(System.DateTimeOffset,System.DateTimeOffset,System.Threading.CancellationToken)
+  id: ReadEventsInRangeAsync(System.DateTimeOffset,System.DateTimeOffset,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader
+  langs:
+  - csharp
+  - vb
+  name: ReadEventsInRangeAsync(DateTimeOffset, DateTimeOffset, CancellationToken)
+  nameWithType: MemoryMappedJsonlReader.ReadEventsInRangeAsync(DateTimeOffset, DateTimeOffset, CancellationToken)
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsInRangeAsync(System.DateTimeOffset, System.DateTimeOffset, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ReadEventsInRangeAsync
+    path: ../../src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+    startLine: 417
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Replay
+  summary: Reads events from a specific time range.
+  example: []
+  syntax:
+    content: public IAsyncEnumerable<MarketEvent> ReadEventsInRangeAsync(DateTimeOffset from, DateTimeOffset to, CancellationToken ct = default)
+    parameters:
+    - id: from
+      type: System.DateTimeOffset
+    - id: to
+      type: System.DateTimeOffset
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Collections.Generic.IAsyncEnumerable{MarketDataCollector.Domain.Events.MarketEvent}
+    content.vb: Public Function ReadEventsInRangeAsync(from As DateTimeOffset, [to] As DateTimeOffset, ct As CancellationToken = Nothing) As IAsyncEnumerable(Of MarketEvent)
+  overload: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsInRangeAsync*
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsForSymbolsAsync(System.Collections.Generic.IReadOnlySet{System.String},System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsForSymbolsAsync(System.Collections.Generic.IReadOnlySet{System.String},System.Threading.CancellationToken)
+  id: ReadEventsForSymbolsAsync(System.Collections.Generic.IReadOnlySet{System.String},System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader
+  langs:
+  - csharp
+  - vb
+  name: ReadEventsForSymbolsAsync(IReadOnlySet<string>, CancellationToken)
+  nameWithType: MemoryMappedJsonlReader.ReadEventsForSymbolsAsync(IReadOnlySet<string>, CancellationToken)
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsForSymbolsAsync(System.Collections.Generic.IReadOnlySet<string>, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ReadEventsForSymbolsAsync
+    path: ../../src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+    startLine: 434
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Replay
+  summary: Reads events for specific symbols only.
+  example: []
+  syntax:
+    content: public IAsyncEnumerable<MarketEvent> ReadEventsForSymbolsAsync(IReadOnlySet<string> symbols, CancellationToken ct = default)
+    parameters:
+    - id: symbols
+      type: System.Collections.Generic.IReadOnlySet{System.String}
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Collections.Generic.IAsyncEnumerable{MarketDataCollector.Domain.Events.MarketEvent}
+    content.vb: Public Function ReadEventsForSymbolsAsync(symbols As IReadOnlySet(Of String), ct As CancellationToken = Nothing) As IAsyncEnumerable(Of MarketEvent)
+  overload: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsForSymbolsAsync*
+  nameWithType.vb: MemoryMappedJsonlReader.ReadEventsForSymbolsAsync(IReadOnlySet(Of String), CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsForSymbolsAsync(System.Collections.Generic.IReadOnlySet(Of String), System.Threading.CancellationToken)
+  name.vb: ReadEventsForSymbolsAsync(IReadOnlySet(Of String), CancellationToken)
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.GetFileStatistics
+  commentId: M:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.GetFileStatistics
+  id: GetFileStatistics
+  parent: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader
+  langs:
+  - csharp
+  - vb
+  name: GetFileStatistics()
+  nameWithType: MemoryMappedJsonlReader.GetFileStatistics()
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.GetFileStatistics()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetFileStatistics
+    path: ../../src/MarketDataCollector.Storage/Replay/MemoryMappedJsonlReader.cs
+    startLine: 450
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Replay
+  summary: Gets statistics about the files in the root directory.
+  example: []
+  syntax:
+    content: public FileStatistics GetFileStatistics()
+    return:
+      type: MarketDataCollector.Storage.Replay.FileStatistics
+    content.vb: Public Function GetFileStatistics() As FileStatistics
+  overload: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.GetFileStatistics*
+references:
+- uid: MarketDataCollector.Storage.Replay
+  commentId: N:MarketDataCollector.Storage.Replay
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Replay
+  nameWithType: MarketDataCollector.Storage.Replay
+  fullName: MarketDataCollector.Storage.Replay
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Replay
+    name: Replay
+    href: MarketDataCollector.Storage.Replay.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Replay
+    name: Replay
+    href: MarketDataCollector.Storage.Replay.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.FilesRead*
+  commentId: Overload:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.FilesRead
+  href: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.html#MarketDataCollector_Storage_Replay_MemoryMappedJsonlReader_FilesRead
+  name: FilesRead
+  nameWithType: MemoryMappedJsonlReader.FilesRead
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.FilesRead
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.BytesRead*
+  commentId: Overload:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.BytesRead
+  href: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.html#MarketDataCollector_Storage_Replay_MemoryMappedJsonlReader_BytesRead
+  name: BytesRead
+  nameWithType: MemoryMappedJsonlReader.BytesRead
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.BytesRead
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.EventsRead*
+  commentId: Overload:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.EventsRead
+  href: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.html#MarketDataCollector_Storage_Replay_MemoryMappedJsonlReader_EventsRead
+  name: EventsRead
+  nameWithType: MemoryMappedJsonlReader.EventsRead
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.EventsRead
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.MemoryMappedFilesUsed*
+  commentId: Overload:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.MemoryMappedFilesUsed
+  href: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.html#MarketDataCollector_Storage_Replay_MemoryMappedJsonlReader_MemoryMappedFilesUsed
+  name: MemoryMappedFilesUsed
+  nameWithType: MemoryMappedJsonlReader.MemoryMappedFilesUsed
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.MemoryMappedFilesUsed
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.#ctor*
+  commentId: Overload:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.#ctor
+  href: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.html#MarketDataCollector_Storage_Replay_MemoryMappedJsonlReader__ctor_System_String_
+  name: MemoryMappedJsonlReader
+  nameWithType: MemoryMappedJsonlReader.MemoryMappedJsonlReader
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.MemoryMappedJsonlReader
+  nameWithType.vb: MemoryMappedJsonlReader.New
+  fullName.vb: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedReaderOptions
+  commentId: T:MarketDataCollector.Storage.Replay.MemoryMappedReaderOptions
+  parent: MarketDataCollector.Storage.Replay
+  href: MarketDataCollector.Storage.Replay.MemoryMappedReaderOptions.html
+  name: MemoryMappedReaderOptions
+  nameWithType: MemoryMappedReaderOptions
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedReaderOptions
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsAsync*
+  commentId: Overload:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsAsync
+  href: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.html#MarketDataCollector_Storage_Replay_MemoryMappedJsonlReader_ReadEventsAsync_System_Threading_CancellationToken_
+  name: ReadEventsAsync
+  nameWithType: MemoryMappedJsonlReader.ReadEventsAsync
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Collections.Generic.IAsyncEnumerable{MarketDataCollector.Domain.Events.MarketEvent}
+  commentId: T:System.Collections.Generic.IAsyncEnumerable{MarketDataCollector.Domain.Events.MarketEvent}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IAsyncEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1
+  name: IAsyncEnumerable<MarketEvent>
+  nameWithType: IAsyncEnumerable<MarketEvent>
+  fullName: System.Collections.Generic.IAsyncEnumerable<MarketDataCollector.Domain.Events.MarketEvent>
+  nameWithType.vb: IAsyncEnumerable(Of MarketEvent)
+  fullName.vb: System.Collections.Generic.IAsyncEnumerable(Of MarketDataCollector.Domain.Events.MarketEvent)
+  name.vb: IAsyncEnumerable(Of MarketEvent)
+  spec.csharp:
+  - uid: System.Collections.Generic.IAsyncEnumerable`1
+    name: IAsyncEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1
+  - name: <
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IAsyncEnumerable`1
+    name: IAsyncEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Collections.Generic.IAsyncEnumerable`1
+  commentId: T:System.Collections.Generic.IAsyncEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1
+  name: IAsyncEnumerable<T>
+  nameWithType: IAsyncEnumerable<T>
+  fullName: System.Collections.Generic.IAsyncEnumerable<T>
+  nameWithType.vb: IAsyncEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IAsyncEnumerable(Of T)
+  name.vb: IAsyncEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IAsyncEnumerable`1
+    name: IAsyncEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IAsyncEnumerable`1
+    name: IAsyncEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadFileAsync*
+  commentId: Overload:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadFileAsync
+  href: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.html#MarketDataCollector_Storage_Replay_MemoryMappedJsonlReader_ReadFileAsync_System_String_System_Threading_CancellationToken_
+  name: ReadFileAsync
+  nameWithType: MemoryMappedJsonlReader.ReadFileAsync
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadFileAsync
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsBatchedAsync*
+  commentId: Overload:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsBatchedAsync
+  href: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.html#MarketDataCollector_Storage_Replay_MemoryMappedJsonlReader_ReadEventsBatchedAsync_System_Int32_System_Threading_CancellationToken_
+  name: ReadEventsBatchedAsync
+  nameWithType: MemoryMappedJsonlReader.ReadEventsBatchedAsync
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsBatchedAsync
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.IAsyncEnumerable{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Domain.Events.MarketEvent}}
+  commentId: T:System.Collections.Generic.IAsyncEnumerable{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Domain.Events.MarketEvent}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IAsyncEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1
+  name: IAsyncEnumerable<IReadOnlyList<MarketEvent>>
+  nameWithType: IAsyncEnumerable<IReadOnlyList<MarketEvent>>
+  fullName: System.Collections.Generic.IAsyncEnumerable<System.Collections.Generic.IReadOnlyList<MarketDataCollector.Domain.Events.MarketEvent>>
+  nameWithType.vb: IAsyncEnumerable(Of IReadOnlyList(Of MarketEvent))
+  fullName.vb: System.Collections.Generic.IAsyncEnumerable(Of System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Domain.Events.MarketEvent))
+  name.vb: IAsyncEnumerable(Of IReadOnlyList(Of MarketEvent))
+  spec.csharp:
+  - uid: System.Collections.Generic.IAsyncEnumerable`1
+    name: IAsyncEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IAsyncEnumerable`1
+    name: IAsyncEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+  - name: )
+  - name: )
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsInRangeAsync*
+  commentId: Overload:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsInRangeAsync
+  href: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.html#MarketDataCollector_Storage_Replay_MemoryMappedJsonlReader_ReadEventsInRangeAsync_System_DateTimeOffset_System_DateTimeOffset_System_Threading_CancellationToken_
+  name: ReadEventsInRangeAsync
+  nameWithType: MemoryMappedJsonlReader.ReadEventsInRangeAsync
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsInRangeAsync
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsForSymbolsAsync*
+  commentId: Overload:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsForSymbolsAsync
+  href: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.html#MarketDataCollector_Storage_Replay_MemoryMappedJsonlReader_ReadEventsForSymbolsAsync_System_Collections_Generic_IReadOnlySet_System_String__System_Threading_CancellationToken_
+  name: ReadEventsForSymbolsAsync
+  nameWithType: MemoryMappedJsonlReader.ReadEventsForSymbolsAsync
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.ReadEventsForSymbolsAsync
+- uid: System.Collections.Generic.IReadOnlySet{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlySet{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlySet`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  name: IReadOnlySet<string>
+  nameWithType: IReadOnlySet<string>
+  fullName: System.Collections.Generic.IReadOnlySet<string>
+  nameWithType.vb: IReadOnlySet(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlySet(Of String)
+  name.vb: IReadOnlySet(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlySet`1
+  commentId: T:System.Collections.Generic.IReadOnlySet`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  name: IReadOnlySet<T>
+  nameWithType: IReadOnlySet<T>
+  fullName: System.Collections.Generic.IReadOnlySet<T>
+  nameWithType.vb: IReadOnlySet(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlySet(Of T)
+  name.vb: IReadOnlySet(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.GetFileStatistics*
+  commentId: Overload:MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.GetFileStatistics
+  href: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.html#MarketDataCollector_Storage_Replay_MemoryMappedJsonlReader_GetFileStatistics
+  name: GetFileStatistics
+  nameWithType: MemoryMappedJsonlReader.GetFileStatistics
+  fullName: MarketDataCollector.Storage.Replay.MemoryMappedJsonlReader.GetFileStatistics
+- uid: MarketDataCollector.Storage.Replay.FileStatistics
+  commentId: T:MarketDataCollector.Storage.Replay.FileStatistics
+  parent: MarketDataCollector.Storage.Replay
+  href: MarketDataCollector.Storage.Replay.FileStatistics.html
+  name: FileStatistics
+  nameWithType: FileStatistics
+  fullName: MarketDataCollector.Storage.Replay.FileStatistics

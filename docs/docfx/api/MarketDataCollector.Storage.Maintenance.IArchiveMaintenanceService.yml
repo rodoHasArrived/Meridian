@@ -1,0 +1,771 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService
+  commentId: T:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService
+  id: IArchiveMaintenanceService
+  parent: MarketDataCollector.Storage.Maintenance
+  children:
+  - MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.CancelExecutionAsync(System.String)
+  - MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.CurrentExecution
+  - MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecuteMaintenanceAsync(MarketDataCollector.Storage.Maintenance.MaintenanceTaskType,MarketDataCollector.Storage.Maintenance.MaintenanceTaskOptions,System.String[],System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecutionCompleted
+  - MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecutionFailed
+  - MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecutionStarted
+  - MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.GetStatus
+  - MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.IsRunning
+  - MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.QueuedExecutions
+  - MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.TriggerScheduleAsync(System.String,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: IArchiveMaintenanceService
+  nameWithType: IArchiveMaintenanceService
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IArchiveMaintenanceService
+    path: ../../src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+    startLine: 5
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Maintenance
+  summary: Interface for archive maintenance service that orchestrates scheduled and on-demand maintenance operations.
+  example: []
+  syntax:
+    content: public interface IArchiveMaintenanceService
+    content.vb: Public Interface IArchiveMaintenanceService
+  derivedClasses:
+  - MarketDataCollector.Storage.Maintenance.ScheduledArchiveMaintenanceService
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.IsRunning
+  commentId: P:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.IsRunning
+  id: IsRunning
+  parent: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService
+  langs:
+  - csharp
+  - vb
+  name: IsRunning
+  nameWithType: IArchiveMaintenanceService.IsRunning
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.IsRunning
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsRunning
+    path: ../../src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+    startLine: 10
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Maintenance
+  summary: Whether the maintenance service is currently running.
+  example: []
+  syntax:
+    content: bool IsRunning { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsRunning As Boolean
+  overload: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.IsRunning*
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.QueuedExecutions
+  commentId: P:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.QueuedExecutions
+  id: QueuedExecutions
+  parent: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService
+  langs:
+  - csharp
+  - vb
+  name: QueuedExecutions
+  nameWithType: IArchiveMaintenanceService.QueuedExecutions
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.QueuedExecutions
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: QueuedExecutions
+    path: ../../src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+    startLine: 15
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Maintenance
+  summary: Number of maintenance executions currently queued.
+  example: []
+  syntax:
+    content: int QueuedExecutions { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property QueuedExecutions As Integer
+  overload: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.QueuedExecutions*
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.CurrentExecution
+  commentId: P:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.CurrentExecution
+  id: CurrentExecution
+  parent: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService
+  langs:
+  - csharp
+  - vb
+  name: CurrentExecution
+  nameWithType: IArchiveMaintenanceService.CurrentExecution
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.CurrentExecution
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CurrentExecution
+    path: ../../src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+    startLine: 20
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Maintenance
+  summary: Currently running execution (if any).
+  example: []
+  syntax:
+    content: MaintenanceExecution? CurrentExecution { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Storage.Maintenance.MaintenanceExecution
+    content.vb: ReadOnly Property CurrentExecution As MaintenanceExecution
+  overload: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.CurrentExecution*
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecuteMaintenanceAsync(MarketDataCollector.Storage.Maintenance.MaintenanceTaskType,MarketDataCollector.Storage.Maintenance.MaintenanceTaskOptions,System.String[],System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecuteMaintenanceAsync(MarketDataCollector.Storage.Maintenance.MaintenanceTaskType,MarketDataCollector.Storage.Maintenance.MaintenanceTaskOptions,System.String[],System.Threading.CancellationToken)
+  id: ExecuteMaintenanceAsync(MarketDataCollector.Storage.Maintenance.MaintenanceTaskType,MarketDataCollector.Storage.Maintenance.MaintenanceTaskOptions,System.String[],System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService
+  langs:
+  - csharp
+  - vb
+  name: ExecuteMaintenanceAsync(MaintenanceTaskType, MaintenanceTaskOptions?, string[]?, CancellationToken)
+  nameWithType: IArchiveMaintenanceService.ExecuteMaintenanceAsync(MaintenanceTaskType, MaintenanceTaskOptions?, string[]?, CancellationToken)
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecuteMaintenanceAsync(MarketDataCollector.Storage.Maintenance.MaintenanceTaskType, MarketDataCollector.Storage.Maintenance.MaintenanceTaskOptions?, string[]?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ExecuteMaintenanceAsync
+    path: ../../src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+    startLine: 30
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Maintenance
+  summary: Execute a maintenance task immediately.
+  example: []
+  syntax:
+    content: Task<MaintenanceExecution> ExecuteMaintenanceAsync(MaintenanceTaskType taskType, MaintenanceTaskOptions? options = null, string[]? targetPaths = null, CancellationToken ct = default)
+    parameters:
+    - id: taskType
+      type: MarketDataCollector.Storage.Maintenance.MaintenanceTaskType
+      description: Type of maintenance to perform.
+    - id: options
+      type: MarketDataCollector.Storage.Maintenance.MaintenanceTaskOptions
+      description: Options for the maintenance task.
+    - id: targetPaths
+      type: System.String[]
+      description: Specific paths to target (null = use defaults).
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Maintenance.MaintenanceExecution}
+      description: The execution record with results.
+    content.vb: Function ExecuteMaintenanceAsync(taskType As MaintenanceTaskType, options As MaintenanceTaskOptions = Nothing, targetPaths As String() = Nothing, ct As CancellationToken = Nothing) As Task(Of MaintenanceExecution)
+  overload: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecuteMaintenanceAsync*
+  nameWithType.vb: IArchiveMaintenanceService.ExecuteMaintenanceAsync(MaintenanceTaskType, MaintenanceTaskOptions, String(), CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecuteMaintenanceAsync(MarketDataCollector.Storage.Maintenance.MaintenanceTaskType, MarketDataCollector.Storage.Maintenance.MaintenanceTaskOptions, String(), System.Threading.CancellationToken)
+  name.vb: ExecuteMaintenanceAsync(MaintenanceTaskType, MaintenanceTaskOptions, String(), CancellationToken)
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.TriggerScheduleAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.TriggerScheduleAsync(System.String,System.Threading.CancellationToken)
+  id: TriggerScheduleAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService
+  langs:
+  - csharp
+  - vb
+  name: TriggerScheduleAsync(string, CancellationToken)
+  nameWithType: IArchiveMaintenanceService.TriggerScheduleAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.TriggerScheduleAsync(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TriggerScheduleAsync
+    path: ../../src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+    startLine: 42
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Maintenance
+  summary: Trigger a scheduled maintenance to run immediately.
+  example: []
+  syntax:
+    content: Task<MaintenanceExecution> TriggerScheduleAsync(string scheduleId, CancellationToken ct = default)
+    parameters:
+    - id: scheduleId
+      type: System.String
+      description: ID of the schedule to trigger.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Maintenance.MaintenanceExecution}
+      description: The execution record.
+    content.vb: Function TriggerScheduleAsync(scheduleId As String, ct As CancellationToken = Nothing) As Task(Of MaintenanceExecution)
+  overload: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.TriggerScheduleAsync*
+  nameWithType.vb: IArchiveMaintenanceService.TriggerScheduleAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.TriggerScheduleAsync(String, System.Threading.CancellationToken)
+  name.vb: TriggerScheduleAsync(String, CancellationToken)
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.CancelExecutionAsync(System.String)
+  commentId: M:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.CancelExecutionAsync(System.String)
+  id: CancelExecutionAsync(System.String)
+  parent: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService
+  langs:
+  - csharp
+  - vb
+  name: CancelExecutionAsync(string)
+  nameWithType: IArchiveMaintenanceService.CancelExecutionAsync(string)
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.CancelExecutionAsync(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CancelExecutionAsync
+    path: ../../src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+    startLine: 49
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Maintenance
+  summary: Cancel a running or queued maintenance execution.
+  example: []
+  syntax:
+    content: Task<bool> CancelExecutionAsync(string executionId)
+    parameters:
+    - id: executionId
+      type: System.String
+      description: ID of the execution to cancel.
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: True if cancellation was successful.
+    content.vb: Function CancelExecutionAsync(executionId As String) As Task(Of Boolean)
+  overload: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.CancelExecutionAsync*
+  nameWithType.vb: IArchiveMaintenanceService.CancelExecutionAsync(String)
+  fullName.vb: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.CancelExecutionAsync(String)
+  name.vb: CancelExecutionAsync(String)
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.GetStatus
+  commentId: M:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.GetStatus
+  id: GetStatus
+  parent: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService
+  langs:
+  - csharp
+  - vb
+  name: GetStatus()
+  nameWithType: IArchiveMaintenanceService.GetStatus()
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.GetStatus()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetStatus
+    path: ../../src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+    startLine: 54
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Maintenance
+  summary: Get the current status of the maintenance service.
+  example: []
+  syntax:
+    content: MaintenanceServiceStatus GetStatus()
+    return:
+      type: MarketDataCollector.Storage.Maintenance.MaintenanceServiceStatus
+    content.vb: Function GetStatus() As MaintenanceServiceStatus
+  overload: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.GetStatus*
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecutionStarted
+  commentId: E:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecutionStarted
+  id: ExecutionStarted
+  parent: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService
+  langs:
+  - csharp
+  - vb
+  name: ExecutionStarted
+  nameWithType: IArchiveMaintenanceService.ExecutionStarted
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecutionStarted
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ExecutionStarted
+    path: ../../src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+    startLine: 59
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Maintenance
+  summary: Event raised when a maintenance execution starts.
+  example: []
+  syntax:
+    content: event EventHandler<MaintenanceExecution>? ExecutionStarted
+    return:
+      type: System.EventHandler{MarketDataCollector.Storage.Maintenance.MaintenanceExecution}
+    content.vb: Event ExecutionStarted As EventHandler(Of MaintenanceExecution)
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecutionCompleted
+  commentId: E:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecutionCompleted
+  id: ExecutionCompleted
+  parent: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService
+  langs:
+  - csharp
+  - vb
+  name: ExecutionCompleted
+  nameWithType: IArchiveMaintenanceService.ExecutionCompleted
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecutionCompleted
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ExecutionCompleted
+    path: ../../src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+    startLine: 64
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Maintenance
+  summary: Event raised when a maintenance execution completes.
+  example: []
+  syntax:
+    content: event EventHandler<MaintenanceExecution>? ExecutionCompleted
+    return:
+      type: System.EventHandler{MarketDataCollector.Storage.Maintenance.MaintenanceExecution}
+    content.vb: Event ExecutionCompleted As EventHandler(Of MaintenanceExecution)
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecutionFailed
+  commentId: E:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecutionFailed
+  id: ExecutionFailed
+  parent: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService
+  langs:
+  - csharp
+  - vb
+  name: ExecutionFailed
+  nameWithType: IArchiveMaintenanceService.ExecutionFailed
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecutionFailed
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ExecutionFailed
+    path: ../../src/MarketDataCollector.Storage/Maintenance/IArchiveMaintenanceService.cs
+    startLine: 69
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Maintenance
+  summary: Event raised when a maintenance execution fails.
+  example: []
+  syntax:
+    content: event EventHandler<MaintenanceExecution>? ExecutionFailed
+    return:
+      type: System.EventHandler{MarketDataCollector.Storage.Maintenance.MaintenanceExecution}
+    content.vb: Event ExecutionFailed As EventHandler(Of MaintenanceExecution)
+references:
+- uid: MarketDataCollector.Storage.Maintenance
+  commentId: N:MarketDataCollector.Storage.Maintenance
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Maintenance
+  nameWithType: MarketDataCollector.Storage.Maintenance
+  fullName: MarketDataCollector.Storage.Maintenance
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Maintenance
+    name: Maintenance
+    href: MarketDataCollector.Storage.Maintenance.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Maintenance
+    name: Maintenance
+    href: MarketDataCollector.Storage.Maintenance.html
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.IsRunning*
+  commentId: Overload:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.IsRunning
+  href: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.html#MarketDataCollector_Storage_Maintenance_IArchiveMaintenanceService_IsRunning
+  name: IsRunning
+  nameWithType: IArchiveMaintenanceService.IsRunning
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.IsRunning
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.QueuedExecutions*
+  commentId: Overload:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.QueuedExecutions
+  href: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.html#MarketDataCollector_Storage_Maintenance_IArchiveMaintenanceService_QueuedExecutions
+  name: QueuedExecutions
+  nameWithType: IArchiveMaintenanceService.QueuedExecutions
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.QueuedExecutions
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.CurrentExecution*
+  commentId: Overload:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.CurrentExecution
+  href: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.html#MarketDataCollector_Storage_Maintenance_IArchiveMaintenanceService_CurrentExecution
+  name: CurrentExecution
+  nameWithType: IArchiveMaintenanceService.CurrentExecution
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.CurrentExecution
+- uid: MarketDataCollector.Storage.Maintenance.MaintenanceExecution
+  commentId: T:MarketDataCollector.Storage.Maintenance.MaintenanceExecution
+  parent: MarketDataCollector.Storage.Maintenance
+  href: MarketDataCollector.Storage.Maintenance.MaintenanceExecution.html
+  name: MaintenanceExecution
+  nameWithType: MaintenanceExecution
+  fullName: MarketDataCollector.Storage.Maintenance.MaintenanceExecution
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecuteMaintenanceAsync*
+  commentId: Overload:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecuteMaintenanceAsync
+  href: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.html#MarketDataCollector_Storage_Maintenance_IArchiveMaintenanceService_ExecuteMaintenanceAsync_MarketDataCollector_Storage_Maintenance_MaintenanceTaskType_MarketDataCollector_Storage_Maintenance_MaintenanceTaskOptions_System_String___System_Threading_CancellationToken_
+  name: ExecuteMaintenanceAsync
+  nameWithType: IArchiveMaintenanceService.ExecuteMaintenanceAsync
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.ExecuteMaintenanceAsync
+- uid: MarketDataCollector.Storage.Maintenance.MaintenanceTaskType
+  commentId: T:MarketDataCollector.Storage.Maintenance.MaintenanceTaskType
+  parent: MarketDataCollector.Storage.Maintenance
+  href: MarketDataCollector.Storage.Maintenance.MaintenanceTaskType.html
+  name: MaintenanceTaskType
+  nameWithType: MaintenanceTaskType
+  fullName: MarketDataCollector.Storage.Maintenance.MaintenanceTaskType
+- uid: MarketDataCollector.Storage.Maintenance.MaintenanceTaskOptions
+  commentId: T:MarketDataCollector.Storage.Maintenance.MaintenanceTaskOptions
+  parent: MarketDataCollector.Storage.Maintenance
+  href: MarketDataCollector.Storage.Maintenance.MaintenanceTaskOptions.html
+  name: MaintenanceTaskOptions
+  nameWithType: MaintenanceTaskOptions
+  fullName: MarketDataCollector.Storage.Maintenance.MaintenanceTaskOptions
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Maintenance.MaintenanceExecution}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Maintenance.MaintenanceExecution}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<MaintenanceExecution>
+  nameWithType: Task<MaintenanceExecution>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Maintenance.MaintenanceExecution>
+  nameWithType.vb: Task(Of MaintenanceExecution)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Maintenance.MaintenanceExecution)
+  name.vb: Task(Of MaintenanceExecution)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Maintenance.MaintenanceExecution
+    name: MaintenanceExecution
+    href: MarketDataCollector.Storage.Maintenance.MaintenanceExecution.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Maintenance.MaintenanceExecution
+    name: MaintenanceExecution
+    href: MarketDataCollector.Storage.Maintenance.MaintenanceExecution.html
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.TriggerScheduleAsync*
+  commentId: Overload:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.TriggerScheduleAsync
+  href: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.html#MarketDataCollector_Storage_Maintenance_IArchiveMaintenanceService_TriggerScheduleAsync_System_String_System_Threading_CancellationToken_
+  name: TriggerScheduleAsync
+  nameWithType: IArchiveMaintenanceService.TriggerScheduleAsync
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.TriggerScheduleAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.CancelExecutionAsync*
+  commentId: Overload:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.CancelExecutionAsync
+  href: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.html#MarketDataCollector_Storage_Maintenance_IArchiveMaintenanceService_CancelExecutionAsync_System_String_
+  name: CancelExecutionAsync
+  nameWithType: IArchiveMaintenanceService.CancelExecutionAsync
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.CancelExecutionAsync
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.GetStatus*
+  commentId: Overload:MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.GetStatus
+  href: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.html#MarketDataCollector_Storage_Maintenance_IArchiveMaintenanceService_GetStatus
+  name: GetStatus
+  nameWithType: IArchiveMaintenanceService.GetStatus
+  fullName: MarketDataCollector.Storage.Maintenance.IArchiveMaintenanceService.GetStatus
+- uid: MarketDataCollector.Storage.Maintenance.MaintenanceServiceStatus
+  commentId: T:MarketDataCollector.Storage.Maintenance.MaintenanceServiceStatus
+  parent: MarketDataCollector.Storage.Maintenance
+  href: MarketDataCollector.Storage.Maintenance.MaintenanceServiceStatus.html
+  name: MaintenanceServiceStatus
+  nameWithType: MaintenanceServiceStatus
+  fullName: MarketDataCollector.Storage.Maintenance.MaintenanceServiceStatus
+- uid: System.EventHandler{MarketDataCollector.Storage.Maintenance.MaintenanceExecution}
+  commentId: T:System.EventHandler{MarketDataCollector.Storage.Maintenance.MaintenanceExecution}
+  parent: System
+  definition: System.EventHandler`1
+  href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  name: EventHandler<MaintenanceExecution>
+  nameWithType: EventHandler<MaintenanceExecution>
+  fullName: System.EventHandler<MarketDataCollector.Storage.Maintenance.MaintenanceExecution>
+  nameWithType.vb: EventHandler(Of MaintenanceExecution)
+  fullName.vb: System.EventHandler(Of MarketDataCollector.Storage.Maintenance.MaintenanceExecution)
+  name.vb: EventHandler(Of MaintenanceExecution)
+  spec.csharp:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Maintenance.MaintenanceExecution
+    name: MaintenanceExecution
+    href: MarketDataCollector.Storage.Maintenance.MaintenanceExecution.html
+  - name: '>'
+  spec.vb:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Maintenance.MaintenanceExecution
+    name: MaintenanceExecution
+    href: MarketDataCollector.Storage.Maintenance.MaintenanceExecution.html
+  - name: )
+- uid: System.EventHandler`1
+  commentId: T:System.EventHandler`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  name: EventHandler<TEventArgs>
+  nameWithType: EventHandler<TEventArgs>
+  fullName: System.EventHandler<TEventArgs>
+  nameWithType.vb: EventHandler(Of TEventArgs)
+  fullName.vb: System.EventHandler(Of TEventArgs)
+  name.vb: EventHandler(Of TEventArgs)
+  spec.csharp:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: <
+  - name: TEventArgs
+  - name: '>'
+  spec.vb:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventArgs
+  - name: )

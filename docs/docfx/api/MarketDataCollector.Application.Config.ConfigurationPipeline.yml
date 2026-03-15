@@ -1,0 +1,1027 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline
+  commentId: T:MarketDataCollector.Application.Config.ConfigurationPipeline
+  id: ConfigurationPipeline
+  parent: MarketDataCollector.Application.Config
+  children:
+  - MarketDataCollector.Application.Config.ConfigurationPipeline.#ctor(Serilog.ILogger,MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver)
+  - MarketDataCollector.Application.Config.ConfigurationPipeline.DisposeAsync
+  - MarketDataCollector.Application.Config.ConfigurationPipeline.FromAutoConfigResult(MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult,MarketDataCollector.Application.Config.PipelineOptions)
+  - MarketDataCollector.Application.Config.ConfigurationPipeline.FromHotReload(MarketDataCollector.Application.Config.AppConfig,System.String,MarketDataCollector.Application.Config.PipelineOptions)
+  - MarketDataCollector.Application.Config.ConfigurationPipeline.FromWizardResult(MarketDataCollector.Application.Services.WizardResult,MarketDataCollector.Application.Config.PipelineOptions)
+  - MarketDataCollector.Application.Config.ConfigurationPipeline.LoadFromFile(System.String,MarketDataCollector.Application.Config.PipelineOptions)
+  - MarketDataCollector.Application.Config.ConfigurationPipeline.Process(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Application.Config.PipelineOptions)
+  - MarketDataCollector.Application.Config.ConfigurationPipeline.StartHotReload(System.String,System.Action{MarketDataCollector.Application.Config.ValidatedConfig},System.Action{System.Exception},MarketDataCollector.Application.Config.PipelineOptions)
+  - MarketDataCollector.Application.Config.ConfigurationPipeline.StopHotReload
+  langs:
+  - csharp
+  - vb
+  name: ConfigurationPipeline
+  nameWithType: ConfigurationPipeline
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConfigurationPipeline
+    path: ../../src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+    startLine: 25
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Config
+  summary: >-
+    Unified configuration pipeline that always produces a validated, normalized configuration.
+
+    This is the single entry point for all configuration loading regardless of source
+
+    (file, wizard, auto-config, hot reload, programmatic).
+  remarks: >-
+    <p><b>Pipeline Stages:</b></p>
+
+    <ol><li>Load base configuration from source</li><li>Apply environment-specific overlay (e.g., appsettings.Production.json)</li><li>Apply environment variable overrides</li><li>Resolve credentials from all sources</li><li>Apply self-healing fixes (optional)</li><li>Validate the final configuration</li><li>Return ValidatedConfig with full metadata</li></ol>
+  example: []
+  syntax:
+    content: 'public sealed class ConfigurationPipeline : IAsyncDisposable'
+    content.vb: Public NotInheritable Class ConfigurationPipeline Implements IAsyncDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IAsyncDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.#ctor(Serilog.ILogger,MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver)
+  commentId: M:MarketDataCollector.Application.Config.ConfigurationPipeline.#ctor(Serilog.ILogger,MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver)
+  id: '#ctor(Serilog.ILogger,MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver)'
+  parent: MarketDataCollector.Application.Config.ConfigurationPipeline
+  langs:
+  - csharp
+  - vb
+  name: ConfigurationPipeline(ILogger?, ProviderCredentialResolver?)
+  nameWithType: ConfigurationPipeline.ConfigurationPipeline(ILogger?, ProviderCredentialResolver?)
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.ConfigurationPipeline(Serilog.ILogger?, MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+    startLine: 32
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Config
+  syntax:
+    content: public ConfigurationPipeline(ILogger? log = null, ProviderCredentialResolver? credentialResolver = null)
+    parameters:
+    - id: log
+      type: Serilog.ILogger
+    - id: credentialResolver
+      type: MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver
+    content.vb: Public Sub New(log As ILogger = Nothing, credentialResolver As ProviderCredentialResolver = Nothing)
+  overload: MarketDataCollector.Application.Config.ConfigurationPipeline.#ctor*
+  nameWithType.vb: ConfigurationPipeline.New(ILogger, ProviderCredentialResolver)
+  fullName.vb: MarketDataCollector.Application.Config.ConfigurationPipeline.New(Serilog.ILogger, MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver)
+  name.vb: New(ILogger, ProviderCredentialResolver)
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.LoadFromFile(System.String,MarketDataCollector.Application.Config.PipelineOptions)
+  commentId: M:MarketDataCollector.Application.Config.ConfigurationPipeline.LoadFromFile(System.String,MarketDataCollector.Application.Config.PipelineOptions)
+  id: LoadFromFile(System.String,MarketDataCollector.Application.Config.PipelineOptions)
+  parent: MarketDataCollector.Application.Config.ConfigurationPipeline
+  langs:
+  - csharp
+  - vb
+  name: LoadFromFile(string, PipelineOptions?)
+  nameWithType: ConfigurationPipeline.LoadFromFile(string, PipelineOptions?)
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.LoadFromFile(string, MarketDataCollector.Application.Config.PipelineOptions?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LoadFromFile
+    path: ../../src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+    startLine: 45
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Config
+  summary: >-
+    Loads and validates configuration from a file path.
+
+    This is the primary entry point for file-based configuration.
+  example: []
+  syntax:
+    content: public ValidatedConfig LoadFromFile(string configPath, PipelineOptions? options = null)
+    parameters:
+    - id: configPath
+      type: System.String
+    - id: options
+      type: MarketDataCollector.Application.Config.PipelineOptions
+    return:
+      type: MarketDataCollector.Application.Config.ValidatedConfig
+    content.vb: Public Function LoadFromFile(configPath As String, options As PipelineOptions = Nothing) As ValidatedConfig
+  overload: MarketDataCollector.Application.Config.ConfigurationPipeline.LoadFromFile*
+  nameWithType.vb: ConfigurationPipeline.LoadFromFile(String, PipelineOptions)
+  fullName.vb: MarketDataCollector.Application.Config.ConfigurationPipeline.LoadFromFile(String, MarketDataCollector.Application.Config.PipelineOptions)
+  name.vb: LoadFromFile(String, PipelineOptions)
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.Process(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Application.Config.PipelineOptions)
+  commentId: M:MarketDataCollector.Application.Config.ConfigurationPipeline.Process(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Application.Config.PipelineOptions)
+  id: Process(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Application.Config.PipelineOptions)
+  parent: MarketDataCollector.Application.Config.ConfigurationPipeline
+  langs:
+  - csharp
+  - vb
+  name: Process(AppConfig, PipelineOptions?)
+  nameWithType: ConfigurationPipeline.Process(AppConfig, PipelineOptions?)
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.Process(MarketDataCollector.Application.Config.AppConfig, MarketDataCollector.Application.Config.PipelineOptions?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Process
+    path: ../../src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+    startLine: 76
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Config
+  summary: >-
+    Processes an existing AppConfig through the pipeline.
+
+    Use this for programmatically created configurations.
+  example: []
+  syntax:
+    content: public ValidatedConfig Process(AppConfig config, PipelineOptions? options = null)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    - id: options
+      type: MarketDataCollector.Application.Config.PipelineOptions
+    return:
+      type: MarketDataCollector.Application.Config.ValidatedConfig
+    content.vb: Public Function Process(config As AppConfig, options As PipelineOptions = Nothing) As ValidatedConfig
+  overload: MarketDataCollector.Application.Config.ConfigurationPipeline.Process*
+  nameWithType.vb: ConfigurationPipeline.Process(AppConfig, PipelineOptions)
+  fullName.vb: MarketDataCollector.Application.Config.ConfigurationPipeline.Process(MarketDataCollector.Application.Config.AppConfig, MarketDataCollector.Application.Config.PipelineOptions)
+  name.vb: Process(AppConfig, PipelineOptions)
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.FromWizardResult(MarketDataCollector.Application.Services.WizardResult,MarketDataCollector.Application.Config.PipelineOptions)
+  commentId: M:MarketDataCollector.Application.Config.ConfigurationPipeline.FromWizardResult(MarketDataCollector.Application.Services.WizardResult,MarketDataCollector.Application.Config.PipelineOptions)
+  id: FromWizardResult(MarketDataCollector.Application.Services.WizardResult,MarketDataCollector.Application.Config.PipelineOptions)
+  parent: MarketDataCollector.Application.Config.ConfigurationPipeline
+  langs:
+  - csharp
+  - vb
+  name: FromWizardResult(WizardResult, PipelineOptions?)
+  nameWithType: ConfigurationPipeline.FromWizardResult(WizardResult, PipelineOptions?)
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.FromWizardResult(MarketDataCollector.Application.Services.WizardResult, MarketDataCollector.Application.Config.PipelineOptions?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FromWizardResult
+    path: ../../src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+    startLine: 87
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Config
+  summary: Processes configuration from the wizard result.
+  example: []
+  syntax:
+    content: public ValidatedConfig FromWizardResult(WizardResult result, PipelineOptions? options = null)
+    parameters:
+    - id: result
+      type: MarketDataCollector.Application.Services.WizardResult
+    - id: options
+      type: MarketDataCollector.Application.Config.PipelineOptions
+    return:
+      type: MarketDataCollector.Application.Config.ValidatedConfig
+    content.vb: Public Function FromWizardResult(result As WizardResult, options As PipelineOptions = Nothing) As ValidatedConfig
+  overload: MarketDataCollector.Application.Config.ConfigurationPipeline.FromWizardResult*
+  nameWithType.vb: ConfigurationPipeline.FromWizardResult(WizardResult, PipelineOptions)
+  fullName.vb: MarketDataCollector.Application.Config.ConfigurationPipeline.FromWizardResult(MarketDataCollector.Application.Services.WizardResult, MarketDataCollector.Application.Config.PipelineOptions)
+  name.vb: FromWizardResult(WizardResult, PipelineOptions)
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.FromAutoConfigResult(MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult,MarketDataCollector.Application.Config.PipelineOptions)
+  commentId: M:MarketDataCollector.Application.Config.ConfigurationPipeline.FromAutoConfigResult(MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult,MarketDataCollector.Application.Config.PipelineOptions)
+  id: FromAutoConfigResult(MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult,MarketDataCollector.Application.Config.PipelineOptions)
+  parent: MarketDataCollector.Application.Config.ConfigurationPipeline
+  langs:
+  - csharp
+  - vb
+  name: FromAutoConfigResult(AutoConfigResult, PipelineOptions?)
+  nameWithType: ConfigurationPipeline.FromAutoConfigResult(AutoConfigurationService.AutoConfigResult, PipelineOptions?)
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.FromAutoConfigResult(MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult, MarketDataCollector.Application.Config.PipelineOptions?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FromAutoConfigResult
+    path: ../../src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+    startLine: 106
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Config
+  summary: Processes configuration from auto-config result.
+  example: []
+  syntax:
+    content: public ValidatedConfig FromAutoConfigResult(AutoConfigurationService.AutoConfigResult result, PipelineOptions? options = null)
+    parameters:
+    - id: result
+      type: MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult
+    - id: options
+      type: MarketDataCollector.Application.Config.PipelineOptions
+    return:
+      type: MarketDataCollector.Application.Config.ValidatedConfig
+    content.vb: Public Function FromAutoConfigResult(result As AutoConfigurationService.AutoConfigResult, options As PipelineOptions = Nothing) As ValidatedConfig
+  overload: MarketDataCollector.Application.Config.ConfigurationPipeline.FromAutoConfigResult*
+  nameWithType.vb: ConfigurationPipeline.FromAutoConfigResult(AutoConfigurationService.AutoConfigResult, PipelineOptions)
+  fullName.vb: MarketDataCollector.Application.Config.ConfigurationPipeline.FromAutoConfigResult(MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult, MarketDataCollector.Application.Config.PipelineOptions)
+  name.vb: FromAutoConfigResult(AutoConfigResult, PipelineOptions)
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.FromHotReload(MarketDataCollector.Application.Config.AppConfig,System.String,MarketDataCollector.Application.Config.PipelineOptions)
+  commentId: M:MarketDataCollector.Application.Config.ConfigurationPipeline.FromHotReload(MarketDataCollector.Application.Config.AppConfig,System.String,MarketDataCollector.Application.Config.PipelineOptions)
+  id: FromHotReload(MarketDataCollector.Application.Config.AppConfig,System.String,MarketDataCollector.Application.Config.PipelineOptions)
+  parent: MarketDataCollector.Application.Config.ConfigurationPipeline
+  langs:
+  - csharp
+  - vb
+  name: FromHotReload(AppConfig, string, PipelineOptions?)
+  nameWithType: ConfigurationPipeline.FromHotReload(AppConfig, string, PipelineOptions?)
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.FromHotReload(MarketDataCollector.Application.Config.AppConfig, string, MarketDataCollector.Application.Config.PipelineOptions?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FromHotReload
+    path: ../../src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+    startLine: 130
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Config
+  summary: Processes configuration from hot reload.
+  example: []
+  syntax:
+    content: public ValidatedConfig FromHotReload(AppConfig config, string configPath, PipelineOptions? options = null)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.AppConfig
+    - id: configPath
+      type: System.String
+    - id: options
+      type: MarketDataCollector.Application.Config.PipelineOptions
+    return:
+      type: MarketDataCollector.Application.Config.ValidatedConfig
+    content.vb: Public Function FromHotReload(config As AppConfig, configPath As String, options As PipelineOptions = Nothing) As ValidatedConfig
+  overload: MarketDataCollector.Application.Config.ConfigurationPipeline.FromHotReload*
+  nameWithType.vb: ConfigurationPipeline.FromHotReload(AppConfig, String, PipelineOptions)
+  fullName.vb: MarketDataCollector.Application.Config.ConfigurationPipeline.FromHotReload(MarketDataCollector.Application.Config.AppConfig, String, MarketDataCollector.Application.Config.PipelineOptions)
+  name.vb: FromHotReload(AppConfig, String, PipelineOptions)
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.StartHotReload(System.String,System.Action{MarketDataCollector.Application.Config.ValidatedConfig},System.Action{System.Exception},MarketDataCollector.Application.Config.PipelineOptions)
+  commentId: M:MarketDataCollector.Application.Config.ConfigurationPipeline.StartHotReload(System.String,System.Action{MarketDataCollector.Application.Config.ValidatedConfig},System.Action{System.Exception},MarketDataCollector.Application.Config.PipelineOptions)
+  id: StartHotReload(System.String,System.Action{MarketDataCollector.Application.Config.ValidatedConfig},System.Action{System.Exception},MarketDataCollector.Application.Config.PipelineOptions)
+  parent: MarketDataCollector.Application.Config.ConfigurationPipeline
+  langs:
+  - csharp
+  - vb
+  name: StartHotReload(string, Action<ValidatedConfig>, Action<Exception>?, PipelineOptions?)
+  nameWithType: ConfigurationPipeline.StartHotReload(string, Action<ValidatedConfig>, Action<Exception>?, PipelineOptions?)
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.StartHotReload(string, System.Action<MarketDataCollector.Application.Config.ValidatedConfig>, System.Action<System.Exception>?, MarketDataCollector.Application.Config.PipelineOptions?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StartHotReload
+    path: ../../src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+    startLine: 146
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Config
+  summary: >-
+    Starts watching a configuration file for changes.
+
+    The callback receives a ValidatedConfig that has been processed through the full pipeline.
+  example: []
+  syntax:
+    content: public ConfigWatcher StartHotReload(string configPath, Action<ValidatedConfig> onConfigChanged, Action<Exception>? onError = null, PipelineOptions? options = null)
+    parameters:
+    - id: configPath
+      type: System.String
+    - id: onConfigChanged
+      type: System.Action{MarketDataCollector.Application.Config.ValidatedConfig}
+    - id: onError
+      type: System.Action{System.Exception}
+    - id: options
+      type: MarketDataCollector.Application.Config.PipelineOptions
+    return:
+      type: MarketDataCollector.Application.Config.ConfigWatcher
+    content.vb: Public Function StartHotReload(configPath As String, onConfigChanged As Action(Of ValidatedConfig), onError As Action(Of Exception) = Nothing, options As PipelineOptions = Nothing) As ConfigWatcher
+  overload: MarketDataCollector.Application.Config.ConfigurationPipeline.StartHotReload*
+  nameWithType.vb: ConfigurationPipeline.StartHotReload(String, Action(Of ValidatedConfig), Action(Of Exception), PipelineOptions)
+  fullName.vb: MarketDataCollector.Application.Config.ConfigurationPipeline.StartHotReload(String, System.Action(Of MarketDataCollector.Application.Config.ValidatedConfig), System.Action(Of System.Exception), MarketDataCollector.Application.Config.PipelineOptions)
+  name.vb: StartHotReload(String, Action(Of ValidatedConfig), Action(Of Exception), PipelineOptions)
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.StopHotReload
+  commentId: M:MarketDataCollector.Application.Config.ConfigurationPipeline.StopHotReload
+  id: StopHotReload
+  parent: MarketDataCollector.Application.Config.ConfigurationPipeline
+  langs:
+  - csharp
+  - vb
+  name: StopHotReload()
+  nameWithType: ConfigurationPipeline.StopHotReload()
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.StopHotReload()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StopHotReload
+    path: ../../src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+    startLine: 176
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Config
+  summary: Stops hot reload monitoring.
+  example: []
+  syntax:
+    content: public void StopHotReload()
+    content.vb: Public Sub StopHotReload()
+  overload: MarketDataCollector.Application.Config.ConfigurationPipeline.StopHotReload*
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.DisposeAsync
+  commentId: M:MarketDataCollector.Application.Config.ConfigurationPipeline.DisposeAsync
+  id: DisposeAsync
+  parent: MarketDataCollector.Application.Config.ConfigurationPipeline
+  langs:
+  - csharp
+  - vb
+  name: DisposeAsync()
+  nameWithType: ConfigurationPipeline.DisposeAsync()
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.DisposeAsync()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisposeAsync
+    path: ../../src/MarketDataCollector.Application/Config/ConfigurationPipeline.cs
+    startLine: 708
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Config
+  summary: >-
+    Performs application-defined tasks associated with freeing, releasing, or
+
+    resetting unmanaged resources asynchronously.
+  example: []
+  syntax:
+    content: public ValueTask DisposeAsync()
+    return:
+      type: System.Threading.Tasks.ValueTask
+      description: A task that represents the asynchronous dispose operation.
+    content.vb: Public Function DisposeAsync() As ValueTask
+  overload: MarketDataCollector.Application.Config.ConfigurationPipeline.DisposeAsync*
+  implements:
+  - System.IAsyncDisposable.DisposeAsync
+references:
+- uid: MarketDataCollector.Application.Config
+  commentId: N:MarketDataCollector.Application.Config
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config
+  nameWithType: MarketDataCollector.Application.Config
+  fullName: MarketDataCollector.Application.Config
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IAsyncDisposable
+  commentId: T:System.IAsyncDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
+  name: IAsyncDisposable
+  nameWithType: IAsyncDisposable
+  fullName: System.IAsyncDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Config.ConfigurationPipeline.#ctor
+  href: MarketDataCollector.Application.Config.ConfigurationPipeline.html#MarketDataCollector_Application_Config_ConfigurationPipeline__ctor_Serilog_ILogger_MarketDataCollector_Application_Config_Credentials_ProviderCredentialResolver_
+  name: ConfigurationPipeline
+  nameWithType: ConfigurationPipeline.ConfigurationPipeline
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.ConfigurationPipeline
+  nameWithType.vb: ConfigurationPipeline.New
+  fullName.vb: MarketDataCollector.Application.Config.ConfigurationPipeline.New
+  name.vb: New
+- uid: Serilog.ILogger
+  commentId: T:Serilog.ILogger
+  parent: Serilog
+  isExternal: true
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Serilog.ILogger
+- uid: MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver
+  commentId: T:MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver
+  parent: MarketDataCollector.Application.Config.Credentials
+  href: MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver.html
+  name: ProviderCredentialResolver
+  nameWithType: ProviderCredentialResolver
+  fullName: MarketDataCollector.Application.Config.Credentials.ProviderCredentialResolver
+- uid: Serilog
+  commentId: N:Serilog
+  isExternal: true
+  name: Serilog
+  nameWithType: Serilog
+  fullName: Serilog
+- uid: MarketDataCollector.Application.Config.Credentials
+  commentId: N:MarketDataCollector.Application.Config.Credentials
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config.Credentials
+  nameWithType: MarketDataCollector.Application.Config.Credentials
+  fullName: MarketDataCollector.Application.Config.Credentials
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config.Credentials
+    name: Credentials
+    href: MarketDataCollector.Application.Config.Credentials.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config.Credentials
+    name: Credentials
+    href: MarketDataCollector.Application.Config.Credentials.html
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.LoadFromFile*
+  commentId: Overload:MarketDataCollector.Application.Config.ConfigurationPipeline.LoadFromFile
+  href: MarketDataCollector.Application.Config.ConfigurationPipeline.html#MarketDataCollector_Application_Config_ConfigurationPipeline_LoadFromFile_System_String_MarketDataCollector_Application_Config_PipelineOptions_
+  name: LoadFromFile
+  nameWithType: ConfigurationPipeline.LoadFromFile
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.LoadFromFile
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Application.Config.PipelineOptions
+  commentId: T:MarketDataCollector.Application.Config.PipelineOptions
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.PipelineOptions.html
+  name: PipelineOptions
+  nameWithType: PipelineOptions
+  fullName: MarketDataCollector.Application.Config.PipelineOptions
+- uid: MarketDataCollector.Application.Config.ValidatedConfig
+  commentId: T:MarketDataCollector.Application.Config.ValidatedConfig
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.ValidatedConfig.html
+  name: ValidatedConfig
+  nameWithType: ValidatedConfig
+  fullName: MarketDataCollector.Application.Config.ValidatedConfig
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.Process*
+  commentId: Overload:MarketDataCollector.Application.Config.ConfigurationPipeline.Process
+  href: MarketDataCollector.Application.Config.ConfigurationPipeline.html#MarketDataCollector_Application_Config_ConfigurationPipeline_Process_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Application_Config_PipelineOptions_
+  name: Process
+  nameWithType: ConfigurationPipeline.Process
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.Process
+- uid: MarketDataCollector.Application.Config.AppConfig
+  commentId: T:MarketDataCollector.Application.Config.AppConfig
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.AppConfig.html
+  name: AppConfig
+  nameWithType: AppConfig
+  fullName: MarketDataCollector.Application.Config.AppConfig
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.FromWizardResult*
+  commentId: Overload:MarketDataCollector.Application.Config.ConfigurationPipeline.FromWizardResult
+  href: MarketDataCollector.Application.Config.ConfigurationPipeline.html#MarketDataCollector_Application_Config_ConfigurationPipeline_FromWizardResult_MarketDataCollector_Application_Services_WizardResult_MarketDataCollector_Application_Config_PipelineOptions_
+  name: FromWizardResult
+  nameWithType: ConfigurationPipeline.FromWizardResult
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.FromWizardResult
+- uid: MarketDataCollector.Application.Services.WizardResult
+  commentId: T:MarketDataCollector.Application.Services.WizardResult
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.WizardResult.html
+  name: WizardResult
+  nameWithType: WizardResult
+  fullName: MarketDataCollector.Application.Services.WizardResult
+- uid: MarketDataCollector.Application.Services
+  commentId: N:MarketDataCollector.Application.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Services
+  nameWithType: MarketDataCollector.Application.Services
+  fullName: MarketDataCollector.Application.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.FromAutoConfigResult*
+  commentId: Overload:MarketDataCollector.Application.Config.ConfigurationPipeline.FromAutoConfigResult
+  href: MarketDataCollector.Application.Config.ConfigurationPipeline.html#MarketDataCollector_Application_Config_ConfigurationPipeline_FromAutoConfigResult_MarketDataCollector_Application_Services_AutoConfigurationService_AutoConfigResult_MarketDataCollector_Application_Config_PipelineOptions_
+  name: FromAutoConfigResult
+  nameWithType: ConfigurationPipeline.FromAutoConfigResult
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.FromAutoConfigResult
+- uid: MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult
+  commentId: T:MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.AutoConfigurationService.html
+  name: AutoConfigurationService.AutoConfigResult
+  nameWithType: AutoConfigurationService.AutoConfigResult
+  fullName: MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService
+    name: AutoConfigurationService
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult
+    name: AutoConfigResult
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult.html
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService
+    name: AutoConfigurationService
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult
+    name: AutoConfigResult
+    href: MarketDataCollector.Application.Services.AutoConfigurationService.AutoConfigResult.html
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.FromHotReload*
+  commentId: Overload:MarketDataCollector.Application.Config.ConfigurationPipeline.FromHotReload
+  href: MarketDataCollector.Application.Config.ConfigurationPipeline.html#MarketDataCollector_Application_Config_ConfigurationPipeline_FromHotReload_MarketDataCollector_Application_Config_AppConfig_System_String_MarketDataCollector_Application_Config_PipelineOptions_
+  name: FromHotReload
+  nameWithType: ConfigurationPipeline.FromHotReload
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.FromHotReload
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.StartHotReload*
+  commentId: Overload:MarketDataCollector.Application.Config.ConfigurationPipeline.StartHotReload
+  href: MarketDataCollector.Application.Config.ConfigurationPipeline.html#MarketDataCollector_Application_Config_ConfigurationPipeline_StartHotReload_System_String_System_Action_MarketDataCollector_Application_Config_ValidatedConfig__System_Action_System_Exception__MarketDataCollector_Application_Config_PipelineOptions_
+  name: StartHotReload
+  nameWithType: ConfigurationPipeline.StartHotReload
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.StartHotReload
+- uid: System.Action{MarketDataCollector.Application.Config.ValidatedConfig}
+  commentId: T:System.Action{MarketDataCollector.Application.Config.ValidatedConfig}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<ValidatedConfig>
+  nameWithType: Action<ValidatedConfig>
+  fullName: System.Action<MarketDataCollector.Application.Config.ValidatedConfig>
+  nameWithType.vb: Action(Of ValidatedConfig)
+  fullName.vb: System.Action(Of MarketDataCollector.Application.Config.ValidatedConfig)
+  name.vb: Action(Of ValidatedConfig)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MarketDataCollector.Application.Config.ValidatedConfig
+    name: ValidatedConfig
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.ValidatedConfig
+    name: ValidatedConfig
+  - name: )
+- uid: System.Action{System.Exception}
+  commentId: T:System.Action{System.Exception}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<Exception>
+  nameWithType: Action<Exception>
+  fullName: System.Action<System.Exception>
+  nameWithType.vb: Action(Of Exception)
+  fullName.vb: System.Action(Of System.Exception)
+  name.vb: Action(Of Exception)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: )
+- uid: MarketDataCollector.Application.Config.ConfigWatcher
+  commentId: T:MarketDataCollector.Application.Config.ConfigWatcher
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.ConfigWatcher.html
+  name: ConfigWatcher
+  nameWithType: ConfigWatcher
+  fullName: MarketDataCollector.Application.Config.ConfigWatcher
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.StopHotReload*
+  commentId: Overload:MarketDataCollector.Application.Config.ConfigurationPipeline.StopHotReload
+  href: MarketDataCollector.Application.Config.ConfigurationPipeline.html#MarketDataCollector_Application_Config_ConfigurationPipeline_StopHotReload
+  name: StopHotReload
+  nameWithType: ConfigurationPipeline.StopHotReload
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.StopHotReload
+- uid: MarketDataCollector.Application.Config.ConfigurationPipeline.DisposeAsync*
+  commentId: Overload:MarketDataCollector.Application.Config.ConfigurationPipeline.DisposeAsync
+  href: MarketDataCollector.Application.Config.ConfigurationPipeline.html#MarketDataCollector_Application_Config_ConfigurationPipeline_DisposeAsync
+  name: DisposeAsync
+  nameWithType: ConfigurationPipeline.DisposeAsync
+  fullName: MarketDataCollector.Application.Config.ConfigurationPipeline.DisposeAsync
+- uid: System.IAsyncDisposable.DisposeAsync
+  commentId: M:System.IAsyncDisposable.DisposeAsync
+  parent: System.IAsyncDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  name: DisposeAsync()
+  nameWithType: IAsyncDisposable.DisposeAsync()
+  fullName: System.IAsyncDisposable.DisposeAsync()
+  spec.csharp:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+- uid: System.Threading.Tasks.ValueTask
+  commentId: T:System.Threading.Tasks.ValueTask
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask
+  name: ValueTask
+  nameWithType: ValueTask
+  fullName: System.Threading.Tasks.ValueTask
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

@@ -1,0 +1,1757 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  commentId: T:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  id: ConnectionHealthMonitor
+  parent: MarketDataCollector.Application.Monitoring
+  children:
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.#ctor(MarketDataCollector.Application.Monitoring.ConnectionHealthConfig)
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.Dispose
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetAverageLatencyMs
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatus(System.String)
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatusByProvider(System.String)
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetMaxLatencyMs
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetMinLatencyMs
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetSnapshot
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkConnected(System.String)
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkDisconnected(System.String,System.String)
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.OnConnectionLost
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.OnConnectionRecovered
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.OnHeartbeatMissed
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.OnHighLatency
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.PingSender
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordDataReceived(System.String)
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordHeartbeat(System.String)
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordHeartbeat(System.String,System.Nullable{System.Int64})
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordLatency(System.String,System.Double)
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordLatency(System.String,System.Int64)
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RegisterConnection(System.String,System.String)
+  - MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.UnregisterConnection(System.String)
+  langs:
+  - csharp
+  - vb
+  name: ConnectionHealthMonitor
+  nameWithType: ConnectionHealthMonitor
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConnectionHealthMonitor
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 13
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: >-
+    Monitors connection health for market data providers.
+
+    Tracks heartbeats, latency, and connection state with auto-reconnect support.
+  example: []
+  syntax:
+    content: 'public sealed class ConnectionHealthMonitor : IConnectionHealthMonitor, IDisposable'
+    content.vb: Public NotInheritable Class ConnectionHealthMonitor Implements IConnectionHealthMonitor, IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.OnConnectionLost
+  commentId: E:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.OnConnectionLost
+  id: OnConnectionLost
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: OnConnectionLost
+  nameWithType: ConnectionHealthMonitor.OnConnectionLost
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.OnConnectionLost
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnConnectionLost
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 31
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Event raised when a connection is lost.
+  example: []
+  syntax:
+    content: public event Action<ConnectionLostEvent>? OnConnectionLost
+    return:
+      type: System.Action{MarketDataCollector.Application.Monitoring.ConnectionLostEvent}
+    content.vb: Public Event OnConnectionLost As Action(Of ConnectionLostEvent)
+  implements:
+  - MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.OnConnectionLost
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.OnConnectionRecovered
+  commentId: E:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.OnConnectionRecovered
+  id: OnConnectionRecovered
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: OnConnectionRecovered
+  nameWithType: ConnectionHealthMonitor.OnConnectionRecovered
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.OnConnectionRecovered
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnConnectionRecovered
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 36
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Event raised when a connection is recovered.
+  example: []
+  syntax:
+    content: public event Action<ConnectionRecoveredEvent>? OnConnectionRecovered
+    return:
+      type: System.Action{MarketDataCollector.Application.Monitoring.ConnectionRecoveredEvent}
+    content.vb: Public Event OnConnectionRecovered As Action(Of ConnectionRecoveredEvent)
+  implements:
+  - MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.OnConnectionRecovered
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.OnHeartbeatMissed
+  commentId: E:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.OnHeartbeatMissed
+  id: OnHeartbeatMissed
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: OnHeartbeatMissed
+  nameWithType: ConnectionHealthMonitor.OnHeartbeatMissed
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.OnHeartbeatMissed
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnHeartbeatMissed
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 41
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Event raised when heartbeat is missed (potential connection issue).
+  example: []
+  syntax:
+    content: public event Action<HeartbeatMissedEvent>? OnHeartbeatMissed
+    return:
+      type: System.Action{MarketDataCollector.Application.Monitoring.HeartbeatMissedEvent}
+    content.vb: Public Event OnHeartbeatMissed As Action(Of HeartbeatMissedEvent)
+  implements:
+  - MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.OnHeartbeatMissed
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.OnHighLatency
+  commentId: E:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.OnHighLatency
+  id: OnHighLatency
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: OnHighLatency
+  nameWithType: ConnectionHealthMonitor.OnHighLatency
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.OnHighLatency
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnHighLatency
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 46
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Event raised when high latency is detected.
+  example: []
+  syntax:
+    content: public event Action<HighLatencyEvent>? OnHighLatency
+    return:
+      type: System.Action{MarketDataCollector.Application.Monitoring.HighLatencyEvent}
+    content.vb: Public Event OnHighLatency As Action(Of HighLatencyEvent)
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.PingSender
+  commentId: P:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.PingSender
+  id: PingSender
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: PingSender
+  nameWithType: ConnectionHealthMonitor.PingSender
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.PingSender
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PingSender
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 51
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Delegate for sending ping messages to connections.
+  example: []
+  syntax:
+    content: public Func<string, CancellationToken, Task<bool>>? PingSender { get; set; }
+    parameters: []
+    return:
+      type: System.Func{System.String,System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Boolean}}
+    content.vb: Public Property PingSender As Func(Of String, CancellationToken, Task(Of Boolean))
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.PingSender*
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.#ctor(MarketDataCollector.Application.Monitoring.ConnectionHealthConfig)
+  commentId: M:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.#ctor(MarketDataCollector.Application.Monitoring.ConnectionHealthConfig)
+  id: '#ctor(MarketDataCollector.Application.Monitoring.ConnectionHealthConfig)'
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: ConnectionHealthMonitor(ConnectionHealthConfig?)
+  nameWithType: ConnectionHealthMonitor.ConnectionHealthMonitor(ConnectionHealthConfig?)
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.ConnectionHealthMonitor(MarketDataCollector.Application.Monitoring.ConnectionHealthConfig?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 53
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public ConnectionHealthMonitor(ConnectionHealthConfig? config = null)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Monitoring.ConnectionHealthConfig
+    content.vb: Public Sub New(config As ConnectionHealthConfig = Nothing)
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.#ctor*
+  nameWithType.vb: ConnectionHealthMonitor.New(ConnectionHealthConfig)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.New(MarketDataCollector.Application.Monitoring.ConnectionHealthConfig)
+  name.vb: New(ConnectionHealthConfig)
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RegisterConnection(System.String,System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RegisterConnection(System.String,System.String)
+  id: RegisterConnection(System.String,System.String)
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: RegisterConnection(string, string)
+  nameWithType: ConnectionHealthMonitor.RegisterConnection(string, string)
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RegisterConnection(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterConnection
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 71
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Registers a new connection for monitoring.
+  example: []
+  syntax:
+    content: public void RegisterConnection(string connectionId, string providerName)
+    parameters:
+    - id: connectionId
+      type: System.String
+    - id: providerName
+      type: System.String
+    content.vb: Public Sub RegisterConnection(connectionId As String, providerName As String)
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RegisterConnection*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RegisterConnection(System.String,System.String)
+  nameWithType.vb: ConnectionHealthMonitor.RegisterConnection(String, String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RegisterConnection(String, String)
+  name.vb: RegisterConnection(String, String)
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.UnregisterConnection(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.UnregisterConnection(System.String)
+  id: UnregisterConnection(System.String)
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: UnregisterConnection(string)
+  nameWithType: ConnectionHealthMonitor.UnregisterConnection(string)
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.UnregisterConnection(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UnregisterConnection
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 81
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Unregisters a connection from monitoring.
+  example: []
+  syntax:
+    content: public void UnregisterConnection(string connectionId)
+    parameters:
+    - id: connectionId
+      type: System.String
+    content.vb: Public Sub UnregisterConnection(connectionId As String)
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.UnregisterConnection*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.UnregisterConnection(System.String)
+  nameWithType.vb: ConnectionHealthMonitor.UnregisterConnection(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.UnregisterConnection(String)
+  name.vb: UnregisterConnection(String)
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordHeartbeat(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordHeartbeat(System.String)
+  id: RecordHeartbeat(System.String)
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: RecordHeartbeat(string)
+  nameWithType: ConnectionHealthMonitor.RecordHeartbeat(string)
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordHeartbeat(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecordHeartbeat
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 92
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Records a heartbeat response (pong) for a connection.
+  example: []
+  syntax:
+    content: public void RecordHeartbeat(string connectionId)
+    parameters:
+    - id: connectionId
+      type: System.String
+    content.vb: Public Sub RecordHeartbeat(connectionId As String)
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordHeartbeat*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordHeartbeat(System.String)
+  nameWithType.vb: ConnectionHealthMonitor.RecordHeartbeat(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordHeartbeat(String)
+  name.vb: RecordHeartbeat(String)
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordHeartbeat(System.String,System.Nullable{System.Int64})
+  commentId: M:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordHeartbeat(System.String,System.Nullable{System.Int64})
+  id: RecordHeartbeat(System.String,System.Nullable{System.Int64})
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: RecordHeartbeat(string, long?)
+  nameWithType: ConnectionHealthMonitor.RecordHeartbeat(string, long?)
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordHeartbeat(string, long?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecordHeartbeat
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 101
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Records a heartbeat response (pong) for a connection with optional round-trip time.
+  example: []
+  syntax:
+    content: public void RecordHeartbeat(string connectionId, long? roundTripTicks)
+    parameters:
+    - id: connectionId
+      type: System.String
+    - id: roundTripTicks
+      type: System.Nullable{System.Int64}
+    content.vb: Public Sub RecordHeartbeat(connectionId As String, roundTripTicks As Long?)
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordHeartbeat*
+  nameWithType.vb: ConnectionHealthMonitor.RecordHeartbeat(String, Long?)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordHeartbeat(String, Long?)
+  name.vb: RecordHeartbeat(String, Long?)
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordDataReceived(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordDataReceived(System.String)
+  id: RecordDataReceived(System.String)
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: RecordDataReceived(string)
+  nameWithType: ConnectionHealthMonitor.RecordDataReceived(string)
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordDataReceived(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecordDataReceived
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 127
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Records data received from a connection (implicit heartbeat).
+  example: []
+  syntax:
+    content: public void RecordDataReceived(string connectionId)
+    parameters:
+    - id: connectionId
+      type: System.String
+    content.vb: Public Sub RecordDataReceived(connectionId As String)
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordDataReceived*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordDataReceived(System.String)
+  nameWithType.vb: ConnectionHealthMonitor.RecordDataReceived(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordDataReceived(String)
+  name.vb: RecordDataReceived(String)
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordLatency(System.String,System.Double)
+  commentId: M:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordLatency(System.String,System.Double)
+  id: RecordLatency(System.String,System.Double)
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: RecordLatency(string, double)
+  nameWithType: ConnectionHealthMonitor.RecordLatency(string, double)
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordLatency(string, double)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecordLatency
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 139
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Records latency for a connection (interface implementation - latency in milliseconds).
+  example: []
+  syntax:
+    content: public void RecordLatency(string connectionId, double latencyMs)
+    parameters:
+    - id: connectionId
+      type: System.String
+    - id: latencyMs
+      type: System.Double
+    content.vb: Public Sub RecordLatency(connectionId As String, latencyMs As Double)
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordLatency*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordLatency(System.String,System.Double)
+  nameWithType.vb: ConnectionHealthMonitor.RecordLatency(String, Double)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordLatency(String, Double)
+  name.vb: RecordLatency(String, Double)
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordLatency(System.String,System.Int64)
+  commentId: M:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordLatency(System.String,System.Int64)
+  id: RecordLatency(System.String,System.Int64)
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: RecordLatency(string, long)
+  nameWithType: ConnectionHealthMonitor.RecordLatency(string, long)
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordLatency(string, long)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecordLatency
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 149
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Records latency for a connection (in ticks).
+  example: []
+  syntax:
+    content: public void RecordLatency(string connectionId, long latencyTicks)
+    parameters:
+    - id: connectionId
+      type: System.String
+    - id: latencyTicks
+      type: System.Int64
+    content.vb: Public Sub RecordLatency(connectionId As String, latencyTicks As Long)
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordLatency*
+  nameWithType.vb: ConnectionHealthMonitor.RecordLatency(String, Long)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordLatency(String, Long)
+  name.vb: RecordLatency(String, Long)
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkDisconnected(System.String,System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkDisconnected(System.String,System.String)
+  id: MarkDisconnected(System.String,System.String)
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: MarkDisconnected(string, string?)
+  nameWithType: ConnectionHealthMonitor.MarkDisconnected(string, string?)
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkDisconnected(string, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MarkDisconnected
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 177
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Marks a connection as disconnected.
+  example: []
+  syntax:
+    content: public void MarkDisconnected(string connectionId, string? reason = null)
+    parameters:
+    - id: connectionId
+      type: System.String
+    - id: reason
+      type: System.String
+    content.vb: Public Sub MarkDisconnected(connectionId As String, reason As String = Nothing)
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkDisconnected*
+  nameWithType.vb: ConnectionHealthMonitor.MarkDisconnected(String, String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkDisconnected(String, String)
+  name.vb: MarkDisconnected(String, String)
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkConnected(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkConnected(System.String)
+  id: MarkConnected(System.String)
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: MarkConnected(string)
+  nameWithType: ConnectionHealthMonitor.MarkConnected(string)
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkConnected(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MarkConnected
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 204
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Marks a connection as connected (e.g., after reconnection).
+  example: []
+  syntax:
+    content: public void MarkConnected(string connectionId)
+    parameters:
+    - id: connectionId
+      type: System.String
+    content.vb: Public Sub MarkConnected(connectionId As String)
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkConnected*
+  nameWithType.vb: ConnectionHealthMonitor.MarkConnected(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkConnected(String)
+  name.vb: MarkConnected(String)
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetSnapshot
+  commentId: M:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetSnapshot
+  id: GetSnapshot
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: GetSnapshot()
+  nameWithType: ConnectionHealthMonitor.GetSnapshot()
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetSnapshot()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSnapshot
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 231
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Gets the health snapshot for all connections.
+  example: []
+  syntax:
+    content: public ConnectionHealthSnapshot GetSnapshot()
+    return:
+      type: MarketDataCollector.Application.Monitoring.ConnectionHealthSnapshot
+    content.vb: Public Function GetSnapshot() As ConnectionHealthSnapshot
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetSnapshot*
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatus(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatus(System.String)
+  id: GetConnectionStatus(System.String)
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: GetConnectionStatus(string)
+  nameWithType: ConnectionHealthMonitor.GetConnectionStatus(string)
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatus(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetConnectionStatus
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 255
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Gets the status of a specific connection by connection ID.
+  example: []
+  syntax:
+    content: public ConnectionStatus? GetConnectionStatus(string connectionId)
+    parameters:
+    - id: connectionId
+      type: System.String
+    return:
+      type: System.Nullable{MarketDataCollector.Application.Monitoring.ConnectionStatus}
+    content.vb: Public Function GetConnectionStatus(connectionId As String) As ConnectionStatus?
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatus*
+  nameWithType.vb: ConnectionHealthMonitor.GetConnectionStatus(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatus(String)
+  name.vb: GetConnectionStatus(String)
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatusByProvider(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatusByProvider(System.String)
+  id: GetConnectionStatusByProvider(System.String)
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: GetConnectionStatusByProvider(string)
+  nameWithType: ConnectionHealthMonitor.GetConnectionStatusByProvider(string)
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatusByProvider(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetConnectionStatusByProvider
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 264
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: >-
+    Gets the aggregate status for a provider by provider name.
+
+    Returns the first connected connection's status, or the first disconnected one if none are connected.
+  example: []
+  syntax:
+    content: public ConnectionStatus? GetConnectionStatusByProvider(string providerName)
+    parameters:
+    - id: providerName
+      type: System.String
+    return:
+      type: System.Nullable{MarketDataCollector.Application.Monitoring.ConnectionStatus}
+    content.vb: Public Function GetConnectionStatusByProvider(providerName As String) As ConnectionStatus?
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatusByProvider*
+  nameWithType.vb: ConnectionHealthMonitor.GetConnectionStatusByProvider(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatusByProvider(String)
+  name.vb: GetConnectionStatusByProvider(String)
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetAverageLatencyMs
+  commentId: M:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetAverageLatencyMs
+  id: GetAverageLatencyMs
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: GetAverageLatencyMs()
+  nameWithType: ConnectionHealthMonitor.GetAverageLatencyMs()
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetAverageLatencyMs()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetAverageLatencyMs
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 283
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Gets the average latency in milliseconds across all connections.
+  example: []
+  syntax:
+    content: public double GetAverageLatencyMs()
+    return:
+      type: System.Double
+    content.vb: Public Function GetAverageLatencyMs() As Double
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetAverageLatencyMs*
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetMinLatencyMs
+  commentId: M:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetMinLatencyMs
+  id: GetMinLatencyMs
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: GetMinLatencyMs()
+  nameWithType: ConnectionHealthMonitor.GetMinLatencyMs()
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetMinLatencyMs()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetMinLatencyMs
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 295
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Gets the minimum latency in milliseconds.
+  example: []
+  syntax:
+    content: public double GetMinLatencyMs()
+    return:
+      type: System.Double
+    content.vb: Public Function GetMinLatencyMs() As Double
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetMinLatencyMs*
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetMaxLatencyMs
+  commentId: M:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetMaxLatencyMs
+  id: GetMaxLatencyMs
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: GetMaxLatencyMs()
+  nameWithType: ConnectionHealthMonitor.GetMaxLatencyMs()
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetMaxLatencyMs()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetMaxLatencyMs
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 305
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Gets the maximum latency in milliseconds.
+  example: []
+  syntax:
+    content: public double GetMaxLatencyMs()
+    return:
+      type: System.Double
+    content.vb: Public Function GetMaxLatencyMs() As Double
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetMaxLatencyMs*
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.Dispose
+  commentId: M:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.Dispose
+  id: Dispose
+  parent: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: ConnectionHealthMonitor.Dispose()
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Dispose
+    path: ../../src/MarketDataCollector.Application/Monitoring/ConnectionHealthMonitor.cs
+    startLine: 436
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: MarketDataCollector.Application.Monitoring
+  commentId: N:MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring
+  nameWithType: MarketDataCollector.Application.Monitoring
+  fullName: MarketDataCollector.Application.Monitoring
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor
+  commentId: T:MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.html
+  name: IConnectionHealthMonitor
+  nameWithType: IConnectionHealthMonitor
+  fullName: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.OnConnectionLost
+  commentId: E:MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.OnConnectionLost
+  parent: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor
+  name: OnConnectionLost
+  nameWithType: IConnectionHealthMonitor.OnConnectionLost
+  fullName: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.OnConnectionLost
+- uid: System.Action{MarketDataCollector.Application.Monitoring.ConnectionLostEvent}
+  commentId: T:System.Action{MarketDataCollector.Application.Monitoring.ConnectionLostEvent}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<ConnectionLostEvent>
+  nameWithType: Action<ConnectionLostEvent>
+  fullName: System.Action<MarketDataCollector.Application.Monitoring.ConnectionLostEvent>
+  nameWithType.vb: Action(Of ConnectionLostEvent)
+  fullName.vb: System.Action(Of MarketDataCollector.Application.Monitoring.ConnectionLostEvent)
+  name.vb: Action(Of ConnectionLostEvent)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.ConnectionLostEvent
+    name: ConnectionLostEvent
+    href: MarketDataCollector.Application.Monitoring.ConnectionLostEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.ConnectionLostEvent
+    name: ConnectionLostEvent
+    href: MarketDataCollector.Application.Monitoring.ConnectionLostEvent.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.OnConnectionRecovered
+  commentId: E:MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.OnConnectionRecovered
+  parent: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor
+  name: OnConnectionRecovered
+  nameWithType: IConnectionHealthMonitor.OnConnectionRecovered
+  fullName: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.OnConnectionRecovered
+- uid: System.Action{MarketDataCollector.Application.Monitoring.ConnectionRecoveredEvent}
+  commentId: T:System.Action{MarketDataCollector.Application.Monitoring.ConnectionRecoveredEvent}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<ConnectionRecoveredEvent>
+  nameWithType: Action<ConnectionRecoveredEvent>
+  fullName: System.Action<MarketDataCollector.Application.Monitoring.ConnectionRecoveredEvent>
+  nameWithType.vb: Action(Of ConnectionRecoveredEvent)
+  fullName.vb: System.Action(Of MarketDataCollector.Application.Monitoring.ConnectionRecoveredEvent)
+  name.vb: Action(Of ConnectionRecoveredEvent)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.ConnectionRecoveredEvent
+    name: ConnectionRecoveredEvent
+    href: MarketDataCollector.Application.Monitoring.ConnectionRecoveredEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.ConnectionRecoveredEvent
+    name: ConnectionRecoveredEvent
+    href: MarketDataCollector.Application.Monitoring.ConnectionRecoveredEvent.html
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.OnHeartbeatMissed
+  commentId: E:MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.OnHeartbeatMissed
+  parent: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor
+  name: OnHeartbeatMissed
+  nameWithType: IConnectionHealthMonitor.OnHeartbeatMissed
+  fullName: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.OnHeartbeatMissed
+- uid: System.Action{MarketDataCollector.Application.Monitoring.HeartbeatMissedEvent}
+  commentId: T:System.Action{MarketDataCollector.Application.Monitoring.HeartbeatMissedEvent}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<HeartbeatMissedEvent>
+  nameWithType: Action<HeartbeatMissedEvent>
+  fullName: System.Action<MarketDataCollector.Application.Monitoring.HeartbeatMissedEvent>
+  nameWithType.vb: Action(Of HeartbeatMissedEvent)
+  fullName.vb: System.Action(Of MarketDataCollector.Application.Monitoring.HeartbeatMissedEvent)
+  name.vb: Action(Of HeartbeatMissedEvent)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.HeartbeatMissedEvent
+    name: HeartbeatMissedEvent
+    href: MarketDataCollector.Application.Monitoring.HeartbeatMissedEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.HeartbeatMissedEvent
+    name: HeartbeatMissedEvent
+    href: MarketDataCollector.Application.Monitoring.HeartbeatMissedEvent.html
+  - name: )
+- uid: System.Action{MarketDataCollector.Application.Monitoring.HighLatencyEvent}
+  commentId: T:System.Action{MarketDataCollector.Application.Monitoring.HighLatencyEvent}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<HighLatencyEvent>
+  nameWithType: Action<HighLatencyEvent>
+  fullName: System.Action<MarketDataCollector.Application.Monitoring.HighLatencyEvent>
+  nameWithType.vb: Action(Of HighLatencyEvent)
+  fullName.vb: System.Action(Of MarketDataCollector.Application.Monitoring.HighLatencyEvent)
+  name.vb: Action(Of HighLatencyEvent)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.HighLatencyEvent
+    name: HighLatencyEvent
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.HighLatencyEvent
+    name: HighLatencyEvent
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.PingSender*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.PingSender
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.html#MarketDataCollector_Application_Monitoring_ConnectionHealthMonitor_PingSender
+  name: PingSender
+  nameWithType: ConnectionHealthMonitor.PingSender
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.PingSender
+- uid: System.Func{System.String,System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Boolean}}
+  commentId: T:System.Func{System.String,System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Boolean}}
+  parent: System
+  definition: System.Func`3
+  href: https://learn.microsoft.com/dotnet/api/system.func-3
+  name: Func<string, CancellationToken, Task<bool>>
+  nameWithType: Func<string, CancellationToken, Task<bool>>
+  fullName: System.Func<string, System.Threading.CancellationToken, System.Threading.Tasks.Task<bool>>
+  nameWithType.vb: Func(Of String, CancellationToken, Task(Of Boolean))
+  fullName.vb: System.Func(Of String, System.Threading.CancellationToken, System.Threading.Tasks.Task(Of Boolean))
+  name.vb: Func(Of String, CancellationToken, Task(Of Boolean))
+  spec.csharp:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: ','
+  - name: " "
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: ','
+  - name: " "
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+- uid: System.Func`3
+  commentId: T:System.Func`3
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-3
+  name: Func<T1, T2, TResult>
+  nameWithType: Func<T1, T2, TResult>
+  fullName: System.Func<T1, T2, TResult>
+  nameWithType.vb: Func(Of T1, T2, TResult)
+  fullName.vb: System.Func(Of T1, T2, TResult)
+  name.vb: Func(Of T1, T2, TResult)
+  spec.csharp:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.#ctor
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.html#MarketDataCollector_Application_Monitoring_ConnectionHealthMonitor__ctor_MarketDataCollector_Application_Monitoring_ConnectionHealthConfig_
+  name: ConnectionHealthMonitor
+  nameWithType: ConnectionHealthMonitor.ConnectionHealthMonitor
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.ConnectionHealthMonitor
+  nameWithType.vb: ConnectionHealthMonitor.New
+  fullName.vb: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.New
+  name.vb: New
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthConfig
+  commentId: T:MarketDataCollector.Application.Monitoring.ConnectionHealthConfig
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthConfig.html
+  name: ConnectionHealthConfig
+  nameWithType: ConnectionHealthConfig
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthConfig
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RegisterConnection*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RegisterConnection
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.html#MarketDataCollector_Application_Monitoring_ConnectionHealthMonitor_RegisterConnection_System_String_System_String_
+  name: RegisterConnection
+  nameWithType: ConnectionHealthMonitor.RegisterConnection
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RegisterConnection
+- uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RegisterConnection(System.String,System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RegisterConnection(System.String,System.String)
+  parent: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: RegisterConnection(string, string)
+  nameWithType: IConnectionHealthMonitor.RegisterConnection(string, string)
+  fullName: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RegisterConnection(string, string)
+  nameWithType.vb: IConnectionHealthMonitor.RegisterConnection(String, String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RegisterConnection(String, String)
+  name.vb: RegisterConnection(String, String)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RegisterConnection(System.String,System.String)
+    name: RegisterConnection
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RegisterConnection(System.String,System.String)
+    name: RegisterConnection
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.UnregisterConnection*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.UnregisterConnection
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.html#MarketDataCollector_Application_Monitoring_ConnectionHealthMonitor_UnregisterConnection_System_String_
+  name: UnregisterConnection
+  nameWithType: ConnectionHealthMonitor.UnregisterConnection
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.UnregisterConnection
+- uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.UnregisterConnection(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.UnregisterConnection(System.String)
+  parent: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: UnregisterConnection(string)
+  nameWithType: IConnectionHealthMonitor.UnregisterConnection(string)
+  fullName: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.UnregisterConnection(string)
+  nameWithType.vb: IConnectionHealthMonitor.UnregisterConnection(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.UnregisterConnection(String)
+  name.vb: UnregisterConnection(String)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.UnregisterConnection(System.String)
+    name: UnregisterConnection
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.UnregisterConnection(System.String)
+    name: UnregisterConnection
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordHeartbeat*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordHeartbeat
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.html#MarketDataCollector_Application_Monitoring_ConnectionHealthMonitor_RecordHeartbeat_System_String_
+  name: RecordHeartbeat
+  nameWithType: ConnectionHealthMonitor.RecordHeartbeat
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordHeartbeat
+- uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordHeartbeat(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordHeartbeat(System.String)
+  parent: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: RecordHeartbeat(string)
+  nameWithType: IConnectionHealthMonitor.RecordHeartbeat(string)
+  fullName: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordHeartbeat(string)
+  nameWithType.vb: IConnectionHealthMonitor.RecordHeartbeat(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordHeartbeat(String)
+  name.vb: RecordHeartbeat(String)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordHeartbeat(System.String)
+    name: RecordHeartbeat
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordHeartbeat(System.String)
+    name: RecordHeartbeat
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Nullable{System.Int64}
+  commentId: T:System.Nullable{System.Int64}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long?
+  nameWithType: long?
+  fullName: long?
+  nameWithType.vb: Long?
+  fullName.vb: Long?
+  name.vb: Long?
+  spec.csharp:
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '?'
+  spec.vb:
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordDataReceived*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordDataReceived
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.html#MarketDataCollector_Application_Monitoring_ConnectionHealthMonitor_RecordDataReceived_System_String_
+  name: RecordDataReceived
+  nameWithType: ConnectionHealthMonitor.RecordDataReceived
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordDataReceived
+- uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordDataReceived(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordDataReceived(System.String)
+  parent: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: RecordDataReceived(string)
+  nameWithType: IConnectionHealthMonitor.RecordDataReceived(string)
+  fullName: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordDataReceived(string)
+  nameWithType.vb: IConnectionHealthMonitor.RecordDataReceived(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordDataReceived(String)
+  name.vb: RecordDataReceived(String)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordDataReceived(System.String)
+    name: RecordDataReceived
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordDataReceived(System.String)
+    name: RecordDataReceived
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordLatency*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordLatency
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.html#MarketDataCollector_Application_Monitoring_ConnectionHealthMonitor_RecordLatency_System_String_System_Double_
+  name: RecordLatency
+  nameWithType: ConnectionHealthMonitor.RecordLatency
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.RecordLatency
+- uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordLatency(System.String,System.Double)
+  commentId: M:MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordLatency(System.String,System.Double)
+  parent: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: RecordLatency(string, double)
+  nameWithType: IConnectionHealthMonitor.RecordLatency(string, double)
+  fullName: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordLatency(string, double)
+  nameWithType.vb: IConnectionHealthMonitor.RecordLatency(String, Double)
+  fullName.vb: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordLatency(String, Double)
+  name.vb: RecordLatency(String, Double)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordLatency(System.String,System.Double)
+    name: RecordLatency
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.RecordLatency(System.String,System.Double)
+    name: RecordLatency
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkDisconnected*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkDisconnected
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.html#MarketDataCollector_Application_Monitoring_ConnectionHealthMonitor_MarkDisconnected_System_String_System_String_
+  name: MarkDisconnected
+  nameWithType: ConnectionHealthMonitor.MarkDisconnected
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkDisconnected
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkConnected*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkConnected
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.html#MarketDataCollector_Application_Monitoring_ConnectionHealthMonitor_MarkConnected_System_String_
+  name: MarkConnected
+  nameWithType: ConnectionHealthMonitor.MarkConnected
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.MarkConnected
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetSnapshot*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetSnapshot
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.html#MarketDataCollector_Application_Monitoring_ConnectionHealthMonitor_GetSnapshot
+  name: GetSnapshot
+  nameWithType: ConnectionHealthMonitor.GetSnapshot
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetSnapshot
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthSnapshot
+  commentId: T:MarketDataCollector.Application.Monitoring.ConnectionHealthSnapshot
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthSnapshot.html
+  name: ConnectionHealthSnapshot
+  nameWithType: ConnectionHealthSnapshot
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthSnapshot
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatus*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatus
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.html#MarketDataCollector_Application_Monitoring_ConnectionHealthMonitor_GetConnectionStatus_System_String_
+  name: GetConnectionStatus
+  nameWithType: ConnectionHealthMonitor.GetConnectionStatus
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatus
+- uid: System.Nullable{MarketDataCollector.Application.Monitoring.ConnectionStatus}
+  commentId: T:System.Nullable{MarketDataCollector.Application.Monitoring.ConnectionStatus}
+  parent: System
+  definition: System.Nullable`1
+  href: MarketDataCollector.Application.Monitoring.ConnectionStatus.html
+  name: ConnectionStatus?
+  nameWithType: ConnectionStatus?
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionStatus?
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.ConnectionStatus
+    name: ConnectionStatus
+    href: MarketDataCollector.Application.Monitoring.ConnectionStatus.html
+  - name: '?'
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.ConnectionStatus
+    name: ConnectionStatus
+    href: MarketDataCollector.Application.Monitoring.ConnectionStatus.html
+  - name: '?'
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatusByProvider*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatusByProvider
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.html#MarketDataCollector_Application_Monitoring_ConnectionHealthMonitor_GetConnectionStatusByProvider_System_String_
+  name: GetConnectionStatusByProvider
+  nameWithType: ConnectionHealthMonitor.GetConnectionStatusByProvider
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetConnectionStatusByProvider
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetAverageLatencyMs*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetAverageLatencyMs
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.html#MarketDataCollector_Application_Monitoring_ConnectionHealthMonitor_GetAverageLatencyMs
+  name: GetAverageLatencyMs
+  nameWithType: ConnectionHealthMonitor.GetAverageLatencyMs
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetAverageLatencyMs
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetMinLatencyMs*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetMinLatencyMs
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.html#MarketDataCollector_Application_Monitoring_ConnectionHealthMonitor_GetMinLatencyMs
+  name: GetMinLatencyMs
+  nameWithType: ConnectionHealthMonitor.GetMinLatencyMs
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetMinLatencyMs
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetMaxLatencyMs*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetMaxLatencyMs
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.html#MarketDataCollector_Application_Monitoring_ConnectionHealthMonitor_GetMaxLatencyMs
+  name: GetMaxLatencyMs
+  nameWithType: ConnectionHealthMonitor.GetMaxLatencyMs
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.GetMaxLatencyMs
+- uid: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.Dispose*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.Dispose
+  href: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.html#MarketDataCollector_Application_Monitoring_ConnectionHealthMonitor_Dispose
+  name: Dispose
+  nameWithType: ConnectionHealthMonitor.Dispose
+  fullName: MarketDataCollector.Application.Monitoring.ConnectionHealthMonitor.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

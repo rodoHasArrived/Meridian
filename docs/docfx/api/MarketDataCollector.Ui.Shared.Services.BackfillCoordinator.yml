@@ -1,0 +1,1216 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator
+  commentId: T:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator
+  id: BackfillCoordinator
+  parent: MarketDataCollector.Ui.Shared.Services
+  children:
+  - MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.#ctor(MarketDataCollector.Ui.Shared.Services.ConfigStore,MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory)
+  - MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.CheckProviderHealthAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.DescribeProviders
+  - MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.Dispose
+  - MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.GetProgress
+  - MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.PreviewAsync(MarketDataCollector.Application.Backfill.BackfillRequest,System.Threading.CancellationToken)
+  - MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.ResolveSymbolAsync(System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.RunAsync(MarketDataCollector.Application.Backfill.BackfillRequest,System.Threading.CancellationToken)
+  - MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.TryReadLast
+  langs:
+  - csharp
+  - vb
+  name: BackfillCoordinator
+  nameWithType: BackfillCoordinator
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BackfillCoordinator
+    path: ../../src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+    startLine: 61
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Services
+  summary: >-
+    Extends the core BackfillCoordinator with preview functionality for UI applications.
+
+    Wraps the core implementation and adds preview-specific methods.
+  remarks: >-
+    <p><b>Migration Note:</b> This class wraps the core implementation from
+
+    <xref href="MarketDataCollector.Application.UI.BackfillCoordinator" data-throw-if-not-resolved="false"></xref> to add preview
+
+    functionality while delegating core operations to the wrapped instance.</p>
+
+    <p><b>Provider Discovery:</b> Uses <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry" data-throw-if-not-resolved="false"></xref> for unified
+
+    provider discovery. If a registry is provided, backfill providers are discovered
+
+    via <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProviders" data-throw-if-not-resolved="false"></xref>.</p>
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-001", "Uses ProviderRegistry for unified provider discovery")]
+
+      public sealed class BackfillCoordinator : IDisposable
+    content.vb: >-
+      <ImplementsAdr("ADR-001", "Uses ProviderRegistry for unified provider discovery")>
+
+      Public NotInheritable Class BackfillCoordinator Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-001
+    - type: System.String
+      value: Uses ProviderRegistry for unified provider discovery
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.#ctor(MarketDataCollector.Ui.Shared.Services.ConfigStore,MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory)
+  commentId: M:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.#ctor(MarketDataCollector.Ui.Shared.Services.ConfigStore,MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory)
+  id: '#ctor(MarketDataCollector.Ui.Shared.Services.ConfigStore,MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory)'
+  parent: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator
+  langs:
+  - csharp
+  - vb
+  name: BackfillCoordinator(ConfigStore, ProviderRegistry?, ProviderFactory?)
+  nameWithType: BackfillCoordinator.BackfillCoordinator(ConfigStore, ProviderRegistry?, ProviderFactory?)
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.BackfillCoordinator(MarketDataCollector.Ui.Shared.Services.ConfigStore, MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry?, MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+    startLine: 76
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Services
+  summary: Creates a BackfillCoordinator with unified provider registry support.
+  example: []
+  syntax:
+    content: public BackfillCoordinator(ConfigStore store, ProviderRegistry? registry = null, ProviderFactory? factory = null)
+    parameters:
+    - id: store
+      type: MarketDataCollector.Ui.Shared.Services.ConfigStore
+      description: Configuration store.
+    - id: registry
+      type: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+      description: Optional provider registry for unified provider discovery.
+    - id: factory
+      type: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory
+      description: Optional provider factory for creating providers if registry is empty.
+    content.vb: Public Sub New(store As ConfigStore, registry As ProviderRegistry = Nothing, factory As ProviderFactory = Nothing)
+  overload: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.#ctor*
+  nameWithType.vb: BackfillCoordinator.New(ConfigStore, ProviderRegistry, ProviderFactory)
+  fullName.vb: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.New(MarketDataCollector.Ui.Shared.Services.ConfigStore, MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry, MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory)
+  name.vb: New(ConfigStore, ProviderRegistry, ProviderFactory)
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.DescribeProviders
+  commentId: M:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.DescribeProviders
+  id: DescribeProviders
+  parent: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator
+  langs:
+  - csharp
+  - vb
+  name: DescribeProviders()
+  nameWithType: BackfillCoordinator.DescribeProviders()
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.DescribeProviders()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DescribeProviders
+    path: ../../src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+    startLine: 89
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Services
+  summary: Gets descriptions of all available backfill providers.
+  example: []
+  syntax:
+    content: public IEnumerable<object> DescribeProviders()
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Object}
+    content.vb: Public Function DescribeProviders() As IEnumerable(Of Object)
+  overload: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.DescribeProviders*
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.TryReadLast
+  commentId: M:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.TryReadLast
+  id: TryReadLast
+  parent: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator
+  langs:
+  - csharp
+  - vb
+  name: TryReadLast()
+  nameWithType: BackfillCoordinator.TryReadLast()
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.TryReadLast()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TryReadLast
+    path: ../../src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+    startLine: 94
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Services
+  summary: Tries to read the last backfill result.
+  example: []
+  syntax:
+    content: public BackfillResult? TryReadLast()
+    return:
+      type: MarketDataCollector.Application.Backfill.BackfillResult
+    content.vb: Public Function TryReadLast() As BackfillResult
+  overload: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.TryReadLast*
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.RunAsync(MarketDataCollector.Application.Backfill.BackfillRequest,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.RunAsync(MarketDataCollector.Application.Backfill.BackfillRequest,System.Threading.CancellationToken)
+  id: RunAsync(MarketDataCollector.Application.Backfill.BackfillRequest,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator
+  langs:
+  - csharp
+  - vb
+  name: RunAsync(BackfillRequest, CancellationToken)
+  nameWithType: BackfillCoordinator.RunAsync(BackfillRequest, CancellationToken)
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.RunAsync(MarketDataCollector.Application.Backfill.BackfillRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RunAsync
+    path: ../../src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+    startLine: 99
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Services
+  summary: Runs a backfill operation for the specified request.
+  example: []
+  syntax:
+    content: public Task<BackfillResult> RunAsync(BackfillRequest request, CancellationToken ct = default)
+    parameters:
+    - id: request
+      type: MarketDataCollector.Application.Backfill.BackfillRequest
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Backfill.BackfillResult}
+    content.vb: Public Function RunAsync(request As BackfillRequest, ct As CancellationToken = Nothing) As Task(Of BackfillResult)
+  overload: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.RunAsync*
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.CheckProviderHealthAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.CheckProviderHealthAsync(System.Threading.CancellationToken)
+  id: CheckProviderHealthAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator
+  langs:
+  - csharp
+  - vb
+  name: CheckProviderHealthAsync(CancellationToken)
+  nameWithType: BackfillCoordinator.CheckProviderHealthAsync(CancellationToken)
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.CheckProviderHealthAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CheckProviderHealthAsync
+    path: ../../src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+    startLine: 105
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Services
+  summary: Gets health status of all providers.
+  example: []
+  syntax:
+    content: public Task<IReadOnlyDictionary<string, ProviderHealthStatus>> CheckProviderHealthAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyDictionary{System.String,MarketDataCollector.Infrastructure.Adapters.Core.ProviderHealthStatus}}
+    content.vb: Public Function CheckProviderHealthAsync(ct As CancellationToken = Nothing) As Task(Of IReadOnlyDictionary(Of String, ProviderHealthStatus))
+  overload: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.CheckProviderHealthAsync*
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.ResolveSymbolAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.ResolveSymbolAsync(System.String,System.Threading.CancellationToken)
+  id: ResolveSymbolAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator
+  langs:
+  - csharp
+  - vb
+  name: ResolveSymbolAsync(string, CancellationToken)
+  nameWithType: BackfillCoordinator.ResolveSymbolAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.ResolveSymbolAsync(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResolveSymbolAsync
+    path: ../../src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+    startLine: 111
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Services
+  summary: Resolve a symbol using OpenFIGI.
+  example: []
+  syntax:
+    content: public Task<SymbolResolution?> ResolveSymbolAsync(string symbol, CancellationToken ct = default)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution}
+    content.vb: Public Function ResolveSymbolAsync(symbol As String, ct As CancellationToken = Nothing) As Task(Of SymbolResolution)
+  overload: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.ResolveSymbolAsync*
+  nameWithType.vb: BackfillCoordinator.ResolveSymbolAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.ResolveSymbolAsync(String, System.Threading.CancellationToken)
+  name.vb: ResolveSymbolAsync(String, CancellationToken)
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.GetProgress
+  commentId: M:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.GetProgress
+  id: GetProgress
+  parent: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator
+  langs:
+  - csharp
+  - vb
+  name: GetProgress()
+  nameWithType: BackfillCoordinator.GetProgress()
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.GetProgress()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetProgress
+    path: ../../src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+    startLine: 117
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Services
+  summary: Gets backfill progress snapshot from the core coordinator, if available.
+  example: []
+  syntax:
+    content: public object? GetProgress()
+    return:
+      type: System.Object
+    content.vb: Public Function GetProgress() As Object
+  overload: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.GetProgress*
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.Dispose
+  commentId: M:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.Dispose
+  id: Dispose
+  parent: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: BackfillCoordinator.Dispose()
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Dispose
+    path: ../../src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+    startLine: 119
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Services
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.PreviewAsync(MarketDataCollector.Application.Backfill.BackfillRequest,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.PreviewAsync(MarketDataCollector.Application.Backfill.BackfillRequest,System.Threading.CancellationToken)
+  id: PreviewAsync(MarketDataCollector.Application.Backfill.BackfillRequest,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator
+  langs:
+  - csharp
+  - vb
+  name: PreviewAsync(BackfillRequest, CancellationToken)
+  nameWithType: BackfillCoordinator.PreviewAsync(BackfillRequest, CancellationToken)
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.PreviewAsync(MarketDataCollector.Application.Backfill.BackfillRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PreviewAsync
+    path: ../../src/MarketDataCollector.Ui.Shared/Services/BackfillCoordinator.cs
+    startLine: 125
+  assemblies:
+  - MarketDataCollector.Ui.Shared
+  namespace: MarketDataCollector.Ui.Shared.Services
+  summary: >-
+    Previews a backfill operation without actually fetching data.
+
+    Returns information about what would be backfilled.
+  example: []
+  syntax:
+    content: public Task<BackfillPreviewResult> PreviewAsync(BackfillRequest request, CancellationToken ct = default)
+    parameters:
+    - id: request
+      type: MarketDataCollector.Application.Backfill.BackfillRequest
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Ui.Shared.Services.BackfillPreviewResult}
+    content.vb: Public Function PreviewAsync(request As BackfillRequest, ct As CancellationToken = Nothing) As Task(Of BackfillPreviewResult)
+  overload: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.PreviewAsync*
+references:
+- uid: MarketDataCollector.Application.UI.BackfillCoordinator
+  commentId: T:MarketDataCollector.Application.UI.BackfillCoordinator
+  href: MarketDataCollector.Application.UI.BackfillCoordinator.html
+  name: BackfillCoordinator
+  nameWithType: BackfillCoordinator
+  fullName: MarketDataCollector.Application.UI.BackfillCoordinator
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  name: ProviderRegistry
+  nameWithType: ProviderRegistry
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProviders
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProviders
+  name: GetBackfillProviders()
+  nameWithType: ProviderRegistry.GetBackfillProviders()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProviders()
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProviders
+    name: GetBackfillProviders
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProviders
+    name: GetBackfillProviders
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Ui.Shared.Services
+  commentId: N:MarketDataCollector.Ui.Shared.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Ui.Shared.Services
+  nameWithType: MarketDataCollector.Ui.Shared.Services
+  fullName: MarketDataCollector.Ui.Shared.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Ui
+    name: Ui
+    href: MarketDataCollector.Ui.html
+  - name: .
+  - uid: MarketDataCollector.Ui.Shared
+    name: Shared
+    href: MarketDataCollector.Ui.Shared.html
+  - name: .
+  - uid: MarketDataCollector.Ui.Shared.Services
+    name: Services
+    href: MarketDataCollector.Ui.Shared.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Ui
+    name: Ui
+    href: MarketDataCollector.Ui.html
+  - name: .
+  - uid: MarketDataCollector.Ui.Shared
+    name: Shared
+    href: MarketDataCollector.Ui.Shared.html
+  - name: .
+  - uid: MarketDataCollector.Ui.Shared.Services
+    name: Services
+    href: MarketDataCollector.Ui.Shared.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Core
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Core
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.#ctor*
+  commentId: Overload:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.#ctor
+  href: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.html#MarketDataCollector_Ui_Shared_Services_BackfillCoordinator__ctor_MarketDataCollector_Ui_Shared_Services_ConfigStore_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Infrastructure_Adapters_Core_ProviderFactory_
+  name: BackfillCoordinator
+  nameWithType: BackfillCoordinator.BackfillCoordinator
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.BackfillCoordinator
+  nameWithType.vb: BackfillCoordinator.New
+  fullName.vb: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.New
+  name.vb: New
+- uid: MarketDataCollector.Ui.Shared.Services.ConfigStore
+  commentId: T:MarketDataCollector.Ui.Shared.Services.ConfigStore
+  parent: MarketDataCollector.Ui.Shared.Services
+  href: MarketDataCollector.Ui.Shared.Services.ConfigStore.html
+  name: ConfigStore
+  nameWithType: ConfigStore
+  fullName: MarketDataCollector.Ui.Shared.Services.ConfigStore
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory.html
+  name: ProviderFactory
+  nameWithType: ProviderFactory
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderFactory
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.DescribeProviders*
+  commentId: Overload:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.DescribeProviders
+  href: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.html#MarketDataCollector_Ui_Shared_Services_BackfillCoordinator_DescribeProviders
+  name: DescribeProviders
+  nameWithType: BackfillCoordinator.DescribeProviders
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.DescribeProviders
+- uid: System.Collections.Generic.IEnumerable{System.Object}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<object>
+  nameWithType: IEnumerable<object>
+  fullName: System.Collections.Generic.IEnumerable<object>
+  nameWithType.vb: IEnumerable(Of Object)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Object)
+  name.vb: IEnumerable(Of Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.TryReadLast*
+  commentId: Overload:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.TryReadLast
+  href: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.html#MarketDataCollector_Ui_Shared_Services_BackfillCoordinator_TryReadLast
+  name: TryReadLast
+  nameWithType: BackfillCoordinator.TryReadLast
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.TryReadLast
+- uid: MarketDataCollector.Application.Backfill.BackfillResult
+  commentId: T:MarketDataCollector.Application.Backfill.BackfillResult
+  parent: MarketDataCollector.Application.Backfill
+  href: MarketDataCollector.Application.Backfill.BackfillResult.html
+  name: BackfillResult
+  nameWithType: BackfillResult
+  fullName: MarketDataCollector.Application.Backfill.BackfillResult
+- uid: MarketDataCollector.Application.Backfill
+  commentId: N:MarketDataCollector.Application.Backfill
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Backfill
+  nameWithType: MarketDataCollector.Application.Backfill
+  fullName: MarketDataCollector.Application.Backfill
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Backfill
+    name: Backfill
+    href: MarketDataCollector.Application.Backfill.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Backfill
+    name: Backfill
+    href: MarketDataCollector.Application.Backfill.html
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.RunAsync*
+  commentId: Overload:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.RunAsync
+  href: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.html#MarketDataCollector_Ui_Shared_Services_BackfillCoordinator_RunAsync_MarketDataCollector_Application_Backfill_BackfillRequest_System_Threading_CancellationToken_
+  name: RunAsync
+  nameWithType: BackfillCoordinator.RunAsync
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.RunAsync
+- uid: MarketDataCollector.Application.Backfill.BackfillRequest
+  commentId: T:MarketDataCollector.Application.Backfill.BackfillRequest
+  parent: MarketDataCollector.Application.Backfill
+  href: MarketDataCollector.Application.Backfill.BackfillRequest.html
+  name: BackfillRequest
+  nameWithType: BackfillRequest
+  fullName: MarketDataCollector.Application.Backfill.BackfillRequest
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Backfill.BackfillResult}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Backfill.BackfillResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<BackfillResult>
+  nameWithType: Task<BackfillResult>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Backfill.BackfillResult>
+  nameWithType.vb: Task(Of BackfillResult)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Backfill.BackfillResult)
+  name.vb: Task(Of BackfillResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Backfill.BackfillResult
+    name: BackfillResult
+    href: MarketDataCollector.Application.Backfill.BackfillResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Backfill.BackfillResult
+    name: BackfillResult
+    href: MarketDataCollector.Application.Backfill.BackfillResult.html
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.CheckProviderHealthAsync*
+  commentId: Overload:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.CheckProviderHealthAsync
+  href: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.html#MarketDataCollector_Ui_Shared_Services_BackfillCoordinator_CheckProviderHealthAsync_System_Threading_CancellationToken_
+  name: CheckProviderHealthAsync
+  nameWithType: BackfillCoordinator.CheckProviderHealthAsync
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.CheckProviderHealthAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyDictionary{System.String,MarketDataCollector.Infrastructure.Adapters.Core.ProviderHealthStatus}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyDictionary{System.String,MarketDataCollector.Infrastructure.Adapters.Core.ProviderHealthStatus}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IReadOnlyDictionary<string, ProviderHealthStatus>>
+  nameWithType: Task<IReadOnlyDictionary<string, ProviderHealthStatus>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string, MarketDataCollector.Infrastructure.Adapters.Core.ProviderHealthStatus>>
+  nameWithType.vb: Task(Of IReadOnlyDictionary(Of String, ProviderHealthStatus))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IReadOnlyDictionary(Of String, MarketDataCollector.Infrastructure.Adapters.Core.ProviderHealthStatus))
+  name.vb: Task(Of IReadOnlyDictionary(Of String, ProviderHealthStatus))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderHealthStatus
+    name: ProviderHealthStatus
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderHealthStatus.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderHealthStatus
+    name: ProviderHealthStatus
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderHealthStatus.html
+  - name: )
+  - name: )
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.ResolveSymbolAsync*
+  commentId: Overload:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.ResolveSymbolAsync
+  href: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.html#MarketDataCollector_Ui_Shared_Services_BackfillCoordinator_ResolveSymbolAsync_System_String_System_Threading_CancellationToken_
+  name: ResolveSymbolAsync
+  nameWithType: BackfillCoordinator.ResolveSymbolAsync
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.ResolveSymbolAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<SymbolResolution>
+  nameWithType: Task<SymbolResolution>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution>
+  nameWithType.vb: Task(Of SymbolResolution)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution)
+  name.vb: Task(Of SymbolResolution)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+    name: SymbolResolution
+    href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+    name: SymbolResolution
+    href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html
+  - name: )
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.GetProgress*
+  commentId: Overload:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.GetProgress
+  href: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.html#MarketDataCollector_Ui_Shared_Services_BackfillCoordinator_GetProgress
+  name: GetProgress
+  nameWithType: BackfillCoordinator.GetProgress
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.GetProgress
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.Dispose*
+  commentId: Overload:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.Dispose
+  href: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.html#MarketDataCollector_Ui_Shared_Services_BackfillCoordinator_Dispose
+  name: Dispose
+  nameWithType: BackfillCoordinator.Dispose
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.PreviewAsync*
+  commentId: Overload:MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.PreviewAsync
+  href: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.html#MarketDataCollector_Ui_Shared_Services_BackfillCoordinator_PreviewAsync_MarketDataCollector_Application_Backfill_BackfillRequest_System_Threading_CancellationToken_
+  name: PreviewAsync
+  nameWithType: BackfillCoordinator.PreviewAsync
+  fullName: MarketDataCollector.Ui.Shared.Services.BackfillCoordinator.PreviewAsync
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Ui.Shared.Services.BackfillPreviewResult}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Ui.Shared.Services.BackfillPreviewResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<BackfillPreviewResult>
+  nameWithType: Task<BackfillPreviewResult>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Ui.Shared.Services.BackfillPreviewResult>
+  nameWithType.vb: Task(Of BackfillPreviewResult)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Ui.Shared.Services.BackfillPreviewResult)
+  name.vb: Task(Of BackfillPreviewResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Ui.Shared.Services.BackfillPreviewResult
+    name: BackfillPreviewResult
+    href: MarketDataCollector.Ui.Shared.Services.BackfillPreviewResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Ui.Shared.Services.BackfillPreviewResult
+    name: BackfillPreviewResult
+    href: MarketDataCollector.Ui.Shared.Services.BackfillPreviewResult.html
+  - name: )

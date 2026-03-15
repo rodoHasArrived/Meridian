@@ -1,0 +1,1349 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient
+  commentId: T:MarketDataCollector.Infrastructure.NoOpMarketDataClient
+  id: NoOpMarketDataClient
+  parent: MarketDataCollector.Infrastructure
+  children:
+  - MarketDataCollector.Infrastructure.NoOpMarketDataClient.ConnectAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.NoOpMarketDataClient.DisconnectAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.NoOpMarketDataClient.DisposeAsync
+  - MarketDataCollector.Infrastructure.NoOpMarketDataClient.IsEnabled
+  - MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderCapabilities
+  - MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderDescription
+  - MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderDisplayName
+  - MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderId
+  - MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderNotes
+  - MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderPriority
+  - MarketDataCollector.Infrastructure.NoOpMarketDataClient.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  - MarketDataCollector.Infrastructure.NoOpMarketDataClient.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  - MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeMarketDepth(System.Int32)
+  - MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeTrades(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: NoOpMarketDataClient
+  nameWithType: NoOpMarketDataClient
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: NoOpMarketDataClient
+    path: ../../src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+    startLine: 11
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure
+  summary: >-
+    Runtime no-op implementation used when no data provider is configured or available.
+
+    Keeps Program logic identical in all builds.
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-001", "No-op data provider for disabled/unconfigured scenarios")]
+
+      [ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+
+      public sealed class NoOpMarketDataClient : IMarketDataClient, IProviderMetadata, IAsyncDisposable
+    content.vb: >-
+      <ImplementsAdr("ADR-001", "No-op data provider for disabled/unconfigured scenarios")>
+
+      <ImplementsAdr("ADR-004", "All async methods support CancellationToken")>
+
+      Public NotInheritable Class NoOpMarketDataClient Implements IMarketDataClient, IProviderMetadata, IAsyncDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - MarketDataCollector.Infrastructure.IMarketDataClient
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  - System.IAsyncDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-001
+    - type: System.String
+      value: No-op data provider for disabled/unconfigured scenarios
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-004
+    - type: System.String
+      value: All async methods support CancellationToken
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.IsEnabled
+  commentId: P:MarketDataCollector.Infrastructure.NoOpMarketDataClient.IsEnabled
+  id: IsEnabled
+  parent: MarketDataCollector.Infrastructure.NoOpMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: IsEnabled
+  nameWithType: NoOpMarketDataClient.IsEnabled
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.IsEnabled
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsEnabled
+    path: ../../src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+    startLine: 15
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure
+  example: []
+  syntax:
+    content: public bool IsEnabled { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsEnabled As Boolean
+  overload: MarketDataCollector.Infrastructure.NoOpMarketDataClient.IsEnabled*
+  implements:
+  - MarketDataCollector.Infrastructure.IMarketDataClient.IsEnabled
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderId
+  commentId: P:MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderId
+  id: ProviderId
+  parent: MarketDataCollector.Infrastructure.NoOpMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: ProviderId
+  nameWithType: NoOpMarketDataClient.ProviderId
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderId
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderId
+    path: ../../src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+    startLine: 20
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure
+  summary: Unique identifier for the provider (e.g., "alpaca", "polygon", "yahoo").
+  example: []
+  syntax:
+    content: public string ProviderId { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property ProviderId As String
+  overload: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderId*
+  implements:
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderId
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderDisplayName
+  commentId: P:MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderDisplayName
+  id: ProviderDisplayName
+  parent: MarketDataCollector.Infrastructure.NoOpMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: ProviderDisplayName
+  nameWithType: NoOpMarketDataClient.ProviderDisplayName
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderDisplayName
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderDisplayName
+    path: ../../src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+    startLine: 23
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure
+  summary: Human-readable display name.
+  example: []
+  syntax:
+    content: public string ProviderDisplayName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property ProviderDisplayName As String
+  overload: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderDisplayName*
+  implements:
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDisplayName
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderDescription
+  commentId: P:MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderDescription
+  id: ProviderDescription
+  parent: MarketDataCollector.Infrastructure.NoOpMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: ProviderDescription
+  nameWithType: NoOpMarketDataClient.ProviderDescription
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderDescription
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderDescription
+    path: ../../src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+    startLine: 26
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure
+  summary: Description of the provider and its capabilities.
+  example: []
+  syntax:
+    content: public string ProviderDescription { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property ProviderDescription As String
+  overload: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderDescription*
+  implements:
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDescription
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderPriority
+  commentId: P:MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderPriority
+  id: ProviderPriority
+  parent: MarketDataCollector.Infrastructure.NoOpMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: ProviderPriority
+  nameWithType: NoOpMarketDataClient.ProviderPriority
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderPriority
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderPriority
+    path: ../../src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+    startLine: 29
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure
+  summary: Priority for routing and failover (lower = higher priority, tried first).
+  example: []
+  syntax:
+    content: public int ProviderPriority { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property ProviderPriority As Integer
+  overload: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderPriority*
+  implements:
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderPriority
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderCapabilities
+  commentId: P:MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderCapabilities
+  id: ProviderCapabilities
+  parent: MarketDataCollector.Infrastructure.NoOpMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: ProviderCapabilities
+  nameWithType: NoOpMarketDataClient.ProviderCapabilities
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderCapabilities
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderCapabilities
+    path: ../../src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+    startLine: 32
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure
+  summary: Unified capability flags and metadata for this provider.
+  example: []
+  syntax:
+    content: public ProviderCapabilities ProviderCapabilities { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities
+    content.vb: Public ReadOnly Property ProviderCapabilities As ProviderCapabilities
+  overload: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderCapabilities*
+  implements:
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCapabilities
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderNotes
+  commentId: P:MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderNotes
+  id: ProviderNotes
+  parent: MarketDataCollector.Infrastructure.NoOpMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: ProviderNotes
+  nameWithType: NoOpMarketDataClient.ProviderNotes
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderNotes
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderNotes
+    path: ../../src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+    startLine: 35
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure
+  summary: Informational notes about using this provider (displayed in UI).
+  example: []
+  syntax:
+    content: public string[] ProviderNotes { get; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: Public ReadOnly Property ProviderNotes As String()
+  overload: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderNotes*
+  implements:
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderNotes
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.DisposeAsync
+  commentId: M:MarketDataCollector.Infrastructure.NoOpMarketDataClient.DisposeAsync
+  id: DisposeAsync
+  parent: MarketDataCollector.Infrastructure.NoOpMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: DisposeAsync()
+  nameWithType: NoOpMarketDataClient.DisposeAsync()
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.DisposeAsync()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisposeAsync
+    path: ../../src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+    startLine: 43
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure
+  summary: >-
+    Performs application-defined tasks associated with freeing, releasing, or
+
+    resetting unmanaged resources asynchronously.
+  example: []
+  syntax:
+    content: public ValueTask DisposeAsync()
+    return:
+      type: System.Threading.Tasks.ValueTask
+      description: A task that represents the asynchronous dispose operation.
+    content.vb: Public Function DisposeAsync() As ValueTask
+  overload: MarketDataCollector.Infrastructure.NoOpMarketDataClient.DisposeAsync*
+  implements:
+  - System.IAsyncDisposable.DisposeAsync
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ConnectAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.NoOpMarketDataClient.ConnectAsync(System.Threading.CancellationToken)
+  id: ConnectAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.NoOpMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: ConnectAsync(CancellationToken)
+  nameWithType: NoOpMarketDataClient.ConnectAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ConnectAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConnectAsync
+    path: ../../src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+    startLine: 45
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure
+  example: []
+  syntax:
+    content: public Task ConnectAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function ConnectAsync(ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ConnectAsync*
+  implements:
+  - MarketDataCollector.Infrastructure.IMarketDataClient.ConnectAsync(System.Threading.CancellationToken)
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.DisconnectAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.NoOpMarketDataClient.DisconnectAsync(System.Threading.CancellationToken)
+  id: DisconnectAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.NoOpMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: DisconnectAsync(CancellationToken)
+  nameWithType: NoOpMarketDataClient.DisconnectAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.DisconnectAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisconnectAsync
+    path: ../../src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+    startLine: 46
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure
+  example: []
+  syntax:
+    content: public Task DisconnectAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function DisconnectAsync(ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Infrastructure.NoOpMarketDataClient.DisconnectAsync*
+  implements:
+  - MarketDataCollector.Infrastructure.IMarketDataClient.DisconnectAsync(System.Threading.CancellationToken)
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  commentId: M:MarketDataCollector.Infrastructure.NoOpMarketDataClient.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  id: SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  parent: MarketDataCollector.Infrastructure.NoOpMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: SubscribeMarketDepth(SymbolConfig)
+  nameWithType: NoOpMarketDataClient.SubscribeMarketDepth(SymbolConfig)
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SubscribeMarketDepth
+    path: ../../src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+    startLine: 48
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure
+  summary: Subscribe to market depth for the symbol described by cfg.
+  example: []
+  syntax:
+    content: public int SubscribeMarketDepth(SymbolConfig cfg)
+    parameters:
+    - id: cfg
+      type: MarketDataCollector.Contracts.Configuration.SymbolConfig
+    return:
+      type: System.Int32
+    content.vb: Public Function SubscribeMarketDepth(cfg As SymbolConfig) As Integer
+  overload: MarketDataCollector.Infrastructure.NoOpMarketDataClient.SubscribeMarketDepth*
+  implements:
+  - MarketDataCollector.Infrastructure.IMarketDataClient.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeMarketDepth(System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeMarketDepth(System.Int32)
+  id: UnsubscribeMarketDepth(System.Int32)
+  parent: MarketDataCollector.Infrastructure.NoOpMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: UnsubscribeMarketDepth(int)
+  nameWithType: NoOpMarketDataClient.UnsubscribeMarketDepth(int)
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeMarketDepth(int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UnsubscribeMarketDepth
+    path: ../../src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+    startLine: 49
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure
+  summary: Unsubscribe a previously returned depth subscription id.
+  example: []
+  syntax:
+    content: public void UnsubscribeMarketDepth(int subscriptionId)
+    parameters:
+    - id: subscriptionId
+      type: System.Int32
+    content.vb: Public Sub UnsubscribeMarketDepth(subscriptionId As Integer)
+  overload: MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeMarketDepth*
+  implements:
+  - MarketDataCollector.Infrastructure.IMarketDataClient.UnsubscribeMarketDepth(System.Int32)
+  nameWithType.vb: NoOpMarketDataClient.UnsubscribeMarketDepth(Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeMarketDepth(Integer)
+  name.vb: UnsubscribeMarketDepth(Integer)
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  commentId: M:MarketDataCollector.Infrastructure.NoOpMarketDataClient.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  id: SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  parent: MarketDataCollector.Infrastructure.NoOpMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: SubscribeTrades(SymbolConfig)
+  nameWithType: NoOpMarketDataClient.SubscribeTrades(SymbolConfig)
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SubscribeTrades
+    path: ../../src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+    startLine: 51
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure
+  summary: Subscribe to tick-by-tick trade prints for the symbol described by cfg.
+  example: []
+  syntax:
+    content: public int SubscribeTrades(SymbolConfig cfg)
+    parameters:
+    - id: cfg
+      type: MarketDataCollector.Contracts.Configuration.SymbolConfig
+    return:
+      type: System.Int32
+    content.vb: Public Function SubscribeTrades(cfg As SymbolConfig) As Integer
+  overload: MarketDataCollector.Infrastructure.NoOpMarketDataClient.SubscribeTrades*
+  implements:
+  - MarketDataCollector.Infrastructure.IMarketDataClient.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeTrades(System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeTrades(System.Int32)
+  id: UnsubscribeTrades(System.Int32)
+  parent: MarketDataCollector.Infrastructure.NoOpMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: UnsubscribeTrades(int)
+  nameWithType: NoOpMarketDataClient.UnsubscribeTrades(int)
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeTrades(int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UnsubscribeTrades
+    path: ../../src/MarketDataCollector.Infrastructure/NoOpMarketDataClient.cs
+    startLine: 52
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure
+  summary: Unsubscribe a previously returned trade subscription id.
+  example: []
+  syntax:
+    content: public void UnsubscribeTrades(int subscriptionId)
+    parameters:
+    - id: subscriptionId
+      type: System.Int32
+    content.vb: Public Sub UnsubscribeTrades(subscriptionId As Integer)
+  overload: MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeTrades*
+  implements:
+  - MarketDataCollector.Infrastructure.IMarketDataClient.UnsubscribeTrades(System.Int32)
+  nameWithType.vb: NoOpMarketDataClient.UnsubscribeTrades(Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeTrades(Integer)
+  name.vb: UnsubscribeTrades(Integer)
+references:
+- uid: MarketDataCollector.Infrastructure
+  commentId: N:MarketDataCollector.Infrastructure
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure
+  nameWithType: MarketDataCollector.Infrastructure
+  fullName: MarketDataCollector.Infrastructure
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Infrastructure.IMarketDataClient
+  commentId: T:MarketDataCollector.Infrastructure.IMarketDataClient
+  parent: MarketDataCollector.Infrastructure
+  href: MarketDataCollector.Infrastructure.IMarketDataClient.html
+  name: IMarketDataClient
+  nameWithType: IMarketDataClient
+  fullName: MarketDataCollector.Infrastructure.IMarketDataClient
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html
+  name: IProviderMetadata
+  nameWithType: IProviderMetadata
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+- uid: System.IAsyncDisposable
+  commentId: T:System.IAsyncDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
+  name: IAsyncDisposable
+  nameWithType: IAsyncDisposable
+  fullName: System.IAsyncDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Infrastructure.Adapters.Core
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Core
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Core
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.IsEnabled*
+  commentId: Overload:MarketDataCollector.Infrastructure.NoOpMarketDataClient.IsEnabled
+  href: MarketDataCollector.Infrastructure.NoOpMarketDataClient.html#MarketDataCollector_Infrastructure_NoOpMarketDataClient_IsEnabled
+  name: IsEnabled
+  nameWithType: NoOpMarketDataClient.IsEnabled
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.IsEnabled
+- uid: MarketDataCollector.Infrastructure.IMarketDataClient.IsEnabled
+  commentId: P:MarketDataCollector.Infrastructure.IMarketDataClient.IsEnabled
+  parent: MarketDataCollector.Infrastructure.IMarketDataClient
+  name: IsEnabled
+  nameWithType: IMarketDataClient.IsEnabled
+  fullName: MarketDataCollector.Infrastructure.IMarketDataClient.IsEnabled
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderId*
+  commentId: Overload:MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderId
+  href: MarketDataCollector.Infrastructure.NoOpMarketDataClient.html#MarketDataCollector_Infrastructure_NoOpMarketDataClient_ProviderId
+  name: ProviderId
+  nameWithType: NoOpMarketDataClient.ProviderId
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderId
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderId
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderId
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderId
+  name: ProviderId
+  nameWithType: IProviderMetadata.ProviderId
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderDisplayName*
+  commentId: Overload:MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderDisplayName
+  href: MarketDataCollector.Infrastructure.NoOpMarketDataClient.html#MarketDataCollector_Infrastructure_NoOpMarketDataClient_ProviderDisplayName
+  name: ProviderDisplayName
+  nameWithType: NoOpMarketDataClient.ProviderDisplayName
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderDisplayName
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDisplayName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDisplayName
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderDisplayName
+  name: ProviderDisplayName
+  nameWithType: IProviderMetadata.ProviderDisplayName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDisplayName
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderDescription*
+  commentId: Overload:MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderDescription
+  href: MarketDataCollector.Infrastructure.NoOpMarketDataClient.html#MarketDataCollector_Infrastructure_NoOpMarketDataClient_ProviderDescription
+  name: ProviderDescription
+  nameWithType: NoOpMarketDataClient.ProviderDescription
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderDescription
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDescription
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDescription
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderDescription
+  name: ProviderDescription
+  nameWithType: IProviderMetadata.ProviderDescription
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDescription
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderPriority*
+  commentId: Overload:MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderPriority
+  href: MarketDataCollector.Infrastructure.NoOpMarketDataClient.html#MarketDataCollector_Infrastructure_NoOpMarketDataClient_ProviderPriority
+  name: ProviderPriority
+  nameWithType: NoOpMarketDataClient.ProviderPriority
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderPriority
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderPriority
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderPriority
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderPriority
+  name: ProviderPriority
+  nameWithType: IProviderMetadata.ProviderPriority
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderPriority
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderCapabilities*
+  commentId: Overload:MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderCapabilities
+  href: MarketDataCollector.Infrastructure.NoOpMarketDataClient.html#MarketDataCollector_Infrastructure_NoOpMarketDataClient_ProviderCapabilities
+  name: ProviderCapabilities
+  nameWithType: NoOpMarketDataClient.ProviderCapabilities
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderCapabilities
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCapabilities
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCapabilities
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderCapabilities
+  name: ProviderCapabilities
+  nameWithType: IProviderMetadata.ProviderCapabilities
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCapabilities
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities.html
+  name: ProviderCapabilities
+  nameWithType: ProviderCapabilities
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderNotes*
+  commentId: Overload:MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderNotes
+  href: MarketDataCollector.Infrastructure.NoOpMarketDataClient.html#MarketDataCollector_Infrastructure_NoOpMarketDataClient_ProviderNotes
+  name: ProviderNotes
+  nameWithType: NoOpMarketDataClient.ProviderNotes
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ProviderNotes
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderNotes
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderNotes
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderNotes
+  name: ProviderNotes
+  nameWithType: IProviderMetadata.ProviderNotes
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderNotes
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.DisposeAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.NoOpMarketDataClient.DisposeAsync
+  href: MarketDataCollector.Infrastructure.NoOpMarketDataClient.html#MarketDataCollector_Infrastructure_NoOpMarketDataClient_DisposeAsync
+  name: DisposeAsync
+  nameWithType: NoOpMarketDataClient.DisposeAsync
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.DisposeAsync
+- uid: System.IAsyncDisposable.DisposeAsync
+  commentId: M:System.IAsyncDisposable.DisposeAsync
+  parent: System.IAsyncDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  name: DisposeAsync()
+  nameWithType: IAsyncDisposable.DisposeAsync()
+  fullName: System.IAsyncDisposable.DisposeAsync()
+  spec.csharp:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+- uid: System.Threading.Tasks.ValueTask
+  commentId: T:System.Threading.Tasks.ValueTask
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask
+  name: ValueTask
+  nameWithType: ValueTask
+  fullName: System.Threading.Tasks.ValueTask
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ConnectAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.NoOpMarketDataClient.ConnectAsync
+  href: MarketDataCollector.Infrastructure.NoOpMarketDataClient.html#MarketDataCollector_Infrastructure_NoOpMarketDataClient_ConnectAsync_System_Threading_CancellationToken_
+  name: ConnectAsync
+  nameWithType: NoOpMarketDataClient.ConnectAsync
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.ConnectAsync
+- uid: MarketDataCollector.Infrastructure.IMarketDataClient.ConnectAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.IMarketDataClient.ConnectAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.IMarketDataClient
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: ConnectAsync(CancellationToken)
+  nameWithType: IMarketDataClient.ConnectAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.IMarketDataClient.ConnectAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.IMarketDataClient.ConnectAsync(System.Threading.CancellationToken)
+    name: ConnectAsync
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.IMarketDataClient.ConnectAsync(System.Threading.CancellationToken)
+    name: ConnectAsync
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.DisconnectAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.NoOpMarketDataClient.DisconnectAsync
+  href: MarketDataCollector.Infrastructure.NoOpMarketDataClient.html#MarketDataCollector_Infrastructure_NoOpMarketDataClient_DisconnectAsync_System_Threading_CancellationToken_
+  name: DisconnectAsync
+  nameWithType: NoOpMarketDataClient.DisconnectAsync
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.DisconnectAsync
+- uid: MarketDataCollector.Infrastructure.IMarketDataClient.DisconnectAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.IMarketDataClient.DisconnectAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.IMarketDataClient
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: DisconnectAsync(CancellationToken)
+  nameWithType: IMarketDataClient.DisconnectAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.IMarketDataClient.DisconnectAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.IMarketDataClient.DisconnectAsync(System.Threading.CancellationToken)
+    name: DisconnectAsync
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.IMarketDataClient.DisconnectAsync(System.Threading.CancellationToken)
+    name: DisconnectAsync
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.SubscribeMarketDepth*
+  commentId: Overload:MarketDataCollector.Infrastructure.NoOpMarketDataClient.SubscribeMarketDepth
+  href: MarketDataCollector.Infrastructure.NoOpMarketDataClient.html#MarketDataCollector_Infrastructure_NoOpMarketDataClient_SubscribeMarketDepth_MarketDataCollector_Contracts_Configuration_SymbolConfig_
+  name: SubscribeMarketDepth
+  nameWithType: NoOpMarketDataClient.SubscribeMarketDepth
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.SubscribeMarketDepth
+- uid: MarketDataCollector.Infrastructure.IMarketDataClient.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  commentId: M:MarketDataCollector.Infrastructure.IMarketDataClient.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  parent: MarketDataCollector.Infrastructure.IMarketDataClient
+  name: SubscribeMarketDepth(SymbolConfig)
+  nameWithType: IMarketDataClient.SubscribeMarketDepth(SymbolConfig)
+  fullName: MarketDataCollector.Infrastructure.IMarketDataClient.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.IMarketDataClient.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+    name: SubscribeMarketDepth
+  - name: (
+  - uid: MarketDataCollector.Contracts.Configuration.SymbolConfig
+    name: SymbolConfig
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.IMarketDataClient.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+    name: SubscribeMarketDepth
+  - name: (
+  - uid: MarketDataCollector.Contracts.Configuration.SymbolConfig
+    name: SymbolConfig
+  - name: )
+- uid: MarketDataCollector.Contracts.Configuration.SymbolConfig
+  commentId: T:MarketDataCollector.Contracts.Configuration.SymbolConfig
+  parent: MarketDataCollector.Contracts.Configuration
+  href: MarketDataCollector.Contracts.Configuration.SymbolConfig.html
+  name: SymbolConfig
+  nameWithType: SymbolConfig
+  fullName: MarketDataCollector.Contracts.Configuration.SymbolConfig
+- uid: MarketDataCollector.Contracts.Configuration
+  commentId: N:MarketDataCollector.Contracts.Configuration
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Configuration
+  nameWithType: MarketDataCollector.Contracts.Configuration
+  fullName: MarketDataCollector.Contracts.Configuration
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Configuration
+    name: Configuration
+    href: MarketDataCollector.Contracts.Configuration.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Configuration
+    name: Configuration
+    href: MarketDataCollector.Contracts.Configuration.html
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeMarketDepth*
+  commentId: Overload:MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeMarketDepth
+  href: MarketDataCollector.Infrastructure.NoOpMarketDataClient.html#MarketDataCollector_Infrastructure_NoOpMarketDataClient_UnsubscribeMarketDepth_System_Int32_
+  name: UnsubscribeMarketDepth
+  nameWithType: NoOpMarketDataClient.UnsubscribeMarketDepth
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeMarketDepth
+- uid: MarketDataCollector.Infrastructure.IMarketDataClient.UnsubscribeMarketDepth(System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.IMarketDataClient.UnsubscribeMarketDepth(System.Int32)
+  parent: MarketDataCollector.Infrastructure.IMarketDataClient
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: UnsubscribeMarketDepth(int)
+  nameWithType: IMarketDataClient.UnsubscribeMarketDepth(int)
+  fullName: MarketDataCollector.Infrastructure.IMarketDataClient.UnsubscribeMarketDepth(int)
+  nameWithType.vb: IMarketDataClient.UnsubscribeMarketDepth(Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.IMarketDataClient.UnsubscribeMarketDepth(Integer)
+  name.vb: UnsubscribeMarketDepth(Integer)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.IMarketDataClient.UnsubscribeMarketDepth(System.Int32)
+    name: UnsubscribeMarketDepth
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.IMarketDataClient.UnsubscribeMarketDepth(System.Int32)
+    name: UnsubscribeMarketDepth
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.SubscribeTrades*
+  commentId: Overload:MarketDataCollector.Infrastructure.NoOpMarketDataClient.SubscribeTrades
+  href: MarketDataCollector.Infrastructure.NoOpMarketDataClient.html#MarketDataCollector_Infrastructure_NoOpMarketDataClient_SubscribeTrades_MarketDataCollector_Contracts_Configuration_SymbolConfig_
+  name: SubscribeTrades
+  nameWithType: NoOpMarketDataClient.SubscribeTrades
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.SubscribeTrades
+- uid: MarketDataCollector.Infrastructure.IMarketDataClient.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  commentId: M:MarketDataCollector.Infrastructure.IMarketDataClient.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  parent: MarketDataCollector.Infrastructure.IMarketDataClient
+  name: SubscribeTrades(SymbolConfig)
+  nameWithType: IMarketDataClient.SubscribeTrades(SymbolConfig)
+  fullName: MarketDataCollector.Infrastructure.IMarketDataClient.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.IMarketDataClient.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+    name: SubscribeTrades
+  - name: (
+  - uid: MarketDataCollector.Contracts.Configuration.SymbolConfig
+    name: SymbolConfig
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.IMarketDataClient.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+    name: SubscribeTrades
+  - name: (
+  - uid: MarketDataCollector.Contracts.Configuration.SymbolConfig
+    name: SymbolConfig
+  - name: )
+- uid: MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeTrades*
+  commentId: Overload:MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeTrades
+  href: MarketDataCollector.Infrastructure.NoOpMarketDataClient.html#MarketDataCollector_Infrastructure_NoOpMarketDataClient_UnsubscribeTrades_System_Int32_
+  name: UnsubscribeTrades
+  nameWithType: NoOpMarketDataClient.UnsubscribeTrades
+  fullName: MarketDataCollector.Infrastructure.NoOpMarketDataClient.UnsubscribeTrades
+- uid: MarketDataCollector.Infrastructure.IMarketDataClient.UnsubscribeTrades(System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.IMarketDataClient.UnsubscribeTrades(System.Int32)
+  parent: MarketDataCollector.Infrastructure.IMarketDataClient
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: UnsubscribeTrades(int)
+  nameWithType: IMarketDataClient.UnsubscribeTrades(int)
+  fullName: MarketDataCollector.Infrastructure.IMarketDataClient.UnsubscribeTrades(int)
+  nameWithType.vb: IMarketDataClient.UnsubscribeTrades(Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.IMarketDataClient.UnsubscribeTrades(Integer)
+  name.vb: UnsubscribeTrades(Integer)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.IMarketDataClient.UnsubscribeTrades(System.Int32)
+    name: UnsubscribeTrades
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.IMarketDataClient.UnsubscribeTrades(System.Int32)
+    name: UnsubscribeTrades
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )

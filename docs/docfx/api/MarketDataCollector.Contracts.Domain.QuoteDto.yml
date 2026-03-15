@@ -1,0 +1,925 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto
+  commentId: T:MarketDataCollector.Contracts.Domain.QuoteDto
+  id: QuoteDto
+  parent: MarketDataCollector.Contracts.Domain
+  children:
+  - MarketDataCollector.Contracts.Domain.QuoteDto.AskPrice
+  - MarketDataCollector.Contracts.Domain.QuoteDto.AskSize
+  - MarketDataCollector.Contracts.Domain.QuoteDto.BidPrice
+  - MarketDataCollector.Contracts.Domain.QuoteDto.BidSize
+  - MarketDataCollector.Contracts.Domain.QuoteDto.MidPrice
+  - MarketDataCollector.Contracts.Domain.QuoteDto.SequenceNumber
+  - MarketDataCollector.Contracts.Domain.QuoteDto.Spread
+  - MarketDataCollector.Contracts.Domain.QuoteDto.StreamId
+  - MarketDataCollector.Contracts.Domain.QuoteDto.Symbol
+  - MarketDataCollector.Contracts.Domain.QuoteDto.Timestamp
+  - MarketDataCollector.Contracts.Domain.QuoteDto.Venue
+  langs:
+  - csharp
+  - vb
+  name: QuoteDto
+  nameWithType: QuoteDto
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: QuoteDto
+    path: ../../src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+    startLine: 73
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain
+  summary: Quote (BBO) data transfer object.
+  example: []
+  syntax:
+    content: public sealed class QuoteDto
+    content.vb: Public NotInheritable Class QuoteDto
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.Timestamp
+  commentId: P:MarketDataCollector.Contracts.Domain.QuoteDto.Timestamp
+  id: Timestamp
+  parent: MarketDataCollector.Contracts.Domain.QuoteDto
+  langs:
+  - csharp
+  - vb
+  name: Timestamp
+  nameWithType: QuoteDto.Timestamp
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.Timestamp
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Timestamp
+    path: ../../src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+    startLine: 78
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain
+  summary: Gets or sets the quote timestamp.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("timestamp")]
+
+      public DateTimeOffset Timestamp { get; set; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: >-
+      <JsonPropertyName("timestamp")>
+
+      Public Property Timestamp As DateTimeOffset
+  overload: MarketDataCollector.Contracts.Domain.QuoteDto.Timestamp*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: timestamp
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.Symbol
+  commentId: P:MarketDataCollector.Contracts.Domain.QuoteDto.Symbol
+  id: Symbol
+  parent: MarketDataCollector.Contracts.Domain.QuoteDto
+  langs:
+  - csharp
+  - vb
+  name: Symbol
+  nameWithType: QuoteDto.Symbol
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.Symbol
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Symbol
+    path: ../../src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+    startLine: 84
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain
+  summary: Gets or sets the quoted symbol.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("symbol")]
+
+      public string Symbol { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("symbol")>
+
+      Public Property Symbol As String
+  overload: MarketDataCollector.Contracts.Domain.QuoteDto.Symbol*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: symbol
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.BidPrice
+  commentId: P:MarketDataCollector.Contracts.Domain.QuoteDto.BidPrice
+  id: BidPrice
+  parent: MarketDataCollector.Contracts.Domain.QuoteDto
+  langs:
+  - csharp
+  - vb
+  name: BidPrice
+  nameWithType: QuoteDto.BidPrice
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.BidPrice
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BidPrice
+    path: ../../src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+    startLine: 90
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain
+  summary: Gets or sets the bid price.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("bidPrice")]
+
+      public decimal BidPrice { get; set; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: >-
+      <JsonPropertyName("bidPrice")>
+
+      Public Property BidPrice As Decimal
+  overload: MarketDataCollector.Contracts.Domain.QuoteDto.BidPrice*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: bidPrice
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.BidSize
+  commentId: P:MarketDataCollector.Contracts.Domain.QuoteDto.BidSize
+  id: BidSize
+  parent: MarketDataCollector.Contracts.Domain.QuoteDto
+  langs:
+  - csharp
+  - vb
+  name: BidSize
+  nameWithType: QuoteDto.BidSize
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.BidSize
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BidSize
+    path: ../../src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+    startLine: 96
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain
+  summary: Gets or sets the bid size.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("bidSize")]
+
+      public long BidSize { get; set; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: >-
+      <JsonPropertyName("bidSize")>
+
+      Public Property BidSize As Long
+  overload: MarketDataCollector.Contracts.Domain.QuoteDto.BidSize*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: bidSize
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.AskPrice
+  commentId: P:MarketDataCollector.Contracts.Domain.QuoteDto.AskPrice
+  id: AskPrice
+  parent: MarketDataCollector.Contracts.Domain.QuoteDto
+  langs:
+  - csharp
+  - vb
+  name: AskPrice
+  nameWithType: QuoteDto.AskPrice
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.AskPrice
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AskPrice
+    path: ../../src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+    startLine: 102
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain
+  summary: Gets or sets the ask price.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("askPrice")]
+
+      public decimal AskPrice { get; set; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: >-
+      <JsonPropertyName("askPrice")>
+
+      Public Property AskPrice As Decimal
+  overload: MarketDataCollector.Contracts.Domain.QuoteDto.AskPrice*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: askPrice
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.AskSize
+  commentId: P:MarketDataCollector.Contracts.Domain.QuoteDto.AskSize
+  id: AskSize
+  parent: MarketDataCollector.Contracts.Domain.QuoteDto
+  langs:
+  - csharp
+  - vb
+  name: AskSize
+  nameWithType: QuoteDto.AskSize
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.AskSize
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AskSize
+    path: ../../src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+    startLine: 108
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain
+  summary: Gets or sets the ask size.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("askSize")]
+
+      public long AskSize { get; set; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: >-
+      <JsonPropertyName("askSize")>
+
+      Public Property AskSize As Long
+  overload: MarketDataCollector.Contracts.Domain.QuoteDto.AskSize*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: askSize
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.MidPrice
+  commentId: P:MarketDataCollector.Contracts.Domain.QuoteDto.MidPrice
+  id: MidPrice
+  parent: MarketDataCollector.Contracts.Domain.QuoteDto
+  langs:
+  - csharp
+  - vb
+  name: MidPrice
+  nameWithType: QuoteDto.MidPrice
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.MidPrice
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MidPrice
+    path: ../../src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+    startLine: 114
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain
+  summary: Gets or sets the derived mid price, if available.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("midPrice")]
+
+      public decimal? MidPrice { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Decimal}
+    content.vb: >-
+      <JsonPropertyName("midPrice")>
+
+      Public Property MidPrice As Decimal?
+  overload: MarketDataCollector.Contracts.Domain.QuoteDto.MidPrice*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: midPrice
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.Spread
+  commentId: P:MarketDataCollector.Contracts.Domain.QuoteDto.Spread
+  id: Spread
+  parent: MarketDataCollector.Contracts.Domain.QuoteDto
+  langs:
+  - csharp
+  - vb
+  name: Spread
+  nameWithType: QuoteDto.Spread
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.Spread
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Spread
+    path: ../../src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+    startLine: 120
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain
+  summary: Gets or sets the quoted spread, if available.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("spread")]
+
+      public decimal? Spread { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Decimal}
+    content.vb: >-
+      <JsonPropertyName("spread")>
+
+      Public Property Spread As Decimal?
+  overload: MarketDataCollector.Contracts.Domain.QuoteDto.Spread*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: spread
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.SequenceNumber
+  commentId: P:MarketDataCollector.Contracts.Domain.QuoteDto.SequenceNumber
+  id: SequenceNumber
+  parent: MarketDataCollector.Contracts.Domain.QuoteDto
+  langs:
+  - csharp
+  - vb
+  name: SequenceNumber
+  nameWithType: QuoteDto.SequenceNumber
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.SequenceNumber
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SequenceNumber
+    path: ../../src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+    startLine: 126
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain
+  summary: Gets or sets the sequence number associated with the quote.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("sequenceNumber")]
+
+      public long SequenceNumber { get; set; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: >-
+      <JsonPropertyName("sequenceNumber")>
+
+      Public Property SequenceNumber As Long
+  overload: MarketDataCollector.Contracts.Domain.QuoteDto.SequenceNumber*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: sequenceNumber
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.StreamId
+  commentId: P:MarketDataCollector.Contracts.Domain.QuoteDto.StreamId
+  id: StreamId
+  parent: MarketDataCollector.Contracts.Domain.QuoteDto
+  langs:
+  - csharp
+  - vb
+  name: StreamId
+  nameWithType: QuoteDto.StreamId
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.StreamId
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StreamId
+    path: ../../src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+    startLine: 132
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain
+  summary: Gets or sets the stream identifier for the quote.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("streamId")]
+
+      public string? StreamId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("streamId")>
+
+      Public Property StreamId As String
+  overload: MarketDataCollector.Contracts.Domain.QuoteDto.StreamId*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: streamId
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.Venue
+  commentId: P:MarketDataCollector.Contracts.Domain.QuoteDto.Venue
+  id: Venue
+  parent: MarketDataCollector.Contracts.Domain.QuoteDto
+  langs:
+  - csharp
+  - vb
+  name: Venue
+  nameWithType: QuoteDto.Venue
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.Venue
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Venue
+    path: ../../src/MarketDataCollector.Contracts/Domain/MarketDataModels.cs
+    startLine: 138
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain
+  summary: Gets or sets the venue for the quote.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("venue")]
+
+      public string? Venue { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("venue")>
+
+      Public Property Venue As String
+  overload: MarketDataCollector.Contracts.Domain.QuoteDto.Venue*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: venue
+references:
+- uid: MarketDataCollector.Contracts.Domain
+  commentId: N:MarketDataCollector.Contracts.Domain
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain
+  nameWithType: MarketDataCollector.Contracts.Domain
+  fullName: MarketDataCollector.Contracts.Domain
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.Timestamp*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.QuoteDto.Timestamp
+  href: MarketDataCollector.Contracts.Domain.QuoteDto.html#MarketDataCollector_Contracts_Domain_QuoteDto_Timestamp
+  name: Timestamp
+  nameWithType: QuoteDto.Timestamp
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.Timestamp
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.Symbol*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.QuoteDto.Symbol
+  href: MarketDataCollector.Contracts.Domain.QuoteDto.html#MarketDataCollector_Contracts_Domain_QuoteDto_Symbol
+  name: Symbol
+  nameWithType: QuoteDto.Symbol
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.Symbol
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.BidPrice*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.QuoteDto.BidPrice
+  href: MarketDataCollector.Contracts.Domain.QuoteDto.html#MarketDataCollector_Contracts_Domain_QuoteDto_BidPrice
+  name: BidPrice
+  nameWithType: QuoteDto.BidPrice
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.BidPrice
+- uid: System.Decimal
+  commentId: T:System.Decimal
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.decimal
+  name: decimal
+  nameWithType: decimal
+  fullName: decimal
+  nameWithType.vb: Decimal
+  fullName.vb: Decimal
+  name.vb: Decimal
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.BidSize*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.QuoteDto.BidSize
+  href: MarketDataCollector.Contracts.Domain.QuoteDto.html#MarketDataCollector_Contracts_Domain_QuoteDto_BidSize
+  name: BidSize
+  nameWithType: QuoteDto.BidSize
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.BidSize
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.AskPrice*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.QuoteDto.AskPrice
+  href: MarketDataCollector.Contracts.Domain.QuoteDto.html#MarketDataCollector_Contracts_Domain_QuoteDto_AskPrice
+  name: AskPrice
+  nameWithType: QuoteDto.AskPrice
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.AskPrice
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.AskSize*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.QuoteDto.AskSize
+  href: MarketDataCollector.Contracts.Domain.QuoteDto.html#MarketDataCollector_Contracts_Domain_QuoteDto_AskSize
+  name: AskSize
+  nameWithType: QuoteDto.AskSize
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.AskSize
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.MidPrice*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.QuoteDto.MidPrice
+  href: MarketDataCollector.Contracts.Domain.QuoteDto.html#MarketDataCollector_Contracts_Domain_QuoteDto_MidPrice
+  name: MidPrice
+  nameWithType: QuoteDto.MidPrice
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.MidPrice
+- uid: System.Nullable{System.Decimal}
+  commentId: T:System.Nullable{System.Decimal}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.decimal
+  name: decimal?
+  nameWithType: decimal?
+  fullName: decimal?
+  nameWithType.vb: Decimal?
+  fullName.vb: Decimal?
+  name.vb: Decimal?
+  spec.csharp:
+  - uid: System.Decimal
+    name: decimal
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.decimal
+  - name: '?'
+  spec.vb:
+  - uid: System.Decimal
+    name: Decimal
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.decimal
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.Spread*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.QuoteDto.Spread
+  href: MarketDataCollector.Contracts.Domain.QuoteDto.html#MarketDataCollector_Contracts_Domain_QuoteDto_Spread
+  name: Spread
+  nameWithType: QuoteDto.Spread
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.Spread
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.SequenceNumber*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.QuoteDto.SequenceNumber
+  href: MarketDataCollector.Contracts.Domain.QuoteDto.html#MarketDataCollector_Contracts_Domain_QuoteDto_SequenceNumber
+  name: SequenceNumber
+  nameWithType: QuoteDto.SequenceNumber
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.SequenceNumber
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.StreamId*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.QuoteDto.StreamId
+  href: MarketDataCollector.Contracts.Domain.QuoteDto.html#MarketDataCollector_Contracts_Domain_QuoteDto_StreamId
+  name: StreamId
+  nameWithType: QuoteDto.StreamId
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.StreamId
+- uid: MarketDataCollector.Contracts.Domain.QuoteDto.Venue*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.QuoteDto.Venue
+  href: MarketDataCollector.Contracts.Domain.QuoteDto.html#MarketDataCollector_Contracts_Domain_QuoteDto_Venue
+  name: Venue
+  nameWithType: QuoteDto.Venue
+  fullName: MarketDataCollector.Contracts.Domain.QuoteDto.Venue

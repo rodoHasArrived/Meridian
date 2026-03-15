@@ -1,0 +1,250 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.GapType
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.GapType
+  id: GapType
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  children:
+  - MarketDataCollector.Infrastructure.Adapters.Core.GapType.Halted
+  - MarketDataCollector.Infrastructure.Adapters.Core.GapType.Holiday
+  - MarketDataCollector.Infrastructure.Adapters.Core.GapType.Missing
+  - MarketDataCollector.Infrastructure.Adapters.Core.GapType.Partial
+  - MarketDataCollector.Infrastructure.Adapters.Core.GapType.Suspicious
+  - MarketDataCollector.Infrastructure.Adapters.Core.GapType.Weekend
+  langs:
+  - csharp
+  - vb
+  name: GapType
+  nameWithType: GapType
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.GapType
+  type: Enum
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/GapAnalysis/DataGapRepair.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GapType
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/GapAnalysis/DataGapRepair.cs
+    startLine: 13
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Type of data gap detected.
+  example: []
+  syntax:
+    content: 'public enum GapType : byte'
+    content.vb: Public Enum GapType As Byte
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.GapType.Missing
+  commentId: F:MarketDataCollector.Infrastructure.Adapters.Core.GapType.Missing
+  id: Missing
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.GapType
+  langs:
+  - csharp
+  - vb
+  name: Missing
+  nameWithType: GapType.Missing
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.GapType.Missing
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/GapAnalysis/DataGapRepair.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Missing
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/GapAnalysis/DataGapRepair.cs
+    startLine: 16
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: No data at all for the date.
+  example: []
+  syntax:
+    content: Missing = 0
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.GapType
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.GapType.Partial
+  commentId: F:MarketDataCollector.Infrastructure.Adapters.Core.GapType.Partial
+  id: Partial
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.GapType
+  langs:
+  - csharp
+  - vb
+  name: Partial
+  nameWithType: GapType.Partial
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.GapType.Partial
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/GapAnalysis/DataGapRepair.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Partial
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/GapAnalysis/DataGapRepair.cs
+    startLine: 19
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Some data missing (e.g., no volume).
+  example: []
+  syntax:
+    content: Partial = 1
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.GapType
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.GapType.Holiday
+  commentId: F:MarketDataCollector.Infrastructure.Adapters.Core.GapType.Holiday
+  id: Holiday
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.GapType
+  langs:
+  - csharp
+  - vb
+  name: Holiday
+  nameWithType: GapType.Holiday
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.GapType.Holiday
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/GapAnalysis/DataGapRepair.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Holiday
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/GapAnalysis/DataGapRepair.cs
+    startLine: 22
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Market holiday (expected gap).
+  example: []
+  syntax:
+    content: Holiday = 2
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.GapType
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.GapType.Weekend
+  commentId: F:MarketDataCollector.Infrastructure.Adapters.Core.GapType.Weekend
+  id: Weekend
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.GapType
+  langs:
+  - csharp
+  - vb
+  name: Weekend
+  nameWithType: GapType.Weekend
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.GapType.Weekend
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/GapAnalysis/DataGapRepair.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Weekend
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/GapAnalysis/DataGapRepair.cs
+    startLine: 25
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Weekend (expected gap).
+  example: []
+  syntax:
+    content: Weekend = 3
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.GapType
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.GapType.Halted
+  commentId: F:MarketDataCollector.Infrastructure.Adapters.Core.GapType.Halted
+  id: Halted
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.GapType
+  langs:
+  - csharp
+  - vb
+  name: Halted
+  nameWithType: GapType.Halted
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.GapType.Halted
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/GapAnalysis/DataGapRepair.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Halted
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/GapAnalysis/DataGapRepair.cs
+    startLine: 28
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Trading halt.
+  example: []
+  syntax:
+    content: Halted = 4
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.GapType
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.GapType.Suspicious
+  commentId: F:MarketDataCollector.Infrastructure.Adapters.Core.GapType.Suspicious
+  id: Suspicious
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.GapType
+  langs:
+  - csharp
+  - vb
+  name: Suspicious
+  nameWithType: GapType.Suspicious
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.GapType.Suspicious
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/GapAnalysis/DataGapRepair.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Suspicious
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/GapAnalysis/DataGapRepair.cs
+    startLine: 31
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Data exists but looks anomalous.
+  example: []
+  syntax:
+    content: Suspicious = 5
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.GapType
+references:
+- uid: MarketDataCollector.Infrastructure.Adapters.Core
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Core
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Core
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.GapType
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.GapType
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.GapType.html
+  name: GapType
+  nameWithType: GapType
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.GapType

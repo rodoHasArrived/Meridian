@@ -1,0 +1,831 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary
+  commentId: T:MarketDataCollector.Application.Monitoring.ProviderLatencySummary
+  id: ProviderLatencySummary
+  parent: MarketDataCollector.Application.Monitoring
+  children:
+  - MarketDataCollector.Application.Monitoring.ProviderLatencySummary.#ctor(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.ProviderLatencyStats},System.String,System.String,System.Double,System.Double,System.Double,System.Int64,System.DateTimeOffset)
+  - MarketDataCollector.Application.Monitoring.ProviderLatencySummary.CalculatedAt
+  - MarketDataCollector.Application.Monitoring.ProviderLatencySummary.FastestProvider
+  - MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP50Ms
+  - MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP95Ms
+  - MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP99Ms
+  - MarketDataCollector.Application.Monitoring.ProviderLatencySummary.Providers
+  - MarketDataCollector.Application.Monitoring.ProviderLatencySummary.SlowestProvider
+  - MarketDataCollector.Application.Monitoring.ProviderLatencySummary.TotalSamples
+  langs:
+  - csharp
+  - vb
+  name: ProviderLatencySummary
+  nameWithType: ProviderLatencySummary
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderLatencySummary
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+    startLine: 427
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Summary comparison of all providers.
+  example: []
+  syntax:
+    content: 'public sealed record ProviderLatencySummary : IEquatable<ProviderLatencySummary>'
+    content.vb: Public NotInheritable Class ProviderLatencySummary Implements IEquatable(Of ProviderLatencySummary)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Application.Monitoring.ProviderLatencySummary}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.#ctor(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.ProviderLatencyStats},System.String,System.String,System.Double,System.Double,System.Double,System.Int64,System.DateTimeOffset)
+  commentId: M:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.#ctor(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.ProviderLatencyStats},System.String,System.String,System.Double,System.Double,System.Double,System.Int64,System.DateTimeOffset)
+  id: '#ctor(System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.ProviderLatencyStats},System.String,System.String,System.Double,System.Double,System.Double,System.Int64,System.DateTimeOffset)'
+  parent: MarketDataCollector.Application.Monitoring.ProviderLatencySummary
+  langs:
+  - csharp
+  - vb
+  name: ProviderLatencySummary(IReadOnlyList<ProviderLatencyStats>, string?, string?, double, double, double, long, DateTimeOffset)
+  nameWithType: ProviderLatencySummary.ProviderLatencySummary(IReadOnlyList<ProviderLatencyStats>, string?, string?, double, double, double, long, DateTimeOffset)
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.ProviderLatencySummary(System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Monitoring.ProviderLatencyStats>, string?, string?, double, double, double, long, System.DateTimeOffset)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+    startLine: 427
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Summary comparison of all providers.
+  example: []
+  syntax:
+    content: public ProviderLatencySummary(IReadOnlyList<ProviderLatencyStats> Providers, string? FastestProvider, string? SlowestProvider, double GlobalP50Ms, double GlobalP95Ms, double GlobalP99Ms, long TotalSamples, DateTimeOffset CalculatedAt)
+    parameters:
+    - id: Providers
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.ProviderLatencyStats}
+    - id: FastestProvider
+      type: System.String
+    - id: SlowestProvider
+      type: System.String
+    - id: GlobalP50Ms
+      type: System.Double
+    - id: GlobalP95Ms
+      type: System.Double
+    - id: GlobalP99Ms
+      type: System.Double
+    - id: TotalSamples
+      type: System.Int64
+    - id: CalculatedAt
+      type: System.DateTimeOffset
+    content.vb: Public Sub New(Providers As IReadOnlyList(Of ProviderLatencyStats), FastestProvider As String, SlowestProvider As String, GlobalP50Ms As Double, GlobalP95Ms As Double, GlobalP99Ms As Double, TotalSamples As Long, CalculatedAt As DateTimeOffset)
+  overload: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.#ctor*
+  nameWithType.vb: ProviderLatencySummary.New(IReadOnlyList(Of ProviderLatencyStats), String, String, Double, Double, Double, Long, DateTimeOffset)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.New(System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Monitoring.ProviderLatencyStats), String, String, Double, Double, Double, Long, System.DateTimeOffset)
+  name.vb: New(IReadOnlyList(Of ProviderLatencyStats), String, String, Double, Double, Double, Long, DateTimeOffset)
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.Providers
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.Providers
+  id: Providers
+  parent: MarketDataCollector.Application.Monitoring.ProviderLatencySummary
+  langs:
+  - csharp
+  - vb
+  name: Providers
+  nameWithType: ProviderLatencySummary.Providers
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.Providers
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Providers
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+    startLine: 428
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public IReadOnlyList<ProviderLatencyStats> Providers { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.ProviderLatencyStats}
+    content.vb: Public Property Providers As IReadOnlyList(Of ProviderLatencyStats)
+  overload: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.Providers*
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.FastestProvider
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.FastestProvider
+  id: FastestProvider
+  parent: MarketDataCollector.Application.Monitoring.ProviderLatencySummary
+  langs:
+  - csharp
+  - vb
+  name: FastestProvider
+  nameWithType: ProviderLatencySummary.FastestProvider
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.FastestProvider
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FastestProvider
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+    startLine: 429
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public string? FastestProvider { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property FastestProvider As String
+  overload: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.FastestProvider*
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.SlowestProvider
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.SlowestProvider
+  id: SlowestProvider
+  parent: MarketDataCollector.Application.Monitoring.ProviderLatencySummary
+  langs:
+  - csharp
+  - vb
+  name: SlowestProvider
+  nameWithType: ProviderLatencySummary.SlowestProvider
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.SlowestProvider
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SlowestProvider
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+    startLine: 430
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public string? SlowestProvider { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SlowestProvider As String
+  overload: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.SlowestProvider*
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP50Ms
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP50Ms
+  id: GlobalP50Ms
+  parent: MarketDataCollector.Application.Monitoring.ProviderLatencySummary
+  langs:
+  - csharp
+  - vb
+  name: GlobalP50Ms
+  nameWithType: ProviderLatencySummary.GlobalP50Ms
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP50Ms
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GlobalP50Ms
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+    startLine: 431
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public double GlobalP50Ms { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property GlobalP50Ms As Double
+  overload: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP50Ms*
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP95Ms
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP95Ms
+  id: GlobalP95Ms
+  parent: MarketDataCollector.Application.Monitoring.ProviderLatencySummary
+  langs:
+  - csharp
+  - vb
+  name: GlobalP95Ms
+  nameWithType: ProviderLatencySummary.GlobalP95Ms
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP95Ms
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GlobalP95Ms
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+    startLine: 432
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public double GlobalP95Ms { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property GlobalP95Ms As Double
+  overload: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP95Ms*
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP99Ms
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP99Ms
+  id: GlobalP99Ms
+  parent: MarketDataCollector.Application.Monitoring.ProviderLatencySummary
+  langs:
+  - csharp
+  - vb
+  name: GlobalP99Ms
+  nameWithType: ProviderLatencySummary.GlobalP99Ms
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP99Ms
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GlobalP99Ms
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+    startLine: 433
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public double GlobalP99Ms { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property GlobalP99Ms As Double
+  overload: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP99Ms*
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.TotalSamples
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.TotalSamples
+  id: TotalSamples
+  parent: MarketDataCollector.Application.Monitoring.ProviderLatencySummary
+  langs:
+  - csharp
+  - vb
+  name: TotalSamples
+  nameWithType: ProviderLatencySummary.TotalSamples
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.TotalSamples
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TotalSamples
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+    startLine: 434
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public long TotalSamples { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property TotalSamples As Long
+  overload: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.TotalSamples*
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.CalculatedAt
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.CalculatedAt
+  id: CalculatedAt
+  parent: MarketDataCollector.Application.Monitoring.ProviderLatencySummary
+  langs:
+  - csharp
+  - vb
+  name: CalculatedAt
+  nameWithType: ProviderLatencySummary.CalculatedAt
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.CalculatedAt
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CalculatedAt
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderLatencyService.cs
+    startLine: 435
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public DateTimeOffset CalculatedAt { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property CalculatedAt As DateTimeOffset
+  overload: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.CalculatedAt*
+references:
+- uid: MarketDataCollector.Application.Monitoring
+  commentId: N:MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring
+  nameWithType: MarketDataCollector.Application.Monitoring
+  fullName: MarketDataCollector.Application.Monitoring
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Application.Monitoring.ProviderLatencySummary}
+  commentId: T:System.IEquatable{MarketDataCollector.Application.Monitoring.ProviderLatencySummary}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<ProviderLatencySummary>
+  nameWithType: IEquatable<ProviderLatencySummary>
+  fullName: System.IEquatable<MarketDataCollector.Application.Monitoring.ProviderLatencySummary>
+  nameWithType.vb: IEquatable(Of ProviderLatencySummary)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Application.Monitoring.ProviderLatencySummary)
+  name.vb: IEquatable(Of ProviderLatencySummary)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary
+    name: ProviderLatencySummary
+    href: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary
+    name: ProviderLatencySummary
+    href: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.#ctor
+  href: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.html#MarketDataCollector_Application_Monitoring_ProviderLatencySummary__ctor_System_Collections_Generic_IReadOnlyList_MarketDataCollector_Application_Monitoring_ProviderLatencyStats__System_String_System_String_System_Double_System_Double_System_Double_System_Int64_System_DateTimeOffset_
+  name: ProviderLatencySummary
+  nameWithType: ProviderLatencySummary.ProviderLatencySummary
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.ProviderLatencySummary
+  nameWithType.vb: ProviderLatencySummary.New
+  fullName.vb: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.New
+  name.vb: New
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.ProviderLatencyStats}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.ProviderLatencyStats}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<ProviderLatencyStats>
+  nameWithType: IReadOnlyList<ProviderLatencyStats>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Monitoring.ProviderLatencyStats>
+  nameWithType.vb: IReadOnlyList(Of ProviderLatencyStats)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Monitoring.ProviderLatencyStats)
+  name.vb: IReadOnlyList(Of ProviderLatencyStats)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.ProviderLatencyStats
+    name: ProviderLatencyStats
+    href: MarketDataCollector.Application.Monitoring.ProviderLatencyStats.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.ProviderLatencyStats
+    name: ProviderLatencyStats
+    href: MarketDataCollector.Application.Monitoring.ProviderLatencyStats.html
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.Providers*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.Providers
+  href: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.html#MarketDataCollector_Application_Monitoring_ProviderLatencySummary_Providers
+  name: Providers
+  nameWithType: ProviderLatencySummary.Providers
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.Providers
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.FastestProvider*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.FastestProvider
+  href: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.html#MarketDataCollector_Application_Monitoring_ProviderLatencySummary_FastestProvider
+  name: FastestProvider
+  nameWithType: ProviderLatencySummary.FastestProvider
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.FastestProvider
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.SlowestProvider*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.SlowestProvider
+  href: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.html#MarketDataCollector_Application_Monitoring_ProviderLatencySummary_SlowestProvider
+  name: SlowestProvider
+  nameWithType: ProviderLatencySummary.SlowestProvider
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.SlowestProvider
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP50Ms*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP50Ms
+  href: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.html#MarketDataCollector_Application_Monitoring_ProviderLatencySummary_GlobalP50Ms
+  name: GlobalP50Ms
+  nameWithType: ProviderLatencySummary.GlobalP50Ms
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP50Ms
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP95Ms*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP95Ms
+  href: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.html#MarketDataCollector_Application_Monitoring_ProviderLatencySummary_GlobalP95Ms
+  name: GlobalP95Ms
+  nameWithType: ProviderLatencySummary.GlobalP95Ms
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP95Ms
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP99Ms*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP99Ms
+  href: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.html#MarketDataCollector_Application_Monitoring_ProviderLatencySummary_GlobalP99Ms
+  name: GlobalP99Ms
+  nameWithType: ProviderLatencySummary.GlobalP99Ms
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.GlobalP99Ms
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.TotalSamples*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.TotalSamples
+  href: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.html#MarketDataCollector_Application_Monitoring_ProviderLatencySummary_TotalSamples
+  name: TotalSamples
+  nameWithType: ProviderLatencySummary.TotalSamples
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.TotalSamples
+- uid: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.CalculatedAt*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderLatencySummary.CalculatedAt
+  href: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.html#MarketDataCollector_Application_Monitoring_ProviderLatencySummary_CalculatedAt
+  name: CalculatedAt
+  nameWithType: ProviderLatencySummary.CalculatedAt
+  fullName: MarketDataCollector.Application.Monitoring.ProviderLatencySummary.CalculatedAt

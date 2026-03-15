@@ -1,0 +1,1083 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd
+  commentId: T:MarketDataCollector.Contracts.Domain.Models.OrderAdd
+  id: OrderAdd
+  parent: MarketDataCollector.Contracts.Domain.Models
+  children:
+  - MarketDataCollector.Contracts.Domain.Models.OrderAdd.#ctor(System.String,System.String,MarketDataCollector.Contracts.Domain.Enums.OrderSide,System.Decimal,System.Int64,System.DateTimeOffset,System.Int64,System.Nullable{System.Int64},System.String,System.String,System.String,System.String)
+  - MarketDataCollector.Contracts.Domain.Models.OrderAdd.DisplayedSize
+  - MarketDataCollector.Contracts.Domain.Models.OrderAdd.HiddenSize
+  - MarketDataCollector.Contracts.Domain.Models.OrderAdd.MarketMaker
+  - MarketDataCollector.Contracts.Domain.Models.OrderAdd.OrderId
+  - MarketDataCollector.Contracts.Domain.Models.OrderAdd.ParticipantId
+  - MarketDataCollector.Contracts.Domain.Models.OrderAdd.Price
+  - MarketDataCollector.Contracts.Domain.Models.OrderAdd.PriorityTimestamp
+  - MarketDataCollector.Contracts.Domain.Models.OrderAdd.SequenceNumber
+  - MarketDataCollector.Contracts.Domain.Models.OrderAdd.Side
+  - MarketDataCollector.Contracts.Domain.Models.OrderAdd.StreamId
+  - MarketDataCollector.Contracts.Domain.Models.OrderAdd.Symbol
+  - MarketDataCollector.Contracts.Domain.Models.OrderAdd.Venue
+  langs:
+  - csharp
+  - vb
+  name: OrderAdd
+  nameWithType: OrderAdd
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OrderAdd
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+    startLine: 9
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  summary: >-
+    Represents the arrival of a new order at the venue's matching engine.
+
+    Captures the full state of the order at the moment it enters the book.
+  example: []
+  syntax:
+    content: 'public sealed record OrderAdd : MarketEventPayload, IMarketEventPayload, IEquatable<MarketEventPayload>, IEquatable<OrderAdd>'
+    content.vb: Public NotInheritable Class OrderAdd Inherits MarketEventPayload Implements IMarketEventPayload, IEquatable(Of MarketEventPayload), IEquatable(Of OrderAdd)
+  inheritance:
+  - System.Object
+  - MarketDataCollector.Contracts.Domain.Events.MarketEventPayload
+  implements:
+  - MarketDataCollector.Contracts.Domain.Events.IMarketEventPayload
+  - System.IEquatable{MarketDataCollector.Contracts.Domain.Events.MarketEventPayload}
+  - System.IEquatable{MarketDataCollector.Contracts.Domain.Models.OrderAdd}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.#ctor(System.String,System.String,MarketDataCollector.Contracts.Domain.Enums.OrderSide,System.Decimal,System.Int64,System.DateTimeOffset,System.Int64,System.Nullable{System.Int64},System.String,System.String,System.String,System.String)
+  commentId: M:MarketDataCollector.Contracts.Domain.Models.OrderAdd.#ctor(System.String,System.String,MarketDataCollector.Contracts.Domain.Enums.OrderSide,System.Decimal,System.Int64,System.DateTimeOffset,System.Int64,System.Nullable{System.Int64},System.String,System.String,System.String,System.String)
+  id: '#ctor(System.String,System.String,MarketDataCollector.Contracts.Domain.Enums.OrderSide,System.Decimal,System.Int64,System.DateTimeOffset,System.Int64,System.Nullable{System.Int64},System.String,System.String,System.String,System.String)'
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderAdd
+  langs:
+  - csharp
+  - vb
+  name: OrderAdd(string, string, OrderSide, decimal, long, DateTimeOffset, long, long?, string?, string?, string?, string?)
+  nameWithType: OrderAdd.OrderAdd(string, string, OrderSide, decimal, long, DateTimeOffset, long, long?, string?, string?, string?, string?)
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.OrderAdd(string, string, MarketDataCollector.Contracts.Domain.Enums.OrderSide, decimal, long, System.DateTimeOffset, long, long?, string?, string?, string?, string?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+    startLine: 9
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  summary: >-
+    Represents the arrival of a new order at the venue's matching engine.
+
+    Captures the full state of the order at the moment it enters the book.
+  example: []
+  syntax:
+    content: public OrderAdd(string OrderId, string Symbol, OrderSide Side, decimal Price, long DisplayedSize, DateTimeOffset PriorityTimestamp, long SequenceNumber, long? HiddenSize = null, string? ParticipantId = null, string? MarketMaker = null, string? StreamId = null, string? Venue = null)
+    parameters:
+    - id: OrderId
+      type: System.String
+    - id: Symbol
+      type: System.String
+    - id: Side
+      type: MarketDataCollector.Contracts.Domain.Enums.OrderSide
+    - id: Price
+      type: System.Decimal
+    - id: DisplayedSize
+      type: System.Int64
+    - id: PriorityTimestamp
+      type: System.DateTimeOffset
+    - id: SequenceNumber
+      type: System.Int64
+    - id: HiddenSize
+      type: System.Nullable{System.Int64}
+    - id: ParticipantId
+      type: System.String
+    - id: MarketMaker
+      type: System.String
+    - id: StreamId
+      type: System.String
+    - id: Venue
+      type: System.String
+    content.vb: Public Sub New(OrderId As String, Symbol As String, Side As OrderSide, Price As Decimal, DisplayedSize As Long, PriorityTimestamp As DateTimeOffset, SequenceNumber As Long, HiddenSize As Long? = Nothing, ParticipantId As String = Nothing, MarketMaker As String = Nothing, StreamId As String = Nothing, Venue As String = Nothing)
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderAdd.#ctor*
+  nameWithType.vb: OrderAdd.New(String, String, OrderSide, Decimal, Long, DateTimeOffset, Long, Long?, String, String, String, String)
+  fullName.vb: MarketDataCollector.Contracts.Domain.Models.OrderAdd.New(String, String, MarketDataCollector.Contracts.Domain.Enums.OrderSide, Decimal, Long, System.DateTimeOffset, Long, Long?, String, String, String, String)
+  name.vb: New(String, String, OrderSide, Decimal, Long, DateTimeOffset, Long, Long?, String, String, String, String)
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.OrderId
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.OrderAdd.OrderId
+  id: OrderId
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderAdd
+  langs:
+  - csharp
+  - vb
+  name: OrderId
+  nameWithType: OrderAdd.OrderId
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.OrderId
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OrderId
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+    startLine: 13
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public string OrderId { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property OrderId As String
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderAdd.OrderId*
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Symbol
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.OrderAdd.Symbol
+  id: Symbol
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderAdd
+  langs:
+  - csharp
+  - vb
+  name: Symbol
+  nameWithType: OrderAdd.Symbol
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Symbol
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Symbol
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+    startLine: 18
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public string Symbol { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Symbol As String
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Symbol*
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Side
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.OrderAdd.Side
+  id: Side
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderAdd
+  langs:
+  - csharp
+  - vb
+  name: Side
+  nameWithType: OrderAdd.Side
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Side
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Side
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+    startLine: 23
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public OrderSide Side { get; init; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Contracts.Domain.Enums.OrderSide
+    content.vb: Public Property Side As OrderSide
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Side*
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Price
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.OrderAdd.Price
+  id: Price
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderAdd
+  langs:
+  - csharp
+  - vb
+  name: Price
+  nameWithType: OrderAdd.Price
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Price
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Price
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+    startLine: 28
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public decimal Price { get; init; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: Public Property Price As Decimal
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Price*
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.DisplayedSize
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.OrderAdd.DisplayedSize
+  id: DisplayedSize
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderAdd
+  langs:
+  - csharp
+  - vb
+  name: DisplayedSize
+  nameWithType: OrderAdd.DisplayedSize
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.DisplayedSize
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisplayedSize
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+    startLine: 33
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public long DisplayedSize { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property DisplayedSize As Long
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderAdd.DisplayedSize*
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.PriorityTimestamp
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.OrderAdd.PriorityTimestamp
+  id: PriorityTimestamp
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderAdd
+  langs:
+  - csharp
+  - vb
+  name: PriorityTimestamp
+  nameWithType: OrderAdd.PriorityTimestamp
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.PriorityTimestamp
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PriorityTimestamp
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+    startLine: 38
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public DateTimeOffset PriorityTimestamp { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property PriorityTimestamp As DateTimeOffset
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderAdd.PriorityTimestamp*
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.SequenceNumber
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.OrderAdd.SequenceNumber
+  id: SequenceNumber
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderAdd
+  langs:
+  - csharp
+  - vb
+  name: SequenceNumber
+  nameWithType: OrderAdd.SequenceNumber
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.SequenceNumber
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SequenceNumber
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+    startLine: 43
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public long SequenceNumber { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property SequenceNumber As Long
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderAdd.SequenceNumber*
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.HiddenSize
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.OrderAdd.HiddenSize
+  id: HiddenSize
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderAdd
+  langs:
+  - csharp
+  - vb
+  name: HiddenSize
+  nameWithType: OrderAdd.HiddenSize
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.HiddenSize
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HiddenSize
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+    startLine: 48
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public long? HiddenSize { get; init; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int64}
+    content.vb: Public Property HiddenSize As Long?
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderAdd.HiddenSize*
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.ParticipantId
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.OrderAdd.ParticipantId
+  id: ParticipantId
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderAdd
+  langs:
+  - csharp
+  - vb
+  name: ParticipantId
+  nameWithType: OrderAdd.ParticipantId
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.ParticipantId
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ParticipantId
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+    startLine: 53
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public string? ParticipantId { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ParticipantId As String
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderAdd.ParticipantId*
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.MarketMaker
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.OrderAdd.MarketMaker
+  id: MarketMaker
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderAdd
+  langs:
+  - csharp
+  - vb
+  name: MarketMaker
+  nameWithType: OrderAdd.MarketMaker
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.MarketMaker
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MarketMaker
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+    startLine: 58
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public string? MarketMaker { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property MarketMaker As String
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderAdd.MarketMaker*
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.StreamId
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.OrderAdd.StreamId
+  id: StreamId
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderAdd
+  langs:
+  - csharp
+  - vb
+  name: StreamId
+  nameWithType: OrderAdd.StreamId
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.StreamId
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StreamId
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+    startLine: 63
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public string? StreamId { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property StreamId As String
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderAdd.StreamId*
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Venue
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.OrderAdd.Venue
+  id: Venue
+  parent: MarketDataCollector.Contracts.Domain.Models.OrderAdd
+  langs:
+  - csharp
+  - vb
+  name: Venue
+  nameWithType: OrderAdd.Venue
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Venue
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Venue
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/OrderAdd.cs
+    startLine: 68
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public string? Venue { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Venue As String
+  overload: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Venue*
+references:
+- uid: MarketDataCollector.Contracts.Domain.Models
+  commentId: N:MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Models
+  nameWithType: MarketDataCollector.Contracts.Domain.Models
+  fullName: MarketDataCollector.Contracts.Domain.Models
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Models
+    name: Models
+    href: MarketDataCollector.Contracts.Domain.Models.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Models
+    name: Models
+    href: MarketDataCollector.Contracts.Domain.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Contracts.Domain.Events.MarketEventPayload
+  commentId: T:MarketDataCollector.Contracts.Domain.Events.MarketEventPayload
+  parent: MarketDataCollector.Contracts.Domain.Events
+  href: MarketDataCollector.Contracts.Domain.Events.MarketEventPayload.html
+  name: MarketEventPayload
+  nameWithType: MarketEventPayload
+  fullName: MarketDataCollector.Contracts.Domain.Events.MarketEventPayload
+- uid: MarketDataCollector.Contracts.Domain.Events.IMarketEventPayload
+  commentId: T:MarketDataCollector.Contracts.Domain.Events.IMarketEventPayload
+  parent: MarketDataCollector.Contracts.Domain.Events
+  href: MarketDataCollector.Contracts.Domain.Events.IMarketEventPayload.html
+  name: IMarketEventPayload
+  nameWithType: IMarketEventPayload
+  fullName: MarketDataCollector.Contracts.Domain.Events.IMarketEventPayload
+- uid: System.IEquatable{MarketDataCollector.Contracts.Domain.Events.MarketEventPayload}
+  commentId: T:System.IEquatable{MarketDataCollector.Contracts.Domain.Events.MarketEventPayload}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<MarketEventPayload>
+  nameWithType: IEquatable<MarketEventPayload>
+  fullName: System.IEquatable<MarketDataCollector.Contracts.Domain.Events.MarketEventPayload>
+  nameWithType.vb: IEquatable(Of MarketEventPayload)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Contracts.Domain.Events.MarketEventPayload)
+  name.vb: IEquatable(Of MarketEventPayload)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Domain.Events.MarketEventPayload
+    name: MarketEventPayload
+    href: MarketDataCollector.Contracts.Domain.Events.MarketEventPayload.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Domain.Events.MarketEventPayload
+    name: MarketEventPayload
+    href: MarketDataCollector.Contracts.Domain.Events.MarketEventPayload.html
+  - name: )
+- uid: System.IEquatable{MarketDataCollector.Contracts.Domain.Models.OrderAdd}
+  commentId: T:System.IEquatable{MarketDataCollector.Contracts.Domain.Models.OrderAdd}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<OrderAdd>
+  nameWithType: IEquatable<OrderAdd>
+  fullName: System.IEquatable<MarketDataCollector.Contracts.Domain.Models.OrderAdd>
+  nameWithType.vb: IEquatable(Of OrderAdd)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Contracts.Domain.Models.OrderAdd)
+  name.vb: IEquatable(Of OrderAdd)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd
+    name: OrderAdd
+    href: MarketDataCollector.Contracts.Domain.Models.OrderAdd.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd
+    name: OrderAdd
+    href: MarketDataCollector.Contracts.Domain.Models.OrderAdd.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Contracts.Domain.Events
+  commentId: N:MarketDataCollector.Contracts.Domain.Events
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Events
+  nameWithType: MarketDataCollector.Contracts.Domain.Events
+  fullName: MarketDataCollector.Contracts.Domain.Events
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Events
+    name: Events
+    href: MarketDataCollector.Contracts.Domain.Events.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Events
+    name: Events
+    href: MarketDataCollector.Contracts.Domain.Events.html
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.#ctor*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderAdd.#ctor
+  href: MarketDataCollector.Contracts.Domain.Models.OrderAdd.html#MarketDataCollector_Contracts_Domain_Models_OrderAdd__ctor_System_String_System_String_MarketDataCollector_Contracts_Domain_Enums_OrderSide_System_Decimal_System_Int64_System_DateTimeOffset_System_Int64_System_Nullable_System_Int64__System_String_System_String_System_String_System_String_
+  name: OrderAdd
+  nameWithType: OrderAdd.OrderAdd
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.OrderAdd
+  nameWithType.vb: OrderAdd.New
+  fullName.vb: MarketDataCollector.Contracts.Domain.Models.OrderAdd.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Contracts.Domain.Enums.OrderSide
+  commentId: T:MarketDataCollector.Contracts.Domain.Enums.OrderSide
+  parent: MarketDataCollector.Contracts.Domain.Enums
+  href: MarketDataCollector.Contracts.Domain.Enums.OrderSide.html
+  name: OrderSide
+  nameWithType: OrderSide
+  fullName: MarketDataCollector.Contracts.Domain.Enums.OrderSide
+- uid: System.Decimal
+  commentId: T:System.Decimal
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.decimal
+  name: decimal
+  nameWithType: decimal
+  fullName: decimal
+  nameWithType.vb: Decimal
+  fullName.vb: Decimal
+  name.vb: Decimal
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: System.Nullable{System.Int64}
+  commentId: T:System.Nullable{System.Int64}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long?
+  nameWithType: long?
+  fullName: long?
+  nameWithType.vb: Long?
+  fullName.vb: Long?
+  name.vb: Long?
+  spec.csharp:
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '?'
+  spec.vb:
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '?'
+- uid: MarketDataCollector.Contracts.Domain.Enums
+  commentId: N:MarketDataCollector.Contracts.Domain.Enums
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Enums
+  nameWithType: MarketDataCollector.Contracts.Domain.Enums
+  fullName: MarketDataCollector.Contracts.Domain.Enums
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Enums
+    name: Enums
+    href: MarketDataCollector.Contracts.Domain.Enums.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Enums
+    name: Enums
+    href: MarketDataCollector.Contracts.Domain.Enums.html
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.OrderId*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderAdd.OrderId
+  href: MarketDataCollector.Contracts.Domain.Models.OrderAdd.html#MarketDataCollector_Contracts_Domain_Models_OrderAdd_OrderId
+  name: OrderId
+  nameWithType: OrderAdd.OrderId
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.OrderId
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Symbol*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderAdd.Symbol
+  href: MarketDataCollector.Contracts.Domain.Models.OrderAdd.html#MarketDataCollector_Contracts_Domain_Models_OrderAdd_Symbol
+  name: Symbol
+  nameWithType: OrderAdd.Symbol
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Symbol
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Side*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderAdd.Side
+  href: MarketDataCollector.Contracts.Domain.Models.OrderAdd.html#MarketDataCollector_Contracts_Domain_Models_OrderAdd_Side
+  name: Side
+  nameWithType: OrderAdd.Side
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Side
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Price*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderAdd.Price
+  href: MarketDataCollector.Contracts.Domain.Models.OrderAdd.html#MarketDataCollector_Contracts_Domain_Models_OrderAdd_Price
+  name: Price
+  nameWithType: OrderAdd.Price
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Price
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.DisplayedSize*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderAdd.DisplayedSize
+  href: MarketDataCollector.Contracts.Domain.Models.OrderAdd.html#MarketDataCollector_Contracts_Domain_Models_OrderAdd_DisplayedSize
+  name: DisplayedSize
+  nameWithType: OrderAdd.DisplayedSize
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.DisplayedSize
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.PriorityTimestamp*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderAdd.PriorityTimestamp
+  href: MarketDataCollector.Contracts.Domain.Models.OrderAdd.html#MarketDataCollector_Contracts_Domain_Models_OrderAdd_PriorityTimestamp
+  name: PriorityTimestamp
+  nameWithType: OrderAdd.PriorityTimestamp
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.PriorityTimestamp
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.SequenceNumber*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderAdd.SequenceNumber
+  href: MarketDataCollector.Contracts.Domain.Models.OrderAdd.html#MarketDataCollector_Contracts_Domain_Models_OrderAdd_SequenceNumber
+  name: SequenceNumber
+  nameWithType: OrderAdd.SequenceNumber
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.SequenceNumber
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.HiddenSize*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderAdd.HiddenSize
+  href: MarketDataCollector.Contracts.Domain.Models.OrderAdd.html#MarketDataCollector_Contracts_Domain_Models_OrderAdd_HiddenSize
+  name: HiddenSize
+  nameWithType: OrderAdd.HiddenSize
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.HiddenSize
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.ParticipantId*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderAdd.ParticipantId
+  href: MarketDataCollector.Contracts.Domain.Models.OrderAdd.html#MarketDataCollector_Contracts_Domain_Models_OrderAdd_ParticipantId
+  name: ParticipantId
+  nameWithType: OrderAdd.ParticipantId
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.ParticipantId
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.MarketMaker*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderAdd.MarketMaker
+  href: MarketDataCollector.Contracts.Domain.Models.OrderAdd.html#MarketDataCollector_Contracts_Domain_Models_OrderAdd_MarketMaker
+  name: MarketMaker
+  nameWithType: OrderAdd.MarketMaker
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.MarketMaker
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.StreamId*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderAdd.StreamId
+  href: MarketDataCollector.Contracts.Domain.Models.OrderAdd.html#MarketDataCollector_Contracts_Domain_Models_OrderAdd_StreamId
+  name: StreamId
+  nameWithType: OrderAdd.StreamId
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.StreamId
+- uid: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Venue*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.OrderAdd.Venue
+  href: MarketDataCollector.Contracts.Domain.Models.OrderAdd.html#MarketDataCollector_Contracts_Domain_Models_OrderAdd_Venue
+  name: Venue
+  nameWithType: OrderAdd.Venue
+  fullName: MarketDataCollector.Contracts.Domain.Models.OrderAdd.Venue

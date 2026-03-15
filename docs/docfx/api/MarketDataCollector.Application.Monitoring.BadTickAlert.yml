@@ -1,0 +1,794 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert
+  commentId: T:MarketDataCollector.Application.Monitoring.BadTickAlert
+  id: BadTickAlert
+  parent: MarketDataCollector.Application.Monitoring
+  children:
+  - MarketDataCollector.Application.Monitoring.BadTickAlert.#ctor(System.String,System.Decimal,System.Decimal,System.DateTimeOffset,MarketDataCollector.Application.Monitoring.BadTickReason[],System.Decimal,System.String,System.DateTimeOffset,System.Int64)
+  - MarketDataCollector.Application.Monitoring.BadTickAlert.BadTickCountInSession
+  - MarketDataCollector.Application.Monitoring.BadTickAlert.DetectedAt
+  - MarketDataCollector.Application.Monitoring.BadTickAlert.Price
+  - MarketDataCollector.Application.Monitoring.BadTickAlert.Provider
+  - MarketDataCollector.Application.Monitoring.BadTickAlert.Reasons
+  - MarketDataCollector.Application.Monitoring.BadTickAlert.ReferencePrice
+  - MarketDataCollector.Application.Monitoring.BadTickAlert.Size
+  - MarketDataCollector.Application.Monitoring.BadTickAlert.Symbol
+  - MarketDataCollector.Application.Monitoring.BadTickAlert.Timestamp
+  langs:
+  - csharp
+  - vb
+  name: BadTickAlert
+  nameWithType: BadTickAlert
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert
+  type: Struct
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BadTickAlert
+    path: ../../src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+    startLine: 590
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Alert for a bad tick condition.
+  example: []
+  syntax:
+    content: 'public readonly record struct BadTickAlert : IEquatable<BadTickAlert>'
+    content.vb: Public Structure BadTickAlert Implements IEquatable(Of BadTickAlert)
+  implements:
+  - System.IEquatable{MarketDataCollector.Application.Monitoring.BadTickAlert}
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.#ctor(System.String,System.Decimal,System.Decimal,System.DateTimeOffset,MarketDataCollector.Application.Monitoring.BadTickReason[],System.Decimal,System.String,System.DateTimeOffset,System.Int64)
+  commentId: M:MarketDataCollector.Application.Monitoring.BadTickAlert.#ctor(System.String,System.Decimal,System.Decimal,System.DateTimeOffset,MarketDataCollector.Application.Monitoring.BadTickReason[],System.Decimal,System.String,System.DateTimeOffset,System.Int64)
+  id: '#ctor(System.String,System.Decimal,System.Decimal,System.DateTimeOffset,MarketDataCollector.Application.Monitoring.BadTickReason[],System.Decimal,System.String,System.DateTimeOffset,System.Int64)'
+  parent: MarketDataCollector.Application.Monitoring.BadTickAlert
+  langs:
+  - csharp
+  - vb
+  name: BadTickAlert(string, decimal, decimal, DateTimeOffset, BadTickReason[], decimal, string?, DateTimeOffset, long)
+  nameWithType: BadTickAlert.BadTickAlert(string, decimal, decimal, DateTimeOffset, BadTickReason[], decimal, string?, DateTimeOffset, long)
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.BadTickAlert(string, decimal, decimal, System.DateTimeOffset, MarketDataCollector.Application.Monitoring.BadTickReason[], decimal, string?, System.DateTimeOffset, long)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+    startLine: 590
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Alert for a bad tick condition.
+  example: []
+  syntax:
+    content: public BadTickAlert(string Symbol, decimal Price, decimal Size, DateTimeOffset Timestamp, BadTickReason[] Reasons, decimal ReferencePrice, string? Provider, DateTimeOffset DetectedAt, long BadTickCountInSession)
+    parameters:
+    - id: Symbol
+      type: System.String
+    - id: Price
+      type: System.Decimal
+    - id: Size
+      type: System.Decimal
+    - id: Timestamp
+      type: System.DateTimeOffset
+    - id: Reasons
+      type: MarketDataCollector.Application.Monitoring.BadTickReason[]
+    - id: ReferencePrice
+      type: System.Decimal
+    - id: Provider
+      type: System.String
+    - id: DetectedAt
+      type: System.DateTimeOffset
+    - id: BadTickCountInSession
+      type: System.Int64
+    content.vb: Public Sub New(Symbol As String, Price As Decimal, Size As Decimal, Timestamp As DateTimeOffset, Reasons As BadTickReason(), ReferencePrice As Decimal, Provider As String, DetectedAt As DateTimeOffset, BadTickCountInSession As Long)
+  overload: MarketDataCollector.Application.Monitoring.BadTickAlert.#ctor*
+  nameWithType.vb: BadTickAlert.New(String, Decimal, Decimal, DateTimeOffset, BadTickReason(), Decimal, String, DateTimeOffset, Long)
+  fullName.vb: MarketDataCollector.Application.Monitoring.BadTickAlert.New(String, Decimal, Decimal, System.DateTimeOffset, MarketDataCollector.Application.Monitoring.BadTickReason(), Decimal, String, System.DateTimeOffset, Long)
+  name.vb: New(String, Decimal, Decimal, DateTimeOffset, BadTickReason(), Decimal, String, DateTimeOffset, Long)
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.Symbol
+  commentId: P:MarketDataCollector.Application.Monitoring.BadTickAlert.Symbol
+  id: Symbol
+  parent: MarketDataCollector.Application.Monitoring.BadTickAlert
+  langs:
+  - csharp
+  - vb
+  name: Symbol
+  nameWithType: BadTickAlert.Symbol
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.Symbol
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Symbol
+    path: ../../src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+    startLine: 591
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public string Symbol { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Symbol As String
+  overload: MarketDataCollector.Application.Monitoring.BadTickAlert.Symbol*
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.Price
+  commentId: P:MarketDataCollector.Application.Monitoring.BadTickAlert.Price
+  id: Price
+  parent: MarketDataCollector.Application.Monitoring.BadTickAlert
+  langs:
+  - csharp
+  - vb
+  name: Price
+  nameWithType: BadTickAlert.Price
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.Price
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Price
+    path: ../../src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+    startLine: 592
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public decimal Price { get; init; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: Public Property Price As Decimal
+  overload: MarketDataCollector.Application.Monitoring.BadTickAlert.Price*
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.Size
+  commentId: P:MarketDataCollector.Application.Monitoring.BadTickAlert.Size
+  id: Size
+  parent: MarketDataCollector.Application.Monitoring.BadTickAlert
+  langs:
+  - csharp
+  - vb
+  name: Size
+  nameWithType: BadTickAlert.Size
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.Size
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Size
+    path: ../../src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+    startLine: 593
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public decimal Size { get; init; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: Public Property Size As Decimal
+  overload: MarketDataCollector.Application.Monitoring.BadTickAlert.Size*
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.Timestamp
+  commentId: P:MarketDataCollector.Application.Monitoring.BadTickAlert.Timestamp
+  id: Timestamp
+  parent: MarketDataCollector.Application.Monitoring.BadTickAlert
+  langs:
+  - csharp
+  - vb
+  name: Timestamp
+  nameWithType: BadTickAlert.Timestamp
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.Timestamp
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Timestamp
+    path: ../../src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+    startLine: 594
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public DateTimeOffset Timestamp { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property Timestamp As DateTimeOffset
+  overload: MarketDataCollector.Application.Monitoring.BadTickAlert.Timestamp*
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.Reasons
+  commentId: P:MarketDataCollector.Application.Monitoring.BadTickAlert.Reasons
+  id: Reasons
+  parent: MarketDataCollector.Application.Monitoring.BadTickAlert
+  langs:
+  - csharp
+  - vb
+  name: Reasons
+  nameWithType: BadTickAlert.Reasons
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.Reasons
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Reasons
+    path: ../../src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+    startLine: 595
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public BadTickReason[] Reasons { get; init; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Monitoring.BadTickReason[]
+    content.vb: Public Property Reasons As BadTickReason()
+  overload: MarketDataCollector.Application.Monitoring.BadTickAlert.Reasons*
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.ReferencePrice
+  commentId: P:MarketDataCollector.Application.Monitoring.BadTickAlert.ReferencePrice
+  id: ReferencePrice
+  parent: MarketDataCollector.Application.Monitoring.BadTickAlert
+  langs:
+  - csharp
+  - vb
+  name: ReferencePrice
+  nameWithType: BadTickAlert.ReferencePrice
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.ReferencePrice
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ReferencePrice
+    path: ../../src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+    startLine: 596
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public decimal ReferencePrice { get; init; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: Public Property ReferencePrice As Decimal
+  overload: MarketDataCollector.Application.Monitoring.BadTickAlert.ReferencePrice*
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.Provider
+  commentId: P:MarketDataCollector.Application.Monitoring.BadTickAlert.Provider
+  id: Provider
+  parent: MarketDataCollector.Application.Monitoring.BadTickAlert
+  langs:
+  - csharp
+  - vb
+  name: Provider
+  nameWithType: BadTickAlert.Provider
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.Provider
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Provider
+    path: ../../src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+    startLine: 597
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public string? Provider { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Provider As String
+  overload: MarketDataCollector.Application.Monitoring.BadTickAlert.Provider*
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.DetectedAt
+  commentId: P:MarketDataCollector.Application.Monitoring.BadTickAlert.DetectedAt
+  id: DetectedAt
+  parent: MarketDataCollector.Application.Monitoring.BadTickAlert
+  langs:
+  - csharp
+  - vb
+  name: DetectedAt
+  nameWithType: BadTickAlert.DetectedAt
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.DetectedAt
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DetectedAt
+    path: ../../src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+    startLine: 598
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public DateTimeOffset DetectedAt { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property DetectedAt As DateTimeOffset
+  overload: MarketDataCollector.Application.Monitoring.BadTickAlert.DetectedAt*
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.BadTickCountInSession
+  commentId: P:MarketDataCollector.Application.Monitoring.BadTickAlert.BadTickCountInSession
+  id: BadTickCountInSession
+  parent: MarketDataCollector.Application.Monitoring.BadTickAlert
+  langs:
+  - csharp
+  - vb
+  name: BadTickCountInSession
+  nameWithType: BadTickAlert.BadTickCountInSession
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.BadTickCountInSession
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BadTickCountInSession
+    path: ../../src/MarketDataCollector.Application/Monitoring/BadTickFilter.cs
+    startLine: 599
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public long BadTickCountInSession { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property BadTickCountInSession As Long
+  overload: MarketDataCollector.Application.Monitoring.BadTickAlert.BadTickCountInSession*
+references:
+- uid: MarketDataCollector.Application.Monitoring
+  commentId: N:MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring
+  nameWithType: MarketDataCollector.Application.Monitoring
+  fullName: MarketDataCollector.Application.Monitoring
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+- uid: System.IEquatable{MarketDataCollector.Application.Monitoring.BadTickAlert}
+  commentId: T:System.IEquatable{MarketDataCollector.Application.Monitoring.BadTickAlert}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<BadTickAlert>
+  nameWithType: IEquatable<BadTickAlert>
+  fullName: System.IEquatable<MarketDataCollector.Application.Monitoring.BadTickAlert>
+  nameWithType.vb: IEquatable(Of BadTickAlert)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Application.Monitoring.BadTickAlert)
+  name.vb: IEquatable(Of BadTickAlert)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.BadTickAlert
+    name: BadTickAlert
+    href: MarketDataCollector.Application.Monitoring.BadTickAlert.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.BadTickAlert
+    name: BadTickAlert
+    href: MarketDataCollector.Application.Monitoring.BadTickAlert.html
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.BadTickAlert.#ctor
+  href: MarketDataCollector.Application.Monitoring.BadTickAlert.html#MarketDataCollector_Application_Monitoring_BadTickAlert__ctor_System_String_System_Decimal_System_Decimal_System_DateTimeOffset_MarketDataCollector_Application_Monitoring_BadTickReason___System_Decimal_System_String_System_DateTimeOffset_System_Int64_
+  name: BadTickAlert
+  nameWithType: BadTickAlert.BadTickAlert
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.BadTickAlert
+  nameWithType.vb: BadTickAlert.New
+  fullName.vb: MarketDataCollector.Application.Monitoring.BadTickAlert.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Decimal
+  commentId: T:System.Decimal
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.decimal
+  name: decimal
+  nameWithType: decimal
+  fullName: decimal
+  nameWithType.vb: Decimal
+  fullName.vb: Decimal
+  name.vb: Decimal
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: MarketDataCollector.Application.Monitoring.BadTickReason[]
+  isExternal: true
+  href: MarketDataCollector.Application.Monitoring.BadTickReason.html
+  name: BadTickReason[]
+  nameWithType: BadTickReason[]
+  fullName: MarketDataCollector.Application.Monitoring.BadTickReason[]
+  nameWithType.vb: BadTickReason()
+  fullName.vb: MarketDataCollector.Application.Monitoring.BadTickReason()
+  name.vb: BadTickReason()
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.BadTickReason
+    name: BadTickReason
+    href: MarketDataCollector.Application.Monitoring.BadTickReason.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.BadTickReason
+    name: BadTickReason
+    href: MarketDataCollector.Application.Monitoring.BadTickReason.html
+  - name: (
+  - name: )
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.Symbol*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.BadTickAlert.Symbol
+  href: MarketDataCollector.Application.Monitoring.BadTickAlert.html#MarketDataCollector_Application_Monitoring_BadTickAlert_Symbol
+  name: Symbol
+  nameWithType: BadTickAlert.Symbol
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.Symbol
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.Price*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.BadTickAlert.Price
+  href: MarketDataCollector.Application.Monitoring.BadTickAlert.html#MarketDataCollector_Application_Monitoring_BadTickAlert_Price
+  name: Price
+  nameWithType: BadTickAlert.Price
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.Price
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.Size*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.BadTickAlert.Size
+  href: MarketDataCollector.Application.Monitoring.BadTickAlert.html#MarketDataCollector_Application_Monitoring_BadTickAlert_Size
+  name: Size
+  nameWithType: BadTickAlert.Size
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.Size
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.Timestamp*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.BadTickAlert.Timestamp
+  href: MarketDataCollector.Application.Monitoring.BadTickAlert.html#MarketDataCollector_Application_Monitoring_BadTickAlert_Timestamp
+  name: Timestamp
+  nameWithType: BadTickAlert.Timestamp
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.Timestamp
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.Reasons*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.BadTickAlert.Reasons
+  href: MarketDataCollector.Application.Monitoring.BadTickAlert.html#MarketDataCollector_Application_Monitoring_BadTickAlert_Reasons
+  name: Reasons
+  nameWithType: BadTickAlert.Reasons
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.Reasons
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.ReferencePrice*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.BadTickAlert.ReferencePrice
+  href: MarketDataCollector.Application.Monitoring.BadTickAlert.html#MarketDataCollector_Application_Monitoring_BadTickAlert_ReferencePrice
+  name: ReferencePrice
+  nameWithType: BadTickAlert.ReferencePrice
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.ReferencePrice
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.Provider*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.BadTickAlert.Provider
+  href: MarketDataCollector.Application.Monitoring.BadTickAlert.html#MarketDataCollector_Application_Monitoring_BadTickAlert_Provider
+  name: Provider
+  nameWithType: BadTickAlert.Provider
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.Provider
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.DetectedAt*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.BadTickAlert.DetectedAt
+  href: MarketDataCollector.Application.Monitoring.BadTickAlert.html#MarketDataCollector_Application_Monitoring_BadTickAlert_DetectedAt
+  name: DetectedAt
+  nameWithType: BadTickAlert.DetectedAt
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.DetectedAt
+- uid: MarketDataCollector.Application.Monitoring.BadTickAlert.BadTickCountInSession*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.BadTickAlert.BadTickCountInSession
+  href: MarketDataCollector.Application.Monitoring.BadTickAlert.html#MarketDataCollector_Application_Monitoring_BadTickAlert_BadTickCountInSession
+  name: BadTickCountInSession
+  nameWithType: BadTickAlert.BadTickCountInSession
+  fullName: MarketDataCollector.Application.Monitoring.BadTickAlert.BadTickCountInSession

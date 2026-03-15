@@ -1,0 +1,818 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  commentId: T:MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  id: PipelinePolicyConstants
+  parent: MarketDataCollector.Contracts.Pipeline
+  children:
+  - MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.CompletionQueueCapacity
+  - MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.CompletionQueueFullMode
+  - MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.DefaultCapacity
+  - MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.DefaultFullMode
+  - MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.FullModeDropNewest
+  - MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.FullModeDropOldest
+  - MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.FullModeDropWrite
+  - MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.FullModeWait
+  - MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.HighThroughputCapacity
+  - MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.HighThroughputFullMode
+  - MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.LoggingCapacity
+  - MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.LoggingFullMode
+  - MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.MaintenanceQueueCapacity
+  - MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.MaintenanceQueueFullMode
+  - MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.MessageBufferCapacity
+  - MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.MessageBufferFullMode
+  langs:
+  - csharp
+  - vb
+  name: PipelinePolicyConstants
+  nameWithType: PipelinePolicyConstants
+  fullName: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PipelinePolicyConstants
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+    startLine: 10
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: >-
+    Constants for pipeline policy configuration.
+
+    Shared between the main application and desktop projects to ensure consistent channel settings.
+  remarks: >-
+    These constants are used by <code>EventPipelinePolicy</code> in the main application
+
+    and by desktop service projects that cannot reference the main assembly directly.
+  example: []
+  syntax:
+    content: public static class PipelinePolicyConstants
+    content.vb: Public Module PipelinePolicyConstants
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.FullModeWait
+  commentId: F:MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.FullModeWait
+  id: FullModeWait
+  parent: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  langs:
+  - csharp
+  - vb
+  name: FullModeWait
+  nameWithType: PipelinePolicyConstants.FullModeWait
+  fullName: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.FullModeWait
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FullModeWait
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+    startLine: 16
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: >-
+    Channel full mode: Wait (backpressure - blocks writers when full).
+
+    Maps to <code>BoundedChannelFullMode.Wait</code>.
+  example: []
+  syntax:
+    content: public const int FullModeWait = 0
+    return:
+      type: System.Int32
+    content.vb: Public Const FullModeWait As Integer = 0
+- uid: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.FullModeDropNewest
+  commentId: F:MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.FullModeDropNewest
+  id: FullModeDropNewest
+  parent: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  langs:
+  - csharp
+  - vb
+  name: FullModeDropNewest
+  nameWithType: PipelinePolicyConstants.FullModeDropNewest
+  fullName: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.FullModeDropNewest
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FullModeDropNewest
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+    startLine: 22
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: >-
+    Channel full mode: DropNewest (drop incoming items when full).
+
+    Maps to <code>BoundedChannelFullMode.DropNewest</code>.
+  example: []
+  syntax:
+    content: public const int FullModeDropNewest = 1
+    return:
+      type: System.Int32
+    content.vb: Public Const FullModeDropNewest As Integer = 1
+- uid: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.FullModeDropOldest
+  commentId: F:MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.FullModeDropOldest
+  id: FullModeDropOldest
+  parent: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  langs:
+  - csharp
+  - vb
+  name: FullModeDropOldest
+  nameWithType: PipelinePolicyConstants.FullModeDropOldest
+  fullName: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.FullModeDropOldest
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FullModeDropOldest
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+    startLine: 28
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: >-
+    Channel full mode: DropOldest (drop oldest items when full).
+
+    Maps to <code>BoundedChannelFullMode.DropOldest</code>.
+  example: []
+  syntax:
+    content: public const int FullModeDropOldest = 2
+    return:
+      type: System.Int32
+    content.vb: Public Const FullModeDropOldest As Integer = 2
+- uid: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.FullModeDropWrite
+  commentId: F:MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.FullModeDropWrite
+  id: FullModeDropWrite
+  parent: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  langs:
+  - csharp
+  - vb
+  name: FullModeDropWrite
+  nameWithType: PipelinePolicyConstants.FullModeDropWrite
+  fullName: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.FullModeDropWrite
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FullModeDropWrite
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+    startLine: 34
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: >-
+    Channel full mode: DropWrite (drop write attempt when full).
+
+    Maps to <code>BoundedChannelFullMode.DropWrite</code>.
+  example: []
+  syntax:
+    content: public const int FullModeDropWrite = 3
+    return:
+      type: System.Int32
+    content.vb: Public Const FullModeDropWrite As Integer = 3
+- uid: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.DefaultCapacity
+  commentId: F:MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.DefaultCapacity
+  id: DefaultCapacity
+  parent: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  langs:
+  - csharp
+  - vb
+  name: DefaultCapacity
+  nameWithType: PipelinePolicyConstants.DefaultCapacity
+  fullName: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.DefaultCapacity
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DefaultCapacity
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+    startLine: 41
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Default preset capacity for general-purpose event pipelines.
+  example: []
+  syntax:
+    content: public const int DefaultCapacity = 100000
+    return:
+      type: System.Int32
+    content.vb: Public Const DefaultCapacity As Integer = 100000
+- uid: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.DefaultFullMode
+  commentId: F:MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.DefaultFullMode
+  id: DefaultFullMode
+  parent: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  langs:
+  - csharp
+  - vb
+  name: DefaultFullMode
+  nameWithType: PipelinePolicyConstants.DefaultFullMode
+  fullName: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.DefaultFullMode
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DefaultFullMode
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+    startLine: 46
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Default preset full mode (DropOldest).
+  example: []
+  syntax:
+    content: public const int DefaultFullMode = 2
+    return:
+      type: System.Int32
+    content.vb: Public Const DefaultFullMode As Integer = 2
+- uid: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.HighThroughputCapacity
+  commentId: F:MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.HighThroughputCapacity
+  id: HighThroughputCapacity
+  parent: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  langs:
+  - csharp
+  - vb
+  name: HighThroughputCapacity
+  nameWithType: PipelinePolicyConstants.HighThroughputCapacity
+  fullName: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.HighThroughputCapacity
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HighThroughputCapacity
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+    startLine: 55
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: HighThroughput preset capacity for streaming data pipelines.
+  example: []
+  syntax:
+    content: public const int HighThroughputCapacity = 50000
+    return:
+      type: System.Int32
+    content.vb: Public Const HighThroughputCapacity As Integer = 50000
+- uid: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.HighThroughputFullMode
+  commentId: F:MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.HighThroughputFullMode
+  id: HighThroughputFullMode
+  parent: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  langs:
+  - csharp
+  - vb
+  name: HighThroughputFullMode
+  nameWithType: PipelinePolicyConstants.HighThroughputFullMode
+  fullName: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.HighThroughputFullMode
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HighThroughputFullMode
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+    startLine: 60
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: HighThroughput preset full mode (DropOldest).
+  example: []
+  syntax:
+    content: public const int HighThroughputFullMode = 2
+    return:
+      type: System.Int32
+    content.vb: Public Const HighThroughputFullMode As Integer = 2
+- uid: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.MessageBufferCapacity
+  commentId: F:MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.MessageBufferCapacity
+  id: MessageBufferCapacity
+  parent: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  langs:
+  - csharp
+  - vb
+  name: MessageBufferCapacity
+  nameWithType: PipelinePolicyConstants.MessageBufferCapacity
+  fullName: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.MessageBufferCapacity
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MessageBufferCapacity
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+    startLine: 69
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: MessageBuffer preset capacity for internal message buffering.
+  example: []
+  syntax:
+    content: public const int MessageBufferCapacity = 50000
+    return:
+      type: System.Int32
+    content.vb: Public Const MessageBufferCapacity As Integer = 50000
+- uid: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.MessageBufferFullMode
+  commentId: F:MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.MessageBufferFullMode
+  id: MessageBufferFullMode
+  parent: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  langs:
+  - csharp
+  - vb
+  name: MessageBufferFullMode
+  nameWithType: PipelinePolicyConstants.MessageBufferFullMode
+  fullName: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.MessageBufferFullMode
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MessageBufferFullMode
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+    startLine: 74
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: MessageBuffer preset full mode (DropOldest).
+  example: []
+  syntax:
+    content: public const int MessageBufferFullMode = 2
+    return:
+      type: System.Int32
+    content.vb: Public Const MessageBufferFullMode As Integer = 2
+- uid: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.MaintenanceQueueCapacity
+  commentId: F:MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.MaintenanceQueueCapacity
+  id: MaintenanceQueueCapacity
+  parent: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  langs:
+  - csharp
+  - vb
+  name: MaintenanceQueueCapacity
+  nameWithType: PipelinePolicyConstants.MaintenanceQueueCapacity
+  fullName: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.MaintenanceQueueCapacity
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MaintenanceQueueCapacity
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+    startLine: 83
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: MaintenanceQueue preset capacity for background tasks.
+  example: []
+  syntax:
+    content: public const int MaintenanceQueueCapacity = 100
+    return:
+      type: System.Int32
+    content.vb: Public Const MaintenanceQueueCapacity As Integer = 100
+- uid: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.MaintenanceQueueFullMode
+  commentId: F:MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.MaintenanceQueueFullMode
+  id: MaintenanceQueueFullMode
+  parent: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  langs:
+  - csharp
+  - vb
+  name: MaintenanceQueueFullMode
+  nameWithType: PipelinePolicyConstants.MaintenanceQueueFullMode
+  fullName: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.MaintenanceQueueFullMode
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MaintenanceQueueFullMode
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+    startLine: 88
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: MaintenanceQueue preset full mode (Wait/backpressure).
+  example: []
+  syntax:
+    content: public const int MaintenanceQueueFullMode = 0
+    return:
+      type: System.Int32
+    content.vb: Public Const MaintenanceQueueFullMode As Integer = 0
+- uid: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.LoggingCapacity
+  commentId: F:MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.LoggingCapacity
+  id: LoggingCapacity
+  parent: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  langs:
+  - csharp
+  - vb
+  name: LoggingCapacity
+  nameWithType: PipelinePolicyConstants.LoggingCapacity
+  fullName: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.LoggingCapacity
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LoggingCapacity
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+    startLine: 97
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Logging preset capacity for log channels.
+  example: []
+  syntax:
+    content: public const int LoggingCapacity = 1000
+    return:
+      type: System.Int32
+    content.vb: Public Const LoggingCapacity As Integer = 1000
+- uid: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.LoggingFullMode
+  commentId: F:MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.LoggingFullMode
+  id: LoggingFullMode
+  parent: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  langs:
+  - csharp
+  - vb
+  name: LoggingFullMode
+  nameWithType: PipelinePolicyConstants.LoggingFullMode
+  fullName: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.LoggingFullMode
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LoggingFullMode
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+    startLine: 102
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: Logging preset full mode (DropOldest).
+  example: []
+  syntax:
+    content: public const int LoggingFullMode = 2
+    return:
+      type: System.Int32
+    content.vb: Public Const LoggingFullMode As Integer = 2
+- uid: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.CompletionQueueCapacity
+  commentId: F:MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.CompletionQueueCapacity
+  id: CompletionQueueCapacity
+  parent: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  langs:
+  - csharp
+  - vb
+  name: CompletionQueueCapacity
+  nameWithType: PipelinePolicyConstants.CompletionQueueCapacity
+  fullName: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.CompletionQueueCapacity
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CompletionQueueCapacity
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+    startLine: 111
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: CompletionQueue preset capacity for completion notifications.
+  example: []
+  syntax:
+    content: public const int CompletionQueueCapacity = 500
+    return:
+      type: System.Int32
+    content.vb: Public Const CompletionQueueCapacity As Integer = 500
+- uid: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.CompletionQueueFullMode
+  commentId: F:MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.CompletionQueueFullMode
+  id: CompletionQueueFullMode
+  parent: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants
+  langs:
+  - csharp
+  - vb
+  name: CompletionQueueFullMode
+  nameWithType: PipelinePolicyConstants.CompletionQueueFullMode
+  fullName: MarketDataCollector.Contracts.Pipeline.PipelinePolicyConstants.CompletionQueueFullMode
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CompletionQueueFullMode
+    path: ../../src/MarketDataCollector.Contracts/Pipeline/PipelinePolicyConstants.cs
+    startLine: 116
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Pipeline
+  summary: CompletionQueue preset full mode (Wait/backpressure - no drops).
+  example: []
+  syntax:
+    content: public const int CompletionQueueFullMode = 0
+    return:
+      type: System.Int32
+    content.vb: Public Const CompletionQueueFullMode As Integer = 0
+references:
+- uid: MarketDataCollector.Contracts.Pipeline
+  commentId: N:MarketDataCollector.Contracts.Pipeline
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Pipeline
+  nameWithType: MarketDataCollector.Contracts.Pipeline
+  fullName: MarketDataCollector.Contracts.Pipeline
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Pipeline
+    name: Pipeline
+    href: MarketDataCollector.Contracts.Pipeline.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Pipeline
+    name: Pipeline
+    href: MarketDataCollector.Contracts.Pipeline.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

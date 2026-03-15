@@ -1,0 +1,1209 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService
+  id: StreamingFailoverService
+  parent: MarketDataCollector.Infrastructure.Adapters.Failover
+  children:
+  - MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.#ctor(MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor)
+  - MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.Dispose
+  - MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.ForceFailover(System.String,System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetActiveProviderId(System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetProviderHealthSnapshots
+  - MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetRuleSnapshots
+  - MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.OnFailoverRecovered
+  - MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.OnFailoverTriggered
+  - MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordFailure(System.String,System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordLatency(System.String,System.Double)
+  - MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordSuccess(System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RegisterProvider(System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.Start(MarketDataCollector.Application.Config.DataSourcesConfig)
+  langs:
+  - csharp
+  - vb
+  name: StreamingFailoverService
+  nameWithType: StreamingFailoverService
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StreamingFailoverService
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+    startLine: 19
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Failover
+  summary: >-
+    Orchestrates automatic failover between streaming market data providers.
+
+    Monitors provider health via <xref href="MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor" data-throw-if-not-resolved="false"></xref>, evaluates
+
+    configured <xref href="MarketDataCollector.Application.Config.FailoverRuleConfig" data-throw-if-not-resolved="false"></xref> rules, and triggers switchover
+
+    when consecutive failures exceed the threshold.
+  remarks: >-
+    Implements ADR-001 provider abstraction with runtime failover coordination
+
+    that was previously missing for streaming providers.
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-001", "Runtime streaming provider failover orchestration")]
+
+      [ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+
+      public sealed class StreamingFailoverService : IDisposable
+    content.vb: >-
+      <ImplementsAdr("ADR-001", "Runtime streaming provider failover orchestration")>
+
+      <ImplementsAdr("ADR-004", "All async methods support CancellationToken")>
+
+      Public NotInheritable Class StreamingFailoverService Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-001
+    - type: System.String
+      value: Runtime streaming provider failover orchestration
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-004
+    - type: System.String
+      value: All async methods support CancellationToken
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.OnFailoverTriggered
+  commentId: E:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.OnFailoverTriggered
+  id: OnFailoverTriggered
+  parent: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService
+  langs:
+  - csharp
+  - vb
+  name: OnFailoverTriggered
+  nameWithType: StreamingFailoverService.OnFailoverTriggered
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.OnFailoverTriggered
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnFailoverTriggered
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+    startLine: 34
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Failover
+  summary: Raised when a failover is triggered, providing the rule ID, the failed provider, and the new active provider.
+  example: []
+  syntax:
+    content: public event Action<FailoverTriggeredEvent>? OnFailoverTriggered
+    return:
+      type: System.Action{MarketDataCollector.Infrastructure.Adapters.Failover.FailoverTriggeredEvent}
+    content.vb: Public Event OnFailoverTriggered As Action(Of FailoverTriggeredEvent)
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.OnFailoverRecovered
+  commentId: E:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.OnFailoverRecovered
+  id: OnFailoverRecovered
+  parent: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService
+  langs:
+  - csharp
+  - vb
+  name: OnFailoverRecovered
+  nameWithType: StreamingFailoverService.OnFailoverRecovered
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.OnFailoverRecovered
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnFailoverRecovered
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+    startLine: 39
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Failover
+  summary: Raised when a provider recovers and becomes the active provider again.
+  example: []
+  syntax:
+    content: public event Action<FailoverRecoveredEvent>? OnFailoverRecovered
+    return:
+      type: System.Action{MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRecoveredEvent}
+    content.vb: Public Event OnFailoverRecovered As Action(Of FailoverRecoveredEvent)
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.#ctor(MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.#ctor(MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor)
+  id: '#ctor(MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor)'
+  parent: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService
+  langs:
+  - csharp
+  - vb
+  name: StreamingFailoverService(IConnectionHealthMonitor)
+  nameWithType: StreamingFailoverService.StreamingFailoverService(IConnectionHealthMonitor)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.StreamingFailoverService(MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+    startLine: 41
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Failover
+  syntax:
+    content: public StreamingFailoverService(IConnectionHealthMonitor healthMonitor)
+    parameters:
+    - id: healthMonitor
+      type: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor
+    content.vb: Public Sub New(healthMonitor As IConnectionHealthMonitor)
+  overload: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.#ctor*
+  nameWithType.vb: StreamingFailoverService.New(IConnectionHealthMonitor)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.New(MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor)
+  name.vb: New(IConnectionHealthMonitor)
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.Start(MarketDataCollector.Application.Config.DataSourcesConfig)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.Start(MarketDataCollector.Application.Config.DataSourcesConfig)
+  id: Start(MarketDataCollector.Application.Config.DataSourcesConfig)
+  parent: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService
+  langs:
+  - csharp
+  - vb
+  name: Start(DataSourcesConfig)
+  nameWithType: StreamingFailoverService.Start(DataSourcesConfig)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.Start(MarketDataCollector.Application.Config.DataSourcesConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Start
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+    startLine: 53
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Failover
+  summary: Starts periodic health evaluation based on the configured interval.
+  example: []
+  syntax:
+    content: public void Start(DataSourcesConfig config)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Config.DataSourcesConfig
+    content.vb: Public Sub Start(config As DataSourcesConfig)
+  overload: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.Start*
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RegisterProvider(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RegisterProvider(System.String)
+  id: RegisterProvider(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService
+  langs:
+  - csharp
+  - vb
+  name: RegisterProvider(string)
+  nameWithType: StreamingFailoverService.RegisterProvider(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RegisterProvider(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterProvider
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+    startLine: 87
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Failover
+  summary: Registers a provider for health tracking.
+  example: []
+  syntax:
+    content: public void RegisterProvider(string providerId)
+    parameters:
+    - id: providerId
+      type: System.String
+    content.vb: Public Sub RegisterProvider(providerId As String)
+  overload: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RegisterProvider*
+  nameWithType.vb: StreamingFailoverService.RegisterProvider(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RegisterProvider(String)
+  name.vb: RegisterProvider(String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordSuccess(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordSuccess(System.String)
+  id: RecordSuccess(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService
+  langs:
+  - csharp
+  - vb
+  name: RecordSuccess(string)
+  nameWithType: StreamingFailoverService.RecordSuccess(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordSuccess(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecordSuccess
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+    startLine: 97
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Failover
+  summary: Records a successful operation for a provider (resets failure counter, increments success counter).
+  example: []
+  syntax:
+    content: public void RecordSuccess(string providerId)
+    parameters:
+    - id: providerId
+      type: System.String
+    content.vb: Public Sub RecordSuccess(providerId As String)
+  overload: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordSuccess*
+  nameWithType.vb: StreamingFailoverService.RecordSuccess(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordSuccess(String)
+  name.vb: RecordSuccess(String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordFailure(System.String,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordFailure(System.String,System.String)
+  id: RecordFailure(System.String,System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService
+  langs:
+  - csharp
+  - vb
+  name: RecordFailure(string, string)
+  nameWithType: StreamingFailoverService.RecordFailure(string, string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordFailure(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecordFailure
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+    startLine: 109
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Failover
+  summary: Records a failure for a provider.
+  example: []
+  syntax:
+    content: public void RecordFailure(string providerId, string reason)
+    parameters:
+    - id: providerId
+      type: System.String
+    - id: reason
+      type: System.String
+    content.vb: Public Sub RecordFailure(providerId As String, reason As String)
+  overload: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordFailure*
+  nameWithType.vb: StreamingFailoverService.RecordFailure(String, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordFailure(String, String)
+  name.vb: RecordFailure(String, String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordLatency(System.String,System.Double)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordLatency(System.String,System.Double)
+  id: RecordLatency(System.String,System.Double)
+  parent: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService
+  langs:
+  - csharp
+  - vb
+  name: RecordLatency(string, double)
+  nameWithType: StreamingFailoverService.RecordLatency(string, double)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordLatency(string, double)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecordLatency
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+    startLine: 123
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Failover
+  summary: >-
+    Records latency for a provider. If latency exceeds the configured threshold for any rule,
+
+    it counts as a failure for that rule.
+  example: []
+  syntax:
+    content: public void RecordLatency(string providerId, double latencyMs)
+    parameters:
+    - id: providerId
+      type: System.String
+    - id: latencyMs
+      type: System.Double
+    content.vb: Public Sub RecordLatency(providerId As String, latencyMs As Double)
+  overload: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordLatency*
+  nameWithType.vb: StreamingFailoverService.RecordLatency(String, Double)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordLatency(String, Double)
+  name.vb: RecordLatency(String, Double)
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.ForceFailover(System.String,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.ForceFailover(System.String,System.String)
+  id: ForceFailover(System.String,System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService
+  langs:
+  - csharp
+  - vb
+  name: ForceFailover(string, string)
+  nameWithType: StreamingFailoverService.ForceFailover(string, string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.ForceFailover(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ForceFailover
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+    startLine: 135
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Failover
+  summary: Forces failover for a specific rule to a target provider.
+  example: []
+  syntax:
+    content: public bool ForceFailover(string ruleId, string targetProviderId)
+    parameters:
+    - id: ruleId
+      type: System.String
+    - id: targetProviderId
+      type: System.String
+    return:
+      type: System.Boolean
+      description: True if the failover was executed.
+    content.vb: Public Function ForceFailover(ruleId As String, targetProviderId As String) As Boolean
+  overload: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.ForceFailover*
+  nameWithType.vb: StreamingFailoverService.ForceFailover(String, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.ForceFailover(String, String)
+  name.vb: ForceFailover(String, String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetActiveProviderId(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetActiveProviderId(System.String)
+  id: GetActiveProviderId(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService
+  langs:
+  - csharp
+  - vb
+  name: GetActiveProviderId(string)
+  nameWithType: StreamingFailoverService.GetActiveProviderId(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetActiveProviderId(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetActiveProviderId
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+    startLine: 169
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Failover
+  summary: Gets the current active provider ID for a given rule.
+  example: []
+  syntax:
+    content: public string? GetActiveProviderId(string ruleId)
+    parameters:
+    - id: ruleId
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function GetActiveProviderId(ruleId As String) As String
+  overload: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetActiveProviderId*
+  nameWithType.vb: StreamingFailoverService.GetActiveProviderId(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetActiveProviderId(String)
+  name.vb: GetActiveProviderId(String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetRuleSnapshots
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetRuleSnapshots
+  id: GetRuleSnapshots
+  parent: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService
+  langs:
+  - csharp
+  - vb
+  name: GetRuleSnapshots()
+  nameWithType: StreamingFailoverService.GetRuleSnapshots()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetRuleSnapshots()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetRuleSnapshots
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+    startLine: 177
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Failover
+  summary: Gets the current failover state for all rules.
+  example: []
+  syntax:
+    content: public IReadOnlyList<FailoverRuleSnapshot> GetRuleSnapshots()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRuleSnapshot}
+    content.vb: Public Function GetRuleSnapshots() As IReadOnlyList(Of FailoverRuleSnapshot)
+  overload: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetRuleSnapshots*
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetProviderHealthSnapshots
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetProviderHealthSnapshots
+  id: GetProviderHealthSnapshots
+  parent: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService
+  langs:
+  - csharp
+  - vb
+  name: GetProviderHealthSnapshots()
+  nameWithType: StreamingFailoverService.GetProviderHealthSnapshots()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetProviderHealthSnapshots()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetProviderHealthSnapshots
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+    startLine: 185
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Failover
+  summary: Gets the health state for all registered providers.
+  example: []
+  syntax:
+    content: public IReadOnlyList<ProviderHealthSnapshot> GetProviderHealthSnapshots()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Failover.ProviderHealthSnapshot}
+    content.vb: Public Function GetProviderHealthSnapshots() As IReadOnlyList(Of ProviderHealthSnapshot)
+  overload: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetProviderHealthSnapshots*
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.Dispose
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.Dispose
+  id: Dispose
+  parent: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: StreamingFailoverService.Dispose()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Dispose
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Failover/StreamingFailoverService.cs
+    startLine: 340
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Failover
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor
+  commentId: T:MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor.html
+  name: IConnectionHealthMonitor
+  nameWithType: IConnectionHealthMonitor
+  fullName: MarketDataCollector.Application.Monitoring.IConnectionHealthMonitor
+- uid: MarketDataCollector.Application.Config.FailoverRuleConfig
+  commentId: T:MarketDataCollector.Application.Config.FailoverRuleConfig
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.FailoverRuleConfig.html
+  name: FailoverRuleConfig
+  nameWithType: FailoverRuleConfig
+  fullName: MarketDataCollector.Application.Config.FailoverRuleConfig
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Failover
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Failover
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Failover
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Failover
+    name: Failover
+    href: MarketDataCollector.Infrastructure.Adapters.Failover.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Failover
+    name: Failover
+    href: MarketDataCollector.Infrastructure.Adapters.Failover.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring
+  commentId: N:MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring
+  nameWithType: MarketDataCollector.Application.Monitoring
+  fullName: MarketDataCollector.Application.Monitoring
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+- uid: MarketDataCollector.Application.Config
+  commentId: N:MarketDataCollector.Application.Config
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config
+  nameWithType: MarketDataCollector.Application.Config
+  fullName: MarketDataCollector.Application.Config
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Action{MarketDataCollector.Infrastructure.Adapters.Failover.FailoverTriggeredEvent}
+  commentId: T:System.Action{MarketDataCollector.Infrastructure.Adapters.Failover.FailoverTriggeredEvent}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<FailoverTriggeredEvent>
+  nameWithType: Action<FailoverTriggeredEvent>
+  fullName: System.Action<MarketDataCollector.Infrastructure.Adapters.Failover.FailoverTriggeredEvent>
+  nameWithType.vb: Action(Of FailoverTriggeredEvent)
+  fullName.vb: System.Action(Of MarketDataCollector.Infrastructure.Adapters.Failover.FailoverTriggeredEvent)
+  name.vb: Action(Of FailoverTriggeredEvent)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Failover.FailoverTriggeredEvent
+    name: FailoverTriggeredEvent
+    href: MarketDataCollector.Infrastructure.Adapters.Failover.FailoverTriggeredEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Failover.FailoverTriggeredEvent
+    name: FailoverTriggeredEvent
+    href: MarketDataCollector.Infrastructure.Adapters.Failover.FailoverTriggeredEvent.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Action{MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRecoveredEvent}
+  commentId: T:System.Action{MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRecoveredEvent}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<FailoverRecoveredEvent>
+  nameWithType: Action<FailoverRecoveredEvent>
+  fullName: System.Action<MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRecoveredEvent>
+  nameWithType.vb: Action(Of FailoverRecoveredEvent)
+  fullName.vb: System.Action(Of MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRecoveredEvent)
+  name.vb: Action(Of FailoverRecoveredEvent)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRecoveredEvent
+    name: FailoverRecoveredEvent
+    href: MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRecoveredEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRecoveredEvent
+    name: FailoverRecoveredEvent
+    href: MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRecoveredEvent.html
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.#ctor*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.#ctor
+  href: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.html#MarketDataCollector_Infrastructure_Adapters_Failover_StreamingFailoverService__ctor_MarketDataCollector_Application_Monitoring_IConnectionHealthMonitor_
+  name: StreamingFailoverService
+  nameWithType: StreamingFailoverService.StreamingFailoverService
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.StreamingFailoverService
+  nameWithType.vb: StreamingFailoverService.New
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.New
+  name.vb: New
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.Start*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.Start
+  href: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.html#MarketDataCollector_Infrastructure_Adapters_Failover_StreamingFailoverService_Start_MarketDataCollector_Application_Config_DataSourcesConfig_
+  name: Start
+  nameWithType: StreamingFailoverService.Start
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.Start
+- uid: MarketDataCollector.Application.Config.DataSourcesConfig
+  commentId: T:MarketDataCollector.Application.Config.DataSourcesConfig
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.DataSourcesConfig.html
+  name: DataSourcesConfig
+  nameWithType: DataSourcesConfig
+  fullName: MarketDataCollector.Application.Config.DataSourcesConfig
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RegisterProvider*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RegisterProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.html#MarketDataCollector_Infrastructure_Adapters_Failover_StreamingFailoverService_RegisterProvider_System_String_
+  name: RegisterProvider
+  nameWithType: StreamingFailoverService.RegisterProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RegisterProvider
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordSuccess*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordSuccess
+  href: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.html#MarketDataCollector_Infrastructure_Adapters_Failover_StreamingFailoverService_RecordSuccess_System_String_
+  name: RecordSuccess
+  nameWithType: StreamingFailoverService.RecordSuccess
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordSuccess
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordFailure*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordFailure
+  href: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.html#MarketDataCollector_Infrastructure_Adapters_Failover_StreamingFailoverService_RecordFailure_System_String_System_String_
+  name: RecordFailure
+  nameWithType: StreamingFailoverService.RecordFailure
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordFailure
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordLatency*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordLatency
+  href: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.html#MarketDataCollector_Infrastructure_Adapters_Failover_StreamingFailoverService_RecordLatency_System_String_System_Double_
+  name: RecordLatency
+  nameWithType: StreamingFailoverService.RecordLatency
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.RecordLatency
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.ForceFailover*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.ForceFailover
+  href: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.html#MarketDataCollector_Infrastructure_Adapters_Failover_StreamingFailoverService_ForceFailover_System_String_System_String_
+  name: ForceFailover
+  nameWithType: StreamingFailoverService.ForceFailover
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.ForceFailover
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetActiveProviderId*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetActiveProviderId
+  href: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.html#MarketDataCollector_Infrastructure_Adapters_Failover_StreamingFailoverService_GetActiveProviderId_System_String_
+  name: GetActiveProviderId
+  nameWithType: StreamingFailoverService.GetActiveProviderId
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetActiveProviderId
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetRuleSnapshots*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetRuleSnapshots
+  href: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.html#MarketDataCollector_Infrastructure_Adapters_Failover_StreamingFailoverService_GetRuleSnapshots
+  name: GetRuleSnapshots
+  nameWithType: StreamingFailoverService.GetRuleSnapshots
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetRuleSnapshots
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRuleSnapshot}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRuleSnapshot}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<FailoverRuleSnapshot>
+  nameWithType: IReadOnlyList<FailoverRuleSnapshot>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRuleSnapshot>
+  nameWithType.vb: IReadOnlyList(Of FailoverRuleSnapshot)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRuleSnapshot)
+  name.vb: IReadOnlyList(Of FailoverRuleSnapshot)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRuleSnapshot
+    name: FailoverRuleSnapshot
+    href: MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRuleSnapshot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRuleSnapshot
+    name: FailoverRuleSnapshot
+    href: MarketDataCollector.Infrastructure.Adapters.Failover.FailoverRuleSnapshot.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetProviderHealthSnapshots*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetProviderHealthSnapshots
+  href: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.html#MarketDataCollector_Infrastructure_Adapters_Failover_StreamingFailoverService_GetProviderHealthSnapshots
+  name: GetProviderHealthSnapshots
+  nameWithType: StreamingFailoverService.GetProviderHealthSnapshots
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.GetProviderHealthSnapshots
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Failover.ProviderHealthSnapshot}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Failover.ProviderHealthSnapshot}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<ProviderHealthSnapshot>
+  nameWithType: IReadOnlyList<ProviderHealthSnapshot>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Infrastructure.Adapters.Failover.ProviderHealthSnapshot>
+  nameWithType.vb: IReadOnlyList(Of ProviderHealthSnapshot)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Infrastructure.Adapters.Failover.ProviderHealthSnapshot)
+  name.vb: IReadOnlyList(Of ProviderHealthSnapshot)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Failover.ProviderHealthSnapshot
+    name: ProviderHealthSnapshot
+    href: MarketDataCollector.Infrastructure.Adapters.Failover.ProviderHealthSnapshot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Failover.ProviderHealthSnapshot
+    name: ProviderHealthSnapshot
+    href: MarketDataCollector.Infrastructure.Adapters.Failover.ProviderHealthSnapshot.html
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.Dispose*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.Dispose
+  href: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.html#MarketDataCollector_Infrastructure_Adapters_Failover_StreamingFailoverService_Dispose
+  name: Dispose
+  nameWithType: StreamingFailoverService.Dispose
+  fullName: MarketDataCollector.Infrastructure.Adapters.Failover.StreamingFailoverService.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

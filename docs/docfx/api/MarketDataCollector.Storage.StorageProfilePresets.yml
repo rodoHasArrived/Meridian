@@ -1,0 +1,698 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.StorageProfilePresets
+  commentId: T:MarketDataCollector.Storage.StorageProfilePresets
+  id: StorageProfilePresets
+  parent: MarketDataCollector.Storage
+  children:
+  - MarketDataCollector.Storage.StorageProfilePresets.ApplyProfile(System.String,MarketDataCollector.Storage.StorageOptions,System.Boolean)
+  - MarketDataCollector.Storage.StorageProfilePresets.CreateFromProfile(System.String,System.String,System.Nullable{System.Boolean})
+  - MarketDataCollector.Storage.StorageProfilePresets.DefaultProfile
+  - MarketDataCollector.Storage.StorageProfilePresets.GetPresets
+  - MarketDataCollector.Storage.StorageProfilePresets.GetProfile(System.String)
+  langs:
+  - csharp
+  - vb
+  name: StorageProfilePresets
+  nameWithType: StorageProfilePresets
+  fullName: MarketDataCollector.Storage.StorageProfilePresets
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageProfiles.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StorageProfilePresets
+    path: ../../src/MarketDataCollector.Storage/StorageProfiles.cs
+    startLine: 20
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  syntax:
+    content: public static class StorageProfilePresets
+    content.vb: Public Module StorageProfilePresets
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Storage.StorageProfilePresets.DefaultProfile
+  commentId: F:MarketDataCollector.Storage.StorageProfilePresets.DefaultProfile
+  id: DefaultProfile
+  parent: MarketDataCollector.Storage.StorageProfilePresets
+  langs:
+  - csharp
+  - vb
+  name: DefaultProfile
+  nameWithType: StorageProfilePresets.DefaultProfile
+  fullName: MarketDataCollector.Storage.StorageProfilePresets.DefaultProfile
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageProfiles.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DefaultProfile
+    path: ../../src/MarketDataCollector.Storage/StorageProfiles.cs
+    startLine: 26
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: >-
+    Default storage profile when none is specified.
+
+    Research profile provides balanced defaults suitable for most use cases.
+  example: []
+  syntax:
+    content: public const string DefaultProfile = "Research"
+    return:
+      type: System.String
+    content.vb: Public Const DefaultProfile As String = "Research"
+- uid: MarketDataCollector.Storage.StorageProfilePresets.ApplyProfile(System.String,MarketDataCollector.Storage.StorageOptions,System.Boolean)
+  commentId: M:MarketDataCollector.Storage.StorageProfilePresets.ApplyProfile(System.String,MarketDataCollector.Storage.StorageOptions,System.Boolean)
+  id: ApplyProfile(System.String,MarketDataCollector.Storage.StorageOptions,System.Boolean)
+  parent: MarketDataCollector.Storage.StorageProfilePresets
+  langs:
+  - csharp
+  - vb
+  name: ApplyProfile(string?, StorageOptions, bool)
+  nameWithType: StorageProfilePresets.ApplyProfile(string?, StorageOptions, bool)
+  fullName: MarketDataCollector.Storage.StorageProfilePresets.ApplyProfile(string?, MarketDataCollector.Storage.StorageOptions, bool)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageProfiles.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ApplyProfile
+    path: ../../src/MarketDataCollector.Storage/StorageProfiles.cs
+    startLine: 116
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: >-
+    Applies a storage profile to the given options.
+
+    If no profile is specified, applies the default profile (Research).
+  example: []
+  syntax:
+    content: public static StorageOptions ApplyProfile(string? profile, StorageOptions options, bool useDefaultIfEmpty = true)
+    parameters:
+    - id: profile
+      type: System.String
+      description: Profile ID, or null/empty to use default.
+    - id: options
+      type: MarketDataCollector.Storage.StorageOptions
+      description: Base storage options to apply profile to.
+    - id: useDefaultIfEmpty
+      type: System.Boolean
+      description: If true, applies default profile when profile is null/empty. Default is true.
+    return:
+      type: MarketDataCollector.Storage.StorageOptions
+      description: Storage options with profile settings applied.
+    content.vb: Public Shared Function ApplyProfile(profile As String, options As StorageOptions, useDefaultIfEmpty As Boolean = True) As StorageOptions
+  overload: MarketDataCollector.Storage.StorageProfilePresets.ApplyProfile*
+  nameWithType.vb: StorageProfilePresets.ApplyProfile(String, StorageOptions, Boolean)
+  fullName.vb: MarketDataCollector.Storage.StorageProfilePresets.ApplyProfile(String, MarketDataCollector.Storage.StorageOptions, Boolean)
+  name.vb: ApplyProfile(String, StorageOptions, Boolean)
+- uid: MarketDataCollector.Storage.StorageProfilePresets.GetProfile(System.String)
+  commentId: M:MarketDataCollector.Storage.StorageProfilePresets.GetProfile(System.String)
+  id: GetProfile(System.String)
+  parent: MarketDataCollector.Storage.StorageProfilePresets
+  langs:
+  - csharp
+  - vb
+  name: GetProfile(string)
+  nameWithType: StorageProfilePresets.GetProfile(string)
+  fullName: MarketDataCollector.Storage.StorageProfilePresets.GetProfile(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageProfiles.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetProfile
+    path: ../../src/MarketDataCollector.Storage/StorageProfiles.cs
+    startLine: 134
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: Gets a profile preset by ID.
+  example: []
+  syntax:
+    content: public static StorageProfilePreset? GetProfile(string id)
+    parameters:
+    - id: id
+      type: System.String
+    return:
+      type: MarketDataCollector.Storage.StorageProfilePreset
+    content.vb: Public Shared Function GetProfile(id As String) As StorageProfilePreset
+  overload: MarketDataCollector.Storage.StorageProfilePresets.GetProfile*
+  nameWithType.vb: StorageProfilePresets.GetProfile(String)
+  fullName.vb: MarketDataCollector.Storage.StorageProfilePresets.GetProfile(String)
+  name.vb: GetProfile(String)
+- uid: MarketDataCollector.Storage.StorageProfilePresets.CreateFromProfile(System.String,System.String,System.Nullable{System.Boolean})
+  commentId: M:MarketDataCollector.Storage.StorageProfilePresets.CreateFromProfile(System.String,System.String,System.Nullable{System.Boolean})
+  id: CreateFromProfile(System.String,System.String,System.Nullable{System.Boolean})
+  parent: MarketDataCollector.Storage.StorageProfilePresets
+  langs:
+  - csharp
+  - vb
+  name: CreateFromProfile(string?, string, bool?)
+  nameWithType: StorageProfilePresets.CreateFromProfile(string?, string, bool?)
+  fullName: MarketDataCollector.Storage.StorageProfilePresets.CreateFromProfile(string?, string, bool?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageProfiles.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateFromProfile
+    path: ../../src/MarketDataCollector.Storage/StorageProfiles.cs
+    startLine: 143
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: >-
+    Creates storage options from a profile without requiring a base options object.
+
+    Uses default profile if none specified.
+  example: []
+  syntax:
+    content: public static StorageOptions CreateFromProfile(string? profile, string rootPath, bool? compress = null)
+    parameters:
+    - id: profile
+      type: System.String
+    - id: rootPath
+      type: System.String
+    - id: compress
+      type: System.Nullable{System.Boolean}
+    return:
+      type: MarketDataCollector.Storage.StorageOptions
+    content.vb: Public Shared Function CreateFromProfile(profile As String, rootPath As String, compress As Boolean? = Nothing) As StorageOptions
+  overload: MarketDataCollector.Storage.StorageProfilePresets.CreateFromProfile*
+  nameWithType.vb: StorageProfilePresets.CreateFromProfile(String, String, Boolean?)
+  fullName.vb: MarketDataCollector.Storage.StorageProfilePresets.CreateFromProfile(String, String, Boolean?)
+  name.vb: CreateFromProfile(String, String, Boolean?)
+- uid: MarketDataCollector.Storage.StorageProfilePresets.GetPresets
+  commentId: M:MarketDataCollector.Storage.StorageProfilePresets.GetPresets
+  id: GetPresets
+  parent: MarketDataCollector.Storage.StorageProfilePresets
+  langs:
+  - csharp
+  - vb
+  name: GetPresets()
+  nameWithType: StorageProfilePresets.GetPresets()
+  fullName: MarketDataCollector.Storage.StorageProfilePresets.GetPresets()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageProfiles.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetPresets
+    path: ../../src/MarketDataCollector.Storage/StorageProfiles.cs
+    startLine: 154
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  syntax:
+    content: public static IReadOnlyList<StorageProfilePreset> GetPresets()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.StorageProfilePreset}
+    content.vb: Public Shared Function GetPresets() As IReadOnlyList(Of StorageProfilePreset)
+  overload: MarketDataCollector.Storage.StorageProfilePresets.GetPresets*
+references:
+- uid: MarketDataCollector.Storage
+  commentId: N:MarketDataCollector.Storage
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage
+  nameWithType: MarketDataCollector.Storage
+  fullName: MarketDataCollector.Storage
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Storage.StorageProfilePresets.ApplyProfile*
+  commentId: Overload:MarketDataCollector.Storage.StorageProfilePresets.ApplyProfile
+  href: MarketDataCollector.Storage.StorageProfilePresets.html#MarketDataCollector_Storage_StorageProfilePresets_ApplyProfile_System_String_MarketDataCollector_Storage_StorageOptions_System_Boolean_
+  name: ApplyProfile
+  nameWithType: StorageProfilePresets.ApplyProfile
+  fullName: MarketDataCollector.Storage.StorageProfilePresets.ApplyProfile
+- uid: MarketDataCollector.Storage.StorageOptions
+  commentId: T:MarketDataCollector.Storage.StorageOptions
+  parent: MarketDataCollector.Storage
+  href: MarketDataCollector.Storage.StorageOptions.html
+  name: StorageOptions
+  nameWithType: StorageOptions
+  fullName: MarketDataCollector.Storage.StorageOptions
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Storage.StorageProfilePresets.GetProfile*
+  commentId: Overload:MarketDataCollector.Storage.StorageProfilePresets.GetProfile
+  href: MarketDataCollector.Storage.StorageProfilePresets.html#MarketDataCollector_Storage_StorageProfilePresets_GetProfile_System_String_
+  name: GetProfile
+  nameWithType: StorageProfilePresets.GetProfile
+  fullName: MarketDataCollector.Storage.StorageProfilePresets.GetProfile
+- uid: MarketDataCollector.Storage.StorageProfilePreset
+  commentId: T:MarketDataCollector.Storage.StorageProfilePreset
+  parent: MarketDataCollector.Storage
+  href: MarketDataCollector.Storage.StorageProfilePreset.html
+  name: StorageProfilePreset
+  nameWithType: StorageProfilePreset
+  fullName: MarketDataCollector.Storage.StorageProfilePreset
+- uid: MarketDataCollector.Storage.StorageProfilePresets.CreateFromProfile*
+  commentId: Overload:MarketDataCollector.Storage.StorageProfilePresets.CreateFromProfile
+  href: MarketDataCollector.Storage.StorageProfilePresets.html#MarketDataCollector_Storage_StorageProfilePresets_CreateFromProfile_System_String_System_String_System_Nullable_System_Boolean__
+  name: CreateFromProfile
+  nameWithType: StorageProfilePresets.CreateFromProfile
+  fullName: MarketDataCollector.Storage.StorageProfilePresets.CreateFromProfile
+- uid: System.Nullable{System.Boolean}
+  commentId: T:System.Nullable{System.Boolean}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool?
+  nameWithType: bool?
+  fullName: bool?
+  nameWithType.vb: Boolean?
+  fullName.vb: Boolean?
+  name.vb: Boolean?
+  spec.csharp:
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+  spec.vb:
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Storage.StorageProfilePresets.GetPresets*
+  commentId: Overload:MarketDataCollector.Storage.StorageProfilePresets.GetPresets
+  href: MarketDataCollector.Storage.StorageProfilePresets.html#MarketDataCollector_Storage_StorageProfilePresets_GetPresets
+  name: GetPresets
+  nameWithType: StorageProfilePresets.GetPresets
+  fullName: MarketDataCollector.Storage.StorageProfilePresets.GetPresets
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.StorageProfilePreset}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.StorageProfilePreset}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<StorageProfilePreset>
+  nameWithType: IReadOnlyList<StorageProfilePreset>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Storage.StorageProfilePreset>
+  nameWithType.vb: IReadOnlyList(Of StorageProfilePreset)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Storage.StorageProfilePreset)
+  name.vb: IReadOnlyList(Of StorageProfilePreset)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Storage.StorageProfilePreset
+    name: StorageProfilePreset
+    href: MarketDataCollector.Storage.StorageProfilePreset.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.StorageProfilePreset
+    name: StorageProfilePreset
+    href: MarketDataCollector.Storage.StorageProfilePreset.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

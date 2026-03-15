@@ -1,0 +1,1306 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  id: IRealtimeDataSource
+  parent: MarketDataCollector.Infrastructure.DataSources
+  children:
+  - MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.ActiveSubscriptions
+  - MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.ConnectAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.DepthUpdates
+  - MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.DisconnectAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.IsConnected
+  - MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.Quotes
+  - MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  - MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeQuotes(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  - MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  - MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribedSymbols
+  - MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.Trades
+  - MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeAll
+  - MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeMarketDepth(System.Int32)
+  - MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeQuotes(System.Int32)
+  - MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeTrades(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: IRealtimeDataSource
+  nameWithType: IRealtimeDataSource
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IRealtimeDataSource
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 11
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: >-
+    Interface for real-time data sources providing streaming market data.
+
+    Extends IDataSource with real-time specific functionality for trades,
+
+    quotes, and market depth.
+  example: []
+  syntax:
+    content: 'public interface IRealtimeDataSource : IDataSource, IAsyncDisposable'
+    content.vb: Public Interface IRealtimeDataSource Inherits IDataSource, IAsyncDisposable
+  derivedClasses:
+  - MarketDataCollector.Infrastructure.Adapters.NYSE.NYSEDataSource
+  inheritedMembers:
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.Id
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.DisplayName
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.Description
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.Type
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.Category
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.Priority
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.Capabilities
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.CapabilityInfo
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedMarkets
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedAssetClasses
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.Health
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.Status
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.RateLimitState
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.HealthChanges
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.InitializeAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.ValidateCredentialsAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.DataSources.IDataSource.TestConnectivityAsync(System.Threading.CancellationToken)
+  - System.IAsyncDisposable.DisposeAsync
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.ConnectAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.ConnectAsync(System.Threading.CancellationToken)
+  id: ConnectAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  langs:
+  - csharp
+  - vb
+  name: ConnectAsync(CancellationToken)
+  nameWithType: IRealtimeDataSource.ConnectAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.ConnectAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConnectAsync
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 18
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Connects to the real-time data stream.
+  example: []
+  syntax:
+    content: Task ConnectAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function ConnectAsync(ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.ConnectAsync*
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.DisconnectAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.DisconnectAsync(System.Threading.CancellationToken)
+  id: DisconnectAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  langs:
+  - csharp
+  - vb
+  name: DisconnectAsync(CancellationToken)
+  nameWithType: IRealtimeDataSource.DisconnectAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.DisconnectAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisconnectAsync
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 23
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Disconnects from the real-time data stream.
+  example: []
+  syntax:
+    content: Task DisconnectAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function DisconnectAsync(ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.DisconnectAsync*
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.IsConnected
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.IsConnected
+  id: IsConnected
+  parent: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  langs:
+  - csharp
+  - vb
+  name: IsConnected
+  nameWithType: IRealtimeDataSource.IsConnected
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.IsConnected
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsConnected
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 28
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Whether the source is currently connected.
+  example: []
+  syntax:
+    content: bool IsConnected { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsConnected As Boolean
+  overload: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.IsConnected*
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  id: SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  parent: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  langs:
+  - csharp
+  - vb
+  name: SubscribeTrades(SymbolConfig)
+  nameWithType: IRealtimeDataSource.SubscribeTrades(SymbolConfig)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SubscribeTrades
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 39
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Subscribes to real-time trade prints for the specified symbol.
+  example: []
+  syntax:
+    content: int SubscribeTrades(SymbolConfig config)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Contracts.Configuration.SymbolConfig
+      description: Symbol configuration.
+    return:
+      type: System.Int32
+      description: Subscription ID for unsubscription.
+    content.vb: Function SubscribeTrades(config As SymbolConfig) As Integer
+  overload: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeTrades*
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeTrades(System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeTrades(System.Int32)
+  id: UnsubscribeTrades(System.Int32)
+  parent: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  langs:
+  - csharp
+  - vb
+  name: UnsubscribeTrades(int)
+  nameWithType: IRealtimeDataSource.UnsubscribeTrades(int)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeTrades(int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UnsubscribeTrades
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 44
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Unsubscribes from a trade subscription.
+  example: []
+  syntax:
+    content: void UnsubscribeTrades(int subscriptionId)
+    parameters:
+    - id: subscriptionId
+      type: System.Int32
+    content.vb: Sub UnsubscribeTrades(subscriptionId As Integer)
+  overload: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeTrades*
+  nameWithType.vb: IRealtimeDataSource.UnsubscribeTrades(Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeTrades(Integer)
+  name.vb: UnsubscribeTrades(Integer)
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.Trades
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.Trades
+  id: Trades
+  parent: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  langs:
+  - csharp
+  - vb
+  name: Trades
+  nameWithType: IRealtimeDataSource.Trades
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.Trades
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Trades
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 49
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Observable stream of trade events.
+  example: []
+  syntax:
+    content: IObservable<RealtimeTrade> Trades { get; }
+    parameters: []
+    return:
+      type: System.IObservable{MarketDataCollector.Infrastructure.DataSources.RealtimeTrade}
+    content.vb: ReadOnly Property Trades As IObservable(Of RealtimeTrade)
+  overload: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.Trades*
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeQuotes(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeQuotes(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  id: SubscribeQuotes(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  parent: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  langs:
+  - csharp
+  - vb
+  name: SubscribeQuotes(SymbolConfig)
+  nameWithType: IRealtimeDataSource.SubscribeQuotes(SymbolConfig)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeQuotes(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SubscribeQuotes
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 60
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Subscribes to real-time BBO quotes for the specified symbol.
+  example: []
+  syntax:
+    content: int SubscribeQuotes(SymbolConfig config)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Contracts.Configuration.SymbolConfig
+      description: Symbol configuration.
+    return:
+      type: System.Int32
+      description: Subscription ID for unsubscription.
+    content.vb: Function SubscribeQuotes(config As SymbolConfig) As Integer
+  overload: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeQuotes*
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeQuotes(System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeQuotes(System.Int32)
+  id: UnsubscribeQuotes(System.Int32)
+  parent: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  langs:
+  - csharp
+  - vb
+  name: UnsubscribeQuotes(int)
+  nameWithType: IRealtimeDataSource.UnsubscribeQuotes(int)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeQuotes(int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UnsubscribeQuotes
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 65
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Unsubscribes from a quote subscription.
+  example: []
+  syntax:
+    content: void UnsubscribeQuotes(int subscriptionId)
+    parameters:
+    - id: subscriptionId
+      type: System.Int32
+    content.vb: Sub UnsubscribeQuotes(subscriptionId As Integer)
+  overload: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeQuotes*
+  nameWithType.vb: IRealtimeDataSource.UnsubscribeQuotes(Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeQuotes(Integer)
+  name.vb: UnsubscribeQuotes(Integer)
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.Quotes
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.Quotes
+  id: Quotes
+  parent: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  langs:
+  - csharp
+  - vb
+  name: Quotes
+  nameWithType: IRealtimeDataSource.Quotes
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.Quotes
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Quotes
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 70
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Observable stream of quote events.
+  example: []
+  syntax:
+    content: IObservable<RealtimeQuote> Quotes { get; }
+    parameters: []
+    return:
+      type: System.IObservable{MarketDataCollector.Infrastructure.DataSources.RealtimeQuote}
+    content.vb: ReadOnly Property Quotes As IObservable(Of RealtimeQuote)
+  overload: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.Quotes*
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  id: SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  parent: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  langs:
+  - csharp
+  - vb
+  name: SubscribeMarketDepth(SymbolConfig)
+  nameWithType: IRealtimeDataSource.SubscribeMarketDepth(SymbolConfig)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SubscribeMarketDepth
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 81
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Subscribes to market depth for the specified symbol.
+  example: []
+  syntax:
+    content: int SubscribeMarketDepth(SymbolConfig config)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Contracts.Configuration.SymbolConfig
+      description: Symbol configuration.
+    return:
+      type: System.Int32
+      description: Subscription ID for unsubscription.
+    content.vb: Function SubscribeMarketDepth(config As SymbolConfig) As Integer
+  overload: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeMarketDepth*
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeMarketDepth(System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeMarketDepth(System.Int32)
+  id: UnsubscribeMarketDepth(System.Int32)
+  parent: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  langs:
+  - csharp
+  - vb
+  name: UnsubscribeMarketDepth(int)
+  nameWithType: IRealtimeDataSource.UnsubscribeMarketDepth(int)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeMarketDepth(int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UnsubscribeMarketDepth
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 86
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Unsubscribes from a depth subscription.
+  example: []
+  syntax:
+    content: void UnsubscribeMarketDepth(int subscriptionId)
+    parameters:
+    - id: subscriptionId
+      type: System.Int32
+    content.vb: Sub UnsubscribeMarketDepth(subscriptionId As Integer)
+  overload: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeMarketDepth*
+  nameWithType.vb: IRealtimeDataSource.UnsubscribeMarketDepth(Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeMarketDepth(Integer)
+  name.vb: UnsubscribeMarketDepth(Integer)
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.DepthUpdates
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.DepthUpdates
+  id: DepthUpdates
+  parent: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  langs:
+  - csharp
+  - vb
+  name: DepthUpdates
+  nameWithType: IRealtimeDataSource.DepthUpdates
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.DepthUpdates
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DepthUpdates
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 91
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Observable stream of market depth events.
+  example: []
+  syntax:
+    content: IObservable<RealtimeDepthUpdate> DepthUpdates { get; }
+    parameters: []
+    return:
+      type: System.IObservable{MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate}
+    content.vb: ReadOnly Property DepthUpdates As IObservable(Of RealtimeDepthUpdate)
+  overload: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.DepthUpdates*
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.ActiveSubscriptions
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.ActiveSubscriptions
+  id: ActiveSubscriptions
+  parent: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  langs:
+  - csharp
+  - vb
+  name: ActiveSubscriptions
+  nameWithType: IRealtimeDataSource.ActiveSubscriptions
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.ActiveSubscriptions
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ActiveSubscriptions
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 100
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Gets all active subscription IDs.
+  example: []
+  syntax:
+    content: IReadOnlySet<int> ActiveSubscriptions { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlySet{System.Int32}
+    content.vb: ReadOnly Property ActiveSubscriptions As IReadOnlySet(Of Integer)
+  overload: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.ActiveSubscriptions*
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribedSymbols
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribedSymbols
+  id: SubscribedSymbols
+  parent: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  langs:
+  - csharp
+  - vb
+  name: SubscribedSymbols
+  nameWithType: IRealtimeDataSource.SubscribedSymbols
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribedSymbols
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SubscribedSymbols
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 105
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Gets the symbols currently subscribed.
+  example: []
+  syntax:
+    content: IReadOnlySet<string> SubscribedSymbols { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlySet{System.String}
+    content.vb: ReadOnly Property SubscribedSymbols As IReadOnlySet(Of String)
+  overload: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribedSymbols*
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeAll
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeAll
+  id: UnsubscribeAll
+  parent: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource
+  langs:
+  - csharp
+  - vb
+  name: UnsubscribeAll()
+  nameWithType: IRealtimeDataSource.UnsubscribeAll()
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeAll()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UnsubscribeAll
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 110
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Unsubscribes from all active subscriptions.
+  example: []
+  syntax:
+    content: void UnsubscribeAll()
+    content.vb: Sub UnsubscribeAll()
+  overload: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeAll*
+references:
+- uid: MarketDataCollector.Infrastructure.DataSources
+  commentId: N:MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.DataSources
+  nameWithType: MarketDataCollector.Infrastructure.DataSources
+  fullName: MarketDataCollector.Infrastructure.DataSources
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.DataSources
+    name: DataSources
+    href: MarketDataCollector.Infrastructure.DataSources.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.DataSources
+    name: DataSources
+    href: MarketDataCollector.Infrastructure.DataSources.html
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Id
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.Id
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_Id
+  name: Id
+  nameWithType: IDataSource.Id
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Id
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.DisplayName
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.DisplayName
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_DisplayName
+  name: DisplayName
+  nameWithType: IDataSource.DisplayName
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.DisplayName
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Description
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.Description
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_Description
+  name: Description
+  nameWithType: IDataSource.Description
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Description
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Type
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.Type
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_Type
+  name: Type
+  nameWithType: IDataSource.Type
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Type
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Category
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.Category
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_Category
+  name: Category
+  nameWithType: IDataSource.Category
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Category
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Priority
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.Priority
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_Priority
+  name: Priority
+  nameWithType: IDataSource.Priority
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Priority
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Capabilities
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.Capabilities
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_Capabilities
+  name: Capabilities
+  nameWithType: IDataSource.Capabilities
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Capabilities
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.CapabilityInfo
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.CapabilityInfo
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_CapabilityInfo
+  name: CapabilityInfo
+  nameWithType: IDataSource.CapabilityInfo
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.CapabilityInfo
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedMarkets
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedMarkets
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_SupportedMarkets
+  name: SupportedMarkets
+  nameWithType: IDataSource.SupportedMarkets
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedMarkets
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedAssetClasses
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedAssetClasses
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_SupportedAssetClasses
+  name: SupportedAssetClasses
+  nameWithType: IDataSource.SupportedAssetClasses
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.SupportedAssetClasses
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Health
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.Health
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_Health
+  name: Health
+  nameWithType: IDataSource.Health
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Health
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.Status
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.Status
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_Status
+  name: Status
+  nameWithType: IDataSource.Status
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.Status
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.RateLimitState
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.RateLimitState
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_RateLimitState
+  name: RateLimitState
+  nameWithType: IDataSource.RateLimitState
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.RateLimitState
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.HealthChanges
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IDataSource.HealthChanges
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_HealthChanges
+  name: HealthChanges
+  nameWithType: IDataSource.HealthChanges
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.HealthChanges
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.InitializeAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IDataSource.InitializeAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_InitializeAsync_System_Threading_CancellationToken_
+  name: InitializeAsync(CancellationToken)
+  nameWithType: IDataSource.InitializeAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.InitializeAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.InitializeAsync(System.Threading.CancellationToken)
+    name: InitializeAsync
+    href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_InitializeAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.InitializeAsync(System.Threading.CancellationToken)
+    name: InitializeAsync
+    href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_InitializeAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.ValidateCredentialsAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IDataSource.ValidateCredentialsAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_ValidateCredentialsAsync_System_Threading_CancellationToken_
+  name: ValidateCredentialsAsync(CancellationToken)
+  nameWithType: IDataSource.ValidateCredentialsAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.ValidateCredentialsAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.ValidateCredentialsAsync(System.Threading.CancellationToken)
+    name: ValidateCredentialsAsync
+    href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_ValidateCredentialsAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.ValidateCredentialsAsync(System.Threading.CancellationToken)
+    name: ValidateCredentialsAsync
+    href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_ValidateCredentialsAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.TestConnectivityAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IDataSource.TestConnectivityAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_TestConnectivityAsync_System_Threading_CancellationToken_
+  name: TestConnectivityAsync(CancellationToken)
+  nameWithType: IDataSource.TestConnectivityAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource.TestConnectivityAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.TestConnectivityAsync(System.Threading.CancellationToken)
+    name: TestConnectivityAsync
+    href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_TestConnectivityAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.DataSources.IDataSource.TestConnectivityAsync(System.Threading.CancellationToken)
+    name: TestConnectivityAsync
+    href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html#MarketDataCollector_Infrastructure_DataSources_IDataSource_TestConnectivityAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.IAsyncDisposable.DisposeAsync
+  commentId: M:System.IAsyncDisposable.DisposeAsync
+  parent: System.IAsyncDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  name: DisposeAsync()
+  nameWithType: IAsyncDisposable.DisposeAsync()
+  fullName: System.IAsyncDisposable.DisposeAsync()
+  spec.csharp:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Infrastructure.DataSources.IDataSource
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.IDataSource
+  parent: MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.Infrastructure.DataSources.IDataSource.html
+  name: IDataSource
+  nameWithType: IDataSource
+  fullName: MarketDataCollector.Infrastructure.DataSources.IDataSource
+- uid: System.IAsyncDisposable
+  commentId: T:System.IAsyncDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
+  name: IAsyncDisposable
+  nameWithType: IAsyncDisposable
+  fullName: System.IAsyncDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.ConnectAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.ConnectAsync
+  href: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.html#MarketDataCollector_Infrastructure_DataSources_IRealtimeDataSource_ConnectAsync_System_Threading_CancellationToken_
+  name: ConnectAsync
+  nameWithType: IRealtimeDataSource.ConnectAsync
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.ConnectAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.DisconnectAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.DisconnectAsync
+  href: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.html#MarketDataCollector_Infrastructure_DataSources_IRealtimeDataSource_DisconnectAsync_System_Threading_CancellationToken_
+  name: DisconnectAsync
+  nameWithType: IRealtimeDataSource.DisconnectAsync
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.DisconnectAsync
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.IsConnected*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.IsConnected
+  href: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.html#MarketDataCollector_Infrastructure_DataSources_IRealtimeDataSource_IsConnected
+  name: IsConnected
+  nameWithType: IRealtimeDataSource.IsConnected
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.IsConnected
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeTrades*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeTrades
+  href: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.html#MarketDataCollector_Infrastructure_DataSources_IRealtimeDataSource_SubscribeTrades_MarketDataCollector_Contracts_Configuration_SymbolConfig_
+  name: SubscribeTrades
+  nameWithType: IRealtimeDataSource.SubscribeTrades
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeTrades
+- uid: MarketDataCollector.Contracts.Configuration.SymbolConfig
+  commentId: T:MarketDataCollector.Contracts.Configuration.SymbolConfig
+  parent: MarketDataCollector.Contracts.Configuration
+  href: MarketDataCollector.Contracts.Configuration.SymbolConfig.html
+  name: SymbolConfig
+  nameWithType: SymbolConfig
+  fullName: MarketDataCollector.Contracts.Configuration.SymbolConfig
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Contracts.Configuration
+  commentId: N:MarketDataCollector.Contracts.Configuration
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Configuration
+  nameWithType: MarketDataCollector.Contracts.Configuration
+  fullName: MarketDataCollector.Contracts.Configuration
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Configuration
+    name: Configuration
+    href: MarketDataCollector.Contracts.Configuration.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Configuration
+    name: Configuration
+    href: MarketDataCollector.Contracts.Configuration.html
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeTrades*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeTrades
+  href: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.html#MarketDataCollector_Infrastructure_DataSources_IRealtimeDataSource_UnsubscribeTrades_System_Int32_
+  name: UnsubscribeTrades
+  nameWithType: IRealtimeDataSource.UnsubscribeTrades
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeTrades
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.Trades*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.Trades
+  href: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.html#MarketDataCollector_Infrastructure_DataSources_IRealtimeDataSource_Trades
+  name: Trades
+  nameWithType: IRealtimeDataSource.Trades
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.Trades
+- uid: System.IObservable{MarketDataCollector.Infrastructure.DataSources.RealtimeTrade}
+  commentId: T:System.IObservable{MarketDataCollector.Infrastructure.DataSources.RealtimeTrade}
+  parent: System
+  definition: System.IObservable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<RealtimeTrade>
+  nameWithType: IObservable<RealtimeTrade>
+  fullName: System.IObservable<MarketDataCollector.Infrastructure.DataSources.RealtimeTrade>
+  nameWithType.vb: IObservable(Of RealtimeTrade)
+  fullName.vb: System.IObservable(Of MarketDataCollector.Infrastructure.DataSources.RealtimeTrade)
+  name.vb: IObservable(Of RealtimeTrade)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.DataSources.RealtimeTrade
+    name: RealtimeTrade
+    href: MarketDataCollector.Infrastructure.DataSources.RealtimeTrade.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.DataSources.RealtimeTrade
+    name: RealtimeTrade
+    href: MarketDataCollector.Infrastructure.DataSources.RealtimeTrade.html
+  - name: )
+- uid: System.IObservable`1
+  commentId: T:System.IObservable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<T>
+  nameWithType: IObservable<T>
+  fullName: System.IObservable<T>
+  nameWithType.vb: IObservable(Of T)
+  fullName.vb: System.IObservable(Of T)
+  name.vb: IObservable(Of T)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeQuotes*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeQuotes
+  href: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.html#MarketDataCollector_Infrastructure_DataSources_IRealtimeDataSource_SubscribeQuotes_MarketDataCollector_Contracts_Configuration_SymbolConfig_
+  name: SubscribeQuotes
+  nameWithType: IRealtimeDataSource.SubscribeQuotes
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeQuotes
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeQuotes*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeQuotes
+  href: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.html#MarketDataCollector_Infrastructure_DataSources_IRealtimeDataSource_UnsubscribeQuotes_System_Int32_
+  name: UnsubscribeQuotes
+  nameWithType: IRealtimeDataSource.UnsubscribeQuotes
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeQuotes
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.Quotes*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.Quotes
+  href: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.html#MarketDataCollector_Infrastructure_DataSources_IRealtimeDataSource_Quotes
+  name: Quotes
+  nameWithType: IRealtimeDataSource.Quotes
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.Quotes
+- uid: System.IObservable{MarketDataCollector.Infrastructure.DataSources.RealtimeQuote}
+  commentId: T:System.IObservable{MarketDataCollector.Infrastructure.DataSources.RealtimeQuote}
+  parent: System
+  definition: System.IObservable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<RealtimeQuote>
+  nameWithType: IObservable<RealtimeQuote>
+  fullName: System.IObservable<MarketDataCollector.Infrastructure.DataSources.RealtimeQuote>
+  nameWithType.vb: IObservable(Of RealtimeQuote)
+  fullName.vb: System.IObservable(Of MarketDataCollector.Infrastructure.DataSources.RealtimeQuote)
+  name.vb: IObservable(Of RealtimeQuote)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+    name: RealtimeQuote
+    href: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+    name: RealtimeQuote
+    href: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.html
+  - name: )
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeMarketDepth*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeMarketDepth
+  href: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.html#MarketDataCollector_Infrastructure_DataSources_IRealtimeDataSource_SubscribeMarketDepth_MarketDataCollector_Contracts_Configuration_SymbolConfig_
+  name: SubscribeMarketDepth
+  nameWithType: IRealtimeDataSource.SubscribeMarketDepth
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribeMarketDepth
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeMarketDepth*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeMarketDepth
+  href: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.html#MarketDataCollector_Infrastructure_DataSources_IRealtimeDataSource_UnsubscribeMarketDepth_System_Int32_
+  name: UnsubscribeMarketDepth
+  nameWithType: IRealtimeDataSource.UnsubscribeMarketDepth
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeMarketDepth
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.DepthUpdates*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.DepthUpdates
+  href: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.html#MarketDataCollector_Infrastructure_DataSources_IRealtimeDataSource_DepthUpdates
+  name: DepthUpdates
+  nameWithType: IRealtimeDataSource.DepthUpdates
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.DepthUpdates
+- uid: System.IObservable{MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate}
+  commentId: T:System.IObservable{MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate}
+  parent: System
+  definition: System.IObservable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<RealtimeDepthUpdate>
+  nameWithType: IObservable<RealtimeDepthUpdate>
+  fullName: System.IObservable<MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate>
+  nameWithType.vb: IObservable(Of RealtimeDepthUpdate)
+  fullName.vb: System.IObservable(Of MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate)
+  name.vb: IObservable(Of RealtimeDepthUpdate)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate
+    name: RealtimeDepthUpdate
+    href: MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate
+    name: RealtimeDepthUpdate
+    href: MarketDataCollector.Infrastructure.DataSources.RealtimeDepthUpdate.html
+  - name: )
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.ActiveSubscriptions*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.ActiveSubscriptions
+  href: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.html#MarketDataCollector_Infrastructure_DataSources_IRealtimeDataSource_ActiveSubscriptions
+  name: ActiveSubscriptions
+  nameWithType: IRealtimeDataSource.ActiveSubscriptions
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.ActiveSubscriptions
+- uid: System.Collections.Generic.IReadOnlySet{System.Int32}
+  commentId: T:System.Collections.Generic.IReadOnlySet{System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlySet`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  name: IReadOnlySet<int>
+  nameWithType: IReadOnlySet<int>
+  fullName: System.Collections.Generic.IReadOnlySet<int>
+  nameWithType.vb: IReadOnlySet(Of Integer)
+  fullName.vb: System.Collections.Generic.IReadOnlySet(Of Integer)
+  name.vb: IReadOnlySet(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.IReadOnlySet`1
+  commentId: T:System.Collections.Generic.IReadOnlySet`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  name: IReadOnlySet<T>
+  nameWithType: IReadOnlySet<T>
+  fullName: System.Collections.Generic.IReadOnlySet<T>
+  nameWithType.vb: IReadOnlySet(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlySet(Of T)
+  name.vb: IReadOnlySet(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribedSymbols*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribedSymbols
+  href: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.html#MarketDataCollector_Infrastructure_DataSources_IRealtimeDataSource_SubscribedSymbols
+  name: SubscribedSymbols
+  nameWithType: IRealtimeDataSource.SubscribedSymbols
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.SubscribedSymbols
+- uid: System.Collections.Generic.IReadOnlySet{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlySet{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlySet`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  name: IReadOnlySet<string>
+  nameWithType: IReadOnlySet<string>
+  fullName: System.Collections.Generic.IReadOnlySet<string>
+  nameWithType.vb: IReadOnlySet(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlySet(Of String)
+  name.vb: IReadOnlySet(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeAll*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeAll
+  href: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.html#MarketDataCollector_Infrastructure_DataSources_IRealtimeDataSource_UnsubscribeAll
+  name: UnsubscribeAll
+  nameWithType: IRealtimeDataSource.UnsubscribeAll
+  fullName: MarketDataCollector.Infrastructure.DataSources.IRealtimeDataSource.UnsubscribeAll

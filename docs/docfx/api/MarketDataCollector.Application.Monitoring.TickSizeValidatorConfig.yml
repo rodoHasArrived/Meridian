@@ -1,0 +1,656 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+  commentId: T:MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+  id: TickSizeValidatorConfig
+  parent: MarketDataCollector.Application.Monitoring
+  children:
+  - MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.AlertCooldownMs
+  - MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.Default
+  - MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.DefaultTickSize
+  - MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.FuturesForex
+  - MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.Lenient
+  - MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.SubDollarTickSize
+  - MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.UseSubDollarTicks
+  langs:
+  - csharp
+  - vb
+  name: TickSizeValidatorConfig
+  nameWithType: TickSizeValidatorConfig
+  fullName: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TickSizeValidator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TickSizeValidatorConfig
+    path: ../../src/MarketDataCollector.Application/Monitoring/TickSizeValidator.cs
+    startLine: 290
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Configuration for tick size validation.
+  example: []
+  syntax:
+    content: 'public sealed record TickSizeValidatorConfig : IEquatable<TickSizeValidatorConfig>'
+    content.vb: Public NotInheritable Class TickSizeValidatorConfig Implements IEquatable(Of TickSizeValidatorConfig)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.DefaultTickSize
+  commentId: P:MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.DefaultTickSize
+  id: DefaultTickSize
+  parent: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+  langs:
+  - csharp
+  - vb
+  name: DefaultTickSize
+  nameWithType: TickSizeValidatorConfig.DefaultTickSize
+  fullName: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.DefaultTickSize
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TickSizeValidator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DefaultTickSize
+    path: ../../src/MarketDataCollector.Application/Monitoring/TickSizeValidator.cs
+    startLine: 296
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: >-
+    Default tick size for prices &gt;= $1.00.
+
+    Standard US equity tick size is $0.01.
+  example: []
+  syntax:
+    content: public decimal DefaultTickSize { get; init; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: Public Property DefaultTickSize As Decimal
+  overload: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.DefaultTickSize*
+- uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.SubDollarTickSize
+  commentId: P:MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.SubDollarTickSize
+  id: SubDollarTickSize
+  parent: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+  langs:
+  - csharp
+  - vb
+  name: SubDollarTickSize
+  nameWithType: TickSizeValidatorConfig.SubDollarTickSize
+  fullName: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.SubDollarTickSize
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TickSizeValidator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SubDollarTickSize
+    path: ../../src/MarketDataCollector.Application/Monitoring/TickSizeValidator.cs
+    startLine: 302
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: >-
+    Tick size for sub-dollar prices (&lt; $1.00).
+
+    Standard US equity sub-dollar tick size is $0.0001.
+  example: []
+  syntax:
+    content: public decimal SubDollarTickSize { get; init; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: Public Property SubDollarTickSize As Decimal
+  overload: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.SubDollarTickSize*
+- uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.UseSubDollarTicks
+  commentId: P:MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.UseSubDollarTicks
+  id: UseSubDollarTicks
+  parent: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+  langs:
+  - csharp
+  - vb
+  name: UseSubDollarTicks
+  nameWithType: TickSizeValidatorConfig.UseSubDollarTicks
+  fullName: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.UseSubDollarTicks
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TickSizeValidator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UseSubDollarTicks
+    path: ../../src/MarketDataCollector.Application/Monitoring/TickSizeValidator.cs
+    startLine: 307
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Whether to use different tick size for sub-dollar prices.
+  example: []
+  syntax:
+    content: public bool UseSubDollarTicks { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property UseSubDollarTicks As Boolean
+  overload: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.UseSubDollarTicks*
+- uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.AlertCooldownMs
+  commentId: P:MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.AlertCooldownMs
+  id: AlertCooldownMs
+  parent: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+  langs:
+  - csharp
+  - vb
+  name: AlertCooldownMs
+  nameWithType: TickSizeValidatorConfig.AlertCooldownMs
+  fullName: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.AlertCooldownMs
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TickSizeValidator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AlertCooldownMs
+    path: ../../src/MarketDataCollector.Application/Monitoring/TickSizeValidator.cs
+    startLine: 312
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Minimum time between alerts for the same symbol in milliseconds.
+  example: []
+  syntax:
+    content: public int AlertCooldownMs { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property AlertCooldownMs As Integer
+  overload: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.AlertCooldownMs*
+- uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.Default
+  commentId: P:MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.Default
+  id: Default
+  parent: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: TickSizeValidatorConfig.Default
+  fullName: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.Default
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TickSizeValidator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Default
+    path: ../../src/MarketDataCollector.Application/Monitoring/TickSizeValidator.cs
+    startLine: 314
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public static TickSizeValidatorConfig Default { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+    content.vb: Public Shared ReadOnly Property [Default] As TickSizeValidatorConfig
+  overload: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.Default*
+- uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.FuturesForex
+  commentId: P:MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.FuturesForex
+  id: FuturesForex
+  parent: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+  langs:
+  - csharp
+  - vb
+  name: FuturesForex
+  nameWithType: TickSizeValidatorConfig.FuturesForex
+  fullName: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.FuturesForex
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TickSizeValidator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FuturesForex
+    path: ../../src/MarketDataCollector.Application/Monitoring/TickSizeValidator.cs
+    startLine: 319
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Configuration for futures/forex with custom tick sizes.
+  example: []
+  syntax:
+    content: public static TickSizeValidatorConfig FuturesForex { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+    content.vb: Public Shared ReadOnly Property FuturesForex As TickSizeValidatorConfig
+  overload: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.FuturesForex*
+- uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.Lenient
+  commentId: P:MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.Lenient
+  id: Lenient
+  parent: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+  langs:
+  - csharp
+  - vb
+  name: Lenient
+  nameWithType: TickSizeValidatorConfig.Lenient
+  fullName: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.Lenient
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/TickSizeValidator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Lenient
+    path: ../../src/MarketDataCollector.Application/Monitoring/TickSizeValidator.cs
+    startLine: 329
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Lenient configuration that allows finer precision.
+  example: []
+  syntax:
+    content: public static TickSizeValidatorConfig Lenient { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+    content.vb: Public Shared ReadOnly Property Lenient As TickSizeValidatorConfig
+  overload: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.Lenient*
+references:
+- uid: MarketDataCollector.Application.Monitoring
+  commentId: N:MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring
+  nameWithType: MarketDataCollector.Application.Monitoring
+  fullName: MarketDataCollector.Application.Monitoring
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig}
+  commentId: T:System.IEquatable{MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<TickSizeValidatorConfig>
+  nameWithType: IEquatable<TickSizeValidatorConfig>
+  fullName: System.IEquatable<MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig>
+  nameWithType.vb: IEquatable(Of TickSizeValidatorConfig)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig)
+  name.vb: IEquatable(Of TickSizeValidatorConfig)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+    name: TickSizeValidatorConfig
+    href: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+    name: TickSizeValidatorConfig
+    href: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.DefaultTickSize*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.DefaultTickSize
+  href: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.html#MarketDataCollector_Application_Monitoring_TickSizeValidatorConfig_DefaultTickSize
+  name: DefaultTickSize
+  nameWithType: TickSizeValidatorConfig.DefaultTickSize
+  fullName: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.DefaultTickSize
+- uid: System.Decimal
+  commentId: T:System.Decimal
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.decimal
+  name: decimal
+  nameWithType: decimal
+  fullName: decimal
+  nameWithType.vb: Decimal
+  fullName.vb: Decimal
+  name.vb: Decimal
+- uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.SubDollarTickSize*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.SubDollarTickSize
+  href: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.html#MarketDataCollector_Application_Monitoring_TickSizeValidatorConfig_SubDollarTickSize
+  name: SubDollarTickSize
+  nameWithType: TickSizeValidatorConfig.SubDollarTickSize
+  fullName: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.SubDollarTickSize
+- uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.UseSubDollarTicks*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.UseSubDollarTicks
+  href: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.html#MarketDataCollector_Application_Monitoring_TickSizeValidatorConfig_UseSubDollarTicks
+  name: UseSubDollarTicks
+  nameWithType: TickSizeValidatorConfig.UseSubDollarTicks
+  fullName: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.UseSubDollarTicks
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.AlertCooldownMs*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.AlertCooldownMs
+  href: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.html#MarketDataCollector_Application_Monitoring_TickSizeValidatorConfig_AlertCooldownMs
+  name: AlertCooldownMs
+  nameWithType: TickSizeValidatorConfig.AlertCooldownMs
+  fullName: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.AlertCooldownMs
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.Default*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.Default
+  href: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.html#MarketDataCollector_Application_Monitoring_TickSizeValidatorConfig_Default
+  name: Default
+  nameWithType: TickSizeValidatorConfig.Default
+  fullName: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.Default
+- uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+  commentId: T:MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.html
+  name: TickSizeValidatorConfig
+  nameWithType: TickSizeValidatorConfig
+  fullName: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig
+- uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.FuturesForex*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.FuturesForex
+  href: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.html#MarketDataCollector_Application_Monitoring_TickSizeValidatorConfig_FuturesForex
+  name: FuturesForex
+  nameWithType: TickSizeValidatorConfig.FuturesForex
+  fullName: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.FuturesForex
+- uid: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.Lenient*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.Lenient
+  href: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.html#MarketDataCollector_Application_Monitoring_TickSizeValidatorConfig_Lenient
+  name: Lenient
+  nameWithType: TickSizeValidatorConfig.Lenient
+  fullName: MarketDataCollector.Application.Monitoring.TickSizeValidatorConfig.Lenient

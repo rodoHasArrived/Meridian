@@ -1,0 +1,213 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+  id: DataSourceCategory
+  parent: MarketDataCollector.Infrastructure.DataSources
+  children:
+  - MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Aggregator
+  - MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Broker
+  - MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Exchange
+  - MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Free
+  - MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Premium
+  langs:
+  - csharp
+  - vb
+  name: DataSourceCategory
+  nameWithType: DataSourceCategory
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+  type: Enum
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DataSourceCategory
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 137
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Category of the data source indicating its business model and reliability.
+  example: []
+  syntax:
+    content: 'public enum DataSourceCategory : byte'
+    content.vb: Public Enum DataSourceCategory As Byte
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Exchange
+  commentId: F:MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Exchange
+  id: Exchange
+  parent: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+  langs:
+  - csharp
+  - vb
+  name: Exchange
+  nameWithType: DataSourceCategory.Exchange
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Exchange
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Exchange
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 140
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Direct exchange feed (highest reliability, lowest latency).
+  example: []
+  syntax:
+    content: Exchange = 0
+    return:
+      type: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Broker
+  commentId: F:MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Broker
+  id: Broker
+  parent: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+  langs:
+  - csharp
+  - vb
+  name: Broker
+  nameWithType: DataSourceCategory.Broker
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Broker
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Broker
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 143
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Broker-provided data (may have subscription requirements).
+  example: []
+  syntax:
+    content: Broker = 1
+    return:
+      type: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Aggregator
+  commentId: F:MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Aggregator
+  id: Aggregator
+  parent: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+  langs:
+  - csharp
+  - vb
+  name: Aggregator
+  nameWithType: DataSourceCategory.Aggregator
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Aggregator
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Aggregator
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 146
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Data aggregator service (e.g., Polygon, Refinitiv).
+  example: []
+  syntax:
+    content: Aggregator = 2
+    return:
+      type: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Free
+  commentId: F:MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Free
+  id: Free
+  parent: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+  langs:
+  - csharp
+  - vb
+  name: Free
+  nameWithType: DataSourceCategory.Free
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Free
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Free
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 149
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Free data source (may have rate limits, no SLA).
+  example: []
+  syntax:
+    content: Free = 3
+    return:
+      type: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Premium
+  commentId: F:MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Premium
+  id: Premium
+  parent: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+  langs:
+  - csharp
+  - vb
+  name: Premium
+  nameWithType: DataSourceCategory.Premium
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.Premium
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Premium
+    path: ../../src/MarketDataCollector.ProviderSdk/IDataSource.cs
+    startLine: 152
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Premium paid data source (higher quality, SLA).
+  example: []
+  syntax:
+    content: Premium = 4
+    return:
+      type: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+references:
+- uid: MarketDataCollector.Infrastructure.DataSources
+  commentId: N:MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.DataSources
+  nameWithType: MarketDataCollector.Infrastructure.DataSources
+  fullName: MarketDataCollector.Infrastructure.DataSources
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.DataSources
+    name: DataSources
+    href: MarketDataCollector.Infrastructure.DataSources.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.DataSources
+    name: DataSources
+    href: MarketDataCollector.Infrastructure.DataSources.html
+- uid: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+  parent: MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory.html
+  name: DataSourceCategory
+  nameWithType: DataSourceCategory
+  fullName: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory

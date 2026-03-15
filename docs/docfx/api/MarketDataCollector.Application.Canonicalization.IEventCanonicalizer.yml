@@ -1,0 +1,201 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer
+  commentId: T:MarketDataCollector.Application.Canonicalization.IEventCanonicalizer
+  id: IEventCanonicalizer
+  parent: MarketDataCollector.Application.Canonicalization
+  children:
+  - MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.Canonicalize(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: IEventCanonicalizer
+  nameWithType: IEventCanonicalizer
+  fullName: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Canonicalization/IEventCanonicalizer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IEventCanonicalizer
+    path: ../../src/MarketDataCollector.Application/Canonicalization/IEventCanonicalizer.cs
+    startLine: 10
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Canonicalization
+  summary: >-
+    Transforms a raw <xref href="MarketDataCollector.Domain.Events.MarketEvent" data-throw-if-not-resolved="false"></xref> into a canonicalized event by resolving symbols,
+
+    mapping condition codes, and normalizing venue identifiers.
+
+    Runs <b>before</b> <code>EventPipeline.PublishAsync()</code> to avoid adding latency to the
+
+    high-throughput sink path.
+  example: []
+  syntax:
+    content: public interface IEventCanonicalizer
+    content.vb: Public Interface IEventCanonicalizer
+  derivedClasses:
+  - MarketDataCollector.Application.Canonicalization.EventCanonicalizer
+- uid: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.Canonicalize(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.Canonicalize(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  id: Canonicalize(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer
+  langs:
+  - csharp
+  - vb
+  name: Canonicalize(MarketEvent, CancellationToken)
+  nameWithType: IEventCanonicalizer.Canonicalize(MarketEvent, CancellationToken)
+  fullName: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.Canonicalize(MarketDataCollector.Domain.Events.MarketEvent, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Canonicalization/IEventCanonicalizer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Canonicalize
+    path: ../../src/MarketDataCollector.Application/Canonicalization/IEventCanonicalizer.cs
+    startLine: 19
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Canonicalization
+  summary: >-
+    Canonicalizes a raw market event. Returns the enriched event with canonical fields populated.
+
+    The original <xref href="MarketDataCollector.Domain.Events.MarketEvent.Symbol" data-throw-if-not-resolved="false"></xref> is never mutated.
+  example: []
+  syntax:
+    content: MarketEvent Canonicalize(MarketEvent raw, CancellationToken ct = default)
+    parameters:
+    - id: raw
+      type: MarketDataCollector.Domain.Events.MarketEvent
+      description: The raw event from a provider adapter.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: MarketDataCollector.Domain.Events.MarketEvent
+      description: The canonicalized event with <xref href="MarketDataCollector.Domain.Events.MarketEvent.Tier" data-throw-if-not-resolved="false"></xref> set to <code>Enriched</code>.
+    content.vb: Function Canonicalize(raw As MarketEvent, ct As CancellationToken = Nothing) As MarketEvent
+  overload: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.Canonicalize*
+references:
+- uid: MarketDataCollector.Domain.Events.MarketEvent
+  commentId: T:MarketDataCollector.Domain.Events.MarketEvent
+  parent: MarketDataCollector.Domain.Events
+  href: MarketDataCollector.Domain.Events.MarketEvent.html
+  name: MarketEvent
+  nameWithType: MarketEvent
+  fullName: MarketDataCollector.Domain.Events.MarketEvent
+- uid: MarketDataCollector.Application.Canonicalization
+  commentId: N:MarketDataCollector.Application.Canonicalization
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Canonicalization
+  nameWithType: MarketDataCollector.Application.Canonicalization
+  fullName: MarketDataCollector.Application.Canonicalization
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Canonicalization
+    name: Canonicalization
+    href: MarketDataCollector.Application.Canonicalization.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Canonicalization
+    name: Canonicalization
+    href: MarketDataCollector.Application.Canonicalization.html
+- uid: MarketDataCollector.Domain.Events
+  commentId: N:MarketDataCollector.Domain.Events
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Events
+  nameWithType: MarketDataCollector.Domain.Events
+  fullName: MarketDataCollector.Domain.Events
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+- uid: MarketDataCollector.Domain.Events.MarketEvent.Symbol
+  commentId: P:MarketDataCollector.Domain.Events.MarketEvent.Symbol
+  href: MarketDataCollector.Domain.Events.MarketEvent.html#MarketDataCollector_Domain_Events_MarketEvent_Symbol
+  name: Symbol
+  nameWithType: MarketEvent.Symbol
+  fullName: MarketDataCollector.Domain.Events.MarketEvent.Symbol
+- uid: MarketDataCollector.Domain.Events.MarketEvent.Tier
+  commentId: P:MarketDataCollector.Domain.Events.MarketEvent.Tier
+  name: Tier
+  nameWithType: MarketEvent.Tier
+  fullName: MarketDataCollector.Domain.Events.MarketEvent.Tier
+- uid: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.Canonicalize*
+  commentId: Overload:MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.Canonicalize
+  href: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.html#MarketDataCollector_Application_Canonicalization_IEventCanonicalizer_Canonicalize_MarketDataCollector_Domain_Events_MarketEvent_System_Threading_CancellationToken_
+  name: Canonicalize
+  nameWithType: IEventCanonicalizer.Canonicalize
+  fullName: MarketDataCollector.Application.Canonicalization.IEventCanonicalizer.Canonicalize
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading

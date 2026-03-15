@@ -1,0 +1,967 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Services.FileMaintenanceService
+  commentId: T:MarketDataCollector.Storage.Services.FileMaintenanceService
+  id: FileMaintenanceService
+  parent: MarketDataCollector.Storage.Services
+  children:
+  - MarketDataCollector.Storage.Services.FileMaintenanceService.#ctor(MarketDataCollector.Storage.StorageOptions,MarketDataCollector.Storage.Interfaces.ISourceRegistry)
+  - MarketDataCollector.Storage.Services.FileMaintenanceService.DefragmentAsync(MarketDataCollector.Storage.Services.DefragOptions,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.FileMaintenanceService.FindOrphansAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.FileMaintenanceService.RepairAsync(MarketDataCollector.Storage.Services.RepairOptions,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Services.FileMaintenanceService.RunHealthCheckAsync(MarketDataCollector.Storage.Services.HealthCheckOptions,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: FileMaintenanceService
+  nameWithType: FileMaintenanceService
+  fullName: MarketDataCollector.Storage.Services.FileMaintenanceService
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/FileMaintenanceService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FileMaintenanceService
+    path: ../../src/MarketDataCollector.Storage/Services/FileMaintenanceService.cs
+    startLine: 11
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: Service for file health monitoring, self-healing, and maintenance operations.
+  example: []
+  syntax:
+    content: 'public sealed class FileMaintenanceService : IFileMaintenanceService'
+    content.vb: Public NotInheritable Class FileMaintenanceService Implements IFileMaintenanceService
+  inheritance:
+  - System.Object
+  implements:
+  - MarketDataCollector.Storage.Services.IFileMaintenanceService
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Storage.Services.FileMaintenanceService.#ctor(MarketDataCollector.Storage.StorageOptions,MarketDataCollector.Storage.Interfaces.ISourceRegistry)
+  commentId: M:MarketDataCollector.Storage.Services.FileMaintenanceService.#ctor(MarketDataCollector.Storage.StorageOptions,MarketDataCollector.Storage.Interfaces.ISourceRegistry)
+  id: '#ctor(MarketDataCollector.Storage.StorageOptions,MarketDataCollector.Storage.Interfaces.ISourceRegistry)'
+  parent: MarketDataCollector.Storage.Services.FileMaintenanceService
+  langs:
+  - csharp
+  - vb
+  name: FileMaintenanceService(StorageOptions, ISourceRegistry?)
+  nameWithType: FileMaintenanceService.FileMaintenanceService(StorageOptions, ISourceRegistry?)
+  fullName: MarketDataCollector.Storage.Services.FileMaintenanceService.FileMaintenanceService(MarketDataCollector.Storage.StorageOptions, MarketDataCollector.Storage.Interfaces.ISourceRegistry?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/FileMaintenanceService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Storage/Services/FileMaintenanceService.cs
+    startLine: 17
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public FileMaintenanceService(StorageOptions options, ISourceRegistry? sourceRegistry = null)
+    parameters:
+    - id: options
+      type: MarketDataCollector.Storage.StorageOptions
+    - id: sourceRegistry
+      type: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+    content.vb: Public Sub New(options As StorageOptions, sourceRegistry As ISourceRegistry = Nothing)
+  overload: MarketDataCollector.Storage.Services.FileMaintenanceService.#ctor*
+  nameWithType.vb: FileMaintenanceService.New(StorageOptions, ISourceRegistry)
+  fullName.vb: MarketDataCollector.Storage.Services.FileMaintenanceService.New(MarketDataCollector.Storage.StorageOptions, MarketDataCollector.Storage.Interfaces.ISourceRegistry)
+  name.vb: New(StorageOptions, ISourceRegistry)
+- uid: MarketDataCollector.Storage.Services.FileMaintenanceService.RunHealthCheckAsync(MarketDataCollector.Storage.Services.HealthCheckOptions,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.FileMaintenanceService.RunHealthCheckAsync(MarketDataCollector.Storage.Services.HealthCheckOptions,System.Threading.CancellationToken)
+  id: RunHealthCheckAsync(MarketDataCollector.Storage.Services.HealthCheckOptions,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.FileMaintenanceService
+  langs:
+  - csharp
+  - vb
+  name: RunHealthCheckAsync(HealthCheckOptions, CancellationToken)
+  nameWithType: FileMaintenanceService.RunHealthCheckAsync(HealthCheckOptions, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.FileMaintenanceService.RunHealthCheckAsync(MarketDataCollector.Storage.Services.HealthCheckOptions, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/FileMaintenanceService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RunHealthCheckAsync
+    path: ../../src/MarketDataCollector.Storage/Services/FileMaintenanceService.cs
+    startLine: 23
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  example: []
+  syntax:
+    content: public Task<HealthReport> RunHealthCheckAsync(HealthCheckOptions options, CancellationToken ct = default)
+    parameters:
+    - id: options
+      type: MarketDataCollector.Storage.Services.HealthCheckOptions
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.HealthReport}
+    content.vb: Public Function RunHealthCheckAsync(options As HealthCheckOptions, ct As CancellationToken = Nothing) As Task(Of HealthReport)
+  overload: MarketDataCollector.Storage.Services.FileMaintenanceService.RunHealthCheckAsync*
+  implements:
+  - MarketDataCollector.Storage.Services.IFileMaintenanceService.RunHealthCheckAsync(MarketDataCollector.Storage.Services.HealthCheckOptions,System.Threading.CancellationToken)
+- uid: MarketDataCollector.Storage.Services.FileMaintenanceService.RepairAsync(MarketDataCollector.Storage.Services.RepairOptions,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.FileMaintenanceService.RepairAsync(MarketDataCollector.Storage.Services.RepairOptions,System.Threading.CancellationToken)
+  id: RepairAsync(MarketDataCollector.Storage.Services.RepairOptions,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.FileMaintenanceService
+  langs:
+  - csharp
+  - vb
+  name: RepairAsync(RepairOptions, CancellationToken)
+  nameWithType: FileMaintenanceService.RepairAsync(RepairOptions, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.FileMaintenanceService.RepairAsync(MarketDataCollector.Storage.Services.RepairOptions, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/FileMaintenanceService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RepairAsync
+    path: ../../src/MarketDataCollector.Storage/Services/FileMaintenanceService.cs
+    startLine: 115
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  example: []
+  syntax:
+    content: public Task<RepairResult> RepairAsync(RepairOptions options, CancellationToken ct = default)
+    parameters:
+    - id: options
+      type: MarketDataCollector.Storage.Services.RepairOptions
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.RepairResult}
+    content.vb: Public Function RepairAsync(options As RepairOptions, ct As CancellationToken = Nothing) As Task(Of RepairResult)
+  overload: MarketDataCollector.Storage.Services.FileMaintenanceService.RepairAsync*
+  implements:
+  - MarketDataCollector.Storage.Services.IFileMaintenanceService.RepairAsync(MarketDataCollector.Storage.Services.RepairOptions,System.Threading.CancellationToken)
+- uid: MarketDataCollector.Storage.Services.FileMaintenanceService.DefragmentAsync(MarketDataCollector.Storage.Services.DefragOptions,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.FileMaintenanceService.DefragmentAsync(MarketDataCollector.Storage.Services.DefragOptions,System.Threading.CancellationToken)
+  id: DefragmentAsync(MarketDataCollector.Storage.Services.DefragOptions,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.FileMaintenanceService
+  langs:
+  - csharp
+  - vb
+  name: DefragmentAsync(DefragOptions, CancellationToken)
+  nameWithType: FileMaintenanceService.DefragmentAsync(DefragOptions, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.FileMaintenanceService.DefragmentAsync(MarketDataCollector.Storage.Services.DefragOptions, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/FileMaintenanceService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DefragmentAsync
+    path: ../../src/MarketDataCollector.Storage/Services/FileMaintenanceService.cs
+    startLine: 197
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  example: []
+  syntax:
+    content: public Task<DefragResult> DefragmentAsync(DefragOptions options, CancellationToken ct = default)
+    parameters:
+    - id: options
+      type: MarketDataCollector.Storage.Services.DefragOptions
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DefragResult}
+    content.vb: Public Function DefragmentAsync(options As DefragOptions, ct As CancellationToken = Nothing) As Task(Of DefragResult)
+  overload: MarketDataCollector.Storage.Services.FileMaintenanceService.DefragmentAsync*
+  implements:
+  - MarketDataCollector.Storage.Services.IFileMaintenanceService.DefragmentAsync(MarketDataCollector.Storage.Services.DefragOptions,System.Threading.CancellationToken)
+- uid: MarketDataCollector.Storage.Services.FileMaintenanceService.FindOrphansAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.FileMaintenanceService.FindOrphansAsync(System.Threading.CancellationToken)
+  id: FindOrphansAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.FileMaintenanceService
+  langs:
+  - csharp
+  - vb
+  name: FindOrphansAsync(CancellationToken)
+  nameWithType: FileMaintenanceService.FindOrphansAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.FileMaintenanceService.FindOrphansAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/FileMaintenanceService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FindOrphansAsync
+    path: ../../src/MarketDataCollector.Storage/Services/FileMaintenanceService.cs
+    startLine: 265
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  example: []
+  syntax:
+    content: public Task<OrphanReport> FindOrphansAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.OrphanReport}
+    content.vb: Public Function FindOrphansAsync(ct As CancellationToken = Nothing) As Task(Of OrphanReport)
+  overload: MarketDataCollector.Storage.Services.FileMaintenanceService.FindOrphansAsync*
+  implements:
+  - MarketDataCollector.Storage.Services.IFileMaintenanceService.FindOrphansAsync(System.Threading.CancellationToken)
+references:
+- uid: MarketDataCollector.Storage.Services
+  commentId: N:MarketDataCollector.Storage.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Services
+  nameWithType: MarketDataCollector.Storage.Services
+  fullName: MarketDataCollector.Storage.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Storage.Services.IFileMaintenanceService
+  commentId: T:MarketDataCollector.Storage.Services.IFileMaintenanceService
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.IFileMaintenanceService.html
+  name: IFileMaintenanceService
+  nameWithType: IFileMaintenanceService
+  fullName: MarketDataCollector.Storage.Services.IFileMaintenanceService
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Storage.Services.FileMaintenanceService.#ctor*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileMaintenanceService.#ctor
+  href: MarketDataCollector.Storage.Services.FileMaintenanceService.html#MarketDataCollector_Storage_Services_FileMaintenanceService__ctor_MarketDataCollector_Storage_StorageOptions_MarketDataCollector_Storage_Interfaces_ISourceRegistry_
+  name: FileMaintenanceService
+  nameWithType: FileMaintenanceService.FileMaintenanceService
+  fullName: MarketDataCollector.Storage.Services.FileMaintenanceService.FileMaintenanceService
+  nameWithType.vb: FileMaintenanceService.New
+  fullName.vb: MarketDataCollector.Storage.Services.FileMaintenanceService.New
+  name.vb: New
+- uid: MarketDataCollector.Storage.StorageOptions
+  commentId: T:MarketDataCollector.Storage.StorageOptions
+  parent: MarketDataCollector.Storage
+  href: MarketDataCollector.Storage.StorageOptions.html
+  name: StorageOptions
+  nameWithType: StorageOptions
+  fullName: MarketDataCollector.Storage.StorageOptions
+- uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+  commentId: T:MarketDataCollector.Storage.Interfaces.ISourceRegistry
+  parent: MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html
+  name: ISourceRegistry
+  nameWithType: ISourceRegistry
+  fullName: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+- uid: MarketDataCollector.Storage
+  commentId: N:MarketDataCollector.Storage
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage
+  nameWithType: MarketDataCollector.Storage
+  fullName: MarketDataCollector.Storage
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+- uid: MarketDataCollector.Storage.Interfaces
+  commentId: N:MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Interfaces
+  nameWithType: MarketDataCollector.Storage.Interfaces
+  fullName: MarketDataCollector.Storage.Interfaces
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Interfaces
+    name: Interfaces
+    href: MarketDataCollector.Storage.Interfaces.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Interfaces
+    name: Interfaces
+    href: MarketDataCollector.Storage.Interfaces.html
+- uid: MarketDataCollector.Storage.Services.FileMaintenanceService.RunHealthCheckAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileMaintenanceService.RunHealthCheckAsync
+  href: MarketDataCollector.Storage.Services.FileMaintenanceService.html#MarketDataCollector_Storage_Services_FileMaintenanceService_RunHealthCheckAsync_MarketDataCollector_Storage_Services_HealthCheckOptions_System_Threading_CancellationToken_
+  name: RunHealthCheckAsync
+  nameWithType: FileMaintenanceService.RunHealthCheckAsync
+  fullName: MarketDataCollector.Storage.Services.FileMaintenanceService.RunHealthCheckAsync
+- uid: MarketDataCollector.Storage.Services.IFileMaintenanceService.RunHealthCheckAsync(MarketDataCollector.Storage.Services.HealthCheckOptions,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IFileMaintenanceService.RunHealthCheckAsync(MarketDataCollector.Storage.Services.HealthCheckOptions,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IFileMaintenanceService
+  isExternal: true
+  href: MarketDataCollector.Storage.Services.IFileMaintenanceService.html#MarketDataCollector_Storage_Services_IFileMaintenanceService_RunHealthCheckAsync_MarketDataCollector_Storage_Services_HealthCheckOptions_System_Threading_CancellationToken_
+  name: RunHealthCheckAsync(HealthCheckOptions, CancellationToken)
+  nameWithType: IFileMaintenanceService.RunHealthCheckAsync(HealthCheckOptions, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IFileMaintenanceService.RunHealthCheckAsync(MarketDataCollector.Storage.Services.HealthCheckOptions, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Services.IFileMaintenanceService.RunHealthCheckAsync(MarketDataCollector.Storage.Services.HealthCheckOptions,System.Threading.CancellationToken)
+    name: RunHealthCheckAsync
+    href: MarketDataCollector.Storage.Services.IFileMaintenanceService.html#MarketDataCollector_Storage_Services_IFileMaintenanceService_RunHealthCheckAsync_MarketDataCollector_Storage_Services_HealthCheckOptions_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Storage.Services.HealthCheckOptions
+    name: HealthCheckOptions
+    href: MarketDataCollector.Storage.Services.HealthCheckOptions.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Services.IFileMaintenanceService.RunHealthCheckAsync(MarketDataCollector.Storage.Services.HealthCheckOptions,System.Threading.CancellationToken)
+    name: RunHealthCheckAsync
+    href: MarketDataCollector.Storage.Services.IFileMaintenanceService.html#MarketDataCollector_Storage_Services_IFileMaintenanceService_RunHealthCheckAsync_MarketDataCollector_Storage_Services_HealthCheckOptions_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Storage.Services.HealthCheckOptions
+    name: HealthCheckOptions
+    href: MarketDataCollector.Storage.Services.HealthCheckOptions.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Storage.Services.HealthCheckOptions
+  commentId: T:MarketDataCollector.Storage.Services.HealthCheckOptions
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.HealthCheckOptions.html
+  name: HealthCheckOptions
+  nameWithType: HealthCheckOptions
+  fullName: MarketDataCollector.Storage.Services.HealthCheckOptions
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.HealthReport}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.HealthReport}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<HealthReport>
+  nameWithType: Task<HealthReport>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.HealthReport>
+  nameWithType.vb: Task(Of HealthReport)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.HealthReport)
+  name.vb: Task(Of HealthReport)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.HealthReport
+    name: HealthReport
+    href: MarketDataCollector.Storage.Services.HealthReport.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.HealthReport
+    name: HealthReport
+    href: MarketDataCollector.Storage.Services.HealthReport.html
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Storage.Services.FileMaintenanceService.RepairAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileMaintenanceService.RepairAsync
+  href: MarketDataCollector.Storage.Services.FileMaintenanceService.html#MarketDataCollector_Storage_Services_FileMaintenanceService_RepairAsync_MarketDataCollector_Storage_Services_RepairOptions_System_Threading_CancellationToken_
+  name: RepairAsync
+  nameWithType: FileMaintenanceService.RepairAsync
+  fullName: MarketDataCollector.Storage.Services.FileMaintenanceService.RepairAsync
+- uid: MarketDataCollector.Storage.Services.IFileMaintenanceService.RepairAsync(MarketDataCollector.Storage.Services.RepairOptions,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IFileMaintenanceService.RepairAsync(MarketDataCollector.Storage.Services.RepairOptions,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IFileMaintenanceService
+  isExternal: true
+  href: MarketDataCollector.Storage.Services.IFileMaintenanceService.html#MarketDataCollector_Storage_Services_IFileMaintenanceService_RepairAsync_MarketDataCollector_Storage_Services_RepairOptions_System_Threading_CancellationToken_
+  name: RepairAsync(RepairOptions, CancellationToken)
+  nameWithType: IFileMaintenanceService.RepairAsync(RepairOptions, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IFileMaintenanceService.RepairAsync(MarketDataCollector.Storage.Services.RepairOptions, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Services.IFileMaintenanceService.RepairAsync(MarketDataCollector.Storage.Services.RepairOptions,System.Threading.CancellationToken)
+    name: RepairAsync
+    href: MarketDataCollector.Storage.Services.IFileMaintenanceService.html#MarketDataCollector_Storage_Services_IFileMaintenanceService_RepairAsync_MarketDataCollector_Storage_Services_RepairOptions_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Storage.Services.RepairOptions
+    name: RepairOptions
+    href: MarketDataCollector.Storage.Services.RepairOptions.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Services.IFileMaintenanceService.RepairAsync(MarketDataCollector.Storage.Services.RepairOptions,System.Threading.CancellationToken)
+    name: RepairAsync
+    href: MarketDataCollector.Storage.Services.IFileMaintenanceService.html#MarketDataCollector_Storage_Services_IFileMaintenanceService_RepairAsync_MarketDataCollector_Storage_Services_RepairOptions_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Storage.Services.RepairOptions
+    name: RepairOptions
+    href: MarketDataCollector.Storage.Services.RepairOptions.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Storage.Services.RepairOptions
+  commentId: T:MarketDataCollector.Storage.Services.RepairOptions
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.RepairOptions.html
+  name: RepairOptions
+  nameWithType: RepairOptions
+  fullName: MarketDataCollector.Storage.Services.RepairOptions
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.RepairResult}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.RepairResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<RepairResult>
+  nameWithType: Task<RepairResult>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.RepairResult>
+  nameWithType.vb: Task(Of RepairResult)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.RepairResult)
+  name.vb: Task(Of RepairResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.RepairResult
+    name: RepairResult
+    href: MarketDataCollector.Storage.Services.RepairResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.RepairResult
+    name: RepairResult
+    href: MarketDataCollector.Storage.Services.RepairResult.html
+  - name: )
+- uid: MarketDataCollector.Storage.Services.FileMaintenanceService.DefragmentAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileMaintenanceService.DefragmentAsync
+  href: MarketDataCollector.Storage.Services.FileMaintenanceService.html#MarketDataCollector_Storage_Services_FileMaintenanceService_DefragmentAsync_MarketDataCollector_Storage_Services_DefragOptions_System_Threading_CancellationToken_
+  name: DefragmentAsync
+  nameWithType: FileMaintenanceService.DefragmentAsync
+  fullName: MarketDataCollector.Storage.Services.FileMaintenanceService.DefragmentAsync
+- uid: MarketDataCollector.Storage.Services.IFileMaintenanceService.DefragmentAsync(MarketDataCollector.Storage.Services.DefragOptions,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IFileMaintenanceService.DefragmentAsync(MarketDataCollector.Storage.Services.DefragOptions,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IFileMaintenanceService
+  isExternal: true
+  href: MarketDataCollector.Storage.Services.IFileMaintenanceService.html#MarketDataCollector_Storage_Services_IFileMaintenanceService_DefragmentAsync_MarketDataCollector_Storage_Services_DefragOptions_System_Threading_CancellationToken_
+  name: DefragmentAsync(DefragOptions, CancellationToken)
+  nameWithType: IFileMaintenanceService.DefragmentAsync(DefragOptions, CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IFileMaintenanceService.DefragmentAsync(MarketDataCollector.Storage.Services.DefragOptions, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Services.IFileMaintenanceService.DefragmentAsync(MarketDataCollector.Storage.Services.DefragOptions,System.Threading.CancellationToken)
+    name: DefragmentAsync
+    href: MarketDataCollector.Storage.Services.IFileMaintenanceService.html#MarketDataCollector_Storage_Services_IFileMaintenanceService_DefragmentAsync_MarketDataCollector_Storage_Services_DefragOptions_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Storage.Services.DefragOptions
+    name: DefragOptions
+    href: MarketDataCollector.Storage.Services.DefragOptions.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Services.IFileMaintenanceService.DefragmentAsync(MarketDataCollector.Storage.Services.DefragOptions,System.Threading.CancellationToken)
+    name: DefragmentAsync
+    href: MarketDataCollector.Storage.Services.IFileMaintenanceService.html#MarketDataCollector_Storage_Services_IFileMaintenanceService_DefragmentAsync_MarketDataCollector_Storage_Services_DefragOptions_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Storage.Services.DefragOptions
+    name: DefragOptions
+    href: MarketDataCollector.Storage.Services.DefragOptions.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Storage.Services.DefragOptions
+  commentId: T:MarketDataCollector.Storage.Services.DefragOptions
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.DefragOptions.html
+  name: DefragOptions
+  nameWithType: DefragOptions
+  fullName: MarketDataCollector.Storage.Services.DefragOptions
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DefragResult}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.DefragResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<DefragResult>
+  nameWithType: Task<DefragResult>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.DefragResult>
+  nameWithType.vb: Task(Of DefragResult)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.DefragResult)
+  name.vb: Task(Of DefragResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.DefragResult
+    name: DefragResult
+    href: MarketDataCollector.Storage.Services.DefragResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.DefragResult
+    name: DefragResult
+    href: MarketDataCollector.Storage.Services.DefragResult.html
+  - name: )
+- uid: MarketDataCollector.Storage.Services.FileMaintenanceService.FindOrphansAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.FileMaintenanceService.FindOrphansAsync
+  href: MarketDataCollector.Storage.Services.FileMaintenanceService.html#MarketDataCollector_Storage_Services_FileMaintenanceService_FindOrphansAsync_System_Threading_CancellationToken_
+  name: FindOrphansAsync
+  nameWithType: FileMaintenanceService.FindOrphansAsync
+  fullName: MarketDataCollector.Storage.Services.FileMaintenanceService.FindOrphansAsync
+- uid: MarketDataCollector.Storage.Services.IFileMaintenanceService.FindOrphansAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IFileMaintenanceService.FindOrphansAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IFileMaintenanceService
+  isExternal: true
+  href: MarketDataCollector.Storage.Services.IFileMaintenanceService.html#MarketDataCollector_Storage_Services_IFileMaintenanceService_FindOrphansAsync_System_Threading_CancellationToken_
+  name: FindOrphansAsync(CancellationToken)
+  nameWithType: IFileMaintenanceService.FindOrphansAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IFileMaintenanceService.FindOrphansAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Services.IFileMaintenanceService.FindOrphansAsync(System.Threading.CancellationToken)
+    name: FindOrphansAsync
+    href: MarketDataCollector.Storage.Services.IFileMaintenanceService.html#MarketDataCollector_Storage_Services_IFileMaintenanceService_FindOrphansAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Services.IFileMaintenanceService.FindOrphansAsync(System.Threading.CancellationToken)
+    name: FindOrphansAsync
+    href: MarketDataCollector.Storage.Services.IFileMaintenanceService.html#MarketDataCollector_Storage_Services_IFileMaintenanceService_FindOrphansAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.OrphanReport}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.OrphanReport}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<OrphanReport>
+  nameWithType: Task<OrphanReport>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.OrphanReport>
+  nameWithType.vb: Task(Of OrphanReport)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.OrphanReport)
+  name.vb: Task(Of OrphanReport)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.OrphanReport
+    name: OrphanReport
+    href: MarketDataCollector.Storage.Services.OrphanReport.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.OrphanReport
+    name: OrphanReport
+    href: MarketDataCollector.Storage.Services.OrphanReport.html
+  - name: )

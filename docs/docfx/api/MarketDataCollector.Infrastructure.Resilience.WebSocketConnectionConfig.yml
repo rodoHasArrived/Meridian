@@ -1,0 +1,924 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  commentId: T:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  id: WebSocketConnectionConfig
+  parent: MarketDataCollector.Infrastructure.Resilience
+  children:
+  - MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.CircuitBreakerDuration
+  - MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.CircuitBreakerFailureThreshold
+  - MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Default
+  - MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HeartbeatInterval
+  - MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HeartbeatTimeout
+  - MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HighFrequency
+  - MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxMessageSizeBytes
+  - MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxReconnectAttempts
+  - MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxRetries
+  - MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxRetryDelay
+  - MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.OperationTimeout
+  - MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Resilient
+  - MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.RetryBaseDelay
+  langs:
+  - csharp
+  - vb
+  name: WebSocketConnectionConfig
+  nameWithType: WebSocketConnectionConfig
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: WebSocketConnectionConfig
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+    startLine: 49
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: >-
+    Centralized configuration for WebSocket connections.
+
+    Provides sensible defaults used by all streaming providers (Alpaca, Polygon, etc.)
+
+    to eliminate duplicate configuration across providers.
+  remarks: >-
+    <p>
+
+    <b>Profile Selection Guide:</b>
+
+    </p>
+
+    <ul><li><span class="term"><xref href="MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Default" data-throw-if-not-resolved="false"></xref></span>
+          Use for providers with fast reconnection (Alpaca, Polygon).
+          5 retries with 2s base delay provides ~62s total retry time.
+          Suitable for providers with reliable infrastructure.
+        </li><li><span class="term"><xref href="MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Resilient" data-throw-if-not-resolved="false"></xref></span>
+          Use for providers with slower reconnection or on unreliable networks (StockSharp, IB Gateway).
+          10 retries with 3s base delay and longer circuit breaker duration.
+          Suitable when provider infrastructure is slower or network is unstable.
+        </li><li><span class="term"><xref href="MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HighFrequency" data-throw-if-not-resolved="false"></xref></span>
+          Use for tick-by-tick data where latency is critical.
+          Shorter timeouts (15s) ensure faster failure detection.
+          Trade-off: May disconnect more frequently on slow networks.
+        </li></ul>
+    <p>
+
+    <b>Current Provider Assignments:</b>
+
+    </p>
+
+    <ul><li>Alpaca: Default (fast cloud infrastructure)</li><li>Polygon: Default (fast cloud infrastructure)</li><li>StockSharp: Resilient (broker-dependent latency)</li><li>Interactive Brokers: Resilient (TWS/Gateway may have delays)</li></ul>
+  example: []
+  syntax:
+    content: 'public sealed record WebSocketConnectionConfig : IEquatable<WebSocketConnectionConfig>'
+    content.vb: Public NotInheritable Class WebSocketConnectionConfig Implements IEquatable(Of WebSocketConnectionConfig)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxRetries
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxRetries
+  id: MaxRetries
+  parent: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  langs:
+  - csharp
+  - vb
+  name: MaxRetries
+  nameWithType: WebSocketConnectionConfig.MaxRetries
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxRetries
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MaxRetries
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+    startLine: 54
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: Maximum number of connection retry attempts.
+  example: []
+  syntax:
+    content: public int MaxRetries { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxRetries As Integer
+  overload: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxRetries*
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.RetryBaseDelay
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.RetryBaseDelay
+  id: RetryBaseDelay
+  parent: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  langs:
+  - csharp
+  - vb
+  name: RetryBaseDelay
+  nameWithType: WebSocketConnectionConfig.RetryBaseDelay
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.RetryBaseDelay
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RetryBaseDelay
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+    startLine: 59
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: Base delay for exponential backoff between retries.
+  example: []
+  syntax:
+    content: public TimeSpan RetryBaseDelay { get; init; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property RetryBaseDelay As TimeSpan
+  overload: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.RetryBaseDelay*
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxRetryDelay
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxRetryDelay
+  id: MaxRetryDelay
+  parent: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  langs:
+  - csharp
+  - vb
+  name: MaxRetryDelay
+  nameWithType: WebSocketConnectionConfig.MaxRetryDelay
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxRetryDelay
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MaxRetryDelay
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+    startLine: 64
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: Maximum delay between retries (caps exponential backoff).
+  example: []
+  syntax:
+    content: public TimeSpan MaxRetryDelay { get; init; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property MaxRetryDelay As TimeSpan
+  overload: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxRetryDelay*
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.CircuitBreakerFailureThreshold
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.CircuitBreakerFailureThreshold
+  id: CircuitBreakerFailureThreshold
+  parent: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  langs:
+  - csharp
+  - vb
+  name: CircuitBreakerFailureThreshold
+  nameWithType: WebSocketConnectionConfig.CircuitBreakerFailureThreshold
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.CircuitBreakerFailureThreshold
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CircuitBreakerFailureThreshold
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+    startLine: 69
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: Number of failures before circuit breaker opens.
+  example: []
+  syntax:
+    content: public int CircuitBreakerFailureThreshold { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property CircuitBreakerFailureThreshold As Integer
+  overload: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.CircuitBreakerFailureThreshold*
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.CircuitBreakerDuration
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.CircuitBreakerDuration
+  id: CircuitBreakerDuration
+  parent: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  langs:
+  - csharp
+  - vb
+  name: CircuitBreakerDuration
+  nameWithType: WebSocketConnectionConfig.CircuitBreakerDuration
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.CircuitBreakerDuration
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CircuitBreakerDuration
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+    startLine: 74
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: Duration circuit breaker stays open before allowing retry.
+  example: []
+  syntax:
+    content: public TimeSpan CircuitBreakerDuration { get; init; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property CircuitBreakerDuration As TimeSpan
+  overload: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.CircuitBreakerDuration*
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.OperationTimeout
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.OperationTimeout
+  id: OperationTimeout
+  parent: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  langs:
+  - csharp
+  - vb
+  name: OperationTimeout
+  nameWithType: WebSocketConnectionConfig.OperationTimeout
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.OperationTimeout
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OperationTimeout
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+    startLine: 79
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: Timeout for individual connection operations.
+  example: []
+  syntax:
+    content: public TimeSpan OperationTimeout { get; init; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property OperationTimeout As TimeSpan
+  overload: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.OperationTimeout*
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HeartbeatInterval
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HeartbeatInterval
+  id: HeartbeatInterval
+  parent: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  langs:
+  - csharp
+  - vb
+  name: HeartbeatInterval
+  nameWithType: WebSocketConnectionConfig.HeartbeatInterval
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HeartbeatInterval
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HeartbeatInterval
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+    startLine: 84
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: Interval between heartbeat pings.
+  example: []
+  syntax:
+    content: public TimeSpan HeartbeatInterval { get; init; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property HeartbeatInterval As TimeSpan
+  overload: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HeartbeatInterval*
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HeartbeatTimeout
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HeartbeatTimeout
+  id: HeartbeatTimeout
+  parent: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  langs:
+  - csharp
+  - vb
+  name: HeartbeatTimeout
+  nameWithType: WebSocketConnectionConfig.HeartbeatTimeout
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HeartbeatTimeout
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HeartbeatTimeout
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+    startLine: 89
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: Timeout waiting for heartbeat response before considering connection stale.
+  example: []
+  syntax:
+    content: public TimeSpan HeartbeatTimeout { get; init; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property HeartbeatTimeout As TimeSpan
+  overload: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HeartbeatTimeout*
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxReconnectAttempts
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxReconnectAttempts
+  id: MaxReconnectAttempts
+  parent: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  langs:
+  - csharp
+  - vb
+  name: MaxReconnectAttempts
+  nameWithType: WebSocketConnectionConfig.MaxReconnectAttempts
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxReconnectAttempts
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MaxReconnectAttempts
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+    startLine: 94
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: Maximum number of reconnection attempts after connection loss.
+  example: []
+  syntax:
+    content: public int MaxReconnectAttempts { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxReconnectAttempts As Integer
+  overload: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxReconnectAttempts*
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxMessageSizeBytes
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxMessageSizeBytes
+  id: MaxMessageSizeBytes
+  parent: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  langs:
+  - csharp
+  - vb
+  name: MaxMessageSizeBytes
+  nameWithType: WebSocketConnectionConfig.MaxMessageSizeBytes
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxMessageSizeBytes
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MaxMessageSizeBytes
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+    startLine: 101
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: >-
+    Maximum total size (bytes) of a single WebSocket message after all frames are
+
+    assembled. Messages exceeding this limit are discarded and a warning is logged.
+
+    Default is 10 MiB — large enough for any normal market data payload.
+  example: []
+  syntax:
+    content: public int MaxMessageSizeBytes { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxMessageSizeBytes As Integer
+  overload: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxMessageSizeBytes*
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Default
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Default
+  id: Default
+  parent: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: WebSocketConnectionConfig.Default
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Default
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Default
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+    startLine: 107
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: >-
+    Default configuration used by all streaming providers.
+
+    These values match the previously duplicated settings in Alpaca and Polygon clients.
+  example: []
+  syntax:
+    content: public static WebSocketConnectionConfig Default { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+    content.vb: Public Shared ReadOnly Property [Default] As WebSocketConnectionConfig
+  overload: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Default*
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HighFrequency
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HighFrequency
+  id: HighFrequency
+  parent: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  langs:
+  - csharp
+  - vb
+  name: HighFrequency
+  nameWithType: WebSocketConnectionConfig.HighFrequency
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HighFrequency
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HighFrequency
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+    startLine: 112
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: Configuration optimized for high-frequency data (shorter timeouts).
+  example: []
+  syntax:
+    content: public static WebSocketConnectionConfig HighFrequency { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+    content.vb: Public Shared ReadOnly Property HighFrequency As WebSocketConnectionConfig
+  overload: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HighFrequency*
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Resilient
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Resilient
+  id: Resilient
+  parent: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  langs:
+  - csharp
+  - vb
+  name: Resilient
+  nameWithType: WebSocketConnectionConfig.Resilient
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Resilient
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Resilient
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionConfig.cs
+    startLine: 124
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: Configuration optimized for unreliable networks (more retries, longer timeouts).
+  example: []
+  syntax:
+    content: public static WebSocketConnectionConfig Resilient { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+    content.vb: Public Shared ReadOnly Property Resilient As WebSocketConnectionConfig
+  overload: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Resilient*
+references:
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Default
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Default
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionConfig_Default
+  name: Default
+  nameWithType: WebSocketConnectionConfig.Default
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Default
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Resilient
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Resilient
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionConfig_Resilient
+  name: Resilient
+  nameWithType: WebSocketConnectionConfig.Resilient
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Resilient
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HighFrequency
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HighFrequency
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionConfig_HighFrequency
+  name: HighFrequency
+  nameWithType: WebSocketConnectionConfig.HighFrequency
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HighFrequency
+- uid: MarketDataCollector.Infrastructure.Resilience
+  commentId: N:MarketDataCollector.Infrastructure.Resilience
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Resilience
+  nameWithType: MarketDataCollector.Infrastructure.Resilience
+  fullName: MarketDataCollector.Infrastructure.Resilience
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Resilience
+    name: Resilience
+    href: MarketDataCollector.Infrastructure.Resilience.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Resilience
+    name: Resilience
+    href: MarketDataCollector.Infrastructure.Resilience.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig}
+  commentId: T:System.IEquatable{MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<WebSocketConnectionConfig>
+  nameWithType: IEquatable<WebSocketConnectionConfig>
+  fullName: System.IEquatable<MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig>
+  nameWithType.vb: IEquatable(Of WebSocketConnectionConfig)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig)
+  name.vb: IEquatable(Of WebSocketConnectionConfig)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+    name: WebSocketConnectionConfig
+    href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+    name: WebSocketConnectionConfig
+    href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxRetries*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxRetries
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionConfig_MaxRetries
+  name: MaxRetries
+  nameWithType: WebSocketConnectionConfig.MaxRetries
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxRetries
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.RetryBaseDelay*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.RetryBaseDelay
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionConfig_RetryBaseDelay
+  name: RetryBaseDelay
+  nameWithType: WebSocketConnectionConfig.RetryBaseDelay
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.RetryBaseDelay
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxRetryDelay*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxRetryDelay
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionConfig_MaxRetryDelay
+  name: MaxRetryDelay
+  nameWithType: WebSocketConnectionConfig.MaxRetryDelay
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxRetryDelay
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.CircuitBreakerFailureThreshold*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.CircuitBreakerFailureThreshold
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionConfig_CircuitBreakerFailureThreshold
+  name: CircuitBreakerFailureThreshold
+  nameWithType: WebSocketConnectionConfig.CircuitBreakerFailureThreshold
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.CircuitBreakerFailureThreshold
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.CircuitBreakerDuration*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.CircuitBreakerDuration
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionConfig_CircuitBreakerDuration
+  name: CircuitBreakerDuration
+  nameWithType: WebSocketConnectionConfig.CircuitBreakerDuration
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.CircuitBreakerDuration
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.OperationTimeout*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.OperationTimeout
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionConfig_OperationTimeout
+  name: OperationTimeout
+  nameWithType: WebSocketConnectionConfig.OperationTimeout
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.OperationTimeout
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HeartbeatInterval*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HeartbeatInterval
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionConfig_HeartbeatInterval
+  name: HeartbeatInterval
+  nameWithType: WebSocketConnectionConfig.HeartbeatInterval
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HeartbeatInterval
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HeartbeatTimeout*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HeartbeatTimeout
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionConfig_HeartbeatTimeout
+  name: HeartbeatTimeout
+  nameWithType: WebSocketConnectionConfig.HeartbeatTimeout
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HeartbeatTimeout
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxReconnectAttempts*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxReconnectAttempts
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionConfig_MaxReconnectAttempts
+  name: MaxReconnectAttempts
+  nameWithType: WebSocketConnectionConfig.MaxReconnectAttempts
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxReconnectAttempts
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxMessageSizeBytes*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxMessageSizeBytes
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionConfig_MaxMessageSizeBytes
+  name: MaxMessageSizeBytes
+  nameWithType: WebSocketConnectionConfig.MaxMessageSizeBytes
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.MaxMessageSizeBytes
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Default*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Default
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionConfig_Default
+  name: Default
+  nameWithType: WebSocketConnectionConfig.Default
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Default
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  commentId: T:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+  parent: MarketDataCollector.Infrastructure.Resilience
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html
+  name: WebSocketConnectionConfig
+  nameWithType: WebSocketConnectionConfig
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HighFrequency*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HighFrequency
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionConfig_HighFrequency
+  name: HighFrequency
+  nameWithType: WebSocketConnectionConfig.HighFrequency
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.HighFrequency
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Resilient*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Resilient
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionConfig_Resilient
+  name: Resilient
+  nameWithType: WebSocketConnectionConfig.Resilient
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionConfig.Resilient

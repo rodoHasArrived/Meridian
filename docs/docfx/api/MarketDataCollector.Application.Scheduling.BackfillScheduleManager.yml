@@ -1,0 +1,1782 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  commentId: T:MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  id: BackfillScheduleManager
+  parent: MarketDataCollector.Application.Scheduling
+  children:
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.#ctor(Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Scheduling.BackfillScheduleManager},System.String,MarketDataCollector.Application.Scheduling.BackfillExecutionHistory)
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateFromPresetAsync(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateManualExecution(MarketDataCollector.Application.Scheduling.BackfillSchedule)
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateScheduleAsync(MarketDataCollector.Application.Scheduling.BackfillSchedule,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.DeleteScheduleAsync(System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ExecutionHistory
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetAllSchedules
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetDueSchedules(System.Nullable{System.DateTimeOffset})
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetEnabledSchedules
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetNextDueSchedule(System.Nullable{System.DateTimeOffset})
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedule(System.String)
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedulesByTag(System.String)
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetStatusSummary
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.HasRunningSchedules
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.LoadSchedulesAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.RecordExecutionAsync(MarketDataCollector.Application.Scheduling.BackfillSchedule,MarketDataCollector.Application.Scheduling.BackfillExecutionLog,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ScheduleCreated
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ScheduleDeleted
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ScheduleDue
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ScheduleUpdated
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.SetScheduleEnabledAsync(System.String,System.Boolean,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Scheduling.BackfillScheduleManager.UpdateScheduleAsync(MarketDataCollector.Application.Scheduling.BackfillSchedule,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: BackfillScheduleManager
+  nameWithType: BackfillScheduleManager
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BackfillScheduleManager
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 11
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: >-
+    Manages backfill schedules including CRUD operations, persistence, and status tracking.
+
+    Thread-safe for concurrent access.
+  example: []
+  syntax:
+    content: public sealed class BackfillScheduleManager
+    content.vb: Public NotInheritable Class BackfillScheduleManager
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ScheduleCreated
+  commentId: E:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ScheduleCreated
+  id: ScheduleCreated
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: ScheduleCreated
+  nameWithType: BackfillScheduleManager.ScheduleCreated
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ScheduleCreated
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ScheduleCreated
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 24
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Event raised when a schedule is created.
+  example: []
+  syntax:
+    content: public event EventHandler<BackfillSchedule>? ScheduleCreated
+    return:
+      type: System.EventHandler{MarketDataCollector.Application.Scheduling.BackfillSchedule}
+    content.vb: Public Event ScheduleCreated As EventHandler(Of BackfillSchedule)
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ScheduleUpdated
+  commentId: E:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ScheduleUpdated
+  id: ScheduleUpdated
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: ScheduleUpdated
+  nameWithType: BackfillScheduleManager.ScheduleUpdated
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ScheduleUpdated
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ScheduleUpdated
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 29
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Event raised when a schedule is updated.
+  example: []
+  syntax:
+    content: public event EventHandler<BackfillSchedule>? ScheduleUpdated
+    return:
+      type: System.EventHandler{MarketDataCollector.Application.Scheduling.BackfillSchedule}
+    content.vb: Public Event ScheduleUpdated As EventHandler(Of BackfillSchedule)
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ScheduleDeleted
+  commentId: E:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ScheduleDeleted
+  id: ScheduleDeleted
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: ScheduleDeleted
+  nameWithType: BackfillScheduleManager.ScheduleDeleted
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ScheduleDeleted
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ScheduleDeleted
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 34
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Event raised when a schedule is deleted.
+  example: []
+  syntax:
+    content: public event EventHandler<string>? ScheduleDeleted
+    return:
+      type: System.EventHandler{System.String}
+    content.vb: Public Event ScheduleDeleted As EventHandler(Of String)
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ScheduleDue
+  commentId: E:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ScheduleDue
+  id: ScheduleDue
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: ScheduleDue
+  nameWithType: BackfillScheduleManager.ScheduleDue
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ScheduleDue
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ScheduleDue
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 40
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Event raised when a schedule is due for execution.
+  example: []
+  syntax:
+    content: public event EventHandler<BackfillSchedule>? ScheduleDue
+    return:
+      type: System.EventHandler{MarketDataCollector.Application.Scheduling.BackfillSchedule}
+    content.vb: Public Event ScheduleDue As EventHandler(Of BackfillSchedule)
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.#ctor(Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Scheduling.BackfillScheduleManager},System.String,MarketDataCollector.Application.Scheduling.BackfillExecutionHistory)
+  commentId: M:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.#ctor(Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Scheduling.BackfillScheduleManager},System.String,MarketDataCollector.Application.Scheduling.BackfillExecutionHistory)
+  id: '#ctor(Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Scheduling.BackfillScheduleManager},System.String,MarketDataCollector.Application.Scheduling.BackfillExecutionHistory)'
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: BackfillScheduleManager(ILogger<BackfillScheduleManager>, string, BackfillExecutionHistory?)
+  nameWithType: BackfillScheduleManager.BackfillScheduleManager(ILogger<BackfillScheduleManager>, string, BackfillExecutionHistory?)
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.BackfillScheduleManager(Microsoft.Extensions.Logging.ILogger<MarketDataCollector.Application.Scheduling.BackfillScheduleManager>, string, MarketDataCollector.Application.Scheduling.BackfillExecutionHistory?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 43
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  syntax:
+    content: public BackfillScheduleManager(ILogger<BackfillScheduleManager> logger, string dataRoot, BackfillExecutionHistory? executionHistory = null)
+    parameters:
+    - id: logger
+      type: Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Scheduling.BackfillScheduleManager}
+    - id: dataRoot
+      type: System.String
+    - id: executionHistory
+      type: MarketDataCollector.Application.Scheduling.BackfillExecutionHistory
+    content.vb: Public Sub New(logger As ILogger(Of BackfillScheduleManager), dataRoot As String, executionHistory As BackfillExecutionHistory = Nothing)
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.#ctor*
+  nameWithType.vb: BackfillScheduleManager.New(ILogger(Of BackfillScheduleManager), String, BackfillExecutionHistory)
+  fullName.vb: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.New(Microsoft.Extensions.Logging.ILogger(Of MarketDataCollector.Application.Scheduling.BackfillScheduleManager), String, MarketDataCollector.Application.Scheduling.BackfillExecutionHistory)
+  name.vb: New(ILogger(Of BackfillScheduleManager), String, BackfillExecutionHistory)
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ExecutionHistory
+  commentId: P:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ExecutionHistory
+  id: ExecutionHistory
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: ExecutionHistory
+  nameWithType: BackfillScheduleManager.ExecutionHistory
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ExecutionHistory
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ExecutionHistory
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 61
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Execution history for viewing past runs.
+  example: []
+  syntax:
+    content: public BackfillExecutionHistory ExecutionHistory { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Scheduling.BackfillExecutionHistory
+    content.vb: Public ReadOnly Property ExecutionHistory As BackfillExecutionHistory
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ExecutionHistory*
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.LoadSchedulesAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.LoadSchedulesAsync(System.Threading.CancellationToken)
+  id: LoadSchedulesAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: LoadSchedulesAsync(CancellationToken)
+  nameWithType: BackfillScheduleManager.LoadSchedulesAsync(CancellationToken)
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.LoadSchedulesAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LoadSchedulesAsync
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 66
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Load all schedules from disk.
+  example: []
+  syntax:
+    content: public Task LoadSchedulesAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function LoadSchedulesAsync(ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.LoadSchedulesAsync*
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateScheduleAsync(MarketDataCollector.Application.Scheduling.BackfillSchedule,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateScheduleAsync(MarketDataCollector.Application.Scheduling.BackfillSchedule,System.Threading.CancellationToken)
+  id: CreateScheduleAsync(MarketDataCollector.Application.Scheduling.BackfillSchedule,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: CreateScheduleAsync(BackfillSchedule, CancellationToken)
+  nameWithType: BackfillScheduleManager.CreateScheduleAsync(BackfillSchedule, CancellationToken)
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateScheduleAsync(MarketDataCollector.Application.Scheduling.BackfillSchedule, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateScheduleAsync
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 117
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Create a new schedule.
+  example: []
+  syntax:
+    content: public Task<BackfillSchedule> CreateScheduleAsync(BackfillSchedule schedule, CancellationToken ct = default)
+    parameters:
+    - id: schedule
+      type: MarketDataCollector.Application.Scheduling.BackfillSchedule
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Scheduling.BackfillSchedule}
+    content.vb: Public Function CreateScheduleAsync(schedule As BackfillSchedule, ct As CancellationToken = Nothing) As Task(Of BackfillSchedule)
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateScheduleAsync*
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateFromPresetAsync(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateFromPresetAsync(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
+  id: CreateFromPresetAsync(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: CreateFromPresetAsync(string, string, IEnumerable<string>?, CancellationToken)
+  nameWithType: BackfillScheduleManager.CreateFromPresetAsync(string, string, IEnumerable<string>?, CancellationToken)
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateFromPresetAsync(string, string, System.Collections.Generic.IEnumerable<string>?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateFromPresetAsync
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 146
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Create a schedule from a preset.
+  example: []
+  syntax:
+    content: public Task<BackfillSchedule> CreateFromPresetAsync(string presetName, string scheduleName, IEnumerable<string>? symbols = null, CancellationToken ct = default)
+    parameters:
+    - id: presetName
+      type: System.String
+    - id: scheduleName
+      type: System.String
+    - id: symbols
+      type: System.Collections.Generic.IEnumerable{System.String}
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Scheduling.BackfillSchedule}
+    content.vb: Public Function CreateFromPresetAsync(presetName As String, scheduleName As String, symbols As IEnumerable(Of String) = Nothing, ct As CancellationToken = Nothing) As Task(Of BackfillSchedule)
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateFromPresetAsync*
+  nameWithType.vb: BackfillScheduleManager.CreateFromPresetAsync(String, String, IEnumerable(Of String), CancellationToken)
+  fullName.vb: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateFromPresetAsync(String, String, System.Collections.Generic.IEnumerable(Of String), System.Threading.CancellationToken)
+  name.vb: CreateFromPresetAsync(String, String, IEnumerable(Of String), CancellationToken)
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.UpdateScheduleAsync(MarketDataCollector.Application.Scheduling.BackfillSchedule,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.UpdateScheduleAsync(MarketDataCollector.Application.Scheduling.BackfillSchedule,System.Threading.CancellationToken)
+  id: UpdateScheduleAsync(MarketDataCollector.Application.Scheduling.BackfillSchedule,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: UpdateScheduleAsync(BackfillSchedule, CancellationToken)
+  nameWithType: BackfillScheduleManager.UpdateScheduleAsync(BackfillSchedule, CancellationToken)
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.UpdateScheduleAsync(MarketDataCollector.Application.Scheduling.BackfillSchedule, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UpdateScheduleAsync
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 167
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Update an existing schedule.
+  example: []
+  syntax:
+    content: public Task<BackfillSchedule> UpdateScheduleAsync(BackfillSchedule schedule, CancellationToken ct = default)
+    parameters:
+    - id: schedule
+      type: MarketDataCollector.Application.Scheduling.BackfillSchedule
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Scheduling.BackfillSchedule}
+    content.vb: Public Function UpdateScheduleAsync(schedule As BackfillSchedule, ct As CancellationToken = Nothing) As Task(Of BackfillSchedule)
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.UpdateScheduleAsync*
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.DeleteScheduleAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.DeleteScheduleAsync(System.String,System.Threading.CancellationToken)
+  id: DeleteScheduleAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: DeleteScheduleAsync(string, CancellationToken)
+  nameWithType: BackfillScheduleManager.DeleteScheduleAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.DeleteScheduleAsync(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DeleteScheduleAsync
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 196
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Delete a schedule.
+  example: []
+  syntax:
+    content: public Task<bool> DeleteScheduleAsync(string scheduleId, CancellationToken ct = default)
+    parameters:
+    - id: scheduleId
+      type: System.String
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function DeleteScheduleAsync(scheduleId As String, ct As CancellationToken = Nothing) As Task(Of Boolean)
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.DeleteScheduleAsync*
+  nameWithType.vb: BackfillScheduleManager.DeleteScheduleAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.DeleteScheduleAsync(String, System.Threading.CancellationToken)
+  name.vb: DeleteScheduleAsync(String, CancellationToken)
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedule(System.String)
+  commentId: M:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedule(System.String)
+  id: GetSchedule(System.String)
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: GetSchedule(string)
+  nameWithType: BackfillScheduleManager.GetSchedule(string)
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedule(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSchedule
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 222
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Get a schedule by ID.
+  example: []
+  syntax:
+    content: public BackfillSchedule? GetSchedule(string scheduleId)
+    parameters:
+    - id: scheduleId
+      type: System.String
+    return:
+      type: MarketDataCollector.Application.Scheduling.BackfillSchedule
+    content.vb: Public Function GetSchedule(scheduleId As String) As BackfillSchedule
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedule*
+  nameWithType.vb: BackfillScheduleManager.GetSchedule(String)
+  fullName.vb: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedule(String)
+  name.vb: GetSchedule(String)
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetAllSchedules
+  commentId: M:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetAllSchedules
+  id: GetAllSchedules
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: GetAllSchedules()
+  nameWithType: BackfillScheduleManager.GetAllSchedules()
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetAllSchedules()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetAllSchedules
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 230
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Get all schedules.
+  example: []
+  syntax:
+    content: public IReadOnlyList<BackfillSchedule> GetAllSchedules()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Scheduling.BackfillSchedule}
+    content.vb: Public Function GetAllSchedules() As IReadOnlyList(Of BackfillSchedule)
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetAllSchedules*
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetEnabledSchedules
+  commentId: M:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetEnabledSchedules
+  id: GetEnabledSchedules
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: GetEnabledSchedules()
+  nameWithType: BackfillScheduleManager.GetEnabledSchedules()
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetEnabledSchedules()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetEnabledSchedules
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 238
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Get enabled schedules.
+  example: []
+  syntax:
+    content: public IReadOnlyList<BackfillSchedule> GetEnabledSchedules()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Scheduling.BackfillSchedule}
+    content.vb: Public Function GetEnabledSchedules() As IReadOnlyList(Of BackfillSchedule)
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetEnabledSchedules*
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetDueSchedules(System.Nullable{System.DateTimeOffset})
+  commentId: M:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetDueSchedules(System.Nullable{System.DateTimeOffset})
+  id: GetDueSchedules(System.Nullable{System.DateTimeOffset})
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: GetDueSchedules(DateTimeOffset?)
+  nameWithType: BackfillScheduleManager.GetDueSchedules(DateTimeOffset?)
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetDueSchedules(System.DateTimeOffset?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetDueSchedules
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 249
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Get schedules due for execution.
+  example: []
+  syntax:
+    content: public IReadOnlyList<BackfillSchedule> GetDueSchedules(DateTimeOffset? asOf = null)
+    parameters:
+    - id: asOf
+      type: System.Nullable{System.DateTimeOffset}
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Scheduling.BackfillSchedule}
+    content.vb: Public Function GetDueSchedules(asOf As DateTimeOffset? = Nothing) As IReadOnlyList(Of BackfillSchedule)
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetDueSchedules*
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetNextDueSchedule(System.Nullable{System.DateTimeOffset})
+  commentId: M:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetNextDueSchedule(System.Nullable{System.DateTimeOffset})
+  id: GetNextDueSchedule(System.Nullable{System.DateTimeOffset})
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: GetNextDueSchedule(DateTimeOffset?)
+  nameWithType: BackfillScheduleManager.GetNextDueSchedule(DateTimeOffset?)
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetNextDueSchedule(System.DateTimeOffset?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetNextDueSchedule
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 261
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Get next schedule to execute.
+  example: []
+  syntax:
+    content: public BackfillSchedule? GetNextDueSchedule(DateTimeOffset? asOf = null)
+    parameters:
+    - id: asOf
+      type: System.Nullable{System.DateTimeOffset}
+    return:
+      type: MarketDataCollector.Application.Scheduling.BackfillSchedule
+    content.vb: Public Function GetNextDueSchedule(asOf As DateTimeOffset? = Nothing) As BackfillSchedule
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetNextDueSchedule*
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.SetScheduleEnabledAsync(System.String,System.Boolean,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.SetScheduleEnabledAsync(System.String,System.Boolean,System.Threading.CancellationToken)
+  id: SetScheduleEnabledAsync(System.String,System.Boolean,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: SetScheduleEnabledAsync(string, bool, CancellationToken)
+  nameWithType: BackfillScheduleManager.SetScheduleEnabledAsync(string, bool, CancellationToken)
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.SetScheduleEnabledAsync(string, bool, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SetScheduleEnabledAsync
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 269
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Enable or disable a schedule.
+  example: []
+  syntax:
+    content: public Task<bool> SetScheduleEnabledAsync(string scheduleId, bool enabled, CancellationToken ct = default)
+    parameters:
+    - id: scheduleId
+      type: System.String
+    - id: enabled
+      type: System.Boolean
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function SetScheduleEnabledAsync(scheduleId As String, enabled As Boolean, ct As CancellationToken = Nothing) As Task(Of Boolean)
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.SetScheduleEnabledAsync*
+  nameWithType.vb: BackfillScheduleManager.SetScheduleEnabledAsync(String, Boolean, CancellationToken)
+  fullName.vb: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.SetScheduleEnabledAsync(String, Boolean, System.Threading.CancellationToken)
+  name.vb: SetScheduleEnabledAsync(String, Boolean, CancellationToken)
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.RecordExecutionAsync(MarketDataCollector.Application.Scheduling.BackfillSchedule,MarketDataCollector.Application.Scheduling.BackfillExecutionLog,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.RecordExecutionAsync(MarketDataCollector.Application.Scheduling.BackfillSchedule,MarketDataCollector.Application.Scheduling.BackfillExecutionLog,System.Threading.CancellationToken)
+  id: RecordExecutionAsync(MarketDataCollector.Application.Scheduling.BackfillSchedule,MarketDataCollector.Application.Scheduling.BackfillExecutionLog,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: RecordExecutionAsync(BackfillSchedule, BackfillExecutionLog, CancellationToken)
+  nameWithType: BackfillScheduleManager.RecordExecutionAsync(BackfillSchedule, BackfillExecutionLog, CancellationToken)
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.RecordExecutionAsync(MarketDataCollector.Application.Scheduling.BackfillSchedule, MarketDataCollector.Application.Scheduling.BackfillExecutionLog, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecordExecutionAsync
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 296
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Record that a schedule has been executed.
+  example: []
+  syntax:
+    content: public Task RecordExecutionAsync(BackfillSchedule schedule, BackfillExecutionLog execution, CancellationToken ct = default)
+    parameters:
+    - id: schedule
+      type: MarketDataCollector.Application.Scheduling.BackfillSchedule
+    - id: execution
+      type: MarketDataCollector.Application.Scheduling.BackfillExecutionLog
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function RecordExecutionAsync(schedule As BackfillSchedule, execution As BackfillExecutionLog, ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.RecordExecutionAsync*
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateManualExecution(MarketDataCollector.Application.Scheduling.BackfillSchedule)
+  commentId: M:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateManualExecution(MarketDataCollector.Application.Scheduling.BackfillSchedule)
+  id: CreateManualExecution(MarketDataCollector.Application.Scheduling.BackfillSchedule)
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: CreateManualExecution(BackfillSchedule)
+  nameWithType: BackfillScheduleManager.CreateManualExecution(BackfillSchedule)
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateManualExecution(MarketDataCollector.Application.Scheduling.BackfillSchedule)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateManualExecution
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 324
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Trigger a manual execution of a schedule.
+  example: []
+  syntax:
+    content: public BackfillExecutionLog CreateManualExecution(BackfillSchedule schedule)
+    parameters:
+    - id: schedule
+      type: MarketDataCollector.Application.Scheduling.BackfillSchedule
+    return:
+      type: MarketDataCollector.Application.Scheduling.BackfillExecutionLog
+    content.vb: Public Function CreateManualExecution(schedule As BackfillSchedule) As BackfillExecutionLog
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateManualExecution*
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedulesByTag(System.String)
+  commentId: M:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedulesByTag(System.String)
+  id: GetSchedulesByTag(System.String)
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: GetSchedulesByTag(string)
+  nameWithType: BackfillScheduleManager.GetSchedulesByTag(string)
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedulesByTag(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSchedulesByTag
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 341
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Get schedules by tag.
+  example: []
+  syntax:
+    content: public IReadOnlyList<BackfillSchedule> GetSchedulesByTag(string tag)
+    parameters:
+    - id: tag
+      type: System.String
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Scheduling.BackfillSchedule}
+    content.vb: Public Function GetSchedulesByTag(tag As String) As IReadOnlyList(Of BackfillSchedule)
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedulesByTag*
+  nameWithType.vb: BackfillScheduleManager.GetSchedulesByTag(String)
+  fullName.vb: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedulesByTag(String)
+  name.vb: GetSchedulesByTag(String)
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.HasRunningSchedules
+  commentId: M:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.HasRunningSchedules
+  id: HasRunningSchedules
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: HasRunningSchedules()
+  nameWithType: BackfillScheduleManager.HasRunningSchedules()
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.HasRunningSchedules()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HasRunningSchedules
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 352
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Check if any schedules are currently running.
+  example: []
+  syntax:
+    content: public bool HasRunningSchedules()
+    return:
+      type: System.Boolean
+    content.vb: Public Function HasRunningSchedules() As Boolean
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.HasRunningSchedules*
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetStatusSummary
+  commentId: M:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetStatusSummary
+  id: GetStatusSummary
+  parent: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+  langs:
+  - csharp
+  - vb
+  name: GetStatusSummary()
+  nameWithType: BackfillScheduleManager.GetStatusSummary()
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetStatusSummary()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetStatusSummary
+    path: ../../src/MarketDataCollector.Application/Scheduling/BackfillScheduleManager.cs
+    startLine: 361
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Scheduling
+  summary: Get schedule status summary.
+  example: []
+  syntax:
+    content: public ScheduleStatusSummary GetStatusSummary()
+    return:
+      type: MarketDataCollector.Application.Scheduling.ScheduleStatusSummary
+    content.vb: Public Function GetStatusSummary() As ScheduleStatusSummary
+  overload: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetStatusSummary*
+references:
+- uid: MarketDataCollector.Application.Scheduling
+  commentId: N:MarketDataCollector.Application.Scheduling
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Scheduling
+  nameWithType: MarketDataCollector.Application.Scheduling
+  fullName: MarketDataCollector.Application.Scheduling
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Scheduling
+    name: Scheduling
+    href: MarketDataCollector.Application.Scheduling.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Scheduling
+    name: Scheduling
+    href: MarketDataCollector.Application.Scheduling.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.EventHandler{MarketDataCollector.Application.Scheduling.BackfillSchedule}
+  commentId: T:System.EventHandler{MarketDataCollector.Application.Scheduling.BackfillSchedule}
+  parent: System
+  definition: System.EventHandler`1
+  href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  name: EventHandler<BackfillSchedule>
+  nameWithType: EventHandler<BackfillSchedule>
+  fullName: System.EventHandler<MarketDataCollector.Application.Scheduling.BackfillSchedule>
+  nameWithType.vb: EventHandler(Of BackfillSchedule)
+  fullName.vb: System.EventHandler(Of MarketDataCollector.Application.Scheduling.BackfillSchedule)
+  name.vb: EventHandler(Of BackfillSchedule)
+  spec.csharp:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: <
+  - uid: MarketDataCollector.Application.Scheduling.BackfillSchedule
+    name: BackfillSchedule
+    href: MarketDataCollector.Application.Scheduling.BackfillSchedule.html
+  - name: '>'
+  spec.vb:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Scheduling.BackfillSchedule
+    name: BackfillSchedule
+    href: MarketDataCollector.Application.Scheduling.BackfillSchedule.html
+  - name: )
+- uid: System.EventHandler`1
+  commentId: T:System.EventHandler`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  name: EventHandler<TEventArgs>
+  nameWithType: EventHandler<TEventArgs>
+  fullName: System.EventHandler<TEventArgs>
+  nameWithType.vb: EventHandler(Of TEventArgs)
+  fullName.vb: System.EventHandler(Of TEventArgs)
+  name.vb: EventHandler(Of TEventArgs)
+  spec.csharp:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: <
+  - name: TEventArgs
+  - name: '>'
+  spec.vb:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventArgs
+  - name: )
+- uid: System.EventHandler{System.String}
+  commentId: T:System.EventHandler{System.String}
+  parent: System
+  definition: System.EventHandler`1
+  href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  name: EventHandler<string>
+  nameWithType: EventHandler<string>
+  fullName: System.EventHandler<string>
+  nameWithType.vb: EventHandler(Of String)
+  fullName.vb: System.EventHandler(Of String)
+  name.vb: EventHandler(Of String)
+  spec.csharp:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.#ctor
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager__ctor_Microsoft_Extensions_Logging_ILogger_MarketDataCollector_Application_Scheduling_BackfillScheduleManager__System_String_MarketDataCollector_Application_Scheduling_BackfillExecutionHistory_
+  name: BackfillScheduleManager
+  nameWithType: BackfillScheduleManager.BackfillScheduleManager
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.BackfillScheduleManager
+  nameWithType.vb: BackfillScheduleManager.New
+  fullName.vb: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.New
+  name.vb: New
+- uid: Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Scheduling.BackfillScheduleManager}
+  commentId: T:Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Scheduling.BackfillScheduleManager}
+  parent: Microsoft.Extensions.Logging
+  definition: Microsoft.Extensions.Logging.ILogger`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<BackfillScheduleManager>
+  nameWithType: ILogger<BackfillScheduleManager>
+  fullName: Microsoft.Extensions.Logging.ILogger<MarketDataCollector.Application.Scheduling.BackfillScheduleManager>
+  nameWithType.vb: ILogger(Of BackfillScheduleManager)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of MarketDataCollector.Application.Scheduling.BackfillScheduleManager)
+  name.vb: ILogger(Of BackfillScheduleManager)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+    name: BackfillScheduleManager
+    href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager
+    name: BackfillScheduleManager
+    href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Application.Scheduling.BackfillExecutionHistory
+  commentId: T:MarketDataCollector.Application.Scheduling.BackfillExecutionHistory
+  parent: MarketDataCollector.Application.Scheduling
+  href: MarketDataCollector.Application.Scheduling.BackfillExecutionHistory.html
+  name: BackfillExecutionHistory
+  nameWithType: BackfillExecutionHistory
+  fullName: MarketDataCollector.Application.Scheduling.BackfillExecutionHistory
+- uid: Microsoft.Extensions.Logging.ILogger`1
+  commentId: T:Microsoft.Extensions.Logging.ILogger`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<TCategoryName>
+  nameWithType: ILogger<TCategoryName>
+  fullName: Microsoft.Extensions.Logging.ILogger<TCategoryName>
+  nameWithType.vb: ILogger(Of TCategoryName)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of TCategoryName)
+  name.vb: ILogger(Of TCategoryName)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - name: TCategoryName
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TCategoryName
+  - name: )
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ExecutionHistory*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ExecutionHistory
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager_ExecutionHistory
+  name: ExecutionHistory
+  nameWithType: BackfillScheduleManager.ExecutionHistory
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.ExecutionHistory
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.LoadSchedulesAsync*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.LoadSchedulesAsync
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager_LoadSchedulesAsync_System_Threading_CancellationToken_
+  name: LoadSchedulesAsync
+  nameWithType: BackfillScheduleManager.LoadSchedulesAsync
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.LoadSchedulesAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateScheduleAsync*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateScheduleAsync
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager_CreateScheduleAsync_MarketDataCollector_Application_Scheduling_BackfillSchedule_System_Threading_CancellationToken_
+  name: CreateScheduleAsync
+  nameWithType: BackfillScheduleManager.CreateScheduleAsync
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateScheduleAsync
+- uid: MarketDataCollector.Application.Scheduling.BackfillSchedule
+  commentId: T:MarketDataCollector.Application.Scheduling.BackfillSchedule
+  parent: MarketDataCollector.Application.Scheduling
+  href: MarketDataCollector.Application.Scheduling.BackfillSchedule.html
+  name: BackfillSchedule
+  nameWithType: BackfillSchedule
+  fullName: MarketDataCollector.Application.Scheduling.BackfillSchedule
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Scheduling.BackfillSchedule}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Scheduling.BackfillSchedule}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<BackfillSchedule>
+  nameWithType: Task<BackfillSchedule>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Scheduling.BackfillSchedule>
+  nameWithType.vb: Task(Of BackfillSchedule)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Scheduling.BackfillSchedule)
+  name.vb: Task(Of BackfillSchedule)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Scheduling.BackfillSchedule
+    name: BackfillSchedule
+    href: MarketDataCollector.Application.Scheduling.BackfillSchedule.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Scheduling.BackfillSchedule
+    name: BackfillSchedule
+    href: MarketDataCollector.Application.Scheduling.BackfillSchedule.html
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateFromPresetAsync*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateFromPresetAsync
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager_CreateFromPresetAsync_System_String_System_String_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_
+  name: CreateFromPresetAsync
+  nameWithType: BackfillScheduleManager.CreateFromPresetAsync
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateFromPresetAsync
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<string>
+  nameWithType: IEnumerable<string>
+  fullName: System.Collections.Generic.IEnumerable<string>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.UpdateScheduleAsync*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.UpdateScheduleAsync
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager_UpdateScheduleAsync_MarketDataCollector_Application_Scheduling_BackfillSchedule_System_Threading_CancellationToken_
+  name: UpdateScheduleAsync
+  nameWithType: BackfillScheduleManager.UpdateScheduleAsync
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.UpdateScheduleAsync
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.DeleteScheduleAsync*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.DeleteScheduleAsync
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager_DeleteScheduleAsync_System_String_System_Threading_CancellationToken_
+  name: DeleteScheduleAsync
+  nameWithType: BackfillScheduleManager.DeleteScheduleAsync
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.DeleteScheduleAsync
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedule*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedule
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager_GetSchedule_System_String_
+  name: GetSchedule
+  nameWithType: BackfillScheduleManager.GetSchedule
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedule
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetAllSchedules*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetAllSchedules
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager_GetAllSchedules
+  name: GetAllSchedules
+  nameWithType: BackfillScheduleManager.GetAllSchedules
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetAllSchedules
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Scheduling.BackfillSchedule}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Scheduling.BackfillSchedule}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<BackfillSchedule>
+  nameWithType: IReadOnlyList<BackfillSchedule>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Scheduling.BackfillSchedule>
+  nameWithType.vb: IReadOnlyList(Of BackfillSchedule)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Scheduling.BackfillSchedule)
+  name.vb: IReadOnlyList(Of BackfillSchedule)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Application.Scheduling.BackfillSchedule
+    name: BackfillSchedule
+    href: MarketDataCollector.Application.Scheduling.BackfillSchedule.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Scheduling.BackfillSchedule
+    name: BackfillSchedule
+    href: MarketDataCollector.Application.Scheduling.BackfillSchedule.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetEnabledSchedules*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetEnabledSchedules
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager_GetEnabledSchedules
+  name: GetEnabledSchedules
+  nameWithType: BackfillScheduleManager.GetEnabledSchedules
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetEnabledSchedules
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetDueSchedules*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetDueSchedules
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager_GetDueSchedules_System_Nullable_System_DateTimeOffset__
+  name: GetDueSchedules
+  nameWithType: BackfillScheduleManager.GetDueSchedules
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetDueSchedules
+- uid: System.Nullable{System.DateTimeOffset}
+  commentId: T:System.Nullable{System.DateTimeOffset}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset?
+  nameWithType: DateTimeOffset?
+  fullName: System.DateTimeOffset?
+  spec.csharp:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetNextDueSchedule*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetNextDueSchedule
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager_GetNextDueSchedule_System_Nullable_System_DateTimeOffset__
+  name: GetNextDueSchedule
+  nameWithType: BackfillScheduleManager.GetNextDueSchedule
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetNextDueSchedule
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.SetScheduleEnabledAsync*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.SetScheduleEnabledAsync
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager_SetScheduleEnabledAsync_System_String_System_Boolean_System_Threading_CancellationToken_
+  name: SetScheduleEnabledAsync
+  nameWithType: BackfillScheduleManager.SetScheduleEnabledAsync
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.SetScheduleEnabledAsync
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.RecordExecutionAsync*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.RecordExecutionAsync
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager_RecordExecutionAsync_MarketDataCollector_Application_Scheduling_BackfillSchedule_MarketDataCollector_Application_Scheduling_BackfillExecutionLog_System_Threading_CancellationToken_
+  name: RecordExecutionAsync
+  nameWithType: BackfillScheduleManager.RecordExecutionAsync
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.RecordExecutionAsync
+- uid: MarketDataCollector.Application.Scheduling.BackfillExecutionLog
+  commentId: T:MarketDataCollector.Application.Scheduling.BackfillExecutionLog
+  parent: MarketDataCollector.Application.Scheduling
+  href: MarketDataCollector.Application.Scheduling.BackfillExecutionLog.html
+  name: BackfillExecutionLog
+  nameWithType: BackfillExecutionLog
+  fullName: MarketDataCollector.Application.Scheduling.BackfillExecutionLog
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateManualExecution*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateManualExecution
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager_CreateManualExecution_MarketDataCollector_Application_Scheduling_BackfillSchedule_
+  name: CreateManualExecution
+  nameWithType: BackfillScheduleManager.CreateManualExecution
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.CreateManualExecution
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedulesByTag*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedulesByTag
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager_GetSchedulesByTag_System_String_
+  name: GetSchedulesByTag
+  nameWithType: BackfillScheduleManager.GetSchedulesByTag
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetSchedulesByTag
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.HasRunningSchedules*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.HasRunningSchedules
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager_HasRunningSchedules
+  name: HasRunningSchedules
+  nameWithType: BackfillScheduleManager.HasRunningSchedules
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.HasRunningSchedules
+- uid: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetStatusSummary*
+  commentId: Overload:MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetStatusSummary
+  href: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.html#MarketDataCollector_Application_Scheduling_BackfillScheduleManager_GetStatusSummary
+  name: GetStatusSummary
+  nameWithType: BackfillScheduleManager.GetStatusSummary
+  fullName: MarketDataCollector.Application.Scheduling.BackfillScheduleManager.GetStatusSummary
+- uid: MarketDataCollector.Application.Scheduling.ScheduleStatusSummary
+  commentId: T:MarketDataCollector.Application.Scheduling.ScheduleStatusSummary
+  parent: MarketDataCollector.Application.Scheduling
+  href: MarketDataCollector.Application.Scheduling.ScheduleStatusSummary.html
+  name: ScheduleStatusSummary
+  nameWithType: ScheduleStatusSummary
+  fullName: MarketDataCollector.Application.Scheduling.ScheduleStatusSummary

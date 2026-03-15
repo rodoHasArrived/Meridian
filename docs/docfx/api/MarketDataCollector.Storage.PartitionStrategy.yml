@@ -1,0 +1,592 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.PartitionStrategy
+  commentId: T:MarketDataCollector.Storage.PartitionStrategy
+  id: PartitionStrategy
+  parent: MarketDataCollector.Storage
+  children:
+  - MarketDataCollector.Storage.PartitionStrategy.#ctor(MarketDataCollector.Storage.PartitionDimension,System.Nullable{MarketDataCollector.Storage.PartitionDimension},System.Nullable{MarketDataCollector.Storage.PartitionDimension},MarketDataCollector.Storage.DatePartition)
+  - MarketDataCollector.Storage.PartitionStrategy.DateGranularity
+  - MarketDataCollector.Storage.PartitionStrategy.Primary
+  - MarketDataCollector.Storage.PartitionStrategy.Secondary
+  - MarketDataCollector.Storage.PartitionStrategy.Tertiary
+  langs:
+  - csharp
+  - vb
+  name: PartitionStrategy
+  nameWithType: PartitionStrategy
+  fullName: MarketDataCollector.Storage.PartitionStrategy
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PartitionStrategy
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 319
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: Multi-dimensional partition strategy.
+  example: []
+  syntax:
+    content: 'public sealed record PartitionStrategy : IEquatable<PartitionStrategy>'
+    content.vb: Public NotInheritable Class PartitionStrategy Implements IEquatable(Of PartitionStrategy)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Storage.PartitionStrategy}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Storage.PartitionStrategy.#ctor(MarketDataCollector.Storage.PartitionDimension,System.Nullable{MarketDataCollector.Storage.PartitionDimension},System.Nullable{MarketDataCollector.Storage.PartitionDimension},MarketDataCollector.Storage.DatePartition)
+  commentId: M:MarketDataCollector.Storage.PartitionStrategy.#ctor(MarketDataCollector.Storage.PartitionDimension,System.Nullable{MarketDataCollector.Storage.PartitionDimension},System.Nullable{MarketDataCollector.Storage.PartitionDimension},MarketDataCollector.Storage.DatePartition)
+  id: '#ctor(MarketDataCollector.Storage.PartitionDimension,System.Nullable{MarketDataCollector.Storage.PartitionDimension},System.Nullable{MarketDataCollector.Storage.PartitionDimension},MarketDataCollector.Storage.DatePartition)'
+  parent: MarketDataCollector.Storage.PartitionStrategy
+  langs:
+  - csharp
+  - vb
+  name: PartitionStrategy(PartitionDimension, PartitionDimension?, PartitionDimension?, DatePartition)
+  nameWithType: PartitionStrategy.PartitionStrategy(PartitionDimension, PartitionDimension?, PartitionDimension?, DatePartition)
+  fullName: MarketDataCollector.Storage.PartitionStrategy.PartitionStrategy(MarketDataCollector.Storage.PartitionDimension, MarketDataCollector.Storage.PartitionDimension?, MarketDataCollector.Storage.PartitionDimension?, MarketDataCollector.Storage.DatePartition)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 319
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: Multi-dimensional partition strategy.
+  example: []
+  syntax:
+    content: public PartitionStrategy(PartitionDimension Primary, PartitionDimension? Secondary = null, PartitionDimension? Tertiary = null, DatePartition DateGranularity = DatePartition.Daily)
+    parameters:
+    - id: Primary
+      type: MarketDataCollector.Storage.PartitionDimension
+    - id: Secondary
+      type: System.Nullable{MarketDataCollector.Storage.PartitionDimension}
+    - id: Tertiary
+      type: System.Nullable{MarketDataCollector.Storage.PartitionDimension}
+    - id: DateGranularity
+      type: MarketDataCollector.Storage.DatePartition
+    content.vb: Public Sub New(Primary As PartitionDimension, Secondary As PartitionDimension? = Nothing, Tertiary As PartitionDimension? = Nothing, DateGranularity As DatePartition = DatePartition.Daily)
+  overload: MarketDataCollector.Storage.PartitionStrategy.#ctor*
+  nameWithType.vb: PartitionStrategy.New(PartitionDimension, PartitionDimension?, PartitionDimension?, DatePartition)
+  fullName.vb: MarketDataCollector.Storage.PartitionStrategy.New(MarketDataCollector.Storage.PartitionDimension, MarketDataCollector.Storage.PartitionDimension?, MarketDataCollector.Storage.PartitionDimension?, MarketDataCollector.Storage.DatePartition)
+  name.vb: New(PartitionDimension, PartitionDimension?, PartitionDimension?, DatePartition)
+- uid: MarketDataCollector.Storage.PartitionStrategy.Primary
+  commentId: P:MarketDataCollector.Storage.PartitionStrategy.Primary
+  id: Primary
+  parent: MarketDataCollector.Storage.PartitionStrategy
+  langs:
+  - csharp
+  - vb
+  name: Primary
+  nameWithType: PartitionStrategy.Primary
+  fullName: MarketDataCollector.Storage.PartitionStrategy.Primary
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Primary
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 320
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  syntax:
+    content: public PartitionDimension Primary { get; init; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Storage.PartitionDimension
+    content.vb: Public Property Primary As PartitionDimension
+  overload: MarketDataCollector.Storage.PartitionStrategy.Primary*
+- uid: MarketDataCollector.Storage.PartitionStrategy.Secondary
+  commentId: P:MarketDataCollector.Storage.PartitionStrategy.Secondary
+  id: Secondary
+  parent: MarketDataCollector.Storage.PartitionStrategy
+  langs:
+  - csharp
+  - vb
+  name: Secondary
+  nameWithType: PartitionStrategy.Secondary
+  fullName: MarketDataCollector.Storage.PartitionStrategy.Secondary
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Secondary
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 321
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  syntax:
+    content: public PartitionDimension? Secondary { get; init; }
+    parameters: []
+    return:
+      type: System.Nullable{MarketDataCollector.Storage.PartitionDimension}
+    content.vb: Public Property Secondary As PartitionDimension?
+  overload: MarketDataCollector.Storage.PartitionStrategy.Secondary*
+- uid: MarketDataCollector.Storage.PartitionStrategy.Tertiary
+  commentId: P:MarketDataCollector.Storage.PartitionStrategy.Tertiary
+  id: Tertiary
+  parent: MarketDataCollector.Storage.PartitionStrategy
+  langs:
+  - csharp
+  - vb
+  name: Tertiary
+  nameWithType: PartitionStrategy.Tertiary
+  fullName: MarketDataCollector.Storage.PartitionStrategy.Tertiary
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Tertiary
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 322
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  syntax:
+    content: public PartitionDimension? Tertiary { get; init; }
+    parameters: []
+    return:
+      type: System.Nullable{MarketDataCollector.Storage.PartitionDimension}
+    content.vb: Public Property Tertiary As PartitionDimension?
+  overload: MarketDataCollector.Storage.PartitionStrategy.Tertiary*
+- uid: MarketDataCollector.Storage.PartitionStrategy.DateGranularity
+  commentId: P:MarketDataCollector.Storage.PartitionStrategy.DateGranularity
+  id: DateGranularity
+  parent: MarketDataCollector.Storage.PartitionStrategy
+  langs:
+  - csharp
+  - vb
+  name: DateGranularity
+  nameWithType: PartitionStrategy.DateGranularity
+  fullName: MarketDataCollector.Storage.PartitionStrategy.DateGranularity
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DateGranularity
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 323
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  syntax:
+    content: public DatePartition DateGranularity { get; init; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Storage.DatePartition
+    content.vb: Public Property DateGranularity As DatePartition
+  overload: MarketDataCollector.Storage.PartitionStrategy.DateGranularity*
+references:
+- uid: MarketDataCollector.Storage
+  commentId: N:MarketDataCollector.Storage
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage
+  nameWithType: MarketDataCollector.Storage
+  fullName: MarketDataCollector.Storage
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Storage.PartitionStrategy}
+  commentId: T:System.IEquatable{MarketDataCollector.Storage.PartitionStrategy}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<PartitionStrategy>
+  nameWithType: IEquatable<PartitionStrategy>
+  fullName: System.IEquatable<MarketDataCollector.Storage.PartitionStrategy>
+  nameWithType.vb: IEquatable(Of PartitionStrategy)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Storage.PartitionStrategy)
+  name.vb: IEquatable(Of PartitionStrategy)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Storage.PartitionStrategy
+    name: PartitionStrategy
+    href: MarketDataCollector.Storage.PartitionStrategy.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.PartitionStrategy
+    name: PartitionStrategy
+    href: MarketDataCollector.Storage.PartitionStrategy.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Storage.PartitionStrategy.#ctor*
+  commentId: Overload:MarketDataCollector.Storage.PartitionStrategy.#ctor
+  href: MarketDataCollector.Storage.PartitionStrategy.html#MarketDataCollector_Storage_PartitionStrategy__ctor_MarketDataCollector_Storage_PartitionDimension_System_Nullable_MarketDataCollector_Storage_PartitionDimension__System_Nullable_MarketDataCollector_Storage_PartitionDimension__MarketDataCollector_Storage_DatePartition_
+  name: PartitionStrategy
+  nameWithType: PartitionStrategy.PartitionStrategy
+  fullName: MarketDataCollector.Storage.PartitionStrategy.PartitionStrategy
+  nameWithType.vb: PartitionStrategy.New
+  fullName.vb: MarketDataCollector.Storage.PartitionStrategy.New
+  name.vb: New
+- uid: MarketDataCollector.Storage.PartitionDimension
+  commentId: T:MarketDataCollector.Storage.PartitionDimension
+  parent: MarketDataCollector.Storage
+  href: MarketDataCollector.Storage.PartitionDimension.html
+  name: PartitionDimension
+  nameWithType: PartitionDimension
+  fullName: MarketDataCollector.Storage.PartitionDimension
+- uid: System.Nullable{MarketDataCollector.Storage.PartitionDimension}
+  commentId: T:System.Nullable{MarketDataCollector.Storage.PartitionDimension}
+  parent: System
+  definition: System.Nullable`1
+  href: MarketDataCollector.Storage.PartitionDimension.html
+  name: PartitionDimension?
+  nameWithType: PartitionDimension?
+  fullName: MarketDataCollector.Storage.PartitionDimension?
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.PartitionDimension
+    name: PartitionDimension
+    href: MarketDataCollector.Storage.PartitionDimension.html
+  - name: '?'
+  spec.vb:
+  - uid: MarketDataCollector.Storage.PartitionDimension
+    name: PartitionDimension
+    href: MarketDataCollector.Storage.PartitionDimension.html
+  - name: '?'
+- uid: MarketDataCollector.Storage.DatePartition
+  commentId: T:MarketDataCollector.Storage.DatePartition
+  parent: MarketDataCollector.Storage
+  href: MarketDataCollector.Storage.DatePartition.html
+  name: DatePartition
+  nameWithType: DatePartition
+  fullName: MarketDataCollector.Storage.DatePartition
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Storage.PartitionStrategy.Primary*
+  commentId: Overload:MarketDataCollector.Storage.PartitionStrategy.Primary
+  href: MarketDataCollector.Storage.PartitionStrategy.html#MarketDataCollector_Storage_PartitionStrategy_Primary
+  name: Primary
+  nameWithType: PartitionStrategy.Primary
+  fullName: MarketDataCollector.Storage.PartitionStrategy.Primary
+- uid: MarketDataCollector.Storage.PartitionStrategy.Secondary*
+  commentId: Overload:MarketDataCollector.Storage.PartitionStrategy.Secondary
+  href: MarketDataCollector.Storage.PartitionStrategy.html#MarketDataCollector_Storage_PartitionStrategy_Secondary
+  name: Secondary
+  nameWithType: PartitionStrategy.Secondary
+  fullName: MarketDataCollector.Storage.PartitionStrategy.Secondary
+- uid: MarketDataCollector.Storage.PartitionStrategy.Tertiary*
+  commentId: Overload:MarketDataCollector.Storage.PartitionStrategy.Tertiary
+  href: MarketDataCollector.Storage.PartitionStrategy.html#MarketDataCollector_Storage_PartitionStrategy_Tertiary
+  name: Tertiary
+  nameWithType: PartitionStrategy.Tertiary
+  fullName: MarketDataCollector.Storage.PartitionStrategy.Tertiary
+- uid: MarketDataCollector.Storage.PartitionStrategy.DateGranularity*
+  commentId: Overload:MarketDataCollector.Storage.PartitionStrategy.DateGranularity
+  href: MarketDataCollector.Storage.PartitionStrategy.html#MarketDataCollector_Storage_PartitionStrategy_DateGranularity
+  name: DateGranularity
+  nameWithType: PartitionStrategy.DateGranularity
+  fullName: MarketDataCollector.Storage.PartitionStrategy.DateGranularity

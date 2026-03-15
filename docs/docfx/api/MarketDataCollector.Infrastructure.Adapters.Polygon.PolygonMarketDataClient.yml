@@ -1,0 +1,2599 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  id: PolygonMarketDataClient
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon
+  children:
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.#ctor(MarketDataCollector.Domain.Events.IMarketEventPublisher,MarketDataCollector.Domain.Collectors.TradeDataCollector,MarketDataCollector.Domain.Collectors.QuoteCollector,MarketDataCollector.Application.Config.PolygonOptions,MarketDataCollector.Application.Monitoring.IReconnectionMetrics)
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.AuthenticateAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.BuildWebSocketUri
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ConnectAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.Feed
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.HandleMessageAsync(System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.HasValidCredentials
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsConnected
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsEnabled
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsStubMode
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderCapabilities
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderCredentialFields
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderDescription
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderDisplayName
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderId
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderNotes
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderPriority
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderWarnings
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ResubscribeAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeAggregates(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedAggregateSymbols
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedQuoteSymbols
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedTradeSymbols
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscriptionCount
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeAggregates(System.Int32)
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeMarketDepth(System.Int32)
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeTrades(System.Int32)
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UseDelayed
+  langs:
+  - csharp
+  - vb
+  name: PolygonMarketDataClient
+  nameWithType: PolygonMarketDataClient
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PolygonMarketDataClient
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 38
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: >-
+    Polygon.io market data adapter implementing the IMarketDataClient abstraction.
+
+    Supports full WebSocket streaming for trades, quotes, and aggregates.
+
+
+    Extends <xref href="MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase" data-throw-if-not-resolved="false"></xref>, which centralises connection lifecycle,
+
+    resilience (retry + circuit breaker), heartbeat monitoring, and automatic reconnection.
+
+    ~280 LOC of WebSocket boilerplate removed compared to the previous direct implementation.
+
+
+    Current support:
+
+    - Trades: YES (streams "T" messages and forwards to TradeDataCollector)
+
+    - Quotes: YES (streams "Q" messages and forwards to QuoteCollector)
+
+    - Aggregates: YES (streams "A" and "AM" messages for second/minute bars)
+
+
+    Polygon WebSocket Protocol:
+
+    - Endpoint: wss://socket.polygon.io/{feed} (stocks, options, forex, crypto)
+
+    - Auth: Send {"action":"auth","params":"{apiKey}"} after connect
+
+    - Subscribe: {"action":"subscribe","params":"T.AAPL,Q.AAPL"}
+
+    - Message types: T=trade, Q=quote, A=aggregate, AM=minute aggregate
+  example: []
+  syntax:
+    content: >-
+      [DataSource("polygon", "Polygon.io", DataSourceType.Realtime, DataSourceCategory.Aggregator, Priority = 15, Description = "WebSocket streaming from Polygon.io for trades, quotes, and aggregates")]
+
+      [ImplementsAdr("ADR-001", "Polygon.io streaming data provider implementation")]
+
+      [ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+
+      [ImplementsAdr("ADR-005", "Attribute-based provider discovery")]
+
+      public sealed class PolygonMarketDataClient : WebSocketProviderBase, IMarketDataClient, IProviderMetadata, IAsyncDisposable
+    content.vb: >-
+      <DataSource("polygon", "Polygon.io", DataSourceType.Realtime, DataSourceCategory.Aggregator, Priority:=15, Description:="WebSocket streaming from Polygon.io for trades, quotes, and aggregates")>
+
+      <ImplementsAdr("ADR-001", "Polygon.io streaming data provider implementation")>
+
+      <ImplementsAdr("ADR-004", "All async methods support CancellationToken")>
+
+      <ImplementsAdr("ADR-005", "Attribute-based provider discovery")>
+
+      Public NotInheritable Class PolygonMarketDataClient Inherits WebSocketProviderBase Implements IMarketDataClient, IProviderMetadata, IAsyncDisposable
+  inheritance:
+  - System.Object
+  - MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  implements:
+  - MarketDataCollector.Infrastructure.IMarketDataClient
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  - System.IAsyncDisposable
+  inheritedMembers:
+  - MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.DisconnectAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.DisposeAsync
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: MarketDataCollector.Infrastructure.DataSources.DataSourceAttribute
+    ctor: MarketDataCollector.Infrastructure.DataSources.DataSourceAttribute.#ctor(System.String,System.String,MarketDataCollector.Infrastructure.DataSources.DataSourceType,MarketDataCollector.Infrastructure.DataSources.DataSourceCategory)
+    arguments:
+    - type: System.String
+      value: polygon
+    - type: System.String
+      value: Polygon.io
+    - type: MarketDataCollector.Infrastructure.DataSources.DataSourceType
+      value: 0
+    - type: MarketDataCollector.Infrastructure.DataSources.DataSourceCategory
+      value: 2
+    namedArguments:
+    - name: Priority
+      type: System.Int32
+      value: 15
+    - name: Description
+      type: System.String
+      value: WebSocket streaming from Polygon.io for trades, quotes, and aggregates
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-001
+    - type: System.String
+      value: Polygon.io streaming data provider implementation
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-004
+    - type: System.String
+      value: All async methods support CancellationToken
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-005
+    - type: System.String
+      value: Attribute-based provider discovery
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.#ctor(MarketDataCollector.Domain.Events.IMarketEventPublisher,MarketDataCollector.Domain.Collectors.TradeDataCollector,MarketDataCollector.Domain.Collectors.QuoteCollector,MarketDataCollector.Application.Config.PolygonOptions,MarketDataCollector.Application.Monitoring.IReconnectionMetrics)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.#ctor(MarketDataCollector.Domain.Events.IMarketEventPublisher,MarketDataCollector.Domain.Collectors.TradeDataCollector,MarketDataCollector.Domain.Collectors.QuoteCollector,MarketDataCollector.Application.Config.PolygonOptions,MarketDataCollector.Application.Monitoring.IReconnectionMetrics)
+  id: '#ctor(MarketDataCollector.Domain.Events.IMarketEventPublisher,MarketDataCollector.Domain.Collectors.TradeDataCollector,MarketDataCollector.Domain.Collectors.QuoteCollector,MarketDataCollector.Application.Config.PolygonOptions,MarketDataCollector.Application.Monitoring.IReconnectionMetrics)'
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: PolygonMarketDataClient(IMarketEventPublisher, TradeDataCollector, QuoteCollector, PolygonOptions?, IReconnectionMetrics?)
+  nameWithType: PolygonMarketDataClient.PolygonMarketDataClient(IMarketEventPublisher, TradeDataCollector, QuoteCollector, PolygonOptions?, IReconnectionMetrics?)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.PolygonMarketDataClient(MarketDataCollector.Domain.Events.IMarketEventPublisher, MarketDataCollector.Domain.Collectors.TradeDataCollector, MarketDataCollector.Domain.Collectors.QuoteCollector, MarketDataCollector.Application.Config.PolygonOptions?, MarketDataCollector.Application.Monitoring.IReconnectionMetrics?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 63
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Creates a new Polygon market data client.
+  example: []
+  syntax:
+    content: public PolygonMarketDataClient(IMarketEventPublisher publisher, TradeDataCollector tradeCollector, QuoteCollector quoteCollector, PolygonOptions? options = null, IReconnectionMetrics? reconnectionMetrics = null)
+    parameters:
+    - id: publisher
+      type: MarketDataCollector.Domain.Events.IMarketEventPublisher
+      description: Event publisher for heartbeats and status.
+    - id: tradeCollector
+      type: MarketDataCollector.Domain.Collectors.TradeDataCollector
+      description: Collector for trade data.
+    - id: quoteCollector
+      type: MarketDataCollector.Domain.Collectors.QuoteCollector
+      description: Collector for quote data.
+    - id: options
+      type: MarketDataCollector.Application.Config.PolygonOptions
+      description: Polygon configuration options. If null or missing ApiKey, runs in stub mode.
+    - id: reconnectionMetrics
+      type: MarketDataCollector.Application.Monitoring.IReconnectionMetrics
+      description: Unused; kept for backward-compatible constructor signature.
+    content.vb: Public Sub New(publisher As IMarketEventPublisher, tradeCollector As TradeDataCollector, quoteCollector As QuoteCollector, options As PolygonOptions = Nothing, reconnectionMetrics As IReconnectionMetrics = Nothing)
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: If publisher, tradeCollector, or quoteCollector is null.
+  nameWithType.vb: PolygonMarketDataClient.New(IMarketEventPublisher, TradeDataCollector, QuoteCollector, PolygonOptions, IReconnectionMetrics)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.New(MarketDataCollector.Domain.Events.IMarketEventPublisher, MarketDataCollector.Domain.Collectors.TradeDataCollector, MarketDataCollector.Domain.Collectors.QuoteCollector, MarketDataCollector.Application.Config.PolygonOptions, MarketDataCollector.Application.Monitoring.IReconnectionMetrics)
+  name.vb: New(IMarketEventPublisher, TradeDataCollector, QuoteCollector, PolygonOptions, IReconnectionMetrics)
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.HasValidCredentials
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.HasValidCredentials
+  id: HasValidCredentials
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: HasValidCredentials
+  nameWithType: PolygonMarketDataClient.HasValidCredentials
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.HasValidCredentials
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HasValidCredentials
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 103
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Gets whether the client has a valid API key configured.
+  example: []
+  syntax:
+    content: public bool HasValidCredentials { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasValidCredentials As Boolean
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.HasValidCredentials*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsStubMode
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsStubMode
+  id: IsStubMode
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: IsStubMode
+  nameWithType: PolygonMarketDataClient.IsStubMode
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsStubMode
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsStubMode
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 109
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Gets whether the client is operating in stub mode (no real connection).
+  example: []
+  syntax:
+    content: public bool IsStubMode { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsStubMode As Boolean
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsStubMode*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsEnabled
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsEnabled
+  id: IsEnabled
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: IsEnabled
+  nameWithType: PolygonMarketDataClient.IsEnabled
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsEnabled
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsEnabled
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 112
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  example: []
+  syntax:
+    content: public override bool IsEnabled { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides ReadOnly Property IsEnabled As Boolean
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.IsEnabled
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsEnabled*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsConnected
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsConnected
+  id: IsConnected
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: IsConnected
+  nameWithType: PolygonMarketDataClient.IsConnected
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsConnected
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsConnected
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 117
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Gets the current connection state (true when connected or in stub mode).
+  example: []
+  syntax:
+    content: public bool IsConnected { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsConnected As Boolean
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsConnected*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.Feed
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.Feed
+  id: Feed
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: Feed
+  nameWithType: PolygonMarketDataClient.Feed
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.Feed
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Feed
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 122
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Gets the configured feed type (stocks, options, forex, crypto).
+  example: []
+  syntax:
+    content: public string Feed { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Feed As String
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.Feed*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UseDelayed
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UseDelayed
+  id: UseDelayed
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: UseDelayed
+  nameWithType: PolygonMarketDataClient.UseDelayed
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UseDelayed
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UseDelayed
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 127
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Gets whether using delayed (15-minute) data.
+  example: []
+  syntax:
+    content: public bool UseDelayed { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property UseDelayed As Boolean
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UseDelayed*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderId
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderId
+  id: ProviderId
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: ProviderId
+  nameWithType: PolygonMarketDataClient.ProviderId
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderId
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderId
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 132
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Unique identifier for the provider (e.g., "alpaca", "polygon", "yahoo").
+  example: []
+  syntax:
+    content: public override string ProviderId { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Overrides ReadOnly Property ProviderId As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderId
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderId*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderDisplayName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderDisplayName
+  id: ProviderDisplayName
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: ProviderDisplayName
+  nameWithType: PolygonMarketDataClient.ProviderDisplayName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderDisplayName
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderDisplayName
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 135
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Human-readable display name.
+  example: []
+  syntax:
+    content: public override string ProviderDisplayName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Overrides ReadOnly Property ProviderDisplayName As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderDisplayName
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderDisplayName*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderDescription
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderDescription
+  id: ProviderDescription
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: ProviderDescription
+  nameWithType: PolygonMarketDataClient.ProviderDescription
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderDescription
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderDescription
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 138
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Description of the provider and its capabilities.
+  example: []
+  syntax:
+    content: public override string ProviderDescription { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Overrides ReadOnly Property ProviderDescription As String
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderDescription
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderDescription*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderPriority
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderPriority
+  id: ProviderPriority
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: ProviderPriority
+  nameWithType: PolygonMarketDataClient.ProviderPriority
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderPriority
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderPriority
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 141
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Priority for routing and failover (lower = higher priority, tried first).
+  example: []
+  syntax:
+    content: public override int ProviderPriority { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Overrides ReadOnly Property ProviderPriority As Integer
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderPriority
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderPriority*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderCapabilities
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderCapabilities
+  id: ProviderCapabilities
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: ProviderCapabilities
+  nameWithType: PolygonMarketDataClient.ProviderCapabilities
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderCapabilities
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderCapabilities
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 144
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Unified capability flags and metadata for this provider.
+  example: []
+  syntax:
+    content: public override ProviderCapabilities ProviderCapabilities { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities
+    content.vb: Public Overrides ReadOnly Property ProviderCapabilities As ProviderCapabilities
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderCapabilities
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderCapabilities*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderCredentialFields
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderCredentialFields
+  id: ProviderCredentialFields
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: ProviderCredentialFields
+  nameWithType: PolygonMarketDataClient.ProviderCredentialFields
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderCredentialFields
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderCredentialFields
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 156
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  example: []
+  syntax:
+    content: public ProviderCredentialField[] ProviderCredentialFields { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCredentialField[]
+    content.vb: Public ReadOnly Property ProviderCredentialFields As ProviderCredentialField()
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderCredentialFields*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderNotes
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderNotes
+  id: ProviderNotes
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: ProviderNotes
+  nameWithType: PolygonMarketDataClient.ProviderNotes
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderNotes
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderNotes
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 162
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  example: []
+  syntax:
+    content: public string[] ProviderNotes { get; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: Public ReadOnly Property ProviderNotes As String()
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderNotes*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderWarnings
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderWarnings
+  id: ProviderWarnings
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: ProviderWarnings
+  nameWithType: PolygonMarketDataClient.ProviderWarnings
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderWarnings
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderWarnings
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 170
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  example: []
+  syntax:
+    content: public string[] ProviderWarnings { get; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: Public ReadOnly Property ProviderWarnings As String()
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderWarnings*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.BuildWebSocketUri
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.BuildWebSocketUri
+  id: BuildWebSocketUri
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: BuildWebSocketUri()
+  nameWithType: PolygonMarketDataClient.BuildWebSocketUri()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.BuildWebSocketUri()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: BuildWebSocketUri
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 180
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Builds the WebSocket endpoint URI for this provider.
+  example: []
+  syntax:
+    content: protected override Uri BuildWebSocketUri()
+    return:
+      type: System.Uri
+    content.vb: Protected Overrides Function BuildWebSocketUri() As Uri
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.BuildWebSocketUri
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.BuildWebSocketUri*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.AuthenticateAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.AuthenticateAsync(System.Threading.CancellationToken)
+  id: AuthenticateAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: AuthenticateAsync(CancellationToken)
+  nameWithType: PolygonMarketDataClient.AuthenticateAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.AuthenticateAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AuthenticateAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 199
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Sends provider-specific authentication messages after WebSocket connection.
+  remarks: >-
+    Polygon requires a two-step handshake before the receive loop starts:
+
+    1. Read the initial "connected" status message from the server.
+
+    2. Send the API key and read the "auth_success" response.
+
+    Both reads use <xref href="MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ReadOneMessageAsync(System.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref> which reads
+
+    directly from the socket before <xref href="MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionManager.StartReceiveLoop(System.Func%7bSystem.String%2cSystem.Threading.Tasks.Task%7d%2cSystem.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref>
+
+    takes ownership.
+  example: []
+  syntax:
+    content: protected override Task AuthenticateAsync(CancellationToken ct)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Protected Overrides Function AuthenticateAsync(ct As CancellationToken) As Task
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.AuthenticateAsync(System.Threading.CancellationToken)
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.AuthenticateAsync*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.HandleMessageAsync(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.HandleMessageAsync(System.String)
+  id: HandleMessageAsync(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: HandleMessageAsync(string)
+  nameWithType: PolygonMarketDataClient.HandleMessageAsync(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.HandleMessageAsync(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HandleMessageAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 281
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: >-
+    Handles an incoming WebSocket text message.
+
+    Implementations should parse JSON and route to appropriate collectors.
+  example: []
+  syntax:
+    content: protected override Task HandleMessageAsync(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The raw text message from the WebSocket.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Protected Overrides Function HandleMessageAsync(message As String) As Task
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.HandleMessageAsync(System.String)
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.HandleMessageAsync*
+  nameWithType.vb: PolygonMarketDataClient.HandleMessageAsync(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.HandleMessageAsync(String)
+  name.vb: HandleMessageAsync(String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ResubscribeAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ResubscribeAsync(System.Threading.CancellationToken)
+  id: ResubscribeAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: ResubscribeAsync(CancellationToken)
+  nameWithType: PolygonMarketDataClient.ResubscribeAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ResubscribeAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ResubscribeAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 290
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: >-
+    Re-subscribes to all active symbols after a reconnection.
+
+    Called automatically when the connection manager reconnects successfully.
+  example: []
+  syntax:
+    content: protected override Task ResubscribeAsync(CancellationToken ct)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Protected Overrides Function ResubscribeAsync(ct As CancellationToken) As Task
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ResubscribeAsync(System.Threading.CancellationToken)
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ResubscribeAsync*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ConnectAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ConnectAsync(System.Threading.CancellationToken)
+  id: ConnectAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: ConnectAsync(CancellationToken)
+  nameWithType: PolygonMarketDataClient.ConnectAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ConnectAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConnectAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 335
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  remarks: >-
+    Overrides the base implementation to handle stub mode: when no valid API key is
+
+    configured the client emits a synthetic heartbeat and returns without opening
+
+    a real WebSocket connection.
+  example: []
+  syntax:
+    content: public override Task ConnectAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Overrides Function ConnectAsync(ct As CancellationToken = Nothing) As Task
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ConnectAsync(System.Threading.CancellationToken)
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ConnectAsync*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  id: SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: SubscribeMarketDepth(SymbolConfig)
+  nameWithType: PolygonMarketDataClient.SubscribeMarketDepth(SymbolConfig)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SubscribeMarketDepth
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 356
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Subscribe to market depth for the symbol described by cfg.
+  example: []
+  syntax:
+    content: public override int SubscribeMarketDepth(SymbolConfig cfg)
+    parameters:
+    - id: cfg
+      type: MarketDataCollector.Contracts.Configuration.SymbolConfig
+    return:
+      type: System.Int32
+    content.vb: Public Overrides Function SubscribeMarketDepth(cfg As SymbolConfig) As Integer
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeMarketDepth*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeMarketDepth(System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeMarketDepth(System.Int32)
+  id: UnsubscribeMarketDepth(System.Int32)
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: UnsubscribeMarketDepth(int)
+  nameWithType: PolygonMarketDataClient.UnsubscribeMarketDepth(int)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeMarketDepth(int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UnsubscribeMarketDepth
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 385
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Unsubscribe a previously returned depth subscription id.
+  example: []
+  syntax:
+    content: public override void UnsubscribeMarketDepth(int subscriptionId)
+    parameters:
+    - id: subscriptionId
+      type: System.Int32
+    content.vb: Public Overrides Sub UnsubscribeMarketDepth(subscriptionId As Integer)
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.UnsubscribeMarketDepth(System.Int32)
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeMarketDepth*
+  nameWithType.vb: PolygonMarketDataClient.UnsubscribeMarketDepth(Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeMarketDepth(Integer)
+  name.vb: UnsubscribeMarketDepth(Integer)
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  id: SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: SubscribeTrades(SymbolConfig)
+  nameWithType: PolygonMarketDataClient.SubscribeTrades(SymbolConfig)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SubscribeTrades
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 402
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Subscribe to tick-by-tick trade prints for the symbol described by cfg.
+  example: []
+  syntax:
+    content: public override int SubscribeTrades(SymbolConfig cfg)
+    parameters:
+    - id: cfg
+      type: MarketDataCollector.Contracts.Configuration.SymbolConfig
+    return:
+      type: System.Int32
+    content.vb: Public Overrides Function SubscribeTrades(cfg As SymbolConfig) As Integer
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeTrades*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeTrades(System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeTrades(System.Int32)
+  id: UnsubscribeTrades(System.Int32)
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: UnsubscribeTrades(int)
+  nameWithType: PolygonMarketDataClient.UnsubscribeTrades(int)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeTrades(int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UnsubscribeTrades
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 442
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Unsubscribe a previously returned trade subscription id.
+  example: []
+  syntax:
+    content: public override void UnsubscribeTrades(int subscriptionId)
+    parameters:
+    - id: subscriptionId
+      type: System.Int32
+    content.vb: Public Overrides Sub UnsubscribeTrades(subscriptionId As Integer)
+  overridden: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.UnsubscribeTrades(System.Int32)
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeTrades*
+  nameWithType.vb: PolygonMarketDataClient.UnsubscribeTrades(Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeTrades(Integer)
+  name.vb: UnsubscribeTrades(Integer)
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeAggregates(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeAggregates(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  id: SubscribeAggregates(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: SubscribeAggregates(SymbolConfig)
+  nameWithType: PolygonMarketDataClient.SubscribeAggregates(SymbolConfig)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeAggregates(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SubscribeAggregates
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 463
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Subscribes to aggregate bars (second and minute) for the specified symbol.
+  example: []
+  syntax:
+    content: public int SubscribeAggregates(SymbolConfig cfg)
+    parameters:
+    - id: cfg
+      type: MarketDataCollector.Contracts.Configuration.SymbolConfig
+      description: Symbol configuration.
+    return:
+      type: System.Int32
+      description: Subscription ID, or -1 if not supported/not subscribed.
+    content.vb: Public Function SubscribeAggregates(cfg As SymbolConfig) As Integer
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeAggregates*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeAggregates(System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeAggregates(System.Int32)
+  id: UnsubscribeAggregates(System.Int32)
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: UnsubscribeAggregates(int)
+  nameWithType: PolygonMarketDataClient.UnsubscribeAggregates(int)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeAggregates(int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UnsubscribeAggregates
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 493
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Unsubscribes from aggregate bars for the specified subscription.
+  example: []
+  syntax:
+    content: public void UnsubscribeAggregates(int subscriptionId)
+    parameters:
+    - id: subscriptionId
+      type: System.Int32
+    content.vb: Public Sub UnsubscribeAggregates(subscriptionId As Integer)
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeAggregates*
+  nameWithType.vb: PolygonMarketDataClient.UnsubscribeAggregates(Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeAggregates(Integer)
+  name.vb: UnsubscribeAggregates(Integer)
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscriptionCount
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscriptionCount
+  id: SubscriptionCount
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: SubscriptionCount
+  nameWithType: PolygonMarketDataClient.SubscriptionCount
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscriptionCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SubscriptionCount
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 510
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Gets the current subscription count.
+  example: []
+  syntax:
+    content: public int SubscriptionCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SubscriptionCount As Integer
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscriptionCount*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedTradeSymbols
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedTradeSymbols
+  id: SubscribedTradeSymbols
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: SubscribedTradeSymbols
+  nameWithType: PolygonMarketDataClient.SubscribedTradeSymbols
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedTradeSymbols
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SubscribedTradeSymbols
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 513
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Gets the list of currently subscribed trade symbols.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> SubscribedTradeSymbols { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public ReadOnly Property SubscribedTradeSymbols As IReadOnlyList(Of String)
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedTradeSymbols*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedQuoteSymbols
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedQuoteSymbols
+  id: SubscribedQuoteSymbols
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: SubscribedQuoteSymbols
+  nameWithType: PolygonMarketDataClient.SubscribedQuoteSymbols
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedQuoteSymbols
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SubscribedQuoteSymbols
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 516
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Gets the list of currently subscribed quote symbols.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> SubscribedQuoteSymbols { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public ReadOnly Property SubscribedQuoteSymbols As IReadOnlyList(Of String)
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedQuoteSymbols*
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedAggregateSymbols
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedAggregateSymbols
+  id: SubscribedAggregateSymbols
+  parent: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient
+  langs:
+  - csharp
+  - vb
+  name: SubscribedAggregateSymbols
+  nameWithType: PolygonMarketDataClient.SubscribedAggregateSymbols
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedAggregateSymbols
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SubscribedAggregateSymbols
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Polygon/PolygonMarketDataClient.cs
+    startLine: 519
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Polygon
+  summary: Gets the list of currently subscribed aggregate symbols.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> SubscribedAggregateSymbols { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public ReadOnly Property SubscribedAggregateSymbols As IReadOnlyList(Of String)
+  overload: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedAggregateSymbols*
+references:
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html
+  name: WebSocketProviderBase
+  nameWithType: WebSocketProviderBase
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Polygon
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Polygon
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Polygon
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Polygon
+    name: Polygon
+    href: MarketDataCollector.Infrastructure.Adapters.Polygon.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Polygon
+    name: Polygon
+    href: MarketDataCollector.Infrastructure.Adapters.Polygon.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Infrastructure.IMarketDataClient
+  commentId: T:MarketDataCollector.Infrastructure.IMarketDataClient
+  parent: MarketDataCollector.Infrastructure
+  href: MarketDataCollector.Infrastructure.IMarketDataClient.html
+  name: IMarketDataClient
+  nameWithType: IMarketDataClient
+  fullName: MarketDataCollector.Infrastructure.IMarketDataClient
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html
+  name: IProviderMetadata
+  nameWithType: IProviderMetadata
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+- uid: System.IAsyncDisposable
+  commentId: T:System.IAsyncDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
+  name: IAsyncDisposable
+  nameWithType: IAsyncDisposable
+  fullName: System.IAsyncDisposable
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.DisconnectAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.DisconnectAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_DisconnectAsync_System_Threading_CancellationToken_
+  name: DisconnectAsync(CancellationToken)
+  nameWithType: WebSocketProviderBase.DisconnectAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.DisconnectAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.DisconnectAsync(System.Threading.CancellationToken)
+    name: DisconnectAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_DisconnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.DisconnectAsync(System.Threading.CancellationToken)
+    name: DisconnectAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_DisconnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.DisposeAsync
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.DisposeAsync
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_DisposeAsync
+  name: DisposeAsync()
+  nameWithType: WebSocketProviderBase.DisposeAsync()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.DisposeAsync()
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.DisposeAsync
+    name: DisposeAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_DisposeAsync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.DisposeAsync
+    name: DisposeAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_DisposeAsync
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Core
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Core
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Infrastructure
+  commentId: N:MarketDataCollector.Infrastructure
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure
+  nameWithType: MarketDataCollector.Infrastructure
+  fullName: MarketDataCollector.Infrastructure
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.#ctor*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.#ctor
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient__ctor_MarketDataCollector_Domain_Events_IMarketEventPublisher_MarketDataCollector_Domain_Collectors_TradeDataCollector_MarketDataCollector_Domain_Collectors_QuoteCollector_MarketDataCollector_Application_Config_PolygonOptions_MarketDataCollector_Application_Monitoring_IReconnectionMetrics_
+  name: PolygonMarketDataClient
+  nameWithType: PolygonMarketDataClient.PolygonMarketDataClient
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.PolygonMarketDataClient
+  nameWithType.vb: PolygonMarketDataClient.New
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.New
+  name.vb: New
+- uid: MarketDataCollector.Domain.Events.IMarketEventPublisher
+  commentId: T:MarketDataCollector.Domain.Events.IMarketEventPublisher
+  parent: MarketDataCollector.Domain.Events
+  href: MarketDataCollector.Domain.Events.IMarketEventPublisher.html
+  name: IMarketEventPublisher
+  nameWithType: IMarketEventPublisher
+  fullName: MarketDataCollector.Domain.Events.IMarketEventPublisher
+- uid: MarketDataCollector.Domain.Collectors.TradeDataCollector
+  commentId: T:MarketDataCollector.Domain.Collectors.TradeDataCollector
+  parent: MarketDataCollector.Domain.Collectors
+  href: MarketDataCollector.Domain.Collectors.TradeDataCollector.html
+  name: TradeDataCollector
+  nameWithType: TradeDataCollector
+  fullName: MarketDataCollector.Domain.Collectors.TradeDataCollector
+- uid: MarketDataCollector.Domain.Collectors.QuoteCollector
+  commentId: T:MarketDataCollector.Domain.Collectors.QuoteCollector
+  parent: MarketDataCollector.Domain.Collectors
+  href: MarketDataCollector.Domain.Collectors.QuoteCollector.html
+  name: QuoteCollector
+  nameWithType: QuoteCollector
+  fullName: MarketDataCollector.Domain.Collectors.QuoteCollector
+- uid: MarketDataCollector.Application.Config.PolygonOptions
+  commentId: T:MarketDataCollector.Application.Config.PolygonOptions
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.PolygonOptions.html
+  name: PolygonOptions
+  nameWithType: PolygonOptions
+  fullName: MarketDataCollector.Application.Config.PolygonOptions
+- uid: MarketDataCollector.Application.Monitoring.IReconnectionMetrics
+  commentId: T:MarketDataCollector.Application.Monitoring.IReconnectionMetrics
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.IReconnectionMetrics.html
+  name: IReconnectionMetrics
+  nameWithType: IReconnectionMetrics
+  fullName: MarketDataCollector.Application.Monitoring.IReconnectionMetrics
+- uid: MarketDataCollector.Domain.Events
+  commentId: N:MarketDataCollector.Domain.Events
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Events
+  nameWithType: MarketDataCollector.Domain.Events
+  fullName: MarketDataCollector.Domain.Events
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+- uid: MarketDataCollector.Domain.Collectors
+  commentId: N:MarketDataCollector.Domain.Collectors
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Collectors
+  nameWithType: MarketDataCollector.Domain.Collectors
+  fullName: MarketDataCollector.Domain.Collectors
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Collectors
+    name: Collectors
+    href: MarketDataCollector.Domain.Collectors.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Collectors
+    name: Collectors
+    href: MarketDataCollector.Domain.Collectors.html
+- uid: MarketDataCollector.Application.Config
+  commentId: N:MarketDataCollector.Application.Config
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config
+  nameWithType: MarketDataCollector.Application.Config
+  fullName: MarketDataCollector.Application.Config
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+- uid: MarketDataCollector.Application.Monitoring
+  commentId: N:MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring
+  nameWithType: MarketDataCollector.Application.Monitoring
+  fullName: MarketDataCollector.Application.Monitoring
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.HasValidCredentials*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.HasValidCredentials
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_HasValidCredentials
+  name: HasValidCredentials
+  nameWithType: PolygonMarketDataClient.HasValidCredentials
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.HasValidCredentials
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsStubMode*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsStubMode
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_IsStubMode
+  name: IsStubMode
+  nameWithType: PolygonMarketDataClient.IsStubMode
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsStubMode
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.IsEnabled
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.IsEnabled
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_IsEnabled
+  name: IsEnabled
+  nameWithType: WebSocketProviderBase.IsEnabled
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.IsEnabled
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsEnabled*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsEnabled
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_IsEnabled
+  name: IsEnabled
+  nameWithType: PolygonMarketDataClient.IsEnabled
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsEnabled
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsConnected*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsConnected
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_IsConnected
+  name: IsConnected
+  nameWithType: PolygonMarketDataClient.IsConnected
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.IsConnected
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.Feed*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.Feed
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_Feed
+  name: Feed
+  nameWithType: PolygonMarketDataClient.Feed
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.Feed
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UseDelayed*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UseDelayed
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_UseDelayed
+  name: UseDelayed
+  nameWithType: PolygonMarketDataClient.UseDelayed
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UseDelayed
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderId
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderId
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_ProviderId
+  name: ProviderId
+  nameWithType: WebSocketProviderBase.ProviderId
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderId
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderId*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderId
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_ProviderId
+  name: ProviderId
+  nameWithType: PolygonMarketDataClient.ProviderId
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderId
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderDisplayName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderDisplayName
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_ProviderDisplayName
+  name: ProviderDisplayName
+  nameWithType: WebSocketProviderBase.ProviderDisplayName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderDisplayName
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderDisplayName*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderDisplayName
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_ProviderDisplayName
+  name: ProviderDisplayName
+  nameWithType: PolygonMarketDataClient.ProviderDisplayName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderDisplayName
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderDescription
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderDescription
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_ProviderDescription
+  name: ProviderDescription
+  nameWithType: WebSocketProviderBase.ProviderDescription
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderDescription
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderDescription*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderDescription
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_ProviderDescription
+  name: ProviderDescription
+  nameWithType: PolygonMarketDataClient.ProviderDescription
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderDescription
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderPriority
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderPriority
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_ProviderPriority
+  name: ProviderPriority
+  nameWithType: WebSocketProviderBase.ProviderPriority
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderPriority
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderPriority*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderPriority
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_ProviderPriority
+  name: ProviderPriority
+  nameWithType: PolygonMarketDataClient.ProviderPriority
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderPriority
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderCapabilities
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderCapabilities
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_ProviderCapabilities
+  name: ProviderCapabilities
+  nameWithType: WebSocketProviderBase.ProviderCapabilities
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ProviderCapabilities
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderCapabilities*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderCapabilities
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_ProviderCapabilities
+  name: ProviderCapabilities
+  nameWithType: PolygonMarketDataClient.ProviderCapabilities
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderCapabilities
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities.html
+  name: ProviderCapabilities
+  nameWithType: ProviderCapabilities
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderCredentialFields*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderCredentialFields
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_ProviderCredentialFields
+  name: ProviderCredentialFields
+  nameWithType: PolygonMarketDataClient.ProviderCredentialFields
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderCredentialFields
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCredentialField[]
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCredentialField.html
+  name: ProviderCredentialField[]
+  nameWithType: ProviderCredentialField[]
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCredentialField[]
+  nameWithType.vb: ProviderCredentialField()
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCredentialField()
+  name.vb: ProviderCredentialField()
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCredentialField
+    name: ProviderCredentialField
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCredentialField.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCredentialField
+    name: ProviderCredentialField
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCredentialField.html
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderNotes*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderNotes
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_ProviderNotes
+  name: ProviderNotes
+  nameWithType: PolygonMarketDataClient.ProviderNotes
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderNotes
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderWarnings*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderWarnings
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_ProviderWarnings
+  name: ProviderWarnings
+  nameWithType: PolygonMarketDataClient.ProviderWarnings
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ProviderWarnings
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.BuildWebSocketUri
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.BuildWebSocketUri
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_BuildWebSocketUri
+  name: BuildWebSocketUri()
+  nameWithType: WebSocketProviderBase.BuildWebSocketUri()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.BuildWebSocketUri()
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.BuildWebSocketUri
+    name: BuildWebSocketUri
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_BuildWebSocketUri
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.BuildWebSocketUri
+    name: BuildWebSocketUri
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_BuildWebSocketUri
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.BuildWebSocketUri*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.BuildWebSocketUri
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_BuildWebSocketUri
+  name: BuildWebSocketUri
+  nameWithType: PolygonMarketDataClient.BuildWebSocketUri
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.BuildWebSocketUri
+- uid: System.Uri
+  commentId: T:System.Uri
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uri
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ReadOneMessageAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ReadOneMessageAsync(System.Threading.CancellationToken)
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_ReadOneMessageAsync_System_Threading_CancellationToken_
+  name: ReadOneMessageAsync(CancellationToken)
+  nameWithType: WebSocketProviderBase.ReadOneMessageAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ReadOneMessageAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ReadOneMessageAsync(System.Threading.CancellationToken)
+    name: ReadOneMessageAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_ReadOneMessageAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ReadOneMessageAsync(System.Threading.CancellationToken)
+    name: ReadOneMessageAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_ReadOneMessageAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionManager.StartReceiveLoop(System.Func{System.String,System.Threading.Tasks.Task},System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionManager.StartReceiveLoop(System.Func{System.String,System.Threading.Tasks.Task},System.Threading.CancellationToken)
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionManager.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionManager_StartReceiveLoop_System_Func_System_String_System_Threading_Tasks_Task__System_Threading_CancellationToken_
+  name: StartReceiveLoop(Func<string, Task>, CancellationToken)
+  nameWithType: WebSocketConnectionManager.StartReceiveLoop(Func<string, Task>, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionManager.StartReceiveLoop(System.Func<string, System.Threading.Tasks.Task>, System.Threading.CancellationToken)
+  nameWithType.vb: WebSocketConnectionManager.StartReceiveLoop(Func(Of String, Task), CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionManager.StartReceiveLoop(System.Func(Of String, System.Threading.Tasks.Task), System.Threading.CancellationToken)
+  name.vb: StartReceiveLoop(Func(Of String, Task), CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionManager.StartReceiveLoop(System.Func{System.String,System.Threading.Tasks.Task},System.Threading.CancellationToken)
+    name: StartReceiveLoop
+    href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionManager.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionManager_StartReceiveLoop_System_Func_System_String_System_Threading_Tasks_Task__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.Tasks.Task
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionManager.StartReceiveLoop(System.Func{System.String,System.Threading.Tasks.Task},System.Threading.CancellationToken)
+    name: StartReceiveLoop
+    href: MarketDataCollector.Infrastructure.Resilience.WebSocketConnectionManager.html#MarketDataCollector_Infrastructure_Resilience_WebSocketConnectionManager_StartReceiveLoop_System_Func_System_String_System_Threading_Tasks_Task__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.Tasks.Task
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.AuthenticateAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.AuthenticateAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_AuthenticateAsync_System_Threading_CancellationToken_
+  name: AuthenticateAsync(CancellationToken)
+  nameWithType: WebSocketProviderBase.AuthenticateAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.AuthenticateAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.AuthenticateAsync(System.Threading.CancellationToken)
+    name: AuthenticateAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_AuthenticateAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.AuthenticateAsync(System.Threading.CancellationToken)
+    name: AuthenticateAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_AuthenticateAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.AuthenticateAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.AuthenticateAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_AuthenticateAsync_System_Threading_CancellationToken_
+  name: AuthenticateAsync
+  nameWithType: PolygonMarketDataClient.AuthenticateAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.AuthenticateAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.HandleMessageAsync(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.HandleMessageAsync(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_HandleMessageAsync_System_String_
+  name: HandleMessageAsync(string)
+  nameWithType: WebSocketProviderBase.HandleMessageAsync(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.HandleMessageAsync(string)
+  nameWithType.vb: WebSocketProviderBase.HandleMessageAsync(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.HandleMessageAsync(String)
+  name.vb: HandleMessageAsync(String)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.HandleMessageAsync(System.String)
+    name: HandleMessageAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_HandleMessageAsync_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.HandleMessageAsync(System.String)
+    name: HandleMessageAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_HandleMessageAsync_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.HandleMessageAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.HandleMessageAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_HandleMessageAsync_System_String_
+  name: HandleMessageAsync
+  nameWithType: PolygonMarketDataClient.HandleMessageAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.HandleMessageAsync
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ResubscribeAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ResubscribeAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_ResubscribeAsync_System_Threading_CancellationToken_
+  name: ResubscribeAsync(CancellationToken)
+  nameWithType: WebSocketProviderBase.ResubscribeAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ResubscribeAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ResubscribeAsync(System.Threading.CancellationToken)
+    name: ResubscribeAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_ResubscribeAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ResubscribeAsync(System.Threading.CancellationToken)
+    name: ResubscribeAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_ResubscribeAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ResubscribeAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ResubscribeAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_ResubscribeAsync_System_Threading_CancellationToken_
+  name: ResubscribeAsync
+  nameWithType: PolygonMarketDataClient.ResubscribeAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ResubscribeAsync
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ConnectAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ConnectAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_ConnectAsync_System_Threading_CancellationToken_
+  name: ConnectAsync(CancellationToken)
+  nameWithType: WebSocketProviderBase.ConnectAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ConnectAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ConnectAsync(System.Threading.CancellationToken)
+    name: ConnectAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_ConnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.ConnectAsync(System.Threading.CancellationToken)
+    name: ConnectAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_ConnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ConnectAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ConnectAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_ConnectAsync_System_Threading_CancellationToken_
+  name: ConnectAsync
+  nameWithType: PolygonMarketDataClient.ConnectAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.ConnectAsync
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_SubscribeMarketDepth_MarketDataCollector_Contracts_Configuration_SymbolConfig_
+  name: SubscribeMarketDepth(SymbolConfig)
+  nameWithType: WebSocketProviderBase.SubscribeMarketDepth(SymbolConfig)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+    name: SubscribeMarketDepth
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_SubscribeMarketDepth_MarketDataCollector_Contracts_Configuration_SymbolConfig_
+  - name: (
+  - uid: MarketDataCollector.Contracts.Configuration.SymbolConfig
+    name: SymbolConfig
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.SubscribeMarketDepth(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+    name: SubscribeMarketDepth
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_SubscribeMarketDepth_MarketDataCollector_Contracts_Configuration_SymbolConfig_
+  - name: (
+  - uid: MarketDataCollector.Contracts.Configuration.SymbolConfig
+    name: SymbolConfig
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeMarketDepth*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeMarketDepth
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_SubscribeMarketDepth_MarketDataCollector_Contracts_Configuration_SymbolConfig_
+  name: SubscribeMarketDepth
+  nameWithType: PolygonMarketDataClient.SubscribeMarketDepth
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeMarketDepth
+- uid: MarketDataCollector.Contracts.Configuration.SymbolConfig
+  commentId: T:MarketDataCollector.Contracts.Configuration.SymbolConfig
+  parent: MarketDataCollector.Contracts.Configuration
+  href: MarketDataCollector.Contracts.Configuration.SymbolConfig.html
+  name: SymbolConfig
+  nameWithType: SymbolConfig
+  fullName: MarketDataCollector.Contracts.Configuration.SymbolConfig
+- uid: MarketDataCollector.Contracts.Configuration
+  commentId: N:MarketDataCollector.Contracts.Configuration
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Configuration
+  nameWithType: MarketDataCollector.Contracts.Configuration
+  fullName: MarketDataCollector.Contracts.Configuration
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Configuration
+    name: Configuration
+    href: MarketDataCollector.Contracts.Configuration.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Configuration
+    name: Configuration
+    href: MarketDataCollector.Contracts.Configuration.html
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.UnsubscribeMarketDepth(System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.UnsubscribeMarketDepth(System.Int32)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_UnsubscribeMarketDepth_System_Int32_
+  name: UnsubscribeMarketDepth(int)
+  nameWithType: WebSocketProviderBase.UnsubscribeMarketDepth(int)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.UnsubscribeMarketDepth(int)
+  nameWithType.vb: WebSocketProviderBase.UnsubscribeMarketDepth(Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.UnsubscribeMarketDepth(Integer)
+  name.vb: UnsubscribeMarketDepth(Integer)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.UnsubscribeMarketDepth(System.Int32)
+    name: UnsubscribeMarketDepth
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_UnsubscribeMarketDepth_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.UnsubscribeMarketDepth(System.Int32)
+    name: UnsubscribeMarketDepth
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_UnsubscribeMarketDepth_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeMarketDepth*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeMarketDepth
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_UnsubscribeMarketDepth_System_Int32_
+  name: UnsubscribeMarketDepth
+  nameWithType: PolygonMarketDataClient.UnsubscribeMarketDepth
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeMarketDepth
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_SubscribeTrades_MarketDataCollector_Contracts_Configuration_SymbolConfig_
+  name: SubscribeTrades(SymbolConfig)
+  nameWithType: WebSocketProviderBase.SubscribeTrades(SymbolConfig)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+    name: SubscribeTrades
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_SubscribeTrades_MarketDataCollector_Contracts_Configuration_SymbolConfig_
+  - name: (
+  - uid: MarketDataCollector.Contracts.Configuration.SymbolConfig
+    name: SymbolConfig
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.SubscribeTrades(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+    name: SubscribeTrades
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_SubscribeTrades_MarketDataCollector_Contracts_Configuration_SymbolConfig_
+  - name: (
+  - uid: MarketDataCollector.Contracts.Configuration.SymbolConfig
+    name: SymbolConfig
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeTrades*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeTrades
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_SubscribeTrades_MarketDataCollector_Contracts_Configuration_SymbolConfig_
+  name: SubscribeTrades
+  nameWithType: PolygonMarketDataClient.SubscribeTrades
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeTrades
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.UnsubscribeTrades(System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.UnsubscribeTrades(System.Int32)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_UnsubscribeTrades_System_Int32_
+  name: UnsubscribeTrades(int)
+  nameWithType: WebSocketProviderBase.UnsubscribeTrades(int)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.UnsubscribeTrades(int)
+  nameWithType.vb: WebSocketProviderBase.UnsubscribeTrades(Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.UnsubscribeTrades(Integer)
+  name.vb: UnsubscribeTrades(Integer)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.UnsubscribeTrades(System.Int32)
+    name: UnsubscribeTrades
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_UnsubscribeTrades_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.UnsubscribeTrades(System.Int32)
+    name: UnsubscribeTrades
+    href: MarketDataCollector.Infrastructure.Adapters.Core.WebSocketProviderBase.html#MarketDataCollector_Infrastructure_Adapters_Core_WebSocketProviderBase_UnsubscribeTrades_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeTrades*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeTrades
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_UnsubscribeTrades_System_Int32_
+  name: UnsubscribeTrades
+  nameWithType: PolygonMarketDataClient.UnsubscribeTrades
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeTrades
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeAggregates*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeAggregates
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_SubscribeAggregates_MarketDataCollector_Contracts_Configuration_SymbolConfig_
+  name: SubscribeAggregates
+  nameWithType: PolygonMarketDataClient.SubscribeAggregates
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribeAggregates
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeAggregates*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeAggregates
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_UnsubscribeAggregates_System_Int32_
+  name: UnsubscribeAggregates
+  nameWithType: PolygonMarketDataClient.UnsubscribeAggregates
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.UnsubscribeAggregates
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscriptionCount*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscriptionCount
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_SubscriptionCount
+  name: SubscriptionCount
+  nameWithType: PolygonMarketDataClient.SubscriptionCount
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscriptionCount
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedTradeSymbols*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedTradeSymbols
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_SubscribedTradeSymbols
+  name: SubscribedTradeSymbols
+  nameWithType: PolygonMarketDataClient.SubscribedTradeSymbols
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedTradeSymbols
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedQuoteSymbols*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedQuoteSymbols
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_SubscribedQuoteSymbols
+  name: SubscribedQuoteSymbols
+  nameWithType: PolygonMarketDataClient.SubscribedQuoteSymbols
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedQuoteSymbols
+- uid: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedAggregateSymbols*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedAggregateSymbols
+  href: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.html#MarketDataCollector_Infrastructure_Adapters_Polygon_PolygonMarketDataClient_SubscribedAggregateSymbols
+  name: SubscribedAggregateSymbols
+  nameWithType: PolygonMarketDataClient.SubscribedAggregateSymbols
+  fullName: MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonMarketDataClient.SubscribedAggregateSymbols

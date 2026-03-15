@@ -1,0 +1,1183 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Export.ExportRequest
+  commentId: T:MarketDataCollector.Storage.Export.ExportRequest
+  id: ExportRequest
+  parent: MarketDataCollector.Storage.Export
+  children:
+  - MarketDataCollector.Storage.Export.ExportRequest.Aggregation
+  - MarketDataCollector.Storage.Export.ExportRequest.CustomProfile
+  - MarketDataCollector.Storage.Export.ExportRequest.EndDate
+  - MarketDataCollector.Storage.Export.ExportRequest.EventTypes
+  - MarketDataCollector.Storage.Export.ExportRequest.Features
+  - MarketDataCollector.Storage.Export.ExportRequest.IncludeManifest
+  - MarketDataCollector.Storage.Export.ExportRequest.MinQualityScore
+  - MarketDataCollector.Storage.Export.ExportRequest.OutputDirectory
+  - MarketDataCollector.Storage.Export.ExportRequest.OverwriteExisting
+  - MarketDataCollector.Storage.Export.ExportRequest.ProfileId
+  - MarketDataCollector.Storage.Export.ExportRequest.SessionFilter
+  - MarketDataCollector.Storage.Export.ExportRequest.StartDate
+  - MarketDataCollector.Storage.Export.ExportRequest.Symbols
+  - MarketDataCollector.Storage.Export.ExportRequest.ValidateBeforeExport
+  - MarketDataCollector.Storage.Export.ExportRequest.ValidationRules
+  langs:
+  - csharp
+  - vb
+  name: ExportRequest
+  nameWithType: ExportRequest
+  fullName: MarketDataCollector.Storage.Export.ExportRequest
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ExportRequest
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 7
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Request model for export operations.
+  example: []
+  syntax:
+    content: public sealed class ExportRequest
+    content.vb: Public NotInheritable Class ExportRequest
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Storage.Export.ExportRequest.ProfileId
+  commentId: P:MarketDataCollector.Storage.Export.ExportRequest.ProfileId
+  id: ProfileId
+  parent: MarketDataCollector.Storage.Export.ExportRequest
+  langs:
+  - csharp
+  - vb
+  name: ProfileId
+  nameWithType: ExportRequest.ProfileId
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.ProfileId
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProfileId
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 12
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Export profile to use.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("profileId")]
+
+      public string ProfileId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("profileId")>
+
+      Public Property ProfileId As String
+  overload: MarketDataCollector.Storage.Export.ExportRequest.ProfileId*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: profileId
+- uid: MarketDataCollector.Storage.Export.ExportRequest.CustomProfile
+  commentId: P:MarketDataCollector.Storage.Export.ExportRequest.CustomProfile
+  id: CustomProfile
+  parent: MarketDataCollector.Storage.Export.ExportRequest
+  langs:
+  - csharp
+  - vb
+  name: CustomProfile
+  nameWithType: ExportRequest.CustomProfile
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.CustomProfile
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CustomProfile
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 18
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Custom profile (overrides profileId if provided).
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("customProfile")]
+
+      public ExportProfile? CustomProfile { get; set; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Storage.Export.ExportProfile
+    content.vb: >-
+      <JsonPropertyName("customProfile")>
+
+      Public Property CustomProfile As ExportProfile
+  overload: MarketDataCollector.Storage.Export.ExportRequest.CustomProfile*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: customProfile
+- uid: MarketDataCollector.Storage.Export.ExportRequest.Symbols
+  commentId: P:MarketDataCollector.Storage.Export.ExportRequest.Symbols
+  id: Symbols
+  parent: MarketDataCollector.Storage.Export.ExportRequest
+  langs:
+  - csharp
+  - vb
+  name: Symbols
+  nameWithType: ExportRequest.Symbols
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.Symbols
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Symbols
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 24
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Symbols to export (null = all symbols).
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("symbols")]
+
+      public string[]? Symbols { get; set; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: >-
+      <JsonPropertyName("symbols")>
+
+      Public Property Symbols As String()
+  overload: MarketDataCollector.Storage.Export.ExportRequest.Symbols*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: symbols
+- uid: MarketDataCollector.Storage.Export.ExportRequest.EventTypes
+  commentId: P:MarketDataCollector.Storage.Export.ExportRequest.EventTypes
+  id: EventTypes
+  parent: MarketDataCollector.Storage.Export.ExportRequest
+  langs:
+  - csharp
+  - vb
+  name: EventTypes
+  nameWithType: ExportRequest.EventTypes
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.EventTypes
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: EventTypes
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 30
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Event types to export (Trade, Quote, Depth, Bar).
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("eventTypes")]
+
+      public string[] EventTypes { get; set; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: >-
+      <JsonPropertyName("eventTypes")>
+
+      Public Property EventTypes As String()
+  overload: MarketDataCollector.Storage.Export.ExportRequest.EventTypes*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: eventTypes
+- uid: MarketDataCollector.Storage.Export.ExportRequest.StartDate
+  commentId: P:MarketDataCollector.Storage.Export.ExportRequest.StartDate
+  id: StartDate
+  parent: MarketDataCollector.Storage.Export.ExportRequest
+  langs:
+  - csharp
+  - vb
+  name: StartDate
+  nameWithType: ExportRequest.StartDate
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.StartDate
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StartDate
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 36
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Start date for export range.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("startDate")]
+
+      public DateTime StartDate { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: >-
+      <JsonPropertyName("startDate")>
+
+      Public Property StartDate As Date
+  overload: MarketDataCollector.Storage.Export.ExportRequest.StartDate*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: startDate
+- uid: MarketDataCollector.Storage.Export.ExportRequest.EndDate
+  commentId: P:MarketDataCollector.Storage.Export.ExportRequest.EndDate
+  id: EndDate
+  parent: MarketDataCollector.Storage.Export.ExportRequest
+  langs:
+  - csharp
+  - vb
+  name: EndDate
+  nameWithType: ExportRequest.EndDate
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.EndDate
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: EndDate
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 42
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: End date for export range.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("endDate")]
+
+      public DateTime EndDate { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: >-
+      <JsonPropertyName("endDate")>
+
+      Public Property EndDate As Date
+  overload: MarketDataCollector.Storage.Export.ExportRequest.EndDate*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: endDate
+- uid: MarketDataCollector.Storage.Export.ExportRequest.OutputDirectory
+  commentId: P:MarketDataCollector.Storage.Export.ExportRequest.OutputDirectory
+  id: OutputDirectory
+  parent: MarketDataCollector.Storage.Export.ExportRequest
+  langs:
+  - csharp
+  - vb
+  name: OutputDirectory
+  nameWithType: ExportRequest.OutputDirectory
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.OutputDirectory
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OutputDirectory
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 48
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Output directory path.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("outputDirectory")]
+
+      public string OutputDirectory { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("outputDirectory")>
+
+      Public Property OutputDirectory As String
+  overload: MarketDataCollector.Storage.Export.ExportRequest.OutputDirectory*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: outputDirectory
+- uid: MarketDataCollector.Storage.Export.ExportRequest.OverwriteExisting
+  commentId: P:MarketDataCollector.Storage.Export.ExportRequest.OverwriteExisting
+  id: OverwriteExisting
+  parent: MarketDataCollector.Storage.Export.ExportRequest
+  langs:
+  - csharp
+  - vb
+  name: OverwriteExisting
+  nameWithType: ExportRequest.OverwriteExisting
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.OverwriteExisting
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OverwriteExisting
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 54
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Whether to overwrite existing files.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("overwriteExisting")]
+
+      public bool OverwriteExisting { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("overwriteExisting")>
+
+      Public Property OverwriteExisting As Boolean
+  overload: MarketDataCollector.Storage.Export.ExportRequest.OverwriteExisting*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: overwriteExisting
+- uid: MarketDataCollector.Storage.Export.ExportRequest.ValidateBeforeExport
+  commentId: P:MarketDataCollector.Storage.Export.ExportRequest.ValidateBeforeExport
+  id: ValidateBeforeExport
+  parent: MarketDataCollector.Storage.Export.ExportRequest
+  langs:
+  - csharp
+  - vb
+  name: ValidateBeforeExport
+  nameWithType: ExportRequest.ValidateBeforeExport
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.ValidateBeforeExport
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ValidateBeforeExport
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 60
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Whether to validate data before export.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("validateBeforeExport")]
+
+      public bool ValidateBeforeExport { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("validateBeforeExport")>
+
+      Public Property ValidateBeforeExport As Boolean
+  overload: MarketDataCollector.Storage.Export.ExportRequest.ValidateBeforeExport*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: validateBeforeExport
+- uid: MarketDataCollector.Storage.Export.ExportRequest.IncludeManifest
+  commentId: P:MarketDataCollector.Storage.Export.ExportRequest.IncludeManifest
+  id: IncludeManifest
+  parent: MarketDataCollector.Storage.Export.ExportRequest
+  langs:
+  - csharp
+  - vb
+  name: IncludeManifest
+  nameWithType: ExportRequest.IncludeManifest
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.IncludeManifest
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncludeManifest
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 68
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: >-
+    Whether to include a manifest file (lineage_manifest.json) with the export.
+
+    Defaults to true; the manifest documents which files were exported, their
+
+    checksums, record counts, and data-quality metrics.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("includeManifest")]
+
+      public bool IncludeManifest { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("includeManifest")>
+
+      Public Property IncludeManifest As Boolean
+  overload: MarketDataCollector.Storage.Export.ExportRequest.IncludeManifest*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: includeManifest
+- uid: MarketDataCollector.Storage.Export.ExportRequest.ValidationRules
+  commentId: P:MarketDataCollector.Storage.Export.ExportRequest.ValidationRules
+  id: ValidationRules
+  parent: MarketDataCollector.Storage.Export.ExportRequest
+  langs:
+  - csharp
+  - vb
+  name: ValidationRules
+  nameWithType: ExportRequest.ValidationRules
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.ValidationRules
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ValidationRules
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 75
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: >-
+    Overrides the validation rules used for pre-export checks.
+
+    When null the default rules apply (20 % disk headroom, warn on CSV + nested types).
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("validationRules")]
+
+      public ExportValidationRulesRequest? ValidationRules { get; set; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Storage.Export.ExportValidationRulesRequest
+    content.vb: >-
+      <JsonPropertyName("validationRules")>
+
+      Public Property ValidationRules As ExportValidationRulesRequest
+  overload: MarketDataCollector.Storage.Export.ExportRequest.ValidationRules*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: validationRules
+- uid: MarketDataCollector.Storage.Export.ExportRequest.Aggregation
+  commentId: P:MarketDataCollector.Storage.Export.ExportRequest.Aggregation
+  id: Aggregation
+  parent: MarketDataCollector.Storage.Export.ExportRequest
+  langs:
+  - csharp
+  - vb
+  name: Aggregation
+  nameWithType: ExportRequest.Aggregation
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.Aggregation
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Aggregation
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 81
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Time series aggregation settings (null = export raw data).
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("aggregation")]
+
+      public AggregationSettings? Aggregation { get; set; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Storage.Export.AggregationSettings
+    content.vb: >-
+      <JsonPropertyName("aggregation")>
+
+      Public Property Aggregation As AggregationSettings
+  overload: MarketDataCollector.Storage.Export.ExportRequest.Aggregation*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: aggregation
+- uid: MarketDataCollector.Storage.Export.ExportRequest.Features
+  commentId: P:MarketDataCollector.Storage.Export.ExportRequest.Features
+  id: Features
+  parent: MarketDataCollector.Storage.Export.ExportRequest
+  langs:
+  - csharp
+  - vb
+  name: Features
+  nameWithType: ExportRequest.Features
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.Features
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Features
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 87
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Feature engineering settings.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("features")]
+
+      public FeatureSettings? Features { get; set; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Storage.Export.FeatureSettings
+    content.vb: >-
+      <JsonPropertyName("features")>
+
+      Public Property Features As FeatureSettings
+  overload: MarketDataCollector.Storage.Export.ExportRequest.Features*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: features
+- uid: MarketDataCollector.Storage.Export.ExportRequest.MinQualityScore
+  commentId: P:MarketDataCollector.Storage.Export.ExportRequest.MinQualityScore
+  id: MinQualityScore
+  parent: MarketDataCollector.Storage.Export.ExportRequest
+  langs:
+  - csharp
+  - vb
+  name: MinQualityScore
+  nameWithType: ExportRequest.MinQualityScore
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.MinQualityScore
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MinQualityScore
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 93
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Quality threshold (0-1). Exclude data below this quality score.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("minQualityScore")]
+
+      public double? MinQualityScore { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: >-
+      <JsonPropertyName("minQualityScore")>
+
+      Public Property MinQualityScore As Double?
+  overload: MarketDataCollector.Storage.Export.ExportRequest.MinQualityScore*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: minQualityScore
+- uid: MarketDataCollector.Storage.Export.ExportRequest.SessionFilter
+  commentId: P:MarketDataCollector.Storage.Export.ExportRequest.SessionFilter
+  id: SessionFilter
+  parent: MarketDataCollector.Storage.Export.ExportRequest
+  langs:
+  - csharp
+  - vb
+  name: SessionFilter
+  nameWithType: ExportRequest.SessionFilter
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.SessionFilter
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SessionFilter
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 99
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Session filter (include only regular market hours, etc.)
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("sessionFilter")]
+
+      public SessionFilter SessionFilter { get; set; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Storage.Export.SessionFilter
+    content.vb: >-
+      <JsonPropertyName("sessionFilter")>
+
+      Public Property SessionFilter As SessionFilter
+  overload: MarketDataCollector.Storage.Export.ExportRequest.SessionFilter*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: sessionFilter
+references:
+- uid: MarketDataCollector.Storage.Export
+  commentId: N:MarketDataCollector.Storage.Export
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Export
+  nameWithType: MarketDataCollector.Storage.Export
+  fullName: MarketDataCollector.Storage.Export
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Export
+    name: Export
+    href: MarketDataCollector.Storage.Export.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Export
+    name: Export
+    href: MarketDataCollector.Storage.Export.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Storage.Export.ExportRequest.ProfileId*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportRequest.ProfileId
+  href: MarketDataCollector.Storage.Export.ExportRequest.html#MarketDataCollector_Storage_Export_ExportRequest_ProfileId
+  name: ProfileId
+  nameWithType: ExportRequest.ProfileId
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.ProfileId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Storage.Export.ExportRequest.CustomProfile*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportRequest.CustomProfile
+  href: MarketDataCollector.Storage.Export.ExportRequest.html#MarketDataCollector_Storage_Export_ExportRequest_CustomProfile
+  name: CustomProfile
+  nameWithType: ExportRequest.CustomProfile
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.CustomProfile
+- uid: MarketDataCollector.Storage.Export.ExportProfile
+  commentId: T:MarketDataCollector.Storage.Export.ExportProfile
+  parent: MarketDataCollector.Storage.Export
+  href: MarketDataCollector.Storage.Export.ExportProfile.html
+  name: ExportProfile
+  nameWithType: ExportProfile
+  fullName: MarketDataCollector.Storage.Export.ExportProfile
+- uid: MarketDataCollector.Storage.Export.ExportRequest.Symbols*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportRequest.Symbols
+  href: MarketDataCollector.Storage.Export.ExportRequest.html#MarketDataCollector_Storage_Export_ExportRequest_Symbols
+  name: Symbols
+  nameWithType: ExportRequest.Symbols
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.Symbols
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Storage.Export.ExportRequest.EventTypes*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportRequest.EventTypes
+  href: MarketDataCollector.Storage.Export.ExportRequest.html#MarketDataCollector_Storage_Export_ExportRequest_EventTypes
+  name: EventTypes
+  nameWithType: ExportRequest.EventTypes
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.EventTypes
+- uid: MarketDataCollector.Storage.Export.ExportRequest.StartDate*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportRequest.StartDate
+  href: MarketDataCollector.Storage.Export.ExportRequest.html#MarketDataCollector_Storage_Export_ExportRequest_StartDate
+  name: StartDate
+  nameWithType: ExportRequest.StartDate
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.StartDate
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: MarketDataCollector.Storage.Export.ExportRequest.EndDate*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportRequest.EndDate
+  href: MarketDataCollector.Storage.Export.ExportRequest.html#MarketDataCollector_Storage_Export_ExportRequest_EndDate
+  name: EndDate
+  nameWithType: ExportRequest.EndDate
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.EndDate
+- uid: MarketDataCollector.Storage.Export.ExportRequest.OutputDirectory*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportRequest.OutputDirectory
+  href: MarketDataCollector.Storage.Export.ExportRequest.html#MarketDataCollector_Storage_Export_ExportRequest_OutputDirectory
+  name: OutputDirectory
+  nameWithType: ExportRequest.OutputDirectory
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.OutputDirectory
+- uid: MarketDataCollector.Storage.Export.ExportRequest.OverwriteExisting*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportRequest.OverwriteExisting
+  href: MarketDataCollector.Storage.Export.ExportRequest.html#MarketDataCollector_Storage_Export_ExportRequest_OverwriteExisting
+  name: OverwriteExisting
+  nameWithType: ExportRequest.OverwriteExisting
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.OverwriteExisting
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Storage.Export.ExportRequest.ValidateBeforeExport*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportRequest.ValidateBeforeExport
+  href: MarketDataCollector.Storage.Export.ExportRequest.html#MarketDataCollector_Storage_Export_ExportRequest_ValidateBeforeExport
+  name: ValidateBeforeExport
+  nameWithType: ExportRequest.ValidateBeforeExport
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.ValidateBeforeExport
+- uid: MarketDataCollector.Storage.Export.ExportRequest.IncludeManifest*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportRequest.IncludeManifest
+  href: MarketDataCollector.Storage.Export.ExportRequest.html#MarketDataCollector_Storage_Export_ExportRequest_IncludeManifest
+  name: IncludeManifest
+  nameWithType: ExportRequest.IncludeManifest
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.IncludeManifest
+- uid: MarketDataCollector.Storage.Export.ExportRequest.ValidationRules*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportRequest.ValidationRules
+  href: MarketDataCollector.Storage.Export.ExportRequest.html#MarketDataCollector_Storage_Export_ExportRequest_ValidationRules
+  name: ValidationRules
+  nameWithType: ExportRequest.ValidationRules
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.ValidationRules
+- uid: MarketDataCollector.Storage.Export.ExportValidationRulesRequest
+  commentId: T:MarketDataCollector.Storage.Export.ExportValidationRulesRequest
+  parent: MarketDataCollector.Storage.Export
+  href: MarketDataCollector.Storage.Export.ExportValidationRulesRequest.html
+  name: ExportValidationRulesRequest
+  nameWithType: ExportValidationRulesRequest
+  fullName: MarketDataCollector.Storage.Export.ExportValidationRulesRequest
+- uid: MarketDataCollector.Storage.Export.ExportRequest.Aggregation*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportRequest.Aggregation
+  href: MarketDataCollector.Storage.Export.ExportRequest.html#MarketDataCollector_Storage_Export_ExportRequest_Aggregation
+  name: Aggregation
+  nameWithType: ExportRequest.Aggregation
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.Aggregation
+- uid: MarketDataCollector.Storage.Export.AggregationSettings
+  commentId: T:MarketDataCollector.Storage.Export.AggregationSettings
+  parent: MarketDataCollector.Storage.Export
+  href: MarketDataCollector.Storage.Export.AggregationSettings.html
+  name: AggregationSettings
+  nameWithType: AggregationSettings
+  fullName: MarketDataCollector.Storage.Export.AggregationSettings
+- uid: MarketDataCollector.Storage.Export.ExportRequest.Features*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportRequest.Features
+  href: MarketDataCollector.Storage.Export.ExportRequest.html#MarketDataCollector_Storage_Export_ExportRequest_Features
+  name: Features
+  nameWithType: ExportRequest.Features
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.Features
+- uid: MarketDataCollector.Storage.Export.FeatureSettings
+  commentId: T:MarketDataCollector.Storage.Export.FeatureSettings
+  parent: MarketDataCollector.Storage.Export
+  href: MarketDataCollector.Storage.Export.FeatureSettings.html
+  name: FeatureSettings
+  nameWithType: FeatureSettings
+  fullName: MarketDataCollector.Storage.Export.FeatureSettings
+- uid: MarketDataCollector.Storage.Export.ExportRequest.MinQualityScore*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportRequest.MinQualityScore
+  href: MarketDataCollector.Storage.Export.ExportRequest.html#MarketDataCollector_Storage_Export_ExportRequest_MinQualityScore
+  name: MinQualityScore
+  nameWithType: ExportRequest.MinQualityScore
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.MinQualityScore
+- uid: System.Nullable{System.Double}
+  commentId: T:System.Nullable{System.Double}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double?
+  nameWithType: double?
+  fullName: double?
+  nameWithType.vb: Double?
+  fullName.vb: Double?
+  name.vb: Double?
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Storage.Export.ExportRequest.SessionFilter*
+  commentId: Overload:MarketDataCollector.Storage.Export.ExportRequest.SessionFilter
+  href: MarketDataCollector.Storage.Export.ExportRequest.html#MarketDataCollector_Storage_Export_ExportRequest_SessionFilter
+  name: SessionFilter
+  nameWithType: ExportRequest.SessionFilter
+  fullName: MarketDataCollector.Storage.Export.ExportRequest.SessionFilter
+- uid: MarketDataCollector.Storage.Export.SessionFilter
+  commentId: T:MarketDataCollector.Storage.Export.SessionFilter
+  parent: MarketDataCollector.Storage.Export
+  href: MarketDataCollector.Storage.Export.SessionFilter.html
+  name: SessionFilter
+  nameWithType: SessionFilter
+  fullName: MarketDataCollector.Storage.Export.SessionFilter

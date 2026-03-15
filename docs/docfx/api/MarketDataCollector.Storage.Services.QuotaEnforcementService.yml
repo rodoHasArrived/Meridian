@@ -1,0 +1,1018 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Services.QuotaEnforcementService
+  commentId: T:MarketDataCollector.Storage.Services.QuotaEnforcementService
+  id: QuotaEnforcementService
+  parent: MarketDataCollector.Storage.Services
+  children:
+  - MarketDataCollector.Storage.Services.QuotaEnforcementService.#ctor(MarketDataCollector.Storage.StorageOptions,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.QuotaEnforcementService},MarketDataCollector.Storage.Interfaces.ISourceRegistry)
+  - MarketDataCollector.Storage.Services.QuotaEnforcementService.CheckQuota(System.String,System.String,System.String,System.Int64)
+  - MarketDataCollector.Storage.Services.QuotaEnforcementService.GetStatus
+  - MarketDataCollector.Storage.Services.QuotaEnforcementService.RecordUsage(System.String,System.Int64)
+  - MarketDataCollector.Storage.Services.QuotaEnforcementService.ScanAndUpdateAsync(System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: QuotaEnforcementService
+  nameWithType: QuotaEnforcementService
+  fullName: MarketDataCollector.Storage.Services.QuotaEnforcementService
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/QuotaEnforcementService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: QuotaEnforcementService
+    path: ../../src/MarketDataCollector.Storage/Services/QuotaEnforcementService.cs
+    startLine: 12
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  summary: >-
+    Service that enforces per-source, per-symbol, and per-event-type storage quotas.
+
+    Tracks usage in real-time and applies configured enforcement policies when quotas are exceeded.
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-002", "Capacity management with quota enforcement")]
+
+      public sealed class QuotaEnforcementService : IQuotaEnforcementService
+    content.vb: >-
+      <ImplementsAdr("ADR-002", "Capacity management with quota enforcement")>
+
+      Public NotInheritable Class QuotaEnforcementService Implements IQuotaEnforcementService
+  inheritance:
+  - System.Object
+  implements:
+  - MarketDataCollector.Storage.Services.IQuotaEnforcementService
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-002
+    - type: System.String
+      value: Capacity management with quota enforcement
+- uid: MarketDataCollector.Storage.Services.QuotaEnforcementService.#ctor(MarketDataCollector.Storage.StorageOptions,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.QuotaEnforcementService},MarketDataCollector.Storage.Interfaces.ISourceRegistry)
+  commentId: M:MarketDataCollector.Storage.Services.QuotaEnforcementService.#ctor(MarketDataCollector.Storage.StorageOptions,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.QuotaEnforcementService},MarketDataCollector.Storage.Interfaces.ISourceRegistry)
+  id: '#ctor(MarketDataCollector.Storage.StorageOptions,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.QuotaEnforcementService},MarketDataCollector.Storage.Interfaces.ISourceRegistry)'
+  parent: MarketDataCollector.Storage.Services.QuotaEnforcementService
+  langs:
+  - csharp
+  - vb
+  name: QuotaEnforcementService(StorageOptions, ILogger<QuotaEnforcementService>, ISourceRegistry?)
+  nameWithType: QuotaEnforcementService.QuotaEnforcementService(StorageOptions, ILogger<QuotaEnforcementService>, ISourceRegistry?)
+  fullName: MarketDataCollector.Storage.Services.QuotaEnforcementService.QuotaEnforcementService(MarketDataCollector.Storage.StorageOptions, Microsoft.Extensions.Logging.ILogger<MarketDataCollector.Storage.Services.QuotaEnforcementService>, MarketDataCollector.Storage.Interfaces.ISourceRegistry?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/QuotaEnforcementService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Storage/Services/QuotaEnforcementService.cs
+    startLine: 28
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public QuotaEnforcementService(StorageOptions options, ILogger<QuotaEnforcementService> logger, ISourceRegistry? sourceRegistry = null)
+    parameters:
+    - id: options
+      type: MarketDataCollector.Storage.StorageOptions
+    - id: logger
+      type: Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.QuotaEnforcementService}
+    - id: sourceRegistry
+      type: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+    content.vb: Public Sub New(options As StorageOptions, logger As ILogger(Of QuotaEnforcementService), sourceRegistry As ISourceRegistry = Nothing)
+  overload: MarketDataCollector.Storage.Services.QuotaEnforcementService.#ctor*
+  nameWithType.vb: QuotaEnforcementService.New(StorageOptions, ILogger(Of QuotaEnforcementService), ISourceRegistry)
+  fullName.vb: MarketDataCollector.Storage.Services.QuotaEnforcementService.New(MarketDataCollector.Storage.StorageOptions, Microsoft.Extensions.Logging.ILogger(Of MarketDataCollector.Storage.Services.QuotaEnforcementService), MarketDataCollector.Storage.Interfaces.ISourceRegistry)
+  name.vb: New(StorageOptions, ILogger(Of QuotaEnforcementService), ISourceRegistry)
+- uid: MarketDataCollector.Storage.Services.QuotaEnforcementService.CheckQuota(System.String,System.String,System.String,System.Int64)
+  commentId: M:MarketDataCollector.Storage.Services.QuotaEnforcementService.CheckQuota(System.String,System.String,System.String,System.Int64)
+  id: CheckQuota(System.String,System.String,System.String,System.Int64)
+  parent: MarketDataCollector.Storage.Services.QuotaEnforcementService
+  langs:
+  - csharp
+  - vb
+  name: CheckQuota(string, string, string, long)
+  nameWithType: QuotaEnforcementService.CheckQuota(string, string, string, long)
+  fullName: MarketDataCollector.Storage.Services.QuotaEnforcementService.CheckQuota(string, string, string, long)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/QuotaEnforcementService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CheckQuota
+    path: ../../src/MarketDataCollector.Storage/Services/QuotaEnforcementService.cs
+    startLine: 40
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  example: []
+  syntax:
+    content: public QuotaCheckResult CheckQuota(string symbol, string source, string eventType, long additionalBytes)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: source
+      type: System.String
+    - id: eventType
+      type: System.String
+    - id: additionalBytes
+      type: System.Int64
+    return:
+      type: MarketDataCollector.Storage.Services.QuotaCheckResult
+    content.vb: Public Function CheckQuota(symbol As String, source As String, eventType As String, additionalBytes As Long) As QuotaCheckResult
+  overload: MarketDataCollector.Storage.Services.QuotaEnforcementService.CheckQuota*
+  implements:
+  - MarketDataCollector.Storage.Services.IQuotaEnforcementService.CheckQuota(System.String,System.String,System.String,System.Int64)
+  nameWithType.vb: QuotaEnforcementService.CheckQuota(String, String, String, Long)
+  fullName.vb: MarketDataCollector.Storage.Services.QuotaEnforcementService.CheckQuota(String, String, String, Long)
+  name.vb: CheckQuota(String, String, String, Long)
+- uid: MarketDataCollector.Storage.Services.QuotaEnforcementService.RecordUsage(System.String,System.Int64)
+  commentId: M:MarketDataCollector.Storage.Services.QuotaEnforcementService.RecordUsage(System.String,System.Int64)
+  id: RecordUsage(System.String,System.Int64)
+  parent: MarketDataCollector.Storage.Services.QuotaEnforcementService
+  langs:
+  - csharp
+  - vb
+  name: RecordUsage(string, long)
+  nameWithType: QuotaEnforcementService.RecordUsage(string, long)
+  fullName: MarketDataCollector.Storage.Services.QuotaEnforcementService.RecordUsage(string, long)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/QuotaEnforcementService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecordUsage
+    path: ../../src/MarketDataCollector.Storage/Services/QuotaEnforcementService.cs
+    startLine: 100
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  example: []
+  syntax:
+    content: public void RecordUsage(string filePath, long bytes)
+    parameters:
+    - id: filePath
+      type: System.String
+    - id: bytes
+      type: System.Int64
+    content.vb: Public Sub RecordUsage(filePath As String, bytes As Long)
+  overload: MarketDataCollector.Storage.Services.QuotaEnforcementService.RecordUsage*
+  implements:
+  - MarketDataCollector.Storage.Services.IQuotaEnforcementService.RecordUsage(System.String,System.Int64)
+  nameWithType.vb: QuotaEnforcementService.RecordUsage(String, Long)
+  fullName.vb: MarketDataCollector.Storage.Services.QuotaEnforcementService.RecordUsage(String, Long)
+  name.vb: RecordUsage(String, Long)
+- uid: MarketDataCollector.Storage.Services.QuotaEnforcementService.ScanAndUpdateAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.QuotaEnforcementService.ScanAndUpdateAsync(System.Threading.CancellationToken)
+  id: ScanAndUpdateAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.QuotaEnforcementService
+  langs:
+  - csharp
+  - vb
+  name: ScanAndUpdateAsync(CancellationToken)
+  nameWithType: QuotaEnforcementService.ScanAndUpdateAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.QuotaEnforcementService.ScanAndUpdateAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/QuotaEnforcementService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ScanAndUpdateAsync
+    path: ../../src/MarketDataCollector.Storage/Services/QuotaEnforcementService.cs
+    startLine: 129
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  example: []
+  syntax:
+    content: public Task<QuotaScanResult> ScanAndUpdateAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.QuotaScanResult}
+    content.vb: Public Function ScanAndUpdateAsync(ct As CancellationToken = Nothing) As Task(Of QuotaScanResult)
+  overload: MarketDataCollector.Storage.Services.QuotaEnforcementService.ScanAndUpdateAsync*
+  implements:
+  - MarketDataCollector.Storage.Services.IQuotaEnforcementService.ScanAndUpdateAsync(System.Threading.CancellationToken)
+- uid: MarketDataCollector.Storage.Services.QuotaEnforcementService.GetStatus
+  commentId: M:MarketDataCollector.Storage.Services.QuotaEnforcementService.GetStatus
+  id: GetStatus
+  parent: MarketDataCollector.Storage.Services.QuotaEnforcementService
+  langs:
+  - csharp
+  - vb
+  name: GetStatus()
+  nameWithType: QuotaEnforcementService.GetStatus()
+  fullName: MarketDataCollector.Storage.Services.QuotaEnforcementService.GetStatus()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/QuotaEnforcementService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetStatus
+    path: ../../src/MarketDataCollector.Storage/Services/QuotaEnforcementService.cs
+    startLine: 181
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  example: []
+  syntax:
+    content: public QuotaStatusReport GetStatus()
+    return:
+      type: MarketDataCollector.Storage.Services.QuotaStatusReport
+    content.vb: Public Function GetStatus() As QuotaStatusReport
+  overload: MarketDataCollector.Storage.Services.QuotaEnforcementService.GetStatus*
+  implements:
+  - MarketDataCollector.Storage.Services.IQuotaEnforcementService.GetStatus
+references:
+- uid: MarketDataCollector.Storage.Services
+  commentId: N:MarketDataCollector.Storage.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Services
+  nameWithType: MarketDataCollector.Storage.Services
+  fullName: MarketDataCollector.Storage.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Storage.Services.IQuotaEnforcementService
+  commentId: T:MarketDataCollector.Storage.Services.IQuotaEnforcementService
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.IQuotaEnforcementService.html
+  name: IQuotaEnforcementService
+  nameWithType: IQuotaEnforcementService
+  fullName: MarketDataCollector.Storage.Services.IQuotaEnforcementService
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Storage.Services.QuotaEnforcementService.#ctor*
+  commentId: Overload:MarketDataCollector.Storage.Services.QuotaEnforcementService.#ctor
+  href: MarketDataCollector.Storage.Services.QuotaEnforcementService.html#MarketDataCollector_Storage_Services_QuotaEnforcementService__ctor_MarketDataCollector_Storage_StorageOptions_Microsoft_Extensions_Logging_ILogger_MarketDataCollector_Storage_Services_QuotaEnforcementService__MarketDataCollector_Storage_Interfaces_ISourceRegistry_
+  name: QuotaEnforcementService
+  nameWithType: QuotaEnforcementService.QuotaEnforcementService
+  fullName: MarketDataCollector.Storage.Services.QuotaEnforcementService.QuotaEnforcementService
+  nameWithType.vb: QuotaEnforcementService.New
+  fullName.vb: MarketDataCollector.Storage.Services.QuotaEnforcementService.New
+  name.vb: New
+- uid: MarketDataCollector.Storage.StorageOptions
+  commentId: T:MarketDataCollector.Storage.StorageOptions
+  parent: MarketDataCollector.Storage
+  href: MarketDataCollector.Storage.StorageOptions.html
+  name: StorageOptions
+  nameWithType: StorageOptions
+  fullName: MarketDataCollector.Storage.StorageOptions
+- uid: Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.QuotaEnforcementService}
+  commentId: T:Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Services.QuotaEnforcementService}
+  parent: Microsoft.Extensions.Logging
+  definition: Microsoft.Extensions.Logging.ILogger`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<QuotaEnforcementService>
+  nameWithType: ILogger<QuotaEnforcementService>
+  fullName: Microsoft.Extensions.Logging.ILogger<MarketDataCollector.Storage.Services.QuotaEnforcementService>
+  nameWithType.vb: ILogger(Of QuotaEnforcementService)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of MarketDataCollector.Storage.Services.QuotaEnforcementService)
+  name.vb: ILogger(Of QuotaEnforcementService)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.QuotaEnforcementService
+    name: QuotaEnforcementService
+    href: MarketDataCollector.Storage.Services.QuotaEnforcementService.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.QuotaEnforcementService
+    name: QuotaEnforcementService
+    href: MarketDataCollector.Storage.Services.QuotaEnforcementService.html
+  - name: )
+- uid: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+  commentId: T:MarketDataCollector.Storage.Interfaces.ISourceRegistry
+  parent: MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.Storage.Interfaces.ISourceRegistry.html
+  name: ISourceRegistry
+  nameWithType: ISourceRegistry
+  fullName: MarketDataCollector.Storage.Interfaces.ISourceRegistry
+- uid: MarketDataCollector.Storage
+  commentId: N:MarketDataCollector.Storage
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage
+  nameWithType: MarketDataCollector.Storage
+  fullName: MarketDataCollector.Storage
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+- uid: Microsoft.Extensions.Logging.ILogger`1
+  commentId: T:Microsoft.Extensions.Logging.ILogger`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<TCategoryName>
+  nameWithType: ILogger<TCategoryName>
+  fullName: Microsoft.Extensions.Logging.ILogger<TCategoryName>
+  nameWithType.vb: ILogger(Of TCategoryName)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of TCategoryName)
+  name.vb: ILogger(Of TCategoryName)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - name: TCategoryName
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TCategoryName
+  - name: )
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: MarketDataCollector.Storage.Interfaces
+  commentId: N:MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Interfaces
+  nameWithType: MarketDataCollector.Storage.Interfaces
+  fullName: MarketDataCollector.Storage.Interfaces
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Interfaces
+    name: Interfaces
+    href: MarketDataCollector.Storage.Interfaces.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Interfaces
+    name: Interfaces
+    href: MarketDataCollector.Storage.Interfaces.html
+- uid: MarketDataCollector.Storage.Services.QuotaEnforcementService.CheckQuota*
+  commentId: Overload:MarketDataCollector.Storage.Services.QuotaEnforcementService.CheckQuota
+  href: MarketDataCollector.Storage.Services.QuotaEnforcementService.html#MarketDataCollector_Storage_Services_QuotaEnforcementService_CheckQuota_System_String_System_String_System_String_System_Int64_
+  name: CheckQuota
+  nameWithType: QuotaEnforcementService.CheckQuota
+  fullName: MarketDataCollector.Storage.Services.QuotaEnforcementService.CheckQuota
+- uid: MarketDataCollector.Storage.Services.IQuotaEnforcementService.CheckQuota(System.String,System.String,System.String,System.Int64)
+  commentId: M:MarketDataCollector.Storage.Services.IQuotaEnforcementService.CheckQuota(System.String,System.String,System.String,System.Int64)
+  parent: MarketDataCollector.Storage.Services.IQuotaEnforcementService
+  isExternal: true
+  href: MarketDataCollector.Storage.Services.IQuotaEnforcementService.html#MarketDataCollector_Storage_Services_IQuotaEnforcementService_CheckQuota_System_String_System_String_System_String_System_Int64_
+  name: CheckQuota(string, string, string, long)
+  nameWithType: IQuotaEnforcementService.CheckQuota(string, string, string, long)
+  fullName: MarketDataCollector.Storage.Services.IQuotaEnforcementService.CheckQuota(string, string, string, long)
+  nameWithType.vb: IQuotaEnforcementService.CheckQuota(String, String, String, Long)
+  fullName.vb: MarketDataCollector.Storage.Services.IQuotaEnforcementService.CheckQuota(String, String, String, Long)
+  name.vb: CheckQuota(String, String, String, Long)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Services.IQuotaEnforcementService.CheckQuota(System.String,System.String,System.String,System.Int64)
+    name: CheckQuota
+    href: MarketDataCollector.Storage.Services.IQuotaEnforcementService.html#MarketDataCollector_Storage_Services_IQuotaEnforcementService_CheckQuota_System_String_System_String_System_String_System_Int64_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Services.IQuotaEnforcementService.CheckQuota(System.String,System.String,System.String,System.Int64)
+    name: CheckQuota
+    href: MarketDataCollector.Storage.Services.IQuotaEnforcementService.html#MarketDataCollector_Storage_Services_IQuotaEnforcementService_CheckQuota_System_String_System_String_System_String_System_Int64_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Storage.Services.QuotaCheckResult
+  commentId: T:MarketDataCollector.Storage.Services.QuotaCheckResult
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.QuotaCheckResult.html
+  name: QuotaCheckResult
+  nameWithType: QuotaCheckResult
+  fullName: MarketDataCollector.Storage.Services.QuotaCheckResult
+- uid: MarketDataCollector.Storage.Services.QuotaEnforcementService.RecordUsage*
+  commentId: Overload:MarketDataCollector.Storage.Services.QuotaEnforcementService.RecordUsage
+  href: MarketDataCollector.Storage.Services.QuotaEnforcementService.html#MarketDataCollector_Storage_Services_QuotaEnforcementService_RecordUsage_System_String_System_Int64_
+  name: RecordUsage
+  nameWithType: QuotaEnforcementService.RecordUsage
+  fullName: MarketDataCollector.Storage.Services.QuotaEnforcementService.RecordUsage
+- uid: MarketDataCollector.Storage.Services.IQuotaEnforcementService.RecordUsage(System.String,System.Int64)
+  commentId: M:MarketDataCollector.Storage.Services.IQuotaEnforcementService.RecordUsage(System.String,System.Int64)
+  parent: MarketDataCollector.Storage.Services.IQuotaEnforcementService
+  isExternal: true
+  href: MarketDataCollector.Storage.Services.IQuotaEnforcementService.html#MarketDataCollector_Storage_Services_IQuotaEnforcementService_RecordUsage_System_String_System_Int64_
+  name: RecordUsage(string, long)
+  nameWithType: IQuotaEnforcementService.RecordUsage(string, long)
+  fullName: MarketDataCollector.Storage.Services.IQuotaEnforcementService.RecordUsage(string, long)
+  nameWithType.vb: IQuotaEnforcementService.RecordUsage(String, Long)
+  fullName.vb: MarketDataCollector.Storage.Services.IQuotaEnforcementService.RecordUsage(String, Long)
+  name.vb: RecordUsage(String, Long)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Services.IQuotaEnforcementService.RecordUsage(System.String,System.Int64)
+    name: RecordUsage
+    href: MarketDataCollector.Storage.Services.IQuotaEnforcementService.html#MarketDataCollector_Storage_Services_IQuotaEnforcementService_RecordUsage_System_String_System_Int64_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Services.IQuotaEnforcementService.RecordUsage(System.String,System.Int64)
+    name: RecordUsage
+    href: MarketDataCollector.Storage.Services.IQuotaEnforcementService.html#MarketDataCollector_Storage_Services_IQuotaEnforcementService_RecordUsage_System_String_System_Int64_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+- uid: MarketDataCollector.Storage.Services.QuotaEnforcementService.ScanAndUpdateAsync*
+  commentId: Overload:MarketDataCollector.Storage.Services.QuotaEnforcementService.ScanAndUpdateAsync
+  href: MarketDataCollector.Storage.Services.QuotaEnforcementService.html#MarketDataCollector_Storage_Services_QuotaEnforcementService_ScanAndUpdateAsync_System_Threading_CancellationToken_
+  name: ScanAndUpdateAsync
+  nameWithType: QuotaEnforcementService.ScanAndUpdateAsync
+  fullName: MarketDataCollector.Storage.Services.QuotaEnforcementService.ScanAndUpdateAsync
+- uid: MarketDataCollector.Storage.Services.IQuotaEnforcementService.ScanAndUpdateAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Services.IQuotaEnforcementService.ScanAndUpdateAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Services.IQuotaEnforcementService
+  isExternal: true
+  href: MarketDataCollector.Storage.Services.IQuotaEnforcementService.html#MarketDataCollector_Storage_Services_IQuotaEnforcementService_ScanAndUpdateAsync_System_Threading_CancellationToken_
+  name: ScanAndUpdateAsync(CancellationToken)
+  nameWithType: IQuotaEnforcementService.ScanAndUpdateAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Services.IQuotaEnforcementService.ScanAndUpdateAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Services.IQuotaEnforcementService.ScanAndUpdateAsync(System.Threading.CancellationToken)
+    name: ScanAndUpdateAsync
+    href: MarketDataCollector.Storage.Services.IQuotaEnforcementService.html#MarketDataCollector_Storage_Services_IQuotaEnforcementService_ScanAndUpdateAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Services.IQuotaEnforcementService.ScanAndUpdateAsync(System.Threading.CancellationToken)
+    name: ScanAndUpdateAsync
+    href: MarketDataCollector.Storage.Services.IQuotaEnforcementService.html#MarketDataCollector_Storage_Services_IQuotaEnforcementService_ScanAndUpdateAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.QuotaScanResult}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Storage.Services.QuotaScanResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<QuotaScanResult>
+  nameWithType: Task<QuotaScanResult>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Storage.Services.QuotaScanResult>
+  nameWithType.vb: Task(Of QuotaScanResult)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Storage.Services.QuotaScanResult)
+  name.vb: Task(Of QuotaScanResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.QuotaScanResult
+    name: QuotaScanResult
+    href: MarketDataCollector.Storage.Services.QuotaScanResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.QuotaScanResult
+    name: QuotaScanResult
+    href: MarketDataCollector.Storage.Services.QuotaScanResult.html
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Storage.Services.QuotaEnforcementService.GetStatus*
+  commentId: Overload:MarketDataCollector.Storage.Services.QuotaEnforcementService.GetStatus
+  href: MarketDataCollector.Storage.Services.QuotaEnforcementService.html#MarketDataCollector_Storage_Services_QuotaEnforcementService_GetStatus
+  name: GetStatus
+  nameWithType: QuotaEnforcementService.GetStatus
+  fullName: MarketDataCollector.Storage.Services.QuotaEnforcementService.GetStatus
+- uid: MarketDataCollector.Storage.Services.IQuotaEnforcementService.GetStatus
+  commentId: M:MarketDataCollector.Storage.Services.IQuotaEnforcementService.GetStatus
+  parent: MarketDataCollector.Storage.Services.IQuotaEnforcementService
+  href: MarketDataCollector.Storage.Services.IQuotaEnforcementService.html#MarketDataCollector_Storage_Services_IQuotaEnforcementService_GetStatus
+  name: GetStatus()
+  nameWithType: IQuotaEnforcementService.GetStatus()
+  fullName: MarketDataCollector.Storage.Services.IQuotaEnforcementService.GetStatus()
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Services.IQuotaEnforcementService.GetStatus
+    name: GetStatus
+    href: MarketDataCollector.Storage.Services.IQuotaEnforcementService.html#MarketDataCollector_Storage_Services_IQuotaEnforcementService_GetStatus
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Services.IQuotaEnforcementService.GetStatus
+    name: GetStatus
+    href: MarketDataCollector.Storage.Services.IQuotaEnforcementService.html#MarketDataCollector_Storage_Services_IQuotaEnforcementService_GetStatus
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Storage.Services.QuotaStatusReport
+  commentId: T:MarketDataCollector.Storage.Services.QuotaStatusReport
+  parent: MarketDataCollector.Storage.Services
+  href: MarketDataCollector.Storage.Services.QuotaStatusReport.html
+  name: QuotaStatusReport
+  nameWithType: QuotaStatusReport
+  fullName: MarketDataCollector.Storage.Services.QuotaStatusReport

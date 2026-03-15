@@ -1,0 +1,296 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.DataSources.IQuoteSource
+  commentId: T:MarketDataCollector.Infrastructure.DataSources.IQuoteSource
+  id: IQuoteSource
+  parent: MarketDataCollector.Infrastructure.DataSources
+  children:
+  - MarketDataCollector.Infrastructure.DataSources.IQuoteSource.Quotes
+  - MarketDataCollector.Infrastructure.DataSources.IQuoteSource.SubscribeQuotes(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  - MarketDataCollector.Infrastructure.DataSources.IQuoteSource.UnsubscribeQuotes(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: IQuoteSource
+  nameWithType: IQuoteSource
+  fullName: MarketDataCollector.Infrastructure.DataSources.IQuoteSource
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IQuoteSource
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 139
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Interface for sources that provide quote data.
+  example: []
+  syntax:
+    content: public interface IQuoteSource
+    content.vb: Public Interface IQuoteSource
+- uid: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.SubscribeQuotes(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IQuoteSource.SubscribeQuotes(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  id: SubscribeQuotes(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  parent: MarketDataCollector.Infrastructure.DataSources.IQuoteSource
+  langs:
+  - csharp
+  - vb
+  name: SubscribeQuotes(SymbolConfig)
+  nameWithType: IQuoteSource.SubscribeQuotes(SymbolConfig)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.SubscribeQuotes(MarketDataCollector.Contracts.Configuration.SymbolConfig)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SubscribeQuotes
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 144
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Subscribes to BBO quotes for the given symbol.
+  example: []
+  syntax:
+    content: int SubscribeQuotes(SymbolConfig config)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Contracts.Configuration.SymbolConfig
+    return:
+      type: System.Int32
+    content.vb: Function SubscribeQuotes(config As SymbolConfig) As Integer
+  overload: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.SubscribeQuotes*
+- uid: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.UnsubscribeQuotes(System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.DataSources.IQuoteSource.UnsubscribeQuotes(System.Int32)
+  id: UnsubscribeQuotes(System.Int32)
+  parent: MarketDataCollector.Infrastructure.DataSources.IQuoteSource
+  langs:
+  - csharp
+  - vb
+  name: UnsubscribeQuotes(int)
+  nameWithType: IQuoteSource.UnsubscribeQuotes(int)
+  fullName: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.UnsubscribeQuotes(int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UnsubscribeQuotes
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 149
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Unsubscribes from a quote subscription.
+  example: []
+  syntax:
+    content: void UnsubscribeQuotes(int subscriptionId)
+    parameters:
+    - id: subscriptionId
+      type: System.Int32
+    content.vb: Sub UnsubscribeQuotes(subscriptionId As Integer)
+  overload: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.UnsubscribeQuotes*
+  nameWithType.vb: IQuoteSource.UnsubscribeQuotes(Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.UnsubscribeQuotes(Integer)
+  name.vb: UnsubscribeQuotes(Integer)
+- uid: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.Quotes
+  commentId: P:MarketDataCollector.Infrastructure.DataSources.IQuoteSource.Quotes
+  id: Quotes
+  parent: MarketDataCollector.Infrastructure.DataSources.IQuoteSource
+  langs:
+  - csharp
+  - vb
+  name: Quotes
+  nameWithType: IQuoteSource.Quotes
+  fullName: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.Quotes
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Quotes
+    path: ../../src/MarketDataCollector.ProviderSdk/IRealtimeDataSource.cs
+    startLine: 154
+  assemblies:
+  - MarketDataCollector.ProviderSdk
+  namespace: MarketDataCollector.Infrastructure.DataSources
+  summary: Observable stream of quote events.
+  example: []
+  syntax:
+    content: IObservable<RealtimeQuote> Quotes { get; }
+    parameters: []
+    return:
+      type: System.IObservable{MarketDataCollector.Infrastructure.DataSources.RealtimeQuote}
+    content.vb: ReadOnly Property Quotes As IObservable(Of RealtimeQuote)
+  overload: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.Quotes*
+references:
+- uid: MarketDataCollector.Infrastructure.DataSources
+  commentId: N:MarketDataCollector.Infrastructure.DataSources
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.DataSources
+  nameWithType: MarketDataCollector.Infrastructure.DataSources
+  fullName: MarketDataCollector.Infrastructure.DataSources
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.DataSources
+    name: DataSources
+    href: MarketDataCollector.Infrastructure.DataSources.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.DataSources
+    name: DataSources
+    href: MarketDataCollector.Infrastructure.DataSources.html
+- uid: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.SubscribeQuotes*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IQuoteSource.SubscribeQuotes
+  href: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.html#MarketDataCollector_Infrastructure_DataSources_IQuoteSource_SubscribeQuotes_MarketDataCollector_Contracts_Configuration_SymbolConfig_
+  name: SubscribeQuotes
+  nameWithType: IQuoteSource.SubscribeQuotes
+  fullName: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.SubscribeQuotes
+- uid: MarketDataCollector.Contracts.Configuration.SymbolConfig
+  commentId: T:MarketDataCollector.Contracts.Configuration.SymbolConfig
+  parent: MarketDataCollector.Contracts.Configuration
+  href: MarketDataCollector.Contracts.Configuration.SymbolConfig.html
+  name: SymbolConfig
+  nameWithType: SymbolConfig
+  fullName: MarketDataCollector.Contracts.Configuration.SymbolConfig
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Contracts.Configuration
+  commentId: N:MarketDataCollector.Contracts.Configuration
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Configuration
+  nameWithType: MarketDataCollector.Contracts.Configuration
+  fullName: MarketDataCollector.Contracts.Configuration
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Configuration
+    name: Configuration
+    href: MarketDataCollector.Contracts.Configuration.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Configuration
+    name: Configuration
+    href: MarketDataCollector.Contracts.Configuration.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.UnsubscribeQuotes*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IQuoteSource.UnsubscribeQuotes
+  href: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.html#MarketDataCollector_Infrastructure_DataSources_IQuoteSource_UnsubscribeQuotes_System_Int32_
+  name: UnsubscribeQuotes
+  nameWithType: IQuoteSource.UnsubscribeQuotes
+  fullName: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.UnsubscribeQuotes
+- uid: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.Quotes*
+  commentId: Overload:MarketDataCollector.Infrastructure.DataSources.IQuoteSource.Quotes
+  href: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.html#MarketDataCollector_Infrastructure_DataSources_IQuoteSource_Quotes
+  name: Quotes
+  nameWithType: IQuoteSource.Quotes
+  fullName: MarketDataCollector.Infrastructure.DataSources.IQuoteSource.Quotes
+- uid: System.IObservable{MarketDataCollector.Infrastructure.DataSources.RealtimeQuote}
+  commentId: T:System.IObservable{MarketDataCollector.Infrastructure.DataSources.RealtimeQuote}
+  parent: System
+  definition: System.IObservable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<RealtimeQuote>
+  nameWithType: IObservable<RealtimeQuote>
+  fullName: System.IObservable<MarketDataCollector.Infrastructure.DataSources.RealtimeQuote>
+  nameWithType.vb: IObservable(Of RealtimeQuote)
+  fullName.vb: System.IObservable(Of MarketDataCollector.Infrastructure.DataSources.RealtimeQuote)
+  name.vb: IObservable(Of RealtimeQuote)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+    name: RealtimeQuote
+    href: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote
+    name: RealtimeQuote
+    href: MarketDataCollector.Infrastructure.DataSources.RealtimeQuote.html
+  - name: )
+- uid: System.IObservable`1
+  commentId: T:System.IObservable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  name: IObservable<T>
+  nameWithType: IObservable<T>
+  fullName: System.IObservable<T>
+  nameWithType.vb: IObservable(Of T)
+  fullName.vb: System.IObservable(Of T)
+  name.vb: IObservable(Of T)
+  spec.csharp:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IObservable`1
+    name: IObservable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iobservable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

@@ -1,0 +1,1455 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  commentId: T:MarketDataCollector.Application.Tracing.TracedEventMetrics
+  id: TracedEventMetrics
+  parent: MarketDataCollector.Application.Tracing
+  children:
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.#ctor(MarketDataCollector.Application.Monitoring.IEventMetrics)
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.DepthUpdates
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.DropRate
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.Dropped
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.EventsPerSecond
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.GetSnapshot
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.HistoricalBars
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.IncDepthUpdates
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.IncDropped
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.IncHistoricalBars
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.IncIntegrity
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.IncPublished
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.IncQuotes
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.IncTrades
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.Integrity
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.Published
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.Quotes
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.RecordLatency(System.Int64)
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.Reset
+  - MarketDataCollector.Application.Tracing.TracedEventMetrics.Trades
+  langs:
+  - csharp
+  - vb
+  name: TracedEventMetrics
+  nameWithType: TracedEventMetrics
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TracedEventMetrics
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 18
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  summary: >-
+    Decorates an <xref href="MarketDataCollector.Application.Monitoring.IEventMetrics" data-throw-if-not-resolved="false"></xref> implementation with OpenTelemetry-compatible
+
+    <xref href="System.Diagnostics.Metrics" data-throw-if-not-resolved="false"></xref> counters and histograms, enabling export to
+
+    OTLP, Prometheus, or any configured metrics backend without modifying hot-path code.
+  remarks: >-
+    This decorator follows the same zero-allocation pattern as <xref href="MarketDataCollector.Application.Monitoring.DefaultEventMetrics" data-throw-if-not-resolved="false"></xref>.
+
+    All counter increments use <xref href="System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining" data-throw-if-not-resolved="false"></xref>.
+
+    The underlying <xref href="MarketDataCollector.Application.Monitoring.IEventMetrics" data-throw-if-not-resolved="false"></xref> is always called first to preserve existing behavior.
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-012", "OpenTelemetry metrics instrumentation for pipeline observability")]
+
+      public sealed class TracedEventMetrics : IEventMetrics
+    content.vb: >-
+      <ImplementsAdr("ADR-012", "OpenTelemetry metrics instrumentation for pipeline observability")>
+
+      Public NotInheritable Class TracedEventMetrics Implements IEventMetrics
+  inheritance:
+  - System.Object
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-012
+    - type: System.String
+      value: OpenTelemetry metrics instrumentation for pipeline observability
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.#ctor(MarketDataCollector.Application.Monitoring.IEventMetrics)
+  commentId: M:MarketDataCollector.Application.Tracing.TracedEventMetrics.#ctor(MarketDataCollector.Application.Monitoring.IEventMetrics)
+  id: '#ctor(MarketDataCollector.Application.Monitoring.IEventMetrics)'
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: TracedEventMetrics(IEventMetrics)
+  nameWithType: TracedEventMetrics.TracedEventMetrics(IEventMetrics)
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.TracedEventMetrics(MarketDataCollector.Application.Monitoring.IEventMetrics)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 46
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  summary: Creates a traced metrics decorator wrapping the specified inner metrics implementation.
+  example: []
+  syntax:
+    content: public TracedEventMetrics(IEventMetrics inner)
+    parameters:
+    - id: inner
+      type: MarketDataCollector.Application.Monitoring.IEventMetrics
+      description: The underlying metrics implementation to delegate to.
+    content.vb: Public Sub New(inner As IEventMetrics)
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.#ctor*
+  nameWithType.vb: TracedEventMetrics.New(IEventMetrics)
+  fullName.vb: MarketDataCollector.Application.Tracing.TracedEventMetrics.New(MarketDataCollector.Application.Monitoring.IEventMetrics)
+  name.vb: New(IEventMetrics)
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.Published
+  commentId: P:MarketDataCollector.Application.Tracing.TracedEventMetrics.Published
+  id: Published
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: Published
+  nameWithType: TracedEventMetrics.Published
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.Published
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Published
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 51
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public long Published { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property Published As Long
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.Published*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.Published
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.Dropped
+  commentId: P:MarketDataCollector.Application.Tracing.TracedEventMetrics.Dropped
+  id: Dropped
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: Dropped
+  nameWithType: TracedEventMetrics.Dropped
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.Dropped
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Dropped
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 52
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public long Dropped { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property Dropped As Long
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.Dropped*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.Dropped
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.Integrity
+  commentId: P:MarketDataCollector.Application.Tracing.TracedEventMetrics.Integrity
+  id: Integrity
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: Integrity
+  nameWithType: TracedEventMetrics.Integrity
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.Integrity
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Integrity
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 53
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public long Integrity { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property Integrity As Long
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.Integrity*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.Integrity
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.Trades
+  commentId: P:MarketDataCollector.Application.Tracing.TracedEventMetrics.Trades
+  id: Trades
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: Trades
+  nameWithType: TracedEventMetrics.Trades
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.Trades
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Trades
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 54
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public long Trades { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property Trades As Long
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.Trades*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.Trades
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.DepthUpdates
+  commentId: P:MarketDataCollector.Application.Tracing.TracedEventMetrics.DepthUpdates
+  id: DepthUpdates
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: DepthUpdates
+  nameWithType: TracedEventMetrics.DepthUpdates
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.DepthUpdates
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DepthUpdates
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 55
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public long DepthUpdates { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property DepthUpdates As Long
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.DepthUpdates*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.DepthUpdates
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.Quotes
+  commentId: P:MarketDataCollector.Application.Tracing.TracedEventMetrics.Quotes
+  id: Quotes
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: Quotes
+  nameWithType: TracedEventMetrics.Quotes
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.Quotes
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Quotes
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 56
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public long Quotes { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property Quotes As Long
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.Quotes*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.Quotes
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.HistoricalBars
+  commentId: P:MarketDataCollector.Application.Tracing.TracedEventMetrics.HistoricalBars
+  id: HistoricalBars
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: HistoricalBars
+  nameWithType: TracedEventMetrics.HistoricalBars
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.HistoricalBars
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HistoricalBars
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 57
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public long HistoricalBars { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property HistoricalBars As Long
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.HistoricalBars*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.HistoricalBars
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.EventsPerSecond
+  commentId: P:MarketDataCollector.Application.Tracing.TracedEventMetrics.EventsPerSecond
+  id: EventsPerSecond
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: EventsPerSecond
+  nameWithType: TracedEventMetrics.EventsPerSecond
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.EventsPerSecond
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: EventsPerSecond
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 58
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public double EventsPerSecond { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public ReadOnly Property EventsPerSecond As Double
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.EventsPerSecond*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.EventsPerSecond
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.DropRate
+  commentId: P:MarketDataCollector.Application.Tracing.TracedEventMetrics.DropRate
+  id: DropRate
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: DropRate
+  nameWithType: TracedEventMetrics.DropRate
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.DropRate
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DropRate
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 59
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public double DropRate { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public ReadOnly Property DropRate As Double
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.DropRate*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.DropRate
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncPublished
+  commentId: M:MarketDataCollector.Application.Tracing.TracedEventMetrics.IncPublished
+  id: IncPublished
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: IncPublished()
+  nameWithType: TracedEventMetrics.IncPublished()
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncPublished()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncPublished
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 61
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public void IncPublished()
+    content.vb: Public Sub IncPublished()
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncPublished*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.IncPublished
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncDropped
+  commentId: M:MarketDataCollector.Application.Tracing.TracedEventMetrics.IncDropped
+  id: IncDropped
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: IncDropped()
+  nameWithType: TracedEventMetrics.IncDropped()
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncDropped()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncDropped
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 68
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public void IncDropped()
+    content.vb: Public Sub IncDropped()
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncDropped*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.IncDropped
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncIntegrity
+  commentId: M:MarketDataCollector.Application.Tracing.TracedEventMetrics.IncIntegrity
+  id: IncIntegrity
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: IncIntegrity()
+  nameWithType: TracedEventMetrics.IncIntegrity()
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncIntegrity()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncIntegrity
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 75
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public void IncIntegrity()
+    content.vb: Public Sub IncIntegrity()
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncIntegrity*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.IncIntegrity
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncTrades
+  commentId: M:MarketDataCollector.Application.Tracing.TracedEventMetrics.IncTrades
+  id: IncTrades
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: IncTrades()
+  nameWithType: TracedEventMetrics.IncTrades()
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncTrades()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncTrades
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 82
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public void IncTrades()
+    content.vb: Public Sub IncTrades()
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncTrades*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.IncTrades
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncDepthUpdates
+  commentId: M:MarketDataCollector.Application.Tracing.TracedEventMetrics.IncDepthUpdates
+  id: IncDepthUpdates
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: IncDepthUpdates()
+  nameWithType: TracedEventMetrics.IncDepthUpdates()
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncDepthUpdates()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncDepthUpdates
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 89
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public void IncDepthUpdates()
+    content.vb: Public Sub IncDepthUpdates()
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncDepthUpdates*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.IncDepthUpdates
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncQuotes
+  commentId: M:MarketDataCollector.Application.Tracing.TracedEventMetrics.IncQuotes
+  id: IncQuotes
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: IncQuotes()
+  nameWithType: TracedEventMetrics.IncQuotes()
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncQuotes()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncQuotes
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 96
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public void IncQuotes()
+    content.vb: Public Sub IncQuotes()
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncQuotes*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.IncQuotes
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncHistoricalBars
+  commentId: M:MarketDataCollector.Application.Tracing.TracedEventMetrics.IncHistoricalBars
+  id: IncHistoricalBars
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: IncHistoricalBars()
+  nameWithType: TracedEventMetrics.IncHistoricalBars()
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncHistoricalBars()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncHistoricalBars
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 103
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public void IncHistoricalBars()
+    content.vb: Public Sub IncHistoricalBars()
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncHistoricalBars*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.IncHistoricalBars
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.RecordLatency(System.Int64)
+  commentId: M:MarketDataCollector.Application.Tracing.TracedEventMetrics.RecordLatency(System.Int64)
+  id: RecordLatency(System.Int64)
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: RecordLatency(long)
+  nameWithType: TracedEventMetrics.RecordLatency(long)
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.RecordLatency(long)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecordLatency
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 110
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public void RecordLatency(long startTimestamp)
+    parameters:
+    - id: startTimestamp
+      type: System.Int64
+    content.vb: Public Sub RecordLatency(startTimestamp As Long)
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.RecordLatency*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.RecordLatency(System.Int64)
+  nameWithType.vb: TracedEventMetrics.RecordLatency(Long)
+  fullName.vb: MarketDataCollector.Application.Tracing.TracedEventMetrics.RecordLatency(Long)
+  name.vb: RecordLatency(Long)
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.Reset
+  commentId: M:MarketDataCollector.Application.Tracing.TracedEventMetrics.Reset
+  id: Reset
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: Reset()
+  nameWithType: TracedEventMetrics.Reset()
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.Reset()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Reset
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 119
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public void Reset()
+    content.vb: Public Sub Reset()
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.Reset*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.Reset
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.GetSnapshot
+  commentId: M:MarketDataCollector.Application.Tracing.TracedEventMetrics.GetSnapshot
+  id: GetSnapshot
+  parent: MarketDataCollector.Application.Tracing.TracedEventMetrics
+  langs:
+  - csharp
+  - vb
+  name: GetSnapshot()
+  nameWithType: TracedEventMetrics.GetSnapshot()
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.GetSnapshot()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSnapshot
+    path: ../../src/MarketDataCollector.Application/Tracing/TracedEventMetrics.cs
+    startLine: 121
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Tracing
+  example: []
+  syntax:
+    content: public MetricsSnapshot GetSnapshot()
+    return:
+      type: MarketDataCollector.Application.Monitoring.MetricsSnapshot
+    content.vb: Public Function GetSnapshot() As MetricsSnapshot
+  overload: MarketDataCollector.Application.Tracing.TracedEventMetrics.GetSnapshot*
+  implements:
+  - MarketDataCollector.Application.Monitoring.IEventMetrics.GetSnapshot
+references:
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics
+  commentId: T:MarketDataCollector.Application.Monitoring.IEventMetrics
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html
+  name: IEventMetrics
+  nameWithType: IEventMetrics
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics
+- uid: System.Diagnostics.Metrics
+  commentId: N:System.Diagnostics.Metrics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Diagnostics.Metrics
+  nameWithType: System.Diagnostics.Metrics
+  fullName: System.Diagnostics.Metrics
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.diagnostics
+  - name: .
+  - uid: System.Diagnostics.Metrics
+    name: Metrics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.diagnostics
+  - name: .
+  - uid: System.Diagnostics.Metrics
+    name: Metrics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics
+- uid: MarketDataCollector.Application.Monitoring.DefaultEventMetrics
+  commentId: T:MarketDataCollector.Application.Monitoring.DefaultEventMetrics
+  href: MarketDataCollector.Application.Monitoring.DefaultEventMetrics.html
+  name: DefaultEventMetrics
+  nameWithType: DefaultEventMetrics
+  fullName: MarketDataCollector.Application.Monitoring.DefaultEventMetrics
+- uid: System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining
+  commentId: F:System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.compilerservices.methodimploptions#system-runtime-compilerservices-methodimploptions-aggressiveinlining
+  name: AggressiveInlining
+  nameWithType: MethodImplOptions.AggressiveInlining
+  fullName: System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining
+- uid: MarketDataCollector.Application.Tracing
+  commentId: N:MarketDataCollector.Application.Tracing
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Tracing
+  nameWithType: MarketDataCollector.Application.Tracing
+  fullName: MarketDataCollector.Application.Tracing
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Tracing
+    name: Tracing
+    href: MarketDataCollector.Application.Tracing.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Tracing
+    name: Tracing
+    href: MarketDataCollector.Application.Tracing.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring
+  commentId: N:MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring
+  nameWithType: MarketDataCollector.Application.Monitoring
+  fullName: MarketDataCollector.Application.Monitoring
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.#ctor
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics__ctor_MarketDataCollector_Application_Monitoring_IEventMetrics_
+  name: TracedEventMetrics
+  nameWithType: TracedEventMetrics.TracedEventMetrics
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.TracedEventMetrics
+  nameWithType.vb: TracedEventMetrics.New
+  fullName.vb: MarketDataCollector.Application.Tracing.TracedEventMetrics.New
+  name.vb: New
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.Published*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.Published
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_Published
+  name: Published
+  nameWithType: TracedEventMetrics.Published
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.Published
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.Published
+  commentId: P:MarketDataCollector.Application.Monitoring.IEventMetrics.Published
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_Published
+  name: Published
+  nameWithType: IEventMetrics.Published
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.Published
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.Dropped*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.Dropped
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_Dropped
+  name: Dropped
+  nameWithType: TracedEventMetrics.Dropped
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.Dropped
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.Dropped
+  commentId: P:MarketDataCollector.Application.Monitoring.IEventMetrics.Dropped
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_Dropped
+  name: Dropped
+  nameWithType: IEventMetrics.Dropped
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.Dropped
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.Integrity*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.Integrity
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_Integrity
+  name: Integrity
+  nameWithType: TracedEventMetrics.Integrity
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.Integrity
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.Integrity
+  commentId: P:MarketDataCollector.Application.Monitoring.IEventMetrics.Integrity
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_Integrity
+  name: Integrity
+  nameWithType: IEventMetrics.Integrity
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.Integrity
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.Trades*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.Trades
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_Trades
+  name: Trades
+  nameWithType: TracedEventMetrics.Trades
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.Trades
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.Trades
+  commentId: P:MarketDataCollector.Application.Monitoring.IEventMetrics.Trades
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_Trades
+  name: Trades
+  nameWithType: IEventMetrics.Trades
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.Trades
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.DepthUpdates*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.DepthUpdates
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_DepthUpdates
+  name: DepthUpdates
+  nameWithType: TracedEventMetrics.DepthUpdates
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.DepthUpdates
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.DepthUpdates
+  commentId: P:MarketDataCollector.Application.Monitoring.IEventMetrics.DepthUpdates
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_DepthUpdates
+  name: DepthUpdates
+  nameWithType: IEventMetrics.DepthUpdates
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.DepthUpdates
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.Quotes*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.Quotes
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_Quotes
+  name: Quotes
+  nameWithType: TracedEventMetrics.Quotes
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.Quotes
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.Quotes
+  commentId: P:MarketDataCollector.Application.Monitoring.IEventMetrics.Quotes
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_Quotes
+  name: Quotes
+  nameWithType: IEventMetrics.Quotes
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.Quotes
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.HistoricalBars*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.HistoricalBars
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_HistoricalBars
+  name: HistoricalBars
+  nameWithType: TracedEventMetrics.HistoricalBars
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.HistoricalBars
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.HistoricalBars
+  commentId: P:MarketDataCollector.Application.Monitoring.IEventMetrics.HistoricalBars
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_HistoricalBars
+  name: HistoricalBars
+  nameWithType: IEventMetrics.HistoricalBars
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.HistoricalBars
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.EventsPerSecond*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.EventsPerSecond
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_EventsPerSecond
+  name: EventsPerSecond
+  nameWithType: TracedEventMetrics.EventsPerSecond
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.EventsPerSecond
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.EventsPerSecond
+  commentId: P:MarketDataCollector.Application.Monitoring.IEventMetrics.EventsPerSecond
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_EventsPerSecond
+  name: EventsPerSecond
+  nameWithType: IEventMetrics.EventsPerSecond
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.EventsPerSecond
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.DropRate*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.DropRate
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_DropRate
+  name: DropRate
+  nameWithType: TracedEventMetrics.DropRate
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.DropRate
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.DropRate
+  commentId: P:MarketDataCollector.Application.Monitoring.IEventMetrics.DropRate
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_DropRate
+  name: DropRate
+  nameWithType: IEventMetrics.DropRate
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.DropRate
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncPublished*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.IncPublished
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_IncPublished
+  name: IncPublished
+  nameWithType: TracedEventMetrics.IncPublished
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncPublished
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncPublished
+  commentId: M:MarketDataCollector.Application.Monitoring.IEventMetrics.IncPublished
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncPublished
+  name: IncPublished()
+  nameWithType: IEventMetrics.IncPublished()
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.IncPublished()
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncPublished
+    name: IncPublished
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncPublished
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncPublished
+    name: IncPublished
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncPublished
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncDropped*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.IncDropped
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_IncDropped
+  name: IncDropped
+  nameWithType: TracedEventMetrics.IncDropped
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncDropped
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncDropped
+  commentId: M:MarketDataCollector.Application.Monitoring.IEventMetrics.IncDropped
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncDropped
+  name: IncDropped()
+  nameWithType: IEventMetrics.IncDropped()
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.IncDropped()
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncDropped
+    name: IncDropped
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncDropped
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncDropped
+    name: IncDropped
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncDropped
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncIntegrity*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.IncIntegrity
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_IncIntegrity
+  name: IncIntegrity
+  nameWithType: TracedEventMetrics.IncIntegrity
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncIntegrity
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncIntegrity
+  commentId: M:MarketDataCollector.Application.Monitoring.IEventMetrics.IncIntegrity
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncIntegrity
+  name: IncIntegrity()
+  nameWithType: IEventMetrics.IncIntegrity()
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.IncIntegrity()
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncIntegrity
+    name: IncIntegrity
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncIntegrity
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncIntegrity
+    name: IncIntegrity
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncIntegrity
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncTrades*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.IncTrades
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_IncTrades
+  name: IncTrades
+  nameWithType: TracedEventMetrics.IncTrades
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncTrades
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncTrades
+  commentId: M:MarketDataCollector.Application.Monitoring.IEventMetrics.IncTrades
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncTrades
+  name: IncTrades()
+  nameWithType: IEventMetrics.IncTrades()
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.IncTrades()
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncTrades
+    name: IncTrades
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncTrades
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncTrades
+    name: IncTrades
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncTrades
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncDepthUpdates*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.IncDepthUpdates
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_IncDepthUpdates
+  name: IncDepthUpdates
+  nameWithType: TracedEventMetrics.IncDepthUpdates
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncDepthUpdates
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncDepthUpdates
+  commentId: M:MarketDataCollector.Application.Monitoring.IEventMetrics.IncDepthUpdates
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncDepthUpdates
+  name: IncDepthUpdates()
+  nameWithType: IEventMetrics.IncDepthUpdates()
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.IncDepthUpdates()
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncDepthUpdates
+    name: IncDepthUpdates
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncDepthUpdates
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncDepthUpdates
+    name: IncDepthUpdates
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncDepthUpdates
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncQuotes*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.IncQuotes
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_IncQuotes
+  name: IncQuotes
+  nameWithType: TracedEventMetrics.IncQuotes
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncQuotes
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncQuotes
+  commentId: M:MarketDataCollector.Application.Monitoring.IEventMetrics.IncQuotes
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncQuotes
+  name: IncQuotes()
+  nameWithType: IEventMetrics.IncQuotes()
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.IncQuotes()
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncQuotes
+    name: IncQuotes
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncQuotes
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncQuotes
+    name: IncQuotes
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncQuotes
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncHistoricalBars*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.IncHistoricalBars
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_IncHistoricalBars
+  name: IncHistoricalBars
+  nameWithType: TracedEventMetrics.IncHistoricalBars
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.IncHistoricalBars
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncHistoricalBars
+  commentId: M:MarketDataCollector.Application.Monitoring.IEventMetrics.IncHistoricalBars
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncHistoricalBars
+  name: IncHistoricalBars()
+  nameWithType: IEventMetrics.IncHistoricalBars()
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.IncHistoricalBars()
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncHistoricalBars
+    name: IncHistoricalBars
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncHistoricalBars
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.IncHistoricalBars
+    name: IncHistoricalBars
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_IncHistoricalBars
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.RecordLatency*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.RecordLatency
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_RecordLatency_System_Int64_
+  name: RecordLatency
+  nameWithType: TracedEventMetrics.RecordLatency
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.RecordLatency
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.RecordLatency(System.Int64)
+  commentId: M:MarketDataCollector.Application.Monitoring.IEventMetrics.RecordLatency(System.Int64)
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  isExternal: true
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_RecordLatency_System_Int64_
+  name: RecordLatency(long)
+  nameWithType: IEventMetrics.RecordLatency(long)
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.RecordLatency(long)
+  nameWithType.vb: IEventMetrics.RecordLatency(Long)
+  fullName.vb: MarketDataCollector.Application.Monitoring.IEventMetrics.RecordLatency(Long)
+  name.vb: RecordLatency(Long)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.RecordLatency(System.Int64)
+    name: RecordLatency
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_RecordLatency_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.RecordLatency(System.Int64)
+    name: RecordLatency
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_RecordLatency_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.Reset*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.Reset
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_Reset
+  name: Reset
+  nameWithType: TracedEventMetrics.Reset
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.Reset
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.Reset
+  commentId: M:MarketDataCollector.Application.Monitoring.IEventMetrics.Reset
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_Reset
+  name: Reset()
+  nameWithType: IEventMetrics.Reset()
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.Reset()
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.Reset
+    name: Reset
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_Reset
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.Reset
+    name: Reset
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_Reset
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Tracing.TracedEventMetrics.GetSnapshot*
+  commentId: Overload:MarketDataCollector.Application.Tracing.TracedEventMetrics.GetSnapshot
+  href: MarketDataCollector.Application.Tracing.TracedEventMetrics.html#MarketDataCollector_Application_Tracing_TracedEventMetrics_GetSnapshot
+  name: GetSnapshot
+  nameWithType: TracedEventMetrics.GetSnapshot
+  fullName: MarketDataCollector.Application.Tracing.TracedEventMetrics.GetSnapshot
+- uid: MarketDataCollector.Application.Monitoring.IEventMetrics.GetSnapshot
+  commentId: M:MarketDataCollector.Application.Monitoring.IEventMetrics.GetSnapshot
+  parent: MarketDataCollector.Application.Monitoring.IEventMetrics
+  href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_GetSnapshot
+  name: GetSnapshot()
+  nameWithType: IEventMetrics.GetSnapshot()
+  fullName: MarketDataCollector.Application.Monitoring.IEventMetrics.GetSnapshot()
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.GetSnapshot
+    name: GetSnapshot
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_GetSnapshot
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.IEventMetrics.GetSnapshot
+    name: GetSnapshot
+    href: MarketDataCollector.Application.Monitoring.IEventMetrics.html#MarketDataCollector_Application_Monitoring_IEventMetrics_GetSnapshot
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.MetricsSnapshot
+  commentId: T:MarketDataCollector.Application.Monitoring.MetricsSnapshot
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.MetricsSnapshot.html
+  name: MetricsSnapshot
+  nameWithType: MetricsSnapshot
+  fullName: MarketDataCollector.Application.Monitoring.MetricsSnapshot

@@ -1,0 +1,624 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap
+  commentId: T:MarketDataCollector.Infrastructure.Resilience.ReconnectionGap
+  id: ReconnectionGap
+  parent: MarketDataCollector.Infrastructure.Resilience
+  children:
+  - MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.#ctor(System.String,System.DateTimeOffset,System.DateTimeOffset,System.Int32)
+  - MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.DisconnectedAt
+  - MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.Duration
+  - MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ProviderName
+  - MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectAttempts
+  - MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectedAt
+  langs:
+  - csharp
+  - vb
+  name: ReconnectionGap
+  nameWithType: ReconnectionGap
+  fullName: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap
+  type: Struct
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ReconnectionGap
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionManager.cs
+    startLine: 616
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: >-
+    Represents a gap in data caused by a WebSocket disconnection and reconnection.
+
+    Subscribers should use this to trigger backfill for the missed time window.
+  example: []
+  syntax:
+    content: 'public readonly record struct ReconnectionGap : IEquatable<ReconnectionGap>'
+    content.vb: Public Structure ReconnectionGap Implements IEquatable(Of ReconnectionGap)
+  implements:
+  - System.IEquatable{MarketDataCollector.Infrastructure.Resilience.ReconnectionGap}
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.#ctor(System.String,System.DateTimeOffset,System.DateTimeOffset,System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.#ctor(System.String,System.DateTimeOffset,System.DateTimeOffset,System.Int32)
+  id: '#ctor(System.String,System.DateTimeOffset,System.DateTimeOffset,System.Int32)'
+  parent: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap
+  langs:
+  - csharp
+  - vb
+  name: ReconnectionGap(string, DateTimeOffset, DateTimeOffset, int)
+  nameWithType: ReconnectionGap.ReconnectionGap(string, DateTimeOffset, DateTimeOffset, int)
+  fullName: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectionGap(string, System.DateTimeOffset, System.DateTimeOffset, int)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionManager.cs
+    startLine: 616
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: >-
+    Represents a gap in data caused by a WebSocket disconnection and reconnection.
+
+    Subscribers should use this to trigger backfill for the missed time window.
+  example: []
+  syntax:
+    content: public ReconnectionGap(string ProviderName, DateTimeOffset DisconnectedAt, DateTimeOffset ReconnectedAt, int ReconnectAttempts)
+    parameters:
+    - id: ProviderName
+      type: System.String
+    - id: DisconnectedAt
+      type: System.DateTimeOffset
+    - id: ReconnectedAt
+      type: System.DateTimeOffset
+    - id: ReconnectAttempts
+      type: System.Int32
+    content.vb: Public Sub New(ProviderName As String, DisconnectedAt As DateTimeOffset, ReconnectedAt As DateTimeOffset, ReconnectAttempts As Integer)
+  overload: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.#ctor*
+  nameWithType.vb: ReconnectionGap.New(String, DateTimeOffset, DateTimeOffset, Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.New(String, System.DateTimeOffset, System.DateTimeOffset, Integer)
+  name.vb: New(String, DateTimeOffset, DateTimeOffset, Integer)
+- uid: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ProviderName
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ProviderName
+  id: ProviderName
+  parent: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap
+  langs:
+  - csharp
+  - vb
+  name: ProviderName
+  nameWithType: ReconnectionGap.ProviderName
+  fullName: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ProviderName
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderName
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionManager.cs
+    startLine: 617
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  syntax:
+    content: public string ProviderName { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ProviderName As String
+  overload: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ProviderName*
+- uid: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.DisconnectedAt
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.DisconnectedAt
+  id: DisconnectedAt
+  parent: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap
+  langs:
+  - csharp
+  - vb
+  name: DisconnectedAt
+  nameWithType: ReconnectionGap.DisconnectedAt
+  fullName: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.DisconnectedAt
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisconnectedAt
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionManager.cs
+    startLine: 618
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  syntax:
+    content: public DateTimeOffset DisconnectedAt { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property DisconnectedAt As DateTimeOffset
+  overload: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.DisconnectedAt*
+- uid: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectedAt
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectedAt
+  id: ReconnectedAt
+  parent: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap
+  langs:
+  - csharp
+  - vb
+  name: ReconnectedAt
+  nameWithType: ReconnectionGap.ReconnectedAt
+  fullName: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectedAt
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ReconnectedAt
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionManager.cs
+    startLine: 619
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  syntax:
+    content: public DateTimeOffset ReconnectedAt { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property ReconnectedAt As DateTimeOffset
+  overload: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectedAt*
+- uid: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectAttempts
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectAttempts
+  id: ReconnectAttempts
+  parent: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap
+  langs:
+  - csharp
+  - vb
+  name: ReconnectAttempts
+  nameWithType: ReconnectionGap.ReconnectAttempts
+  fullName: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectAttempts
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ReconnectAttempts
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionManager.cs
+    startLine: 620
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  syntax:
+    content: public int ReconnectAttempts { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ReconnectAttempts As Integer
+  overload: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectAttempts*
+- uid: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.Duration
+  commentId: P:MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.Duration
+  id: Duration
+  parent: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap
+  langs:
+  - csharp
+  - vb
+  name: Duration
+  nameWithType: ReconnectionGap.Duration
+  fullName: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.Duration
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionManager.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Duration
+    path: ../../src/MarketDataCollector.Infrastructure/Resilience/WebSocketConnectionManager.cs
+    startLine: 625
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Resilience
+  summary: Duration of the gap (time without data).
+  example: []
+  syntax:
+    content: public TimeSpan Duration { get; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public ReadOnly Property Duration As TimeSpan
+  overload: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.Duration*
+references:
+- uid: MarketDataCollector.Infrastructure.Resilience
+  commentId: N:MarketDataCollector.Infrastructure.Resilience
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Resilience
+  nameWithType: MarketDataCollector.Infrastructure.Resilience
+  fullName: MarketDataCollector.Infrastructure.Resilience
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Resilience
+    name: Resilience
+    href: MarketDataCollector.Infrastructure.Resilience.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Resilience
+    name: Resilience
+    href: MarketDataCollector.Infrastructure.Resilience.html
+- uid: System.IEquatable{MarketDataCollector.Infrastructure.Resilience.ReconnectionGap}
+  commentId: T:System.IEquatable{MarketDataCollector.Infrastructure.Resilience.ReconnectionGap}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<ReconnectionGap>
+  nameWithType: IEquatable<ReconnectionGap>
+  fullName: System.IEquatable<MarketDataCollector.Infrastructure.Resilience.ReconnectionGap>
+  nameWithType.vb: IEquatable(Of ReconnectionGap)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Infrastructure.Resilience.ReconnectionGap)
+  name.vb: IEquatable(Of ReconnectionGap)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap
+    name: ReconnectionGap
+    href: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap
+    name: ReconnectionGap
+    href: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.html
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.#ctor*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.#ctor
+  href: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.html#MarketDataCollector_Infrastructure_Resilience_ReconnectionGap__ctor_System_String_System_DateTimeOffset_System_DateTimeOffset_System_Int32_
+  name: ReconnectionGap
+  nameWithType: ReconnectionGap.ReconnectionGap
+  fullName: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectionGap
+  nameWithType.vb: ReconnectionGap.New
+  fullName.vb: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ProviderName*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ProviderName
+  href: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.html#MarketDataCollector_Infrastructure_Resilience_ReconnectionGap_ProviderName
+  name: ProviderName
+  nameWithType: ReconnectionGap.ProviderName
+  fullName: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ProviderName
+- uid: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.DisconnectedAt*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.DisconnectedAt
+  href: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.html#MarketDataCollector_Infrastructure_Resilience_ReconnectionGap_DisconnectedAt
+  name: DisconnectedAt
+  nameWithType: ReconnectionGap.DisconnectedAt
+  fullName: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.DisconnectedAt
+- uid: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectedAt*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectedAt
+  href: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.html#MarketDataCollector_Infrastructure_Resilience_ReconnectionGap_ReconnectedAt
+  name: ReconnectedAt
+  nameWithType: ReconnectionGap.ReconnectedAt
+  fullName: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectedAt
+- uid: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectAttempts*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectAttempts
+  href: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.html#MarketDataCollector_Infrastructure_Resilience_ReconnectionGap_ReconnectAttempts
+  name: ReconnectAttempts
+  nameWithType: ReconnectionGap.ReconnectAttempts
+  fullName: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.ReconnectAttempts
+- uid: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.Duration*
+  commentId: Overload:MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.Duration
+  href: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.html#MarketDataCollector_Infrastructure_Resilience_ReconnectionGap_Duration
+  name: Duration
+  nameWithType: ReconnectionGap.Duration
+  fullName: MarketDataCollector.Infrastructure.Resilience.ReconnectionGap.Duration
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan

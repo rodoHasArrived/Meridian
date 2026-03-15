@@ -1,0 +1,1139 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Domain.Models.AggregateBar
+  commentId: T:MarketDataCollector.Domain.Models.AggregateBar
+  id: AggregateBar
+  parent: MarketDataCollector.Domain.Models
+  children:
+  - MarketDataCollector.Domain.Models.AggregateBar.#ctor(System.String,System.DateTimeOffset,System.DateTimeOffset,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Int64,System.Decimal,System.Int32,MarketDataCollector.Domain.Models.AggregateTimeframe,System.String,System.Int64)
+  - MarketDataCollector.Domain.Models.AggregateBar.Close
+  - MarketDataCollector.Domain.Models.AggregateBar.EndTime
+  - MarketDataCollector.Domain.Models.AggregateBar.High
+  - MarketDataCollector.Domain.Models.AggregateBar.Low
+  - MarketDataCollector.Domain.Models.AggregateBar.Open
+  - MarketDataCollector.Domain.Models.AggregateBar.SequenceNumber
+  - MarketDataCollector.Domain.Models.AggregateBar.Source
+  - MarketDataCollector.Domain.Models.AggregateBar.StartTime
+  - MarketDataCollector.Domain.Models.AggregateBar.Symbol
+  - MarketDataCollector.Domain.Models.AggregateBar.Timeframe
+  - MarketDataCollector.Domain.Models.AggregateBar.TradeCount
+  - MarketDataCollector.Domain.Models.AggregateBar.Volume
+  - MarketDataCollector.Domain.Models.AggregateBar.Vwap
+  langs:
+  - csharp
+  - vb
+  name: AggregateBar
+  nameWithType: AggregateBar
+  fullName: MarketDataCollector.Domain.Models.AggregateBar
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/AggregateBar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AggregateBar
+    path: ../../src/MarketDataCollector.Domain/Models/AggregateBar.cs
+    startLine: 14
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  summary: >-
+    Represents a real-time OHLCV aggregate bar from streaming data providers.
+
+    Unlike <xref href="MarketDataCollector.Contracts.Domain.Models.HistoricalBar" data-throw-if-not-resolved="false"></xref> which uses DateOnly for daily bars,
+
+    this model uses DateTimeOffset to support intraday timeframes (second, minute, etc.).
+  remarks: >-
+    Polygon.io provides two aggregate event types:
+
+    - "A" (per-second aggregates)
+
+    - "AM" (per-minute aggregates)
+  example: []
+  syntax:
+    content: 'public sealed record AggregateBar : MarketEventPayload, IMarketEventPayload, IEquatable<MarketEventPayload>, IEquatable<AggregateBar>'
+    content.vb: Public NotInheritable Class AggregateBar Inherits MarketEventPayload Implements IMarketEventPayload, IEquatable(Of MarketEventPayload), IEquatable(Of AggregateBar)
+  inheritance:
+  - System.Object
+  - MarketDataCollector.Domain.Events.MarketEventPayload
+  implements:
+  - MarketDataCollector.Contracts.Domain.Events.IMarketEventPayload
+  - System.IEquatable{MarketDataCollector.Domain.Events.MarketEventPayload}
+  - System.IEquatable{MarketDataCollector.Domain.Models.AggregateBar}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Domain.Models.AggregateBar.Symbol
+  commentId: P:MarketDataCollector.Domain.Models.AggregateBar.Symbol
+  id: Symbol
+  parent: MarketDataCollector.Domain.Models.AggregateBar
+  langs:
+  - csharp
+  - vb
+  name: Symbol
+  nameWithType: AggregateBar.Symbol
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.Symbol
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/AggregateBar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Symbol
+    path: ../../src/MarketDataCollector.Domain/Models/AggregateBar.cs
+    startLine: 19
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  summary: The ticker symbol for this aggregate.
+  example: []
+  syntax:
+    content: public string Symbol { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Symbol As String
+  overload: MarketDataCollector.Domain.Models.AggregateBar.Symbol*
+- uid: MarketDataCollector.Domain.Models.AggregateBar.StartTime
+  commentId: P:MarketDataCollector.Domain.Models.AggregateBar.StartTime
+  id: StartTime
+  parent: MarketDataCollector.Domain.Models.AggregateBar
+  langs:
+  - csharp
+  - vb
+  name: StartTime
+  nameWithType: AggregateBar.StartTime
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.StartTime
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/AggregateBar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StartTime
+    path: ../../src/MarketDataCollector.Domain/Models/AggregateBar.cs
+    startLine: 24
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  summary: The start timestamp of the aggregate window (UTC).
+  example: []
+  syntax:
+    content: public DateTimeOffset StartTime { get; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public ReadOnly Property StartTime As DateTimeOffset
+  overload: MarketDataCollector.Domain.Models.AggregateBar.StartTime*
+- uid: MarketDataCollector.Domain.Models.AggregateBar.EndTime
+  commentId: P:MarketDataCollector.Domain.Models.AggregateBar.EndTime
+  id: EndTime
+  parent: MarketDataCollector.Domain.Models.AggregateBar
+  langs:
+  - csharp
+  - vb
+  name: EndTime
+  nameWithType: AggregateBar.EndTime
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.EndTime
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/AggregateBar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: EndTime
+    path: ../../src/MarketDataCollector.Domain/Models/AggregateBar.cs
+    startLine: 29
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  summary: The end timestamp of the aggregate window (UTC).
+  example: []
+  syntax:
+    content: public DateTimeOffset EndTime { get; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public ReadOnly Property EndTime As DateTimeOffset
+  overload: MarketDataCollector.Domain.Models.AggregateBar.EndTime*
+- uid: MarketDataCollector.Domain.Models.AggregateBar.Open
+  commentId: P:MarketDataCollector.Domain.Models.AggregateBar.Open
+  id: Open
+  parent: MarketDataCollector.Domain.Models.AggregateBar
+  langs:
+  - csharp
+  - vb
+  name: Open
+  nameWithType: AggregateBar.Open
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.Open
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/AggregateBar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Open
+    path: ../../src/MarketDataCollector.Domain/Models/AggregateBar.cs
+    startLine: 34
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  summary: Opening price of the aggregate window.
+  example: []
+  syntax:
+    content: public decimal Open { get; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: Public ReadOnly Property Open As Decimal
+  overload: MarketDataCollector.Domain.Models.AggregateBar.Open*
+- uid: MarketDataCollector.Domain.Models.AggregateBar.High
+  commentId: P:MarketDataCollector.Domain.Models.AggregateBar.High
+  id: High
+  parent: MarketDataCollector.Domain.Models.AggregateBar
+  langs:
+  - csharp
+  - vb
+  name: High
+  nameWithType: AggregateBar.High
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.High
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/AggregateBar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: High
+    path: ../../src/MarketDataCollector.Domain/Models/AggregateBar.cs
+    startLine: 39
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  summary: Highest price during the aggregate window.
+  example: []
+  syntax:
+    content: public decimal High { get; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: Public ReadOnly Property High As Decimal
+  overload: MarketDataCollector.Domain.Models.AggregateBar.High*
+- uid: MarketDataCollector.Domain.Models.AggregateBar.Low
+  commentId: P:MarketDataCollector.Domain.Models.AggregateBar.Low
+  id: Low
+  parent: MarketDataCollector.Domain.Models.AggregateBar
+  langs:
+  - csharp
+  - vb
+  name: Low
+  nameWithType: AggregateBar.Low
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.Low
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/AggregateBar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Low
+    path: ../../src/MarketDataCollector.Domain/Models/AggregateBar.cs
+    startLine: 44
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  summary: Lowest price during the aggregate window.
+  example: []
+  syntax:
+    content: public decimal Low { get; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: Public ReadOnly Property Low As Decimal
+  overload: MarketDataCollector.Domain.Models.AggregateBar.Low*
+- uid: MarketDataCollector.Domain.Models.AggregateBar.Close
+  commentId: P:MarketDataCollector.Domain.Models.AggregateBar.Close
+  id: Close
+  parent: MarketDataCollector.Domain.Models.AggregateBar
+  langs:
+  - csharp
+  - vb
+  name: Close
+  nameWithType: AggregateBar.Close
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.Close
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/AggregateBar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Close
+    path: ../../src/MarketDataCollector.Domain/Models/AggregateBar.cs
+    startLine: 49
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  summary: Closing price of the aggregate window.
+  example: []
+  syntax:
+    content: public decimal Close { get; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: Public ReadOnly Property Close As Decimal
+  overload: MarketDataCollector.Domain.Models.AggregateBar.Close*
+- uid: MarketDataCollector.Domain.Models.AggregateBar.Volume
+  commentId: P:MarketDataCollector.Domain.Models.AggregateBar.Volume
+  id: Volume
+  parent: MarketDataCollector.Domain.Models.AggregateBar
+  langs:
+  - csharp
+  - vb
+  name: Volume
+  nameWithType: AggregateBar.Volume
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.Volume
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/AggregateBar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Volume
+    path: ../../src/MarketDataCollector.Domain/Models/AggregateBar.cs
+    startLine: 54
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  summary: Total volume during the aggregate window.
+  example: []
+  syntax:
+    content: public long Volume { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property Volume As Long
+  overload: MarketDataCollector.Domain.Models.AggregateBar.Volume*
+- uid: MarketDataCollector.Domain.Models.AggregateBar.Vwap
+  commentId: P:MarketDataCollector.Domain.Models.AggregateBar.Vwap
+  id: Vwap
+  parent: MarketDataCollector.Domain.Models.AggregateBar
+  langs:
+  - csharp
+  - vb
+  name: Vwap
+  nameWithType: AggregateBar.Vwap
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.Vwap
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/AggregateBar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Vwap
+    path: ../../src/MarketDataCollector.Domain/Models/AggregateBar.cs
+    startLine: 59
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  summary: Volume-weighted average price for the aggregate window.
+  example: []
+  syntax:
+    content: public decimal Vwap { get; }
+    parameters: []
+    return:
+      type: System.Decimal
+    content.vb: Public ReadOnly Property Vwap As Decimal
+  overload: MarketDataCollector.Domain.Models.AggregateBar.Vwap*
+- uid: MarketDataCollector.Domain.Models.AggregateBar.TradeCount
+  commentId: P:MarketDataCollector.Domain.Models.AggregateBar.TradeCount
+  id: TradeCount
+  parent: MarketDataCollector.Domain.Models.AggregateBar
+  langs:
+  - csharp
+  - vb
+  name: TradeCount
+  nameWithType: AggregateBar.TradeCount
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.TradeCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/AggregateBar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TradeCount
+    path: ../../src/MarketDataCollector.Domain/Models/AggregateBar.cs
+    startLine: 64
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  summary: Number of trades in the aggregate window.
+  example: []
+  syntax:
+    content: public int TradeCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property TradeCount As Integer
+  overload: MarketDataCollector.Domain.Models.AggregateBar.TradeCount*
+- uid: MarketDataCollector.Domain.Models.AggregateBar.Timeframe
+  commentId: P:MarketDataCollector.Domain.Models.AggregateBar.Timeframe
+  id: Timeframe
+  parent: MarketDataCollector.Domain.Models.AggregateBar
+  langs:
+  - csharp
+  - vb
+  name: Timeframe
+  nameWithType: AggregateBar.Timeframe
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.Timeframe
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/AggregateBar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Timeframe
+    path: ../../src/MarketDataCollector.Domain/Models/AggregateBar.cs
+    startLine: 69
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  summary: The timeframe of this aggregate (e.g., "second", "minute").
+  example: []
+  syntax:
+    content: public AggregateTimeframe Timeframe { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Domain.Models.AggregateTimeframe
+    content.vb: Public ReadOnly Property Timeframe As AggregateTimeframe
+  overload: MarketDataCollector.Domain.Models.AggregateBar.Timeframe*
+- uid: MarketDataCollector.Domain.Models.AggregateBar.Source
+  commentId: P:MarketDataCollector.Domain.Models.AggregateBar.Source
+  id: Source
+  parent: MarketDataCollector.Domain.Models.AggregateBar
+  langs:
+  - csharp
+  - vb
+  name: Source
+  nameWithType: AggregateBar.Source
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.Source
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/AggregateBar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Source
+    path: ../../src/MarketDataCollector.Domain/Models/AggregateBar.cs
+    startLine: 74
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  summary: Data source that provided this aggregate.
+  example: []
+  syntax:
+    content: public string Source { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Source As String
+  overload: MarketDataCollector.Domain.Models.AggregateBar.Source*
+- uid: MarketDataCollector.Domain.Models.AggregateBar.SequenceNumber
+  commentId: P:MarketDataCollector.Domain.Models.AggregateBar.SequenceNumber
+  id: SequenceNumber
+  parent: MarketDataCollector.Domain.Models.AggregateBar
+  langs:
+  - csharp
+  - vb
+  name: SequenceNumber
+  nameWithType: AggregateBar.SequenceNumber
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.SequenceNumber
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/AggregateBar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SequenceNumber
+    path: ../../src/MarketDataCollector.Domain/Models/AggregateBar.cs
+    startLine: 79
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  summary: Sequence number for ordering.
+  example: []
+  syntax:
+    content: public long SequenceNumber { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property SequenceNumber As Long
+  overload: MarketDataCollector.Domain.Models.AggregateBar.SequenceNumber*
+- uid: MarketDataCollector.Domain.Models.AggregateBar.#ctor(System.String,System.DateTimeOffset,System.DateTimeOffset,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Int64,System.Decimal,System.Int32,MarketDataCollector.Domain.Models.AggregateTimeframe,System.String,System.Int64)
+  commentId: M:MarketDataCollector.Domain.Models.AggregateBar.#ctor(System.String,System.DateTimeOffset,System.DateTimeOffset,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Int64,System.Decimal,System.Int32,MarketDataCollector.Domain.Models.AggregateTimeframe,System.String,System.Int64)
+  id: '#ctor(System.String,System.DateTimeOffset,System.DateTimeOffset,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Int64,System.Decimal,System.Int32,MarketDataCollector.Domain.Models.AggregateTimeframe,System.String,System.Int64)'
+  parent: MarketDataCollector.Domain.Models.AggregateBar
+  langs:
+  - csharp
+  - vb
+  name: AggregateBar(string, DateTimeOffset, DateTimeOffset, decimal, decimal, decimal, decimal, long, decimal, int, AggregateTimeframe, string, long)
+  nameWithType: AggregateBar.AggregateBar(string, DateTimeOffset, DateTimeOffset, decimal, decimal, decimal, decimal, long, decimal, int, AggregateTimeframe, string, long)
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.AggregateBar(string, System.DateTimeOffset, System.DateTimeOffset, decimal, decimal, decimal, decimal, long, decimal, int, MarketDataCollector.Domain.Models.AggregateTimeframe, string, long)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Domain/Models/AggregateBar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Domain/Models/AggregateBar.cs
+    startLine: 81
+  assemblies:
+  - MarketDataCollector.Domain
+  namespace: MarketDataCollector.Domain.Models
+  syntax:
+    content: public AggregateBar(string Symbol, DateTimeOffset StartTime, DateTimeOffset EndTime, decimal Open, decimal High, decimal Low, decimal Close, long Volume, decimal Vwap = 0, int TradeCount = 0, AggregateTimeframe Timeframe = AggregateTimeframe.Minute, string Source = "Polygon", long SequenceNumber = 0)
+    parameters:
+    - id: Symbol
+      type: System.String
+    - id: StartTime
+      type: System.DateTimeOffset
+    - id: EndTime
+      type: System.DateTimeOffset
+    - id: Open
+      type: System.Decimal
+    - id: High
+      type: System.Decimal
+    - id: Low
+      type: System.Decimal
+    - id: Close
+      type: System.Decimal
+    - id: Volume
+      type: System.Int64
+    - id: Vwap
+      type: System.Decimal
+    - id: TradeCount
+      type: System.Int32
+    - id: Timeframe
+      type: MarketDataCollector.Domain.Models.AggregateTimeframe
+    - id: Source
+      type: System.String
+    - id: SequenceNumber
+      type: System.Int64
+    content.vb: Public Sub New(Symbol As String, StartTime As DateTimeOffset, EndTime As DateTimeOffset, Open As Decimal, High As Decimal, Low As Decimal, Close As Decimal, Volume As Long, Vwap As Decimal = 0, TradeCount As Integer = 0, Timeframe As AggregateTimeframe = AggregateTimeframe.Minute, Source As String = "Polygon", SequenceNumber As Long = 0)
+  overload: MarketDataCollector.Domain.Models.AggregateBar.#ctor*
+  nameWithType.vb: AggregateBar.New(String, DateTimeOffset, DateTimeOffset, Decimal, Decimal, Decimal, Decimal, Long, Decimal, Integer, AggregateTimeframe, String, Long)
+  fullName.vb: MarketDataCollector.Domain.Models.AggregateBar.New(String, System.DateTimeOffset, System.DateTimeOffset, Decimal, Decimal, Decimal, Decimal, Long, Decimal, Integer, MarketDataCollector.Domain.Models.AggregateTimeframe, String, Long)
+  name.vb: New(String, DateTimeOffset, DateTimeOffset, Decimal, Decimal, Decimal, Decimal, Long, Decimal, Integer, AggregateTimeframe, String, Long)
+references:
+- uid: MarketDataCollector.Contracts.Domain.Models.HistoricalBar
+  commentId: T:MarketDataCollector.Contracts.Domain.Models.HistoricalBar
+  parent: MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.Contracts.Domain.Models.HistoricalBar.html
+  name: HistoricalBar
+  nameWithType: HistoricalBar
+  fullName: MarketDataCollector.Contracts.Domain.Models.HistoricalBar
+- uid: MarketDataCollector.Domain.Models
+  commentId: N:MarketDataCollector.Domain.Models
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Models
+  nameWithType: MarketDataCollector.Domain.Models
+  fullName: MarketDataCollector.Domain.Models
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Models
+    name: Models
+    href: MarketDataCollector.Domain.Models.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Models
+    name: Models
+    href: MarketDataCollector.Domain.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Domain.Events.MarketEventPayload
+  commentId: T:MarketDataCollector.Domain.Events.MarketEventPayload
+  parent: MarketDataCollector.Domain.Events
+  href: MarketDataCollector.Domain.Events.MarketEventPayload.html
+  name: MarketEventPayload
+  nameWithType: MarketEventPayload
+  fullName: MarketDataCollector.Domain.Events.MarketEventPayload
+- uid: MarketDataCollector.Contracts.Domain.Events.IMarketEventPayload
+  commentId: T:MarketDataCollector.Contracts.Domain.Events.IMarketEventPayload
+  parent: MarketDataCollector.Contracts.Domain.Events
+  href: MarketDataCollector.Contracts.Domain.Events.IMarketEventPayload.html
+  name: IMarketEventPayload
+  nameWithType: IMarketEventPayload
+  fullName: MarketDataCollector.Contracts.Domain.Events.IMarketEventPayload
+- uid: System.IEquatable{MarketDataCollector.Domain.Events.MarketEventPayload}
+  commentId: T:System.IEquatable{MarketDataCollector.Domain.Events.MarketEventPayload}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<MarketEventPayload>
+  nameWithType: IEquatable<MarketEventPayload>
+  fullName: System.IEquatable<MarketDataCollector.Domain.Events.MarketEventPayload>
+  nameWithType.vb: IEquatable(Of MarketEventPayload)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Domain.Events.MarketEventPayload)
+  name.vb: IEquatable(Of MarketEventPayload)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Domain.Events.MarketEventPayload
+    name: MarketEventPayload
+    href: MarketDataCollector.Domain.Events.MarketEventPayload.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Domain.Events.MarketEventPayload
+    name: MarketEventPayload
+    href: MarketDataCollector.Domain.Events.MarketEventPayload.html
+  - name: )
+- uid: System.IEquatable{MarketDataCollector.Domain.Models.AggregateBar}
+  commentId: T:System.IEquatable{MarketDataCollector.Domain.Models.AggregateBar}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<AggregateBar>
+  nameWithType: IEquatable<AggregateBar>
+  fullName: System.IEquatable<MarketDataCollector.Domain.Models.AggregateBar>
+  nameWithType.vb: IEquatable(Of AggregateBar)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Domain.Models.AggregateBar)
+  name.vb: IEquatable(Of AggregateBar)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Domain.Models.AggregateBar
+    name: AggregateBar
+    href: MarketDataCollector.Domain.Models.AggregateBar.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Domain.Models.AggregateBar
+    name: AggregateBar
+    href: MarketDataCollector.Domain.Models.AggregateBar.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Contracts.Domain.Models
+  commentId: N:MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Models
+  nameWithType: MarketDataCollector.Contracts.Domain.Models
+  fullName: MarketDataCollector.Contracts.Domain.Models
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Models
+    name: Models
+    href: MarketDataCollector.Contracts.Domain.Models.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Models
+    name: Models
+    href: MarketDataCollector.Contracts.Domain.Models.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Domain.Events
+  commentId: N:MarketDataCollector.Domain.Events
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Events
+  nameWithType: MarketDataCollector.Domain.Events
+  fullName: MarketDataCollector.Domain.Events
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+- uid: MarketDataCollector.Contracts.Domain.Events
+  commentId: N:MarketDataCollector.Contracts.Domain.Events
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Events
+  nameWithType: MarketDataCollector.Contracts.Domain.Events
+  fullName: MarketDataCollector.Contracts.Domain.Events
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Events
+    name: Events
+    href: MarketDataCollector.Contracts.Domain.Events.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Events
+    name: Events
+    href: MarketDataCollector.Contracts.Domain.Events.html
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Domain.Models.AggregateBar.Symbol*
+  commentId: Overload:MarketDataCollector.Domain.Models.AggregateBar.Symbol
+  href: MarketDataCollector.Domain.Models.AggregateBar.html#MarketDataCollector_Domain_Models_AggregateBar_Symbol
+  name: Symbol
+  nameWithType: AggregateBar.Symbol
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.Symbol
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Domain.Models.AggregateBar.StartTime*
+  commentId: Overload:MarketDataCollector.Domain.Models.AggregateBar.StartTime
+  href: MarketDataCollector.Domain.Models.AggregateBar.html#MarketDataCollector_Domain_Models_AggregateBar_StartTime
+  name: StartTime
+  nameWithType: AggregateBar.StartTime
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.StartTime
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: MarketDataCollector.Domain.Models.AggregateBar.EndTime*
+  commentId: Overload:MarketDataCollector.Domain.Models.AggregateBar.EndTime
+  href: MarketDataCollector.Domain.Models.AggregateBar.html#MarketDataCollector_Domain_Models_AggregateBar_EndTime
+  name: EndTime
+  nameWithType: AggregateBar.EndTime
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.EndTime
+- uid: MarketDataCollector.Domain.Models.AggregateBar.Open*
+  commentId: Overload:MarketDataCollector.Domain.Models.AggregateBar.Open
+  href: MarketDataCollector.Domain.Models.AggregateBar.html#MarketDataCollector_Domain_Models_AggregateBar_Open
+  name: Open
+  nameWithType: AggregateBar.Open
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.Open
+- uid: System.Decimal
+  commentId: T:System.Decimal
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.decimal
+  name: decimal
+  nameWithType: decimal
+  fullName: decimal
+  nameWithType.vb: Decimal
+  fullName.vb: Decimal
+  name.vb: Decimal
+- uid: MarketDataCollector.Domain.Models.AggregateBar.High*
+  commentId: Overload:MarketDataCollector.Domain.Models.AggregateBar.High
+  href: MarketDataCollector.Domain.Models.AggregateBar.html#MarketDataCollector_Domain_Models_AggregateBar_High
+  name: High
+  nameWithType: AggregateBar.High
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.High
+- uid: MarketDataCollector.Domain.Models.AggregateBar.Low*
+  commentId: Overload:MarketDataCollector.Domain.Models.AggregateBar.Low
+  href: MarketDataCollector.Domain.Models.AggregateBar.html#MarketDataCollector_Domain_Models_AggregateBar_Low
+  name: Low
+  nameWithType: AggregateBar.Low
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.Low
+- uid: MarketDataCollector.Domain.Models.AggregateBar.Close*
+  commentId: Overload:MarketDataCollector.Domain.Models.AggregateBar.Close
+  href: MarketDataCollector.Domain.Models.AggregateBar.html#MarketDataCollector_Domain_Models_AggregateBar_Close
+  name: Close
+  nameWithType: AggregateBar.Close
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.Close
+- uid: MarketDataCollector.Domain.Models.AggregateBar.Volume*
+  commentId: Overload:MarketDataCollector.Domain.Models.AggregateBar.Volume
+  href: MarketDataCollector.Domain.Models.AggregateBar.html#MarketDataCollector_Domain_Models_AggregateBar_Volume
+  name: Volume
+  nameWithType: AggregateBar.Volume
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.Volume
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Domain.Models.AggregateBar.Vwap*
+  commentId: Overload:MarketDataCollector.Domain.Models.AggregateBar.Vwap
+  href: MarketDataCollector.Domain.Models.AggregateBar.html#MarketDataCollector_Domain_Models_AggregateBar_Vwap
+  name: Vwap
+  nameWithType: AggregateBar.Vwap
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.Vwap
+- uid: MarketDataCollector.Domain.Models.AggregateBar.TradeCount*
+  commentId: Overload:MarketDataCollector.Domain.Models.AggregateBar.TradeCount
+  href: MarketDataCollector.Domain.Models.AggregateBar.html#MarketDataCollector_Domain_Models_AggregateBar_TradeCount
+  name: TradeCount
+  nameWithType: AggregateBar.TradeCount
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.TradeCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Domain.Models.AggregateBar.Timeframe*
+  commentId: Overload:MarketDataCollector.Domain.Models.AggregateBar.Timeframe
+  href: MarketDataCollector.Domain.Models.AggregateBar.html#MarketDataCollector_Domain_Models_AggregateBar_Timeframe
+  name: Timeframe
+  nameWithType: AggregateBar.Timeframe
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.Timeframe
+- uid: MarketDataCollector.Domain.Models.AggregateTimeframe
+  commentId: T:MarketDataCollector.Domain.Models.AggregateTimeframe
+  parent: MarketDataCollector.Domain.Models
+  href: MarketDataCollector.Domain.Models.AggregateTimeframe.html
+  name: AggregateTimeframe
+  nameWithType: AggregateTimeframe
+  fullName: MarketDataCollector.Domain.Models.AggregateTimeframe
+- uid: MarketDataCollector.Domain.Models.AggregateBar.Source*
+  commentId: Overload:MarketDataCollector.Domain.Models.AggregateBar.Source
+  href: MarketDataCollector.Domain.Models.AggregateBar.html#MarketDataCollector_Domain_Models_AggregateBar_Source
+  name: Source
+  nameWithType: AggregateBar.Source
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.Source
+- uid: MarketDataCollector.Domain.Models.AggregateBar.SequenceNumber*
+  commentId: Overload:MarketDataCollector.Domain.Models.AggregateBar.SequenceNumber
+  href: MarketDataCollector.Domain.Models.AggregateBar.html#MarketDataCollector_Domain_Models_AggregateBar_SequenceNumber
+  name: SequenceNumber
+  nameWithType: AggregateBar.SequenceNumber
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.SequenceNumber
+- uid: MarketDataCollector.Domain.Models.AggregateBar.#ctor*
+  commentId: Overload:MarketDataCollector.Domain.Models.AggregateBar.#ctor
+  href: MarketDataCollector.Domain.Models.AggregateBar.html#MarketDataCollector_Domain_Models_AggregateBar__ctor_System_String_System_DateTimeOffset_System_DateTimeOffset_System_Decimal_System_Decimal_System_Decimal_System_Decimal_System_Int64_System_Decimal_System_Int32_MarketDataCollector_Domain_Models_AggregateTimeframe_System_String_System_Int64_
+  name: AggregateBar
+  nameWithType: AggregateBar.AggregateBar
+  fullName: MarketDataCollector.Domain.Models.AggregateBar.AggregateBar
+  nameWithType.vb: AggregateBar.New
+  fullName.vb: MarketDataCollector.Domain.Models.AggregateBar.New
+  name.vb: New

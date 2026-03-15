@@ -1,0 +1,867 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  commentId: T:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  id: ProviderDegradationConfig
+  parent: MarketDataCollector.Application.Monitoring
+  children:
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ConnectionWeight
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.Default
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.DegradationThreshold
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorRateThreshold
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorRateWeight
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorWindowSeconds
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.EvaluationIntervalSeconds
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyMaxMs
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyThresholdMs
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyWeight
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.MaxMissedHeartbeatsForFullDegradation
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.MaxReconnectsPerHour
+  - MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ReconnectWeight
+  langs:
+  - csharp
+  - vb
+  name: ProviderDegradationConfig
+  nameWithType: ProviderDegradationConfig
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderDegradationConfig
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 306
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Configuration for provider degradation scoring.
+  example: []
+  syntax:
+    content: 'public sealed record ProviderDegradationConfig : IEquatable<ProviderDegradationConfig>'
+    content.vb: Public NotInheritable Class ProviderDegradationConfig Implements IEquatable(Of ProviderDegradationConfig)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Application.Monitoring.ProviderDegradationConfig}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.EvaluationIntervalSeconds
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.EvaluationIntervalSeconds
+  id: EvaluationIntervalSeconds
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  langs:
+  - csharp
+  - vb
+  name: EvaluationIntervalSeconds
+  nameWithType: ProviderDegradationConfig.EvaluationIntervalSeconds
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.EvaluationIntervalSeconds
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: EvaluationIntervalSeconds
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 309
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: How often to evaluate scores (seconds).
+  example: []
+  syntax:
+    content: public int EvaluationIntervalSeconds { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property EvaluationIntervalSeconds As Integer
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.EvaluationIntervalSeconds*
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.DegradationThreshold
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.DegradationThreshold
+  id: DegradationThreshold
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  langs:
+  - csharp
+  - vb
+  name: DegradationThreshold
+  nameWithType: ProviderDegradationConfig.DegradationThreshold
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.DegradationThreshold
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DegradationThreshold
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 312
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Composite score at or above which a provider is considered degraded (0.0-1.0).
+  example: []
+  syntax:
+    content: public double DegradationThreshold { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property DegradationThreshold As Double
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.DegradationThreshold*
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyThresholdMs
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyThresholdMs
+  id: LatencyThresholdMs
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  langs:
+  - csharp
+  - vb
+  name: LatencyThresholdMs
+  nameWithType: ProviderDegradationConfig.LatencyThresholdMs
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyThresholdMs
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LatencyThresholdMs
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 315
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: P95 latency (ms) above which latency degradation begins.
+  example: []
+  syntax:
+    content: public double LatencyThresholdMs { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property LatencyThresholdMs As Double
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyThresholdMs*
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyMaxMs
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyMaxMs
+  id: LatencyMaxMs
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  langs:
+  - csharp
+  - vb
+  name: LatencyMaxMs
+  nameWithType: ProviderDegradationConfig.LatencyMaxMs
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyMaxMs
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LatencyMaxMs
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 318
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: P95 latency (ms) at which latency degradation is fully maxed out.
+  example: []
+  syntax:
+    content: public double LatencyMaxMs { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property LatencyMaxMs As Double
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyMaxMs*
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorRateThreshold
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorRateThreshold
+  id: ErrorRateThreshold
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  langs:
+  - csharp
+  - vb
+  name: ErrorRateThreshold
+  nameWithType: ProviderDegradationConfig.ErrorRateThreshold
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorRateThreshold
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ErrorRateThreshold
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 321
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Error rate (0.0-1.0) above which error degradation begins.
+  example: []
+  syntax:
+    content: public double ErrorRateThreshold { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property ErrorRateThreshold As Double
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorRateThreshold*
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorWindowSeconds
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorWindowSeconds
+  id: ErrorWindowSeconds
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  langs:
+  - csharp
+  - vb
+  name: ErrorWindowSeconds
+  nameWithType: ProviderDegradationConfig.ErrorWindowSeconds
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorWindowSeconds
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ErrorWindowSeconds
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 324
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Sliding window (seconds) for error rate calculation.
+  example: []
+  syntax:
+    content: public int ErrorWindowSeconds { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ErrorWindowSeconds As Integer
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorWindowSeconds*
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.MaxReconnectsPerHour
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.MaxReconnectsPerHour
+  id: MaxReconnectsPerHour
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  langs:
+  - csharp
+  - vb
+  name: MaxReconnectsPerHour
+  nameWithType: ProviderDegradationConfig.MaxReconnectsPerHour
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.MaxReconnectsPerHour
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MaxReconnectsPerHour
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 327
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Reconnects per hour at which reconnect degradation is fully maxed out.
+  example: []
+  syntax:
+    content: public double MaxReconnectsPerHour { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property MaxReconnectsPerHour As Double
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.MaxReconnectsPerHour*
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.MaxMissedHeartbeatsForFullDegradation
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.MaxMissedHeartbeatsForFullDegradation
+  id: MaxMissedHeartbeatsForFullDegradation
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  langs:
+  - csharp
+  - vb
+  name: MaxMissedHeartbeatsForFullDegradation
+  nameWithType: ProviderDegradationConfig.MaxMissedHeartbeatsForFullDegradation
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.MaxMissedHeartbeatsForFullDegradation
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MaxMissedHeartbeatsForFullDegradation
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 330
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Number of missed heartbeats for full connection degradation score.
+  example: []
+  syntax:
+    content: public int MaxMissedHeartbeatsForFullDegradation { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxMissedHeartbeatsForFullDegradation As Integer
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.MaxMissedHeartbeatsForFullDegradation*
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ConnectionWeight
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ConnectionWeight
+  id: ConnectionWeight
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  langs:
+  - csharp
+  - vb
+  name: ConnectionWeight
+  nameWithType: ProviderDegradationConfig.ConnectionWeight
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ConnectionWeight
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConnectionWeight
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 334
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Weight for connection health component.
+  example: []
+  syntax:
+    content: public double ConnectionWeight { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property ConnectionWeight As Double
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ConnectionWeight*
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyWeight
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyWeight
+  id: LatencyWeight
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  langs:
+  - csharp
+  - vb
+  name: LatencyWeight
+  nameWithType: ProviderDegradationConfig.LatencyWeight
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyWeight
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LatencyWeight
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 337
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Weight for latency component.
+  example: []
+  syntax:
+    content: public double LatencyWeight { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property LatencyWeight As Double
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyWeight*
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorRateWeight
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorRateWeight
+  id: ErrorRateWeight
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  langs:
+  - csharp
+  - vb
+  name: ErrorRateWeight
+  nameWithType: ProviderDegradationConfig.ErrorRateWeight
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorRateWeight
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ErrorRateWeight
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 340
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Weight for error rate component.
+  example: []
+  syntax:
+    content: public double ErrorRateWeight { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property ErrorRateWeight As Double
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorRateWeight*
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ReconnectWeight
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ReconnectWeight
+  id: ReconnectWeight
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  langs:
+  - csharp
+  - vb
+  name: ReconnectWeight
+  nameWithType: ProviderDegradationConfig.ReconnectWeight
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ReconnectWeight
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ReconnectWeight
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 343
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Weight for reconnect frequency component.
+  example: []
+  syntax:
+    content: public double ReconnectWeight { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property ReconnectWeight As Double
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ReconnectWeight*
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.Default
+  commentId: P:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.Default
+  id: Default
+  parent: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: ProviderDegradationConfig.Default
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.Default
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Default
+    path: ../../src/MarketDataCollector.Application/Monitoring/ProviderDegradationScorer.cs
+    startLine: 345
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public static ProviderDegradationConfig Default { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+    content.vb: Public Shared ReadOnly Property [Default] As ProviderDegradationConfig
+  overload: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.Default*
+references:
+- uid: MarketDataCollector.Application.Monitoring
+  commentId: N:MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring
+  nameWithType: MarketDataCollector.Application.Monitoring
+  fullName: MarketDataCollector.Application.Monitoring
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Application.Monitoring.ProviderDegradationConfig}
+  commentId: T:System.IEquatable{MarketDataCollector.Application.Monitoring.ProviderDegradationConfig}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<ProviderDegradationConfig>
+  nameWithType: IEquatable<ProviderDegradationConfig>
+  fullName: System.IEquatable<MarketDataCollector.Application.Monitoring.ProviderDegradationConfig>
+  nameWithType.vb: IEquatable(Of ProviderDegradationConfig)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Application.Monitoring.ProviderDegradationConfig)
+  name.vb: IEquatable(Of ProviderDegradationConfig)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+    name: ProviderDegradationConfig
+    href: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+    name: ProviderDegradationConfig
+    href: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.EvaluationIntervalSeconds*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.EvaluationIntervalSeconds
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.html#MarketDataCollector_Application_Monitoring_ProviderDegradationConfig_EvaluationIntervalSeconds
+  name: EvaluationIntervalSeconds
+  nameWithType: ProviderDegradationConfig.EvaluationIntervalSeconds
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.EvaluationIntervalSeconds
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.DegradationThreshold*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.DegradationThreshold
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.html#MarketDataCollector_Application_Monitoring_ProviderDegradationConfig_DegradationThreshold
+  name: DegradationThreshold
+  nameWithType: ProviderDegradationConfig.DegradationThreshold
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.DegradationThreshold
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyThresholdMs*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyThresholdMs
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.html#MarketDataCollector_Application_Monitoring_ProviderDegradationConfig_LatencyThresholdMs
+  name: LatencyThresholdMs
+  nameWithType: ProviderDegradationConfig.LatencyThresholdMs
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyThresholdMs
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyMaxMs*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyMaxMs
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.html#MarketDataCollector_Application_Monitoring_ProviderDegradationConfig_LatencyMaxMs
+  name: LatencyMaxMs
+  nameWithType: ProviderDegradationConfig.LatencyMaxMs
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyMaxMs
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorRateThreshold*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorRateThreshold
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.html#MarketDataCollector_Application_Monitoring_ProviderDegradationConfig_ErrorRateThreshold
+  name: ErrorRateThreshold
+  nameWithType: ProviderDegradationConfig.ErrorRateThreshold
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorRateThreshold
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorWindowSeconds*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorWindowSeconds
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.html#MarketDataCollector_Application_Monitoring_ProviderDegradationConfig_ErrorWindowSeconds
+  name: ErrorWindowSeconds
+  nameWithType: ProviderDegradationConfig.ErrorWindowSeconds
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorWindowSeconds
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.MaxReconnectsPerHour*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.MaxReconnectsPerHour
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.html#MarketDataCollector_Application_Monitoring_ProviderDegradationConfig_MaxReconnectsPerHour
+  name: MaxReconnectsPerHour
+  nameWithType: ProviderDegradationConfig.MaxReconnectsPerHour
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.MaxReconnectsPerHour
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.MaxMissedHeartbeatsForFullDegradation*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.MaxMissedHeartbeatsForFullDegradation
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.html#MarketDataCollector_Application_Monitoring_ProviderDegradationConfig_MaxMissedHeartbeatsForFullDegradation
+  name: MaxMissedHeartbeatsForFullDegradation
+  nameWithType: ProviderDegradationConfig.MaxMissedHeartbeatsForFullDegradation
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.MaxMissedHeartbeatsForFullDegradation
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ConnectionWeight*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ConnectionWeight
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.html#MarketDataCollector_Application_Monitoring_ProviderDegradationConfig_ConnectionWeight
+  name: ConnectionWeight
+  nameWithType: ProviderDegradationConfig.ConnectionWeight
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ConnectionWeight
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyWeight*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyWeight
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.html#MarketDataCollector_Application_Monitoring_ProviderDegradationConfig_LatencyWeight
+  name: LatencyWeight
+  nameWithType: ProviderDegradationConfig.LatencyWeight
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.LatencyWeight
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorRateWeight*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorRateWeight
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.html#MarketDataCollector_Application_Monitoring_ProviderDegradationConfig_ErrorRateWeight
+  name: ErrorRateWeight
+  nameWithType: ProviderDegradationConfig.ErrorRateWeight
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ErrorRateWeight
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ReconnectWeight*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ReconnectWeight
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.html#MarketDataCollector_Application_Monitoring_ProviderDegradationConfig_ReconnectWeight
+  name: ReconnectWeight
+  nameWithType: ProviderDegradationConfig.ReconnectWeight
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.ReconnectWeight
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.Default*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.Default
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.html#MarketDataCollector_Application_Monitoring_ProviderDegradationConfig_Default
+  name: Default
+  nameWithType: ProviderDegradationConfig.Default
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.Default
+- uid: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  commentId: T:MarketDataCollector.Application.Monitoring.ProviderDegradationConfig
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig.html
+  name: ProviderDegradationConfig
+  nameWithType: ProviderDegradationConfig
+  fullName: MarketDataCollector.Application.Monitoring.ProviderDegradationConfig

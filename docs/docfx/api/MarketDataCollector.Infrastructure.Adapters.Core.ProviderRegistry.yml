@@ -1,0 +1,3418 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  id: ProviderRegistry
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  children:
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.#ctor(MarketDataCollector.Application.Monitoring.Core.IAlertDispatcher,Serilog.ILogger)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.CreateStreamingClient(MarketDataCollector.Application.Config.DataSourceKind)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Disable(System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Dispose
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Enable(System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetAllProviderMetadata
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetAllProviders
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProvider(System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProviders
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestAvailableProviderAsync``1(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestBackfillProviderAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestSymbolSearchProviderAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider(System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderAvailabilityAsync``1(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalog
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalogByType(MarketDataCollector.Infrastructure.Adapters.Core.ProviderType)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalogEntry(System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider``1(System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvidersByCapability(System.Func{MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities,System.Boolean})
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders``1
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetStreamingProvider(System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetStreamingProviders
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSummary
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSymbolSearchProvider(System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSymbolSearchProviders
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.IsAnyProviderAvailableAsync``1(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterBackfill(System.String,MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider,System.Int32)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreaming(System.String,MarketDataCollector.Infrastructure.IMarketDataClient,System.Int32)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreamingFactory(MarketDataCollector.Application.Config.DataSourceKind,System.Func{MarketDataCollector.Infrastructure.IMarketDataClient})
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterSymbolSearch(System.String,MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider,System.Int32)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register``1(``0,System.Nullable{System.Int32})
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.SupportedStreamingSources
+  langs:
+  - csharp
+  - vb
+  name: ProviderRegistry
+  nameWithType: ProviderRegistry
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderRegistry
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 41
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: >-
+    Centralized registry for all market data providers enabling plugin-style
+
+    provider management with discovery, routing, and health monitoring.
+  remarks: >-
+    The provider registry provides:
+
+    - Centralized provider registration and discovery
+
+    - Priority-based provider routing
+
+    - Provider health monitoring and automatic failover
+
+    - Capability-based provider selection
+
+    - Unified metadata access via <xref href="MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-001", "Centralized provider registry for plugin-style management")]
+
+      public sealed class ProviderRegistry : IDisposable
+    content.vb: >-
+      <ImplementsAdr("ADR-001", "Centralized provider registry for plugin-style management")>
+
+      Public NotInheritable Class ProviderRegistry Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.GetAvailabilitySummaryAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.GetOrCreateCompositeBackfillProvider(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterBackfillProviders(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterSymbolSearchProviders(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-001
+    - type: System.String
+      value: Centralized provider registry for plugin-style management
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.#ctor(MarketDataCollector.Application.Monitoring.Core.IAlertDispatcher,Serilog.ILogger)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.#ctor(MarketDataCollector.Application.Monitoring.Core.IAlertDispatcher,Serilog.ILogger)
+  id: '#ctor(MarketDataCollector.Application.Monitoring.Core.IAlertDispatcher,Serilog.ILogger)'
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: ProviderRegistry(IAlertDispatcher?, ILogger?)
+  nameWithType: ProviderRegistry.ProviderRegistry(IAlertDispatcher?, ILogger?)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.ProviderRegistry(MarketDataCollector.Application.Monitoring.Core.IAlertDispatcher?, Serilog.ILogger?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 60
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  syntax:
+    content: public ProviderRegistry(IAlertDispatcher? alertDispatcher = null, ILogger? log = null)
+    parameters:
+    - id: alertDispatcher
+      type: MarketDataCollector.Application.Monitoring.Core.IAlertDispatcher
+    - id: log
+      type: Serilog.ILogger
+    content.vb: Public Sub New(alertDispatcher As IAlertDispatcher = Nothing, log As ILogger = Nothing)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.#ctor*
+  nameWithType.vb: ProviderRegistry.New(IAlertDispatcher, ILogger)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.New(MarketDataCollector.Application.Monitoring.Core.IAlertDispatcher, Serilog.ILogger)
+  name.vb: New(IAlertDispatcher, ILogger)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register``1(``0,System.Nullable{System.Int32})
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register``1(``0,System.Nullable{System.Int32})
+  id: Register``1(``0,System.Nullable{System.Int32})
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: Register<T>(T, int?)
+  nameWithType: ProviderRegistry.Register<T>(T, int?)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register<T>(T, int?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Register
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 75
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: >-
+    Registers any provider implementing <xref href="MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata" data-throw-if-not-resolved="false"></xref>.
+
+    All providers are stored in a single unified registry.
+  example: []
+  syntax:
+    content: 'public void Register<T>(T provider, int? priorityOverride = null) where T : IProviderMetadata'
+    parameters:
+    - id: provider
+      type: '{T}'
+      description: The provider instance.
+    - id: priorityOverride
+      type: System.Nullable{System.Int32}
+      description: Optional priority override.
+    typeParameters:
+    - id: T
+      description: The provider type.
+    content.vb: Public Sub Register(Of T As IProviderMetadata)(provider As T, priorityOverride As Integer? = Nothing)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register*
+  nameWithType.vb: ProviderRegistry.Register(Of T)(T, Integer?)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register(Of T)(T, Integer?)
+  name.vb: Register(Of T)(T, Integer?)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreamingFactory(MarketDataCollector.Application.Config.DataSourceKind,System.Func{MarketDataCollector.Infrastructure.IMarketDataClient})
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreamingFactory(MarketDataCollector.Application.Config.DataSourceKind,System.Func{MarketDataCollector.Infrastructure.IMarketDataClient})
+  id: RegisterStreamingFactory(MarketDataCollector.Application.Config.DataSourceKind,System.Func{MarketDataCollector.Infrastructure.IMarketDataClient})
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: RegisterStreamingFactory(DataSourceKind, Func<IMarketDataClient>)
+  nameWithType: ProviderRegistry.RegisterStreamingFactory(DataSourceKind, Func<IMarketDataClient>)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreamingFactory(MarketDataCollector.Application.Config.DataSourceKind, System.Func<MarketDataCollector.Infrastructure.IMarketDataClient>)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterStreamingFactory
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 102
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: >-
+    Registers a factory function for creating a streaming client for the specified data source kind.
+
+    This replaces the switch-statement approach previously used in MarketDataClientFactory.
+  example: []
+  syntax:
+    content: public void RegisterStreamingFactory(DataSourceKind kind, Func<IMarketDataClient> factory)
+    parameters:
+    - id: kind
+      type: MarketDataCollector.Application.Config.DataSourceKind
+      description: The data source kind to register.
+    - id: factory
+      type: System.Func{MarketDataCollector.Infrastructure.IMarketDataClient}
+      description: Factory function that creates the streaming client.
+    content.vb: Public Sub RegisterStreamingFactory(kind As DataSourceKind, factory As Func(Of IMarketDataClient))
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreamingFactory*
+  nameWithType.vb: ProviderRegistry.RegisterStreamingFactory(DataSourceKind, Func(Of IMarketDataClient))
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreamingFactory(MarketDataCollector.Application.Config.DataSourceKind, System.Func(Of MarketDataCollector.Infrastructure.IMarketDataClient))
+  name.vb: RegisterStreamingFactory(DataSourceKind, Func(Of IMarketDataClient))
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.CreateStreamingClient(MarketDataCollector.Application.Config.DataSourceKind)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.CreateStreamingClient(MarketDataCollector.Application.Config.DataSourceKind)
+  id: CreateStreamingClient(MarketDataCollector.Application.Config.DataSourceKind)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: CreateStreamingClient(DataSourceKind)
+  nameWithType: ProviderRegistry.CreateStreamingClient(DataSourceKind)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.CreateStreamingClient(MarketDataCollector.Application.Config.DataSourceKind)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CreateStreamingClient
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 125
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: >-
+    Creates a streaming client for the specified data source kind using the registered factory.
+
+    Falls back to <xref href="MarketDataCollector.Application.Config.DataSourceKind.IB" data-throw-if-not-resolved="false"></xref> if the requested kind has no registered factory.
+  example: []
+  syntax:
+    content: public IMarketDataClient CreateStreamingClient(DataSourceKind kind)
+    parameters:
+    - id: kind
+      type: MarketDataCollector.Application.Config.DataSourceKind
+      description: The data source kind to create a client for.
+    return:
+      type: MarketDataCollector.Infrastructure.IMarketDataClient
+      description: A new streaming client instance.
+    content.vb: Public Function CreateStreamingClient(kind As DataSourceKind) As IMarketDataClient
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.CreateStreamingClient*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when no factory is registered for the kind and no fallback is available.
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.SupportedStreamingSources
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.SupportedStreamingSources
+  id: SupportedStreamingSources
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: SupportedStreamingSources
+  nameWithType: ProviderRegistry.SupportedStreamingSources
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.SupportedStreamingSources
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SupportedStreamingSources
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 149
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets all data source kinds that have a registered streaming factory.
+  example: []
+  syntax:
+    content: public IReadOnlyList<DataSourceKind> SupportedStreamingSources { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Config.DataSourceKind}
+    content.vb: Public ReadOnly Property SupportedStreamingSources As IReadOnlyList(Of DataSourceKind)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.SupportedStreamingSources*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetAllProviderMetadata
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetAllProviderMetadata
+  id: GetAllProviderMetadata
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetAllProviderMetadata()
+  nameWithType: ProviderRegistry.GetAllProviderMetadata()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetAllProviderMetadata()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetAllProviderMetadata
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 159
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets all registered providers as unified metadata.
+  example: []
+  syntax:
+    content: public IReadOnlyList<IProviderMetadata> GetAllProviderMetadata()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata}
+    content.vb: Public Function GetAllProviderMetadata() As IReadOnlyList(Of IProviderMetadata)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetAllProviderMetadata*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider(System.String)
+  id: GetProvider(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetProvider(string)
+  nameWithType: ProviderRegistry.GetProvider(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetProvider
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 171
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets a provider by ID from the unified registry.
+  example: []
+  syntax:
+    content: public IProviderMetadata? GetProvider(string id)
+    parameters:
+    - id: id
+      type: System.String
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+    content.vb: Public Function GetProvider(id As String) As IProviderMetadata
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider*
+  nameWithType.vb: ProviderRegistry.GetProvider(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider(String)
+  name.vb: GetProvider(String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvidersByCapability(System.Func{MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities,System.Boolean})
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvidersByCapability(System.Func{MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities,System.Boolean})
+  id: GetProvidersByCapability(System.Func{MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities,System.Boolean})
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetProvidersByCapability(Func<ProviderCapabilities, bool>)
+  nameWithType: ProviderRegistry.GetProvidersByCapability(Func<ProviderCapabilities, bool>)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvidersByCapability(System.Func<MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities, bool>)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetProvidersByCapability
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 182
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets providers filtered by capability.
+  example: []
+  syntax:
+    content: public IReadOnlyList<IProviderMetadata> GetProvidersByCapability(Func<ProviderCapabilities, bool> predicate)
+    parameters:
+    - id: predicate
+      type: System.Func{MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities,System.Boolean}
+      description: Capability filter predicate.
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata}
+    content.vb: Public Function GetProvidersByCapability(predicate As Func(Of ProviderCapabilities, Boolean)) As IReadOnlyList(Of IProviderMetadata)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvidersByCapability*
+  nameWithType.vb: ProviderRegistry.GetProvidersByCapability(Func(Of ProviderCapabilities, Boolean))
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvidersByCapability(System.Func(Of MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities, Boolean))
+  name.vb: GetProvidersByCapability(Func(Of ProviderCapabilities, Boolean))
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders``1
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders``1
+  id: GetProviders``1
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetProviders<T>()
+  nameWithType: ProviderRegistry.GetProviders<T>()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders<T>()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetProviders
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 201
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: >-
+    Gets all providers of a specific type, ordered by priority.
+
+    This is the unified generic approach that replaces type-specific methods.
+  example: []
+  syntax:
+    content: 'public IReadOnlyList<T> GetProviders<T>() where T : class, IProviderMetadata'
+    typeParameters:
+    - id: T
+      description: The provider interface type (e.g., IMarketDataClient, IHistoricalDataProvider).
+    return:
+      type: System.Collections.Generic.IReadOnlyList{{T}}
+      description: All enabled providers of the specified type, ordered by priority.
+    content.vb: Public Function GetProviders(Of T As {Class, IProviderMetadata})() As IReadOnlyList(Of T)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders*
+  nameWithType.vb: ProviderRegistry.GetProviders(Of T)()
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders(Of T)()
+  name.vb: GetProviders(Of T)()
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider``1(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider``1(System.String)
+  id: GetProvider``1(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetProvider<T>(string)
+  nameWithType: ProviderRegistry.GetProvider<T>(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider<T>(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetProvider
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 216
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets a provider of a specific type by ID.
+  example: []
+  syntax:
+    content: 'public T? GetProvider<T>(string id) where T : class, IProviderMetadata'
+    parameters:
+    - id: id
+      type: System.String
+      description: The provider ID.
+    typeParameters:
+    - id: T
+      description: The provider interface type.
+    return:
+      type: '{T}'
+      description: The provider if found and of the correct type, null otherwise.
+    content.vb: Public Function GetProvider(Of T As {Class, IProviderMetadata})(id As String) As T
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider*
+  nameWithType.vb: ProviderRegistry.GetProvider(Of T)(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider(Of T)(String)
+  name.vb: GetProvider(Of T)(String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestAvailableProviderAsync``1(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestAvailableProviderAsync``1(System.Threading.CancellationToken)
+  id: GetBestAvailableProviderAsync``1(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetBestAvailableProviderAsync<T>(CancellationToken)
+  nameWithType: ProviderRegistry.GetBestAvailableProviderAsync<T>(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestAvailableProviderAsync<T>(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetBestAvailableProviderAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 232
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: >-
+    Gets the best available provider of a specific type based on priority and availability.
+
+    This is the unified availability check that works for all provider types.
+  example: []
+  syntax:
+    content: 'public Task<T?> GetBestAvailableProviderAsync<T>(CancellationToken ct = default) where T : class, IProviderMetadata'
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    typeParameters:
+    - id: T
+      description: The provider interface type.
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+      description: The best available provider, or null if none available.
+    content.vb: Public Function GetBestAvailableProviderAsync(Of T As {Class, IProviderMetadata})(ct As CancellationToken = Nothing) As Task(Of T)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestAvailableProviderAsync*
+  nameWithType.vb: ProviderRegistry.GetBestAvailableProviderAsync(Of T)(CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestAvailableProviderAsync(Of T)(System.Threading.CancellationToken)
+  name.vb: GetBestAvailableProviderAsync(Of T)(CancellationToken)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.IsAnyProviderAvailableAsync``1(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.IsAnyProviderAvailableAsync``1(System.Threading.CancellationToken)
+  id: IsAnyProviderAvailableAsync``1(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: IsAnyProviderAvailableAsync<T>(CancellationToken)
+  nameWithType: ProviderRegistry.IsAnyProviderAvailableAsync<T>(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.IsAnyProviderAvailableAsync<T>(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsAnyProviderAvailableAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 278
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Checks if any provider of the specified type is available.
+  example: []
+  syntax:
+    content: 'public Task<bool> IsAnyProviderAvailableAsync<T>(CancellationToken ct = default) where T : class, IProviderMetadata'
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    typeParameters:
+    - id: T
+      description: The provider interface type.
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: True if at least one provider is available.
+    content.vb: Public Function IsAnyProviderAvailableAsync(Of T As {Class, IProviderMetadata})(ct As CancellationToken = Nothing) As Task(Of Boolean)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.IsAnyProviderAvailableAsync*
+  nameWithType.vb: ProviderRegistry.IsAnyProviderAvailableAsync(Of T)(CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.IsAnyProviderAvailableAsync(Of T)(System.Threading.CancellationToken)
+  name.vb: IsAnyProviderAvailableAsync(Of T)(CancellationToken)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderAvailabilityAsync``1(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderAvailabilityAsync``1(System.Threading.CancellationToken)
+  id: GetProviderAvailabilityAsync``1(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetProviderAvailabilityAsync<T>(CancellationToken)
+  nameWithType: ProviderRegistry.GetProviderAvailabilityAsync<T>(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderAvailabilityAsync<T>(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetProviderAvailabilityAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 290
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets availability status for all providers of a specific type.
+  example: []
+  syntax:
+    content: 'public Task<IReadOnlyDictionary<string, bool>> GetProviderAvailabilityAsync<T>(CancellationToken ct = default) where T : class, IProviderMetadata'
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    typeParameters:
+    - id: T
+      description: The provider interface type.
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyDictionary{System.String,System.Boolean}}
+      description: Dictionary mapping provider IDs to availability status.
+    content.vb: Public Function GetProviderAvailabilityAsync(Of T As {Class, IProviderMetadata})(ct As CancellationToken = Nothing) As Task(Of IReadOnlyDictionary(Of String, Boolean))
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderAvailabilityAsync*
+  nameWithType.vb: ProviderRegistry.GetProviderAvailabilityAsync(Of T)(CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderAvailabilityAsync(Of T)(System.Threading.CancellationToken)
+  name.vb: GetProviderAvailabilityAsync(Of T)(CancellationToken)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreaming(System.String,MarketDataCollector.Infrastructure.IMarketDataClient,System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreaming(System.String,MarketDataCollector.Infrastructure.IMarketDataClient,System.Int32)
+  id: RegisterStreaming(System.String,MarketDataCollector.Infrastructure.IMarketDataClient,System.Int32)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: RegisterStreaming(string, IMarketDataClient, int)
+  nameWithType: ProviderRegistry.RegisterStreaming(string, IMarketDataClient, int)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreaming(string, MarketDataCollector.Infrastructure.IMarketDataClient, int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterStreaming
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 321
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Registers a streaming market data provider.
+  remarks: Convenience wrapper that delegates to <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register%60%601(%60%600%2cSystem.Nullable%7bSystem.Int32%7d)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public void RegisterStreaming(string name, IMarketDataClient provider, int priority = 100)
+    parameters:
+    - id: name
+      type: System.String
+    - id: provider
+      type: MarketDataCollector.Infrastructure.IMarketDataClient
+    - id: priority
+      type: System.Int32
+    content.vb: Public Sub RegisterStreaming(name As String, provider As IMarketDataClient, priority As Integer = 100)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreaming*
+  nameWithType.vb: ProviderRegistry.RegisterStreaming(String, IMarketDataClient, Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreaming(String, MarketDataCollector.Infrastructure.IMarketDataClient, Integer)
+  name.vb: RegisterStreaming(String, IMarketDataClient, Integer)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetStreamingProvider(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetStreamingProvider(System.String)
+  id: GetStreamingProvider(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetStreamingProvider(string)
+  nameWithType: ProviderRegistry.GetStreamingProvider(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetStreamingProvider(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetStreamingProvider
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 331
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets a streaming provider by name.
+  remarks: Convenience wrapper that delegates to <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider%60%601(System.String)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public IMarketDataClient? GetStreamingProvider(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: MarketDataCollector.Infrastructure.IMarketDataClient
+    content.vb: Public Function GetStreamingProvider(name As String) As IMarketDataClient
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetStreamingProvider*
+  nameWithType.vb: ProviderRegistry.GetStreamingProvider(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetStreamingProvider(String)
+  name.vb: GetStreamingProvider(String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetStreamingProviders
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetStreamingProviders
+  id: GetStreamingProviders
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetStreamingProviders()
+  nameWithType: ProviderRegistry.GetStreamingProviders()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetStreamingProviders()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetStreamingProviders
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 337
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets all registered streaming providers ordered by priority.
+  remarks: Convenience wrapper that delegates to <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders%60%601" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public IReadOnlyList<IMarketDataClient> GetStreamingProviders()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.IMarketDataClient}
+    content.vb: Public Function GetStreamingProviders() As IReadOnlyList(Of IMarketDataClient)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetStreamingProviders*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterBackfill(System.String,MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider,System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterBackfill(System.String,MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider,System.Int32)
+  id: RegisterBackfill(System.String,MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider,System.Int32)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: RegisterBackfill(string, IHistoricalDataProvider, int)
+  nameWithType: ProviderRegistry.RegisterBackfill(string, IHistoricalDataProvider, int)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterBackfill(string, MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider, int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterBackfill
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 343
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Registers a historical data provider.
+  remarks: Convenience wrapper that delegates to <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register%60%601(%60%600%2cSystem.Nullable%7bSystem.Int32%7d)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public void RegisterBackfill(string name, IHistoricalDataProvider provider, int priority = 100)
+    parameters:
+    - id: name
+      type: System.String
+    - id: provider
+      type: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider
+    - id: priority
+      type: System.Int32
+    content.vb: Public Sub RegisterBackfill(name As String, provider As IHistoricalDataProvider, priority As Integer = 100)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterBackfill*
+  nameWithType.vb: ProviderRegistry.RegisterBackfill(String, IHistoricalDataProvider, Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterBackfill(String, MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider, Integer)
+  name.vb: RegisterBackfill(String, IHistoricalDataProvider, Integer)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProvider(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProvider(System.String)
+  id: GetBackfillProvider(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetBackfillProvider(string)
+  nameWithType: ProviderRegistry.GetBackfillProvider(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProvider(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetBackfillProvider
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 353
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets a backfill provider by name.
+  remarks: Convenience wrapper that delegates to <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider%60%601(System.String)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public IHistoricalDataProvider? GetBackfillProvider(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider
+    content.vb: Public Function GetBackfillProvider(name As String) As IHistoricalDataProvider
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProvider*
+  nameWithType.vb: ProviderRegistry.GetBackfillProvider(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProvider(String)
+  name.vb: GetBackfillProvider(String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProviders
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProviders
+  id: GetBackfillProviders
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetBackfillProviders()
+  nameWithType: ProviderRegistry.GetBackfillProviders()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProviders()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetBackfillProviders
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 359
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets all registered backfill providers ordered by priority.
+  remarks: Convenience wrapper that delegates to <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders%60%601" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public IReadOnlyList<IHistoricalDataProvider> GetBackfillProviders()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider}
+    content.vb: Public Function GetBackfillProviders() As IReadOnlyList(Of IHistoricalDataProvider)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProviders*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestBackfillProviderAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestBackfillProviderAsync(System.Threading.CancellationToken)
+  id: GetBestBackfillProviderAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetBestBackfillProviderAsync(CancellationToken)
+  nameWithType: ProviderRegistry.GetBestBackfillProviderAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestBackfillProviderAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetBestBackfillProviderAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 365
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets the best available backfill provider based on priority and health.
+  remarks: Convenience wrapper that delegates to <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestAvailableProviderAsync%60%601(System.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public Task<IHistoricalDataProvider?> GetBestBackfillProviderAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider}
+    content.vb: Public Function GetBestBackfillProviderAsync(ct As CancellationToken = Nothing) As Task(Of IHistoricalDataProvider)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestBackfillProviderAsync*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterSymbolSearch(System.String,MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider,System.Int32)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterSymbolSearch(System.String,MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider,System.Int32)
+  id: RegisterSymbolSearch(System.String,MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider,System.Int32)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: RegisterSymbolSearch(string, ISymbolSearchProvider, int)
+  nameWithType: ProviderRegistry.RegisterSymbolSearch(string, ISymbolSearchProvider, int)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterSymbolSearch(string, MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider, int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterSymbolSearch
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 372
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Registers a symbol search provider.
+  remarks: Convenience wrapper that delegates to <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register%60%601(%60%600%2cSystem.Nullable%7bSystem.Int32%7d)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public void RegisterSymbolSearch(string name, ISymbolSearchProvider provider, int priority = 100)
+    parameters:
+    - id: name
+      type: System.String
+    - id: provider
+      type: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+    - id: priority
+      type: System.Int32
+    content.vb: Public Sub RegisterSymbolSearch(name As String, provider As ISymbolSearchProvider, priority As Integer = 100)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterSymbolSearch*
+  nameWithType.vb: ProviderRegistry.RegisterSymbolSearch(String, ISymbolSearchProvider, Integer)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterSymbolSearch(String, MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider, Integer)
+  name.vb: RegisterSymbolSearch(String, ISymbolSearchProvider, Integer)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSymbolSearchProvider(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSymbolSearchProvider(System.String)
+  id: GetSymbolSearchProvider(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetSymbolSearchProvider(string)
+  nameWithType: ProviderRegistry.GetSymbolSearchProvider(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSymbolSearchProvider(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSymbolSearchProvider
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 382
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets a symbol search provider by name.
+  remarks: Convenience wrapper that delegates to <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider%60%601(System.String)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public ISymbolSearchProvider? GetSymbolSearchProvider(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+    content.vb: Public Function GetSymbolSearchProvider(name As String) As ISymbolSearchProvider
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSymbolSearchProvider*
+  nameWithType.vb: ProviderRegistry.GetSymbolSearchProvider(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSymbolSearchProvider(String)
+  name.vb: GetSymbolSearchProvider(String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSymbolSearchProviders
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSymbolSearchProviders
+  id: GetSymbolSearchProviders
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetSymbolSearchProviders()
+  nameWithType: ProviderRegistry.GetSymbolSearchProviders()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSymbolSearchProviders()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSymbolSearchProviders
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 388
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets all registered symbol search providers ordered by priority.
+  remarks: Convenience wrapper that delegates to <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders%60%601" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public IReadOnlyList<ISymbolSearchProvider> GetSymbolSearchProviders()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider}
+    content.vb: Public Function GetSymbolSearchProviders() As IReadOnlyList(Of ISymbolSearchProvider)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSymbolSearchProviders*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestSymbolSearchProviderAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestSymbolSearchProviderAsync(System.Threading.CancellationToken)
+  id: GetBestSymbolSearchProviderAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetBestSymbolSearchProviderAsync(CancellationToken)
+  nameWithType: ProviderRegistry.GetBestSymbolSearchProviderAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestSymbolSearchProviderAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetBestSymbolSearchProviderAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 394
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets the best available symbol search provider based on priority and health.
+  remarks: Convenience wrapper that delegates to <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestAvailableProviderAsync%60%601(System.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public Task<ISymbolSearchProvider?> GetBestSymbolSearchProviderAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider}
+    content.vb: Public Function GetBestSymbolSearchProviderAsync(ct As CancellationToken = Nothing) As Task(Of ISymbolSearchProvider)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestSymbolSearchProviderAsync*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Enable(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Enable(System.String)
+  id: Enable(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: Enable(string)
+  nameWithType: ProviderRegistry.Enable(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Enable(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Enable
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 404
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Enables a provider.
+  example: []
+  syntax:
+    content: public void Enable(string name)
+    parameters:
+    - id: name
+      type: System.String
+    content.vb: Public Sub Enable(name As String)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Enable*
+  nameWithType.vb: ProviderRegistry.Enable(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Enable(String)
+  name.vb: Enable(String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Disable(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Disable(System.String)
+  id: Disable(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: Disable(string)
+  nameWithType: ProviderRegistry.Disable(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Disable(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Disable
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 421
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Disables a provider.
+  example: []
+  syntax:
+    content: public void Disable(string name)
+    parameters:
+    - id: name
+      type: System.String
+    content.vb: Public Sub Disable(name As String)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Disable*
+  nameWithType.vb: ProviderRegistry.Disable(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Disable(String)
+  name.vb: Disable(String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetAllProviders
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetAllProviders
+  id: GetAllProviders
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetAllProviders()
+  nameWithType: ProviderRegistry.GetAllProviders()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetAllProviders()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetAllProviders
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 452
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets information about all registered providers using standardized metadata.
+  remarks: >-
+    Uses <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.FromMetadata(MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata%2cSystem.Boolean%2cSystem.Nullable%7bSystem.Int32%7d)" data-throw-if-not-resolved="false"></xref> via the unified
+
+    <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry._allProviders" data-throw-if-not-resolved="false"></xref> dictionary to ensure consistent template output
+
+    across all provider types without type-specific branching.
+  example: []
+  syntax:
+    content: public IReadOnlyList<ProviderInfo> GetAllProviders()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.ProviderInfo}
+    content.vb: Public Function GetAllProviders() As IReadOnlyList(Of ProviderInfo)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetAllProviders*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalog
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalog
+  id: GetProviderCatalog
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetProviderCatalog()
+  nameWithType: ProviderRegistry.GetProviderCatalog()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalog()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetProviderCatalog
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 464
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: >-
+    Generates catalog entries from all registered providers using <xref href="MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.ToCatalogEntry(MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata)" data-throw-if-not-resolved="false"></xref>.
+
+    This replaces static hardcoded catalog data with runtime-derived metadata.
+  example: []
+  syntax:
+    content: public IReadOnlyList<ProviderCatalogEntry> GetProviderCatalog()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Api.ProviderCatalogEntry}
+      description: A list of <xref href="MarketDataCollector.Contracts.Api.ProviderCatalogEntry" data-throw-if-not-resolved="false"></xref> objects for UI consumption.
+    content.vb: Public Function GetProviderCatalog() As IReadOnlyList(Of ProviderCatalogEntry)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalog*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalogByType(MarketDataCollector.Infrastructure.Adapters.Core.ProviderType)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalogByType(MarketDataCollector.Infrastructure.Adapters.Core.ProviderType)
+  id: GetProviderCatalogByType(MarketDataCollector.Infrastructure.Adapters.Core.ProviderType)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetProviderCatalogByType(ProviderType)
+  nameWithType: ProviderRegistry.GetProviderCatalogByType(ProviderType)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalogByType(MarketDataCollector.Infrastructure.Adapters.Core.ProviderType)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetProviderCatalogByType
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 476
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Generates catalog entries for providers of a specific type.
+  example: []
+  syntax:
+    content: public IReadOnlyList<ProviderCatalogEntry> GetProviderCatalogByType(ProviderType type)
+    parameters:
+    - id: type
+      type: MarketDataCollector.Infrastructure.Adapters.Core.ProviderType
+      description: The provider type to filter by.
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Api.ProviderCatalogEntry}
+      description: A list of <xref href="MarketDataCollector.Contracts.Api.ProviderCatalogEntry" data-throw-if-not-resolved="false"></xref> objects for UI consumption.
+    content.vb: Public Function GetProviderCatalogByType(type As ProviderType) As IReadOnlyList(Of ProviderCatalogEntry)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalogByType*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalogEntry(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalogEntry(System.String)
+  id: GetProviderCatalogEntry(System.String)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetProviderCatalogEntry(string)
+  nameWithType: ProviderRegistry.GetProviderCatalogEntry(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalogEntry(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetProviderCatalogEntry
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 491
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets a catalog entry for a specific provider by ID.
+  example: []
+  syntax:
+    content: public ProviderCatalogEntry? GetProviderCatalogEntry(string providerId)
+    parameters:
+    - id: providerId
+      type: System.String
+      description: The provider ID to look up.
+    return:
+      type: MarketDataCollector.Contracts.Api.ProviderCatalogEntry
+      description: The catalog entry, or null if not found.
+    content.vb: Public Function GetProviderCatalogEntry(providerId As String) As ProviderCatalogEntry
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalogEntry*
+  nameWithType.vb: ProviderRegistry.GetProviderCatalogEntry(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalogEntry(String)
+  name.vb: GetProviderCatalogEntry(String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSummary
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSummary
+  id: GetSummary
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetSummary()
+  nameWithType: ProviderRegistry.GetSummary()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSummary()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSummary
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 501
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Gets a summary of registered provider counts.
+  example: []
+  syntax:
+    content: public ProviderRegistrySummary GetSummary()
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistrySummary
+    content.vb: Public Function GetSummary() As ProviderRegistrySummary
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSummary*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Dispose
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Dispose
+  id: Dispose
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: ProviderRegistry.Dispose()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Dispose
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ProviderRegistry.cs
+    startLine: 519
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html
+  name: IProviderMetadata
+  nameWithType: IProviderMetadata
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+- uid: MarketDataCollector.Infrastructure.Adapters.Core
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Core
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Core
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.GetAvailabilitySummaryAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.GetAvailabilitySummaryAsync(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions
+  definition: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.GetAvailabilitySummaryAsync(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,System.Threading.CancellationToken)
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderAvailabilityExtensions_GetAvailabilitySummaryAsync_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_System_Threading_CancellationToken_
+  name: GetAvailabilitySummaryAsync(ProviderRegistry, CancellationToken)
+  nameWithType: ProviderAvailabilityExtensions.GetAvailabilitySummaryAsync(ProviderRegistry, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.GetAvailabilitySummaryAsync(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.GetAvailabilitySummaryAsync(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,System.Threading.CancellationToken)
+    name: GetAvailabilitySummaryAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderAvailabilityExtensions_GetAvailabilitySummaryAsync_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+    name: ProviderRegistry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.GetAvailabilitySummaryAsync(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,System.Threading.CancellationToken)
+    name: GetAvailabilitySummaryAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderAvailabilityExtensions_GetAvailabilitySummaryAsync_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+    name: ProviderRegistry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.GetOrCreateCompositeBackfillProvider(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.GetOrCreateCompositeBackfillProvider(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions
+  definition: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.GetOrCreateCompositeBackfillProvider(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_GetOrCreateCompositeBackfillProvider_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  name: GetOrCreateCompositeBackfillProvider(ProviderRegistry, AppConfig, ICredentialResolver, ILogger)
+  nameWithType: ProviderServiceExtensions.GetOrCreateCompositeBackfillProvider(ProviderRegistry, AppConfig, ICredentialResolver, ILogger)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.GetOrCreateCompositeBackfillProvider(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry, MarketDataCollector.Application.Config.AppConfig, MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver, Serilog.ILogger)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.GetOrCreateCompositeBackfillProvider(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+    name: GetOrCreateCompositeBackfillProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_GetOrCreateCompositeBackfillProvider_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+    name: ProviderRegistry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver
+    name: ICredentialResolver
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver.html
+  - name: ','
+  - name: " "
+  - uid: Serilog.ILogger
+    name: ILogger
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.GetOrCreateCompositeBackfillProvider(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+    name: GetOrCreateCompositeBackfillProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_GetOrCreateCompositeBackfillProvider_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+    name: ProviderRegistry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver
+    name: ICredentialResolver
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver.html
+  - name: ','
+  - name: " "
+  - uid: Serilog.ILogger
+    name: ILogger
+    isExternal: true
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterBackfillProviders(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterBackfillProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions
+  definition: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterBackfillProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_RegisterBackfillProviders_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  name: RegisterBackfillProviders(ProviderRegistry, AppConfig, ICredentialResolver, ILogger)
+  nameWithType: ProviderServiceExtensions.RegisterBackfillProviders(ProviderRegistry, AppConfig, ICredentialResolver, ILogger)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterBackfillProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry, MarketDataCollector.Application.Config.AppConfig, MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver, Serilog.ILogger)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterBackfillProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+    name: RegisterBackfillProviders
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_RegisterBackfillProviders_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+    name: ProviderRegistry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver
+    name: ICredentialResolver
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver.html
+  - name: ','
+  - name: " "
+  - uid: Serilog.ILogger
+    name: ILogger
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterBackfillProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+    name: RegisterBackfillProviders
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_RegisterBackfillProviders_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+    name: ProviderRegistry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver
+    name: ICredentialResolver
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver.html
+  - name: ','
+  - name: " "
+  - uid: Serilog.ILogger
+    name: ILogger
+    isExternal: true
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterSymbolSearchProviders(MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterSymbolSearchProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions
+  definition: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterSymbolSearchProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_RegisterSymbolSearchProviders_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  name: RegisterSymbolSearchProviders(ProviderRegistry, AppConfig, ICredentialResolver, ILogger)
+  nameWithType: ProviderServiceExtensions.RegisterSymbolSearchProviders(ProviderRegistry, AppConfig, ICredentialResolver, ILogger)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterSymbolSearchProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry, MarketDataCollector.Application.Config.AppConfig, MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver, Serilog.ILogger)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterSymbolSearchProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+    name: RegisterSymbolSearchProviders
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_RegisterSymbolSearchProviders_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+    name: ProviderRegistry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver
+    name: ICredentialResolver
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver.html
+  - name: ','
+  - name: " "
+  - uid: Serilog.ILogger
+    name: ILogger
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterSymbolSearchProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+    name: RegisterSymbolSearchProviders
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_RegisterSymbolSearchProviders_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+    name: ProviderRegistry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver
+    name: ICredentialResolver
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver.html
+  - name: ','
+  - name: " "
+  - uid: Serilog.ILogger
+    name: ILogger
+    isExternal: true
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.GetAvailabilitySummaryAsync(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.GetAvailabilitySummaryAsync(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,System.Threading.CancellationToken)
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderAvailabilityExtensions_GetAvailabilitySummaryAsync_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_System_Threading_CancellationToken_
+  name: GetAvailabilitySummaryAsync(ProviderRegistry, CancellationToken)
+  nameWithType: ProviderAvailabilityExtensions.GetAvailabilitySummaryAsync(ProviderRegistry, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.GetAvailabilitySummaryAsync(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.GetAvailabilitySummaryAsync(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,System.Threading.CancellationToken)
+    name: GetAvailabilitySummaryAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderAvailabilityExtensions_GetAvailabilitySummaryAsync_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+    name: ProviderRegistry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.GetAvailabilitySummaryAsync(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,System.Threading.CancellationToken)
+    name: GetAvailabilitySummaryAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderAvailabilityExtensions_GetAvailabilitySummaryAsync_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+    name: ProviderRegistry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions.html
+  name: ProviderAvailabilityExtensions
+  nameWithType: ProviderAvailabilityExtensions
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderAvailabilityExtensions
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.GetOrCreateCompositeBackfillProvider(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.GetOrCreateCompositeBackfillProvider(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_GetOrCreateCompositeBackfillProvider_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  name: GetOrCreateCompositeBackfillProvider(ProviderRegistry, AppConfig, ICredentialResolver, ILogger)
+  nameWithType: ProviderServiceExtensions.GetOrCreateCompositeBackfillProvider(ProviderRegistry, AppConfig, ICredentialResolver, ILogger)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.GetOrCreateCompositeBackfillProvider(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry, MarketDataCollector.Application.Config.AppConfig, MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver, Serilog.ILogger)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.GetOrCreateCompositeBackfillProvider(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+    name: GetOrCreateCompositeBackfillProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_GetOrCreateCompositeBackfillProvider_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+    name: ProviderRegistry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver
+    name: ICredentialResolver
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver.html
+  - name: ','
+  - name: " "
+  - uid: Serilog.ILogger
+    name: ILogger
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.GetOrCreateCompositeBackfillProvider(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+    name: GetOrCreateCompositeBackfillProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_GetOrCreateCompositeBackfillProvider_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+    name: ProviderRegistry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver
+    name: ICredentialResolver
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver.html
+  - name: ','
+  - name: " "
+  - uid: Serilog.ILogger
+    name: ILogger
+    isExternal: true
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html
+  name: ProviderServiceExtensions
+  nameWithType: ProviderServiceExtensions
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterBackfillProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterBackfillProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_RegisterBackfillProviders_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  name: RegisterBackfillProviders(ProviderRegistry, AppConfig, ICredentialResolver, ILogger)
+  nameWithType: ProviderServiceExtensions.RegisterBackfillProviders(ProviderRegistry, AppConfig, ICredentialResolver, ILogger)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterBackfillProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry, MarketDataCollector.Application.Config.AppConfig, MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver, Serilog.ILogger)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterBackfillProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+    name: RegisterBackfillProviders
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_RegisterBackfillProviders_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+    name: ProviderRegistry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver
+    name: ICredentialResolver
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver.html
+  - name: ','
+  - name: " "
+  - uid: Serilog.ILogger
+    name: ILogger
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterBackfillProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+    name: RegisterBackfillProviders
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_RegisterBackfillProviders_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+    name: ProviderRegistry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver
+    name: ICredentialResolver
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver.html
+  - name: ','
+  - name: " "
+  - uid: Serilog.ILogger
+    name: ILogger
+    isExternal: true
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterSymbolSearchProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterSymbolSearchProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_RegisterSymbolSearchProviders_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  name: RegisterSymbolSearchProviders(ProviderRegistry, AppConfig, ICredentialResolver, ILogger)
+  nameWithType: ProviderServiceExtensions.RegisterSymbolSearchProviders(ProviderRegistry, AppConfig, ICredentialResolver, ILogger)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterSymbolSearchProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry, MarketDataCollector.Application.Config.AppConfig, MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver, Serilog.ILogger)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterSymbolSearchProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+    name: RegisterSymbolSearchProviders
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_RegisterSymbolSearchProviders_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+    name: ProviderRegistry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver
+    name: ICredentialResolver
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver.html
+  - name: ','
+  - name: " "
+  - uid: Serilog.ILogger
+    name: ILogger
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.RegisterSymbolSearchProviders(MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry,MarketDataCollector.Application.Config.AppConfig,MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver,Serilog.ILogger)
+    name: RegisterSymbolSearchProviders
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderServiceExtensions.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderServiceExtensions_RegisterSymbolSearchProviders_MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_MarketDataCollector_Application_Config_AppConfig_MarketDataCollector_Infrastructure_Adapters_Core_ICredentialResolver_Serilog_ILogger_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry
+    name: ProviderRegistry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: ','
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver
+    name: ICredentialResolver
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ICredentialResolver.html
+  - name: ','
+  - name: " "
+  - uid: Serilog.ILogger
+    name: ILogger
+    isExternal: true
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.#ctor*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.#ctor
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry__ctor_MarketDataCollector_Application_Monitoring_Core_IAlertDispatcher_Serilog_ILogger_
+  name: ProviderRegistry
+  nameWithType: ProviderRegistry.ProviderRegistry
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.ProviderRegistry
+  nameWithType.vb: ProviderRegistry.New
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.New
+  name.vb: New
+- uid: MarketDataCollector.Application.Monitoring.Core.IAlertDispatcher
+  commentId: T:MarketDataCollector.Application.Monitoring.Core.IAlertDispatcher
+  parent: MarketDataCollector.Application.Monitoring.Core
+  href: MarketDataCollector.Application.Monitoring.Core.IAlertDispatcher.html
+  name: IAlertDispatcher
+  nameWithType: IAlertDispatcher
+  fullName: MarketDataCollector.Application.Monitoring.Core.IAlertDispatcher
+- uid: Serilog.ILogger
+  commentId: T:Serilog.ILogger
+  parent: Serilog
+  isExternal: true
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Serilog.ILogger
+- uid: MarketDataCollector.Application.Monitoring.Core
+  commentId: N:MarketDataCollector.Application.Monitoring.Core
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring.Core
+  nameWithType: MarketDataCollector.Application.Monitoring.Core
+  fullName: MarketDataCollector.Application.Monitoring.Core
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring.Core
+    name: Core
+    href: MarketDataCollector.Application.Monitoring.Core.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring.Core
+    name: Core
+    href: MarketDataCollector.Application.Monitoring.Core.html
+- uid: Serilog
+  commentId: N:Serilog
+  isExternal: true
+  name: Serilog
+  nameWithType: Serilog
+  fullName: Serilog
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_Register__1___0_System_Nullable_System_Int32__
+  name: Register
+  nameWithType: ProviderRegistry.Register
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreamingFactory*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreamingFactory
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_RegisterStreamingFactory_MarketDataCollector_Application_Config_DataSourceKind_System_Func_MarketDataCollector_Infrastructure_IMarketDataClient__
+  name: RegisterStreamingFactory
+  nameWithType: ProviderRegistry.RegisterStreamingFactory
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreamingFactory
+- uid: MarketDataCollector.Application.Config.DataSourceKind
+  commentId: T:MarketDataCollector.Application.Config.DataSourceKind
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.DataSourceKind.html
+  name: DataSourceKind
+  nameWithType: DataSourceKind
+  fullName: MarketDataCollector.Application.Config.DataSourceKind
+- uid: System.Func{MarketDataCollector.Infrastructure.IMarketDataClient}
+  commentId: T:System.Func{MarketDataCollector.Infrastructure.IMarketDataClient}
+  parent: System
+  definition: System.Func`1
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<IMarketDataClient>
+  nameWithType: Func<IMarketDataClient>
+  fullName: System.Func<MarketDataCollector.Infrastructure.IMarketDataClient>
+  nameWithType.vb: Func(Of IMarketDataClient)
+  fullName.vb: System.Func(Of MarketDataCollector.Infrastructure.IMarketDataClient)
+  name.vb: Func(Of IMarketDataClient)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.IMarketDataClient
+    name: IMarketDataClient
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.IMarketDataClient
+    name: IMarketDataClient
+  - name: )
+- uid: MarketDataCollector.Application.Config
+  commentId: N:MarketDataCollector.Application.Config
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config
+  nameWithType: MarketDataCollector.Application.Config
+  fullName: MarketDataCollector.Application.Config
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+- uid: System.Func`1
+  commentId: T:System.Func`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<TResult>
+  nameWithType: Func<TResult>
+  fullName: System.Func<TResult>
+  nameWithType.vb: Func(Of TResult)
+  fullName.vb: System.Func(Of TResult)
+  name.vb: Func(Of TResult)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: MarketDataCollector.Application.Config.DataSourceKind.IB
+  commentId: F:MarketDataCollector.Application.Config.DataSourceKind.IB
+  href: MarketDataCollector.Application.Config.DataSourceKind.html#MarketDataCollector_Application_Config_DataSourceKind_IB
+  name: IB
+  nameWithType: DataSourceKind.IB
+  fullName: MarketDataCollector.Application.Config.DataSourceKind.IB
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.CreateStreamingClient*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.CreateStreamingClient
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_CreateStreamingClient_MarketDataCollector_Application_Config_DataSourceKind_
+  name: CreateStreamingClient
+  nameWithType: ProviderRegistry.CreateStreamingClient
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.CreateStreamingClient
+- uid: MarketDataCollector.Infrastructure.IMarketDataClient
+  commentId: T:MarketDataCollector.Infrastructure.IMarketDataClient
+  parent: MarketDataCollector.Infrastructure
+  href: MarketDataCollector.Infrastructure.IMarketDataClient.html
+  name: IMarketDataClient
+  nameWithType: IMarketDataClient
+  fullName: MarketDataCollector.Infrastructure.IMarketDataClient
+- uid: MarketDataCollector.Infrastructure
+  commentId: N:MarketDataCollector.Infrastructure
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure
+  nameWithType: MarketDataCollector.Infrastructure
+  fullName: MarketDataCollector.Infrastructure
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.SupportedStreamingSources*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.SupportedStreamingSources
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_SupportedStreamingSources
+  name: SupportedStreamingSources
+  nameWithType: ProviderRegistry.SupportedStreamingSources
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.SupportedStreamingSources
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Config.DataSourceKind}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Config.DataSourceKind}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<DataSourceKind>
+  nameWithType: IReadOnlyList<DataSourceKind>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Config.DataSourceKind>
+  nameWithType.vb: IReadOnlyList(Of DataSourceKind)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Config.DataSourceKind)
+  name.vb: IReadOnlyList(Of DataSourceKind)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Application.Config.DataSourceKind
+    name: DataSourceKind
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.DataSourceKind
+    name: DataSourceKind
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetAllProviderMetadata*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetAllProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetAllProviderMetadata
+  name: GetAllProviderMetadata
+  nameWithType: ProviderRegistry.GetAllProviderMetadata
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetAllProviderMetadata
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<IProviderMetadata>
+  nameWithType: IReadOnlyList<IProviderMetadata>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata>
+  nameWithType.vb: IReadOnlyList(Of IProviderMetadata)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata)
+  name.vb: IReadOnlyList(Of IProviderMetadata)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+    name: IProviderMetadata
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+    name: IProviderMetadata
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetProvider_System_String_
+  name: GetProvider
+  nameWithType: ProviderRegistry.GetProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvidersByCapability*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvidersByCapability
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetProvidersByCapability_System_Func_MarketDataCollector_Infrastructure_Adapters_Core_ProviderCapabilities_System_Boolean__
+  name: GetProvidersByCapability
+  nameWithType: ProviderRegistry.GetProvidersByCapability
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvidersByCapability
+- uid: System.Func{MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities,System.Boolean}
+  commentId: T:System.Func{MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities,System.Boolean}
+  parent: System
+  definition: System.Func`2
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<ProviderCapabilities, bool>
+  nameWithType: Func<ProviderCapabilities, bool>
+  fullName: System.Func<MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities, bool>
+  nameWithType.vb: Func(Of ProviderCapabilities, Boolean)
+  fullName.vb: System.Func(Of MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities, Boolean)
+  name.vb: Func(Of ProviderCapabilities, Boolean)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities
+    name: ProviderCapabilities
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderCapabilities
+    name: ProviderCapabilities
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetProviders__1
+  name: GetProviders
+  nameWithType: ProviderRegistry.GetProviders
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders
+- uid: System.Collections.Generic.IReadOnlyList{{T}}
+  commentId: T:System.Collections.Generic.IReadOnlyList{``0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestAvailableProviderAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestAvailableProviderAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetBestAvailableProviderAsync__1_System_Threading_CancellationToken_
+  name: GetBestAvailableProviderAsync
+  nameWithType: ProviderRegistry.GetBestAvailableProviderAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestAvailableProviderAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{{T}}
+  commentId: T:System.Threading.Tasks.Task{``0}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<T>
+  nameWithType: Task<T>
+  fullName: System.Threading.Tasks.Task<T>
+  nameWithType.vb: Task(Of T)
+  fullName.vb: System.Threading.Tasks.Task(Of T)
+  name.vb: Task(Of T)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.IsAnyProviderAvailableAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.IsAnyProviderAvailableAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_IsAnyProviderAvailableAsync__1_System_Threading_CancellationToken_
+  name: IsAnyProviderAvailableAsync
+  nameWithType: ProviderRegistry.IsAnyProviderAvailableAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.IsAnyProviderAvailableAsync
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderAvailabilityAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderAvailabilityAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetProviderAvailabilityAsync__1_System_Threading_CancellationToken_
+  name: GetProviderAvailabilityAsync
+  nameWithType: ProviderRegistry.GetProviderAvailabilityAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderAvailabilityAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyDictionary{System.String,System.Boolean}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyDictionary{System.String,System.Boolean}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IReadOnlyDictionary<string, bool>>
+  nameWithType: Task<IReadOnlyDictionary<string, bool>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string, bool>>
+  nameWithType.vb: Task(Of IReadOnlyDictionary(Of String, Boolean))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IReadOnlyDictionary(Of String, Boolean))
+  name.vb: Task(Of IReadOnlyDictionary(Of String, Boolean))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register``1(``0,System.Nullable{System.Int32})
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register``1(``0,System.Nullable{System.Int32})
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_Register__1___0_System_Nullable_System_Int32__
+  name: Register<T>(T, int?)
+  nameWithType: ProviderRegistry.Register<T>(T, int?)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register<T>(T, int?)
+  nameWithType.vb: ProviderRegistry.Register(Of T)(T, Integer?)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register(Of T)(T, Integer?)
+  name.vb: Register(Of T)(T, Integer?)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register``1(``0,System.Nullable{System.Int32})
+    name: Register
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_Register__1___0_System_Nullable_System_Int32__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Register``1(``0,System.Nullable{System.Int32})
+    name: Register
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_Register__1___0_System_Nullable_System_Int32__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreaming*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreaming
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_RegisterStreaming_System_String_MarketDataCollector_Infrastructure_IMarketDataClient_System_Int32_
+  name: RegisterStreaming
+  nameWithType: ProviderRegistry.RegisterStreaming
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterStreaming
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider``1(System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider``1(System.String)
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetProvider__1_System_String_
+  name: GetProvider<T>(string)
+  nameWithType: ProviderRegistry.GetProvider<T>(string)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider<T>(string)
+  nameWithType.vb: ProviderRegistry.GetProvider(Of T)(String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider(Of T)(String)
+  name.vb: GetProvider(Of T)(String)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider``1(System.String)
+    name: GetProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetProvider__1_System_String_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProvider``1(System.String)
+    name: GetProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetProvider__1_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetStreamingProvider*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetStreamingProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetStreamingProvider_System_String_
+  name: GetStreamingProvider
+  nameWithType: ProviderRegistry.GetStreamingProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetStreamingProvider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders``1
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders``1
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetProviders__1
+  name: GetProviders<T>()
+  nameWithType: ProviderRegistry.GetProviders<T>()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders<T>()
+  nameWithType.vb: ProviderRegistry.GetProviders(Of T)()
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders(Of T)()
+  name.vb: GetProviders(Of T)()
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders``1
+    name: GetProviders
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetProviders__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviders``1
+    name: GetProviders
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetProviders__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetStreamingProviders*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetStreamingProviders
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetStreamingProviders
+  name: GetStreamingProviders
+  nameWithType: ProviderRegistry.GetStreamingProviders
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetStreamingProviders
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.IMarketDataClient}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.IMarketDataClient}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<IMarketDataClient>
+  nameWithType: IReadOnlyList<IMarketDataClient>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Infrastructure.IMarketDataClient>
+  nameWithType.vb: IReadOnlyList(Of IMarketDataClient)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Infrastructure.IMarketDataClient)
+  name.vb: IReadOnlyList(Of IMarketDataClient)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.IMarketDataClient
+    name: IMarketDataClient
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.IMarketDataClient
+    name: IMarketDataClient
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterBackfill*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterBackfill
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_RegisterBackfill_System_String_MarketDataCollector_Infrastructure_Adapters_Core_IHistoricalDataProvider_System_Int32_
+  name: RegisterBackfill
+  nameWithType: ProviderRegistry.RegisterBackfill
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterBackfill
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider.html
+  name: IHistoricalDataProvider
+  nameWithType: IHistoricalDataProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProvider*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetBackfillProvider_System_String_
+  name: GetBackfillProvider
+  nameWithType: ProviderRegistry.GetBackfillProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProvider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProviders*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProviders
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetBackfillProviders
+  name: GetBackfillProviders
+  nameWithType: ProviderRegistry.GetBackfillProviders
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBackfillProviders
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<IHistoricalDataProvider>
+  nameWithType: IReadOnlyList<IHistoricalDataProvider>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider>
+  nameWithType.vb: IReadOnlyList(Of IHistoricalDataProvider)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider)
+  name.vb: IReadOnlyList(Of IHistoricalDataProvider)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider
+    name: IHistoricalDataProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider
+    name: IHistoricalDataProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider.html
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestAvailableProviderAsync``1(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestAvailableProviderAsync``1(System.Threading.CancellationToken)
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetBestAvailableProviderAsync__1_System_Threading_CancellationToken_
+  name: GetBestAvailableProviderAsync<T>(CancellationToken)
+  nameWithType: ProviderRegistry.GetBestAvailableProviderAsync<T>(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestAvailableProviderAsync<T>(System.Threading.CancellationToken)
+  nameWithType.vb: ProviderRegistry.GetBestAvailableProviderAsync(Of T)(CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestAvailableProviderAsync(Of T)(System.Threading.CancellationToken)
+  name.vb: GetBestAvailableProviderAsync(Of T)(CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestAvailableProviderAsync``1(System.Threading.CancellationToken)
+    name: GetBestAvailableProviderAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetBestAvailableProviderAsync__1_System_Threading_CancellationToken_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestAvailableProviderAsync``1(System.Threading.CancellationToken)
+    name: GetBestAvailableProviderAsync
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetBestAvailableProviderAsync__1_System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestBackfillProviderAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestBackfillProviderAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetBestBackfillProviderAsync_System_Threading_CancellationToken_
+  name: GetBestBackfillProviderAsync
+  nameWithType: ProviderRegistry.GetBestBackfillProviderAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestBackfillProviderAsync
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IHistoricalDataProvider>
+  nameWithType: Task<IHistoricalDataProvider>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider>
+  nameWithType.vb: Task(Of IHistoricalDataProvider)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider)
+  name.vb: Task(Of IHistoricalDataProvider)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider
+    name: IHistoricalDataProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider
+    name: IHistoricalDataProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.IHistoricalDataProvider.html
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterSymbolSearch*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterSymbolSearch
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_RegisterSymbolSearch_System_String_MarketDataCollector_Infrastructure_Adapters_Core_ISymbolSearchProvider_System_Int32_
+  name: RegisterSymbolSearch
+  nameWithType: ProviderRegistry.RegisterSymbolSearch
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.RegisterSymbolSearch
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.html
+  name: ISymbolSearchProvider
+  nameWithType: ISymbolSearchProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSymbolSearchProvider*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSymbolSearchProvider
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetSymbolSearchProvider_System_String_
+  name: GetSymbolSearchProvider
+  nameWithType: ProviderRegistry.GetSymbolSearchProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSymbolSearchProvider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSymbolSearchProviders*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSymbolSearchProviders
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetSymbolSearchProviders
+  name: GetSymbolSearchProviders
+  nameWithType: ProviderRegistry.GetSymbolSearchProviders
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSymbolSearchProviders
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<ISymbolSearchProvider>
+  nameWithType: IReadOnlyList<ISymbolSearchProvider>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider>
+  nameWithType.vb: IReadOnlyList(Of ISymbolSearchProvider)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider)
+  name.vb: IReadOnlyList(Of ISymbolSearchProvider)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+    name: ISymbolSearchProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+    name: ISymbolSearchProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.html
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestSymbolSearchProviderAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestSymbolSearchProviderAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetBestSymbolSearchProviderAsync_System_Threading_CancellationToken_
+  name: GetBestSymbolSearchProviderAsync
+  nameWithType: ProviderRegistry.GetBestSymbolSearchProviderAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetBestSymbolSearchProviderAsync
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<ISymbolSearchProvider>
+  nameWithType: Task<ISymbolSearchProvider>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider>
+  nameWithType.vb: Task(Of ISymbolSearchProvider)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider)
+  name.vb: Task(Of ISymbolSearchProvider)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+    name: ISymbolSearchProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+    name: ISymbolSearchProvider
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.html
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Enable*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Enable
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_Enable_System_String_
+  name: Enable
+  nameWithType: ProviderRegistry.Enable
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Enable
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Disable*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Disable
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_Disable_System_String_
+  name: Disable
+  nameWithType: ProviderRegistry.Disable
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Disable
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.FromMetadata(MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata,System.Boolean,System.Nullable{System.Int32})
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.FromMetadata(MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata,System.Boolean,System.Nullable{System.Int32})
+  isExternal: true
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderTemplateFactory_FromMetadata_MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_System_Boolean_System_Nullable_System_Int32__
+  name: FromMetadata(IProviderMetadata, bool, int?)
+  nameWithType: ProviderTemplateFactory.FromMetadata(IProviderMetadata, bool, int?)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.FromMetadata(MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata, bool, int?)
+  nameWithType.vb: ProviderTemplateFactory.FromMetadata(IProviderMetadata, Boolean, Integer?)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.FromMetadata(MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata, Boolean, Integer?)
+  name.vb: FromMetadata(IProviderMetadata, Boolean, Integer?)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.FromMetadata(MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata,System.Boolean,System.Nullable{System.Int32})
+    name: FromMetadata
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderTemplateFactory_FromMetadata_MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_System_Boolean_System_Nullable_System_Int32__
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+    name: IProviderMetadata
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.FromMetadata(MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata,System.Boolean,System.Nullable{System.Int32})
+    name: FromMetadata
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderTemplateFactory_FromMetadata_MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_System_Boolean_System_Nullable_System_Int32__
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+    name: IProviderMetadata
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry._allProviders
+  commentId: F:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry._allProviders
+  name: _allProviders
+  nameWithType: ProviderRegistry._allProviders
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry._allProviders
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetAllProviders*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetAllProviders
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetAllProviders
+  name: GetAllProviders
+  nameWithType: ProviderRegistry.GetAllProviders
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetAllProviders
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.ProviderInfo}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Infrastructure.Adapters.Core.ProviderInfo}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<ProviderInfo>
+  nameWithType: IReadOnlyList<ProviderInfo>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Infrastructure.Adapters.Core.ProviderInfo>
+  nameWithType.vb: IReadOnlyList(Of ProviderInfo)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Infrastructure.Adapters.Core.ProviderInfo)
+  name.vb: IReadOnlyList(Of ProviderInfo)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderInfo
+    name: ProviderInfo
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderInfo
+    name: ProviderInfo
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderInfo.html
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.ToCatalogEntry(MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.ToCatalogEntry(MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata)
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderTemplateFactory_ToCatalogEntry_MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_
+  name: ToCatalogEntry(IProviderMetadata)
+  nameWithType: ProviderTemplateFactory.ToCatalogEntry(IProviderMetadata)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.ToCatalogEntry(MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata)
+  spec.csharp:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.ToCatalogEntry(MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata)
+    name: ToCatalogEntry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderTemplateFactory_ToCatalogEntry_MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+    name: IProviderMetadata
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.ToCatalogEntry(MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata)
+    name: ToCatalogEntry
+    href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderTemplateFactory.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderTemplateFactory_ToCatalogEntry_MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_
+  - name: (
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+    name: IProviderMetadata
+  - name: )
+- uid: MarketDataCollector.Contracts.Api.ProviderCatalogEntry
+  commentId: T:MarketDataCollector.Contracts.Api.ProviderCatalogEntry
+  parent: MarketDataCollector.Contracts.Api
+  href: MarketDataCollector.Contracts.Api.ProviderCatalogEntry.html
+  name: ProviderCatalogEntry
+  nameWithType: ProviderCatalogEntry
+  fullName: MarketDataCollector.Contracts.Api.ProviderCatalogEntry
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalog*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalog
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetProviderCatalog
+  name: GetProviderCatalog
+  nameWithType: ProviderRegistry.GetProviderCatalog
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalog
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Api.ProviderCatalogEntry}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Contracts.Api.ProviderCatalogEntry}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<ProviderCatalogEntry>
+  nameWithType: IReadOnlyList<ProviderCatalogEntry>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Contracts.Api.ProviderCatalogEntry>
+  nameWithType.vb: IReadOnlyList(Of ProviderCatalogEntry)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Contracts.Api.ProviderCatalogEntry)
+  name.vb: IReadOnlyList(Of ProviderCatalogEntry)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Api.ProviderCatalogEntry
+    name: ProviderCatalogEntry
+    href: MarketDataCollector.Contracts.Api.ProviderCatalogEntry.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Api.ProviderCatalogEntry
+    name: ProviderCatalogEntry
+    href: MarketDataCollector.Contracts.Api.ProviderCatalogEntry.html
+  - name: )
+- uid: MarketDataCollector.Contracts.Api
+  commentId: N:MarketDataCollector.Contracts.Api
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Api
+  nameWithType: MarketDataCollector.Contracts.Api
+  fullName: MarketDataCollector.Contracts.Api
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Api
+    name: Api
+    href: MarketDataCollector.Contracts.Api.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Api
+    name: Api
+    href: MarketDataCollector.Contracts.Api.html
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalogByType*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalogByType
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetProviderCatalogByType_MarketDataCollector_Infrastructure_Adapters_Core_ProviderType_
+  name: GetProviderCatalogByType
+  nameWithType: ProviderRegistry.GetProviderCatalogByType
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalogByType
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderType
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ProviderType
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderType.html
+  name: ProviderType
+  nameWithType: ProviderType
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderType
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalogEntry*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalogEntry
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetProviderCatalogEntry_System_String_
+  name: GetProviderCatalogEntry
+  nameWithType: ProviderRegistry.GetProviderCatalogEntry
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetProviderCatalogEntry
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSummary*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSummary
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_GetSummary
+  name: GetSummary
+  nameWithType: ProviderRegistry.GetSummary
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.GetSummary
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistrySummary
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistrySummary
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistrySummary.html
+  name: ProviderRegistrySummary
+  nameWithType: ProviderRegistrySummary
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistrySummary
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Dispose*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Dispose
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.html#MarketDataCollector_Infrastructure_Adapters_Core_ProviderRegistry_Dispose
+  name: Dispose
+  nameWithType: ProviderRegistry.Dispose
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ProviderRegistry.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

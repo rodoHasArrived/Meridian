@@ -1,0 +1,675 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.ErrorStats
+  commentId: T:MarketDataCollector.Application.Monitoring.ErrorStats
+  id: ErrorStats
+  parent: MarketDataCollector.Application.Monitoring
+  children:
+  - MarketDataCollector.Application.Monitoring.ErrorStats.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.DateTimeOffset)
+  - MarketDataCollector.Application.Monitoring.ErrorStats.CriticalCount
+  - MarketDataCollector.Application.Monitoring.ErrorStats.ErrorCount
+  - MarketDataCollector.Application.Monitoring.ErrorStats.ErrorsInLastHour
+  - MarketDataCollector.Application.Monitoring.ErrorStats.ErrorsInLastMinute
+  - MarketDataCollector.Application.Monitoring.ErrorStats.LastErrorTime
+  - MarketDataCollector.Application.Monitoring.ErrorStats.TotalErrors
+  - MarketDataCollector.Application.Monitoring.ErrorStats.WarningCount
+  langs:
+  - csharp
+  - vb
+  name: ErrorStats
+  nameWithType: ErrorStats
+  fullName: MarketDataCollector.Application.Monitoring.ErrorStats
+  type: Struct
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ErrorStats
+    path: ../../src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+    startLine: 259
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Statistics about recorded errors.
+  example: []
+  syntax:
+    content: 'public readonly record struct ErrorStats : IEquatable<ErrorStats>'
+    content.vb: Public Structure ErrorStats Implements IEquatable(Of ErrorStats)
+  implements:
+  - System.IEquatable{MarketDataCollector.Application.Monitoring.ErrorStats}
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MarketDataCollector.Application.Monitoring.ErrorStats.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.DateTimeOffset)
+  commentId: M:MarketDataCollector.Application.Monitoring.ErrorStats.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.DateTimeOffset)
+  id: '#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.DateTimeOffset)'
+  parent: MarketDataCollector.Application.Monitoring.ErrorStats
+  langs:
+  - csharp
+  - vb
+  name: ErrorStats(int, int, int, int, int, int, DateTimeOffset)
+  nameWithType: ErrorStats.ErrorStats(int, int, int, int, int, int, DateTimeOffset)
+  fullName: MarketDataCollector.Application.Monitoring.ErrorStats.ErrorStats(int, int, int, int, int, int, System.DateTimeOffset)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+    startLine: 259
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Statistics about recorded errors.
+  example: []
+  syntax:
+    content: public ErrorStats(int TotalErrors, int ErrorsInLastMinute, int ErrorsInLastHour, int WarningCount, int ErrorCount, int CriticalCount, DateTimeOffset LastErrorTime)
+    parameters:
+    - id: TotalErrors
+      type: System.Int32
+    - id: ErrorsInLastMinute
+      type: System.Int32
+    - id: ErrorsInLastHour
+      type: System.Int32
+    - id: WarningCount
+      type: System.Int32
+    - id: ErrorCount
+      type: System.Int32
+    - id: CriticalCount
+      type: System.Int32
+    - id: LastErrorTime
+      type: System.DateTimeOffset
+    content.vb: Public Sub New(TotalErrors As Integer, ErrorsInLastMinute As Integer, ErrorsInLastHour As Integer, WarningCount As Integer, ErrorCount As Integer, CriticalCount As Integer, LastErrorTime As DateTimeOffset)
+  overload: MarketDataCollector.Application.Monitoring.ErrorStats.#ctor*
+  nameWithType.vb: ErrorStats.New(Integer, Integer, Integer, Integer, Integer, Integer, DateTimeOffset)
+  fullName.vb: MarketDataCollector.Application.Monitoring.ErrorStats.New(Integer, Integer, Integer, Integer, Integer, Integer, System.DateTimeOffset)
+  name.vb: New(Integer, Integer, Integer, Integer, Integer, Integer, DateTimeOffset)
+- uid: MarketDataCollector.Application.Monitoring.ErrorStats.TotalErrors
+  commentId: P:MarketDataCollector.Application.Monitoring.ErrorStats.TotalErrors
+  id: TotalErrors
+  parent: MarketDataCollector.Application.Monitoring.ErrorStats
+  langs:
+  - csharp
+  - vb
+  name: TotalErrors
+  nameWithType: ErrorStats.TotalErrors
+  fullName: MarketDataCollector.Application.Monitoring.ErrorStats.TotalErrors
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TotalErrors
+    path: ../../src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+    startLine: 260
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public int TotalErrors { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TotalErrors As Integer
+  overload: MarketDataCollector.Application.Monitoring.ErrorStats.TotalErrors*
+- uid: MarketDataCollector.Application.Monitoring.ErrorStats.ErrorsInLastMinute
+  commentId: P:MarketDataCollector.Application.Monitoring.ErrorStats.ErrorsInLastMinute
+  id: ErrorsInLastMinute
+  parent: MarketDataCollector.Application.Monitoring.ErrorStats
+  langs:
+  - csharp
+  - vb
+  name: ErrorsInLastMinute
+  nameWithType: ErrorStats.ErrorsInLastMinute
+  fullName: MarketDataCollector.Application.Monitoring.ErrorStats.ErrorsInLastMinute
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ErrorsInLastMinute
+    path: ../../src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+    startLine: 261
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public int ErrorsInLastMinute { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ErrorsInLastMinute As Integer
+  overload: MarketDataCollector.Application.Monitoring.ErrorStats.ErrorsInLastMinute*
+- uid: MarketDataCollector.Application.Monitoring.ErrorStats.ErrorsInLastHour
+  commentId: P:MarketDataCollector.Application.Monitoring.ErrorStats.ErrorsInLastHour
+  id: ErrorsInLastHour
+  parent: MarketDataCollector.Application.Monitoring.ErrorStats
+  langs:
+  - csharp
+  - vb
+  name: ErrorsInLastHour
+  nameWithType: ErrorStats.ErrorsInLastHour
+  fullName: MarketDataCollector.Application.Monitoring.ErrorStats.ErrorsInLastHour
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ErrorsInLastHour
+    path: ../../src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+    startLine: 262
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public int ErrorsInLastHour { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ErrorsInLastHour As Integer
+  overload: MarketDataCollector.Application.Monitoring.ErrorStats.ErrorsInLastHour*
+- uid: MarketDataCollector.Application.Monitoring.ErrorStats.WarningCount
+  commentId: P:MarketDataCollector.Application.Monitoring.ErrorStats.WarningCount
+  id: WarningCount
+  parent: MarketDataCollector.Application.Monitoring.ErrorStats
+  langs:
+  - csharp
+  - vb
+  name: WarningCount
+  nameWithType: ErrorStats.WarningCount
+  fullName: MarketDataCollector.Application.Monitoring.ErrorStats.WarningCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: WarningCount
+    path: ../../src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+    startLine: 263
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public int WarningCount { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property WarningCount As Integer
+  overload: MarketDataCollector.Application.Monitoring.ErrorStats.WarningCount*
+- uid: MarketDataCollector.Application.Monitoring.ErrorStats.ErrorCount
+  commentId: P:MarketDataCollector.Application.Monitoring.ErrorStats.ErrorCount
+  id: ErrorCount
+  parent: MarketDataCollector.Application.Monitoring.ErrorStats
+  langs:
+  - csharp
+  - vb
+  name: ErrorCount
+  nameWithType: ErrorStats.ErrorCount
+  fullName: MarketDataCollector.Application.Monitoring.ErrorStats.ErrorCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ErrorCount
+    path: ../../src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+    startLine: 264
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public int ErrorCount { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ErrorCount As Integer
+  overload: MarketDataCollector.Application.Monitoring.ErrorStats.ErrorCount*
+- uid: MarketDataCollector.Application.Monitoring.ErrorStats.CriticalCount
+  commentId: P:MarketDataCollector.Application.Monitoring.ErrorStats.CriticalCount
+  id: CriticalCount
+  parent: MarketDataCollector.Application.Monitoring.ErrorStats
+  langs:
+  - csharp
+  - vb
+  name: CriticalCount
+  nameWithType: ErrorStats.CriticalCount
+  fullName: MarketDataCollector.Application.Monitoring.ErrorStats.CriticalCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CriticalCount
+    path: ../../src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+    startLine: 265
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public int CriticalCount { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property CriticalCount As Integer
+  overload: MarketDataCollector.Application.Monitoring.ErrorStats.CriticalCount*
+- uid: MarketDataCollector.Application.Monitoring.ErrorStats.LastErrorTime
+  commentId: P:MarketDataCollector.Application.Monitoring.ErrorStats.LastErrorTime
+  id: LastErrorTime
+  parent: MarketDataCollector.Application.Monitoring.ErrorStats
+  langs:
+  - csharp
+  - vb
+  name: LastErrorTime
+  nameWithType: ErrorStats.LastErrorTime
+  fullName: MarketDataCollector.Application.Monitoring.ErrorStats.LastErrorTime
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LastErrorTime
+    path: ../../src/MarketDataCollector.Application/Monitoring/ErrorRingBuffer.cs
+    startLine: 266
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public DateTimeOffset LastErrorTime { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property LastErrorTime As DateTimeOffset
+  overload: MarketDataCollector.Application.Monitoring.ErrorStats.LastErrorTime*
+references:
+- uid: MarketDataCollector.Application.Monitoring
+  commentId: N:MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring
+  nameWithType: MarketDataCollector.Application.Monitoring
+  fullName: MarketDataCollector.Application.Monitoring
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+- uid: System.IEquatable{MarketDataCollector.Application.Monitoring.ErrorStats}
+  commentId: T:System.IEquatable{MarketDataCollector.Application.Monitoring.ErrorStats}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<ErrorStats>
+  nameWithType: IEquatable<ErrorStats>
+  fullName: System.IEquatable<MarketDataCollector.Application.Monitoring.ErrorStats>
+  nameWithType.vb: IEquatable(Of ErrorStats)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Application.Monitoring.ErrorStats)
+  name.vb: IEquatable(Of ErrorStats)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.ErrorStats
+    name: ErrorStats
+    href: MarketDataCollector.Application.Monitoring.ErrorStats.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.ErrorStats
+    name: ErrorStats
+    href: MarketDataCollector.Application.Monitoring.ErrorStats.html
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Application.Monitoring.ErrorStats.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ErrorStats.#ctor
+  href: MarketDataCollector.Application.Monitoring.ErrorStats.html#MarketDataCollector_Application_Monitoring_ErrorStats__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_DateTimeOffset_
+  name: ErrorStats
+  nameWithType: ErrorStats.ErrorStats
+  fullName: MarketDataCollector.Application.Monitoring.ErrorStats.ErrorStats
+  nameWithType.vb: ErrorStats.New
+  fullName.vb: MarketDataCollector.Application.Monitoring.ErrorStats.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: MarketDataCollector.Application.Monitoring.ErrorStats.TotalErrors*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ErrorStats.TotalErrors
+  href: MarketDataCollector.Application.Monitoring.ErrorStats.html#MarketDataCollector_Application_Monitoring_ErrorStats_TotalErrors
+  name: TotalErrors
+  nameWithType: ErrorStats.TotalErrors
+  fullName: MarketDataCollector.Application.Monitoring.ErrorStats.TotalErrors
+- uid: MarketDataCollector.Application.Monitoring.ErrorStats.ErrorsInLastMinute*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ErrorStats.ErrorsInLastMinute
+  href: MarketDataCollector.Application.Monitoring.ErrorStats.html#MarketDataCollector_Application_Monitoring_ErrorStats_ErrorsInLastMinute
+  name: ErrorsInLastMinute
+  nameWithType: ErrorStats.ErrorsInLastMinute
+  fullName: MarketDataCollector.Application.Monitoring.ErrorStats.ErrorsInLastMinute
+- uid: MarketDataCollector.Application.Monitoring.ErrorStats.ErrorsInLastHour*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ErrorStats.ErrorsInLastHour
+  href: MarketDataCollector.Application.Monitoring.ErrorStats.html#MarketDataCollector_Application_Monitoring_ErrorStats_ErrorsInLastHour
+  name: ErrorsInLastHour
+  nameWithType: ErrorStats.ErrorsInLastHour
+  fullName: MarketDataCollector.Application.Monitoring.ErrorStats.ErrorsInLastHour
+- uid: MarketDataCollector.Application.Monitoring.ErrorStats.WarningCount*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ErrorStats.WarningCount
+  href: MarketDataCollector.Application.Monitoring.ErrorStats.html#MarketDataCollector_Application_Monitoring_ErrorStats_WarningCount
+  name: WarningCount
+  nameWithType: ErrorStats.WarningCount
+  fullName: MarketDataCollector.Application.Monitoring.ErrorStats.WarningCount
+- uid: MarketDataCollector.Application.Monitoring.ErrorStats.ErrorCount*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ErrorStats.ErrorCount
+  href: MarketDataCollector.Application.Monitoring.ErrorStats.html#MarketDataCollector_Application_Monitoring_ErrorStats_ErrorCount
+  name: ErrorCount
+  nameWithType: ErrorStats.ErrorCount
+  fullName: MarketDataCollector.Application.Monitoring.ErrorStats.ErrorCount
+- uid: MarketDataCollector.Application.Monitoring.ErrorStats.CriticalCount*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ErrorStats.CriticalCount
+  href: MarketDataCollector.Application.Monitoring.ErrorStats.html#MarketDataCollector_Application_Monitoring_ErrorStats_CriticalCount
+  name: CriticalCount
+  nameWithType: ErrorStats.CriticalCount
+  fullName: MarketDataCollector.Application.Monitoring.ErrorStats.CriticalCount
+- uid: MarketDataCollector.Application.Monitoring.ErrorStats.LastErrorTime*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.ErrorStats.LastErrorTime
+  href: MarketDataCollector.Application.Monitoring.ErrorStats.html#MarketDataCollector_Application_Monitoring_ErrorStats_LastErrorTime
+  name: LastErrorTime
+  nameWithType: ErrorStats.LastErrorTime
+  fullName: MarketDataCollector.Application.Monitoring.ErrorStats.LastErrorTime

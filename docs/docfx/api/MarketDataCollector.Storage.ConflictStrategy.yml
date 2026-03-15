@@ -1,0 +1,234 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.ConflictStrategy
+  commentId: T:MarketDataCollector.Storage.ConflictStrategy
+  id: ConflictStrategy
+  parent: MarketDataCollector.Storage
+  children:
+  - MarketDataCollector.Storage.ConflictStrategy.FirstWins
+  - MarketDataCollector.Storage.ConflictStrategy.HighestPriority
+  - MarketDataCollector.Storage.ConflictStrategy.LastWins
+  - MarketDataCollector.Storage.ConflictStrategy.LowestLatency
+  - MarketDataCollector.Storage.ConflictStrategy.Merge
+  - MarketDataCollector.Storage.ConflictStrategy.MostComplete
+  langs:
+  - csharp
+  - vb
+  name: ConflictStrategy
+  nameWithType: ConflictStrategy
+  fullName: MarketDataCollector.Storage.ConflictStrategy
+  type: Enum
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ConflictStrategy
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 281
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: Conflict resolution strategy for multi-source data.
+  example: []
+  syntax:
+    content: 'public enum ConflictStrategy : byte'
+    content.vb: Public Enum ConflictStrategy As Byte
+- uid: MarketDataCollector.Storage.ConflictStrategy.FirstWins
+  commentId: F:MarketDataCollector.Storage.ConflictStrategy.FirstWins
+  id: FirstWins
+  parent: MarketDataCollector.Storage.ConflictStrategy
+  langs:
+  - csharp
+  - vb
+  name: FirstWins
+  nameWithType: ConflictStrategy.FirstWins
+  fullName: MarketDataCollector.Storage.ConflictStrategy.FirstWins
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FirstWins
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 284
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: Keep first source's data.
+  example: []
+  syntax:
+    content: FirstWins = 0
+    return:
+      type: MarketDataCollector.Storage.ConflictStrategy
+- uid: MarketDataCollector.Storage.ConflictStrategy.LastWins
+  commentId: F:MarketDataCollector.Storage.ConflictStrategy.LastWins
+  id: LastWins
+  parent: MarketDataCollector.Storage.ConflictStrategy
+  langs:
+  - csharp
+  - vb
+  name: LastWins
+  nameWithType: ConflictStrategy.LastWins
+  fullName: MarketDataCollector.Storage.ConflictStrategy.LastWins
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LastWins
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 286
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: Keep latest source's data.
+  example: []
+  syntax:
+    content: LastWins = 1
+    return:
+      type: MarketDataCollector.Storage.ConflictStrategy
+- uid: MarketDataCollector.Storage.ConflictStrategy.HighestPriority
+  commentId: F:MarketDataCollector.Storage.ConflictStrategy.HighestPriority
+  id: HighestPriority
+  parent: MarketDataCollector.Storage.ConflictStrategy
+  langs:
+  - csharp
+  - vb
+  name: HighestPriority
+  nameWithType: ConflictStrategy.HighestPriority
+  fullName: MarketDataCollector.Storage.ConflictStrategy.HighestPriority
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HighestPriority
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 288
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: Use priority order.
+  example: []
+  syntax:
+    content: HighestPriority = 2
+    return:
+      type: MarketDataCollector.Storage.ConflictStrategy
+- uid: MarketDataCollector.Storage.ConflictStrategy.LowestLatency
+  commentId: F:MarketDataCollector.Storage.ConflictStrategy.LowestLatency
+  id: LowestLatency
+  parent: MarketDataCollector.Storage.ConflictStrategy
+  langs:
+  - csharp
+  - vb
+  name: LowestLatency
+  nameWithType: ConflictStrategy.LowestLatency
+  fullName: MarketDataCollector.Storage.ConflictStrategy.LowestLatency
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LowestLatency
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 290
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: Prefer lowest-latency source.
+  example: []
+  syntax:
+    content: LowestLatency = 3
+    return:
+      type: MarketDataCollector.Storage.ConflictStrategy
+- uid: MarketDataCollector.Storage.ConflictStrategy.MostComplete
+  commentId: F:MarketDataCollector.Storage.ConflictStrategy.MostComplete
+  id: MostComplete
+  parent: MarketDataCollector.Storage.ConflictStrategy
+  langs:
+  - csharp
+  - vb
+  name: MostComplete
+  nameWithType: ConflictStrategy.MostComplete
+  fullName: MarketDataCollector.Storage.ConflictStrategy.MostComplete
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MostComplete
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 292
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: Source with most fields populated.
+  example: []
+  syntax:
+    content: MostComplete = 4
+    return:
+      type: MarketDataCollector.Storage.ConflictStrategy
+- uid: MarketDataCollector.Storage.ConflictStrategy.Merge
+  commentId: F:MarketDataCollector.Storage.ConflictStrategy.Merge
+  id: Merge
+  parent: MarketDataCollector.Storage.ConflictStrategy
+  langs:
+  - csharp
+  - vb
+  name: Merge
+  nameWithType: ConflictStrategy.Merge
+  fullName: MarketDataCollector.Storage.ConflictStrategy.Merge
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/StorageOptions.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Merge
+    path: ../../src/MarketDataCollector.Storage/StorageOptions.cs
+    startLine: 294
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage
+  summary: Combine and deduplicate.
+  example: []
+  syntax:
+    content: Merge = 5
+    return:
+      type: MarketDataCollector.Storage.ConflictStrategy
+references:
+- uid: MarketDataCollector.Storage
+  commentId: N:MarketDataCollector.Storage
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage
+  nameWithType: MarketDataCollector.Storage
+  fullName: MarketDataCollector.Storage
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+- uid: MarketDataCollector.Storage.ConflictStrategy
+  commentId: T:MarketDataCollector.Storage.ConflictStrategy
+  parent: MarketDataCollector.Storage
+  href: MarketDataCollector.Storage.ConflictStrategy.html
+  name: ConflictStrategy
+  nameWithType: ConflictStrategy
+  fullName: MarketDataCollector.Storage.ConflictStrategy

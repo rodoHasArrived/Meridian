@@ -1,0 +1,651 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Pipeline.FSharpEventValidator
+  commentId: T:MarketDataCollector.Application.Pipeline.FSharpEventValidator
+  id: FSharpEventValidator
+  parent: MarketDataCollector.Application.Pipeline
+  children:
+  - MarketDataCollector.Application.Pipeline.FSharpEventValidator.#ctor(MarketDataCollector.Contracts.Configuration.SymbolConfig[],System.Boolean,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.FSharpEventValidator})
+  - MarketDataCollector.Application.Pipeline.FSharpEventValidator.Validate(MarketDataCollector.Domain.Events.MarketEvent@)
+  langs:
+  - csharp
+  - vb
+  name: FSharpEventValidator
+  nameWithType: FSharpEventValidator
+  fullName: MarketDataCollector.Application.Pipeline.FSharpEventValidator
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/FSharpEventValidator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FSharpEventValidator
+    path: ../../src/MarketDataCollector.Application/Pipeline/FSharpEventValidator.cs
+    startLine: 31
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: >-
+    Validates <xref href="MarketDataCollector.Domain.Events.MarketEvent" data-throw-if-not-resolved="false"></xref> instances by delegating to the F# Railway-Oriented
+
+    validation pipeline (<code>MarketDataCollector.FSharp.Validation</code>).
+  remarks: >-
+    <p>Trade and BBO-quote events are validated against the F# validators.
+
+    All other event types (L2 snapshots, order-flow, integrity, heartbeat, historical bars, etc.)
+
+    pass through unconditionally — only data that was produced in real-time from a provider
+
+    carries the invariants the validators check.</p>
+
+
+    <p>Per-symbol relaxation is opt-in: add <code>"UseRelaxedValidation": true</code> to a symbol's
+
+    entry in <code>appsettings.json</code> to apply the historical (lenient) F# preset — useful for
+
+    illiquid instruments, preferreds, or wide-spread options where the default 5-minute timestamp
+
+    window or strict spread check would produce excessive false positives.</p>
+
+
+    <p>Validation outcomes are tracked by <xref href="MarketDataCollector.Application.Monitoring.ValidationMetrics" data-throw-if-not-resolved="false"></xref> and exported to
+
+    Prometheus via <xref href="MarketDataCollector.Application.Monitoring.PrometheusMetrics" data-throw-if-not-resolved="false"></xref> on the periodic update cycle.</p>
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-007", "F# validation gate before WAL/sink persistence")]
+
+      public sealed class FSharpEventValidator : IEventValidator
+    content.vb: >-
+      <ImplementsAdr("ADR-007", "F# validation gate before WAL/sink persistence")>
+
+      Public NotInheritable Class FSharpEventValidator Implements IEventValidator
+  inheritance:
+  - System.Object
+  implements:
+  - MarketDataCollector.Application.Pipeline.IEventValidator
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-007
+    - type: System.String
+      value: F# validation gate before WAL/sink persistence
+- uid: MarketDataCollector.Application.Pipeline.FSharpEventValidator.#ctor(MarketDataCollector.Contracts.Configuration.SymbolConfig[],System.Boolean,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.FSharpEventValidator})
+  commentId: M:MarketDataCollector.Application.Pipeline.FSharpEventValidator.#ctor(MarketDataCollector.Contracts.Configuration.SymbolConfig[],System.Boolean,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.FSharpEventValidator})
+  id: '#ctor(MarketDataCollector.Contracts.Configuration.SymbolConfig[],System.Boolean,Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.FSharpEventValidator})'
+  parent: MarketDataCollector.Application.Pipeline.FSharpEventValidator
+  langs:
+  - csharp
+  - vb
+  name: FSharpEventValidator(SymbolConfig[]?, bool, ILogger<FSharpEventValidator>?)
+  nameWithType: FSharpEventValidator.FSharpEventValidator(SymbolConfig[]?, bool, ILogger<FSharpEventValidator>?)
+  fullName: MarketDataCollector.Application.Pipeline.FSharpEventValidator.FSharpEventValidator(MarketDataCollector.Contracts.Configuration.SymbolConfig[]?, bool, Microsoft.Extensions.Logging.ILogger<MarketDataCollector.Application.Pipeline.FSharpEventValidator>?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/FSharpEventValidator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Pipeline/FSharpEventValidator.cs
+    startLine: 51
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: Initialises the validator.
+  example: []
+  syntax:
+    content: public FSharpEventValidator(SymbolConfig[]? symbolConfigs = null, bool useRealTimeMode = false, ILogger<FSharpEventValidator>? logger = null)
+    parameters:
+    - id: symbolConfigs
+      type: MarketDataCollector.Contracts.Configuration.SymbolConfig[]
+      description: >-
+        Optional array of configured symbols. Symbols with <code>UseRelaxedValidation = true</code>
+
+        are validated with the lenient historical preset instead of the default preset.
+    - id: useRealTimeMode
+      type: System.Boolean
+      description: >-
+        When <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, the strict real-time preset is applied for non-relaxed symbols
+
+        (5-second max timestamp age). When <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> (default), the standard default
+
+        preset is used (5-minute max timestamp age).
+    - id: logger
+      type: Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.FSharpEventValidator}
+      description: Optional logger.
+    content.vb: Public Sub New(symbolConfigs As SymbolConfig() = Nothing, useRealTimeMode As Boolean = False, logger As ILogger(Of FSharpEventValidator) = Nothing)
+  overload: MarketDataCollector.Application.Pipeline.FSharpEventValidator.#ctor*
+  nameWithType.vb: FSharpEventValidator.New(SymbolConfig(), Boolean, ILogger(Of FSharpEventValidator))
+  fullName.vb: MarketDataCollector.Application.Pipeline.FSharpEventValidator.New(MarketDataCollector.Contracts.Configuration.SymbolConfig(), Boolean, Microsoft.Extensions.Logging.ILogger(Of MarketDataCollector.Application.Pipeline.FSharpEventValidator))
+  name.vb: New(SymbolConfig(), Boolean, ILogger(Of FSharpEventValidator))
+- uid: MarketDataCollector.Application.Pipeline.FSharpEventValidator.Validate(MarketDataCollector.Domain.Events.MarketEvent@)
+  commentId: M:MarketDataCollector.Application.Pipeline.FSharpEventValidator.Validate(MarketDataCollector.Domain.Events.MarketEvent@)
+  id: Validate(MarketDataCollector.Domain.Events.MarketEvent@)
+  parent: MarketDataCollector.Application.Pipeline.FSharpEventValidator
+  langs:
+  - csharp
+  - vb
+  name: Validate(in MarketEvent)
+  nameWithType: FSharpEventValidator.Validate(in MarketEvent)
+  fullName: MarketDataCollector.Application.Pipeline.FSharpEventValidator.Validate(in MarketDataCollector.Domain.Events.MarketEvent)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/FSharpEventValidator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Validate
+    path: ../../src/MarketDataCollector.Application/Pipeline/FSharpEventValidator.cs
+    startLine: 66
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: >-
+    Validates a market event and returns a result indicating whether the event is
+
+    acceptable for persistence. Invalid events should be routed to a dead-letter sink.
+  example: []
+  syntax:
+    content: public ValidationResult Validate(in MarketEvent evt)
+    parameters:
+    - id: evt
+      type: MarketDataCollector.Domain.Events.MarketEvent
+      description: The market event to validate (passed by readonly reference for zero-copy).
+    return:
+      type: MarketDataCollector.Application.Pipeline.ValidationResult
+      description: A <xref href="MarketDataCollector.Application.Pipeline.ValidationResult" data-throw-if-not-resolved="false"></xref> describing validity and any errors.
+    content.vb: Public Function Validate(evt As MarketEvent) As ValidationResult
+  overload: MarketDataCollector.Application.Pipeline.FSharpEventValidator.Validate*
+  implements:
+  - MarketDataCollector.Application.Pipeline.IEventValidator.Validate(MarketDataCollector.Domain.Events.MarketEvent@)
+  nameWithType.vb: FSharpEventValidator.Validate(MarketEvent)
+  fullName.vb: MarketDataCollector.Application.Pipeline.FSharpEventValidator.Validate(MarketDataCollector.Domain.Events.MarketEvent)
+  name.vb: Validate(MarketEvent)
+references:
+- uid: MarketDataCollector.Domain.Events.MarketEvent
+  commentId: T:MarketDataCollector.Domain.Events.MarketEvent
+  parent: MarketDataCollector.Domain.Events
+  href: MarketDataCollector.Domain.Events.MarketEvent.html
+  name: MarketEvent
+  nameWithType: MarketEvent
+  fullName: MarketDataCollector.Domain.Events.MarketEvent
+- uid: MarketDataCollector.Application.Monitoring.ValidationMetrics
+  commentId: T:MarketDataCollector.Application.Monitoring.ValidationMetrics
+  href: MarketDataCollector.Application.Monitoring.ValidationMetrics.html
+  name: ValidationMetrics
+  nameWithType: ValidationMetrics
+  fullName: MarketDataCollector.Application.Monitoring.ValidationMetrics
+- uid: MarketDataCollector.Application.Monitoring.PrometheusMetrics
+  commentId: T:MarketDataCollector.Application.Monitoring.PrometheusMetrics
+  href: MarketDataCollector.Application.Monitoring.PrometheusMetrics.html
+  name: PrometheusMetrics
+  nameWithType: PrometheusMetrics
+  fullName: MarketDataCollector.Application.Monitoring.PrometheusMetrics
+- uid: MarketDataCollector.Application.Pipeline
+  commentId: N:MarketDataCollector.Application.Pipeline
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Pipeline
+  nameWithType: MarketDataCollector.Application.Pipeline
+  fullName: MarketDataCollector.Application.Pipeline
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Pipeline
+    name: Pipeline
+    href: MarketDataCollector.Application.Pipeline.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Pipeline
+    name: Pipeline
+    href: MarketDataCollector.Application.Pipeline.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Application.Pipeline.IEventValidator
+  commentId: T:MarketDataCollector.Application.Pipeline.IEventValidator
+  parent: MarketDataCollector.Application.Pipeline
+  href: MarketDataCollector.Application.Pipeline.IEventValidator.html
+  name: IEventValidator
+  nameWithType: IEventValidator
+  fullName: MarketDataCollector.Application.Pipeline.IEventValidator
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Domain.Events
+  commentId: N:MarketDataCollector.Domain.Events
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Events
+  nameWithType: MarketDataCollector.Domain.Events
+  fullName: MarketDataCollector.Domain.Events
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Pipeline.FSharpEventValidator.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.FSharpEventValidator.#ctor
+  href: MarketDataCollector.Application.Pipeline.FSharpEventValidator.html#MarketDataCollector_Application_Pipeline_FSharpEventValidator__ctor_MarketDataCollector_Contracts_Configuration_SymbolConfig___System_Boolean_Microsoft_Extensions_Logging_ILogger_MarketDataCollector_Application_Pipeline_FSharpEventValidator__
+  name: FSharpEventValidator
+  nameWithType: FSharpEventValidator.FSharpEventValidator
+  fullName: MarketDataCollector.Application.Pipeline.FSharpEventValidator.FSharpEventValidator
+  nameWithType.vb: FSharpEventValidator.New
+  fullName.vb: MarketDataCollector.Application.Pipeline.FSharpEventValidator.New
+  name.vb: New
+- uid: MarketDataCollector.Contracts.Configuration.SymbolConfig[]
+  isExternal: true
+  name: SymbolConfig[]
+  nameWithType: SymbolConfig[]
+  fullName: MarketDataCollector.Contracts.Configuration.SymbolConfig[]
+  nameWithType.vb: SymbolConfig()
+  fullName.vb: MarketDataCollector.Contracts.Configuration.SymbolConfig()
+  name.vb: SymbolConfig()
+  spec.csharp:
+  - uid: MarketDataCollector.Contracts.Configuration.SymbolConfig
+    name: SymbolConfig
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: MarketDataCollector.Contracts.Configuration.SymbolConfig
+    name: SymbolConfig
+  - name: (
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.FSharpEventValidator}
+  commentId: T:Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Application.Pipeline.FSharpEventValidator}
+  parent: Microsoft.Extensions.Logging
+  definition: Microsoft.Extensions.Logging.ILogger`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<FSharpEventValidator>
+  nameWithType: ILogger<FSharpEventValidator>
+  fullName: Microsoft.Extensions.Logging.ILogger<MarketDataCollector.Application.Pipeline.FSharpEventValidator>
+  nameWithType.vb: ILogger(Of FSharpEventValidator)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of MarketDataCollector.Application.Pipeline.FSharpEventValidator)
+  name.vb: ILogger(Of FSharpEventValidator)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - uid: MarketDataCollector.Application.Pipeline.FSharpEventValidator
+    name: FSharpEventValidator
+    href: MarketDataCollector.Application.Pipeline.FSharpEventValidator.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Pipeline.FSharpEventValidator
+    name: FSharpEventValidator
+    href: MarketDataCollector.Application.Pipeline.FSharpEventValidator.html
+  - name: )
+- uid: Microsoft.Extensions.Logging.ILogger`1
+  commentId: T:Microsoft.Extensions.Logging.ILogger`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<TCategoryName>
+  nameWithType: ILogger<TCategoryName>
+  fullName: Microsoft.Extensions.Logging.ILogger<TCategoryName>
+  nameWithType.vb: ILogger(Of TCategoryName)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of TCategoryName)
+  name.vb: ILogger(Of TCategoryName)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - name: TCategoryName
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TCategoryName
+  - name: )
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: MarketDataCollector.Application.Pipeline.ValidationResult
+  commentId: T:MarketDataCollector.Application.Pipeline.ValidationResult
+  parent: MarketDataCollector.Application.Pipeline
+  href: MarketDataCollector.Application.Pipeline.ValidationResult.html
+  name: ValidationResult
+  nameWithType: ValidationResult
+  fullName: MarketDataCollector.Application.Pipeline.ValidationResult
+- uid: MarketDataCollector.Application.Pipeline.FSharpEventValidator.Validate*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.FSharpEventValidator.Validate
+  href: MarketDataCollector.Application.Pipeline.FSharpEventValidator.html#MarketDataCollector_Application_Pipeline_FSharpEventValidator_Validate_MarketDataCollector_Domain_Events_MarketEvent__
+  name: Validate
+  nameWithType: FSharpEventValidator.Validate
+  fullName: MarketDataCollector.Application.Pipeline.FSharpEventValidator.Validate
+- uid: MarketDataCollector.Application.Pipeline.IEventValidator.Validate(MarketDataCollector.Domain.Events.MarketEvent@)
+  commentId: M:MarketDataCollector.Application.Pipeline.IEventValidator.Validate(MarketDataCollector.Domain.Events.MarketEvent@)
+  parent: MarketDataCollector.Application.Pipeline.IEventValidator
+  href: MarketDataCollector.Application.Pipeline.IEventValidator.html#MarketDataCollector_Application_Pipeline_IEventValidator_Validate_MarketDataCollector_Domain_Events_MarketEvent__
+  name: Validate(in MarketEvent)
+  nameWithType: IEventValidator.Validate(in MarketEvent)
+  fullName: MarketDataCollector.Application.Pipeline.IEventValidator.Validate(in MarketDataCollector.Domain.Events.MarketEvent)
+  nameWithType.vb: IEventValidator.Validate(MarketEvent)
+  fullName.vb: MarketDataCollector.Application.Pipeline.IEventValidator.Validate(MarketDataCollector.Domain.Events.MarketEvent)
+  name.vb: Validate(MarketEvent)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Pipeline.IEventValidator.Validate(MarketDataCollector.Domain.Events.MarketEvent@)
+    name: Validate
+    href: MarketDataCollector.Application.Pipeline.IEventValidator.html#MarketDataCollector_Application_Pipeline_IEventValidator_Validate_MarketDataCollector_Domain_Events_MarketEvent__
+  - name: (
+  - name: in
+  - name: " "
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Pipeline.IEventValidator.Validate(MarketDataCollector.Domain.Events.MarketEvent@)
+    name: Validate
+    href: MarketDataCollector.Application.Pipeline.IEventValidator.html#MarketDataCollector_Application_Pipeline_IEventValidator_Validate_MarketDataCollector_Domain_Events_MarketEvent__
+  - name: (
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+  - name: )

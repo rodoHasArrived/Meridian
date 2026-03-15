@@ -1,0 +1,683 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Services.DiagnosticBundleService
+  commentId: T:MarketDataCollector.Application.Services.DiagnosticBundleService
+  id: DiagnosticBundleService
+  parent: MarketDataCollector.Application.Services
+  children:
+  - MarketDataCollector.Application.Services.DiagnosticBundleService.#ctor(System.String,System.Func{MarketDataCollector.Application.Monitoring.MetricsSnapshot},System.Func{MarketDataCollector.Application.Config.AppConfig})
+  - MarketDataCollector.Application.Services.DiagnosticBundleService.GenerateAsync(MarketDataCollector.Application.Services.DiagnosticBundleOptions,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Services.DiagnosticBundleService.ReadBundle(System.String)
+  langs:
+  - csharp
+  - vb
+  name: DiagnosticBundleService
+  nameWithType: DiagnosticBundleService
+  fullName: MarketDataCollector.Application.Services.DiagnosticBundleService
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/DiagnosticBundleService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DiagnosticBundleService
+    path: ../../src/MarketDataCollector.Application/Services/DiagnosticBundleService.cs
+    startLine: 14
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Service for generating diagnostic bundles containing system state and logs.
+
+    Implements QW-16: Diagnostic Bundle Generator.
+  example: []
+  syntax:
+    content: public sealed class DiagnosticBundleService
+    content.vb: Public NotInheritable Class DiagnosticBundleService
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Services.DiagnosticBundleService.#ctor(System.String,System.Func{MarketDataCollector.Application.Monitoring.MetricsSnapshot},System.Func{MarketDataCollector.Application.Config.AppConfig})
+  commentId: M:MarketDataCollector.Application.Services.DiagnosticBundleService.#ctor(System.String,System.Func{MarketDataCollector.Application.Monitoring.MetricsSnapshot},System.Func{MarketDataCollector.Application.Config.AppConfig})
+  id: '#ctor(System.String,System.Func{MarketDataCollector.Application.Monitoring.MetricsSnapshot},System.Func{MarketDataCollector.Application.Config.AppConfig})'
+  parent: MarketDataCollector.Application.Services.DiagnosticBundleService
+  langs:
+  - csharp
+  - vb
+  name: DiagnosticBundleService(string, Func<MetricsSnapshot>?, Func<AppConfig>?)
+  nameWithType: DiagnosticBundleService.DiagnosticBundleService(string, Func<MetricsSnapshot>?, Func<AppConfig>?)
+  fullName: MarketDataCollector.Application.Services.DiagnosticBundleService.DiagnosticBundleService(string, System.Func<MarketDataCollector.Application.Monitoring.MetricsSnapshot>?, System.Func<MarketDataCollector.Application.Config.AppConfig>?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/DiagnosticBundleService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Services/DiagnosticBundleService.cs
+    startLine: 27
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  syntax:
+    content: public DiagnosticBundleService(string dataRoot, Func<MetricsSnapshot>? metricsProvider = null, Func<AppConfig>? configProvider = null)
+    parameters:
+    - id: dataRoot
+      type: System.String
+    - id: metricsProvider
+      type: System.Func{MarketDataCollector.Application.Monitoring.MetricsSnapshot}
+    - id: configProvider
+      type: System.Func{MarketDataCollector.Application.Config.AppConfig}
+    content.vb: Public Sub New(dataRoot As String, metricsProvider As Func(Of MetricsSnapshot) = Nothing, configProvider As Func(Of AppConfig) = Nothing)
+  overload: MarketDataCollector.Application.Services.DiagnosticBundleService.#ctor*
+  nameWithType.vb: DiagnosticBundleService.New(String, Func(Of MetricsSnapshot), Func(Of AppConfig))
+  fullName.vb: MarketDataCollector.Application.Services.DiagnosticBundleService.New(String, System.Func(Of MarketDataCollector.Application.Monitoring.MetricsSnapshot), System.Func(Of MarketDataCollector.Application.Config.AppConfig))
+  name.vb: New(String, Func(Of MetricsSnapshot), Func(Of AppConfig))
+- uid: MarketDataCollector.Application.Services.DiagnosticBundleService.GenerateAsync(MarketDataCollector.Application.Services.DiagnosticBundleOptions,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Services.DiagnosticBundleService.GenerateAsync(MarketDataCollector.Application.Services.DiagnosticBundleOptions,System.Threading.CancellationToken)
+  id: GenerateAsync(MarketDataCollector.Application.Services.DiagnosticBundleOptions,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Services.DiagnosticBundleService
+  langs:
+  - csharp
+  - vb
+  name: GenerateAsync(DiagnosticBundleOptions, CancellationToken)
+  nameWithType: DiagnosticBundleService.GenerateAsync(DiagnosticBundleOptions, CancellationToken)
+  fullName: MarketDataCollector.Application.Services.DiagnosticBundleService.GenerateAsync(MarketDataCollector.Application.Services.DiagnosticBundleOptions, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/DiagnosticBundleService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GenerateAsync
+    path: ../../src/MarketDataCollector.Application/Services/DiagnosticBundleService.cs
+    startLine: 40
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Generates a diagnostic bundle as a ZIP file.
+  example: []
+  syntax:
+    content: public Task<DiagnosticBundleResult> GenerateAsync(DiagnosticBundleOptions options, CancellationToken ct = default)
+    parameters:
+    - id: options
+      type: MarketDataCollector.Application.Services.DiagnosticBundleOptions
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Services.DiagnosticBundleResult}
+    content.vb: Public Function GenerateAsync(options As DiagnosticBundleOptions, ct As CancellationToken = Nothing) As Task(Of DiagnosticBundleResult)
+  overload: MarketDataCollector.Application.Services.DiagnosticBundleService.GenerateAsync*
+- uid: MarketDataCollector.Application.Services.DiagnosticBundleService.ReadBundle(System.String)
+  commentId: M:MarketDataCollector.Application.Services.DiagnosticBundleService.ReadBundle(System.String)
+  id: ReadBundle(System.String)
+  parent: MarketDataCollector.Application.Services.DiagnosticBundleService
+  langs:
+  - csharp
+  - vb
+  name: ReadBundle(string)
+  nameWithType: DiagnosticBundleService.ReadBundle(string)
+  fullName: MarketDataCollector.Application.Services.DiagnosticBundleService.ReadBundle(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/DiagnosticBundleService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ReadBundle
+    path: ../../src/MarketDataCollector.Application/Services/DiagnosticBundleService.cs
+    startLine: 142
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Reads a generated diagnostic bundle.
+  example: []
+  syntax:
+    content: public byte[] ReadBundle(string zipPath)
+    parameters:
+    - id: zipPath
+      type: System.String
+    return:
+      type: System.Byte[]
+    content.vb: Public Function ReadBundle(zipPath As String) As Byte()
+  overload: MarketDataCollector.Application.Services.DiagnosticBundleService.ReadBundle*
+  nameWithType.vb: DiagnosticBundleService.ReadBundle(String)
+  fullName.vb: MarketDataCollector.Application.Services.DiagnosticBundleService.ReadBundle(String)
+  name.vb: ReadBundle(String)
+references:
+- uid: MarketDataCollector.Application.Services
+  commentId: N:MarketDataCollector.Application.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Services
+  nameWithType: MarketDataCollector.Application.Services
+  fullName: MarketDataCollector.Application.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Services.DiagnosticBundleService.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Services.DiagnosticBundleService.#ctor
+  href: MarketDataCollector.Application.Services.DiagnosticBundleService.html#MarketDataCollector_Application_Services_DiagnosticBundleService__ctor_System_String_System_Func_MarketDataCollector_Application_Monitoring_MetricsSnapshot__System_Func_MarketDataCollector_Application_Config_AppConfig__
+  name: DiagnosticBundleService
+  nameWithType: DiagnosticBundleService.DiagnosticBundleService
+  fullName: MarketDataCollector.Application.Services.DiagnosticBundleService.DiagnosticBundleService
+  nameWithType.vb: DiagnosticBundleService.New
+  fullName.vb: MarketDataCollector.Application.Services.DiagnosticBundleService.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Func{MarketDataCollector.Application.Monitoring.MetricsSnapshot}
+  commentId: T:System.Func{MarketDataCollector.Application.Monitoring.MetricsSnapshot}
+  parent: System
+  definition: System.Func`1
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<MetricsSnapshot>
+  nameWithType: Func<MetricsSnapshot>
+  fullName: System.Func<MarketDataCollector.Application.Monitoring.MetricsSnapshot>
+  nameWithType.vb: Func(Of MetricsSnapshot)
+  fullName.vb: System.Func(Of MarketDataCollector.Application.Monitoring.MetricsSnapshot)
+  name.vb: Func(Of MetricsSnapshot)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.MetricsSnapshot
+    name: MetricsSnapshot
+    href: MarketDataCollector.Application.Monitoring.MetricsSnapshot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.MetricsSnapshot
+    name: MetricsSnapshot
+    href: MarketDataCollector.Application.Monitoring.MetricsSnapshot.html
+  - name: )
+- uid: System.Func{MarketDataCollector.Application.Config.AppConfig}
+  commentId: T:System.Func{MarketDataCollector.Application.Config.AppConfig}
+  parent: System
+  definition: System.Func`1
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<AppConfig>
+  nameWithType: Func<AppConfig>
+  fullName: System.Func<MarketDataCollector.Application.Config.AppConfig>
+  nameWithType.vb: Func(Of AppConfig)
+  fullName.vb: System.Func(Of MarketDataCollector.Application.Config.AppConfig)
+  name.vb: Func(Of AppConfig)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.AppConfig
+    name: AppConfig
+  - name: )
+- uid: System.Func`1
+  commentId: T:System.Func`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<TResult>
+  nameWithType: Func<TResult>
+  fullName: System.Func<TResult>
+  nameWithType.vb: Func(Of TResult)
+  fullName.vb: System.Func(Of TResult)
+  name.vb: Func(Of TResult)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: MarketDataCollector.Application.Services.DiagnosticBundleService.GenerateAsync*
+  commentId: Overload:MarketDataCollector.Application.Services.DiagnosticBundleService.GenerateAsync
+  href: MarketDataCollector.Application.Services.DiagnosticBundleService.html#MarketDataCollector_Application_Services_DiagnosticBundleService_GenerateAsync_MarketDataCollector_Application_Services_DiagnosticBundleOptions_System_Threading_CancellationToken_
+  name: GenerateAsync
+  nameWithType: DiagnosticBundleService.GenerateAsync
+  fullName: MarketDataCollector.Application.Services.DiagnosticBundleService.GenerateAsync
+- uid: MarketDataCollector.Application.Services.DiagnosticBundleOptions
+  commentId: T:MarketDataCollector.Application.Services.DiagnosticBundleOptions
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.DiagnosticBundleOptions.html
+  name: DiagnosticBundleOptions
+  nameWithType: DiagnosticBundleOptions
+  fullName: MarketDataCollector.Application.Services.DiagnosticBundleOptions
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Services.DiagnosticBundleResult}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Services.DiagnosticBundleResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<DiagnosticBundleResult>
+  nameWithType: Task<DiagnosticBundleResult>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Services.DiagnosticBundleResult>
+  nameWithType.vb: Task(Of DiagnosticBundleResult)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Services.DiagnosticBundleResult)
+  name.vb: Task(Of DiagnosticBundleResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Services.DiagnosticBundleResult
+    name: DiagnosticBundleResult
+    href: MarketDataCollector.Application.Services.DiagnosticBundleResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.DiagnosticBundleResult
+    name: DiagnosticBundleResult
+    href: MarketDataCollector.Application.Services.DiagnosticBundleResult.html
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Application.Services.DiagnosticBundleService.ReadBundle*
+  commentId: Overload:MarketDataCollector.Application.Services.DiagnosticBundleService.ReadBundle
+  href: MarketDataCollector.Application.Services.DiagnosticBundleService.html#MarketDataCollector_Application_Services_DiagnosticBundleService_ReadBundle_System_String_
+  name: ReadBundle
+  nameWithType: DiagnosticBundleService.ReadBundle
+  fullName: MarketDataCollector.Application.Services.DiagnosticBundleService.ReadBundle
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )

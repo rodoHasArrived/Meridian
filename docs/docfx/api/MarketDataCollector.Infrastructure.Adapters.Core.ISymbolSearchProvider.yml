@@ -1,0 +1,660 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+  id: ISymbolSearchProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  children:
+  - MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.DisplayName
+  - MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.GetDetailsAsync(System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.Name
+  - MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.Priority
+  - MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.SearchAsync(System.String,System.Int32,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: ISymbolSearchProvider
+  nameWithType: ISymbolSearchProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ISymbolSearchProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ISymbolSearchProvider
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ISymbolSearchProvider.cs
+    startLine: 12
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Interface for symbol search and autocomplete providers.
+  remarks: >-
+    Implements <xref href="MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata" data-throw-if-not-resolved="false"></xref> for unified provider discovery
+
+    and capability reporting across all provider types.
+  example: []
+  syntax:
+    content: 'public interface ISymbolSearchProvider : IProviderMetadata'
+    content.vb: Public Interface ISymbolSearchProvider Inherits IProviderMetadata
+  derivedClasses:
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaSymbolSearchProviderRefactored
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseSymbolSearchProvider
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubSymbolSearchProviderRefactored
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonSymbolSearchProvider
+  - MarketDataCollector.Infrastructure.Adapters.StockSharp.StockSharpSymbolSearchProvider
+  inheritedMembers:
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderId
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDisplayName
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDescription
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderPriority
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCapabilities
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.RequiresCredentials
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCredentialFields
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderNotes
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderWarnings
+  - MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.SupportedDataTypes
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.Name
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.Name
+  id: Name
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: ISymbolSearchProvider.Name
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.Name
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ISymbolSearchProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Name
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ISymbolSearchProvider.cs
+    startLine: 17
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Provider identifier.
+  example: []
+  syntax:
+    content: string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Name As String
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.Name*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.DisplayName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.DisplayName
+  id: DisplayName
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+  langs:
+  - csharp
+  - vb
+  name: DisplayName
+  nameWithType: ISymbolSearchProvider.DisplayName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.DisplayName
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ISymbolSearchProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisplayName
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ISymbolSearchProvider.cs
+    startLine: 22
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Human-readable provider name.
+  example: []
+  syntax:
+    content: string DisplayName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property DisplayName As String
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.DisplayName*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.Priority
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.Priority
+  id: Priority
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+  langs:
+  - csharp
+  - vb
+  name: Priority
+  nameWithType: ISymbolSearchProvider.Priority
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.Priority
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ISymbolSearchProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Priority
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ISymbolSearchProvider.cs
+    startLine: 27
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Priority for this provider (lower = higher priority).
+  example: []
+  syntax:
+    content: int Priority { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property Priority As Integer
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.Priority*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  id: IsAvailableAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+  langs:
+  - csharp
+  - vb
+  name: IsAvailableAsync(CancellationToken)
+  nameWithType: ISymbolSearchProvider.IsAvailableAsync(CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.IsAvailableAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ISymbolSearchProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsAvailableAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ISymbolSearchProvider.cs
+    startLine: 32
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Check if the provider is available/configured.
+  example: []
+  syntax:
+    content: Task<bool> IsAvailableAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Function IsAvailableAsync(ct As CancellationToken = Nothing) As Task(Of Boolean)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.IsAvailableAsync*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.SearchAsync(System.String,System.Int32,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.SearchAsync(System.String,System.Int32,System.Threading.CancellationToken)
+  id: SearchAsync(System.String,System.Int32,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+  langs:
+  - csharp
+  - vb
+  name: SearchAsync(string, int, CancellationToken)
+  nameWithType: ISymbolSearchProvider.SearchAsync(string, int, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.SearchAsync(string, int, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ISymbolSearchProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SearchAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ISymbolSearchProvider.cs
+    startLine: 41
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Search for symbols matching the query.
+  example: []
+  syntax:
+    content: Task<IReadOnlyList<SymbolSearchResult>> SearchAsync(string query, int limit = 10, CancellationToken ct = default)
+    parameters:
+    - id: query
+      type: System.String
+      description: Search query (partial symbol or company name).
+    - id: limit
+      type: System.Int32
+      description: Maximum number of results.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult}}
+      description: List of matching symbols.
+    content.vb: Function SearchAsync(query As String, limit As Integer = 10, ct As CancellationToken = Nothing) As Task(Of IReadOnlyList(Of SymbolSearchResult))
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.SearchAsync*
+  nameWithType.vb: ISymbolSearchProvider.SearchAsync(String, Integer, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.SearchAsync(String, Integer, System.Threading.CancellationToken)
+  name.vb: SearchAsync(String, Integer, CancellationToken)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.GetDetailsAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.GetDetailsAsync(System.String,System.Threading.CancellationToken)
+  id: GetDetailsAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider
+  langs:
+  - csharp
+  - vb
+  name: GetDetailsAsync(string, CancellationToken)
+  nameWithType: ISymbolSearchProvider.GetDetailsAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.GetDetailsAsync(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/ISymbolSearchProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetDetailsAsync
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/ISymbolSearchProvider.cs
+    startLine: 52
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Get detailed information about a specific symbol.
+  example: []
+  syntax:
+    content: Task<SymbolDetails?> GetDetailsAsync(string symbol, CancellationToken ct = default)
+    parameters:
+    - id: symbol
+      type: System.String
+      description: Symbol ticker.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.SymbolDetails}
+      description: Symbol details or null if not found.
+    content.vb: Function GetDetailsAsync(symbol As String, ct As CancellationToken = Nothing) As Task(Of SymbolDetails)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.GetDetailsAsync*
+  nameWithType.vb: ISymbolSearchProvider.GetDetailsAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.GetDetailsAsync(String, System.Threading.CancellationToken)
+  name.vb: GetDetailsAsync(String, CancellationToken)
+references:
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html
+  name: IProviderMetadata
+  nameWithType: IProviderMetadata
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+- uid: MarketDataCollector.Infrastructure.Adapters.Core
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Core
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Core
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderId
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderId
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderId
+  name: ProviderId
+  nameWithType: IProviderMetadata.ProviderId
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderId
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDisplayName
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDisplayName
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderDisplayName
+  name: ProviderDisplayName
+  nameWithType: IProviderMetadata.ProviderDisplayName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDisplayName
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDescription
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDescription
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderDescription
+  name: ProviderDescription
+  nameWithType: IProviderMetadata.ProviderDescription
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderDescription
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderPriority
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderPriority
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderPriority
+  name: ProviderPriority
+  nameWithType: IProviderMetadata.ProviderPriority
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderPriority
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCapabilities
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCapabilities
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderCapabilities
+  name: ProviderCapabilities
+  nameWithType: IProviderMetadata.ProviderCapabilities
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCapabilities
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.RequiresCredentials
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.RequiresCredentials
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_RequiresCredentials
+  name: RequiresCredentials
+  nameWithType: IProviderMetadata.RequiresCredentials
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.RequiresCredentials
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCredentialFields
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCredentialFields
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderCredentialFields
+  name: ProviderCredentialFields
+  nameWithType: IProviderMetadata.ProviderCredentialFields
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderCredentialFields
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderNotes
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderNotes
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderNotes
+  name: ProviderNotes
+  nameWithType: IProviderMetadata.ProviderNotes
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderNotes
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderWarnings
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderWarnings
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_ProviderWarnings
+  name: ProviderWarnings
+  nameWithType: IProviderMetadata.ProviderWarnings
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.ProviderWarnings
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.SupportedDataTypes
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.SupportedDataTypes
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.html#MarketDataCollector_Infrastructure_Adapters_Core_IProviderMetadata_SupportedDataTypes
+  name: SupportedDataTypes
+  nameWithType: IProviderMetadata.SupportedDataTypes
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IProviderMetadata.SupportedDataTypes
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.Name*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.Name
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_ISymbolSearchProvider_Name
+  name: Name
+  nameWithType: ISymbolSearchProvider.Name
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.DisplayName*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.DisplayName
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_ISymbolSearchProvider_DisplayName
+  name: DisplayName
+  nameWithType: ISymbolSearchProvider.DisplayName
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.DisplayName
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.Priority*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.Priority
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_ISymbolSearchProvider_Priority
+  name: Priority
+  nameWithType: ISymbolSearchProvider.Priority
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.Priority
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.IsAvailableAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.IsAvailableAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_ISymbolSearchProvider_IsAvailableAsync_System_Threading_CancellationToken_
+  name: IsAvailableAsync
+  nameWithType: ISymbolSearchProvider.IsAvailableAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.IsAvailableAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.SearchAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.SearchAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_ISymbolSearchProvider_SearchAsync_System_String_System_Int32_System_Threading_CancellationToken_
+  name: SearchAsync
+  nameWithType: ISymbolSearchProvider.SearchAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.SearchAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IReadOnlyList<SymbolSearchResult>>
+  nameWithType: Task<IReadOnlyList<SymbolSearchResult>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult>>
+  nameWithType.vb: Task(Of IReadOnlyList(Of SymbolSearchResult))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult))
+  name.vb: Task(Of IReadOnlyList(Of SymbolSearchResult))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult
+    name: SymbolSearchResult
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolSearchResult
+    name: SymbolSearchResult
+  - name: )
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.GetDetailsAsync*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.GetDetailsAsync
+  href: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_ISymbolSearchProvider_GetDetailsAsync_System_String_System_Threading_CancellationToken_
+  name: GetDetailsAsync
+  nameWithType: ISymbolSearchProvider.GetDetailsAsync
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.ISymbolSearchProvider.GetDetailsAsync
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.SymbolDetails}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.SymbolDetails}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<SymbolDetails>
+  nameWithType: Task<SymbolDetails>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Subscriptions.Models.SymbolDetails>
+  nameWithType.vb: Task(Of SymbolDetails)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Subscriptions.Models.SymbolDetails)
+  name.vb: Task(Of SymbolDetails)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolDetails
+    name: SymbolDetails
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.SymbolDetails
+    name: SymbolDetails
+  - name: )

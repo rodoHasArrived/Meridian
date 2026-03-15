@@ -1,0 +1,1239 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  commentId: T:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  id: IntegrityEvent
+  parent: MarketDataCollector.Contracts.Domain.Models
+  children:
+  - MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.#ctor(System.DateTimeOffset,System.String,MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity,System.String,System.Nullable{System.UInt16},System.Int64,System.String,System.String)
+  - MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.CanonicalizationHardFail(System.DateTimeOffset,System.String,System.String,System.Int64,System.String,System.String)
+  - MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Description
+  - MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.ErrorCode
+  - MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSequenceNumber(System.DateTimeOffset,System.String,System.Int64,System.String,System.String,System.String)
+  - MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSymbol(System.DateTimeOffset,System.String,System.String,System.Int64,System.String,System.String)
+  - MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.OutOfOrder(System.DateTimeOffset,System.String,System.Int64,System.Int64,System.String,System.String)
+  - MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.SequenceGap(System.DateTimeOffset,System.String,System.Int64,System.Int64,System.String,System.String)
+  - MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.SequenceNumber
+  - MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Severity
+  - MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.StreamId
+  - MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Symbol
+  - MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Timestamp
+  - MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.UnresolvedSymbol(System.DateTimeOffset,System.String,System.String,System.Int64,System.String,System.String)
+  - MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Venue
+  langs:
+  - csharp
+  - vb
+  name: IntegrityEvent
+  nameWithType: IntegrityEvent
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IntegrityEvent
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+    startLine: 8
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  summary: Data integrity / continuity / anomaly event.
+  example: []
+  syntax:
+    content: 'public sealed record IntegrityEvent : MarketEventPayload, IMarketEventPayload, IEquatable<MarketEventPayload>, IEquatable<IntegrityEvent>'
+    content.vb: Public NotInheritable Class IntegrityEvent Inherits MarketEventPayload Implements IMarketEventPayload, IEquatable(Of MarketEventPayload), IEquatable(Of IntegrityEvent)
+  inheritance:
+  - System.Object
+  - MarketDataCollector.Contracts.Domain.Events.MarketEventPayload
+  implements:
+  - MarketDataCollector.Contracts.Domain.Events.IMarketEventPayload
+  - System.IEquatable{MarketDataCollector.Contracts.Domain.Events.MarketEventPayload}
+  - System.IEquatable{MarketDataCollector.Contracts.Domain.Models.IntegrityEvent}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.#ctor(System.DateTimeOffset,System.String,MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity,System.String,System.Nullable{System.UInt16},System.Int64,System.String,System.String)
+  commentId: M:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.#ctor(System.DateTimeOffset,System.String,MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity,System.String,System.Nullable{System.UInt16},System.Int64,System.String,System.String)
+  id: '#ctor(System.DateTimeOffset,System.String,MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity,System.String,System.Nullable{System.UInt16},System.Int64,System.String,System.String)'
+  parent: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  langs:
+  - csharp
+  - vb
+  name: IntegrityEvent(DateTimeOffset, string, IntegritySeverity, string, ushort?, long, string?, string?)
+  nameWithType: IntegrityEvent.IntegrityEvent(DateTimeOffset, string, IntegritySeverity, string, ushort?, long, string?, string?)
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.IntegrityEvent(System.DateTimeOffset, string, MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity, string, ushort?, long, string?, string?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+    startLine: 8
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  summary: Data integrity / continuity / anomaly event.
+  example: []
+  syntax:
+    content: public IntegrityEvent(DateTimeOffset Timestamp, string Symbol, IntegritySeverity Severity, string Description, ushort? ErrorCode, long SequenceNumber, string? StreamId = null, string? Venue = null)
+    parameters:
+    - id: Timestamp
+      type: System.DateTimeOffset
+    - id: Symbol
+      type: System.String
+    - id: Severity
+      type: MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity
+    - id: Description
+      type: System.String
+    - id: ErrorCode
+      type: System.Nullable{System.UInt16}
+    - id: SequenceNumber
+      type: System.Int64
+    - id: StreamId
+      type: System.String
+    - id: Venue
+      type: System.String
+    content.vb: Public Sub New(Timestamp As DateTimeOffset, Symbol As String, Severity As IntegritySeverity, Description As String, ErrorCode As UShort?, SequenceNumber As Long, StreamId As String = Nothing, Venue As String = Nothing)
+  overload: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.#ctor*
+  nameWithType.vb: IntegrityEvent.New(DateTimeOffset, String, IntegritySeverity, String, UShort?, Long, String, String)
+  fullName.vb: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.New(System.DateTimeOffset, String, MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity, String, UShort?, Long, String, String)
+  name.vb: New(DateTimeOffset, String, IntegritySeverity, String, UShort?, Long, String, String)
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Timestamp
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Timestamp
+  id: Timestamp
+  parent: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  langs:
+  - csharp
+  - vb
+  name: Timestamp
+  nameWithType: IntegrityEvent.Timestamp
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Timestamp
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Timestamp
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+    startLine: 9
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public DateTimeOffset Timestamp { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property Timestamp As DateTimeOffset
+  overload: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Timestamp*
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Symbol
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Symbol
+  id: Symbol
+  parent: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  langs:
+  - csharp
+  - vb
+  name: Symbol
+  nameWithType: IntegrityEvent.Symbol
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Symbol
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Symbol
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+    startLine: 10
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public string Symbol { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Symbol As String
+  overload: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Symbol*
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Severity
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Severity
+  id: Severity
+  parent: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  langs:
+  - csharp
+  - vb
+  name: Severity
+  nameWithType: IntegrityEvent.Severity
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Severity
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Severity
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+    startLine: 11
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public IntegritySeverity Severity { get; init; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity
+    content.vb: Public Property Severity As IntegritySeverity
+  overload: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Severity*
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Description
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Description
+  id: Description
+  parent: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: IntegrityEvent.Description
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Description
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Description
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+    startLine: 12
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public string Description { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Description As String
+  overload: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Description*
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.ErrorCode
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.ErrorCode
+  id: ErrorCode
+  parent: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  langs:
+  - csharp
+  - vb
+  name: ErrorCode
+  nameWithType: IntegrityEvent.ErrorCode
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.ErrorCode
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ErrorCode
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+    startLine: 13
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public ushort? ErrorCode { get; init; }
+    parameters: []
+    return:
+      type: System.Nullable{System.UInt16}
+    content.vb: Public Property ErrorCode As UShort?
+  overload: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.ErrorCode*
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.SequenceNumber
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.SequenceNumber
+  id: SequenceNumber
+  parent: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  langs:
+  - csharp
+  - vb
+  name: SequenceNumber
+  nameWithType: IntegrityEvent.SequenceNumber
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.SequenceNumber
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SequenceNumber
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+    startLine: 14
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public long SequenceNumber { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property SequenceNumber As Long
+  overload: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.SequenceNumber*
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.StreamId
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.StreamId
+  id: StreamId
+  parent: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  langs:
+  - csharp
+  - vb
+  name: StreamId
+  nameWithType: IntegrityEvent.StreamId
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.StreamId
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StreamId
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+    startLine: 15
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public string? StreamId { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property StreamId As String
+  overload: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.StreamId*
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Venue
+  commentId: P:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Venue
+  id: Venue
+  parent: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  langs:
+  - csharp
+  - vb
+  name: Venue
+  nameWithType: IntegrityEvent.Venue
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Venue
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Venue
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+    startLine: 16
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  syntax:
+    content: public string? Venue { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Venue As String
+  overload: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Venue*
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.SequenceGap(System.DateTimeOffset,System.String,System.Int64,System.Int64,System.String,System.String)
+  commentId: M:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.SequenceGap(System.DateTimeOffset,System.String,System.Int64,System.Int64,System.String,System.String)
+  id: SequenceGap(System.DateTimeOffset,System.String,System.Int64,System.Int64,System.String,System.String)
+  parent: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  langs:
+  - csharp
+  - vb
+  name: SequenceGap(DateTimeOffset, string, long, long, string?, string?)
+  nameWithType: IntegrityEvent.SequenceGap(DateTimeOffset, string, long, long, string?, string?)
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.SequenceGap(System.DateTimeOffset, string, long, long, string?, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SequenceGap
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+    startLine: 22
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  summary: Creates a sequence gap integrity event.
+  example: []
+  syntax:
+    content: public static IntegrityEvent SequenceGap(DateTimeOffset ts, string symbol, long expectedNext, long received, string? streamId = null, string? venue = null)
+    parameters:
+    - id: ts
+      type: System.DateTimeOffset
+    - id: symbol
+      type: System.String
+    - id: expectedNext
+      type: System.Int64
+    - id: received
+      type: System.Int64
+    - id: streamId
+      type: System.String
+    - id: venue
+      type: System.String
+    return:
+      type: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+    content.vb: Public Shared Function SequenceGap(ts As DateTimeOffset, symbol As String, expectedNext As Long, received As Long, streamId As String = Nothing, venue As String = Nothing) As IntegrityEvent
+  overload: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.SequenceGap*
+  nameWithType.vb: IntegrityEvent.SequenceGap(DateTimeOffset, String, Long, Long, String, String)
+  fullName.vb: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.SequenceGap(System.DateTimeOffset, String, Long, Long, String, String)
+  name.vb: SequenceGap(DateTimeOffset, String, Long, Long, String, String)
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.OutOfOrder(System.DateTimeOffset,System.String,System.Int64,System.Int64,System.String,System.String)
+  commentId: M:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.OutOfOrder(System.DateTimeOffset,System.String,System.Int64,System.Int64,System.String,System.String)
+  id: OutOfOrder(System.DateTimeOffset,System.String,System.Int64,System.Int64,System.String,System.String)
+  parent: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  langs:
+  - csharp
+  - vb
+  name: OutOfOrder(DateTimeOffset, string, long, long, string?, string?)
+  nameWithType: IntegrityEvent.OutOfOrder(DateTimeOffset, string, long, long, string?, string?)
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.OutOfOrder(System.DateTimeOffset, string, long, long, string?, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OutOfOrder
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+    startLine: 39
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  summary: Creates an out-of-order integrity event.
+  example: []
+  syntax:
+    content: public static IntegrityEvent OutOfOrder(DateTimeOffset ts, string symbol, long last, long received, string? streamId = null, string? venue = null)
+    parameters:
+    - id: ts
+      type: System.DateTimeOffset
+    - id: symbol
+      type: System.String
+    - id: last
+      type: System.Int64
+    - id: received
+      type: System.Int64
+    - id: streamId
+      type: System.String
+    - id: venue
+      type: System.String
+    return:
+      type: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+    content.vb: Public Shared Function OutOfOrder(ts As DateTimeOffset, symbol As String, last As Long, received As Long, streamId As String = Nothing, venue As String = Nothing) As IntegrityEvent
+  overload: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.OutOfOrder*
+  nameWithType.vb: IntegrityEvent.OutOfOrder(DateTimeOffset, String, Long, Long, String, String)
+  fullName.vb: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.OutOfOrder(System.DateTimeOffset, String, Long, Long, String, String)
+  name.vb: OutOfOrder(DateTimeOffset, String, Long, Long, String, String)
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSymbol(System.DateTimeOffset,System.String,System.String,System.Int64,System.String,System.String)
+  commentId: M:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSymbol(System.DateTimeOffset,System.String,System.String,System.Int64,System.String,System.String)
+  id: InvalidSymbol(System.DateTimeOffset,System.String,System.String,System.Int64,System.String,System.String)
+  parent: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  langs:
+  - csharp
+  - vb
+  name: InvalidSymbol(DateTimeOffset, string, string, long, string?, string?)
+  nameWithType: IntegrityEvent.InvalidSymbol(DateTimeOffset, string, string, long, string?, string?)
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSymbol(System.DateTimeOffset, string, string, long, string?, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: InvalidSymbol
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+    startLine: 56
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  summary: Creates an invalid symbol integrity event.
+  example: []
+  syntax:
+    content: public static IntegrityEvent InvalidSymbol(DateTimeOffset ts, string symbol, string reason, long sequenceNumber, string? streamId = null, string? venue = null)
+    parameters:
+    - id: ts
+      type: System.DateTimeOffset
+    - id: symbol
+      type: System.String
+    - id: reason
+      type: System.String
+    - id: sequenceNumber
+      type: System.Int64
+    - id: streamId
+      type: System.String
+    - id: venue
+      type: System.String
+    return:
+      type: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+    content.vb: Public Shared Function InvalidSymbol(ts As DateTimeOffset, symbol As String, reason As String, sequenceNumber As Long, streamId As String = Nothing, venue As String = Nothing) As IntegrityEvent
+  overload: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSymbol*
+  nameWithType.vb: IntegrityEvent.InvalidSymbol(DateTimeOffset, String, String, Long, String, String)
+  fullName.vb: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSymbol(System.DateTimeOffset, String, String, Long, String, String)
+  name.vb: InvalidSymbol(DateTimeOffset, String, String, Long, String, String)
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSequenceNumber(System.DateTimeOffset,System.String,System.Int64,System.String,System.String,System.String)
+  commentId: M:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSequenceNumber(System.DateTimeOffset,System.String,System.Int64,System.String,System.String,System.String)
+  id: InvalidSequenceNumber(System.DateTimeOffset,System.String,System.Int64,System.String,System.String,System.String)
+  parent: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  langs:
+  - csharp
+  - vb
+  name: InvalidSequenceNumber(DateTimeOffset, string, long, string, string?, string?)
+  nameWithType: IntegrityEvent.InvalidSequenceNumber(DateTimeOffset, string, long, string, string?, string?)
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSequenceNumber(System.DateTimeOffset, string, long, string, string?, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: InvalidSequenceNumber
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+    startLine: 73
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  summary: Creates an invalid sequence number integrity event.
+  example: []
+  syntax:
+    content: public static IntegrityEvent InvalidSequenceNumber(DateTimeOffset ts, string symbol, long sequenceNumber, string reason, string? streamId = null, string? venue = null)
+    parameters:
+    - id: ts
+      type: System.DateTimeOffset
+    - id: symbol
+      type: System.String
+    - id: sequenceNumber
+      type: System.Int64
+    - id: reason
+      type: System.String
+    - id: streamId
+      type: System.String
+    - id: venue
+      type: System.String
+    return:
+      type: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+    content.vb: Public Shared Function InvalidSequenceNumber(ts As DateTimeOffset, symbol As String, sequenceNumber As Long, reason As String, streamId As String = Nothing, venue As String = Nothing) As IntegrityEvent
+  overload: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSequenceNumber*
+  nameWithType.vb: IntegrityEvent.InvalidSequenceNumber(DateTimeOffset, String, Long, String, String, String)
+  fullName.vb: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSequenceNumber(System.DateTimeOffset, String, Long, String, String, String)
+  name.vb: InvalidSequenceNumber(DateTimeOffset, String, Long, String, String, String)
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.UnresolvedSymbol(System.DateTimeOffset,System.String,System.String,System.Int64,System.String,System.String)
+  commentId: M:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.UnresolvedSymbol(System.DateTimeOffset,System.String,System.String,System.Int64,System.String,System.String)
+  id: UnresolvedSymbol(System.DateTimeOffset,System.String,System.String,System.Int64,System.String,System.String)
+  parent: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  langs:
+  - csharp
+  - vb
+  name: UnresolvedSymbol(DateTimeOffset, string, string, long, string?, string?)
+  nameWithType: IntegrityEvent.UnresolvedSymbol(DateTimeOffset, string, string, long, string?, string?)
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.UnresolvedSymbol(System.DateTimeOffset, string, string, long, string?, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UnresolvedSymbol
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+    startLine: 90
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  summary: Creates an unresolved symbol integrity event when canonicalization cannot map a symbol.
+  example: []
+  syntax:
+    content: public static IntegrityEvent UnresolvedSymbol(DateTimeOffset ts, string symbol, string provider, long sequenceNumber, string? streamId = null, string? venue = null)
+    parameters:
+    - id: ts
+      type: System.DateTimeOffset
+    - id: symbol
+      type: System.String
+    - id: provider
+      type: System.String
+    - id: sequenceNumber
+      type: System.Int64
+    - id: streamId
+      type: System.String
+    - id: venue
+      type: System.String
+    return:
+      type: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+    content.vb: Public Shared Function UnresolvedSymbol(ts As DateTimeOffset, symbol As String, provider As String, sequenceNumber As Long, streamId As String = Nothing, venue As String = Nothing) As IntegrityEvent
+  overload: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.UnresolvedSymbol*
+  nameWithType.vb: IntegrityEvent.UnresolvedSymbol(DateTimeOffset, String, String, Long, String, String)
+  fullName.vb: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.UnresolvedSymbol(System.DateTimeOffset, String, String, Long, String, String)
+  name.vb: UnresolvedSymbol(DateTimeOffset, String, String, Long, String, String)
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.CanonicalizationHardFail(System.DateTimeOffset,System.String,System.String,System.Int64,System.String,System.String)
+  commentId: M:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.CanonicalizationHardFail(System.DateTimeOffset,System.String,System.String,System.Int64,System.String,System.String)
+  id: CanonicalizationHardFail(System.DateTimeOffset,System.String,System.String,System.Int64,System.String,System.String)
+  parent: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  langs:
+  - csharp
+  - vb
+  name: CanonicalizationHardFail(DateTimeOffset, string, string, long, string?, string?)
+  nameWithType: IntegrityEvent.CanonicalizationHardFail(DateTimeOffset, string, string, long, string?, string?)
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.CanonicalizationHardFail(System.DateTimeOffset, string, string, long, string?, string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CanonicalizationHardFail
+    path: ../../src/MarketDataCollector.Contracts/Domain/Models/IntegrityEvent.cs
+    startLine: 108
+  assemblies:
+  - MarketDataCollector.Contracts
+  namespace: MarketDataCollector.Contracts.Domain.Models
+  summary: Creates a canonicalization hard-fail integrity event when required fields are missing.
+  example: []
+  syntax:
+    content: public static IntegrityEvent CanonicalizationHardFail(DateTimeOffset ts, string symbol, string reason, long sequenceNumber, string? streamId = null, string? venue = null)
+    parameters:
+    - id: ts
+      type: System.DateTimeOffset
+    - id: symbol
+      type: System.String
+    - id: reason
+      type: System.String
+    - id: sequenceNumber
+      type: System.Int64
+    - id: streamId
+      type: System.String
+    - id: venue
+      type: System.String
+    return:
+      type: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+    content.vb: Public Shared Function CanonicalizationHardFail(ts As DateTimeOffset, symbol As String, reason As String, sequenceNumber As Long, streamId As String = Nothing, venue As String = Nothing) As IntegrityEvent
+  overload: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.CanonicalizationHardFail*
+  nameWithType.vb: IntegrityEvent.CanonicalizationHardFail(DateTimeOffset, String, String, Long, String, String)
+  fullName.vb: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.CanonicalizationHardFail(System.DateTimeOffset, String, String, Long, String, String)
+  name.vb: CanonicalizationHardFail(DateTimeOffset, String, String, Long, String, String)
+references:
+- uid: MarketDataCollector.Contracts.Domain.Models
+  commentId: N:MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Models
+  nameWithType: MarketDataCollector.Contracts.Domain.Models
+  fullName: MarketDataCollector.Contracts.Domain.Models
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Models
+    name: Models
+    href: MarketDataCollector.Contracts.Domain.Models.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Models
+    name: Models
+    href: MarketDataCollector.Contracts.Domain.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Contracts.Domain.Events.MarketEventPayload
+  commentId: T:MarketDataCollector.Contracts.Domain.Events.MarketEventPayload
+  parent: MarketDataCollector.Contracts.Domain.Events
+  href: MarketDataCollector.Contracts.Domain.Events.MarketEventPayload.html
+  name: MarketEventPayload
+  nameWithType: MarketEventPayload
+  fullName: MarketDataCollector.Contracts.Domain.Events.MarketEventPayload
+- uid: MarketDataCollector.Contracts.Domain.Events.IMarketEventPayload
+  commentId: T:MarketDataCollector.Contracts.Domain.Events.IMarketEventPayload
+  parent: MarketDataCollector.Contracts.Domain.Events
+  href: MarketDataCollector.Contracts.Domain.Events.IMarketEventPayload.html
+  name: IMarketEventPayload
+  nameWithType: IMarketEventPayload
+  fullName: MarketDataCollector.Contracts.Domain.Events.IMarketEventPayload
+- uid: System.IEquatable{MarketDataCollector.Contracts.Domain.Events.MarketEventPayload}
+  commentId: T:System.IEquatable{MarketDataCollector.Contracts.Domain.Events.MarketEventPayload}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<MarketEventPayload>
+  nameWithType: IEquatable<MarketEventPayload>
+  fullName: System.IEquatable<MarketDataCollector.Contracts.Domain.Events.MarketEventPayload>
+  nameWithType.vb: IEquatable(Of MarketEventPayload)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Contracts.Domain.Events.MarketEventPayload)
+  name.vb: IEquatable(Of MarketEventPayload)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Domain.Events.MarketEventPayload
+    name: MarketEventPayload
+    href: MarketDataCollector.Contracts.Domain.Events.MarketEventPayload.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Domain.Events.MarketEventPayload
+    name: MarketEventPayload
+    href: MarketDataCollector.Contracts.Domain.Events.MarketEventPayload.html
+  - name: )
+- uid: System.IEquatable{MarketDataCollector.Contracts.Domain.Models.IntegrityEvent}
+  commentId: T:System.IEquatable{MarketDataCollector.Contracts.Domain.Models.IntegrityEvent}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<IntegrityEvent>
+  nameWithType: IEquatable<IntegrityEvent>
+  fullName: System.IEquatable<MarketDataCollector.Contracts.Domain.Models.IntegrityEvent>
+  nameWithType.vb: IEquatable(Of IntegrityEvent)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Contracts.Domain.Models.IntegrityEvent)
+  name.vb: IEquatable(Of IntegrityEvent)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+    name: IntegrityEvent
+    href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+    name: IntegrityEvent
+    href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Contracts.Domain.Events
+  commentId: N:MarketDataCollector.Contracts.Domain.Events
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Events
+  nameWithType: MarketDataCollector.Contracts.Domain.Events
+  fullName: MarketDataCollector.Contracts.Domain.Events
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Events
+    name: Events
+    href: MarketDataCollector.Contracts.Domain.Events.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Events
+    name: Events
+    href: MarketDataCollector.Contracts.Domain.Events.html
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.#ctor*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.#ctor
+  href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html#MarketDataCollector_Contracts_Domain_Models_IntegrityEvent__ctor_System_DateTimeOffset_System_String_MarketDataCollector_Contracts_Domain_Enums_IntegritySeverity_System_String_System_Nullable_System_UInt16__System_Int64_System_String_System_String_
+  name: IntegrityEvent
+  nameWithType: IntegrityEvent.IntegrityEvent
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.IntegrityEvent
+  nameWithType.vb: IntegrityEvent.New
+  fullName.vb: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.New
+  name.vb: New
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity
+  commentId: T:MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity
+  parent: MarketDataCollector.Contracts.Domain.Enums
+  href: MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity.html
+  name: IntegritySeverity
+  nameWithType: IntegritySeverity
+  fullName: MarketDataCollector.Contracts.Domain.Enums.IntegritySeverity
+- uid: System.Nullable{System.UInt16}
+  commentId: T:System.Nullable{System.UInt16}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.uint16
+  name: ushort?
+  nameWithType: ushort?
+  fullName: ushort?
+  nameWithType.vb: UShort?
+  fullName.vb: UShort?
+  name.vb: UShort?
+  spec.csharp:
+  - uid: System.UInt16
+    name: ushort
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint16
+  - name: '?'
+  spec.vb:
+  - uid: System.UInt16
+    name: UShort
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint16
+  - name: '?'
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Contracts.Domain.Enums
+  commentId: N:MarketDataCollector.Contracts.Domain.Enums
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Enums
+  nameWithType: MarketDataCollector.Contracts.Domain.Enums
+  fullName: MarketDataCollector.Contracts.Domain.Enums
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Enums
+    name: Enums
+    href: MarketDataCollector.Contracts.Domain.Enums.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Enums
+    name: Enums
+    href: MarketDataCollector.Contracts.Domain.Enums.html
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Timestamp*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Timestamp
+  href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html#MarketDataCollector_Contracts_Domain_Models_IntegrityEvent_Timestamp
+  name: Timestamp
+  nameWithType: IntegrityEvent.Timestamp
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Timestamp
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Symbol*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Symbol
+  href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html#MarketDataCollector_Contracts_Domain_Models_IntegrityEvent_Symbol
+  name: Symbol
+  nameWithType: IntegrityEvent.Symbol
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Symbol
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Severity*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Severity
+  href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html#MarketDataCollector_Contracts_Domain_Models_IntegrityEvent_Severity
+  name: Severity
+  nameWithType: IntegrityEvent.Severity
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Severity
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Description*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Description
+  href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html#MarketDataCollector_Contracts_Domain_Models_IntegrityEvent_Description
+  name: Description
+  nameWithType: IntegrityEvent.Description
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Description
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.ErrorCode*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.ErrorCode
+  href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html#MarketDataCollector_Contracts_Domain_Models_IntegrityEvent_ErrorCode
+  name: ErrorCode
+  nameWithType: IntegrityEvent.ErrorCode
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.ErrorCode
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.SequenceNumber*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.SequenceNumber
+  href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html#MarketDataCollector_Contracts_Domain_Models_IntegrityEvent_SequenceNumber
+  name: SequenceNumber
+  nameWithType: IntegrityEvent.SequenceNumber
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.SequenceNumber
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.StreamId*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.StreamId
+  href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html#MarketDataCollector_Contracts_Domain_Models_IntegrityEvent_StreamId
+  name: StreamId
+  nameWithType: IntegrityEvent.StreamId
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.StreamId
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Venue*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Venue
+  href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html#MarketDataCollector_Contracts_Domain_Models_IntegrityEvent_Venue
+  name: Venue
+  nameWithType: IntegrityEvent.Venue
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.Venue
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.SequenceGap*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.SequenceGap
+  href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html#MarketDataCollector_Contracts_Domain_Models_IntegrityEvent_SequenceGap_System_DateTimeOffset_System_String_System_Int64_System_Int64_System_String_System_String_
+  name: SequenceGap
+  nameWithType: IntegrityEvent.SequenceGap
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.SequenceGap
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  commentId: T:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+  parent: MarketDataCollector.Contracts.Domain.Models
+  href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html
+  name: IntegrityEvent
+  nameWithType: IntegrityEvent
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.OutOfOrder*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.OutOfOrder
+  href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html#MarketDataCollector_Contracts_Domain_Models_IntegrityEvent_OutOfOrder_System_DateTimeOffset_System_String_System_Int64_System_Int64_System_String_System_String_
+  name: OutOfOrder
+  nameWithType: IntegrityEvent.OutOfOrder
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.OutOfOrder
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSymbol*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSymbol
+  href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html#MarketDataCollector_Contracts_Domain_Models_IntegrityEvent_InvalidSymbol_System_DateTimeOffset_System_String_System_String_System_Int64_System_String_System_String_
+  name: InvalidSymbol
+  nameWithType: IntegrityEvent.InvalidSymbol
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSymbol
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSequenceNumber*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSequenceNumber
+  href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html#MarketDataCollector_Contracts_Domain_Models_IntegrityEvent_InvalidSequenceNumber_System_DateTimeOffset_System_String_System_Int64_System_String_System_String_System_String_
+  name: InvalidSequenceNumber
+  nameWithType: IntegrityEvent.InvalidSequenceNumber
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.InvalidSequenceNumber
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.UnresolvedSymbol*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.UnresolvedSymbol
+  href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html#MarketDataCollector_Contracts_Domain_Models_IntegrityEvent_UnresolvedSymbol_System_DateTimeOffset_System_String_System_String_System_Int64_System_String_System_String_
+  name: UnresolvedSymbol
+  nameWithType: IntegrityEvent.UnresolvedSymbol
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.UnresolvedSymbol
+- uid: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.CanonicalizationHardFail*
+  commentId: Overload:MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.CanonicalizationHardFail
+  href: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.html#MarketDataCollector_Contracts_Domain_Models_IntegrityEvent_CanonicalizationHardFail_System_DateTimeOffset_System_String_System_String_System_Int64_System_String_System_String_
+  name: CanonicalizationHardFail
+  nameWithType: IntegrityEvent.CanonicalizationHardFail
+  fullName: MarketDataCollector.Contracts.Domain.Models.IntegrityEvent.CanonicalizationHardFail

@@ -1,0 +1,1065 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  id: SymbolResolution
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  children:
+  - MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)
+  - MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.CompositeFigi
+  - MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Currency
+  - MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Cusip
+  - MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Exchange
+  - MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ExchangeCode
+  - MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Figi
+  - MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Isin
+  - MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.MarketSector
+  - MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Name
+  - MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ProviderSymbols
+  - MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.SecurityType
+  - MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Sedol
+  - MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ShareClassFigi
+  - MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Ticker
+  langs:
+  - csharp
+  - vb
+  name: SymbolResolution
+  nameWithType: SymbolResolution
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SymbolResolution
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+    startLine: 33
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  summary: Canonical symbol resolution with identifiers across systems.
+  example: []
+  syntax:
+    content: 'public sealed record SymbolResolution : IEquatable<SymbolResolution>'
+    content.vb: Public NotInheritable Class SymbolResolution Implements IEquatable(Of SymbolResolution)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)
+  id: '#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)'
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  langs:
+  - csharp
+  - vb
+  name: SymbolResolution(string, string?, string?, string?, string?, string?, string?, string?, string?, string?, string?, string?, string?)
+  nameWithType: SymbolResolution.SymbolResolution(string, string?, string?, string?, string?, string?, string?, string?, string?, string?, string?, string?, string?)
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.SymbolResolution(string, string?, string?, string?, string?, string?, string?, string?, string?, string?, string?, string?, string?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+    startLine: 33
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  summary: Canonical symbol resolution with identifiers across systems.
+  example: []
+  syntax:
+    content: public SymbolResolution(string Ticker, string? Figi = null, string? CompositeFigi = null, string? ShareClassFigi = null, string? Isin = null, string? Cusip = null, string? Sedol = null, string? Name = null, string? Exchange = null, string? ExchangeCode = null, string? MarketSector = null, string? SecurityType = null, string? Currency = null)
+    parameters:
+    - id: Ticker
+      type: System.String
+    - id: Figi
+      type: System.String
+    - id: CompositeFigi
+      type: System.String
+    - id: ShareClassFigi
+      type: System.String
+    - id: Isin
+      type: System.String
+    - id: Cusip
+      type: System.String
+    - id: Sedol
+      type: System.String
+    - id: Name
+      type: System.String
+    - id: Exchange
+      type: System.String
+    - id: ExchangeCode
+      type: System.String
+    - id: MarketSector
+      type: System.String
+    - id: SecurityType
+      type: System.String
+    - id: Currency
+      type: System.String
+    content.vb: Public Sub New(Ticker As String, Figi As String = Nothing, CompositeFigi As String = Nothing, ShareClassFigi As String = Nothing, Isin As String = Nothing, Cusip As String = Nothing, Sedol As String = Nothing, Name As String = Nothing, Exchange As String = Nothing, ExchangeCode As String = Nothing, MarketSector As String = Nothing, SecurityType As String = Nothing, Currency As String = Nothing)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.#ctor*
+  nameWithType.vb: SymbolResolution.New(String, String, String, String, String, String, String, String, String, String, String, String, String)
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.New(String, String, String, String, String, String, String, String, String, String, String, String, String)
+  name.vb: New(String, String, String, String, String, String, String, String, String, String, String, String, String)
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Ticker
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Ticker
+  id: Ticker
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  langs:
+  - csharp
+  - vb
+  name: Ticker
+  nameWithType: SymbolResolution.Ticker
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Ticker
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Ticker
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+    startLine: 34
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  syntax:
+    content: public string Ticker { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Ticker As String
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Ticker*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Figi
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Figi
+  id: Figi
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  langs:
+  - csharp
+  - vb
+  name: Figi
+  nameWithType: SymbolResolution.Figi
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Figi
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Figi
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+    startLine: 35
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  syntax:
+    content: public string? Figi { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Figi As String
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Figi*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.CompositeFigi
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.CompositeFigi
+  id: CompositeFigi
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  langs:
+  - csharp
+  - vb
+  name: CompositeFigi
+  nameWithType: SymbolResolution.CompositeFigi
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.CompositeFigi
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CompositeFigi
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+    startLine: 36
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  syntax:
+    content: public string? CompositeFigi { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property CompositeFigi As String
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.CompositeFigi*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ShareClassFigi
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ShareClassFigi
+  id: ShareClassFigi
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  langs:
+  - csharp
+  - vb
+  name: ShareClassFigi
+  nameWithType: SymbolResolution.ShareClassFigi
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ShareClassFigi
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ShareClassFigi
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+    startLine: 37
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  syntax:
+    content: public string? ShareClassFigi { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ShareClassFigi As String
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ShareClassFigi*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Isin
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Isin
+  id: Isin
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  langs:
+  - csharp
+  - vb
+  name: Isin
+  nameWithType: SymbolResolution.Isin
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Isin
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Isin
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+    startLine: 38
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  syntax:
+    content: public string? Isin { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Isin As String
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Isin*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Cusip
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Cusip
+  id: Cusip
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  langs:
+  - csharp
+  - vb
+  name: Cusip
+  nameWithType: SymbolResolution.Cusip
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Cusip
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Cusip
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+    startLine: 39
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  syntax:
+    content: public string? Cusip { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Cusip As String
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Cusip*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Sedol
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Sedol
+  id: Sedol
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  langs:
+  - csharp
+  - vb
+  name: Sedol
+  nameWithType: SymbolResolution.Sedol
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Sedol
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Sedol
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+    startLine: 40
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  syntax:
+    content: public string? Sedol { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Sedol As String
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Sedol*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Name
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Name
+  id: Name
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: SymbolResolution.Name
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Name
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Name
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+    startLine: 41
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  syntax:
+    content: public string? Name { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Name*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Exchange
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Exchange
+  id: Exchange
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  langs:
+  - csharp
+  - vb
+  name: Exchange
+  nameWithType: SymbolResolution.Exchange
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Exchange
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Exchange
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+    startLine: 42
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  syntax:
+    content: public string? Exchange { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Exchange As String
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Exchange*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ExchangeCode
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ExchangeCode
+  id: ExchangeCode
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  langs:
+  - csharp
+  - vb
+  name: ExchangeCode
+  nameWithType: SymbolResolution.ExchangeCode
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ExchangeCode
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ExchangeCode
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+    startLine: 43
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  syntax:
+    content: public string? ExchangeCode { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ExchangeCode As String
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ExchangeCode*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.MarketSector
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.MarketSector
+  id: MarketSector
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  langs:
+  - csharp
+  - vb
+  name: MarketSector
+  nameWithType: SymbolResolution.MarketSector
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.MarketSector
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MarketSector
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+    startLine: 44
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  syntax:
+    content: public string? MarketSector { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property MarketSector As String
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.MarketSector*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.SecurityType
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.SecurityType
+  id: SecurityType
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  langs:
+  - csharp
+  - vb
+  name: SecurityType
+  nameWithType: SymbolResolution.SecurityType
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.SecurityType
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SecurityType
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+    startLine: 45
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  syntax:
+    content: public string? SecurityType { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SecurityType As String
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.SecurityType*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Currency
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Currency
+  id: Currency
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  langs:
+  - csharp
+  - vb
+  name: Currency
+  nameWithType: SymbolResolution.Currency
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Currency
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Currency
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+    startLine: 46
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  syntax:
+    content: public string? Currency { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Currency As String
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Currency*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ProviderSymbols
+  commentId: P:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ProviderSymbols
+  id: ProviderSymbols
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+  langs:
+  - csharp
+  - vb
+  name: ProviderSymbols
+  nameWithType: SymbolResolution.ProviderSymbols
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ProviderSymbols
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ProviderSymbols
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/SymbolResolution/ISymbolResolver.cs
+    startLine: 52
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  summary: Provider-specific symbol mappings (e.g., "yahoo" -&gt; "AAPL", "stooq" -&gt; "aapl.us").
+  example: []
+  syntax:
+    content: public Dictionary<string, string> ProviderSymbols { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+    content.vb: Public Property ProviderSymbols As Dictionary(Of String, String)
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ProviderSymbols*
+references:
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+    name: SymbolResolution
+    href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution
+    name: SymbolResolution
+    href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution}
+  commentId: T:System.IEquatable{MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<SymbolResolution>
+  nameWithType: IEquatable<SymbolResolution>
+  fullName: System.IEquatable<MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution>
+  nameWithType.vb: IEquatable(Of SymbolResolution)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution)
+  name.vb: IEquatable(Of SymbolResolution)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+    name: SymbolResolution
+    href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution
+    name: SymbolResolution
+    href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.#ctor*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.#ctor
+  href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html#MarketDataCollector_Infrastructure_Adapters_Core_SymbolResolution_SymbolResolution__ctor_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_
+  name: SymbolResolution
+  nameWithType: SymbolResolution.SymbolResolution
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.SymbolResolution
+  nameWithType.vb: SymbolResolution.New
+  fullName.vb: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Ticker*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Ticker
+  href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html#MarketDataCollector_Infrastructure_Adapters_Core_SymbolResolution_SymbolResolution_Ticker
+  name: Ticker
+  nameWithType: SymbolResolution.Ticker
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Ticker
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Figi*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Figi
+  href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html#MarketDataCollector_Infrastructure_Adapters_Core_SymbolResolution_SymbolResolution_Figi
+  name: Figi
+  nameWithType: SymbolResolution.Figi
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Figi
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.CompositeFigi*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.CompositeFigi
+  href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html#MarketDataCollector_Infrastructure_Adapters_Core_SymbolResolution_SymbolResolution_CompositeFigi
+  name: CompositeFigi
+  nameWithType: SymbolResolution.CompositeFigi
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.CompositeFigi
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ShareClassFigi*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ShareClassFigi
+  href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html#MarketDataCollector_Infrastructure_Adapters_Core_SymbolResolution_SymbolResolution_ShareClassFigi
+  name: ShareClassFigi
+  nameWithType: SymbolResolution.ShareClassFigi
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ShareClassFigi
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Isin*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Isin
+  href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html#MarketDataCollector_Infrastructure_Adapters_Core_SymbolResolution_SymbolResolution_Isin
+  name: Isin
+  nameWithType: SymbolResolution.Isin
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Isin
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Cusip*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Cusip
+  href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html#MarketDataCollector_Infrastructure_Adapters_Core_SymbolResolution_SymbolResolution_Cusip
+  name: Cusip
+  nameWithType: SymbolResolution.Cusip
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Cusip
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Sedol*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Sedol
+  href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html#MarketDataCollector_Infrastructure_Adapters_Core_SymbolResolution_SymbolResolution_Sedol
+  name: Sedol
+  nameWithType: SymbolResolution.Sedol
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Sedol
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Name*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Name
+  href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html#MarketDataCollector_Infrastructure_Adapters_Core_SymbolResolution_SymbolResolution_Name
+  name: Name
+  nameWithType: SymbolResolution.Name
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Name
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Exchange*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Exchange
+  href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html#MarketDataCollector_Infrastructure_Adapters_Core_SymbolResolution_SymbolResolution_Exchange
+  name: Exchange
+  nameWithType: SymbolResolution.Exchange
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Exchange
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ExchangeCode*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ExchangeCode
+  href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html#MarketDataCollector_Infrastructure_Adapters_Core_SymbolResolution_SymbolResolution_ExchangeCode
+  name: ExchangeCode
+  nameWithType: SymbolResolution.ExchangeCode
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ExchangeCode
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.MarketSector*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.MarketSector
+  href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html#MarketDataCollector_Infrastructure_Adapters_Core_SymbolResolution_SymbolResolution_MarketSector
+  name: MarketSector
+  nameWithType: SymbolResolution.MarketSector
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.MarketSector
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.SecurityType*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.SecurityType
+  href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html#MarketDataCollector_Infrastructure_Adapters_Core_SymbolResolution_SymbolResolution_SecurityType
+  name: SecurityType
+  nameWithType: SymbolResolution.SecurityType
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.SecurityType
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Currency*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Currency
+  href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html#MarketDataCollector_Infrastructure_Adapters_Core_SymbolResolution_SymbolResolution_Currency
+  name: Currency
+  nameWithType: SymbolResolution.Currency
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.Currency
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ProviderSymbols*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ProviderSymbols
+  href: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.html#MarketDataCollector_Infrastructure_Adapters_Core_SymbolResolution_SymbolResolution_ProviderSymbols
+  name: ProviderSymbols
+  nameWithType: SymbolResolution.ProviderSymbols
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.SymbolResolution.SymbolResolution.ProviderSymbols
+- uid: System.Collections.Generic.Dictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, string>
+  nameWithType: Dictionary<string, string>
+  fullName: System.Collections.Generic.Dictionary<string, string>
+  nameWithType.vb: Dictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, String)
+  name.vb: Dictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

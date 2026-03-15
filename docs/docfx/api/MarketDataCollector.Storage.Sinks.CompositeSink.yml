@@ -1,0 +1,1459 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink
+  commentId: T:MarketDataCollector.Storage.Sinks.CompositeSink
+  id: CompositeSink
+  parent: MarketDataCollector.Storage.Sinks
+  children:
+  - MarketDataCollector.Storage.Sinks.CompositeSink.#ctor(System.Collections.Generic.IEnumerable{MarketDataCollector.Storage.Interfaces.IStorageSink},Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Sinks.CompositeSink},System.Int32,System.Nullable{System.TimeSpan},MarketDataCollector.Storage.Sinks.FailurePolicy,System.TimeProvider)
+  - MarketDataCollector.Storage.Sinks.CompositeSink.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Sinks.CompositeSink.AppendFailures
+  - MarketDataCollector.Storage.Sinks.CompositeSink.DegradedSinkCount
+  - MarketDataCollector.Storage.Sinks.CompositeSink.DisposeAsync
+  - MarketDataCollector.Storage.Sinks.CompositeSink.FailedSinkCount
+  - MarketDataCollector.Storage.Sinks.CompositeSink.FailurePolicy
+  - MarketDataCollector.Storage.Sinks.CompositeSink.FlushAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Sinks.CompositeSink.GetSinkHealthReport
+  - MarketDataCollector.Storage.Sinks.CompositeSink.HealthySinkCount
+  - MarketDataCollector.Storage.Sinks.CompositeSink.SinkCount
+  - MarketDataCollector.Storage.Sinks.CompositeSink.TotalCircuitBreaks
+  langs:
+  - csharp
+  - vb
+  name: CompositeSink
+  nameWithType: CompositeSink
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CompositeSink
+    path: ../../src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+    startLine: 53
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Sinks
+  summary: >-
+    Fans out events to multiple storage sinks, enabling multi-format storage
+
+    (e.g., JSONL + Parquet simultaneously) without modifying the EventPipeline.
+
+    Includes per-sink circuit breaker health tracking to avoid hammering
+
+    a persistently failing sink.
+  example: []
+  syntax:
+    content: 'public sealed class CompositeSink : IStorageSink, IAsyncDisposable, IFlushable'
+    content.vb: Public NotInheritable Class CompositeSink Implements IStorageSink, IAsyncDisposable, IFlushable
+  inheritance:
+  - System.Object
+  implements:
+  - MarketDataCollector.Storage.Interfaces.IStorageSink
+  - System.IAsyncDisposable
+  - MarketDataCollector.Application.Services.IFlushable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.#ctor(System.Collections.Generic.IEnumerable{MarketDataCollector.Storage.Interfaces.IStorageSink},Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Sinks.CompositeSink},System.Int32,System.Nullable{System.TimeSpan},MarketDataCollector.Storage.Sinks.FailurePolicy,System.TimeProvider)
+  commentId: M:MarketDataCollector.Storage.Sinks.CompositeSink.#ctor(System.Collections.Generic.IEnumerable{MarketDataCollector.Storage.Interfaces.IStorageSink},Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Sinks.CompositeSink},System.Int32,System.Nullable{System.TimeSpan},MarketDataCollector.Storage.Sinks.FailurePolicy,System.TimeProvider)
+  id: '#ctor(System.Collections.Generic.IEnumerable{MarketDataCollector.Storage.Interfaces.IStorageSink},Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Sinks.CompositeSink},System.Int32,System.Nullable{System.TimeSpan},MarketDataCollector.Storage.Sinks.FailurePolicy,System.TimeProvider)'
+  parent: MarketDataCollector.Storage.Sinks.CompositeSink
+  langs:
+  - csharp
+  - vb
+  name: CompositeSink(IEnumerable<IStorageSink>, ILogger<CompositeSink>?, int, TimeSpan?, FailurePolicy, TimeProvider?)
+  nameWithType: CompositeSink.CompositeSink(IEnumerable<IStorageSink>, ILogger<CompositeSink>?, int, TimeSpan?, FailurePolicy, TimeProvider?)
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.CompositeSink(System.Collections.Generic.IEnumerable<MarketDataCollector.Storage.Interfaces.IStorageSink>, Microsoft.Extensions.Logging.ILogger<MarketDataCollector.Storage.Sinks.CompositeSink>?, int, System.TimeSpan?, MarketDataCollector.Storage.Sinks.FailurePolicy, System.TimeProvider?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+    startLine: 72
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Sinks
+  syntax:
+    content: public CompositeSink(IEnumerable<IStorageSink> sinks, ILogger<CompositeSink>? logger = null, int maxConsecutiveFailures = 5, TimeSpan? circuitResetTimeout = null, FailurePolicy failurePolicy = FailurePolicy.ContinueOnPartialFailure, TimeProvider? timeProvider = null)
+    parameters:
+    - id: sinks
+      type: System.Collections.Generic.IEnumerable{MarketDataCollector.Storage.Interfaces.IStorageSink}
+    - id: logger
+      type: Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Sinks.CompositeSink}
+    - id: maxConsecutiveFailures
+      type: System.Int32
+    - id: circuitResetTimeout
+      type: System.Nullable{System.TimeSpan}
+    - id: failurePolicy
+      type: MarketDataCollector.Storage.Sinks.FailurePolicy
+    - id: timeProvider
+      type: System.TimeProvider
+    content.vb: Public Sub New(sinks As IEnumerable(Of IStorageSink), logger As ILogger(Of CompositeSink) = Nothing, maxConsecutiveFailures As Integer = 5, circuitResetTimeout As TimeSpan? = Nothing, failurePolicy As FailurePolicy = FailurePolicy.ContinueOnPartialFailure, timeProvider As TimeProvider = Nothing)
+  overload: MarketDataCollector.Storage.Sinks.CompositeSink.#ctor*
+  nameWithType.vb: CompositeSink.New(IEnumerable(Of IStorageSink), ILogger(Of CompositeSink), Integer, TimeSpan?, FailurePolicy, TimeProvider)
+  fullName.vb: MarketDataCollector.Storage.Sinks.CompositeSink.New(System.Collections.Generic.IEnumerable(Of MarketDataCollector.Storage.Interfaces.IStorageSink), Microsoft.Extensions.Logging.ILogger(Of MarketDataCollector.Storage.Sinks.CompositeSink), Integer, System.TimeSpan?, MarketDataCollector.Storage.Sinks.FailurePolicy, System.TimeProvider)
+  name.vb: New(IEnumerable(Of IStorageSink), ILogger(Of CompositeSink), Integer, TimeSpan?, FailurePolicy, TimeProvider)
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.SinkCount
+  commentId: P:MarketDataCollector.Storage.Sinks.CompositeSink.SinkCount
+  id: SinkCount
+  parent: MarketDataCollector.Storage.Sinks.CompositeSink
+  langs:
+  - csharp
+  - vb
+  name: SinkCount
+  nameWithType: CompositeSink.SinkCount
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.SinkCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SinkCount
+    path: ../../src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+    startLine: 104
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Sinks
+  summary: Gets the number of underlying sinks.
+  example: []
+  syntax:
+    content: public int SinkCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SinkCount As Integer
+  overload: MarketDataCollector.Storage.Sinks.CompositeSink.SinkCount*
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.AppendFailures
+  commentId: P:MarketDataCollector.Storage.Sinks.CompositeSink.AppendFailures
+  id: AppendFailures
+  parent: MarketDataCollector.Storage.Sinks.CompositeSink
+  langs:
+  - csharp
+  - vb
+  name: AppendFailures
+  nameWithType: CompositeSink.AppendFailures
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.AppendFailures
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AppendFailures
+    path: ../../src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+    startLine: 107
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Sinks
+  summary: Gets the total number of individual sink append failures since startup.
+  example: []
+  syntax:
+    content: public long AppendFailures { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property AppendFailures As Long
+  overload: MarketDataCollector.Storage.Sinks.CompositeSink.AppendFailures*
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.FailurePolicy
+  commentId: P:MarketDataCollector.Storage.Sinks.CompositeSink.FailurePolicy
+  id: FailurePolicy
+  parent: MarketDataCollector.Storage.Sinks.CompositeSink
+  langs:
+  - csharp
+  - vb
+  name: FailurePolicy
+  nameWithType: CompositeSink.FailurePolicy
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.FailurePolicy
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FailurePolicy
+    path: ../../src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+    startLine: 110
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Sinks
+  summary: Gets the configured failure policy.
+  example: []
+  syntax:
+    content: public FailurePolicy FailurePolicy { get; }
+    parameters: []
+    return:
+      type: MarketDataCollector.Storage.Sinks.FailurePolicy
+    content.vb: Public ReadOnly Property FailurePolicy As FailurePolicy
+  overload: MarketDataCollector.Storage.Sinks.CompositeSink.FailurePolicy*
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.HealthySinkCount
+  commentId: P:MarketDataCollector.Storage.Sinks.CompositeSink.HealthySinkCount
+  id: HealthySinkCount
+  parent: MarketDataCollector.Storage.Sinks.CompositeSink
+  langs:
+  - csharp
+  - vb
+  name: HealthySinkCount
+  nameWithType: CompositeSink.HealthySinkCount
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.HealthySinkCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HealthySinkCount
+    path: ../../src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+    startLine: 113
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Sinks
+  summary: Gets the number of sinks currently in the <xref href="MarketDataCollector.Storage.Sinks.SinkHealthState.Healthy" data-throw-if-not-resolved="false"></xref> state.
+  example: []
+  syntax:
+    content: public int HealthySinkCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property HealthySinkCount As Integer
+  overload: MarketDataCollector.Storage.Sinks.CompositeSink.HealthySinkCount*
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.DegradedSinkCount
+  commentId: P:MarketDataCollector.Storage.Sinks.CompositeSink.DegradedSinkCount
+  id: DegradedSinkCount
+  parent: MarketDataCollector.Storage.Sinks.CompositeSink
+  langs:
+  - csharp
+  - vb
+  name: DegradedSinkCount
+  nameWithType: CompositeSink.DegradedSinkCount
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.DegradedSinkCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DegradedSinkCount
+    path: ../../src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+    startLine: 116
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Sinks
+  summary: Gets the number of sinks currently in the <xref href="MarketDataCollector.Storage.Sinks.SinkHealthState.Degraded" data-throw-if-not-resolved="false"></xref> state.
+  example: []
+  syntax:
+    content: public int DegradedSinkCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property DegradedSinkCount As Integer
+  overload: MarketDataCollector.Storage.Sinks.CompositeSink.DegradedSinkCount*
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.FailedSinkCount
+  commentId: P:MarketDataCollector.Storage.Sinks.CompositeSink.FailedSinkCount
+  id: FailedSinkCount
+  parent: MarketDataCollector.Storage.Sinks.CompositeSink
+  langs:
+  - csharp
+  - vb
+  name: FailedSinkCount
+  nameWithType: CompositeSink.FailedSinkCount
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.FailedSinkCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FailedSinkCount
+    path: ../../src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+    startLine: 119
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Sinks
+  summary: Gets the number of sinks currently in the <xref href="MarketDataCollector.Storage.Sinks.SinkHealthState.Failed" data-throw-if-not-resolved="false"></xref> state (circuit open).
+  example: []
+  syntax:
+    content: public int FailedSinkCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property FailedSinkCount As Integer
+  overload: MarketDataCollector.Storage.Sinks.CompositeSink.FailedSinkCount*
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.TotalCircuitBreaks
+  commentId: P:MarketDataCollector.Storage.Sinks.CompositeSink.TotalCircuitBreaks
+  id: TotalCircuitBreaks
+  parent: MarketDataCollector.Storage.Sinks.CompositeSink
+  langs:
+  - csharp
+  - vb
+  name: TotalCircuitBreaks
+  nameWithType: CompositeSink.TotalCircuitBreaks
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.TotalCircuitBreaks
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TotalCircuitBreaks
+    path: ../../src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+    startLine: 122
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Sinks
+  summary: Gets the total number of circuit breaker trip events across all sinks.
+  example: []
+  syntax:
+    content: public long TotalCircuitBreaks { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property TotalCircuitBreaks As Long
+  overload: MarketDataCollector.Storage.Sinks.CompositeSink.TotalCircuitBreaks*
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Sinks.CompositeSink.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  id: AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Sinks.CompositeSink
+  langs:
+  - csharp
+  - vb
+  name: AppendAsync(MarketEvent, CancellationToken)
+  nameWithType: CompositeSink.AppendAsync(MarketEvent, CancellationToken)
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AppendAsync
+    path: ../../src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+    startLine: 135
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Sinks
+  example: []
+  syntax:
+    content: public ValueTask AppendAsync(MarketEvent evt, CancellationToken ct = default)
+    parameters:
+    - id: evt
+      type: MarketDataCollector.Domain.Events.MarketEvent
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.ValueTask
+    content.vb: Public Function AppendAsync(evt As MarketEvent, ct As CancellationToken = Nothing) As ValueTask
+  overload: MarketDataCollector.Storage.Sinks.CompositeSink.AppendAsync*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.IStorageSink.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.FlushAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Sinks.CompositeSink.FlushAsync(System.Threading.CancellationToken)
+  id: FlushAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Sinks.CompositeSink
+  langs:
+  - csharp
+  - vb
+  name: FlushAsync(CancellationToken)
+  nameWithType: CompositeSink.FlushAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.FlushAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FlushAsync
+    path: ../../src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+    startLine: 222
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Sinks
+  example: []
+  syntax:
+    content: public Task FlushAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function FlushAsync(ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Storage.Sinks.CompositeSink.FlushAsync*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.IStorageSink.FlushAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.DisposeAsync
+  commentId: M:MarketDataCollector.Storage.Sinks.CompositeSink.DisposeAsync
+  id: DisposeAsync
+  parent: MarketDataCollector.Storage.Sinks.CompositeSink
+  langs:
+  - csharp
+  - vb
+  name: DisposeAsync()
+  nameWithType: CompositeSink.DisposeAsync()
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.DisposeAsync()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisposeAsync
+    path: ../../src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+    startLine: 257
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Sinks
+  summary: >-
+    Performs application-defined tasks associated with freeing, releasing, or
+
+    resetting unmanaged resources asynchronously.
+  example: []
+  syntax:
+    content: public ValueTask DisposeAsync()
+    return:
+      type: System.Threading.Tasks.ValueTask
+      description: A task that represents the asynchronous dispose operation.
+    content.vb: Public Function DisposeAsync() As ValueTask
+  overload: MarketDataCollector.Storage.Sinks.CompositeSink.DisposeAsync*
+  implements:
+  - System.IAsyncDisposable.DisposeAsync
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.GetSinkHealthReport
+  commentId: M:MarketDataCollector.Storage.Sinks.CompositeSink.GetSinkHealthReport
+  id: GetSinkHealthReport
+  parent: MarketDataCollector.Storage.Sinks.CompositeSink
+  langs:
+  - csharp
+  - vb
+  name: GetSinkHealthReport()
+  nameWithType: CompositeSink.GetSinkHealthReport()
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.GetSinkHealthReport()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSinkHealthReport
+    path: ../../src/MarketDataCollector.Storage/Sinks/CompositeSink.cs
+    startLine: 278
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Sinks
+  summary: >-
+    Returns a health report for every registered sink, including circuit breaker state,
+
+    failure counts, and reset times. Useful for Prometheus metrics and diagnostics endpoints.
+  example: []
+  syntax:
+    content: public IReadOnlyList<SinkHealth> GetSinkHealthReport()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Sinks.SinkHealth}
+    content.vb: Public Function GetSinkHealthReport() As IReadOnlyList(Of SinkHealth)
+  overload: MarketDataCollector.Storage.Sinks.CompositeSink.GetSinkHealthReport*
+references:
+- uid: MarketDataCollector.Storage.Sinks
+  commentId: N:MarketDataCollector.Storage.Sinks
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Sinks
+  nameWithType: MarketDataCollector.Storage.Sinks
+  fullName: MarketDataCollector.Storage.Sinks
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Sinks
+    name: Sinks
+    href: MarketDataCollector.Storage.Sinks.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Sinks
+    name: Sinks
+    href: MarketDataCollector.Storage.Sinks.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Storage.Interfaces.IStorageSink
+  commentId: T:MarketDataCollector.Storage.Interfaces.IStorageSink
+  parent: MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.Storage.Interfaces.IStorageSink.html
+  name: IStorageSink
+  nameWithType: IStorageSink
+  fullName: MarketDataCollector.Storage.Interfaces.IStorageSink
+- uid: System.IAsyncDisposable
+  commentId: T:System.IAsyncDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
+  name: IAsyncDisposable
+  nameWithType: IAsyncDisposable
+  fullName: System.IAsyncDisposable
+- uid: MarketDataCollector.Application.Services.IFlushable
+  commentId: T:MarketDataCollector.Application.Services.IFlushable
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.IFlushable.html
+  name: IFlushable
+  nameWithType: IFlushable
+  fullName: MarketDataCollector.Application.Services.IFlushable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Storage.Interfaces
+  commentId: N:MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Interfaces
+  nameWithType: MarketDataCollector.Storage.Interfaces
+  fullName: MarketDataCollector.Storage.Interfaces
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Interfaces
+    name: Interfaces
+    href: MarketDataCollector.Storage.Interfaces.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Interfaces
+    name: Interfaces
+    href: MarketDataCollector.Storage.Interfaces.html
+- uid: MarketDataCollector.Application.Services
+  commentId: N:MarketDataCollector.Application.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Services
+  nameWithType: MarketDataCollector.Application.Services
+  fullName: MarketDataCollector.Application.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.#ctor*
+  commentId: Overload:MarketDataCollector.Storage.Sinks.CompositeSink.#ctor
+  href: MarketDataCollector.Storage.Sinks.CompositeSink.html#MarketDataCollector_Storage_Sinks_CompositeSink__ctor_System_Collections_Generic_IEnumerable_MarketDataCollector_Storage_Interfaces_IStorageSink__Microsoft_Extensions_Logging_ILogger_MarketDataCollector_Storage_Sinks_CompositeSink__System_Int32_System_Nullable_System_TimeSpan__MarketDataCollector_Storage_Sinks_FailurePolicy_System_TimeProvider_
+  name: CompositeSink
+  nameWithType: CompositeSink.CompositeSink
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.CompositeSink
+  nameWithType.vb: CompositeSink.New
+  fullName.vb: MarketDataCollector.Storage.Sinks.CompositeSink.New
+  name.vb: New
+- uid: System.Collections.Generic.IEnumerable{MarketDataCollector.Storage.Interfaces.IStorageSink}
+  commentId: T:System.Collections.Generic.IEnumerable{MarketDataCollector.Storage.Interfaces.IStorageSink}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<IStorageSink>
+  nameWithType: IEnumerable<IStorageSink>
+  fullName: System.Collections.Generic.IEnumerable<MarketDataCollector.Storage.Interfaces.IStorageSink>
+  nameWithType.vb: IEnumerable(Of IStorageSink)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of MarketDataCollector.Storage.Interfaces.IStorageSink)
+  name.vb: IEnumerable(Of IStorageSink)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Interfaces.IStorageSink
+    name: IStorageSink
+    href: MarketDataCollector.Storage.Interfaces.IStorageSink.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Interfaces.IStorageSink
+    name: IStorageSink
+    href: MarketDataCollector.Storage.Interfaces.IStorageSink.html
+  - name: )
+- uid: Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Sinks.CompositeSink}
+  commentId: T:Microsoft.Extensions.Logging.ILogger{MarketDataCollector.Storage.Sinks.CompositeSink}
+  parent: Microsoft.Extensions.Logging
+  definition: Microsoft.Extensions.Logging.ILogger`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<CompositeSink>
+  nameWithType: ILogger<CompositeSink>
+  fullName: Microsoft.Extensions.Logging.ILogger<MarketDataCollector.Storage.Sinks.CompositeSink>
+  nameWithType.vb: ILogger(Of CompositeSink)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of MarketDataCollector.Storage.Sinks.CompositeSink)
+  name.vb: ILogger(Of CompositeSink)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Sinks.CompositeSink
+    name: CompositeSink
+    href: MarketDataCollector.Storage.Sinks.CompositeSink.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Sinks.CompositeSink
+    name: CompositeSink
+    href: MarketDataCollector.Storage.Sinks.CompositeSink.html
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Nullable{System.TimeSpan}
+  commentId: T:System.Nullable{System.TimeSpan}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan?
+  nameWithType: TimeSpan?
+  fullName: System.TimeSpan?
+  spec.csharp:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+  spec.vb:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+- uid: MarketDataCollector.Storage.Sinks.FailurePolicy
+  commentId: T:MarketDataCollector.Storage.Sinks.FailurePolicy
+  parent: MarketDataCollector.Storage.Sinks
+  href: MarketDataCollector.Storage.Sinks.FailurePolicy.html
+  name: FailurePolicy
+  nameWithType: FailurePolicy
+  fullName: MarketDataCollector.Storage.Sinks.FailurePolicy
+- uid: System.TimeProvider
+  commentId: T:System.TimeProvider
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timeprovider
+  name: TimeProvider
+  nameWithType: TimeProvider
+  fullName: System.TimeProvider
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Microsoft.Extensions.Logging.ILogger`1
+  commentId: T:Microsoft.Extensions.Logging.ILogger`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<TCategoryName>
+  nameWithType: ILogger<TCategoryName>
+  fullName: Microsoft.Extensions.Logging.ILogger<TCategoryName>
+  nameWithType.vb: ILogger(Of TCategoryName)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of TCategoryName)
+  name.vb: ILogger(Of TCategoryName)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - name: TCategoryName
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TCategoryName
+  - name: )
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.SinkCount*
+  commentId: Overload:MarketDataCollector.Storage.Sinks.CompositeSink.SinkCount
+  href: MarketDataCollector.Storage.Sinks.CompositeSink.html#MarketDataCollector_Storage_Sinks_CompositeSink_SinkCount
+  name: SinkCount
+  nameWithType: CompositeSink.SinkCount
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.SinkCount
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.AppendFailures*
+  commentId: Overload:MarketDataCollector.Storage.Sinks.CompositeSink.AppendFailures
+  href: MarketDataCollector.Storage.Sinks.CompositeSink.html#MarketDataCollector_Storage_Sinks_CompositeSink_AppendFailures
+  name: AppendFailures
+  nameWithType: CompositeSink.AppendFailures
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.AppendFailures
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.FailurePolicy*
+  commentId: Overload:MarketDataCollector.Storage.Sinks.CompositeSink.FailurePolicy
+  href: MarketDataCollector.Storage.Sinks.CompositeSink.html#MarketDataCollector_Storage_Sinks_CompositeSink_FailurePolicy
+  name: FailurePolicy
+  nameWithType: CompositeSink.FailurePolicy
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.FailurePolicy
+- uid: MarketDataCollector.Storage.Sinks.SinkHealthState.Healthy
+  commentId: F:MarketDataCollector.Storage.Sinks.SinkHealthState.Healthy
+  href: MarketDataCollector.Storage.Sinks.SinkHealthState.html#MarketDataCollector_Storage_Sinks_SinkHealthState_Healthy
+  name: Healthy
+  nameWithType: SinkHealthState.Healthy
+  fullName: MarketDataCollector.Storage.Sinks.SinkHealthState.Healthy
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.HealthySinkCount*
+  commentId: Overload:MarketDataCollector.Storage.Sinks.CompositeSink.HealthySinkCount
+  href: MarketDataCollector.Storage.Sinks.CompositeSink.html#MarketDataCollector_Storage_Sinks_CompositeSink_HealthySinkCount
+  name: HealthySinkCount
+  nameWithType: CompositeSink.HealthySinkCount
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.HealthySinkCount
+- uid: MarketDataCollector.Storage.Sinks.SinkHealthState.Degraded
+  commentId: F:MarketDataCollector.Storage.Sinks.SinkHealthState.Degraded
+  href: MarketDataCollector.Storage.Sinks.SinkHealthState.html#MarketDataCollector_Storage_Sinks_SinkHealthState_Degraded
+  name: Degraded
+  nameWithType: SinkHealthState.Degraded
+  fullName: MarketDataCollector.Storage.Sinks.SinkHealthState.Degraded
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.DegradedSinkCount*
+  commentId: Overload:MarketDataCollector.Storage.Sinks.CompositeSink.DegradedSinkCount
+  href: MarketDataCollector.Storage.Sinks.CompositeSink.html#MarketDataCollector_Storage_Sinks_CompositeSink_DegradedSinkCount
+  name: DegradedSinkCount
+  nameWithType: CompositeSink.DegradedSinkCount
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.DegradedSinkCount
+- uid: MarketDataCollector.Storage.Sinks.SinkHealthState.Failed
+  commentId: F:MarketDataCollector.Storage.Sinks.SinkHealthState.Failed
+  href: MarketDataCollector.Storage.Sinks.SinkHealthState.html#MarketDataCollector_Storage_Sinks_SinkHealthState_Failed
+  name: Failed
+  nameWithType: SinkHealthState.Failed
+  fullName: MarketDataCollector.Storage.Sinks.SinkHealthState.Failed
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.FailedSinkCount*
+  commentId: Overload:MarketDataCollector.Storage.Sinks.CompositeSink.FailedSinkCount
+  href: MarketDataCollector.Storage.Sinks.CompositeSink.html#MarketDataCollector_Storage_Sinks_CompositeSink_FailedSinkCount
+  name: FailedSinkCount
+  nameWithType: CompositeSink.FailedSinkCount
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.FailedSinkCount
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.TotalCircuitBreaks*
+  commentId: Overload:MarketDataCollector.Storage.Sinks.CompositeSink.TotalCircuitBreaks
+  href: MarketDataCollector.Storage.Sinks.CompositeSink.html#MarketDataCollector_Storage_Sinks_CompositeSink_TotalCircuitBreaks
+  name: TotalCircuitBreaks
+  nameWithType: CompositeSink.TotalCircuitBreaks
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.TotalCircuitBreaks
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.AppendAsync*
+  commentId: Overload:MarketDataCollector.Storage.Sinks.CompositeSink.AppendAsync
+  href: MarketDataCollector.Storage.Sinks.CompositeSink.html#MarketDataCollector_Storage_Sinks_CompositeSink_AppendAsync_MarketDataCollector_Domain_Events_MarketEvent_System_Threading_CancellationToken_
+  name: AppendAsync
+  nameWithType: CompositeSink.AppendAsync
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.AppendAsync
+- uid: MarketDataCollector.Storage.Interfaces.IStorageSink.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Interfaces.IStorageSink.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Interfaces.IStorageSink
+  isExternal: true
+  href: MarketDataCollector.Storage.Interfaces.IStorageSink.html#MarketDataCollector_Storage_Interfaces_IStorageSink_AppendAsync_MarketDataCollector_Domain_Events_MarketEvent_System_Threading_CancellationToken_
+  name: AppendAsync(MarketEvent, CancellationToken)
+  nameWithType: IStorageSink.AppendAsync(MarketEvent, CancellationToken)
+  fullName: MarketDataCollector.Storage.Interfaces.IStorageSink.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.IStorageSink.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+    name: AppendAsync
+    href: MarketDataCollector.Storage.Interfaces.IStorageSink.html#MarketDataCollector_Storage_Interfaces_IStorageSink_AppendAsync_MarketDataCollector_Domain_Events_MarketEvent_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.IStorageSink.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+    name: AppendAsync
+    href: MarketDataCollector.Storage.Interfaces.IStorageSink.html#MarketDataCollector_Storage_Interfaces_IStorageSink_AppendAsync_MarketDataCollector_Domain_Events_MarketEvent_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Domain.Events.MarketEvent
+  commentId: T:MarketDataCollector.Domain.Events.MarketEvent
+  parent: MarketDataCollector.Domain.Events
+  href: MarketDataCollector.Domain.Events.MarketEvent.html
+  name: MarketEvent
+  nameWithType: MarketEvent
+  fullName: MarketDataCollector.Domain.Events.MarketEvent
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.ValueTask
+  commentId: T:System.Threading.Tasks.ValueTask
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask
+  name: ValueTask
+  nameWithType: ValueTask
+  fullName: System.Threading.Tasks.ValueTask
+- uid: MarketDataCollector.Domain.Events
+  commentId: N:MarketDataCollector.Domain.Events
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Events
+  nameWithType: MarketDataCollector.Domain.Events
+  fullName: MarketDataCollector.Domain.Events
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.FlushAsync*
+  commentId: Overload:MarketDataCollector.Storage.Sinks.CompositeSink.FlushAsync
+  href: MarketDataCollector.Storage.Sinks.CompositeSink.html#MarketDataCollector_Storage_Sinks_CompositeSink_FlushAsync_System_Threading_CancellationToken_
+  name: FlushAsync
+  nameWithType: CompositeSink.FlushAsync
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.FlushAsync
+- uid: MarketDataCollector.Storage.Interfaces.IStorageSink.FlushAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Interfaces.IStorageSink.FlushAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Interfaces.IStorageSink
+  isExternal: true
+  href: MarketDataCollector.Storage.Interfaces.IStorageSink.html#MarketDataCollector_Storage_Interfaces_IStorageSink_FlushAsync_System_Threading_CancellationToken_
+  name: FlushAsync(CancellationToken)
+  nameWithType: IStorageSink.FlushAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Interfaces.IStorageSink.FlushAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.IStorageSink.FlushAsync(System.Threading.CancellationToken)
+    name: FlushAsync
+    href: MarketDataCollector.Storage.Interfaces.IStorageSink.html#MarketDataCollector_Storage_Interfaces_IStorageSink_FlushAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.IStorageSink.FlushAsync(System.Threading.CancellationToken)
+    name: FlushAsync
+    href: MarketDataCollector.Storage.Interfaces.IStorageSink.html#MarketDataCollector_Storage_Interfaces_IStorageSink_FlushAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Services.IFlushable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: FlushAsync(CancellationToken)
+  nameWithType: IFlushable.FlushAsync(CancellationToken)
+  fullName: MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+    name: FlushAsync
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+    name: FlushAsync
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.DisposeAsync*
+  commentId: Overload:MarketDataCollector.Storage.Sinks.CompositeSink.DisposeAsync
+  href: MarketDataCollector.Storage.Sinks.CompositeSink.html#MarketDataCollector_Storage_Sinks_CompositeSink_DisposeAsync
+  name: DisposeAsync
+  nameWithType: CompositeSink.DisposeAsync
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.DisposeAsync
+- uid: System.IAsyncDisposable.DisposeAsync
+  commentId: M:System.IAsyncDisposable.DisposeAsync
+  parent: System.IAsyncDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  name: DisposeAsync()
+  nameWithType: IAsyncDisposable.DisposeAsync()
+  fullName: System.IAsyncDisposable.DisposeAsync()
+  spec.csharp:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Storage.Sinks.CompositeSink.GetSinkHealthReport*
+  commentId: Overload:MarketDataCollector.Storage.Sinks.CompositeSink.GetSinkHealthReport
+  href: MarketDataCollector.Storage.Sinks.CompositeSink.html#MarketDataCollector_Storage_Sinks_CompositeSink_GetSinkHealthReport
+  name: GetSinkHealthReport
+  nameWithType: CompositeSink.GetSinkHealthReport
+  fullName: MarketDataCollector.Storage.Sinks.CompositeSink.GetSinkHealthReport
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Sinks.SinkHealth}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Sinks.SinkHealth}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<SinkHealth>
+  nameWithType: IReadOnlyList<SinkHealth>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Storage.Sinks.SinkHealth>
+  nameWithType.vb: IReadOnlyList(Of SinkHealth)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Storage.Sinks.SinkHealth)
+  name.vb: IReadOnlyList(Of SinkHealth)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Sinks.SinkHealth
+    name: SinkHealth
+    href: MarketDataCollector.Storage.Sinks.SinkHealth.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Sinks.SinkHealth
+    name: SinkHealth
+    href: MarketDataCollector.Storage.Sinks.SinkHealth.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

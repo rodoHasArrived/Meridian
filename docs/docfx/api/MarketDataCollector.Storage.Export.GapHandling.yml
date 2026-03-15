@@ -1,0 +1,184 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Export.GapHandling
+  commentId: T:MarketDataCollector.Storage.Export.GapHandling
+  id: GapHandling
+  parent: MarketDataCollector.Storage.Export
+  children:
+  - MarketDataCollector.Storage.Export.GapHandling.ForwardFill
+  - MarketDataCollector.Storage.Export.GapHandling.Interpolate
+  - MarketDataCollector.Storage.Export.GapHandling.Null
+  - MarketDataCollector.Storage.Export.GapHandling.Skip
+  langs:
+  - csharp
+  - vb
+  name: GapHandling
+  nameWithType: GapHandling
+  fullName: MarketDataCollector.Storage.Export.GapHandling
+  type: Enum
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GapHandling
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 176
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Gap handling strategies.
+  example: []
+  syntax:
+    content: 'public enum GapHandling : byte'
+    content.vb: Public Enum GapHandling As Byte
+- uid: MarketDataCollector.Storage.Export.GapHandling.Null
+  commentId: F:MarketDataCollector.Storage.Export.GapHandling.Null
+  id: "Null"
+  parent: MarketDataCollector.Storage.Export.GapHandling
+  langs:
+  - csharp
+  - vb
+  name: "Null"
+  nameWithType: GapHandling.Null
+  fullName: MarketDataCollector.Storage.Export.GapHandling.Null
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: "Null"
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 179
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Leave gaps as null/NaN.
+  example: []
+  syntax:
+    content: Null = 0
+    return:
+      type: MarketDataCollector.Storage.Export.GapHandling
+- uid: MarketDataCollector.Storage.Export.GapHandling.ForwardFill
+  commentId: F:MarketDataCollector.Storage.Export.GapHandling.ForwardFill
+  id: ForwardFill
+  parent: MarketDataCollector.Storage.Export.GapHandling
+  langs:
+  - csharp
+  - vb
+  name: ForwardFill
+  nameWithType: GapHandling.ForwardFill
+  fullName: MarketDataCollector.Storage.Export.GapHandling.ForwardFill
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ForwardFill
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 181
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Forward fill from last known value.
+  example: []
+  syntax:
+    content: ForwardFill = 1
+    return:
+      type: MarketDataCollector.Storage.Export.GapHandling
+- uid: MarketDataCollector.Storage.Export.GapHandling.Interpolate
+  commentId: F:MarketDataCollector.Storage.Export.GapHandling.Interpolate
+  id: Interpolate
+  parent: MarketDataCollector.Storage.Export.GapHandling
+  langs:
+  - csharp
+  - vb
+  name: Interpolate
+  nameWithType: GapHandling.Interpolate
+  fullName: MarketDataCollector.Storage.Export.GapHandling.Interpolate
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Interpolate
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 183
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Linear interpolation.
+  example: []
+  syntax:
+    content: Interpolate = 2
+    return:
+      type: MarketDataCollector.Storage.Export.GapHandling
+- uid: MarketDataCollector.Storage.Export.GapHandling.Skip
+  commentId: F:MarketDataCollector.Storage.Export.GapHandling.Skip
+  id: Skip
+  parent: MarketDataCollector.Storage.Export.GapHandling
+  langs:
+  - csharp
+  - vb
+  name: Skip
+  nameWithType: GapHandling.Skip
+  fullName: MarketDataCollector.Storage.Export.GapHandling.Skip
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Export/ExportRequest.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Skip
+    path: ../../src/MarketDataCollector.Storage/Export/ExportRequest.cs
+    startLine: 185
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Export
+  summary: Skip gaps entirely.
+  example: []
+  syntax:
+    content: Skip = 3
+    return:
+      type: MarketDataCollector.Storage.Export.GapHandling
+references:
+- uid: MarketDataCollector.Storage.Export
+  commentId: N:MarketDataCollector.Storage.Export
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Export
+  nameWithType: MarketDataCollector.Storage.Export
+  fullName: MarketDataCollector.Storage.Export
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Export
+    name: Export
+    href: MarketDataCollector.Storage.Export.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Export
+    name: Export
+    href: MarketDataCollector.Storage.Export.html
+- uid: MarketDataCollector.Storage.Export.GapHandling
+  commentId: T:MarketDataCollector.Storage.Export.GapHandling
+  parent: MarketDataCollector.Storage.Export
+  href: MarketDataCollector.Storage.Export.GapHandling.html
+  name: GapHandling
+  nameWithType: GapHandling
+  fullName: MarketDataCollector.Storage.Export.GapHandling

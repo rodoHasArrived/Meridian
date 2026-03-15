@@ -1,0 +1,1027 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService
+  commentId: T:MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService
+  id: PortfolioImportService
+  parent: MarketDataCollector.Application.Subscriptions.Services
+  children:
+  - MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.#ctor(MarketDataCollector.Application.UI.ConfigStore,MarketDataCollector.Application.Subscriptions.Services.WatchlistService,System.Net.Http.HttpClient)
+  - MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.GetAvailableBrokers
+  - MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.GetPortfolioSummaryAsync(System.String,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromAlpacaAsync(MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromBrokerAsync(MarketDataCollector.Application.Subscriptions.Models.PortfolioImportRequest,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromInteractiveBrokersAsync(MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions,System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportManualAsync(MarketDataCollector.Application.Subscriptions.Models.ManualPortfolioEntry[],MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: PortfolioImportService
+  nameWithType: PortfolioImportService
+  fullName: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/PortfolioImportService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PortfolioImportService
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/PortfolioImportService.cs
+    startLine: 15
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: >-
+    Service for importing symbols from broker portfolios.
+
+    Supports Alpaca, Interactive Brokers, and manual entry.
+  example: []
+  syntax:
+    content: public sealed class PortfolioImportService
+    content.vb: Public NotInheritable Class PortfolioImportService
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.#ctor(MarketDataCollector.Application.UI.ConfigStore,MarketDataCollector.Application.Subscriptions.Services.WatchlistService,System.Net.Http.HttpClient)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.#ctor(MarketDataCollector.Application.UI.ConfigStore,MarketDataCollector.Application.Subscriptions.Services.WatchlistService,System.Net.Http.HttpClient)
+  id: '#ctor(MarketDataCollector.Application.UI.ConfigStore,MarketDataCollector.Application.Subscriptions.Services.WatchlistService,System.Net.Http.HttpClient)'
+  parent: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService
+  langs:
+  - csharp
+  - vb
+  name: PortfolioImportService(ConfigStore, WatchlistService, HttpClient?)
+  nameWithType: PortfolioImportService.PortfolioImportService(ConfigStore, WatchlistService, HttpClient?)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.PortfolioImportService(MarketDataCollector.Application.UI.ConfigStore, MarketDataCollector.Application.Subscriptions.Services.WatchlistService, System.Net.Http.HttpClient?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/PortfolioImportService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/PortfolioImportService.cs
+    startLine: 21
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  syntax:
+    content: public PortfolioImportService(ConfigStore configStore, WatchlistService watchlistService, HttpClient? httpClient = null)
+    parameters:
+    - id: configStore
+      type: MarketDataCollector.Application.UI.ConfigStore
+    - id: watchlistService
+      type: MarketDataCollector.Application.Subscriptions.Services.WatchlistService
+    - id: httpClient
+      type: System.Net.Http.HttpClient
+    content.vb: Public Sub New(configStore As ConfigStore, watchlistService As WatchlistService, httpClient As HttpClient = Nothing)
+  overload: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.#ctor*
+  nameWithType.vb: PortfolioImportService.New(ConfigStore, WatchlistService, HttpClient)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.New(MarketDataCollector.Application.UI.ConfigStore, MarketDataCollector.Application.Subscriptions.Services.WatchlistService, System.Net.Http.HttpClient)
+  name.vb: New(ConfigStore, WatchlistService, HttpClient)
+- uid: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromBrokerAsync(MarketDataCollector.Application.Subscriptions.Models.PortfolioImportRequest,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromBrokerAsync(MarketDataCollector.Application.Subscriptions.Models.PortfolioImportRequest,System.Threading.CancellationToken)
+  id: ImportFromBrokerAsync(MarketDataCollector.Application.Subscriptions.Models.PortfolioImportRequest,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService
+  langs:
+  - csharp
+  - vb
+  name: ImportFromBrokerAsync(PortfolioImportRequest, CancellationToken)
+  nameWithType: PortfolioImportService.ImportFromBrokerAsync(PortfolioImportRequest, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromBrokerAsync(MarketDataCollector.Application.Subscriptions.Models.PortfolioImportRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/PortfolioImportService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ImportFromBrokerAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/PortfolioImportService.cs
+    startLine: 35
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Import symbols from a broker portfolio.
+  example: []
+  syntax:
+    content: public Task<PortfolioImportResult> ImportFromBrokerAsync(PortfolioImportRequest request, CancellationToken ct = default)
+    parameters:
+    - id: request
+      type: MarketDataCollector.Application.Subscriptions.Models.PortfolioImportRequest
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.PortfolioImportResult}
+    content.vb: Public Function ImportFromBrokerAsync(request As PortfolioImportRequest, ct As CancellationToken = Nothing) As Task(Of PortfolioImportResult)
+  overload: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromBrokerAsync*
+- uid: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromAlpacaAsync(MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromAlpacaAsync(MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions,System.Threading.CancellationToken)
+  id: ImportFromAlpacaAsync(MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService
+  langs:
+  - csharp
+  - vb
+  name: ImportFromAlpacaAsync(PortfolioImportOptions, CancellationToken)
+  nameWithType: PortfolioImportService.ImportFromAlpacaAsync(PortfolioImportOptions, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromAlpacaAsync(MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/PortfolioImportService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ImportFromAlpacaAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/PortfolioImportService.cs
+    startLine: 53
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Import symbols from Alpaca portfolio.
+  example: []
+  syntax:
+    content: public Task<PortfolioImportResult> ImportFromAlpacaAsync(PortfolioImportOptions options, CancellationToken ct = default)
+    parameters:
+    - id: options
+      type: MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.PortfolioImportResult}
+    content.vb: Public Function ImportFromAlpacaAsync(options As PortfolioImportOptions, ct As CancellationToken = Nothing) As Task(Of PortfolioImportResult)
+  overload: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromAlpacaAsync*
+- uid: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromInteractiveBrokersAsync(MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromInteractiveBrokersAsync(MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions,System.Threading.CancellationToken)
+  id: ImportFromInteractiveBrokersAsync(MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService
+  langs:
+  - csharp
+  - vb
+  name: ImportFromInteractiveBrokersAsync(PortfolioImportOptions, CancellationToken)
+  nameWithType: PortfolioImportService.ImportFromInteractiveBrokersAsync(PortfolioImportOptions, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromInteractiveBrokersAsync(MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/PortfolioImportService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ImportFromInteractiveBrokersAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/PortfolioImportService.cs
+    startLine: 81
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Import symbols from Interactive Brokers portfolio.
+  example: []
+  syntax:
+    content: public Task<PortfolioImportResult> ImportFromInteractiveBrokersAsync(PortfolioImportOptions options, CancellationToken ct = default)
+    parameters:
+    - id: options
+      type: MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.PortfolioImportResult}
+    content.vb: Public Function ImportFromInteractiveBrokersAsync(options As PortfolioImportOptions, ct As CancellationToken = Nothing) As Task(Of PortfolioImportResult)
+  overload: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromInteractiveBrokersAsync*
+- uid: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportManualAsync(MarketDataCollector.Application.Subscriptions.Models.ManualPortfolioEntry[],MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportManualAsync(MarketDataCollector.Application.Subscriptions.Models.ManualPortfolioEntry[],MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions,System.Threading.CancellationToken)
+  id: ImportManualAsync(MarketDataCollector.Application.Subscriptions.Models.ManualPortfolioEntry[],MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService
+  langs:
+  - csharp
+  - vb
+  name: ImportManualAsync(ManualPortfolioEntry[], PortfolioImportOptions, CancellationToken)
+  nameWithType: PortfolioImportService.ImportManualAsync(ManualPortfolioEntry[], PortfolioImportOptions, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportManualAsync(MarketDataCollector.Application.Subscriptions.Models.ManualPortfolioEntry[], MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/PortfolioImportService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ImportManualAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/PortfolioImportService.cs
+    startLine: 109
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Import symbols from manual entries.
+  example: []
+  syntax:
+    content: public Task<PortfolioImportResult> ImportManualAsync(ManualPortfolioEntry[] entries, PortfolioImportOptions options, CancellationToken ct = default)
+    parameters:
+    - id: entries
+      type: MarketDataCollector.Application.Subscriptions.Models.ManualPortfolioEntry[]
+    - id: options
+      type: MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.PortfolioImportResult}
+    content.vb: Public Function ImportManualAsync(entries As ManualPortfolioEntry(), options As PortfolioImportOptions, ct As CancellationToken = Nothing) As Task(Of PortfolioImportResult)
+  overload: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportManualAsync*
+  nameWithType.vb: PortfolioImportService.ImportManualAsync(ManualPortfolioEntry(), PortfolioImportOptions, CancellationToken)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportManualAsync(MarketDataCollector.Application.Subscriptions.Models.ManualPortfolioEntry(), MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions, System.Threading.CancellationToken)
+  name.vb: ImportManualAsync(ManualPortfolioEntry(), PortfolioImportOptions, CancellationToken)
+- uid: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.GetPortfolioSummaryAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.GetPortfolioSummaryAsync(System.String,System.Threading.CancellationToken)
+  id: GetPortfolioSummaryAsync(System.String,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService
+  langs:
+  - csharp
+  - vb
+  name: GetPortfolioSummaryAsync(string, CancellationToken)
+  nameWithType: PortfolioImportService.GetPortfolioSummaryAsync(string, CancellationToken)
+  fullName: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.GetPortfolioSummaryAsync(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/PortfolioImportService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetPortfolioSummaryAsync
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/PortfolioImportService.cs
+    startLine: 143
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Get portfolio summary without importing.
+  example: []
+  syntax:
+    content: public Task<PortfolioSummary?> GetPortfolioSummaryAsync(string broker, CancellationToken ct = default)
+    parameters:
+    - id: broker
+      type: System.String
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.PortfolioSummary}
+    content.vb: Public Function GetPortfolioSummaryAsync(broker As String, ct As CancellationToken = Nothing) As Task(Of PortfolioSummary)
+  overload: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.GetPortfolioSummaryAsync*
+  nameWithType.vb: PortfolioImportService.GetPortfolioSummaryAsync(String, CancellationToken)
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.GetPortfolioSummaryAsync(String, System.Threading.CancellationToken)
+  name.vb: GetPortfolioSummaryAsync(String, CancellationToken)
+- uid: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.GetAvailableBrokers
+  commentId: M:MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.GetAvailableBrokers
+  id: GetAvailableBrokers
+  parent: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService
+  langs:
+  - csharp
+  - vb
+  name: GetAvailableBrokers()
+  nameWithType: PortfolioImportService.GetAvailableBrokers()
+  fullName: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.GetAvailableBrokers()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Subscriptions/Services/PortfolioImportService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetAvailableBrokers
+    path: ../../src/MarketDataCollector.Application/Subscriptions/Services/PortfolioImportService.cs
+    startLine: 158
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Subscriptions.Services
+  summary: Get available brokers based on configuration.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> GetAvailableBrokers()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public Function GetAvailableBrokers() As IReadOnlyList(Of String)
+  overload: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.GetAvailableBrokers*
+references:
+- uid: MarketDataCollector.Application.Subscriptions.Services
+  commentId: N:MarketDataCollector.Application.Subscriptions.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Subscriptions.Services
+  nameWithType: MarketDataCollector.Application.Subscriptions.Services
+  fullName: MarketDataCollector.Application.Subscriptions.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Services
+    name: Services
+    href: MarketDataCollector.Application.Subscriptions.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Services
+    name: Services
+    href: MarketDataCollector.Application.Subscriptions.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.#ctor
+  href: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.html#MarketDataCollector_Application_Subscriptions_Services_PortfolioImportService__ctor_MarketDataCollector_Application_UI_ConfigStore_MarketDataCollector_Application_Subscriptions_Services_WatchlistService_System_Net_Http_HttpClient_
+  name: PortfolioImportService
+  nameWithType: PortfolioImportService.PortfolioImportService
+  fullName: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.PortfolioImportService
+  nameWithType.vb: PortfolioImportService.New
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.New
+  name.vb: New
+- uid: MarketDataCollector.Application.UI.ConfigStore
+  commentId: T:MarketDataCollector.Application.UI.ConfigStore
+  parent: MarketDataCollector.Application.UI
+  href: MarketDataCollector.Application.UI.ConfigStore.html
+  name: ConfigStore
+  nameWithType: ConfigStore
+  fullName: MarketDataCollector.Application.UI.ConfigStore
+- uid: MarketDataCollector.Application.Subscriptions.Services.WatchlistService
+  commentId: T:MarketDataCollector.Application.Subscriptions.Services.WatchlistService
+  parent: MarketDataCollector.Application.Subscriptions.Services
+  href: MarketDataCollector.Application.Subscriptions.Services.WatchlistService.html
+  name: WatchlistService
+  nameWithType: WatchlistService
+  fullName: MarketDataCollector.Application.Subscriptions.Services.WatchlistService
+- uid: System.Net.Http.HttpClient
+  commentId: T:System.Net.Http.HttpClient
+  parent: System.Net.Http
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.http.httpclient
+  name: HttpClient
+  nameWithType: HttpClient
+  fullName: System.Net.Http.HttpClient
+- uid: MarketDataCollector.Application.UI
+  commentId: N:MarketDataCollector.Application.UI
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.UI
+  nameWithType: MarketDataCollector.Application.UI
+  fullName: MarketDataCollector.Application.UI
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.UI
+    name: UI
+    href: MarketDataCollector.Application.UI.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.UI
+    name: UI
+    href: MarketDataCollector.Application.UI.html
+- uid: System.Net.Http
+  commentId: N:System.Net.Http
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Net.Http
+  nameWithType: System.Net.Http
+  fullName: System.Net.Http
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Http
+    name: Http
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Http
+    name: Http
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http
+- uid: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromBrokerAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromBrokerAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.html#MarketDataCollector_Application_Subscriptions_Services_PortfolioImportService_ImportFromBrokerAsync_MarketDataCollector_Application_Subscriptions_Models_PortfolioImportRequest_System_Threading_CancellationToken_
+  name: ImportFromBrokerAsync
+  nameWithType: PortfolioImportService.ImportFromBrokerAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromBrokerAsync
+- uid: MarketDataCollector.Application.Subscriptions.Models.PortfolioImportRequest
+  commentId: T:MarketDataCollector.Application.Subscriptions.Models.PortfolioImportRequest
+  parent: MarketDataCollector.Application.Subscriptions.Models
+  href: MarketDataCollector.Application.Subscriptions.Models.PortfolioImportRequest.html
+  name: PortfolioImportRequest
+  nameWithType: PortfolioImportRequest
+  fullName: MarketDataCollector.Application.Subscriptions.Models.PortfolioImportRequest
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.PortfolioImportResult}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.PortfolioImportResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<PortfolioImportResult>
+  nameWithType: Task<PortfolioImportResult>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Subscriptions.Models.PortfolioImportResult>
+  nameWithType.vb: Task(Of PortfolioImportResult)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Subscriptions.Models.PortfolioImportResult)
+  name.vb: Task(Of PortfolioImportResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Subscriptions.Models.PortfolioImportResult
+    name: PortfolioImportResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.PortfolioImportResult
+    name: PortfolioImportResult
+  - name: )
+- uid: MarketDataCollector.Application.Subscriptions.Models
+  commentId: N:MarketDataCollector.Application.Subscriptions.Models
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Subscriptions.Models
+  nameWithType: MarketDataCollector.Application.Subscriptions.Models
+  fullName: MarketDataCollector.Application.Subscriptions.Models
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Models
+    name: Models
+    href: MarketDataCollector.Application.Subscriptions.Models.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions
+    name: Subscriptions
+    href: MarketDataCollector.Application.Subscriptions.html
+  - name: .
+  - uid: MarketDataCollector.Application.Subscriptions.Models
+    name: Models
+    href: MarketDataCollector.Application.Subscriptions.Models.html
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromAlpacaAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromAlpacaAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.html#MarketDataCollector_Application_Subscriptions_Services_PortfolioImportService_ImportFromAlpacaAsync_MarketDataCollector_Application_Subscriptions_Models_PortfolioImportOptions_System_Threading_CancellationToken_
+  name: ImportFromAlpacaAsync
+  nameWithType: PortfolioImportService.ImportFromAlpacaAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromAlpacaAsync
+- uid: MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions
+  commentId: T:MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions
+  parent: MarketDataCollector.Application.Subscriptions.Models
+  href: MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions.html
+  name: PortfolioImportOptions
+  nameWithType: PortfolioImportOptions
+  fullName: MarketDataCollector.Application.Subscriptions.Models.PortfolioImportOptions
+- uid: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromInteractiveBrokersAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromInteractiveBrokersAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.html#MarketDataCollector_Application_Subscriptions_Services_PortfolioImportService_ImportFromInteractiveBrokersAsync_MarketDataCollector_Application_Subscriptions_Models_PortfolioImportOptions_System_Threading_CancellationToken_
+  name: ImportFromInteractiveBrokersAsync
+  nameWithType: PortfolioImportService.ImportFromInteractiveBrokersAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportFromInteractiveBrokersAsync
+- uid: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportManualAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportManualAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.html#MarketDataCollector_Application_Subscriptions_Services_PortfolioImportService_ImportManualAsync_MarketDataCollector_Application_Subscriptions_Models_ManualPortfolioEntry___MarketDataCollector_Application_Subscriptions_Models_PortfolioImportOptions_System_Threading_CancellationToken_
+  name: ImportManualAsync
+  nameWithType: PortfolioImportService.ImportManualAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.ImportManualAsync
+- uid: MarketDataCollector.Application.Subscriptions.Models.ManualPortfolioEntry[]
+  isExternal: true
+  name: ManualPortfolioEntry[]
+  nameWithType: ManualPortfolioEntry[]
+  fullName: MarketDataCollector.Application.Subscriptions.Models.ManualPortfolioEntry[]
+  nameWithType.vb: ManualPortfolioEntry()
+  fullName.vb: MarketDataCollector.Application.Subscriptions.Models.ManualPortfolioEntry()
+  name.vb: ManualPortfolioEntry()
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Subscriptions.Models.ManualPortfolioEntry
+    name: ManualPortfolioEntry
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: MarketDataCollector.Application.Subscriptions.Models.ManualPortfolioEntry
+    name: ManualPortfolioEntry
+  - name: (
+  - name: )
+- uid: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.GetPortfolioSummaryAsync*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.GetPortfolioSummaryAsync
+  href: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.html#MarketDataCollector_Application_Subscriptions_Services_PortfolioImportService_GetPortfolioSummaryAsync_System_String_System_Threading_CancellationToken_
+  name: GetPortfolioSummaryAsync
+  nameWithType: PortfolioImportService.GetPortfolioSummaryAsync
+  fullName: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.GetPortfolioSummaryAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.PortfolioSummary}
+  commentId: T:System.Threading.Tasks.Task{MarketDataCollector.Application.Subscriptions.Models.PortfolioSummary}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<PortfolioSummary>
+  nameWithType: Task<PortfolioSummary>
+  fullName: System.Threading.Tasks.Task<MarketDataCollector.Application.Subscriptions.Models.PortfolioSummary>
+  nameWithType.vb: Task(Of PortfolioSummary)
+  fullName.vb: System.Threading.Tasks.Task(Of MarketDataCollector.Application.Subscriptions.Models.PortfolioSummary)
+  name.vb: Task(Of PortfolioSummary)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MarketDataCollector.Application.Subscriptions.Models.PortfolioSummary
+    name: PortfolioSummary
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Subscriptions.Models.PortfolioSummary
+    name: PortfolioSummary
+  - name: )
+- uid: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.GetAvailableBrokers*
+  commentId: Overload:MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.GetAvailableBrokers
+  href: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.html#MarketDataCollector_Application_Subscriptions_Services_PortfolioImportService_GetAvailableBrokers
+  name: GetAvailableBrokers
+  nameWithType: PortfolioImportService.GetAvailableBrokers
+  fullName: MarketDataCollector.Application.Subscriptions.Services.PortfolioImportService.GetAvailableBrokers
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

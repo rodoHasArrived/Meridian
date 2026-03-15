@@ -1,0 +1,932 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Config.StorageConfig
+  commentId: T:MarketDataCollector.Application.Config.StorageConfig
+  id: StorageConfig
+  parent: MarketDataCollector.Application.Config
+  children:
+  - MarketDataCollector.Application.Config.StorageConfig.#ctor(System.String,System.String,System.Boolean,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int64},System.Boolean,System.Collections.Generic.List{System.String})
+  - MarketDataCollector.Application.Config.StorageConfig.DatePartition
+  - MarketDataCollector.Application.Config.StorageConfig.EnableParquetSink
+  - MarketDataCollector.Application.Config.StorageConfig.FilePrefix
+  - MarketDataCollector.Application.Config.StorageConfig.IncludeProvider
+  - MarketDataCollector.Application.Config.StorageConfig.MaxTotalMegabytes
+  - MarketDataCollector.Application.Config.StorageConfig.NamingConvention
+  - MarketDataCollector.Application.Config.StorageConfig.Profile
+  - MarketDataCollector.Application.Config.StorageConfig.RetentionDays
+  - MarketDataCollector.Application.Config.StorageConfig.Sinks
+  langs:
+  - csharp
+  - vb
+  name: StorageConfig
+  nameWithType: StorageConfig
+  fullName: MarketDataCollector.Application.Config.StorageConfig
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/AppConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StorageConfig
+    path: ../../src/MarketDataCollector.Core/Config/AppConfig.cs
+    startLine: 65
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: >-
+    Storage configuration for file naming and organization.
+
+    Conversion to StorageOptions is available via extension methods in the Application layer.
+  example: []
+  syntax:
+    content: 'public sealed record StorageConfig : IEquatable<StorageConfig>'
+    content.vb: Public NotInheritable Class StorageConfig Implements IEquatable(Of StorageConfig)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Application.Config.StorageConfig}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Config.StorageConfig.#ctor(System.String,System.String,System.Boolean,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int64},System.Boolean,System.Collections.Generic.List{System.String})
+  commentId: M:MarketDataCollector.Application.Config.StorageConfig.#ctor(System.String,System.String,System.Boolean,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int64},System.Boolean,System.Collections.Generic.List{System.String})
+  id: '#ctor(System.String,System.String,System.Boolean,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int64},System.Boolean,System.Collections.Generic.List{System.String})'
+  parent: MarketDataCollector.Application.Config.StorageConfig
+  langs:
+  - csharp
+  - vb
+  name: StorageConfig(string, string, bool, string?, string?, int?, long?, bool, List<string>?)
+  nameWithType: StorageConfig.StorageConfig(string, string, bool, string?, string?, int?, long?, bool, List<string>?)
+  fullName: MarketDataCollector.Application.Config.StorageConfig.StorageConfig(string, string, bool, string?, string?, int?, long?, bool, System.Collections.Generic.List<string>?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/AppConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Core/Config/AppConfig.cs
+    startLine: 65
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: >-
+    Storage configuration for file naming and organization.
+
+    Conversion to StorageOptions is available via extension methods in the Application layer.
+  example: []
+  syntax:
+    content: public StorageConfig(string NamingConvention = "BySymbol", string DatePartition = "Daily", bool IncludeProvider = false, string? FilePrefix = null, string? Profile = null, int? RetentionDays = null, long? MaxTotalMegabytes = null, bool EnableParquetSink = false, List<string>? Sinks = null)
+    parameters:
+    - id: NamingConvention
+      type: System.String
+    - id: DatePartition
+      type: System.String
+    - id: IncludeProvider
+      type: System.Boolean
+    - id: FilePrefix
+      type: System.String
+    - id: Profile
+      type: System.String
+    - id: RetentionDays
+      type: System.Nullable{System.Int32}
+    - id: MaxTotalMegabytes
+      type: System.Nullable{System.Int64}
+    - id: EnableParquetSink
+      type: System.Boolean
+    - id: Sinks
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public Sub New(NamingConvention As String = "BySymbol", DatePartition As String = "Daily", IncludeProvider As Boolean = False, FilePrefix As String = Nothing, Profile As String = Nothing, RetentionDays As Integer? = Nothing, MaxTotalMegabytes As Long? = Nothing, EnableParquetSink As Boolean = False, Sinks As List(Of String) = Nothing)
+  overload: MarketDataCollector.Application.Config.StorageConfig.#ctor*
+  nameWithType.vb: StorageConfig.New(String, String, Boolean, String, String, Integer?, Long?, Boolean, List(Of String))
+  fullName.vb: MarketDataCollector.Application.Config.StorageConfig.New(String, String, Boolean, String, String, Integer?, Long?, Boolean, System.Collections.Generic.List(Of String))
+  name.vb: New(String, String, Boolean, String, String, Integer?, Long?, Boolean, List(Of String))
+- uid: MarketDataCollector.Application.Config.StorageConfig.NamingConvention
+  commentId: P:MarketDataCollector.Application.Config.StorageConfig.NamingConvention
+  id: NamingConvention
+  parent: MarketDataCollector.Application.Config.StorageConfig
+  langs:
+  - csharp
+  - vb
+  name: NamingConvention
+  nameWithType: StorageConfig.NamingConvention
+  fullName: MarketDataCollector.Application.Config.StorageConfig.NamingConvention
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/AppConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: NamingConvention
+    path: ../../src/MarketDataCollector.Core/Config/AppConfig.cs
+    startLine: 69
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  syntax:
+    content: public string NamingConvention { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property NamingConvention As String
+  overload: MarketDataCollector.Application.Config.StorageConfig.NamingConvention*
+- uid: MarketDataCollector.Application.Config.StorageConfig.DatePartition
+  commentId: P:MarketDataCollector.Application.Config.StorageConfig.DatePartition
+  id: DatePartition
+  parent: MarketDataCollector.Application.Config.StorageConfig
+  langs:
+  - csharp
+  - vb
+  name: DatePartition
+  nameWithType: StorageConfig.DatePartition
+  fullName: MarketDataCollector.Application.Config.StorageConfig.DatePartition
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/AppConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DatePartition
+    path: ../../src/MarketDataCollector.Core/Config/AppConfig.cs
+    startLine: 74
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  syntax:
+    content: public string DatePartition { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DatePartition As String
+  overload: MarketDataCollector.Application.Config.StorageConfig.DatePartition*
+- uid: MarketDataCollector.Application.Config.StorageConfig.IncludeProvider
+  commentId: P:MarketDataCollector.Application.Config.StorageConfig.IncludeProvider
+  id: IncludeProvider
+  parent: MarketDataCollector.Application.Config.StorageConfig
+  langs:
+  - csharp
+  - vb
+  name: IncludeProvider
+  nameWithType: StorageConfig.IncludeProvider
+  fullName: MarketDataCollector.Application.Config.StorageConfig.IncludeProvider
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/AppConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncludeProvider
+    path: ../../src/MarketDataCollector.Core/Config/AppConfig.cs
+    startLine: 79
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  syntax:
+    content: public bool IncludeProvider { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IncludeProvider As Boolean
+  overload: MarketDataCollector.Application.Config.StorageConfig.IncludeProvider*
+- uid: MarketDataCollector.Application.Config.StorageConfig.FilePrefix
+  commentId: P:MarketDataCollector.Application.Config.StorageConfig.FilePrefix
+  id: FilePrefix
+  parent: MarketDataCollector.Application.Config.StorageConfig
+  langs:
+  - csharp
+  - vb
+  name: FilePrefix
+  nameWithType: StorageConfig.FilePrefix
+  fullName: MarketDataCollector.Application.Config.StorageConfig.FilePrefix
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/AppConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FilePrefix
+    path: ../../src/MarketDataCollector.Core/Config/AppConfig.cs
+    startLine: 84
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  syntax:
+    content: public string? FilePrefix { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property FilePrefix As String
+  overload: MarketDataCollector.Application.Config.StorageConfig.FilePrefix*
+- uid: MarketDataCollector.Application.Config.StorageConfig.Profile
+  commentId: P:MarketDataCollector.Application.Config.StorageConfig.Profile
+  id: Profile
+  parent: MarketDataCollector.Application.Config.StorageConfig
+  langs:
+  - csharp
+  - vb
+  name: Profile
+  nameWithType: StorageConfig.Profile
+  fullName: MarketDataCollector.Application.Config.StorageConfig.Profile
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/AppConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Profile
+    path: ../../src/MarketDataCollector.Core/Config/AppConfig.cs
+    startLine: 89
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  syntax:
+    content: public string? Profile { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Profile As String
+  overload: MarketDataCollector.Application.Config.StorageConfig.Profile*
+- uid: MarketDataCollector.Application.Config.StorageConfig.RetentionDays
+  commentId: P:MarketDataCollector.Application.Config.StorageConfig.RetentionDays
+  id: RetentionDays
+  parent: MarketDataCollector.Application.Config.StorageConfig
+  langs:
+  - csharp
+  - vb
+  name: RetentionDays
+  nameWithType: StorageConfig.RetentionDays
+  fullName: MarketDataCollector.Application.Config.StorageConfig.RetentionDays
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/AppConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RetentionDays
+    path: ../../src/MarketDataCollector.Core/Config/AppConfig.cs
+    startLine: 94
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  syntax:
+    content: public int? RetentionDays { get; init; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property RetentionDays As Integer?
+  overload: MarketDataCollector.Application.Config.StorageConfig.RetentionDays*
+- uid: MarketDataCollector.Application.Config.StorageConfig.MaxTotalMegabytes
+  commentId: P:MarketDataCollector.Application.Config.StorageConfig.MaxTotalMegabytes
+  id: MaxTotalMegabytes
+  parent: MarketDataCollector.Application.Config.StorageConfig
+  langs:
+  - csharp
+  - vb
+  name: MaxTotalMegabytes
+  nameWithType: StorageConfig.MaxTotalMegabytes
+  fullName: MarketDataCollector.Application.Config.StorageConfig.MaxTotalMegabytes
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/AppConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: MaxTotalMegabytes
+    path: ../../src/MarketDataCollector.Core/Config/AppConfig.cs
+    startLine: 100
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  syntax:
+    content: public long? MaxTotalMegabytes { get; init; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int64}
+    content.vb: Public Property MaxTotalMegabytes As Long?
+  overload: MarketDataCollector.Application.Config.StorageConfig.MaxTotalMegabytes*
+- uid: MarketDataCollector.Application.Config.StorageConfig.EnableParquetSink
+  commentId: P:MarketDataCollector.Application.Config.StorageConfig.EnableParquetSink
+  id: EnableParquetSink
+  parent: MarketDataCollector.Application.Config.StorageConfig
+  langs:
+  - csharp
+  - vb
+  name: EnableParquetSink
+  nameWithType: StorageConfig.EnableParquetSink
+  fullName: MarketDataCollector.Application.Config.StorageConfig.EnableParquetSink
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/AppConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: EnableParquetSink
+    path: ../../src/MarketDataCollector.Core/Config/AppConfig.cs
+    startLine: 107
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  syntax:
+    content: public bool EnableParquetSink { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property EnableParquetSink As Boolean
+  overload: MarketDataCollector.Application.Config.StorageConfig.EnableParquetSink*
+- uid: MarketDataCollector.Application.Config.StorageConfig.Sinks
+  commentId: P:MarketDataCollector.Application.Config.StorageConfig.Sinks
+  id: Sinks
+  parent: MarketDataCollector.Application.Config.StorageConfig
+  langs:
+  - csharp
+  - vb
+  name: Sinks
+  nameWithType: StorageConfig.Sinks
+  fullName: MarketDataCollector.Application.Config.StorageConfig.Sinks
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/AppConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Sinks
+    path: ../../src/MarketDataCollector.Core/Config/AppConfig.cs
+    startLine: 113
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  syntax:
+    content: public List<string>? Sinks { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public Property Sinks As List(Of String)
+  overload: MarketDataCollector.Application.Config.StorageConfig.Sinks*
+references:
+- uid: MarketDataCollector.Application.Config
+  commentId: N:MarketDataCollector.Application.Config
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config
+  nameWithType: MarketDataCollector.Application.Config
+  fullName: MarketDataCollector.Application.Config
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Application.Config.StorageConfig}
+  commentId: T:System.IEquatable{MarketDataCollector.Application.Config.StorageConfig}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<StorageConfig>
+  nameWithType: IEquatable<StorageConfig>
+  fullName: System.IEquatable<MarketDataCollector.Application.Config.StorageConfig>
+  nameWithType.vb: IEquatable(Of StorageConfig)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Application.Config.StorageConfig)
+  name.vb: IEquatable(Of StorageConfig)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Config.StorageConfig
+    name: StorageConfig
+    href: MarketDataCollector.Application.Config.StorageConfig.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Config.StorageConfig
+    name: StorageConfig
+    href: MarketDataCollector.Application.Config.StorageConfig.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Config.StorageConfig.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Config.StorageConfig.#ctor
+  href: MarketDataCollector.Application.Config.StorageConfig.html#MarketDataCollector_Application_Config_StorageConfig__ctor_System_String_System_String_System_Boolean_System_String_System_String_System_Nullable_System_Int32__System_Nullable_System_Int64__System_Boolean_System_Collections_Generic_List_System_String__
+  name: StorageConfig
+  nameWithType: StorageConfig.StorageConfig
+  fullName: MarketDataCollector.Application.Config.StorageConfig.StorageConfig
+  nameWithType.vb: StorageConfig.New
+  fullName.vb: MarketDataCollector.Application.Config.StorageConfig.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Nullable{System.Int64}
+  commentId: T:System.Nullable{System.Int64}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long?
+  nameWithType: long?
+  fullName: long?
+  nameWithType.vb: Long?
+  fullName.vb: Long?
+  name.vb: Long?
+  spec.csharp:
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '?'
+  spec.vb:
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '?'
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<string>
+  nameWithType: List<string>
+  fullName: System.Collections.Generic.List<string>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Application.Config.StorageConfig.NamingConvention*
+  commentId: Overload:MarketDataCollector.Application.Config.StorageConfig.NamingConvention
+  href: MarketDataCollector.Application.Config.StorageConfig.html#MarketDataCollector_Application_Config_StorageConfig_NamingConvention
+  name: NamingConvention
+  nameWithType: StorageConfig.NamingConvention
+  fullName: MarketDataCollector.Application.Config.StorageConfig.NamingConvention
+- uid: MarketDataCollector.Application.Config.StorageConfig.DatePartition*
+  commentId: Overload:MarketDataCollector.Application.Config.StorageConfig.DatePartition
+  href: MarketDataCollector.Application.Config.StorageConfig.html#MarketDataCollector_Application_Config_StorageConfig_DatePartition
+  name: DatePartition
+  nameWithType: StorageConfig.DatePartition
+  fullName: MarketDataCollector.Application.Config.StorageConfig.DatePartition
+- uid: MarketDataCollector.Application.Config.StorageConfig.IncludeProvider*
+  commentId: Overload:MarketDataCollector.Application.Config.StorageConfig.IncludeProvider
+  href: MarketDataCollector.Application.Config.StorageConfig.html#MarketDataCollector_Application_Config_StorageConfig_IncludeProvider
+  name: IncludeProvider
+  nameWithType: StorageConfig.IncludeProvider
+  fullName: MarketDataCollector.Application.Config.StorageConfig.IncludeProvider
+- uid: MarketDataCollector.Application.Config.StorageConfig.FilePrefix*
+  commentId: Overload:MarketDataCollector.Application.Config.StorageConfig.FilePrefix
+  href: MarketDataCollector.Application.Config.StorageConfig.html#MarketDataCollector_Application_Config_StorageConfig_FilePrefix
+  name: FilePrefix
+  nameWithType: StorageConfig.FilePrefix
+  fullName: MarketDataCollector.Application.Config.StorageConfig.FilePrefix
+- uid: MarketDataCollector.Application.Config.StorageConfig.Profile*
+  commentId: Overload:MarketDataCollector.Application.Config.StorageConfig.Profile
+  href: MarketDataCollector.Application.Config.StorageConfig.html#MarketDataCollector_Application_Config_StorageConfig_Profile
+  name: Profile
+  nameWithType: StorageConfig.Profile
+  fullName: MarketDataCollector.Application.Config.StorageConfig.Profile
+- uid: MarketDataCollector.Application.Config.StorageConfig.RetentionDays*
+  commentId: Overload:MarketDataCollector.Application.Config.StorageConfig.RetentionDays
+  href: MarketDataCollector.Application.Config.StorageConfig.html#MarketDataCollector_Application_Config_StorageConfig_RetentionDays
+  name: RetentionDays
+  nameWithType: StorageConfig.RetentionDays
+  fullName: MarketDataCollector.Application.Config.StorageConfig.RetentionDays
+- uid: MarketDataCollector.Application.Config.StorageConfig.MaxTotalMegabytes*
+  commentId: Overload:MarketDataCollector.Application.Config.StorageConfig.MaxTotalMegabytes
+  href: MarketDataCollector.Application.Config.StorageConfig.html#MarketDataCollector_Application_Config_StorageConfig_MaxTotalMegabytes
+  name: MaxTotalMegabytes
+  nameWithType: StorageConfig.MaxTotalMegabytes
+  fullName: MarketDataCollector.Application.Config.StorageConfig.MaxTotalMegabytes
+- uid: MarketDataCollector.Application.Config.StorageConfig.EnableParquetSink*
+  commentId: Overload:MarketDataCollector.Application.Config.StorageConfig.EnableParquetSink
+  href: MarketDataCollector.Application.Config.StorageConfig.html#MarketDataCollector_Application_Config_StorageConfig_EnableParquetSink
+  name: EnableParquetSink
+  nameWithType: StorageConfig.EnableParquetSink
+  fullName: MarketDataCollector.Application.Config.StorageConfig.EnableParquetSink
+- uid: MarketDataCollector.Application.Config.StorageConfig.Sinks*
+  commentId: Overload:MarketDataCollector.Application.Config.StorageConfig.Sinks
+  href: MarketDataCollector.Application.Config.StorageConfig.html#MarketDataCollector_Application_Config_StorageConfig_Sinks
+  name: Sinks
+  nameWithType: StorageConfig.Sinks
+  fullName: MarketDataCollector.Application.Config.StorageConfig.Sinks

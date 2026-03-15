@@ -1,0 +1,516 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry
+  id: IQualityAnalyzerRegistry
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  children:
+  - MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetAllMetadata
+  - MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetAll``1
+  - MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetByCategory(MarketDataCollector.Application.Monitoring.DataQuality.QualityIssueCategory)
+  - MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Get``1(System.String)
+  - MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Register``1(MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer{``0})
+  langs:
+  - csharp
+  - vb
+  name: IQualityAnalyzerRegistry
+  nameWithType: IQualityAnalyzerRegistry
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/IQualityAnalyzer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IQualityAnalyzerRegistry
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/IQualityAnalyzer.cs
+    startLine: 281
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Registry for quality analyzers providing discovery and management.
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-001", "Quality analyzer registry")]
+
+      public interface IQualityAnalyzerRegistry
+    content.vb: >-
+      <ImplementsAdr("ADR-001", "Quality analyzer registry")>
+
+      Public Interface IQualityAnalyzerRegistry
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-001
+    - type: System.String
+      value: Quality analyzer registry
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Register``1(MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer{``0})
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Register``1(MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer{``0})
+  id: Register``1(MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer{``0})
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry
+  langs:
+  - csharp
+  - vb
+  name: Register<TData>(IQualityAnalyzer<TData>)
+  nameWithType: IQualityAnalyzerRegistry.Register<TData>(IQualityAnalyzer<TData>)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Register<TData>(MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer<TData>)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/IQualityAnalyzer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Register
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/IQualityAnalyzer.cs
+    startLine: 289
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Registers an analyzer.
+  example: []
+  syntax:
+    content: void Register<TData>(IQualityAnalyzer<TData> analyzer)
+    parameters:
+    - id: analyzer
+      type: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer{{TData}}
+      description: Analyzer to register.
+    typeParameters:
+    - id: TData
+      description: Data type the analyzer processes.
+    content.vb: Sub Register(Of TData)(analyzer As IQualityAnalyzer(Of TData))
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Register*
+  nameWithType.vb: IQualityAnalyzerRegistry.Register(Of TData)(IQualityAnalyzer(Of TData))
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Register(Of TData)(MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer(Of TData))
+  name.vb: Register(Of TData)(IQualityAnalyzer(Of TData))
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Get``1(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Get``1(System.String)
+  id: Get``1(System.String)
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry
+  langs:
+  - csharp
+  - vb
+  name: Get<TData>(string)
+  nameWithType: IQualityAnalyzerRegistry.Get<TData>(string)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Get<TData>(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/IQualityAnalyzer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Get
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/IQualityAnalyzer.cs
+    startLine: 297
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Gets an analyzer by name.
+  example: []
+  syntax:
+    content: IQualityAnalyzer<TData>? Get<TData>(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: Analyzer name.
+    typeParameters:
+    - id: TData
+      description: Expected data type.
+    return:
+      type: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer{{TData}}
+      description: Analyzer or null if not found.
+    content.vb: Function [Get](Of TData)(name As String) As IQualityAnalyzer(Of TData)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Get*
+  nameWithType.vb: IQualityAnalyzerRegistry.Get(Of TData)(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Get(Of TData)(String)
+  name.vb: Get(Of TData)(String)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetAll``1
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetAll``1
+  id: GetAll``1
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetAll<TData>()
+  nameWithType: IQualityAnalyzerRegistry.GetAll<TData>()
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetAll<TData>()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/IQualityAnalyzer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetAll
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/IQualityAnalyzer.cs
+    startLine: 304
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Gets all analyzers for a data type.
+  example: []
+  syntax:
+    content: IReadOnlyList<IQualityAnalyzer<TData>> GetAll<TData>()
+    typeParameters:
+    - id: TData
+      description: Data type.
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer{{TData}}}
+      description: List of analyzers ordered by priority.
+    content.vb: Function GetAll(Of TData)() As IReadOnlyList(Of IQualityAnalyzer(Of TData))
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetAll*
+  nameWithType.vb: IQualityAnalyzerRegistry.GetAll(Of TData)()
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetAll(Of TData)()
+  name.vb: GetAll(Of TData)()
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetAllMetadata
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetAllMetadata
+  id: GetAllMetadata
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetAllMetadata()
+  nameWithType: IQualityAnalyzerRegistry.GetAllMetadata()
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetAllMetadata()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/IQualityAnalyzer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetAllMetadata
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/IQualityAnalyzer.cs
+    startLine: 310
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Gets metadata for all registered analyzers.
+  example: []
+  syntax:
+    content: IReadOnlyList<IQualityAnalyzerMetadata> GetAllMetadata()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerMetadata}
+      description: List of analyzer metadata.
+    content.vb: Function GetAllMetadata() As IReadOnlyList(Of IQualityAnalyzerMetadata)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetAllMetadata*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetByCategory(MarketDataCollector.Application.Monitoring.DataQuality.QualityIssueCategory)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetByCategory(MarketDataCollector.Application.Monitoring.DataQuality.QualityIssueCategory)
+  id: GetByCategory(MarketDataCollector.Application.Monitoring.DataQuality.QualityIssueCategory)
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetByCategory(QualityIssueCategory)
+  nameWithType: IQualityAnalyzerRegistry.GetByCategory(QualityIssueCategory)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetByCategory(MarketDataCollector.Application.Monitoring.DataQuality.QualityIssueCategory)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/IQualityAnalyzer.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetByCategory
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/IQualityAnalyzer.cs
+    startLine: 317
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Gets analyzers that can detect issues in a category.
+  example: []
+  syntax:
+    content: IReadOnlyList<IQualityAnalyzerMetadata> GetByCategory(QualityIssueCategory category)
+    parameters:
+    - id: category
+      type: MarketDataCollector.Application.Monitoring.DataQuality.QualityIssueCategory
+      description: Issue category.
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerMetadata}
+      description: List of analyzer metadata.
+    content.vb: Function GetByCategory(category As QualityIssueCategory) As IReadOnlyList(Of IQualityAnalyzerMetadata)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetByCategory*
+references:
+- uid: MarketDataCollector.Application.Monitoring.DataQuality
+  commentId: N:MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring.DataQuality
+  nameWithType: MarketDataCollector.Application.Monitoring.DataQuality
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality
+    name: DataQuality
+    href: MarketDataCollector.Application.Monitoring.DataQuality.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality
+    name: DataQuality
+    href: MarketDataCollector.Application.Monitoring.DataQuality.html
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Register*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Register
+  href: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.html#MarketDataCollector_Application_Monitoring_DataQuality_IQualityAnalyzerRegistry_Register__1_MarketDataCollector_Application_Monitoring_DataQuality_IQualityAnalyzer___0__
+  name: Register
+  nameWithType: IQualityAnalyzerRegistry.Register
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Register
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer{{TData}}
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer{``0}
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  definition: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer`1
+  href: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer-1.html
+  name: IQualityAnalyzer<TData>
+  nameWithType: IQualityAnalyzer<TData>
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer<TData>
+  nameWithType.vb: IQualityAnalyzer(Of TData)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer(Of TData)
+  name.vb: IQualityAnalyzer(Of TData)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer`1
+    name: IQualityAnalyzer
+    href: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer-1.html
+  - name: <
+  - name: TData
+  - name: '>'
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer`1
+    name: IQualityAnalyzer
+    href: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TData
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer`1
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer`1
+  href: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer-1.html
+  name: IQualityAnalyzer<TData>
+  nameWithType: IQualityAnalyzer<TData>
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer<TData>
+  nameWithType.vb: IQualityAnalyzer(Of TData)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer(Of TData)
+  name.vb: IQualityAnalyzer(Of TData)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer`1
+    name: IQualityAnalyzer
+    href: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer-1.html
+  - name: <
+  - name: TData
+  - name: '>'
+  spec.vb:
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer`1
+    name: IQualityAnalyzer
+    href: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TData
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Get*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Get
+  href: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.html#MarketDataCollector_Application_Monitoring_DataQuality_IQualityAnalyzerRegistry_Get__1_System_String_
+  name: Get
+  nameWithType: IQualityAnalyzerRegistry.Get
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.Get
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetAll*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetAll
+  href: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.html#MarketDataCollector_Application_Monitoring_DataQuality_IQualityAnalyzerRegistry_GetAll__1
+  name: GetAll
+  nameWithType: IQualityAnalyzerRegistry.GetAll
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetAll
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer{{TData}}}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer{``0}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<IQualityAnalyzer<TData>>
+  nameWithType: IReadOnlyList<IQualityAnalyzer<TData>>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer<TData>>
+  nameWithType.vb: IReadOnlyList(Of IQualityAnalyzer(Of TData))
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer(Of TData))
+  name.vb: IReadOnlyList(Of IQualityAnalyzer(Of TData))
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer`1
+    name: IQualityAnalyzer
+    href: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer-1.html
+  - name: <
+  - name: TData
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer`1
+    name: IQualityAnalyzer
+    href: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TData
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetAllMetadata*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetAllMetadata
+  href: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.html#MarketDataCollector_Application_Monitoring_DataQuality_IQualityAnalyzerRegistry_GetAllMetadata
+  name: GetAllMetadata
+  nameWithType: IQualityAnalyzerRegistry.GetAllMetadata
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetAllMetadata
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerMetadata}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerMetadata}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<IQualityAnalyzerMetadata>
+  nameWithType: IReadOnlyList<IQualityAnalyzerMetadata>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerMetadata>
+  nameWithType.vb: IReadOnlyList(Of IQualityAnalyzerMetadata)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerMetadata)
+  name.vb: IReadOnlyList(Of IQualityAnalyzerMetadata)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerMetadata
+    name: IQualityAnalyzerMetadata
+    href: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerMetadata.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerMetadata
+    name: IQualityAnalyzerMetadata
+    href: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerMetadata.html
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetByCategory*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetByCategory
+  href: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.html#MarketDataCollector_Application_Monitoring_DataQuality_IQualityAnalyzerRegistry_GetByCategory_MarketDataCollector_Application_Monitoring_DataQuality_QualityIssueCategory_
+  name: GetByCategory
+  nameWithType: IQualityAnalyzerRegistry.GetByCategory
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.IQualityAnalyzerRegistry.GetByCategory
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.QualityIssueCategory
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.QualityIssueCategory
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.Application.Monitoring.DataQuality.QualityIssueCategory.html
+  name: QualityIssueCategory
+  nameWithType: QualityIssueCategory
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.QualityIssueCategory

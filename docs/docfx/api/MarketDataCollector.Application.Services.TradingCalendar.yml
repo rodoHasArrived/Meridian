@@ -1,0 +1,1241 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Services.TradingCalendar
+  commentId: T:MarketDataCollector.Application.Services.TradingCalendar
+  id: TradingCalendar
+  parent: MarketDataCollector.Application.Services
+  children:
+  - MarketDataCollector.Application.Services.TradingCalendar.#ctor
+  - MarketDataCollector.Application.Services.TradingCalendar.AfterHoursClose
+  - MarketDataCollector.Application.Services.TradingCalendar.GetCurrentStatus
+  - MarketDataCollector.Application.Services.TradingCalendar.GetHalfDays(System.Int32)
+  - MarketDataCollector.Application.Services.TradingCalendar.GetHolidays(System.Int32)
+  - MarketDataCollector.Application.Services.TradingCalendar.GetNextTradingDay(System.DateOnly)
+  - MarketDataCollector.Application.Services.TradingCalendar.GetPreviousTradingDay(System.DateOnly)
+  - MarketDataCollector.Application.Services.TradingCalendar.GetStatusAt(System.DateTimeOffset)
+  - MarketDataCollector.Application.Services.TradingCalendar.GetTimeUntilClose
+  - MarketDataCollector.Application.Services.TradingCalendar.GetTimeUntilOpen
+  - MarketDataCollector.Application.Services.TradingCalendar.GetTradingDayCount(System.DateOnly,System.DateOnly)
+  - MarketDataCollector.Application.Services.TradingCalendar.GetTradingDays(System.DateOnly,System.DateOnly)
+  - MarketDataCollector.Application.Services.TradingCalendar.HalfDayClose
+  - MarketDataCollector.Application.Services.TradingCalendar.IsHalfDay(System.DateOnly)
+  - MarketDataCollector.Application.Services.TradingCalendar.IsTodayTradingDay
+  - MarketDataCollector.Application.Services.TradingCalendar.IsTradingDay(System.DateOnly)
+  - MarketDataCollector.Application.Services.TradingCalendar.PreMarketOpen
+  - MarketDataCollector.Application.Services.TradingCalendar.RegularMarketClose
+  - MarketDataCollector.Application.Services.TradingCalendar.RegularMarketOpen
+  langs:
+  - csharp
+  - vb
+  name: TradingCalendar
+  nameWithType: TradingCalendar
+  fullName: MarketDataCollector.Application.Services.TradingCalendar
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TradingCalendar
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 12
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Provides US market trading calendar functionality including:
+
+    - Market holidays (NYSE/NASDAQ)
+
+    - Half-day trading sessions
+
+    - Regular, pre-market, and after-hours session times
+
+    - Timezone-aware market status queries
+  example: []
+  syntax:
+    content: public sealed class TradingCalendar
+    content.vb: Public NotInheritable Class TradingCalendar
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Services.TradingCalendar.PreMarketOpen
+  commentId: F:MarketDataCollector.Application.Services.TradingCalendar.PreMarketOpen
+  id: PreMarketOpen
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: PreMarketOpen
+  nameWithType: TradingCalendar.PreMarketOpen
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.PreMarketOpen
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PreMarketOpen
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 22
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Pre-market session start time (4:00 AM ET).
+  example: []
+  syntax:
+    content: public static readonly TimeOnly PreMarketOpen
+    return:
+      type: System.TimeOnly
+    content.vb: Public Shared ReadOnly PreMarketOpen As TimeOnly
+- uid: MarketDataCollector.Application.Services.TradingCalendar.RegularMarketOpen
+  commentId: F:MarketDataCollector.Application.Services.TradingCalendar.RegularMarketOpen
+  id: RegularMarketOpen
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: RegularMarketOpen
+  nameWithType: TradingCalendar.RegularMarketOpen
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.RegularMarketOpen
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegularMarketOpen
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 27
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Regular session start time (9:30 AM ET).
+  example: []
+  syntax:
+    content: public static readonly TimeOnly RegularMarketOpen
+    return:
+      type: System.TimeOnly
+    content.vb: Public Shared ReadOnly RegularMarketOpen As TimeOnly
+- uid: MarketDataCollector.Application.Services.TradingCalendar.RegularMarketClose
+  commentId: F:MarketDataCollector.Application.Services.TradingCalendar.RegularMarketClose
+  id: RegularMarketClose
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: RegularMarketClose
+  nameWithType: TradingCalendar.RegularMarketClose
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.RegularMarketClose
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegularMarketClose
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 32
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Regular session end time (4:00 PM ET).
+  example: []
+  syntax:
+    content: public static readonly TimeOnly RegularMarketClose
+    return:
+      type: System.TimeOnly
+    content.vb: Public Shared ReadOnly RegularMarketClose As TimeOnly
+- uid: MarketDataCollector.Application.Services.TradingCalendar.HalfDayClose
+  commentId: F:MarketDataCollector.Application.Services.TradingCalendar.HalfDayClose
+  id: HalfDayClose
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: HalfDayClose
+  nameWithType: TradingCalendar.HalfDayClose
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.HalfDayClose
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: HalfDayClose
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 37
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Half-day session end time (1:00 PM ET).
+  example: []
+  syntax:
+    content: public static readonly TimeOnly HalfDayClose
+    return:
+      type: System.TimeOnly
+    content.vb: Public Shared ReadOnly HalfDayClose As TimeOnly
+- uid: MarketDataCollector.Application.Services.TradingCalendar.AfterHoursClose
+  commentId: F:MarketDataCollector.Application.Services.TradingCalendar.AfterHoursClose
+  id: AfterHoursClose
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: AfterHoursClose
+  nameWithType: TradingCalendar.AfterHoursClose
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.AfterHoursClose
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AfterHoursClose
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 42
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: After-hours session end time (8:00 PM ET).
+  example: []
+  syntax:
+    content: public static readonly TimeOnly AfterHoursClose
+    return:
+      type: System.TimeOnly
+    content.vb: Public Shared ReadOnly AfterHoursClose As TimeOnly
+- uid: MarketDataCollector.Application.Services.TradingCalendar.#ctor
+  commentId: M:MarketDataCollector.Application.Services.TradingCalendar.#ctor
+  id: '#ctor'
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: TradingCalendar()
+  nameWithType: TradingCalendar.TradingCalendar()
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.TradingCalendar()
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 47
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Creates a new trading calendar with US market holidays.
+  example: []
+  syntax:
+    content: public TradingCalendar()
+    content.vb: Public Sub New()
+  overload: MarketDataCollector.Application.Services.TradingCalendar.#ctor*
+  nameWithType.vb: TradingCalendar.New()
+  fullName.vb: MarketDataCollector.Application.Services.TradingCalendar.New()
+  name.vb: New()
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetCurrentStatus
+  commentId: M:MarketDataCollector.Application.Services.TradingCalendar.GetCurrentStatus
+  id: GetCurrentStatus
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentStatus()
+  nameWithType: TradingCalendar.GetCurrentStatus()
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetCurrentStatus()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetCurrentStatus
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 60
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets the current market status.
+  example: []
+  syntax:
+    content: public MarketStatus GetCurrentStatus()
+    return:
+      type: MarketDataCollector.Application.Services.MarketStatus
+    content.vb: Public Function GetCurrentStatus() As MarketStatus
+  overload: MarketDataCollector.Application.Services.TradingCalendar.GetCurrentStatus*
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetStatusAt(System.DateTimeOffset)
+  commentId: M:MarketDataCollector.Application.Services.TradingCalendar.GetStatusAt(System.DateTimeOffset)
+  id: GetStatusAt(System.DateTimeOffset)
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: GetStatusAt(DateTimeOffset)
+  nameWithType: TradingCalendar.GetStatusAt(DateTimeOffset)
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetStatusAt(System.DateTimeOffset)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetStatusAt
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 68
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets the market status at a specific time.
+  example: []
+  syntax:
+    content: public MarketStatus GetStatusAt(DateTimeOffset utcTime)
+    parameters:
+    - id: utcTime
+      type: System.DateTimeOffset
+    return:
+      type: MarketDataCollector.Application.Services.MarketStatus
+    content.vb: Public Function GetStatusAt(utcTime As DateTimeOffset) As MarketStatus
+  overload: MarketDataCollector.Application.Services.TradingCalendar.GetStatusAt*
+- uid: MarketDataCollector.Application.Services.TradingCalendar.IsTradingDay(System.DateOnly)
+  commentId: M:MarketDataCollector.Application.Services.TradingCalendar.IsTradingDay(System.DateOnly)
+  id: IsTradingDay(System.DateOnly)
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: IsTradingDay(DateOnly)
+  nameWithType: TradingCalendar.IsTradingDay(DateOnly)
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.IsTradingDay(System.DateOnly)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsTradingDay
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 188
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Checks if a specific date is a trading day.
+  example: []
+  syntax:
+    content: public bool IsTradingDay(DateOnly date)
+    parameters:
+    - id: date
+      type: System.DateOnly
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsTradingDay([date] As DateOnly) As Boolean
+  overload: MarketDataCollector.Application.Services.TradingCalendar.IsTradingDay*
+- uid: MarketDataCollector.Application.Services.TradingCalendar.IsHalfDay(System.DateOnly)
+  commentId: M:MarketDataCollector.Application.Services.TradingCalendar.IsHalfDay(System.DateOnly)
+  id: IsHalfDay(System.DateOnly)
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: IsHalfDay(DateOnly)
+  nameWithType: TradingCalendar.IsHalfDay(DateOnly)
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.IsHalfDay(System.DateOnly)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsHalfDay
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 200
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Checks if a specific date is a half trading day.
+  example: []
+  syntax:
+    content: public bool IsHalfDay(DateOnly date)
+    parameters:
+    - id: date
+      type: System.DateOnly
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsHalfDay([date] As DateOnly) As Boolean
+  overload: MarketDataCollector.Application.Services.TradingCalendar.IsHalfDay*
+- uid: MarketDataCollector.Application.Services.TradingCalendar.IsTodayTradingDay
+  commentId: M:MarketDataCollector.Application.Services.TradingCalendar.IsTodayTradingDay
+  id: IsTodayTradingDay
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: IsTodayTradingDay()
+  nameWithType: TradingCalendar.IsTodayTradingDay()
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.IsTodayTradingDay()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsTodayTradingDay
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 205
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Checks if today is a trading day.
+  example: []
+  syntax:
+    content: public bool IsTodayTradingDay()
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsTodayTradingDay() As Boolean
+  overload: MarketDataCollector.Application.Services.TradingCalendar.IsTodayTradingDay*
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetNextTradingDay(System.DateOnly)
+  commentId: M:MarketDataCollector.Application.Services.TradingCalendar.GetNextTradingDay(System.DateOnly)
+  id: GetNextTradingDay(System.DateOnly)
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: GetNextTradingDay(DateOnly)
+  nameWithType: TradingCalendar.GetNextTradingDay(DateOnly)
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetNextTradingDay(System.DateOnly)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetNextTradingDay
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 214
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets the next trading day from a given date.
+  example: []
+  syntax:
+    content: public DateOnly GetNextTradingDay(DateOnly fromDate)
+    parameters:
+    - id: fromDate
+      type: System.DateOnly
+    return:
+      type: System.DateOnly
+    content.vb: Public Function GetNextTradingDay(fromDate As DateOnly) As DateOnly
+  overload: MarketDataCollector.Application.Services.TradingCalendar.GetNextTradingDay*
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetPreviousTradingDay(System.DateOnly)
+  commentId: M:MarketDataCollector.Application.Services.TradingCalendar.GetPreviousTradingDay(System.DateOnly)
+  id: GetPreviousTradingDay(System.DateOnly)
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: GetPreviousTradingDay(DateOnly)
+  nameWithType: TradingCalendar.GetPreviousTradingDay(DateOnly)
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetPreviousTradingDay(System.DateOnly)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetPreviousTradingDay
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 227
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets the previous trading day from a given date.
+  example: []
+  syntax:
+    content: public DateOnly GetPreviousTradingDay(DateOnly fromDate)
+    parameters:
+    - id: fromDate
+      type: System.DateOnly
+    return:
+      type: System.DateOnly
+    content.vb: Public Function GetPreviousTradingDay(fromDate As DateOnly) As DateOnly
+  overload: MarketDataCollector.Application.Services.TradingCalendar.GetPreviousTradingDay*
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetTradingDays(System.DateOnly,System.DateOnly)
+  commentId: M:MarketDataCollector.Application.Services.TradingCalendar.GetTradingDays(System.DateOnly,System.DateOnly)
+  id: GetTradingDays(System.DateOnly,System.DateOnly)
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: GetTradingDays(DateOnly, DateOnly)
+  nameWithType: TradingCalendar.GetTradingDays(DateOnly, DateOnly)
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetTradingDays(System.DateOnly, System.DateOnly)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetTradingDays
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 240
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets a list of trading days within a date range.
+  example: []
+  syntax:
+    content: public IReadOnlyList<DateOnly> GetTradingDays(DateOnly startDate, DateOnly endDate)
+    parameters:
+    - id: startDate
+      type: System.DateOnly
+    - id: endDate
+      type: System.DateOnly
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.DateOnly}
+    content.vb: Public Function GetTradingDays(startDate As DateOnly, endDate As DateOnly) As IReadOnlyList(Of DateOnly)
+  overload: MarketDataCollector.Application.Services.TradingCalendar.GetTradingDays*
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetTradingDayCount(System.DateOnly,System.DateOnly)
+  commentId: M:MarketDataCollector.Application.Services.TradingCalendar.GetTradingDayCount(System.DateOnly,System.DateOnly)
+  id: GetTradingDayCount(System.DateOnly,System.DateOnly)
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: GetTradingDayCount(DateOnly, DateOnly)
+  nameWithType: TradingCalendar.GetTradingDayCount(DateOnly, DateOnly)
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetTradingDayCount(System.DateOnly, System.DateOnly)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetTradingDayCount
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 256
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets the count of trading days within a date range.
+  example: []
+  syntax:
+    content: public int GetTradingDayCount(DateOnly startDate, DateOnly endDate)
+    parameters:
+    - id: startDate
+      type: System.DateOnly
+    - id: endDate
+      type: System.DateOnly
+    return:
+      type: System.Int32
+    content.vb: Public Function GetTradingDayCount(startDate As DateOnly, endDate As DateOnly) As Integer
+  overload: MarketDataCollector.Application.Services.TradingCalendar.GetTradingDayCount*
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetTimeUntilOpen
+  commentId: M:MarketDataCollector.Application.Services.TradingCalendar.GetTimeUntilOpen
+  id: GetTimeUntilOpen
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: GetTimeUntilOpen()
+  nameWithType: TradingCalendar.GetTimeUntilOpen()
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetTimeUntilOpen()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetTimeUntilOpen
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 265
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Gets the time until market open (regular session).
+
+    Returns null if market is currently open.
+  example: []
+  syntax:
+    content: public TimeSpan? GetTimeUntilOpen()
+    return:
+      type: System.Nullable{System.TimeSpan}
+    content.vb: Public Function GetTimeUntilOpen() As TimeSpan?
+  overload: MarketDataCollector.Application.Services.TradingCalendar.GetTimeUntilOpen*
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetTimeUntilClose
+  commentId: M:MarketDataCollector.Application.Services.TradingCalendar.GetTimeUntilClose
+  id: GetTimeUntilClose
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: GetTimeUntilClose()
+  nameWithType: TradingCalendar.GetTimeUntilClose()
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetTimeUntilClose()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetTimeUntilClose
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 281
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: >-
+    Gets the time until market close.
+
+    Returns null if market is currently closed.
+  example: []
+  syntax:
+    content: public TimeSpan? GetTimeUntilClose()
+    return:
+      type: System.Nullable{System.TimeSpan}
+    content.vb: Public Function GetTimeUntilClose() As TimeSpan?
+  overload: MarketDataCollector.Application.Services.TradingCalendar.GetTimeUntilClose*
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetHolidays(System.Int32)
+  commentId: M:MarketDataCollector.Application.Services.TradingCalendar.GetHolidays(System.Int32)
+  id: GetHolidays(System.Int32)
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: GetHolidays(int)
+  nameWithType: TradingCalendar.GetHolidays(int)
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetHolidays(int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetHolidays
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 296
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets all holidays for a given year.
+  example: []
+  syntax:
+    content: public IReadOnlyList<MarketHoliday> GetHolidays(int year)
+    parameters:
+    - id: year
+      type: System.Int32
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.MarketHoliday}
+    content.vb: Public Function GetHolidays(year As Integer) As IReadOnlyList(Of MarketHoliday)
+  overload: MarketDataCollector.Application.Services.TradingCalendar.GetHolidays*
+  nameWithType.vb: TradingCalendar.GetHolidays(Integer)
+  fullName.vb: MarketDataCollector.Application.Services.TradingCalendar.GetHolidays(Integer)
+  name.vb: GetHolidays(Integer)
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetHalfDays(System.Int32)
+  commentId: M:MarketDataCollector.Application.Services.TradingCalendar.GetHalfDays(System.Int32)
+  id: GetHalfDays(System.Int32)
+  parent: MarketDataCollector.Application.Services.TradingCalendar
+  langs:
+  - csharp
+  - vb
+  name: GetHalfDays(int)
+  nameWithType: TradingCalendar.GetHalfDays(int)
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetHalfDays(int)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Services/TradingCalendar.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetHalfDays
+    path: ../../src/MarketDataCollector.Application/Services/TradingCalendar.cs
+    startLine: 318
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Services
+  summary: Gets all half-days for a given year.
+  example: []
+  syntax:
+    content: public IReadOnlyList<DateOnly> GetHalfDays(int year)
+    parameters:
+    - id: year
+      type: System.Int32
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.DateOnly}
+    content.vb: Public Function GetHalfDays(year As Integer) As IReadOnlyList(Of DateOnly)
+  overload: MarketDataCollector.Application.Services.TradingCalendar.GetHalfDays*
+  nameWithType.vb: TradingCalendar.GetHalfDays(Integer)
+  fullName.vb: MarketDataCollector.Application.Services.TradingCalendar.GetHalfDays(Integer)
+  name.vb: GetHalfDays(Integer)
+references:
+- uid: MarketDataCollector.Application.Services
+  commentId: N:MarketDataCollector.Application.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Services
+  nameWithType: MarketDataCollector.Application.Services
+  fullName: MarketDataCollector.Application.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.TimeOnly
+  commentId: T:System.TimeOnly
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timeonly
+  name: TimeOnly
+  nameWithType: TimeOnly
+  fullName: System.TimeOnly
+- uid: MarketDataCollector.Application.Services.TradingCalendar.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Services.TradingCalendar.#ctor
+  href: MarketDataCollector.Application.Services.TradingCalendar.html#MarketDataCollector_Application_Services_TradingCalendar__ctor
+  name: TradingCalendar
+  nameWithType: TradingCalendar.TradingCalendar
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.TradingCalendar
+  nameWithType.vb: TradingCalendar.New
+  fullName.vb: MarketDataCollector.Application.Services.TradingCalendar.New
+  name.vb: New
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetCurrentStatus*
+  commentId: Overload:MarketDataCollector.Application.Services.TradingCalendar.GetCurrentStatus
+  href: MarketDataCollector.Application.Services.TradingCalendar.html#MarketDataCollector_Application_Services_TradingCalendar_GetCurrentStatus
+  name: GetCurrentStatus
+  nameWithType: TradingCalendar.GetCurrentStatus
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetCurrentStatus
+- uid: MarketDataCollector.Application.Services.MarketStatus
+  commentId: T:MarketDataCollector.Application.Services.MarketStatus
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.MarketStatus.html
+  name: MarketStatus
+  nameWithType: MarketStatus
+  fullName: MarketDataCollector.Application.Services.MarketStatus
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetStatusAt*
+  commentId: Overload:MarketDataCollector.Application.Services.TradingCalendar.GetStatusAt
+  href: MarketDataCollector.Application.Services.TradingCalendar.html#MarketDataCollector_Application_Services_TradingCalendar_GetStatusAt_System_DateTimeOffset_
+  name: GetStatusAt
+  nameWithType: TradingCalendar.GetStatusAt
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetStatusAt
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: MarketDataCollector.Application.Services.TradingCalendar.IsTradingDay*
+  commentId: Overload:MarketDataCollector.Application.Services.TradingCalendar.IsTradingDay
+  href: MarketDataCollector.Application.Services.TradingCalendar.html#MarketDataCollector_Application_Services_TradingCalendar_IsTradingDay_System_DateOnly_
+  name: IsTradingDay
+  nameWithType: TradingCalendar.IsTradingDay
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.IsTradingDay
+- uid: System.DateOnly
+  commentId: T:System.DateOnly
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  name: DateOnly
+  nameWithType: DateOnly
+  fullName: System.DateOnly
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Application.Services.TradingCalendar.IsHalfDay*
+  commentId: Overload:MarketDataCollector.Application.Services.TradingCalendar.IsHalfDay
+  href: MarketDataCollector.Application.Services.TradingCalendar.html#MarketDataCollector_Application_Services_TradingCalendar_IsHalfDay_System_DateOnly_
+  name: IsHalfDay
+  nameWithType: TradingCalendar.IsHalfDay
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.IsHalfDay
+- uid: MarketDataCollector.Application.Services.TradingCalendar.IsTodayTradingDay*
+  commentId: Overload:MarketDataCollector.Application.Services.TradingCalendar.IsTodayTradingDay
+  href: MarketDataCollector.Application.Services.TradingCalendar.html#MarketDataCollector_Application_Services_TradingCalendar_IsTodayTradingDay
+  name: IsTodayTradingDay
+  nameWithType: TradingCalendar.IsTodayTradingDay
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.IsTodayTradingDay
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetNextTradingDay*
+  commentId: Overload:MarketDataCollector.Application.Services.TradingCalendar.GetNextTradingDay
+  href: MarketDataCollector.Application.Services.TradingCalendar.html#MarketDataCollector_Application_Services_TradingCalendar_GetNextTradingDay_System_DateOnly_
+  name: GetNextTradingDay
+  nameWithType: TradingCalendar.GetNextTradingDay
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetNextTradingDay
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetPreviousTradingDay*
+  commentId: Overload:MarketDataCollector.Application.Services.TradingCalendar.GetPreviousTradingDay
+  href: MarketDataCollector.Application.Services.TradingCalendar.html#MarketDataCollector_Application_Services_TradingCalendar_GetPreviousTradingDay_System_DateOnly_
+  name: GetPreviousTradingDay
+  nameWithType: TradingCalendar.GetPreviousTradingDay
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetPreviousTradingDay
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetTradingDays*
+  commentId: Overload:MarketDataCollector.Application.Services.TradingCalendar.GetTradingDays
+  href: MarketDataCollector.Application.Services.TradingCalendar.html#MarketDataCollector_Application_Services_TradingCalendar_GetTradingDays_System_DateOnly_System_DateOnly_
+  name: GetTradingDays
+  nameWithType: TradingCalendar.GetTradingDays
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetTradingDays
+- uid: System.Collections.Generic.IReadOnlyList{System.DateOnly}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.DateOnly}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<DateOnly>
+  nameWithType: IReadOnlyList<DateOnly>
+  fullName: System.Collections.Generic.IReadOnlyList<System.DateOnly>
+  nameWithType.vb: IReadOnlyList(Of DateOnly)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of System.DateOnly)
+  name.vb: IReadOnlyList(Of DateOnly)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetTradingDayCount*
+  commentId: Overload:MarketDataCollector.Application.Services.TradingCalendar.GetTradingDayCount
+  href: MarketDataCollector.Application.Services.TradingCalendar.html#MarketDataCollector_Application_Services_TradingCalendar_GetTradingDayCount_System_DateOnly_System_DateOnly_
+  name: GetTradingDayCount
+  nameWithType: TradingCalendar.GetTradingDayCount
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetTradingDayCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetTimeUntilOpen*
+  commentId: Overload:MarketDataCollector.Application.Services.TradingCalendar.GetTimeUntilOpen
+  href: MarketDataCollector.Application.Services.TradingCalendar.html#MarketDataCollector_Application_Services_TradingCalendar_GetTimeUntilOpen
+  name: GetTimeUntilOpen
+  nameWithType: TradingCalendar.GetTimeUntilOpen
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetTimeUntilOpen
+- uid: System.Nullable{System.TimeSpan}
+  commentId: T:System.Nullable{System.TimeSpan}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan?
+  nameWithType: TimeSpan?
+  fullName: System.TimeSpan?
+  spec.csharp:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+  spec.vb:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetTimeUntilClose*
+  commentId: Overload:MarketDataCollector.Application.Services.TradingCalendar.GetTimeUntilClose
+  href: MarketDataCollector.Application.Services.TradingCalendar.html#MarketDataCollector_Application_Services_TradingCalendar_GetTimeUntilClose
+  name: GetTimeUntilClose
+  nameWithType: TradingCalendar.GetTimeUntilClose
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetTimeUntilClose
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetHolidays*
+  commentId: Overload:MarketDataCollector.Application.Services.TradingCalendar.GetHolidays
+  href: MarketDataCollector.Application.Services.TradingCalendar.html#MarketDataCollector_Application_Services_TradingCalendar_GetHolidays_System_Int32_
+  name: GetHolidays
+  nameWithType: TradingCalendar.GetHolidays
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetHolidays
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.MarketHoliday}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Application.Services.MarketHoliday}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<MarketHoliday>
+  nameWithType: IReadOnlyList<MarketHoliday>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Application.Services.MarketHoliday>
+  nameWithType.vb: IReadOnlyList(Of MarketHoliday)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Application.Services.MarketHoliday)
+  name.vb: IReadOnlyList(Of MarketHoliday)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Application.Services.MarketHoliday
+    name: MarketHoliday
+    href: MarketDataCollector.Application.Services.MarketHoliday.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Services.MarketHoliday
+    name: MarketHoliday
+    href: MarketDataCollector.Application.Services.MarketHoliday.html
+  - name: )
+- uid: MarketDataCollector.Application.Services.TradingCalendar.GetHalfDays*
+  commentId: Overload:MarketDataCollector.Application.Services.TradingCalendar.GetHalfDays
+  href: MarketDataCollector.Application.Services.TradingCalendar.html#MarketDataCollector_Application_Services_TradingCalendar_GetHalfDays_System_Int32_
+  name: GetHalfDays
+  nameWithType: TradingCalendar.GetHalfDays
+  fullName: MarketDataCollector.Application.Services.TradingCalendar.GetHalfDays

@@ -1,0 +1,167 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Config.DataSourceType
+  commentId: T:MarketDataCollector.Application.Config.DataSourceType
+  id: DataSourceType
+  parent: MarketDataCollector.Application.Config
+  children:
+  - MarketDataCollector.Application.Config.DataSourceType.Both
+  - MarketDataCollector.Application.Config.DataSourceType.Historical
+  - MarketDataCollector.Application.Config.DataSourceType.RealTime
+  langs:
+  - csharp
+  - vb
+  name: DataSourceType
+  nameWithType: DataSourceType
+  fullName: MarketDataCollector.Application.Config.DataSourceType
+  type: Enum
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/DataSourceConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DataSourceType
+    path: ../../src/MarketDataCollector.Core/Config/DataSourceConfig.cs
+    startLine: 73
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Type of data source.
+  example: []
+  syntax:
+    content: >-
+      [JsonConverter(typeof(JsonStringEnumConverter<DataSourceType>))]
+
+      public enum DataSourceType : byte
+    content.vb: >-
+      <JsonConverter(GetType(JsonStringEnumConverter(Of DataSourceType)))>
+
+      Public Enum DataSourceType As Byte
+  attributes:
+  - type: System.Text.Json.Serialization.JsonConverterAttribute
+    ctor: System.Text.Json.Serialization.JsonConverterAttribute.#ctor(System.Type)
+    arguments:
+    - type: System.Type
+      value: System.Text.Json.Serialization.JsonStringEnumConverter{MarketDataCollector.Application.Config.DataSourceType}
+- uid: MarketDataCollector.Application.Config.DataSourceType.RealTime
+  commentId: F:MarketDataCollector.Application.Config.DataSourceType.RealTime
+  id: RealTime
+  parent: MarketDataCollector.Application.Config.DataSourceType
+  langs:
+  - csharp
+  - vb
+  name: RealTime
+  nameWithType: DataSourceType.RealTime
+  fullName: MarketDataCollector.Application.Config.DataSourceType.RealTime
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/DataSourceConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RealTime
+    path: ../../src/MarketDataCollector.Core/Config/DataSourceConfig.cs
+    startLine: 79
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Real-time streaming data (trades, quotes, market depth).
+  example: []
+  syntax:
+    content: RealTime = 0
+    return:
+      type: MarketDataCollector.Application.Config.DataSourceType
+- uid: MarketDataCollector.Application.Config.DataSourceType.Historical
+  commentId: F:MarketDataCollector.Application.Config.DataSourceType.Historical
+  id: Historical
+  parent: MarketDataCollector.Application.Config.DataSourceType
+  langs:
+  - csharp
+  - vb
+  name: Historical
+  nameWithType: DataSourceType.Historical
+  fullName: MarketDataCollector.Application.Config.DataSourceType.Historical
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/DataSourceConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Historical
+    path: ../../src/MarketDataCollector.Core/Config/DataSourceConfig.cs
+    startLine: 84
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Historical data (daily bars, minute bars, etc.).
+  example: []
+  syntax:
+    content: Historical = 1
+    return:
+      type: MarketDataCollector.Application.Config.DataSourceType
+- uid: MarketDataCollector.Application.Config.DataSourceType.Both
+  commentId: F:MarketDataCollector.Application.Config.DataSourceType.Both
+  id: Both
+  parent: MarketDataCollector.Application.Config.DataSourceType
+  langs:
+  - csharp
+  - vb
+  name: Both
+  nameWithType: DataSourceType.Both
+  fullName: MarketDataCollector.Application.Config.DataSourceType.Both
+  type: Field
+  source:
+    remote:
+      path: src/MarketDataCollector.Core/Config/DataSourceConfig.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Both
+    path: ../../src/MarketDataCollector.Core/Config/DataSourceConfig.cs
+    startLine: 89
+  assemblies:
+  - MarketDataCollector.Core
+  namespace: MarketDataCollector.Application.Config
+  summary: Both real-time and historical data.
+  example: []
+  syntax:
+    content: Both = 2
+    return:
+      type: MarketDataCollector.Application.Config.DataSourceType
+references:
+- uid: MarketDataCollector.Application.Config
+  commentId: N:MarketDataCollector.Application.Config
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Config
+  nameWithType: MarketDataCollector.Application.Config
+  fullName: MarketDataCollector.Application.Config
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Config
+    name: Config
+    href: MarketDataCollector.Application.Config.html
+- uid: MarketDataCollector.Application.Config.DataSourceType
+  commentId: T:MarketDataCollector.Application.Config.DataSourceType
+  parent: MarketDataCollector.Application.Config
+  href: MarketDataCollector.Application.Config.DataSourceType.html
+  name: DataSourceType
+  nameWithType: DataSourceType
+  fullName: MarketDataCollector.Application.Config.DataSourceType

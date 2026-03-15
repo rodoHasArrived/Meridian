@@ -1,0 +1,1111 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  id: DataFreshnessSlaMonitor
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  children:
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.#ctor(MarketDataCollector.Application.Monitoring.DataQuality.SlaConfig)
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.CurrentViolations
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.Dispose
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.GetSnapshot
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.GetSymbolStatus(System.String)
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.IsMarketOpen
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.OnRecovery
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.OnViolation
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RecordEvent(System.String)
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbol(System.String,System.Nullable{System.Int32})
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbolLiquidity(System.String,MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile)
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.TotalRecoveries
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.TotalViolations
+  - MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.UnregisterSymbol(System.String)
+  langs:
+  - csharp
+  - vb
+  name: DataFreshnessSlaMonitor
+  nameWithType: DataFreshnessSlaMonitor
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DataFreshnessSlaMonitor
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 140
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: >-
+    Monitors data freshness and tracks SLA compliance (ADQ-4.2, ADQ-4.3, ADQ-4.4).
+
+    Tracks last event timestamp per symbol and alerts on data delivery delays.
+  example: []
+  syntax:
+    content: 'public sealed class DataFreshnessSlaMonitor : IDisposable'
+    content.vb: Public NotInheritable Class DataFreshnessSlaMonitor Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.OnViolation
+  commentId: E:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.OnViolation
+  id: OnViolation
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  langs:
+  - csharp
+  - vb
+  name: OnViolation
+  nameWithType: DataFreshnessSlaMonitor.OnViolation
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.OnViolation
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnViolation
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 156
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Event raised when an SLA violation is detected.
+  example: []
+  syntax:
+    content: public event Action<SlaViolationEvent>? OnViolation
+    return:
+      type: System.Action{MarketDataCollector.Application.Monitoring.DataQuality.SlaViolationEvent}
+    content.vb: Public Event OnViolation As Action(Of SlaViolationEvent)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.OnRecovery
+  commentId: E:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.OnRecovery
+  id: OnRecovery
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  langs:
+  - csharp
+  - vb
+  name: OnRecovery
+  nameWithType: DataFreshnessSlaMonitor.OnRecovery
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.OnRecovery
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnRecovery
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 161
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Event raised when SLA recovers from a violation.
+  example: []
+  syntax:
+    content: public event Action<SlaRecoveryEvent>? OnRecovery
+    return:
+      type: System.Action{MarketDataCollector.Application.Monitoring.DataQuality.SlaRecoveryEvent}
+    content.vb: Public Event OnRecovery As Action(Of SlaRecoveryEvent)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.#ctor(MarketDataCollector.Application.Monitoring.DataQuality.SlaConfig)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.#ctor(MarketDataCollector.Application.Monitoring.DataQuality.SlaConfig)
+  id: '#ctor(MarketDataCollector.Application.Monitoring.DataQuality.SlaConfig)'
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  langs:
+  - csharp
+  - vb
+  name: DataFreshnessSlaMonitor(SlaConfig?)
+  nameWithType: DataFreshnessSlaMonitor.DataFreshnessSlaMonitor(SlaConfig?)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.DataFreshnessSlaMonitor(MarketDataCollector.Application.Monitoring.DataQuality.SlaConfig?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 163
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public DataFreshnessSlaMonitor(SlaConfig? config = null)
+    parameters:
+    - id: config
+      type: MarketDataCollector.Application.Monitoring.DataQuality.SlaConfig
+    content.vb: Public Sub New(config As SlaConfig = Nothing)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.#ctor*
+  nameWithType.vb: DataFreshnessSlaMonitor.New(SlaConfig)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.New(MarketDataCollector.Application.Monitoring.DataQuality.SlaConfig)
+  name.vb: New(SlaConfig)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RecordEvent(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RecordEvent(System.String)
+  id: RecordEvent(System.String)
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  langs:
+  - csharp
+  - vb
+  name: RecordEvent(string)
+  nameWithType: DataFreshnessSlaMonitor.RecordEvent(string)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RecordEvent(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RecordEvent
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 182
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Records that an event was received for a symbol (ADQ-4.3).
+  example: []
+  syntax:
+    content: public void RecordEvent(string symbol)
+    parameters:
+    - id: symbol
+      type: System.String
+    content.vb: Public Sub RecordEvent(symbol As String)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RecordEvent*
+  nameWithType.vb: DataFreshnessSlaMonitor.RecordEvent(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RecordEvent(String)
+  name.vb: RecordEvent(String)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbol(System.String,System.Nullable{System.Int32})
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbol(System.String,System.Nullable{System.Int32})
+  id: RegisterSymbol(System.String,System.Nullable{System.Int32})
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  langs:
+  - csharp
+  - vb
+  name: RegisterSymbol(string, int?)
+  nameWithType: DataFreshnessSlaMonitor.RegisterSymbol(string, int?)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbol(string, int?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterSymbol
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 212
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Registers a symbol for SLA monitoring.
+  example: []
+  syntax:
+    content: public void RegisterSymbol(string symbol, int? customThresholdSeconds = null)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: customThresholdSeconds
+      type: System.Nullable{System.Int32}
+    content.vb: Public Sub RegisterSymbol(symbol As String, customThresholdSeconds As Integer? = Nothing)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbol*
+  nameWithType.vb: DataFreshnessSlaMonitor.RegisterSymbol(String, Integer?)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbol(String, Integer?)
+  name.vb: RegisterSymbol(String, Integer?)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbolLiquidity(System.String,MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbolLiquidity(System.String,MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile)
+  id: RegisterSymbolLiquidity(System.String,MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile)
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  langs:
+  - csharp
+  - vb
+  name: RegisterSymbolLiquidity(string, LiquidityProfile)
+  nameWithType: DataFreshnessSlaMonitor.RegisterSymbolLiquidity(string, LiquidityProfile)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbolLiquidity(string, MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: RegisterSymbolLiquidity
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 223
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: >-
+    Registers a symbol for SLA monitoring with a threshold derived from its liquidity profile.
+
+    Illiquid symbols receive longer freshness thresholds to avoid false SLA violations.
+  example: []
+  syntax:
+    content: public void RegisterSymbolLiquidity(string symbol, LiquidityProfile profile)
+    parameters:
+    - id: symbol
+      type: System.String
+    - id: profile
+      type: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+    content.vb: Public Sub RegisterSymbolLiquidity(symbol As String, profile As LiquidityProfile)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbolLiquidity*
+  nameWithType.vb: DataFreshnessSlaMonitor.RegisterSymbolLiquidity(String, LiquidityProfile)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbolLiquidity(String, MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile)
+  name.vb: RegisterSymbolLiquidity(String, LiquidityProfile)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.UnregisterSymbol(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.UnregisterSymbol(System.String)
+  id: UnregisterSymbol(System.String)
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  langs:
+  - csharp
+  - vb
+  name: UnregisterSymbol(string)
+  nameWithType: DataFreshnessSlaMonitor.UnregisterSymbol(string)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.UnregisterSymbol(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UnregisterSymbol
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 239
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Unregisters a symbol from SLA monitoring.
+  example: []
+  syntax:
+    content: public void UnregisterSymbol(string symbol)
+    parameters:
+    - id: symbol
+      type: System.String
+    content.vb: Public Sub UnregisterSymbol(symbol As String)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.UnregisterSymbol*
+  nameWithType.vb: DataFreshnessSlaMonitor.UnregisterSymbol(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.UnregisterSymbol(String)
+  name.vb: UnregisterSymbol(String)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.GetSymbolStatus(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.GetSymbolStatus(System.String)
+  id: GetSymbolStatus(System.String)
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  langs:
+  - csharp
+  - vb
+  name: GetSymbolStatus(string)
+  nameWithType: DataFreshnessSlaMonitor.GetSymbolStatus(string)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.GetSymbolStatus(string)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSymbolStatus
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 250
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Gets the SLA status for a specific symbol.
+  example: []
+  syntax:
+    content: public SymbolSlaStatus? GetSymbolStatus(string symbol)
+    parameters:
+    - id: symbol
+      type: System.String
+    return:
+      type: MarketDataCollector.Application.Monitoring.DataQuality.SymbolSlaStatus
+    content.vb: Public Function GetSymbolStatus(symbol As String) As SymbolSlaStatus
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.GetSymbolStatus*
+  nameWithType.vb: DataFreshnessSlaMonitor.GetSymbolStatus(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.GetSymbolStatus(String)
+  name.vb: GetSymbolStatus(String)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.GetSnapshot
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.GetSnapshot
+  id: GetSnapshot
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  langs:
+  - csharp
+  - vb
+  name: GetSnapshot()
+  nameWithType: DataFreshnessSlaMonitor.GetSnapshot()
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.GetSnapshot()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetSnapshot
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 260
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Gets the overall SLA status snapshot (ADQ-4.6).
+  example: []
+  syntax:
+    content: public SlaStatusSnapshot GetSnapshot()
+    return:
+      type: MarketDataCollector.Application.Monitoring.DataQuality.SlaStatusSnapshot
+    content.vb: Public Function GetSnapshot() As SlaStatusSnapshot
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.GetSnapshot*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.TotalViolations
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.TotalViolations
+  id: TotalViolations
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  langs:
+  - csharp
+  - vb
+  name: TotalViolations
+  nameWithType: DataFreshnessSlaMonitor.TotalViolations
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.TotalViolations
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TotalViolations
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 323
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Gets total violation count for metrics.
+  example: []
+  syntax:
+    content: public long TotalViolations { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property TotalViolations As Long
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.TotalViolations*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.CurrentViolations
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.CurrentViolations
+  id: CurrentViolations
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  langs:
+  - csharp
+  - vb
+  name: CurrentViolations
+  nameWithType: DataFreshnessSlaMonitor.CurrentViolations
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.CurrentViolations
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CurrentViolations
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 328
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Gets current active violation count for metrics.
+  example: []
+  syntax:
+    content: public long CurrentViolations { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property CurrentViolations As Long
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.CurrentViolations*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.TotalRecoveries
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.TotalRecoveries
+  id: TotalRecoveries
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  langs:
+  - csharp
+  - vb
+  name: TotalRecoveries
+  nameWithType: DataFreshnessSlaMonitor.TotalRecoveries
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.TotalRecoveries
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TotalRecoveries
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 333
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Gets total recovery count for metrics.
+  example: []
+  syntax:
+    content: public long TotalRecoveries { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property TotalRecoveries As Long
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.TotalRecoveries*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.IsMarketOpen
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.IsMarketOpen
+  id: IsMarketOpen
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  langs:
+  - csharp
+  - vb
+  name: IsMarketOpen()
+  nameWithType: DataFreshnessSlaMonitor.IsMarketOpen()
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.IsMarketOpen()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IsMarketOpen
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 338
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Checks if the market is currently open.
+  example: []
+  syntax:
+    content: public bool IsMarketOpen()
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsMarketOpen() As Boolean
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.IsMarketOpen*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.Dispose
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.Dispose
+  id: Dispose
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: DataFreshnessSlaMonitor.Dispose()
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Dispose
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/DataFreshnessSlaMonitor.cs
+    startLine: 426
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: MarketDataCollector.Application.Monitoring.DataQuality
+  commentId: N:MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring.DataQuality
+  nameWithType: MarketDataCollector.Application.Monitoring.DataQuality
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality
+    name: DataQuality
+    href: MarketDataCollector.Application.Monitoring.DataQuality.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality
+    name: DataQuality
+    href: MarketDataCollector.Application.Monitoring.DataQuality.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Action{MarketDataCollector.Application.Monitoring.DataQuality.SlaViolationEvent}
+  commentId: T:System.Action{MarketDataCollector.Application.Monitoring.DataQuality.SlaViolationEvent}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<SlaViolationEvent>
+  nameWithType: Action<SlaViolationEvent>
+  fullName: System.Action<MarketDataCollector.Application.Monitoring.DataQuality.SlaViolationEvent>
+  nameWithType.vb: Action(Of SlaViolationEvent)
+  fullName.vb: System.Action(Of MarketDataCollector.Application.Monitoring.DataQuality.SlaViolationEvent)
+  name.vb: Action(Of SlaViolationEvent)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.SlaViolationEvent
+    name: SlaViolationEvent
+    href: MarketDataCollector.Application.Monitoring.DataQuality.SlaViolationEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.SlaViolationEvent
+    name: SlaViolationEvent
+    href: MarketDataCollector.Application.Monitoring.DataQuality.SlaViolationEvent.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Action{MarketDataCollector.Application.Monitoring.DataQuality.SlaRecoveryEvent}
+  commentId: T:System.Action{MarketDataCollector.Application.Monitoring.DataQuality.SlaRecoveryEvent}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<SlaRecoveryEvent>
+  nameWithType: Action<SlaRecoveryEvent>
+  fullName: System.Action<MarketDataCollector.Application.Monitoring.DataQuality.SlaRecoveryEvent>
+  nameWithType.vb: Action(Of SlaRecoveryEvent)
+  fullName.vb: System.Action(Of MarketDataCollector.Application.Monitoring.DataQuality.SlaRecoveryEvent)
+  name.vb: Action(Of SlaRecoveryEvent)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.SlaRecoveryEvent
+    name: SlaRecoveryEvent
+    href: MarketDataCollector.Application.Monitoring.DataQuality.SlaRecoveryEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.SlaRecoveryEvent
+    name: SlaRecoveryEvent
+    href: MarketDataCollector.Application.Monitoring.DataQuality.SlaRecoveryEvent.html
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.#ctor
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.html#MarketDataCollector_Application_Monitoring_DataQuality_DataFreshnessSlaMonitor__ctor_MarketDataCollector_Application_Monitoring_DataQuality_SlaConfig_
+  name: DataFreshnessSlaMonitor
+  nameWithType: DataFreshnessSlaMonitor.DataFreshnessSlaMonitor
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.DataFreshnessSlaMonitor
+  nameWithType.vb: DataFreshnessSlaMonitor.New
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.New
+  name.vb: New
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SlaConfig
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.SlaConfig
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SlaConfig.html
+  name: SlaConfig
+  nameWithType: SlaConfig
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SlaConfig
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RecordEvent*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RecordEvent
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.html#MarketDataCollector_Application_Monitoring_DataQuality_DataFreshnessSlaMonitor_RecordEvent_System_String_
+  name: RecordEvent
+  nameWithType: DataFreshnessSlaMonitor.RecordEvent
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RecordEvent
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbol*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbol
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.html#MarketDataCollector_Application_Monitoring_DataQuality_DataFreshnessSlaMonitor_RegisterSymbol_System_String_System_Nullable_System_Int32__
+  name: RegisterSymbol
+  nameWithType: DataFreshnessSlaMonitor.RegisterSymbol
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbol
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbolLiquidity*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbolLiquidity
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.html#MarketDataCollector_Application_Monitoring_DataQuality_DataFreshnessSlaMonitor_RegisterSymbolLiquidity_System_String_MarketDataCollector_Contracts_Domain_Enums_LiquidityProfile_
+  name: RegisterSymbolLiquidity
+  nameWithType: DataFreshnessSlaMonitor.RegisterSymbolLiquidity
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.RegisterSymbolLiquidity
+- uid: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+  commentId: T:MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+  parent: MarketDataCollector.Contracts.Domain.Enums
+  href: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile.html
+  name: LiquidityProfile
+  nameWithType: LiquidityProfile
+  fullName: MarketDataCollector.Contracts.Domain.Enums.LiquidityProfile
+- uid: MarketDataCollector.Contracts.Domain.Enums
+  commentId: N:MarketDataCollector.Contracts.Domain.Enums
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Contracts.Domain.Enums
+  nameWithType: MarketDataCollector.Contracts.Domain.Enums
+  fullName: MarketDataCollector.Contracts.Domain.Enums
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Enums
+    name: Enums
+    href: MarketDataCollector.Contracts.Domain.Enums.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Contracts
+    name: Contracts
+    href: MarketDataCollector.Contracts.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain
+    name: Domain
+    href: MarketDataCollector.Contracts.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Contracts.Domain.Enums
+    name: Enums
+    href: MarketDataCollector.Contracts.Domain.Enums.html
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.UnregisterSymbol*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.UnregisterSymbol
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.html#MarketDataCollector_Application_Monitoring_DataQuality_DataFreshnessSlaMonitor_UnregisterSymbol_System_String_
+  name: UnregisterSymbol
+  nameWithType: DataFreshnessSlaMonitor.UnregisterSymbol
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.UnregisterSymbol
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.GetSymbolStatus*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.GetSymbolStatus
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.html#MarketDataCollector_Application_Monitoring_DataQuality_DataFreshnessSlaMonitor_GetSymbolStatus_System_String_
+  name: GetSymbolStatus
+  nameWithType: DataFreshnessSlaMonitor.GetSymbolStatus
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.GetSymbolStatus
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SymbolSlaStatus
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.SymbolSlaStatus
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SymbolSlaStatus.html
+  name: SymbolSlaStatus
+  nameWithType: SymbolSlaStatus
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SymbolSlaStatus
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.GetSnapshot*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.GetSnapshot
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.html#MarketDataCollector_Application_Monitoring_DataQuality_DataFreshnessSlaMonitor_GetSnapshot
+  name: GetSnapshot
+  nameWithType: DataFreshnessSlaMonitor.GetSnapshot
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.GetSnapshot
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.SlaStatusSnapshot
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.SlaStatusSnapshot
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.Application.Monitoring.DataQuality.SlaStatusSnapshot.html
+  name: SlaStatusSnapshot
+  nameWithType: SlaStatusSnapshot
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.SlaStatusSnapshot
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.TotalViolations*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.TotalViolations
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.html#MarketDataCollector_Application_Monitoring_DataQuality_DataFreshnessSlaMonitor_TotalViolations
+  name: TotalViolations
+  nameWithType: DataFreshnessSlaMonitor.TotalViolations
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.TotalViolations
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.CurrentViolations*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.CurrentViolations
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.html#MarketDataCollector_Application_Monitoring_DataQuality_DataFreshnessSlaMonitor_CurrentViolations
+  name: CurrentViolations
+  nameWithType: DataFreshnessSlaMonitor.CurrentViolations
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.CurrentViolations
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.TotalRecoveries*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.TotalRecoveries
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.html#MarketDataCollector_Application_Monitoring_DataQuality_DataFreshnessSlaMonitor_TotalRecoveries
+  name: TotalRecoveries
+  nameWithType: DataFreshnessSlaMonitor.TotalRecoveries
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.TotalRecoveries
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.IsMarketOpen*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.IsMarketOpen
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.html#MarketDataCollector_Application_Monitoring_DataQuality_DataFreshnessSlaMonitor_IsMarketOpen
+  name: IsMarketOpen
+  nameWithType: DataFreshnessSlaMonitor.IsMarketOpen
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.IsMarketOpen
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.Dispose*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.Dispose
+  href: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.html#MarketDataCollector_Application_Monitoring_DataQuality_DataFreshnessSlaMonitor_Dispose
+  name: Dispose
+  nameWithType: DataFreshnessSlaMonitor.Dispose
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.DataFreshnessSlaMonitor.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

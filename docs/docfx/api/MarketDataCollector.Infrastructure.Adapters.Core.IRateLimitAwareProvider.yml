@@ -1,0 +1,221 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider
+  id: IRateLimitAwareProvider
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  children:
+  - MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider.GetRateLimitInfo
+  - MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider.OnRateLimitHit
+  langs:
+  - csharp
+  - vb
+  name: IRateLimitAwareProvider
+  nameWithType: IRateLimitAwareProvider
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/IHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IRateLimitAwareProvider
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/IHistoricalDataProvider.cs
+    startLine: 283
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Optional interface for providers that can report their rate limit status.
+  example: []
+  syntax:
+    content: public interface IRateLimitAwareProvider
+    content.vb: Public Interface IRateLimitAwareProvider
+  derivedClasses:
+  - MarketDataCollector.Infrastructure.Adapters.Alpaca.AlpacaHistoricalDataProvider
+  - MarketDataCollector.Infrastructure.Adapters.AlphaVantage.AlphaVantageHistoricalDataProvider
+  - MarketDataCollector.Infrastructure.Adapters.Core.BaseHistoricalDataProvider
+  - MarketDataCollector.Infrastructure.Adapters.Finnhub.FinnhubHistoricalDataProvider
+  - MarketDataCollector.Infrastructure.Adapters.NasdaqDataLink.NasdaqDataLinkHistoricalDataProvider
+  - MarketDataCollector.Infrastructure.Adapters.Polygon.PolygonHistoricalDataProvider
+  - MarketDataCollector.Infrastructure.Adapters.Stooq.StooqHistoricalDataProvider
+  - MarketDataCollector.Infrastructure.Adapters.Tiingo.TiingoHistoricalDataProvider
+  - MarketDataCollector.Infrastructure.Adapters.YahooFinance.YahooFinanceHistoricalDataProvider
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider.GetRateLimitInfo
+  commentId: M:MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider.GetRateLimitInfo
+  id: GetRateLimitInfo
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider
+  langs:
+  - csharp
+  - vb
+  name: GetRateLimitInfo()
+  nameWithType: IRateLimitAwareProvider.GetRateLimitInfo()
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider.GetRateLimitInfo()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/IHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetRateLimitInfo
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/IHistoricalDataProvider.cs
+    startLine: 288
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Get current rate limit usage information.
+  example: []
+  syntax:
+    content: RateLimitInfo GetRateLimitInfo()
+    return:
+      type: MarketDataCollector.Infrastructure.Adapters.Core.RateLimitInfo
+    content.vb: Function GetRateLimitInfo() As RateLimitInfo
+  overload: MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider.GetRateLimitInfo*
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider.OnRateLimitHit
+  commentId: E:MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider.OnRateLimitHit
+  id: OnRateLimitHit
+  parent: MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider
+  langs:
+  - csharp
+  - vb
+  name: OnRateLimitHit
+  nameWithType: IRateLimitAwareProvider.OnRateLimitHit
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider.OnRateLimitHit
+  type: Event
+  source:
+    remote:
+      path: src/MarketDataCollector.Infrastructure/Adapters/Core/IHistoricalDataProvider.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: OnRateLimitHit
+    path: ../../src/MarketDataCollector.Infrastructure/Adapters/Core/IHistoricalDataProvider.cs
+    startLine: 293
+  assemblies:
+  - MarketDataCollector.Infrastructure
+  namespace: MarketDataCollector.Infrastructure.Adapters.Core
+  summary: Event raised when the provider hits a rate limit.
+  example: []
+  syntax:
+    content: event Action<RateLimitInfo>? OnRateLimitHit
+    return:
+      type: System.Action{MarketDataCollector.Infrastructure.Adapters.Core.RateLimitInfo}
+    content.vb: Event OnRateLimitHit As Action(Of RateLimitInfo)
+references:
+- uid: MarketDataCollector.Infrastructure.Adapters.Core
+  commentId: N:MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Infrastructure.Adapters.Core
+  nameWithType: MarketDataCollector.Infrastructure.Adapters.Core
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure
+    name: Infrastructure
+    href: MarketDataCollector.Infrastructure.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters
+    name: Adapters
+    href: MarketDataCollector.Infrastructure.Adapters.html
+  - name: .
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core
+    name: Core
+    href: MarketDataCollector.Infrastructure.Adapters.Core.html
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider.GetRateLimitInfo*
+  commentId: Overload:MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider.GetRateLimitInfo
+  href: MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider.html#MarketDataCollector_Infrastructure_Adapters_Core_IRateLimitAwareProvider_GetRateLimitInfo
+  name: GetRateLimitInfo
+  nameWithType: IRateLimitAwareProvider.GetRateLimitInfo
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.IRateLimitAwareProvider.GetRateLimitInfo
+- uid: MarketDataCollector.Infrastructure.Adapters.Core.RateLimitInfo
+  commentId: T:MarketDataCollector.Infrastructure.Adapters.Core.RateLimitInfo
+  parent: MarketDataCollector.Infrastructure.Adapters.Core
+  href: MarketDataCollector.Infrastructure.Adapters.Core.RateLimitInfo.html
+  name: RateLimitInfo
+  nameWithType: RateLimitInfo
+  fullName: MarketDataCollector.Infrastructure.Adapters.Core.RateLimitInfo
+- uid: System.Action{MarketDataCollector.Infrastructure.Adapters.Core.RateLimitInfo}
+  commentId: T:System.Action{MarketDataCollector.Infrastructure.Adapters.Core.RateLimitInfo}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<RateLimitInfo>
+  nameWithType: Action<RateLimitInfo>
+  fullName: System.Action<MarketDataCollector.Infrastructure.Adapters.Core.RateLimitInfo>
+  nameWithType.vb: Action(Of RateLimitInfo)
+  fullName.vb: System.Action(Of MarketDataCollector.Infrastructure.Adapters.Core.RateLimitInfo)
+  name.vb: Action(Of RateLimitInfo)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.RateLimitInfo
+    name: RateLimitInfo
+    href: MarketDataCollector.Infrastructure.Adapters.Core.RateLimitInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Infrastructure.Adapters.Core.RateLimitInfo
+    name: RateLimitInfo
+    href: MarketDataCollector.Infrastructure.Adapters.Core.RateLimitInfo.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

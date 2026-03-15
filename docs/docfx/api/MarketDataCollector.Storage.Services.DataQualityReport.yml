@@ -1,0 +1,856 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Services.DataQualityReport
+  commentId: T:MarketDataCollector.Storage.Services.DataQualityReport
+  id: DataQualityReport
+  parent: MarketDataCollector.Storage.Services
+  children:
+  - MarketDataCollector.Storage.Services.DataQualityReport.#ctor(System.DateTimeOffset,System.Int32,System.Double,System.Collections.Generic.Dictionary{System.String,System.Double},System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.DataQualityScore},System.Collections.Generic.IReadOnlyList{System.String})
+  - MarketDataCollector.Storage.Services.DataQualityReport.AverageScore
+  - MarketDataCollector.Storage.Services.DataQualityReport.FilesAnalyzed
+  - MarketDataCollector.Storage.Services.DataQualityReport.GeneratedAt
+  - MarketDataCollector.Storage.Services.DataQualityReport.LowQualityFiles
+  - MarketDataCollector.Storage.Services.DataQualityReport.Recommendations
+  - MarketDataCollector.Storage.Services.DataQualityReport.ScoresByDimension
+  langs:
+  - csharp
+  - vb
+  name: DataQualityReport
+  nameWithType: DataQualityReport
+  fullName: MarketDataCollector.Storage.Services.DataQualityReport
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DataQualityReport
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityService.cs
+    startLine: 602
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: 'public sealed record DataQualityReport : IEquatable<DataQualityReport>'
+    content.vb: Public NotInheritable Class DataQualityReport Implements IEquatable(Of DataQualityReport)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Storage.Services.DataQualityReport}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Storage.Services.DataQualityReport.#ctor(System.DateTimeOffset,System.Int32,System.Double,System.Collections.Generic.Dictionary{System.String,System.Double},System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.DataQualityScore},System.Collections.Generic.IReadOnlyList{System.String})
+  commentId: M:MarketDataCollector.Storage.Services.DataQualityReport.#ctor(System.DateTimeOffset,System.Int32,System.Double,System.Collections.Generic.Dictionary{System.String,System.Double},System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.DataQualityScore},System.Collections.Generic.IReadOnlyList{System.String})
+  id: '#ctor(System.DateTimeOffset,System.Int32,System.Double,System.Collections.Generic.Dictionary{System.String,System.Double},System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.DataQualityScore},System.Collections.Generic.IReadOnlyList{System.String})'
+  parent: MarketDataCollector.Storage.Services.DataQualityReport
+  langs:
+  - csharp
+  - vb
+  name: DataQualityReport(DateTimeOffset, int, double, Dictionary<string, double>, IReadOnlyList<DataQualityScore>, IReadOnlyList<string>)
+  nameWithType: DataQualityReport.DataQualityReport(DateTimeOffset, int, double, Dictionary<string, double>, IReadOnlyList<DataQualityScore>, IReadOnlyList<string>)
+  fullName: MarketDataCollector.Storage.Services.DataQualityReport.DataQualityReport(System.DateTimeOffset, int, double, System.Collections.Generic.Dictionary<string, double>, System.Collections.Generic.IReadOnlyList<MarketDataCollector.Storage.Services.DataQualityScore>, System.Collections.Generic.IReadOnlyList<string>)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityService.cs
+    startLine: 602
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public DataQualityReport(DateTimeOffset GeneratedAt, int FilesAnalyzed, double AverageScore, Dictionary<string, double> ScoresByDimension, IReadOnlyList<DataQualityScore> LowQualityFiles, IReadOnlyList<string> Recommendations)
+    parameters:
+    - id: GeneratedAt
+      type: System.DateTimeOffset
+    - id: FilesAnalyzed
+      type: System.Int32
+    - id: AverageScore
+      type: System.Double
+    - id: ScoresByDimension
+      type: System.Collections.Generic.Dictionary{System.String,System.Double}
+    - id: LowQualityFiles
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.DataQualityScore}
+    - id: Recommendations
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public Sub New(GeneratedAt As DateTimeOffset, FilesAnalyzed As Integer, AverageScore As Double, ScoresByDimension As Dictionary(Of String, Double), LowQualityFiles As IReadOnlyList(Of DataQualityScore), Recommendations As IReadOnlyList(Of String))
+  overload: MarketDataCollector.Storage.Services.DataQualityReport.#ctor*
+  nameWithType.vb: DataQualityReport.New(DateTimeOffset, Integer, Double, Dictionary(Of String, Double), IReadOnlyList(Of DataQualityScore), IReadOnlyList(Of String))
+  fullName.vb: MarketDataCollector.Storage.Services.DataQualityReport.New(System.DateTimeOffset, Integer, Double, System.Collections.Generic.Dictionary(Of String, Double), System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Storage.Services.DataQualityScore), System.Collections.Generic.IReadOnlyList(Of String))
+  name.vb: New(DateTimeOffset, Integer, Double, Dictionary(Of String, Double), IReadOnlyList(Of DataQualityScore), IReadOnlyList(Of String))
+- uid: MarketDataCollector.Storage.Services.DataQualityReport.GeneratedAt
+  commentId: P:MarketDataCollector.Storage.Services.DataQualityReport.GeneratedAt
+  id: GeneratedAt
+  parent: MarketDataCollector.Storage.Services.DataQualityReport
+  langs:
+  - csharp
+  - vb
+  name: GeneratedAt
+  nameWithType: DataQualityReport.GeneratedAt
+  fullName: MarketDataCollector.Storage.Services.DataQualityReport.GeneratedAt
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GeneratedAt
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityService.cs
+    startLine: 603
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public DateTimeOffset GeneratedAt { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property GeneratedAt As DateTimeOffset
+  overload: MarketDataCollector.Storage.Services.DataQualityReport.GeneratedAt*
+- uid: MarketDataCollector.Storage.Services.DataQualityReport.FilesAnalyzed
+  commentId: P:MarketDataCollector.Storage.Services.DataQualityReport.FilesAnalyzed
+  id: FilesAnalyzed
+  parent: MarketDataCollector.Storage.Services.DataQualityReport
+  langs:
+  - csharp
+  - vb
+  name: FilesAnalyzed
+  nameWithType: DataQualityReport.FilesAnalyzed
+  fullName: MarketDataCollector.Storage.Services.DataQualityReport.FilesAnalyzed
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FilesAnalyzed
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityService.cs
+    startLine: 604
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public int FilesAnalyzed { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property FilesAnalyzed As Integer
+  overload: MarketDataCollector.Storage.Services.DataQualityReport.FilesAnalyzed*
+- uid: MarketDataCollector.Storage.Services.DataQualityReport.AverageScore
+  commentId: P:MarketDataCollector.Storage.Services.DataQualityReport.AverageScore
+  id: AverageScore
+  parent: MarketDataCollector.Storage.Services.DataQualityReport
+  langs:
+  - csharp
+  - vb
+  name: AverageScore
+  nameWithType: DataQualityReport.AverageScore
+  fullName: MarketDataCollector.Storage.Services.DataQualityReport.AverageScore
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AverageScore
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityService.cs
+    startLine: 605
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public double AverageScore { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property AverageScore As Double
+  overload: MarketDataCollector.Storage.Services.DataQualityReport.AverageScore*
+- uid: MarketDataCollector.Storage.Services.DataQualityReport.ScoresByDimension
+  commentId: P:MarketDataCollector.Storage.Services.DataQualityReport.ScoresByDimension
+  id: ScoresByDimension
+  parent: MarketDataCollector.Storage.Services.DataQualityReport
+  langs:
+  - csharp
+  - vb
+  name: ScoresByDimension
+  nameWithType: DataQualityReport.ScoresByDimension
+  fullName: MarketDataCollector.Storage.Services.DataQualityReport.ScoresByDimension
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ScoresByDimension
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityService.cs
+    startLine: 606
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public Dictionary<string, double> ScoresByDimension { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Double}
+    content.vb: Public Property ScoresByDimension As Dictionary(Of String, Double)
+  overload: MarketDataCollector.Storage.Services.DataQualityReport.ScoresByDimension*
+- uid: MarketDataCollector.Storage.Services.DataQualityReport.LowQualityFiles
+  commentId: P:MarketDataCollector.Storage.Services.DataQualityReport.LowQualityFiles
+  id: LowQualityFiles
+  parent: MarketDataCollector.Storage.Services.DataQualityReport
+  langs:
+  - csharp
+  - vb
+  name: LowQualityFiles
+  nameWithType: DataQualityReport.LowQualityFiles
+  fullName: MarketDataCollector.Storage.Services.DataQualityReport.LowQualityFiles
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: LowQualityFiles
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityService.cs
+    startLine: 607
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public IReadOnlyList<DataQualityScore> LowQualityFiles { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.DataQualityScore}
+    content.vb: Public Property LowQualityFiles As IReadOnlyList(Of DataQualityScore)
+  overload: MarketDataCollector.Storage.Services.DataQualityReport.LowQualityFiles*
+- uid: MarketDataCollector.Storage.Services.DataQualityReport.Recommendations
+  commentId: P:MarketDataCollector.Storage.Services.DataQualityReport.Recommendations
+  id: Recommendations
+  parent: MarketDataCollector.Storage.Services.DataQualityReport
+  langs:
+  - csharp
+  - vb
+  name: Recommendations
+  nameWithType: DataQualityReport.Recommendations
+  fullName: MarketDataCollector.Storage.Services.DataQualityReport.Recommendations
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Services/DataQualityService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Recommendations
+    path: ../../src/MarketDataCollector.Storage/Services/DataQualityService.cs
+    startLine: 608
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Services
+  syntax:
+    content: public IReadOnlyList<string> Recommendations { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public Property Recommendations As IReadOnlyList(Of String)
+  overload: MarketDataCollector.Storage.Services.DataQualityReport.Recommendations*
+references:
+- uid: MarketDataCollector.Storage.Services
+  commentId: N:MarketDataCollector.Storage.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Services
+  nameWithType: MarketDataCollector.Storage.Services
+  fullName: MarketDataCollector.Storage.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Services
+    name: Services
+    href: MarketDataCollector.Storage.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Storage.Services.DataQualityReport}
+  commentId: T:System.IEquatable{MarketDataCollector.Storage.Services.DataQualityReport}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<DataQualityReport>
+  nameWithType: IEquatable<DataQualityReport>
+  fullName: System.IEquatable<MarketDataCollector.Storage.Services.DataQualityReport>
+  nameWithType.vb: IEquatable(Of DataQualityReport)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Storage.Services.DataQualityReport)
+  name.vb: IEquatable(Of DataQualityReport)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.DataQualityReport
+    name: DataQualityReport
+    href: MarketDataCollector.Storage.Services.DataQualityReport.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.DataQualityReport
+    name: DataQualityReport
+    href: MarketDataCollector.Storage.Services.DataQualityReport.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Storage.Services.DataQualityReport.#ctor*
+  commentId: Overload:MarketDataCollector.Storage.Services.DataQualityReport.#ctor
+  href: MarketDataCollector.Storage.Services.DataQualityReport.html#MarketDataCollector_Storage_Services_DataQualityReport__ctor_System_DateTimeOffset_System_Int32_System_Double_System_Collections_Generic_Dictionary_System_String_System_Double__System_Collections_Generic_IReadOnlyList_MarketDataCollector_Storage_Services_DataQualityScore__System_Collections_Generic_IReadOnlyList_System_String__
+  name: DataQualityReport
+  nameWithType: DataQualityReport.DataQualityReport
+  fullName: MarketDataCollector.Storage.Services.DataQualityReport.DataQualityReport
+  nameWithType.vb: DataQualityReport.New
+  fullName.vb: MarketDataCollector.Storage.Services.DataQualityReport.New
+  name.vb: New
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Collections.Generic.Dictionary{System.String,System.Double}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Double}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, double>
+  nameWithType: Dictionary<string, double>
+  fullName: System.Collections.Generic.Dictionary<string, double>
+  nameWithType.vb: Dictionary(Of String, Double)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Double)
+  name.vb: Dictionary(Of String, Double)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.DataQualityScore}
+  commentId: T:System.Collections.Generic.IReadOnlyList{MarketDataCollector.Storage.Services.DataQualityScore}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<DataQualityScore>
+  nameWithType: IReadOnlyList<DataQualityScore>
+  fullName: System.Collections.Generic.IReadOnlyList<MarketDataCollector.Storage.Services.DataQualityScore>
+  nameWithType.vb: IReadOnlyList(Of DataQualityScore)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of MarketDataCollector.Storage.Services.DataQualityScore)
+  name.vb: IReadOnlyList(Of DataQualityScore)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: MarketDataCollector.Storage.Services.DataQualityScore
+    name: DataQualityScore
+    href: MarketDataCollector.Storage.Services.DataQualityScore.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Storage.Services.DataQualityScore
+    name: DataQualityScore
+    href: MarketDataCollector.Storage.Services.DataQualityScore.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Storage.Services.DataQualityReport.GeneratedAt*
+  commentId: Overload:MarketDataCollector.Storage.Services.DataQualityReport.GeneratedAt
+  href: MarketDataCollector.Storage.Services.DataQualityReport.html#MarketDataCollector_Storage_Services_DataQualityReport_GeneratedAt
+  name: GeneratedAt
+  nameWithType: DataQualityReport.GeneratedAt
+  fullName: MarketDataCollector.Storage.Services.DataQualityReport.GeneratedAt
+- uid: MarketDataCollector.Storage.Services.DataQualityReport.FilesAnalyzed*
+  commentId: Overload:MarketDataCollector.Storage.Services.DataQualityReport.FilesAnalyzed
+  href: MarketDataCollector.Storage.Services.DataQualityReport.html#MarketDataCollector_Storage_Services_DataQualityReport_FilesAnalyzed
+  name: FilesAnalyzed
+  nameWithType: DataQualityReport.FilesAnalyzed
+  fullName: MarketDataCollector.Storage.Services.DataQualityReport.FilesAnalyzed
+- uid: MarketDataCollector.Storage.Services.DataQualityReport.AverageScore*
+  commentId: Overload:MarketDataCollector.Storage.Services.DataQualityReport.AverageScore
+  href: MarketDataCollector.Storage.Services.DataQualityReport.html#MarketDataCollector_Storage_Services_DataQualityReport_AverageScore
+  name: AverageScore
+  nameWithType: DataQualityReport.AverageScore
+  fullName: MarketDataCollector.Storage.Services.DataQualityReport.AverageScore
+- uid: MarketDataCollector.Storage.Services.DataQualityReport.ScoresByDimension*
+  commentId: Overload:MarketDataCollector.Storage.Services.DataQualityReport.ScoresByDimension
+  href: MarketDataCollector.Storage.Services.DataQualityReport.html#MarketDataCollector_Storage_Services_DataQualityReport_ScoresByDimension
+  name: ScoresByDimension
+  nameWithType: DataQualityReport.ScoresByDimension
+  fullName: MarketDataCollector.Storage.Services.DataQualityReport.ScoresByDimension
+- uid: MarketDataCollector.Storage.Services.DataQualityReport.LowQualityFiles*
+  commentId: Overload:MarketDataCollector.Storage.Services.DataQualityReport.LowQualityFiles
+  href: MarketDataCollector.Storage.Services.DataQualityReport.html#MarketDataCollector_Storage_Services_DataQualityReport_LowQualityFiles
+  name: LowQualityFiles
+  nameWithType: DataQualityReport.LowQualityFiles
+  fullName: MarketDataCollector.Storage.Services.DataQualityReport.LowQualityFiles
+- uid: MarketDataCollector.Storage.Services.DataQualityReport.Recommendations*
+  commentId: Overload:MarketDataCollector.Storage.Services.DataQualityReport.Recommendations
+  href: MarketDataCollector.Storage.Services.DataQualityReport.html#MarketDataCollector_Storage_Services_DataQualityReport_Recommendations
+  name: Recommendations
+  nameWithType: DataQualityReport.Recommendations
+  fullName: MarketDataCollector.Storage.Services.DataQualityReport.Recommendations

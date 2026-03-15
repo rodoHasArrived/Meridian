@@ -1,0 +1,952 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics
+  commentId: T:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics
+  id: AnomalyStatistics
+  parent: MarketDataCollector.Application.Monitoring.DataQuality
+  children:
+  - MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.#ctor(System.Int64,System.Collections.Generic.Dictionary{MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType,System.Int32},System.Collections.Generic.Dictionary{MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity,System.Int32},System.Collections.Generic.IReadOnlyList{System.ValueTuple{System.String,System.Int32}},System.Int32,System.Int32,System.DateTimeOffset)
+  - MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesBySeverity
+  - MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesByType
+  - MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesLast24Hours
+  - MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.CalculatedAt
+  - MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.SymbolsWithMostAnomalies
+  - MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.TotalAnomalies
+  - MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.UnacknowledgedCount
+  langs:
+  - csharp
+  - vb
+  name: AnomalyStatistics
+  nameWithType: AnomalyStatistics
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AnomalyStatistics
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+    startLine: 736
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Anomaly detection statistics.
+  example: []
+  syntax:
+    content: 'public sealed record AnomalyStatistics : IEquatable<AnomalyStatistics>'
+    content.vb: Public NotInheritable Class AnomalyStatistics Implements IEquatable(Of AnomalyStatistics)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.#ctor(System.Int64,System.Collections.Generic.Dictionary{MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType,System.Int32},System.Collections.Generic.Dictionary{MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity,System.Int32},System.Collections.Generic.IReadOnlyList{System.ValueTuple{System.String,System.Int32}},System.Int32,System.Int32,System.DateTimeOffset)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.#ctor(System.Int64,System.Collections.Generic.Dictionary{MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType,System.Int32},System.Collections.Generic.Dictionary{MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity,System.Int32},System.Collections.Generic.IReadOnlyList{System.ValueTuple{System.String,System.Int32}},System.Int32,System.Int32,System.DateTimeOffset)
+  id: '#ctor(System.Int64,System.Collections.Generic.Dictionary{MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType,System.Int32},System.Collections.Generic.Dictionary{MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity,System.Int32},System.Collections.Generic.IReadOnlyList{System.ValueTuple{System.String,System.Int32}},System.Int32,System.Int32,System.DateTimeOffset)'
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics
+  langs:
+  - csharp
+  - vb
+  name: AnomalyStatistics(long, Dictionary<AnomalyType, int>, Dictionary<AnomalySeverity, int>, IReadOnlyList<(string Symbol, int Count)>, int, int, DateTimeOffset)
+  nameWithType: AnomalyStatistics.AnomalyStatistics(long, Dictionary<AnomalyType, int>, Dictionary<AnomalySeverity, int>, IReadOnlyList<(string Symbol, int Count)>, int, int, DateTimeOffset)
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomalyStatistics(long, System.Collections.Generic.Dictionary<MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType, int>, System.Collections.Generic.Dictionary<MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity, int>, System.Collections.Generic.IReadOnlyList<(string Symbol, int Count)>, int, int, System.DateTimeOffset)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+    startLine: 736
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  summary: Anomaly detection statistics.
+  example: []
+  syntax:
+    content: public AnomalyStatistics(long TotalAnomalies, Dictionary<AnomalyType, int> AnomaliesByType, Dictionary<AnomalySeverity, int> AnomaliesBySeverity, IReadOnlyList<(string Symbol, int Count)> SymbolsWithMostAnomalies, int UnacknowledgedCount, int AnomaliesLast24Hours, DateTimeOffset CalculatedAt)
+    parameters:
+    - id: TotalAnomalies
+      type: System.Int64
+    - id: AnomaliesByType
+      type: System.Collections.Generic.Dictionary{MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType,System.Int32}
+    - id: AnomaliesBySeverity
+      type: System.Collections.Generic.Dictionary{MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity,System.Int32}
+    - id: SymbolsWithMostAnomalies
+      type: System.Collections.Generic.IReadOnlyList{System.ValueTuple{System.String,System.Int32}}
+    - id: UnacknowledgedCount
+      type: System.Int32
+    - id: AnomaliesLast24Hours
+      type: System.Int32
+    - id: CalculatedAt
+      type: System.DateTimeOffset
+    content.vb: Public Sub New(TotalAnomalies As Long, AnomaliesByType As Dictionary(Of AnomalyType, Integer), AnomaliesBySeverity As Dictionary(Of AnomalySeverity, Integer), SymbolsWithMostAnomalies As IReadOnlyList(Of (Symbol As String, Count As Integer)), UnacknowledgedCount As Integer, AnomaliesLast24Hours As Integer, CalculatedAt As DateTimeOffset)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.#ctor*
+  nameWithType.vb: AnomalyStatistics.New(Long, Dictionary(Of AnomalyType, Integer), Dictionary(Of AnomalySeverity, Integer), IReadOnlyList(Of (Symbol As String, Count As Integer)), Integer, Integer, DateTimeOffset)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.New(Long, System.Collections.Generic.Dictionary(Of MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType, Integer), System.Collections.Generic.Dictionary(Of MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity, Integer), System.Collections.Generic.IReadOnlyList(Of (Symbol As String, Count As Integer)), Integer, Integer, System.DateTimeOffset)
+  name.vb: New(Long, Dictionary(Of AnomalyType, Integer), Dictionary(Of AnomalySeverity, Integer), IReadOnlyList(Of (Symbol As String, Count As Integer)), Integer, Integer, DateTimeOffset)
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.TotalAnomalies
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.TotalAnomalies
+  id: TotalAnomalies
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics
+  langs:
+  - csharp
+  - vb
+  name: TotalAnomalies
+  nameWithType: AnomalyStatistics.TotalAnomalies
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.TotalAnomalies
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: TotalAnomalies
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+    startLine: 737
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public long TotalAnomalies { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property TotalAnomalies As Long
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.TotalAnomalies*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesByType
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesByType
+  id: AnomaliesByType
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics
+  langs:
+  - csharp
+  - vb
+  name: AnomaliesByType
+  nameWithType: AnomalyStatistics.AnomaliesByType
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesByType
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AnomaliesByType
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+    startLine: 738
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public Dictionary<AnomalyType, int> AnomaliesByType { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType,System.Int32}
+    content.vb: Public Property AnomaliesByType As Dictionary(Of AnomalyType, Integer)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesByType*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesBySeverity
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesBySeverity
+  id: AnomaliesBySeverity
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics
+  langs:
+  - csharp
+  - vb
+  name: AnomaliesBySeverity
+  nameWithType: AnomalyStatistics.AnomaliesBySeverity
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesBySeverity
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AnomaliesBySeverity
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+    startLine: 739
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public Dictionary<AnomalySeverity, int> AnomaliesBySeverity { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity,System.Int32}
+    content.vb: Public Property AnomaliesBySeverity As Dictionary(Of AnomalySeverity, Integer)
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesBySeverity*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.SymbolsWithMostAnomalies
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.SymbolsWithMostAnomalies
+  id: SymbolsWithMostAnomalies
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics
+  langs:
+  - csharp
+  - vb
+  name: SymbolsWithMostAnomalies
+  nameWithType: AnomalyStatistics.SymbolsWithMostAnomalies
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.SymbolsWithMostAnomalies
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: SymbolsWithMostAnomalies
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+    startLine: 740
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public IReadOnlyList<(string Symbol, int Count)> SymbolsWithMostAnomalies { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.ValueTuple{System.String,System.Int32}}
+    content.vb: Public Property SymbolsWithMostAnomalies As IReadOnlyList(Of (Symbol As String, Count As Integer))
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.SymbolsWithMostAnomalies*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.UnacknowledgedCount
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.UnacknowledgedCount
+  id: UnacknowledgedCount
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics
+  langs:
+  - csharp
+  - vb
+  name: UnacknowledgedCount
+  nameWithType: AnomalyStatistics.UnacknowledgedCount
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.UnacknowledgedCount
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: UnacknowledgedCount
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+    startLine: 741
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public int UnacknowledgedCount { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property UnacknowledgedCount As Integer
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.UnacknowledgedCount*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesLast24Hours
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesLast24Hours
+  id: AnomaliesLast24Hours
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics
+  langs:
+  - csharp
+  - vb
+  name: AnomaliesLast24Hours
+  nameWithType: AnomalyStatistics.AnomaliesLast24Hours
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesLast24Hours
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AnomaliesLast24Hours
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+    startLine: 742
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public int AnomaliesLast24Hours { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property AnomaliesLast24Hours As Integer
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesLast24Hours*
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.CalculatedAt
+  commentId: P:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.CalculatedAt
+  id: CalculatedAt
+  parent: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics
+  langs:
+  - csharp
+  - vb
+  name: CalculatedAt
+  nameWithType: AnomalyStatistics.CalculatedAt
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.CalculatedAt
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: CalculatedAt
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataQuality/AnomalyDetector.cs
+    startLine: 743
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring.DataQuality
+  syntax:
+    content: public DateTimeOffset CalculatedAt { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property CalculatedAt As DateTimeOffset
+  overload: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.CalculatedAt*
+references:
+- uid: MarketDataCollector.Application.Monitoring.DataQuality
+  commentId: N:MarketDataCollector.Application.Monitoring.DataQuality
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring.DataQuality
+  nameWithType: MarketDataCollector.Application.Monitoring.DataQuality
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality
+    name: DataQuality
+    href: MarketDataCollector.Application.Monitoring.DataQuality.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality
+    name: DataQuality
+    href: MarketDataCollector.Application.Monitoring.DataQuality.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics}
+  commentId: T:System.IEquatable{MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<AnomalyStatistics>
+  nameWithType: IEquatable<AnomalyStatistics>
+  fullName: System.IEquatable<MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics>
+  nameWithType.vb: IEquatable(Of AnomalyStatistics)
+  fullName.vb: System.IEquatable(Of MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics)
+  name.vb: IEquatable(Of AnomalyStatistics)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics
+    name: AnomalyStatistics
+    href: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics
+    name: AnomalyStatistics
+    href: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.#ctor*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.#ctor
+  href: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.html#MarketDataCollector_Application_Monitoring_DataQuality_AnomalyStatistics__ctor_System_Int64_System_Collections_Generic_Dictionary_MarketDataCollector_Application_Monitoring_DataQuality_AnomalyType_System_Int32__System_Collections_Generic_Dictionary_MarketDataCollector_Application_Monitoring_DataQuality_AnomalySeverity_System_Int32__System_Collections_Generic_IReadOnlyList_System_ValueTuple_System_String_System_Int32___System_Int32_System_Int32_System_DateTimeOffset_
+  name: AnomalyStatistics
+  nameWithType: AnomalyStatistics.AnomalyStatistics
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomalyStatistics
+  nameWithType.vb: AnomalyStatistics.New
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.New
+  name.vb: New
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.Collections.Generic.Dictionary{MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType,System.Int32}
+  commentId: T:System.Collections.Generic.Dictionary{MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType,System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<AnomalyType, int>
+  nameWithType: Dictionary<AnomalyType, int>
+  fullName: System.Collections.Generic.Dictionary<MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType, int>
+  nameWithType.vb: Dictionary(Of AnomalyType, Integer)
+  fullName.vb: System.Collections.Generic.Dictionary(Of MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType, Integer)
+  name.vb: Dictionary(Of AnomalyType, Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType
+    name: AnomalyType
+    href: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType
+    name: AnomalyType
+    href: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyType.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.Dictionary{MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity,System.Int32}
+  commentId: T:System.Collections.Generic.Dictionary{MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity,System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<AnomalySeverity, int>
+  nameWithType: Dictionary<AnomalySeverity, int>
+  fullName: System.Collections.Generic.Dictionary<MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity, int>
+  nameWithType.vb: Dictionary(Of AnomalySeverity, Integer)
+  fullName.vb: System.Collections.Generic.Dictionary(Of MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity, Integer)
+  name.vb: Dictionary(Of AnomalySeverity, Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity
+    name: AnomalySeverity
+    href: MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity
+    name: AnomalySeverity
+    href: MarketDataCollector.Application.Monitoring.DataQuality.AnomalySeverity.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList{System.ValueTuple{System.String,System.Int32}}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.ValueTuple{System.String,System.Int32}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<(string Symbol, int Count)>
+  nameWithType: IReadOnlyList<(string Symbol, int Count)>
+  fullName: System.Collections.Generic.IReadOnlyList<(string Symbol, int Count)>
+  nameWithType.vb: IReadOnlyList(Of (Symbol As String, Count As Integer))
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of (Symbol As String, Count As Integer))
+  name.vb: IReadOnlyList(Of (Symbol As String, Count As Integer))
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.Int32}.Symbol
+    name: Symbol
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.int32-.symbol
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.Int32}.Count
+    name: Count
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.int32-.count
+  - name: )
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: (
+  - uid: System.ValueTuple{System.String,System.Int32}.Symbol
+    name: Symbol
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.int32-.symbol
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.Int32}.Count
+    name: Count
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.int32-.count
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.TotalAnomalies*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.TotalAnomalies
+  href: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.html#MarketDataCollector_Application_Monitoring_DataQuality_AnomalyStatistics_TotalAnomalies
+  name: TotalAnomalies
+  nameWithType: AnomalyStatistics.TotalAnomalies
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.TotalAnomalies
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesByType*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesByType
+  href: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.html#MarketDataCollector_Application_Monitoring_DataQuality_AnomalyStatistics_AnomaliesByType
+  name: AnomaliesByType
+  nameWithType: AnomalyStatistics.AnomaliesByType
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesByType
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesBySeverity*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesBySeverity
+  href: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.html#MarketDataCollector_Application_Monitoring_DataQuality_AnomalyStatistics_AnomaliesBySeverity
+  name: AnomaliesBySeverity
+  nameWithType: AnomalyStatistics.AnomaliesBySeverity
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesBySeverity
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.SymbolsWithMostAnomalies*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.SymbolsWithMostAnomalies
+  href: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.html#MarketDataCollector_Application_Monitoring_DataQuality_AnomalyStatistics_SymbolsWithMostAnomalies
+  name: SymbolsWithMostAnomalies
+  nameWithType: AnomalyStatistics.SymbolsWithMostAnomalies
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.SymbolsWithMostAnomalies
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.UnacknowledgedCount*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.UnacknowledgedCount
+  href: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.html#MarketDataCollector_Application_Monitoring_DataQuality_AnomalyStatistics_UnacknowledgedCount
+  name: UnacknowledgedCount
+  nameWithType: AnomalyStatistics.UnacknowledgedCount
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.UnacknowledgedCount
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesLast24Hours*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesLast24Hours
+  href: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.html#MarketDataCollector_Application_Monitoring_DataQuality_AnomalyStatistics_AnomaliesLast24Hours
+  name: AnomaliesLast24Hours
+  nameWithType: AnomalyStatistics.AnomaliesLast24Hours
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.AnomaliesLast24Hours
+- uid: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.CalculatedAt*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.CalculatedAt
+  href: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.html#MarketDataCollector_Application_Monitoring_DataQuality_AnomalyStatistics_CalculatedAt
+  name: CalculatedAt
+  nameWithType: AnomalyStatistics.CalculatedAt
+  fullName: MarketDataCollector.Application.Monitoring.DataQuality.AnomalyStatistics.CalculatedAt

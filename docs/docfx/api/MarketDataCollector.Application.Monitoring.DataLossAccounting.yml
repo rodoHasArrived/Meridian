@@ -1,0 +1,997 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  commentId: T:MarketDataCollector.Application.Monitoring.DataLossAccounting
+  id: DataLossAccounting
+  parent: MarketDataCollector.Application.Monitoring
+  children:
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.GetReconciliationReport
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.IncPipelineAccepted
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.IncPipelineDropped
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceived(System.String)
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceivedDuplicate(System.String)
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.IncRejected
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.IncStoreFailed
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.IncStored
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.IncValidated
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.PipelineAccepted
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.PipelineDropped
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.Received
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.ReceivedDuplicates
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.Rejected
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.Reset
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.StoreFailed
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.Stored
+  - MarketDataCollector.Application.Monitoring.DataLossAccounting.Validated
+  langs:
+  - csharp
+  - vb
+  name: DataLossAccounting
+  nameWithType: DataLossAccounting
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DataLossAccounting
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 10
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: >-
+    End-to-end data loss accounting across the entire event pipeline.
+
+    Tracks events at each stage: ingestion → validation → pipeline → storage,
+
+    enabling reconciliation to detect unexplained data loss.
+  example: []
+  syntax:
+    content: public static class DataLossAccounting
+    content.vb: Public Module DataLossAccounting
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.Received
+  commentId: P:MarketDataCollector.Application.Monitoring.DataLossAccounting.Received
+  id: Received
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: Received
+  nameWithType: DataLossAccounting.Received
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.Received
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Received
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 35
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Total events received from all providers.
+  example: []
+  syntax:
+    content: public static long Received { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Shared ReadOnly Property Received As Long
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.Received*
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.ReceivedDuplicates
+  commentId: P:MarketDataCollector.Application.Monitoring.DataLossAccounting.ReceivedDuplicates
+  id: ReceivedDuplicates
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: ReceivedDuplicates
+  nameWithType: DataLossAccounting.ReceivedDuplicates
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.ReceivedDuplicates
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ReceivedDuplicates
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 38
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Events identified as duplicates at ingestion.
+  example: []
+  syntax:
+    content: public static long ReceivedDuplicates { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Shared ReadOnly Property ReceivedDuplicates As Long
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.ReceivedDuplicates*
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceived(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceived(System.String)
+  id: IncReceived(System.String)
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: IncReceived(string?)
+  nameWithType: DataLossAccounting.IncReceived(string?)
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceived(string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncReceived
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 40
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public static void IncReceived(string? provider = null)
+    parameters:
+    - id: provider
+      type: System.String
+    content.vb: Public Shared Sub IncReceived(provider As String = Nothing)
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceived*
+  nameWithType.vb: DataLossAccounting.IncReceived(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceived(String)
+  name.vb: IncReceived(String)
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceivedDuplicate(System.String)
+  commentId: M:MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceivedDuplicate(System.String)
+  id: IncReceivedDuplicate(System.String)
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: IncReceivedDuplicate(string?)
+  nameWithType: DataLossAccounting.IncReceivedDuplicate(string?)
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceivedDuplicate(string?)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncReceivedDuplicate
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 47
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public static void IncReceivedDuplicate(string? provider = null)
+    parameters:
+    - id: provider
+      type: System.String
+    content.vb: Public Shared Sub IncReceivedDuplicate(provider As String = Nothing)
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceivedDuplicate*
+  nameWithType.vb: DataLossAccounting.IncReceivedDuplicate(String)
+  fullName.vb: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceivedDuplicate(String)
+  name.vb: IncReceivedDuplicate(String)
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.Validated
+  commentId: P:MarketDataCollector.Application.Monitoring.DataLossAccounting.Validated
+  id: Validated
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: Validated
+  nameWithType: DataLossAccounting.Validated
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.Validated
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Validated
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 59
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Events that passed validation.
+  example: []
+  syntax:
+    content: public static long Validated { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Shared ReadOnly Property Validated As Long
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.Validated*
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.Rejected
+  commentId: P:MarketDataCollector.Application.Monitoring.DataLossAccounting.Rejected
+  id: Rejected
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: Rejected
+  nameWithType: DataLossAccounting.Rejected
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.Rejected
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Rejected
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 62
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Events rejected by validators.
+  example: []
+  syntax:
+    content: public static long Rejected { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Shared ReadOnly Property Rejected As Long
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.Rejected*
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncValidated
+  commentId: M:MarketDataCollector.Application.Monitoring.DataLossAccounting.IncValidated
+  id: IncValidated
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: IncValidated()
+  nameWithType: DataLossAccounting.IncValidated()
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncValidated()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncValidated
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 64
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public static void IncValidated()
+    content.vb: Public Shared Sub IncValidated()
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncValidated*
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncRejected
+  commentId: M:MarketDataCollector.Application.Monitoring.DataLossAccounting.IncRejected
+  id: IncRejected
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: IncRejected()
+  nameWithType: DataLossAccounting.IncRejected()
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncRejected()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncRejected
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 67
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public static void IncRejected()
+    content.vb: Public Shared Sub IncRejected()
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncRejected*
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.PipelineAccepted
+  commentId: P:MarketDataCollector.Application.Monitoring.DataLossAccounting.PipelineAccepted
+  id: PipelineAccepted
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: PipelineAccepted
+  nameWithType: DataLossAccounting.PipelineAccepted
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.PipelineAccepted
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PipelineAccepted
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 75
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Events accepted into the pipeline channel.
+  example: []
+  syntax:
+    content: public static long PipelineAccepted { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Shared ReadOnly Property PipelineAccepted As Long
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.PipelineAccepted*
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.PipelineDropped
+  commentId: P:MarketDataCollector.Application.Monitoring.DataLossAccounting.PipelineDropped
+  id: PipelineDropped
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: PipelineDropped
+  nameWithType: DataLossAccounting.PipelineDropped
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.PipelineDropped
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: PipelineDropped
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 78
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Events dropped by pipeline backpressure.
+  example: []
+  syntax:
+    content: public static long PipelineDropped { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Shared ReadOnly Property PipelineDropped As Long
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.PipelineDropped*
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncPipelineAccepted
+  commentId: M:MarketDataCollector.Application.Monitoring.DataLossAccounting.IncPipelineAccepted
+  id: IncPipelineAccepted
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: IncPipelineAccepted()
+  nameWithType: DataLossAccounting.IncPipelineAccepted()
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncPipelineAccepted()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncPipelineAccepted
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 80
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public static void IncPipelineAccepted()
+    content.vb: Public Shared Sub IncPipelineAccepted()
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncPipelineAccepted*
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncPipelineDropped
+  commentId: M:MarketDataCollector.Application.Monitoring.DataLossAccounting.IncPipelineDropped
+  id: IncPipelineDropped
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: IncPipelineDropped()
+  nameWithType: DataLossAccounting.IncPipelineDropped()
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncPipelineDropped()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncPipelineDropped
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 83
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public static void IncPipelineDropped()
+    content.vb: Public Shared Sub IncPipelineDropped()
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncPipelineDropped*
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.Stored
+  commentId: P:MarketDataCollector.Application.Monitoring.DataLossAccounting.Stored
+  id: Stored
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: Stored
+  nameWithType: DataLossAccounting.Stored
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.Stored
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Stored
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 91
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Events successfully persisted to storage.
+  example: []
+  syntax:
+    content: public static long Stored { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Shared ReadOnly Property Stored As Long
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.Stored*
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.StoreFailed
+  commentId: P:MarketDataCollector.Application.Monitoring.DataLossAccounting.StoreFailed
+  id: StoreFailed
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: StoreFailed
+  nameWithType: DataLossAccounting.StoreFailed
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.StoreFailed
+  type: Property
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: StoreFailed
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 94
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Events that failed to persist.
+  example: []
+  syntax:
+    content: public static long StoreFailed { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Shared ReadOnly Property StoreFailed As Long
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.StoreFailed*
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncStored
+  commentId: M:MarketDataCollector.Application.Monitoring.DataLossAccounting.IncStored
+  id: IncStored
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: IncStored()
+  nameWithType: DataLossAccounting.IncStored()
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncStored()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncStored
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 96
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public static void IncStored()
+    content.vb: Public Shared Sub IncStored()
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncStored*
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncStoreFailed
+  commentId: M:MarketDataCollector.Application.Monitoring.DataLossAccounting.IncStoreFailed
+  id: IncStoreFailed
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: IncStoreFailed()
+  nameWithType: DataLossAccounting.IncStoreFailed()
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncStoreFailed()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IncStoreFailed
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 99
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  syntax:
+    content: public static void IncStoreFailed()
+    content.vb: Public Shared Sub IncStoreFailed()
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncStoreFailed*
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.GetReconciliationReport
+  commentId: M:MarketDataCollector.Application.Monitoring.DataLossAccounting.GetReconciliationReport
+  id: GetReconciliationReport
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: GetReconciliationReport()
+  nameWithType: DataLossAccounting.GetReconciliationReport()
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.GetReconciliationReport()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetReconciliationReport
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 110
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: >-
+    Generates a full reconciliation report across all pipeline stages.
+
+    The formula: Received = Duplicates + Rejected + PipelineDropped + StoreFailed + Stored + Unaccounted
+  example: []
+  syntax:
+    content: public static ReconciliationReport GetReconciliationReport()
+    return:
+      type: MarketDataCollector.Application.Monitoring.ReconciliationReport
+    content.vb: Public Shared Function GetReconciliationReport() As ReconciliationReport
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.GetReconciliationReport*
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.Reset
+  commentId: M:MarketDataCollector.Application.Monitoring.DataLossAccounting.Reset
+  id: Reset
+  parent: MarketDataCollector.Application.Monitoring.DataLossAccounting
+  langs:
+  - csharp
+  - vb
+  name: Reset()
+  nameWithType: DataLossAccounting.Reset()
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.Reset()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Reset
+    path: ../../src/MarketDataCollector.Application/Monitoring/DataLossAccounting.cs
+    startLine: 151
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Monitoring
+  summary: Resets all accounting counters. Useful for testing.
+  example: []
+  syntax:
+    content: public static void Reset()
+    content.vb: Public Shared Sub Reset()
+  overload: MarketDataCollector.Application.Monitoring.DataLossAccounting.Reset*
+references:
+- uid: MarketDataCollector.Application.Monitoring
+  commentId: N:MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Monitoring
+  nameWithType: MarketDataCollector.Application.Monitoring
+  fullName: MarketDataCollector.Application.Monitoring
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Monitoring
+    name: Monitoring
+    href: MarketDataCollector.Application.Monitoring.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.Received*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.Received
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_Received
+  name: Received
+  nameWithType: DataLossAccounting.Received
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.Received
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.ReceivedDuplicates*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.ReceivedDuplicates
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_ReceivedDuplicates
+  name: ReceivedDuplicates
+  nameWithType: DataLossAccounting.ReceivedDuplicates
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.ReceivedDuplicates
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceived*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceived
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_IncReceived_System_String_
+  name: IncReceived
+  nameWithType: DataLossAccounting.IncReceived
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceived
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceivedDuplicate*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceivedDuplicate
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_IncReceivedDuplicate_System_String_
+  name: IncReceivedDuplicate
+  nameWithType: DataLossAccounting.IncReceivedDuplicate
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncReceivedDuplicate
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.Validated*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.Validated
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_Validated
+  name: Validated
+  nameWithType: DataLossAccounting.Validated
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.Validated
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.Rejected*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.Rejected
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_Rejected
+  name: Rejected
+  nameWithType: DataLossAccounting.Rejected
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.Rejected
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncValidated*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.IncValidated
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_IncValidated
+  name: IncValidated
+  nameWithType: DataLossAccounting.IncValidated
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncValidated
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncRejected*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.IncRejected
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_IncRejected
+  name: IncRejected
+  nameWithType: DataLossAccounting.IncRejected
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncRejected
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.PipelineAccepted*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.PipelineAccepted
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_PipelineAccepted
+  name: PipelineAccepted
+  nameWithType: DataLossAccounting.PipelineAccepted
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.PipelineAccepted
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.PipelineDropped*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.PipelineDropped
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_PipelineDropped
+  name: PipelineDropped
+  nameWithType: DataLossAccounting.PipelineDropped
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.PipelineDropped
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncPipelineAccepted*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.IncPipelineAccepted
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_IncPipelineAccepted
+  name: IncPipelineAccepted
+  nameWithType: DataLossAccounting.IncPipelineAccepted
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncPipelineAccepted
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncPipelineDropped*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.IncPipelineDropped
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_IncPipelineDropped
+  name: IncPipelineDropped
+  nameWithType: DataLossAccounting.IncPipelineDropped
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncPipelineDropped
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.Stored*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.Stored
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_Stored
+  name: Stored
+  nameWithType: DataLossAccounting.Stored
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.Stored
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.StoreFailed*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.StoreFailed
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_StoreFailed
+  name: StoreFailed
+  nameWithType: DataLossAccounting.StoreFailed
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.StoreFailed
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncStored*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.IncStored
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_IncStored
+  name: IncStored
+  nameWithType: DataLossAccounting.IncStored
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncStored
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncStoreFailed*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.IncStoreFailed
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_IncStoreFailed
+  name: IncStoreFailed
+  nameWithType: DataLossAccounting.IncStoreFailed
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.IncStoreFailed
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.GetReconciliationReport*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.GetReconciliationReport
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_GetReconciliationReport
+  name: GetReconciliationReport
+  nameWithType: DataLossAccounting.GetReconciliationReport
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.GetReconciliationReport
+- uid: MarketDataCollector.Application.Monitoring.ReconciliationReport
+  commentId: T:MarketDataCollector.Application.Monitoring.ReconciliationReport
+  parent: MarketDataCollector.Application.Monitoring
+  href: MarketDataCollector.Application.Monitoring.ReconciliationReport.html
+  name: ReconciliationReport
+  nameWithType: ReconciliationReport
+  fullName: MarketDataCollector.Application.Monitoring.ReconciliationReport
+- uid: MarketDataCollector.Application.Monitoring.DataLossAccounting.Reset*
+  commentId: Overload:MarketDataCollector.Application.Monitoring.DataLossAccounting.Reset
+  href: MarketDataCollector.Application.Monitoring.DataLossAccounting.html#MarketDataCollector_Application_Monitoring_DataLossAccounting_Reset
+  name: Reset
+  nameWithType: DataLossAccounting.Reset
+  fullName: MarketDataCollector.Application.Monitoring.DataLossAccounting.Reset

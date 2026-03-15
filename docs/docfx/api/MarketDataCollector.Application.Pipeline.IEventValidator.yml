@@ -1,0 +1,174 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Application.Pipeline.IEventValidator
+  commentId: T:MarketDataCollector.Application.Pipeline.IEventValidator
+  id: IEventValidator
+  parent: MarketDataCollector.Application.Pipeline
+  children:
+  - MarketDataCollector.Application.Pipeline.IEventValidator.Validate(MarketDataCollector.Domain.Events.MarketEvent@)
+  langs:
+  - csharp
+  - vb
+  name: IEventValidator
+  nameWithType: IEventValidator
+  fullName: MarketDataCollector.Application.Pipeline.IEventValidator
+  type: Interface
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/IEventValidator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: IEventValidator
+    path: ../../src/MarketDataCollector.Application/Pipeline/IEventValidator.cs
+    startLine: 10
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: >-
+    Validates <xref href="MarketDataCollector.Domain.Events.MarketEvent" data-throw-if-not-resolved="false"></xref> instances before they are persisted to the WAL or
+
+    storage sinks. Implementations should be stateless and thread-safe so they can be
+
+    invoked concurrently from the pipeline consumer.
+  example: []
+  syntax:
+    content: >-
+      [ImplementsAdr("ADR-007", "Event validation gate before WAL/sink persistence")]
+
+      public interface IEventValidator
+    content.vb: >-
+      <ImplementsAdr("ADR-007", "Event validation gate before WAL/sink persistence")>
+
+      Public Interface IEventValidator
+  derivedClasses:
+  - MarketDataCollector.Application.Pipeline.FSharpEventValidator
+  attributes:
+  - type: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute
+    ctor: MarketDataCollector.Infrastructure.Contracts.ImplementsAdrAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: ADR-007
+    - type: System.String
+      value: Event validation gate before WAL/sink persistence
+- uid: MarketDataCollector.Application.Pipeline.IEventValidator.Validate(MarketDataCollector.Domain.Events.MarketEvent@)
+  commentId: M:MarketDataCollector.Application.Pipeline.IEventValidator.Validate(MarketDataCollector.Domain.Events.MarketEvent@)
+  id: Validate(MarketDataCollector.Domain.Events.MarketEvent@)
+  parent: MarketDataCollector.Application.Pipeline.IEventValidator
+  langs:
+  - csharp
+  - vb
+  name: Validate(in MarketEvent)
+  nameWithType: IEventValidator.Validate(in MarketEvent)
+  fullName: MarketDataCollector.Application.Pipeline.IEventValidator.Validate(in MarketDataCollector.Domain.Events.MarketEvent)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Application/Pipeline/IEventValidator.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: Validate
+    path: ../../src/MarketDataCollector.Application/Pipeline/IEventValidator.cs
+    startLine: 19
+  assemblies:
+  - MarketDataCollector.Application
+  namespace: MarketDataCollector.Application.Pipeline
+  summary: >-
+    Validates a market event and returns a result indicating whether the event is
+
+    acceptable for persistence. Invalid events should be routed to a dead-letter sink.
+  example: []
+  syntax:
+    content: ValidationResult Validate(in MarketEvent evt)
+    parameters:
+    - id: evt
+      type: MarketDataCollector.Domain.Events.MarketEvent
+      description: The market event to validate (passed by readonly reference for zero-copy).
+    return:
+      type: MarketDataCollector.Application.Pipeline.ValidationResult
+      description: A <xref href="MarketDataCollector.Application.Pipeline.ValidationResult" data-throw-if-not-resolved="false"></xref> describing validity and any errors.
+    content.vb: Function Validate(evt As MarketEvent) As ValidationResult
+  overload: MarketDataCollector.Application.Pipeline.IEventValidator.Validate*
+  nameWithType.vb: IEventValidator.Validate(MarketEvent)
+  fullName.vb: MarketDataCollector.Application.Pipeline.IEventValidator.Validate(MarketDataCollector.Domain.Events.MarketEvent)
+  name.vb: Validate(MarketEvent)
+references:
+- uid: MarketDataCollector.Domain.Events.MarketEvent
+  commentId: T:MarketDataCollector.Domain.Events.MarketEvent
+  parent: MarketDataCollector.Domain.Events
+  href: MarketDataCollector.Domain.Events.MarketEvent.html
+  name: MarketEvent
+  nameWithType: MarketEvent
+  fullName: MarketDataCollector.Domain.Events.MarketEvent
+- uid: MarketDataCollector.Application.Pipeline
+  commentId: N:MarketDataCollector.Application.Pipeline
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Pipeline
+  nameWithType: MarketDataCollector.Application.Pipeline
+  fullName: MarketDataCollector.Application.Pipeline
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Pipeline
+    name: Pipeline
+    href: MarketDataCollector.Application.Pipeline.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Pipeline
+    name: Pipeline
+    href: MarketDataCollector.Application.Pipeline.html
+- uid: MarketDataCollector.Domain.Events
+  commentId: N:MarketDataCollector.Domain.Events
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Events
+  nameWithType: MarketDataCollector.Domain.Events
+  fullName: MarketDataCollector.Domain.Events
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+- uid: MarketDataCollector.Application.Pipeline.ValidationResult
+  commentId: T:MarketDataCollector.Application.Pipeline.ValidationResult
+  parent: MarketDataCollector.Application.Pipeline
+  href: MarketDataCollector.Application.Pipeline.ValidationResult.html
+  name: ValidationResult
+  nameWithType: ValidationResult
+  fullName: MarketDataCollector.Application.Pipeline.ValidationResult
+- uid: MarketDataCollector.Application.Pipeline.IEventValidator.Validate*
+  commentId: Overload:MarketDataCollector.Application.Pipeline.IEventValidator.Validate
+  href: MarketDataCollector.Application.Pipeline.IEventValidator.html#MarketDataCollector_Application_Pipeline_IEventValidator_Validate_MarketDataCollector_Domain_Events_MarketEvent__
+  name: Validate
+  nameWithType: IEventValidator.Validate
+  fullName: MarketDataCollector.Application.Pipeline.IEventValidator.Validate

@@ -1,0 +1,885 @@
+### YamlMime:ManagedReference
+items:
+- uid: MarketDataCollector.Storage.Archival.ArchivalStorageService
+  commentId: T:MarketDataCollector.Storage.Archival.ArchivalStorageService
+  id: ArchivalStorageService
+  parent: MarketDataCollector.Storage.Archival
+  children:
+  - MarketDataCollector.Storage.Archival.ArchivalStorageService.#ctor(System.String,MarketDataCollector.Storage.Interfaces.IStorageSink,MarketDataCollector.Storage.Archival.ArchivalStorageOptions)
+  - MarketDataCollector.Storage.Archival.ArchivalStorageService.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Archival.ArchivalStorageService.DisposeAsync
+  - MarketDataCollector.Storage.Archival.ArchivalStorageService.FlushAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Storage.Archival.ArchivalStorageService.GetStats
+  - MarketDataCollector.Storage.Archival.ArchivalStorageService.InitializeAsync(System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: ArchivalStorageService
+  nameWithType: ArchivalStorageService
+  fullName: MarketDataCollector.Storage.Archival.ArchivalStorageService
+  type: Class
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Archival/ArchivalStorageService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: ArchivalStorageService
+    path: ../../src/MarketDataCollector.Storage/Archival/ArchivalStorageService.cs
+    startLine: 14
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Archival
+  summary: >-
+    Archival-first storage service with Write-Ahead Logging for crash-safe persistence.
+
+    Implements the storage pipeline pattern: WAL -&gt; Buffer -&gt; Primary Storage -&gt; Archive.
+  example: []
+  syntax:
+    content: 'public sealed class ArchivalStorageService : IStorageSink, IAsyncDisposable, IFlushable'
+    content.vb: Public NotInheritable Class ArchivalStorageService Implements IStorageSink, IAsyncDisposable, IFlushable
+  inheritance:
+  - System.Object
+  implements:
+  - MarketDataCollector.Storage.Interfaces.IStorageSink
+  - System.IAsyncDisposable
+  - MarketDataCollector.Application.Services.IFlushable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MarketDataCollector.Storage.Archival.ArchivalStorageService.#ctor(System.String,MarketDataCollector.Storage.Interfaces.IStorageSink,MarketDataCollector.Storage.Archival.ArchivalStorageOptions)
+  commentId: M:MarketDataCollector.Storage.Archival.ArchivalStorageService.#ctor(System.String,MarketDataCollector.Storage.Interfaces.IStorageSink,MarketDataCollector.Storage.Archival.ArchivalStorageOptions)
+  id: '#ctor(System.String,MarketDataCollector.Storage.Interfaces.IStorageSink,MarketDataCollector.Storage.Archival.ArchivalStorageOptions)'
+  parent: MarketDataCollector.Storage.Archival.ArchivalStorageService
+  langs:
+  - csharp
+  - vb
+  name: ArchivalStorageService(string, IStorageSink, ArchivalStorageOptions?)
+  nameWithType: ArchivalStorageService.ArchivalStorageService(string, IStorageSink, ArchivalStorageOptions?)
+  fullName: MarketDataCollector.Storage.Archival.ArchivalStorageService.ArchivalStorageService(string, MarketDataCollector.Storage.Interfaces.IStorageSink, MarketDataCollector.Storage.Archival.ArchivalStorageOptions?)
+  type: Constructor
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Archival/ArchivalStorageService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: .ctor
+    path: ../../src/MarketDataCollector.Storage/Archival/ArchivalStorageService.cs
+    startLine: 30
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Archival
+  syntax:
+    content: public ArchivalStorageService(string dataRoot, IStorageSink primaryStorage, ArchivalStorageOptions? options = null)
+    parameters:
+    - id: dataRoot
+      type: System.String
+    - id: primaryStorage
+      type: MarketDataCollector.Storage.Interfaces.IStorageSink
+    - id: options
+      type: MarketDataCollector.Storage.Archival.ArchivalStorageOptions
+    content.vb: Public Sub New(dataRoot As String, primaryStorage As IStorageSink, options As ArchivalStorageOptions = Nothing)
+  overload: MarketDataCollector.Storage.Archival.ArchivalStorageService.#ctor*
+  nameWithType.vb: ArchivalStorageService.New(String, IStorageSink, ArchivalStorageOptions)
+  fullName.vb: MarketDataCollector.Storage.Archival.ArchivalStorageService.New(String, MarketDataCollector.Storage.Interfaces.IStorageSink, MarketDataCollector.Storage.Archival.ArchivalStorageOptions)
+  name.vb: New(String, IStorageSink, ArchivalStorageOptions)
+- uid: MarketDataCollector.Storage.Archival.ArchivalStorageService.InitializeAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Archival.ArchivalStorageService.InitializeAsync(System.Threading.CancellationToken)
+  id: InitializeAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Archival.ArchivalStorageService
+  langs:
+  - csharp
+  - vb
+  name: InitializeAsync(CancellationToken)
+  nameWithType: ArchivalStorageService.InitializeAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Archival.ArchivalStorageService.InitializeAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Archival/ArchivalStorageService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: InitializeAsync
+    path: ../../src/MarketDataCollector.Storage/Archival/ArchivalStorageService.cs
+    startLine: 45
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Archival
+  summary: Initialize the service and recover any uncommitted data.
+  example: []
+  syntax:
+    content: public Task InitializeAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function InitializeAsync(ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Storage.Archival.ArchivalStorageService.InitializeAsync*
+- uid: MarketDataCollector.Storage.Archival.ArchivalStorageService.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Archival.ArchivalStorageService.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  id: AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Archival.ArchivalStorageService
+  langs:
+  - csharp
+  - vb
+  name: AppendAsync(MarketEvent, CancellationToken)
+  nameWithType: ArchivalStorageService.AppendAsync(MarketEvent, CancellationToken)
+  fullName: MarketDataCollector.Storage.Archival.ArchivalStorageService.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Archival/ArchivalStorageService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: AppendAsync
+    path: ../../src/MarketDataCollector.Storage/Archival/ArchivalStorageService.cs
+    startLine: 62
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Archival
+  example: []
+  syntax:
+    content: public ValueTask AppendAsync(MarketEvent evt, CancellationToken ct = default)
+    parameters:
+    - id: evt
+      type: MarketDataCollector.Domain.Events.MarketEvent
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.ValueTask
+    content.vb: Public Function AppendAsync(evt As MarketEvent, ct As CancellationToken = Nothing) As ValueTask
+  overload: MarketDataCollector.Storage.Archival.ArchivalStorageService.AppendAsync*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.IStorageSink.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+- uid: MarketDataCollector.Storage.Archival.ArchivalStorageService.FlushAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Archival.ArchivalStorageService.FlushAsync(System.Threading.CancellationToken)
+  id: FlushAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Archival.ArchivalStorageService
+  langs:
+  - csharp
+  - vb
+  name: FlushAsync(CancellationToken)
+  nameWithType: ArchivalStorageService.FlushAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Archival.ArchivalStorageService.FlushAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Archival/ArchivalStorageService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: FlushAsync
+    path: ../../src/MarketDataCollector.Storage/Archival/ArchivalStorageService.cs
+    startLine: 86
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Archival
+  example: []
+  syntax:
+    content: public Task FlushAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function FlushAsync(ct As CancellationToken = Nothing) As Task
+  overload: MarketDataCollector.Storage.Archival.ArchivalStorageService.FlushAsync*
+  implements:
+  - MarketDataCollector.Storage.Interfaces.IStorageSink.FlushAsync(System.Threading.CancellationToken)
+  - MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+- uid: MarketDataCollector.Storage.Archival.ArchivalStorageService.GetStats
+  commentId: M:MarketDataCollector.Storage.Archival.ArchivalStorageService.GetStats
+  id: GetStats
+  parent: MarketDataCollector.Storage.Archival.ArchivalStorageService
+  langs:
+  - csharp
+  - vb
+  name: GetStats()
+  nameWithType: ArchivalStorageService.GetStats()
+  fullName: MarketDataCollector.Storage.Archival.ArchivalStorageService.GetStats()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Archival/ArchivalStorageService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: GetStats
+    path: ../../src/MarketDataCollector.Storage/Archival/ArchivalStorageService.cs
+    startLine: 203
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Archival
+  summary: Get storage statistics.
+  example: []
+  syntax:
+    content: public ArchivalStorageStats GetStats()
+    return:
+      type: MarketDataCollector.Storage.Archival.ArchivalStorageStats
+    content.vb: Public Function GetStats() As ArchivalStorageStats
+  overload: MarketDataCollector.Storage.Archival.ArchivalStorageService.GetStats*
+- uid: MarketDataCollector.Storage.Archival.ArchivalStorageService.DisposeAsync
+  commentId: M:MarketDataCollector.Storage.Archival.ArchivalStorageService.DisposeAsync
+  id: DisposeAsync
+  parent: MarketDataCollector.Storage.Archival.ArchivalStorageService
+  langs:
+  - csharp
+  - vb
+  name: DisposeAsync()
+  nameWithType: ArchivalStorageService.DisposeAsync()
+  fullName: MarketDataCollector.Storage.Archival.ArchivalStorageService.DisposeAsync()
+  type: Method
+  source:
+    remote:
+      path: src/MarketDataCollector.Storage/Archival/ArchivalStorageService.cs
+      branch: copilot/debug-data-collector-actions
+      repo: https://github.com/rodoHasArrived/Market-Data-Collector
+    id: DisposeAsync
+    path: ../../src/MarketDataCollector.Storage/Archival/ArchivalStorageService.cs
+    startLine: 211
+  assemblies:
+  - MarketDataCollector.Storage
+  namespace: MarketDataCollector.Storage.Archival
+  summary: >-
+    Performs application-defined tasks associated with freeing, releasing, or
+
+    resetting unmanaged resources asynchronously.
+  example: []
+  syntax:
+    content: public ValueTask DisposeAsync()
+    return:
+      type: System.Threading.Tasks.ValueTask
+      description: A task that represents the asynchronous dispose operation.
+    content.vb: Public Function DisposeAsync() As ValueTask
+  overload: MarketDataCollector.Storage.Archival.ArchivalStorageService.DisposeAsync*
+  implements:
+  - System.IAsyncDisposable.DisposeAsync
+references:
+- uid: MarketDataCollector.Storage.Archival
+  commentId: N:MarketDataCollector.Storage.Archival
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Archival
+  nameWithType: MarketDataCollector.Storage.Archival
+  fullName: MarketDataCollector.Storage.Archival
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Archival
+    name: Archival
+    href: MarketDataCollector.Storage.Archival.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Archival
+    name: Archival
+    href: MarketDataCollector.Storage.Archival.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MarketDataCollector.Storage.Interfaces.IStorageSink
+  commentId: T:MarketDataCollector.Storage.Interfaces.IStorageSink
+  parent: MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.Storage.Interfaces.IStorageSink.html
+  name: IStorageSink
+  nameWithType: IStorageSink
+  fullName: MarketDataCollector.Storage.Interfaces.IStorageSink
+- uid: System.IAsyncDisposable
+  commentId: T:System.IAsyncDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
+  name: IAsyncDisposable
+  nameWithType: IAsyncDisposable
+  fullName: System.IAsyncDisposable
+- uid: MarketDataCollector.Application.Services.IFlushable
+  commentId: T:MarketDataCollector.Application.Services.IFlushable
+  parent: MarketDataCollector.Application.Services
+  href: MarketDataCollector.Application.Services.IFlushable.html
+  name: IFlushable
+  nameWithType: IFlushable
+  fullName: MarketDataCollector.Application.Services.IFlushable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MarketDataCollector.Storage.Interfaces
+  commentId: N:MarketDataCollector.Storage.Interfaces
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Storage.Interfaces
+  nameWithType: MarketDataCollector.Storage.Interfaces
+  fullName: MarketDataCollector.Storage.Interfaces
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Interfaces
+    name: Interfaces
+    href: MarketDataCollector.Storage.Interfaces.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Storage
+    name: Storage
+    href: MarketDataCollector.Storage.html
+  - name: .
+  - uid: MarketDataCollector.Storage.Interfaces
+    name: Interfaces
+    href: MarketDataCollector.Storage.Interfaces.html
+- uid: MarketDataCollector.Application.Services
+  commentId: N:MarketDataCollector.Application.Services
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Application.Services
+  nameWithType: MarketDataCollector.Application.Services
+  fullName: MarketDataCollector.Application.Services
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Application
+    name: Application
+    href: MarketDataCollector.Application.html
+  - name: .
+  - uid: MarketDataCollector.Application.Services
+    name: Services
+    href: MarketDataCollector.Application.Services.html
+- uid: MarketDataCollector.Storage.Archival.ArchivalStorageService.#ctor*
+  commentId: Overload:MarketDataCollector.Storage.Archival.ArchivalStorageService.#ctor
+  href: MarketDataCollector.Storage.Archival.ArchivalStorageService.html#MarketDataCollector_Storage_Archival_ArchivalStorageService__ctor_System_String_MarketDataCollector_Storage_Interfaces_IStorageSink_MarketDataCollector_Storage_Archival_ArchivalStorageOptions_
+  name: ArchivalStorageService
+  nameWithType: ArchivalStorageService.ArchivalStorageService
+  fullName: MarketDataCollector.Storage.Archival.ArchivalStorageService.ArchivalStorageService
+  nameWithType.vb: ArchivalStorageService.New
+  fullName.vb: MarketDataCollector.Storage.Archival.ArchivalStorageService.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MarketDataCollector.Storage.Archival.ArchivalStorageOptions
+  commentId: T:MarketDataCollector.Storage.Archival.ArchivalStorageOptions
+  parent: MarketDataCollector.Storage.Archival
+  href: MarketDataCollector.Storage.Archival.ArchivalStorageOptions.html
+  name: ArchivalStorageOptions
+  nameWithType: ArchivalStorageOptions
+  fullName: MarketDataCollector.Storage.Archival.ArchivalStorageOptions
+- uid: MarketDataCollector.Storage.Archival.ArchivalStorageService.InitializeAsync*
+  commentId: Overload:MarketDataCollector.Storage.Archival.ArchivalStorageService.InitializeAsync
+  href: MarketDataCollector.Storage.Archival.ArchivalStorageService.html#MarketDataCollector_Storage_Archival_ArchivalStorageService_InitializeAsync_System_Threading_CancellationToken_
+  name: InitializeAsync
+  nameWithType: ArchivalStorageService.InitializeAsync
+  fullName: MarketDataCollector.Storage.Archival.ArchivalStorageService.InitializeAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MarketDataCollector.Storage.Archival.ArchivalStorageService.AppendAsync*
+  commentId: Overload:MarketDataCollector.Storage.Archival.ArchivalStorageService.AppendAsync
+  href: MarketDataCollector.Storage.Archival.ArchivalStorageService.html#MarketDataCollector_Storage_Archival_ArchivalStorageService_AppendAsync_MarketDataCollector_Domain_Events_MarketEvent_System_Threading_CancellationToken_
+  name: AppendAsync
+  nameWithType: ArchivalStorageService.AppendAsync
+  fullName: MarketDataCollector.Storage.Archival.ArchivalStorageService.AppendAsync
+- uid: MarketDataCollector.Storage.Interfaces.IStorageSink.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Interfaces.IStorageSink.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Interfaces.IStorageSink
+  isExternal: true
+  href: MarketDataCollector.Storage.Interfaces.IStorageSink.html#MarketDataCollector_Storage_Interfaces_IStorageSink_AppendAsync_MarketDataCollector_Domain_Events_MarketEvent_System_Threading_CancellationToken_
+  name: AppendAsync(MarketEvent, CancellationToken)
+  nameWithType: IStorageSink.AppendAsync(MarketEvent, CancellationToken)
+  fullName: MarketDataCollector.Storage.Interfaces.IStorageSink.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.IStorageSink.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+    name: AppendAsync
+    href: MarketDataCollector.Storage.Interfaces.IStorageSink.html#MarketDataCollector_Storage_Interfaces_IStorageSink_AppendAsync_MarketDataCollector_Domain_Events_MarketEvent_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.IStorageSink.AppendAsync(MarketDataCollector.Domain.Events.MarketEvent,System.Threading.CancellationToken)
+    name: AppendAsync
+    href: MarketDataCollector.Storage.Interfaces.IStorageSink.html#MarketDataCollector_Storage_Interfaces_IStorageSink_AppendAsync_MarketDataCollector_Domain_Events_MarketEvent_System_Threading_CancellationToken_
+  - name: (
+  - uid: MarketDataCollector.Domain.Events.MarketEvent
+    name: MarketEvent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Domain.Events.MarketEvent
+  commentId: T:MarketDataCollector.Domain.Events.MarketEvent
+  parent: MarketDataCollector.Domain.Events
+  href: MarketDataCollector.Domain.Events.MarketEvent.html
+  name: MarketEvent
+  nameWithType: MarketEvent
+  fullName: MarketDataCollector.Domain.Events.MarketEvent
+- uid: System.Threading.Tasks.ValueTask
+  commentId: T:System.Threading.Tasks.ValueTask
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask
+  name: ValueTask
+  nameWithType: ValueTask
+  fullName: System.Threading.Tasks.ValueTask
+- uid: MarketDataCollector.Domain.Events
+  commentId: N:MarketDataCollector.Domain.Events
+  href: MarketDataCollector.html
+  name: MarketDataCollector.Domain.Events
+  nameWithType: MarketDataCollector.Domain.Events
+  fullName: MarketDataCollector.Domain.Events
+  spec.csharp:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+  spec.vb:
+  - uid: MarketDataCollector
+    name: MarketDataCollector
+    href: MarketDataCollector.html
+  - name: .
+  - uid: MarketDataCollector.Domain
+    name: Domain
+    href: MarketDataCollector.Domain.html
+  - name: .
+  - uid: MarketDataCollector.Domain.Events
+    name: Events
+    href: MarketDataCollector.Domain.Events.html
+- uid: MarketDataCollector.Storage.Archival.ArchivalStorageService.FlushAsync*
+  commentId: Overload:MarketDataCollector.Storage.Archival.ArchivalStorageService.FlushAsync
+  href: MarketDataCollector.Storage.Archival.ArchivalStorageService.html#MarketDataCollector_Storage_Archival_ArchivalStorageService_FlushAsync_System_Threading_CancellationToken_
+  name: FlushAsync
+  nameWithType: ArchivalStorageService.FlushAsync
+  fullName: MarketDataCollector.Storage.Archival.ArchivalStorageService.FlushAsync
+- uid: MarketDataCollector.Storage.Interfaces.IStorageSink.FlushAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Storage.Interfaces.IStorageSink.FlushAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Storage.Interfaces.IStorageSink
+  isExternal: true
+  href: MarketDataCollector.Storage.Interfaces.IStorageSink.html#MarketDataCollector_Storage_Interfaces_IStorageSink_FlushAsync_System_Threading_CancellationToken_
+  name: FlushAsync(CancellationToken)
+  nameWithType: IStorageSink.FlushAsync(CancellationToken)
+  fullName: MarketDataCollector.Storage.Interfaces.IStorageSink.FlushAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Storage.Interfaces.IStorageSink.FlushAsync(System.Threading.CancellationToken)
+    name: FlushAsync
+    href: MarketDataCollector.Storage.Interfaces.IStorageSink.html#MarketDataCollector_Storage_Interfaces_IStorageSink_FlushAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Storage.Interfaces.IStorageSink.FlushAsync(System.Threading.CancellationToken)
+    name: FlushAsync
+    href: MarketDataCollector.Storage.Interfaces.IStorageSink.html#MarketDataCollector_Storage_Interfaces_IStorageSink_FlushAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+  commentId: M:MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+  parent: MarketDataCollector.Application.Services.IFlushable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: FlushAsync(CancellationToken)
+  nameWithType: IFlushable.FlushAsync(CancellationToken)
+  fullName: MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+    name: FlushAsync
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: MarketDataCollector.Application.Services.IFlushable.FlushAsync(System.Threading.CancellationToken)
+    name: FlushAsync
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: MarketDataCollector.Storage.Archival.ArchivalStorageService.GetStats*
+  commentId: Overload:MarketDataCollector.Storage.Archival.ArchivalStorageService.GetStats
+  href: MarketDataCollector.Storage.Archival.ArchivalStorageService.html#MarketDataCollector_Storage_Archival_ArchivalStorageService_GetStats
+  name: GetStats
+  nameWithType: ArchivalStorageService.GetStats
+  fullName: MarketDataCollector.Storage.Archival.ArchivalStorageService.GetStats
+- uid: MarketDataCollector.Storage.Archival.ArchivalStorageStats
+  commentId: T:MarketDataCollector.Storage.Archival.ArchivalStorageStats
+  parent: MarketDataCollector.Storage.Archival
+  href: MarketDataCollector.Storage.Archival.ArchivalStorageStats.html
+  name: ArchivalStorageStats
+  nameWithType: ArchivalStorageStats
+  fullName: MarketDataCollector.Storage.Archival.ArchivalStorageStats
+- uid: MarketDataCollector.Storage.Archival.ArchivalStorageService.DisposeAsync*
+  commentId: Overload:MarketDataCollector.Storage.Archival.ArchivalStorageService.DisposeAsync
+  href: MarketDataCollector.Storage.Archival.ArchivalStorageService.html#MarketDataCollector_Storage_Archival_ArchivalStorageService_DisposeAsync
+  name: DisposeAsync
+  nameWithType: ArchivalStorageService.DisposeAsync
+  fullName: MarketDataCollector.Storage.Archival.ArchivalStorageService.DisposeAsync
+- uid: System.IAsyncDisposable.DisposeAsync
+  commentId: M:System.IAsyncDisposable.DisposeAsync
+  parent: System.IAsyncDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  name: DisposeAsync()
+  nameWithType: IAsyncDisposable.DisposeAsync()
+  fullName: System.IAsyncDisposable.DisposeAsync()
+  spec.csharp:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
