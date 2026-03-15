@@ -1,7 +1,7 @@
 # Documentation Health Dashboard
 
 > Auto-generated documentation health report. Do not edit manually.
-> Last updated: 2026-03-15T05:40:50.121186+00:00
+> Last updated: 2026-03-15T06:21:38.609228+00:00
 
 ## Overall Health Score
 
@@ -15,12 +15,12 @@
 | Metric | Value |
 |--------|-------|
 | Total documentation files | 178 |
-| Total lines | 74,401 |
-| Average file size (lines) | 418.0 |
-| Orphaned files | 43 |
+| Total lines | 74,441 |
+| Average file size (lines) | 418.2 |
+| Orphaned files | 42 |
 | Files without headings | 1 |
 | Stale files (>90 days) | 0 |
-| TODO/FIXME markers | 153 |
+| TODO/FIXME markers | 159 |
 | **Health score** | **90/100** |
 
 ### Score Breakdown
@@ -65,7 +65,7 @@ These files are not linked from any other Markdown file in the repository:
 - `.github/workflows/TESTING_AI_SYNC.md`
 - `benchmarks/BOTTLENECK_REPORT.md`
 - `docs/architecture/crystallized-storage-format.md`
-- ... and 23 more
+- ... and 22 more
 
 ## Trend
 
@@ -73,7 +73,7 @@ These files are not linked from any other Markdown file in the repository:
 
 | Date | Score | Files | Orphans | Stale |
 |------|-------|-------|---------|-------|
-| 2026-03-15 | 90 | 178 | 43 | 0 |
+| 2026-03-15 | 90 | 178 | 42 | 0 |
 
 ---
 
