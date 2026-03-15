@@ -162,10 +162,15 @@ public sealed class JsonlStorageSink : IStorageSink
 
         if (_batchOptions.Enabled)
         {
+            // Offset the initial delay by the flush interval plus 2 seconds so this timer does
+            // not fire simultaneously with EventPipeline's PeriodicFlushAsync (which also
+            // defaults to 5 s). Concurrent flushes on the same _flushGate semaphore
+            // cause periodic latency spikes; staggering the first fire eliminates this.
+            var initialDelay = _batchOptions.FlushInterval + TimeSpan.FromSeconds(2);
             _flushTimer = new Timer(
                 _ => _ = FlushAllBuffersSafelyAsync(),
                 null,
-                _batchOptions.FlushInterval,
+                initialDelay,
                 _batchOptions.FlushInterval);
         }
 
