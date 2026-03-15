@@ -93,12 +93,18 @@ public sealed class DualPathEventPipeline : IMarketEventPublisher, IBackpressure
     /// <param name="batchDrainSize">
     /// Maximum events drained per consumer iteration.  Default is 256.
     /// </param>
+    /// <param name="startConsumers">
+    /// When <see langword="false"/> the background consumer tasks are not started.
+    /// Intended for unit tests that need to inspect ring buffer state without a
+    /// concurrent consumer draining it.  Defaults to <see langword="true"/>.
+    /// </param>
     /// <param name="logger">Optional logger.</param>
     public DualPathEventPipeline(
         EventPipeline slowPath,
         SymbolTable symbolTable,
         int ringBufferCapacity = 4_096,
         int batchDrainSize = 256,
+        bool startConsumers = true,
         ILogger<DualPathEventPipeline>? logger = null)
     {
         _slowPath = slowPath ?? throw new ArgumentNullException(nameof(slowPath));
@@ -119,18 +125,28 @@ public sealed class DualPathEventPipeline : IMarketEventPublisher, IBackpressure
         _tradeBatch = new RawTradeEvent[batchDrainSize];
         _quoteBatch = new RawQuoteEvent[batchDrainSize];
 
-        // Start one long-running consumer per ring buffer.
-        _tradeConsumer = Task.Factory.StartNew(
-            ConsumeTradesAsync,
-            _cts.Token,
-            TaskCreationOptions.LongRunning,
-            TaskScheduler.Default).Unwrap();
+        if (startConsumers)
+        {
+            // Start one long-running consumer per ring buffer.
+            _tradeConsumer = Task.Factory.StartNew(
+                ConsumeTradesAsync,
+                _cts.Token,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default).Unwrap();
 
-        _quoteConsumer = Task.Factory.StartNew(
-            ConsumeQuotesAsync,
-            _cts.Token,
-            TaskCreationOptions.LongRunning,
-            TaskScheduler.Default).Unwrap();
+            _quoteConsumer = Task.Factory.StartNew(
+                ConsumeQuotesAsync,
+                _cts.Token,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Default).Unwrap();
+        }
+        else
+        {
+            // Task.CompletedTask is safe to await in DisposeAsync — Task.WhenAll
+            // on already-completed tasks returns immediately.
+            _tradeConsumer = Task.CompletedTask;
+            _quoteConsumer = Task.CompletedTask;
+        }
     }
 
     // -------------------------------------------------------------------------

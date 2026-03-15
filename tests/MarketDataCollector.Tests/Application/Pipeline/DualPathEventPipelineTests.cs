@@ -165,8 +165,8 @@ public class DualPathEventPipelineTests : IAsyncLifetime
     [Fact]
     public async Task TryPublishTrade_WhenBufferFull_ReturnsFalse()
     {
-        // Fill the ring buffer completely
-        await using var tinyPipeline = new DualPathEventPipeline(_slowPath, _symbolTable, ringBufferCapacity: 2, batchDrainSize: 1);
+        // Fill the ring buffer completely (consumers disabled so they cannot race to drain it)
+        await using var tinyPipeline = new DualPathEventPipeline(_slowPath, _symbolTable, ringBufferCapacity: 2, batchDrainSize: 1, startConsumers: false);
         var symbolId = _symbolTable.GetOrAdd("SPY");
 
         // Fill the buffer (capacity rounds up to power of 2 = 2)
