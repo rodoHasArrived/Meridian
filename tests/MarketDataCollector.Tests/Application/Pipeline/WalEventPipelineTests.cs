@@ -564,7 +564,8 @@ internal sealed class CountingFlushSink : IStorageSink
 
     public ValueTask AppendAsync(MarketEvent evt, CancellationToken ct = default)
     {
-        lock (_lock) { _receivedEvents.Add(evt); }
+        lock (_lock)
+        { _receivedEvents.Add(evt); }
         return ValueTask.CompletedTask;
     }
 
