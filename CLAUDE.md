@@ -190,9 +190,12 @@ If the issue is tracked on GitHub, label it `ai-known-error` so the intake workf
 Market-Data-Collector/
 ├── .claude/
 │   ├── skills/
+│   │   ├── _shared/
+│   │   │   └── project-context.md
 │   │   ├── mdc-brainstorm/
 │   │   │   ├── references/
 │   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
 │   │   │   └── SKILL.md
 │   │   ├── mdc-code-review/
 │   │   │   ├── agents/
@@ -205,6 +208,7 @@ Market-Data-Collector/
 │   │   │   │   ...
 │   │   │   ├── scripts/  # Automation scripts
 │   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
 │   │   │   └── SKILL.md
 │   │   └── skills_provider.py
 │   └── settings.local.json
@@ -269,6 +273,7 @@ Market-Data-Collector/
 │   │   ├── reusable-dotnet-build.yml
 │   │   ├── scheduled-maintenance.yml
 │   │   ├── security.yml
+│   │   ├── skill-evals.yml
 │   │   ├── SKIPPED_JOBS_EXPLAINED.md
 │   │   ├── stale.yml
 │   │   ├── test-matrix.yml
