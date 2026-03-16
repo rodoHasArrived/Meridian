@@ -1,3 +1,5 @@
+using System.Windows.Media;
+
 namespace MarketDataCollector.Wpf.Models;
 
 /// <summary>
@@ -22,6 +24,18 @@ public sealed class SymbolViewModel
     public string TradesText => SubscribeTrades ? "On" : "Off";
     public string DepthText => SubscribeDepth ? "On" : "Off";
     public string StatusText => SubscribeTrades || SubscribeDepth ? "Active" : "Inactive";
+
+    public SolidColorBrush TradesStatusColor => SubscribeTrades
+        ? new SolidColorBrush(Color.FromRgb(63, 185, 80))
+        : new SolidColorBrush(Color.FromRgb(139, 148, 158));
+
+    public SolidColorBrush DepthStatusColor => SubscribeDepth
+        ? new SolidColorBrush(Color.FromRgb(63, 185, 80))
+        : new SolidColorBrush(Color.FromRgb(139, 148, 158));
+
+    public SolidColorBrush StatusBackground => SubscribeTrades || SubscribeDepth
+        ? new SolidColorBrush(Color.FromArgb(40, 63, 185, 80))
+        : new SolidColorBrush(Color.FromArgb(40, 139, 148, 158));
 }
 
 /// <summary>
@@ -32,6 +46,24 @@ public sealed class WatchlistInfo
     public string Id { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
     public string SymbolCount { get; set; } = string.Empty;
-    public string Color { get; set; } = "#58A6FF";
+    public string? Color { get; set; } = "#58A6FF";
     public bool IsPinned { get; set; }
+
+    public SolidColorBrush ColorBrush
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(Color))
+                return new SolidColorBrush(Colors.Gray);
+            try
+            {
+                var wc = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(Color);
+                return new SolidColorBrush(wc);
+            }
+            catch
+            {
+                return new SolidColorBrush(Colors.Gray);
+            }
+        }
+    }
 }
