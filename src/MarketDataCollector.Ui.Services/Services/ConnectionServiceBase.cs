@@ -149,21 +149,43 @@ public abstract class ConnectionServiceBase : IDisposable
 
     /// <summary>
     /// Initiates a connection to the provider.
+    /// Performs a health check against the configured endpoint and returns false if it fails.
     /// </summary>
-    public Task<bool> ConnectAsync(string provider, CancellationToken ct = default)
+    public async Task<bool> ConnectAsync(string provider, CancellationToken ct = default)
     {
         _currentProvider = provider;
-        SetState(ConnectionState.Connected);
-        _connectedAt = DateTime.UtcNow;
-        _consecutiveFailures = 0;
-        _reconnectAttempts = 0;
+        SetState(ConnectionState.Connecting);
 
-        if (!_isMonitoring)
+        try
         {
-            StartMonitoring();
-        }
+            var isHealthy = await PerformHealthCheckCoreAsync(ct).ConfigureAwait(false);
 
-        return Task.FromResult(true);
+            if (!isHealthy)
+            {
+                SetState(ConnectionState.Disconnected);
+                return false;
+            }
+
+            SetState(ConnectionState.Connected);
+            _connectedAt = DateTime.UtcNow;
+            _consecutiveFailures = 0;
+            _reconnectAttempts = 0;
+
+            if (!_isMonitoring)
+            {
+                StartMonitoring();
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            LogWarning("Connection attempt failed",
+                ("Provider", provider),
+                ("Error", ex.Message));
+            SetState(ConnectionState.Disconnected);
+            return false;
+        }
     }
 
     /// <summary>

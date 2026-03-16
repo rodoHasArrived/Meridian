@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
 using Microsoft.Extensions.DependencyInjection;
+using MarketDataCollector.Ui.Services;
 using MarketDataCollector.Ui.Services.Contracts;
 using MarketDataCollector.Ui.Services.Services;
 using MarketDataCollector.Wpf.Contracts;
@@ -21,6 +22,13 @@ public sealed class NavigationService : NavigationServiceBase, INavigationServic
 
     private Frame? _frame;
     private IServiceProvider? _serviceProvider;
+
+    /// <summary>
+    /// Lazy-initialized fallback service provider using WPF singleton instances.
+    /// Used when <see cref="SetServiceProvider"/> has not been called (e.g., in tests).
+    /// </summary>
+    private static readonly Lazy<IServiceProvider> _fallbackServiceProvider =
+        new(static () => BuildFallbackServiceProvider());
 
     /// <summary>
     /// Gets the singleton instance of the NavigationService.
@@ -196,15 +204,61 @@ public sealed class NavigationService : NavigationServiceBase, INavigationServic
     }
 
     /// <summary>
-    /// Creates a page instance using the DI container if available, falling back to Activator.
+    /// Creates a page instance using the DI container if available, falling back to singleton-based
+    /// service resolution when <see cref="SetServiceProvider"/> has not been called.
     /// </summary>
     private object? CreatePage(Type pageType)
     {
-        if (_serviceProvider != null)
-        {
-            return _serviceProvider.GetService(pageType) ?? ActivatorUtilities.CreateInstance(_serviceProvider, pageType);
-        }
+        var serviceProvider = _serviceProvider ?? _fallbackServiceProvider.Value;
+        return serviceProvider.GetService(pageType)
+            ?? ActivatorUtilities.CreateInstance(serviceProvider, pageType);
+    }
 
-        return Activator.CreateInstance(pageType);
+    /// <summary>
+    /// Builds a minimal fallback <see cref="IServiceProvider"/> from WPF singleton instances.
+    /// Mirrors the service registrations in App.xaml.cs so that page constructors can be
+    /// satisfied without a real DI container (e.g., in unit tests).
+    /// </summary>
+    private static IServiceProvider BuildFallbackServiceProvider()
+    {
+        var services = new ServiceCollection();
+
+        // Core services (interface + concrete)
+        services.AddSingleton<IConnectionService>(_ => ConnectionService.Instance);
+        services.AddSingleton(_ => ConnectionService.Instance);
+        services.AddSingleton<INavigationService>(_ => NavigationService.Instance);
+        services.AddSingleton(_ => NavigationService.Instance);
+        services.AddSingleton<ILoggingService>(_ => LoggingService.Instance);
+        services.AddSingleton(_ => LoggingService.Instance);
+
+        // Platform services
+        services.AddSingleton(_ => ConfigService.Instance);
+        services.AddSingleton(_ => ThemeService.Instance);
+        services.AddSingleton(_ => NotificationService.Instance);
+        services.AddSingleton(_ => KeyboardShortcutService.Instance);
+        services.AddSingleton(_ => MessagingService.Instance);
+        services.AddSingleton(_ => StatusService.Instance);
+        services.AddSingleton(_ => FirstRunService.Instance);
+
+        // Onboarding / workspace
+        services.AddSingleton(_ => OnboardingTourService.Instance);
+        services.AddSingleton(_ => WorkspaceService.Instance);
+        services.AddSingleton(_ => AlertService.Instance);
+
+        // Domain / feature services
+        services.AddSingleton(_ => BackendServiceManager.Instance);
+        services.AddSingleton(_ => WatchlistService.Instance);
+        services.AddSingleton(_ => ArchiveHealthService.Instance);
+        services.AddSingleton(_ => SchemaService.Instance);
+        services.AddSingleton(_ => AdminMaintenanceService.Instance);
+        services.AddSingleton<AdvancedAnalyticsServiceBase>(_ => new AdvancedAnalyticsServiceBase());
+        services.AddSingleton(_ => SearchService.Instance);
+
+        // Background / infrastructure
+        services.AddSingleton(_ => BackgroundTaskSchedulerService.Instance);
+        services.AddSingleton(_ => OfflineTrackingPersistenceService.Instance);
+        services.AddSingleton(_ => PendingOperationsQueueService.Instance);
+
+        return services.BuildServiceProvider();
     }
 }
