@@ -1181,6 +1181,25 @@ class SkillsProviderCli:
                 params[k] = v
         return result
 
+    @staticmethod
+    def _is_error_output(output: Any) -> bool:
+        """Heuristically detect scripts that signal failure via their output string.
+
+        Treats outputs starting with ``"Error:"``, ``"Error (exit"`` or ``"FAIL:"``
+        (case-insensitive, ignoring leading whitespace) as failures.
+        """
+        if not isinstance(output, str):
+            return False
+        stripped = output.lstrip()
+        lowered = stripped.lower()
+        if lowered.startswith("error:"):
+            return True
+        if lowered.startswith("error (exit"):
+            return True
+        if lowered.startswith("fail:"):
+            return True
+        return False
+
     def _cmd_run_script(
         self,
         skill: str,
@@ -1197,6 +1216,8 @@ class SkillsProviderCli:
             )
             return 1
         output, record = _timed_call(skill, script, fn, **params)
+        # Combine timed-call success with heuristic detection of error-signalling output.
+        success = record.success and not self._is_error_output(output)
         if as_json:
             print(
                 _json_mod.dumps(
@@ -1205,9 +1226,9 @@ class SkillsProviderCli:
             )
         else:
             print(output)
-            status = "OK" if record.success else "FAIL"
+            status = "OK" if success else "FAIL"
             print(f"\n[{record.duration_ms} ms | {status}]", file=sys.stderr)
-        return 0 if record.success else 1
+        return 0 if success else 1
 
     def _cmd_chain(
         self,
