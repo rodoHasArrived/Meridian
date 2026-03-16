@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
-using MarketDataCollector.Contracts.Domain.Events;
 using MarketDataCollector.Contracts.Store;
+using MarketDataCollector.Storage.Interfaces;
 
 namespace MarketDataCollector.Storage.Store;
 

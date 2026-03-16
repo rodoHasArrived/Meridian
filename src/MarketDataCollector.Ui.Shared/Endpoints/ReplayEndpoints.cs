@@ -4,6 +4,7 @@ using MarketDataCollector.Contracts.Domain;
 using MarketDataCollector.Contracts.Store;
 using MarketDataCollector.Domain.Events;
 using MarketDataCollector.Storage;
+using MarketDataCollector.Storage.Interfaces;
 using MarketDataCollector.Storage.Replay;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
