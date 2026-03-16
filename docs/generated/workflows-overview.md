@@ -4,7 +4,7 @@
 
 # GitHub Workflows Overview
 
-> Auto-generated on 2026-03-16 08:00:27 UTC
+> Auto-generated on 2026-03-16 08:03:59 UTC
 
 This document provides an overview of all GitHub Actions workflows in the repository.
 
@@ -22,6 +22,7 @@ This document provides an overview of all GitHub Actions workflows in the reposi
 | Desktop Builds | `desktop-builds.yml` | push, PR, manual |
 | Docker | `docker.yml` | push, PR, manual |
 | Documentation Automation | `documentation.yml` | push, PR, manual, scheduled |
+| Documentation Checks | `docs-check.yml` | push, PR, manual |
 | Export Project Artifact | `export-project-artifact.yml` | manual |
 | Labeling | `labeling.yml` | PR, manual |
 | Mark Stale Issues and PRs | `stale.yml` | manual, scheduled |
@@ -59,7 +60,7 @@ This document provides an overview of all GitHub Actions workflows in the reposi
 
 ## Workflow Count
 
-- **Total workflows:** 25
+- **Total workflows:** 26
 
 ---
 

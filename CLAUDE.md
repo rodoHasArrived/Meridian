@@ -251,6 +251,7 @@ Market-Data-Collector/
 │   │   ├── copilot-setup-steps.yml
 │   │   ├── desktop-builds.yml
 │   │   ├── docker.yml
+│   │   ├── docs-check.yml
 │   │   ├── documentation.yml
 │   │   ├── dotnet-desktop.yml
 │   │   ├── export-project-artifact.yml
