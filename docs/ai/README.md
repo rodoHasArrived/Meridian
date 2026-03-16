@@ -117,15 +117,58 @@ The repository has an automated error memory system to prevent recurring AI mist
 The `ai-repo-updater.py` script provides structured, machine-readable repository health analysis:
 
 ```bash
-make ai-audit            # Full audit (code, docs, tests, config, providers)
+make ai-audit            # Full audit (code, docs, tests, config, providers, AI docs)
 make ai-audit-code       # C#/F# convention violations only
 make ai-audit-docs       # Documentation quality only
 make ai-audit-tests      # Test coverage gaps only
+make ai-audit-ai-docs    # AI documentation freshness and drift
 make ai-verify           # Build + test + lint validation
 make ai-report           # Generate improvement report
 ```
 
 See [`CLAUDE.repo-updater.md`](claude/CLAUDE.repo-updater.md) for the full workflow guide.
+
+---
+
+## AI Documentation Maintenance Automation
+
+The `ai-docs-maintenance.py` script keeps AI documentation current as the codebase evolves. It detects stale content, validates cross-references, identifies drift between docs and code, and archives deprecated content.
+
+**Script:** `build/scripts/docs/ai-docs-maintenance.py`
+
+### Commands
+
+| Command | Purpose | Output |
+|---------|---------|--------|
+| `freshness` | Check staleness of all AI docs (60-day warning, 120-day critical) | JSON |
+| `drift` | Detect where docs diverge from code (provider counts, workflow counts, file counts) | JSON |
+| `validate-refs` | Check for broken internal links in AI docs | JSON |
+| `archive-stale` | Find deprecated docs to archive (use `--execute` to move files) | JSON |
+| `sync-report` | Generate a full markdown sync report | Markdown |
+| `full` | Run all checks combined | JSON |
+
+### Makefile Targets
+
+```bash
+make ai-docs-freshness       # Check AI doc freshness
+make ai-docs-drift           # Detect doc/code drift
+make ai-docs-sync-report     # Generate sync report (docs/generated/ai-docs-sync-report.md)
+make ai-docs-archive         # Preview archive candidates
+make ai-docs-archive-execute # Actually archive stale docs (moves files)
+```
+
+### CI Integration
+
+The **AI Documentation Health Check** job in [`.github/workflows/documentation.yml`](../../.github/workflows/documentation.yml) runs automatically on:
+- Every push to `main` that touches `docs/`, `src/`, or `.github/` files
+- Weekly schedule (Monday 03:00 UTC)
+- Manual workflow dispatch
+
+It produces a sync report artifact and publishes a health summary to the GitHub Actions step summary.
+
+### Claude Skill
+
+The `ai-docs-maintain` skill (registered in `.claude/skills/skills_provider.py`) exposes freshness, drift, and full checks as code-defined scripts for Claude agents.
 
 ---
 
