@@ -1,6 +1,10 @@
+> **AUTO-GENERATED — DO NOT EDIT**
+> This file is generated automatically. Manual edits will be overwritten.
+> See `docs/generated/README.md` for details on how generation works.
+
 # Provider Registry
 
-> Auto-generated on 2026-03-09 03:54:02 UTC
+> Auto-generated on 2026-03-16 04:06:52 UTC
 
 This document lists all data providers available in the Market Data Collector.
 
