@@ -52,8 +52,18 @@ try:
     from agent_framework import Skill, SkillResource, SkillScript, SkillsProvider
 
     _HAS_AGENT_FRAMEWORK = True
-except ImportError:
-    # Running as a standalone CLI — provide minimal no-op stubs so all
+except ImportError as exc:
+    # When imported as a library, fail fast with a clear error instead of
+    # silently substituting stubs that will cause confusing attribute errors
+    # later when using skills_provider.load_skill(...), read_skill_resource(...),
+    # etc.
+    if __name__ != "__main__":
+        raise ImportError(
+            "agent_framework is required to import '.claude.skills.skills_provider'. "
+            "Install or enable 'agent_framework' to use the skills_provider API."
+        ) from exc
+
+    # Running as a standalone CLI (__main__) — provide minimal no-op stubs so all
     # decorator registrations and constructor calls succeed without
     # agent_framework being installed.
     _HAS_AGENT_FRAMEWORK = False
