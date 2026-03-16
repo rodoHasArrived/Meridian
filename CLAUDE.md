@@ -1321,6 +1321,7 @@ Market-Data-Collector/
 │       ├── Models/
 │       │   ├── AppConfig.cs
 │       │   ├── DashboardModels.cs
+│       │   ├── LeanModels.cs
 │       │   └── StorageDisplayModels.cs
 │       ├── Services/
 │       │   ├── AdminMaintenanceService.cs
@@ -1359,7 +1360,8 @@ Market-Data-Collector/
 │       │   └── IconResources.xaml
 │       ├── ViewModels/
 │       │   ├── BindableBase.cs
-│       │   └── DashboardViewModel.cs
+│       │   ├── DashboardViewModel.cs
+│       │   └── LeanIntegrationViewModel.cs
 │       ├── Views/
 │       │   ├── ActivityLogPage.xaml
 │       │   ├── ActivityLogPage.xaml.cs
