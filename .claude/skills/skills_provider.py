@@ -69,21 +69,28 @@ except ImportError as exc:
     _HAS_AGENT_FRAMEWORK = False
 
     # When imported programmatically (not via CLI), warn the caller that the
-    # skill provider API (load_skill, read_skill_resource, …) will silently
-    # no-op because agent_framework is absent.  The standalone CLI suppresses
-    # this warning because it never calls the framework API.
+    # skill provider API (load_skill, read_skill_resource, …) will raise a
+    # clear error because agent_framework is absent. The standalone CLI
+    # suppresses this warning because it never calls the framework API.
     if __name__ != "__main__":
         _warnings.warn(
             "agent_framework is not installed; skills_provider API methods "
-            "(load_skill, read_skill_resource, …) will not function correctly. "
-            "The standalone CLI (list, run-script, chain, …) is still fully "
-            "available. Install agent_framework to use the full provider API.",
+            "(load_skill, read_skill_resource, run_skill_script, …) will raise "
+            "a RuntimeError if called. The standalone CLI (list, run-script, "
+            "chain, …) is still fully available. Install agent_framework to "
+            "use the full provider API.",
             ImportWarning,
             stacklevel=2,
         )
 
     class _Stub:  # type: ignore[no-redef]
-        """No-op stub used when agent_framework is absent (standalone CLI mode)."""
+        """Stub used when agent_framework is absent (standalone CLI mode).
+
+        Decorators are safe no-ops so definitions can be registered, but any
+        attempt to use the SkillsProvider API (load_skill, read_skill_resource,
+        run_skill_script, …) will raise a RuntimeError with installation
+        guidance.
+        """
 
         def __init__(self, *a: Any, **kw: Any) -> None:
             for k, v in kw.items():
@@ -100,6 +107,34 @@ except ImportError as exc:
                 return fn
 
             return _dec
+
+        # ------------------------------------------------------------------
+        # SkillsProvider API stubs (raise clear errors when misused)
+        # ------------------------------------------------------------------
+
+        def load_skill(self, *args: Any, **kwargs: Any) -> Any:  # noqa: ANN201
+            """Stub for SkillsProvider.load_skill when agent_framework is absent."""
+            raise RuntimeError(
+                "SkillsProvider.load_skill cannot be used because "
+                "agent_framework is not installed. Install the agent_framework "
+                "package to enable the full skills provider API."
+            )
+
+        def read_skill_resource(self, *args: Any, **kwargs: Any) -> Any:  # noqa: ANN201
+            """Stub for SkillsProvider.read_skill_resource when agent_framework is absent."""
+            raise RuntimeError(
+                "SkillsProvider.read_skill_resource cannot be used because "
+                "agent_framework is not installed. Install the agent_framework "
+                "package to enable the full skills provider API."
+            )
+
+        def run_skill_script(self, *args: Any, **kwargs: Any) -> Any:  # noqa: ANN201
+            """Stub for SkillsProvider.run_skill_script when agent_framework is absent."""
+            raise RuntimeError(
+                "SkillsProvider.run_skill_script cannot be used because "
+                "agent_framework is not installed. Install the agent_framework "
+                "package to enable the full skills provider API."
+            )
 
     Skill = SkillResource = SkillScript = SkillsProvider = _Stub  # type: ignore[assignment,misc]
 
