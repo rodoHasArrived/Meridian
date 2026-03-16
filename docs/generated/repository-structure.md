@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-16 19:52:23 UTC
+> Auto-generated on 2026-03-16 19:56:54 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -14,6 +14,10 @@ This document provides an overview of the Market Data Collector repository struc
 Market-Data-Collector/
 ├── .claude/
 │   ├── skills/
+│   │   ├── mdc-brainstorm/
+│   │   │   ├── references/
+│   │   │   │   ...
+│   │   │   └── SKILL.md
 │   │   ├── mdc-code-review/
 │   │   │   ├── agents/
 │   │   │   │   ...
@@ -1493,7 +1497,6 @@ Market-Data-Collector/
 ├── LICENSE
 ├── Makefile
 ├── MarketDataCollector.sln
-├── mdc-brainstorm.skill
 ├── package-lock.json
 ├── package.json
 ├── prompt-generation-results.json

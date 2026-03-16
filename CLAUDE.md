@@ -190,6 +190,10 @@ If the issue is tracked on GitHub, label it `ai-known-error` so the intake workf
 Market-Data-Collector/
 ├── .claude/
 │   ├── skills/
+│   │   ├── mdc-brainstorm/
+│   │   │   ├── references/
+│   │   │   │   ...
+│   │   │   └── SKILL.md
 │   │   ├── mdc-code-review/
 │   │   │   ├── agents/
 │   │   │   │   ...
@@ -1669,7 +1673,6 @@ Market-Data-Collector/
 ├── LICENSE
 ├── Makefile
 ├── MarketDataCollector.sln
-├── mdc-brainstorm.skill
 ├── package-lock.json
 ├── package.json
 ├── prompt-generation-results.json
