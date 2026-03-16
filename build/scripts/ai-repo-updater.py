@@ -533,7 +533,7 @@ def audit_ai_docs(root: Path, report: AuditReport) -> None:
             [sys.executable, str(script), "full", "--root", str(root)],
             capture_output=True, text=True, cwd=str(root), timeout=60,
         )
-        if result.returncode == 0 and result.stdout.strip():
+        if result.returncode in (0, 1) and result.stdout.strip():
             data = json.loads(result.stdout)
             # Import findings from the maintenance script
             for f in data.get("findings", []):

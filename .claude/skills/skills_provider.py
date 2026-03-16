@@ -207,7 +207,11 @@ _AI_DOCS_SCRIPT = _REPO_ROOT / "build" / "scripts" / "docs" / "ai-docs-maintenan
 
 def _run_ai_docs_cmd(command: str, extra_args: list[str] | None = None,
                      timeout: int = 30) -> str:
-    """Run an ai-docs-maintenance.py command and return output."""
+    """Run an ai-docs-maintenance.py command and return output.
+
+    Exit codes: 0 = clean, 1 = findings exist (still returns valid JSON),
+    2 = script error.
+    """
     cmd = [sys.executable, str(_AI_DOCS_SCRIPT), command]
     if extra_args:
         cmd.extend(extra_args)
@@ -216,7 +220,11 @@ def _run_ai_docs_cmd(command: str, extra_args: list[str] | None = None,
             cmd, capture_output=True, text=True,
             cwd=str(_REPO_ROOT), timeout=timeout,
         )
-        return result.stdout.strip() or result.stderr.strip()
+        # Exit code 0 (clean) and 1 (findings) both produce valid output
+        if result.returncode <= 1:
+            return result.stdout.strip() or result.stderr.strip()
+        # Exit code 2 = script error
+        return f"Error (exit {result.returncode}): {result.stderr.strip()}"
     except (subprocess.SubprocessError, OSError) as exc:
         return f"Error: {exc}"
 

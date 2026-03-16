@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""
-AI Documentation Maintenance — freshness, drift, and archive automation.
+# /// script
+# requires-python = ">=3.10"
+# ///
+"""AI Documentation Maintenance — freshness, drift, and archive automation.
 
 Keeps AI instruction files, skills, and project documentation current as the
 codebase evolves. Detects stale content, validates cross-references, archives
@@ -14,10 +16,16 @@ Commands:
     sync-report     Generate a sync report showing what needs updating.
     full            Run all checks and produce a combined report.
 
-Usage:
+Exit codes:
+    0   Clean — no critical or warning findings.
+    1   Findings — at least one critical or warning issue detected.
+    2   Error — script failed to run (bad arguments, missing files, etc.).
+
+Examples:
     python3 build/scripts/docs/ai-docs-maintenance.py freshness
-    python3 build/scripts/docs/ai-docs-maintenance.py drift
+    python3 build/scripts/docs/ai-docs-maintenance.py drift --summary
     python3 build/scripts/docs/ai-docs-maintenance.py archive-stale --dry-run
+    python3 build/scripts/docs/ai-docs-maintenance.py archive-stale --execute
     python3 build/scripts/docs/ai-docs-maintenance.py sync-report --output /tmp/sync.md
     python3 build/scripts/docs/ai-docs-maintenance.py full --json-output /tmp/report.json
 """
@@ -625,9 +633,11 @@ def cmd_sync_report(report: Report, output: Path | None = None) -> None:
 # Main
 # ---------------------------------------------------------------------------
 
-def main() -> None:
+def main() -> int:
     parser = argparse.ArgumentParser(
         description="AI Documentation Maintenance — freshness, drift, and archive automation",
+        epilog=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument(
         "command",
@@ -711,6 +721,15 @@ def main() -> None:
               f"{s.get('info', 0)} info, {s.get('drift_items', 0)} drift items, "
               f"{s.get('stale_docs', 0)} stale docs", file=sys.stderr)
 
+    # Exit code: 0 = clean, 1 = has critical or warning findings
+    critical = report.summary.get("critical", 0)
+    warning = report.summary.get("warning", 0)
+    return 1 if (critical + warning) > 0 else 0
+
 
 if __name__ == "__main__":
-    main()
+    try:
+        sys.exit(main())
+    except Exception as exc:
+        print(f"Error: {exc}", file=sys.stderr)
+        sys.exit(2)
