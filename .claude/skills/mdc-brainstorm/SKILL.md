@@ -38,6 +38,7 @@ A provider-agnostic .NET 9 / C# 13 platform for real-time and historical market 
 **Tech stack:** C# 13 (infrastructure), F# (domain models), planned C++ (ultra-low-latency hot paths), .NET 9, WPF (desktop UI, migrated from UWP), Docker, Prometheus/Grafana, OpenTelemetry, Bounded Channels, WAL storage, JSONL → Parquet (planned), GitHub Actions CI/CD.
 
 **Current capabilities:**
+
 - Real-time streaming: trades, quotes, L2 order book depth
 - Historical backfill: JSONL files, gap detection
 - Multi-provider: IB TWS + Alpaca, abstracted behind `IMarketDataClient`
@@ -56,12 +57,15 @@ A provider-agnostic .NET 9 / C# 13 platform for real-time and historical market 
 ## Audience Personas
 
 ### 🎯 Hobbyist Quant Developer
+
 Software developer or data scientist learning quant finance. Frustrated by setup complexity and the gap between "collecting data" and "doing something with it." Wants quick wins, low cost, and integration with tools they already know (Jupyter, pandas). Low risk tolerance — prefers paper trading and sandboxed environments.
 
 ### 🎓 Academic / Researcher
+
 Quantitative finance PhD, financial economist, or ML researcher. Cares deeply about data reproducibility, provenance, and quality validation. Institutional data is prohibitively expensive. Needs citation-ready data, audit trails, and bulk export to research infrastructure (HDF5, Arrow, DuckDB).
 
 ### 🏦 Institutional / Professional
+
 Prop trading firm, hedge fund ops, or quant analyst at an asset manager. Pain points are vendor lock-in, latency SLAs, compliance, and disaster recovery. Values reliability, throughput, and support. Low tolerance for infrastructure failures.
 
 ---
@@ -75,7 +79,7 @@ Prop trading firm, hedge fund ops, or quant analyst at an asset manager. Pain po
 - **Information hierarchy matters.** A streaming data app can easily become a wall of numbers. Every screen should have a clear primary focus, secondary details accessible on hover or drill-down, and a calm default state that doesn't demand attention when things are healthy.
 - **Status at a glance.** The user should be able to look at MDC for 2 seconds and know: is everything OK? Is anything degraded? Is a backfill running? Use color, density, and spatial position to communicate state — not just text.
 - **Progressive disclosure.** Show the essential view first. Let users expand into detail when they want it. A symbol's health score is the top layer; the per-provider tick rate breakdown is the drill-down.
-- **Contextual actions.** When showing data, show what the user can *do* with it right there. Viewing a gap in historical data? Offer a one-click backfill. Seeing an anomalous tick? Offer to flag or exclude it.
+- **Contextual actions.** When showing data, show what the user can _do_ with it right there. Viewing a gap in historical data? Offer a one-click backfill. Seeing an anomalous tick? Offer to flag or exclude it.
 - **Consistency across views.** Symbols, providers, time ranges, and status indicators should look and behave the same way everywhere in the app. Build a shared visual vocabulary.
 - **Respect the WPF medium.** Ideas should feel native to a desktop application — data grids, split panes, keyboard shortcuts, system tray integration, multi-monitor awareness. Not a web app crammed into a window.
 
@@ -86,7 +90,7 @@ Prop trading firm, hedge fund ops, or quant analyst at an asset manager. Pain po
 ### Step 1: Identify the Mode
 
 | Mode | Trigger | Approach |
-|------|---------|----------|
+| ------ | --------- | ---------- |
 | **Open Exploration** | "What could we build?" / "What's valuable?" | Generate across all dimensions, all personas. Favor ideas that connect multiple existing capabilities. |
 | **Problem-Focused** | "How do we solve X?" | 3-5 deep ideas targeting the specific pain. Show how each one integrates with existing features. |
 | **Persona-Focused** | "What do hobbyist quants want?" | 5-8 ideas optimized for that audience. Describe the user journey, not just the feature. |
@@ -119,6 +123,7 @@ Write each idea as a **natural narrative**, not a form to fill out. The reader s
 - Debt cost and payoff timeline for tech debt ideas
 
 **Quantity guidelines:**
+
 - Open Exploration: 8-12 ideas across 3+ categories
 - Problem/Persona/Domain focused: 4-6 deep ideas
 - Quick Wins: 6-8 ideas
@@ -130,6 +135,7 @@ Write each idea as a **natural narrative**, not a form to fill out. The reader s
 ### Step 3: Synthesize
 
 After the ideas, step back and write a synthesis that:
+
 - Identifies the highest-leverage idea (best impact/effort ratio, most complementary to existing features)
 - Calls out "platform bets" — ideas that unlock multiple others
 - Flags cross-cutting themes (e.g., "three of these ideas all need a shared symbol health model")
@@ -162,6 +168,7 @@ After the ideas, step back and write a synthesis that:
 When brainstorming, read `references/idea-dimensions.md` for the full seeded concept bank organized by category.
 
 **Quick-access dimensions:**
+
 - **Data access:** streaming API, bulk export, query API, Python SDK, gRPC, Arrow Flight, DuckDB integration
 - **Data quality:** gap detection, anomaly flagging, cross-provider reconciliation, tick quality scoring, options chain validation
 - **Performance:** kernel bypass, lock-free queues, SIMD processing, GC tuning, backpressure metrics
