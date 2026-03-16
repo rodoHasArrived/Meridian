@@ -64,6 +64,7 @@ public partial class NotificationCenterPage : Page { }
 // Support & Setup pages
 public partial class HelpPage : Page { }
 public partial class WelcomePage : Page { }
+public partial class DifferentiatorsPage : Page { }
 public partial class SettingsPage : Page { }
 public partial class KeyboardShortcutsPage : Page { }
 public partial class SetupWizardPage : Page { }

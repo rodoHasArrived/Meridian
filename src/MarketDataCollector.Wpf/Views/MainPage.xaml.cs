@@ -412,6 +412,7 @@ public partial class MainPage : Page
             "LeanIntegration" => "Lean Integration",
             "SetupWizard" => "Setup Wizard",
             "Help" => "Help & Support",
+            "Differentiators" => "Why MDC? — Differentiators",
             _ => pageTag
         };
 
@@ -436,6 +437,13 @@ public partial class MainPage : Page
         foreach (var list in AllNavLists) list.SelectedItem = null;
         _navigationService.NavigateTo("Help");
         UpdatePageTitle("Help");
+    }
+
+    private void OnWhyMdcClick(object sender, RoutedEventArgs e)
+    {
+        foreach (var list in AllNavLists) list.SelectedItem = null;
+        _navigationService.NavigateTo("Differentiators");
+        UpdatePageTitle("Differentiators");
     }
 
     private void OnRefreshButtonClick(object sender, RoutedEventArgs e)

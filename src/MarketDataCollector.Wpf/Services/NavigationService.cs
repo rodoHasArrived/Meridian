@@ -117,6 +117,7 @@ public sealed class NavigationService : NavigationServiceBase, INavigationServic
         // Support & Setup (6 pages)
         RegisterPage("Help", typeof(HelpPage));
         RegisterPage("Welcome", typeof(WelcomePage));
+        RegisterPage("Differentiators", typeof(DifferentiatorsPage));
         RegisterPage("Settings", typeof(SettingsPage));
         RegisterPage("KeyboardShortcuts", typeof(KeyboardShortcutsPage));
         RegisterPage("SetupWizard", typeof(SetupWizardPage));
