@@ -46,7 +46,7 @@ import time as _time
 import warnings as _warnings
 from pathlib import Path
 from textwrap import dedent
-from typing import Any
+from typing import Any, TypedDict
 
 try:
     from agent_framework import Skill, SkillResource, SkillScript, SkillsProvider
@@ -68,8 +68,29 @@ except ImportError as exc:
     # agent_framework being installed.
     _HAS_AGENT_FRAMEWORK = False
 
+    # When imported programmatically (not via CLI), warn the caller that the
+    # skill provider API (load_skill, read_skill_resource, …) will raise a
+    # clear error because agent_framework is absent. The standalone CLI
+    # suppresses this warning because it never calls the framework API.
+    if __name__ != "__main__":
+        _warnings.warn(
+            "agent_framework is not installed; skills_provider API methods "
+            "(load_skill, read_skill_resource, run_skill_script, …) will raise "
+            "a RuntimeError if called. The standalone CLI (list, run-script, "
+            "chain, …) is still fully available. Install agent_framework to "
+            "use the full provider API.",
+            ImportWarning,
+            stacklevel=2,
+        )
+
     class _Stub:  # type: ignore[no-redef]
-        """No-op stub used when agent_framework is absent (standalone CLI mode)."""
+        """Stub used when agent_framework is absent (standalone CLI mode).
+
+        Decorators are safe no-ops so definitions can be registered, but any
+        attempt to use the SkillsProvider API (load_skill, read_skill_resource,
+        run_skill_script, …) will raise a RuntimeError with installation
+        guidance.
+        """
 
         def __init__(self, *a: Any, **kw: Any) -> None:
             for k, v in kw.items():
@@ -86,6 +107,34 @@ except ImportError as exc:
                 return fn
 
             return _dec
+
+        # ------------------------------------------------------------------
+        # SkillsProvider API stubs (raise clear errors when misused)
+        # ------------------------------------------------------------------
+
+        def load_skill(self, *args: Any, **kwargs: Any) -> Any:  # noqa: ANN201
+            """Stub for SkillsProvider.load_skill when agent_framework is absent."""
+            raise RuntimeError(
+                "SkillsProvider.load_skill cannot be used because "
+                "agent_framework is not installed. Install the agent_framework "
+                "package to enable the full skills provider API."
+            )
+
+        def read_skill_resource(self, *args: Any, **kwargs: Any) -> Any:  # noqa: ANN201
+            """Stub for SkillsProvider.read_skill_resource when agent_framework is absent."""
+            raise RuntimeError(
+                "SkillsProvider.read_skill_resource cannot be used because "
+                "agent_framework is not installed. Install the agent_framework "
+                "package to enable the full skills provider API."
+            )
+
+        def run_skill_script(self, *args: Any, **kwargs: Any) -> Any:  # noqa: ANN201
+            """Stub for SkillsProvider.run_skill_script when agent_framework is absent."""
+            raise RuntimeError(
+                "SkillsProvider.run_skill_script cannot be used because "
+                "agent_framework is not installed. Install the agent_framework "
+                "package to enable the full skills provider API."
+            )
 
     Skill = SkillResource = SkillScript = SkillsProvider = _Stub  # type: ignore[assignment,misc]
 
@@ -761,6 +810,13 @@ _RESOURCE_REGISTRY: dict[tuple[str, str], Any] = {
 }
 
 
+class _SkillResources(TypedDict):
+    """Typed structure for the per-skill resource map used by the CLI."""
+
+    static: list[str]
+    dynamic: list[str]
+
+
 def _scripts_from_registry() -> dict[str, list[str]]:
     """Derive the per-skill script listing from :data:`_SCRIPT_REGISTRY`.
 
@@ -774,16 +830,59 @@ def _scripts_from_registry() -> dict[str, list[str]]:
     return result
 
 
-def _dynamic_resources_from_registry() -> dict[str, list[str]]:
-    """Derive the per-skill dynamic resource listing from :data:`_RESOURCE_REGISTRY`.
+#: The skill name that "owns" the static (file-based) resources listed below.
+#: Centralised here so that :func:`_resources_from_registries` and
+#: :meth:`SkillsProviderCli._cmd_read_resource` share a single constant rather
+#: than duplicating the literal string ``"mdc-code-review"``.
+_STATIC_RESOURCE_SKILL: str = "mdc-code-review"
 
-    Static (file-based) resources are not tracked here; see
-    ``SkillsProviderCli._STATIC_RESOURCE_PATHS``.
+#: Static resource → file path.  This is the single source of truth for
+#: file-backed resources; :func:`_resources_from_registries` reads its keys to
+#: populate the ``list-resources`` output automatically.
+_STATIC_RESOURCE_PATHS: dict[str, Path] = {
+    "architecture": _REFS_DIR / "architecture.md",
+    "schemas": _REFS_DIR / "schemas.md",
+    "grader": _SKILL_DIR / "agents" / "grader.md",
+    "evals": _SKILL_DIR / "evals" / "evals.json",
+}
+
+
+def _resources_from_registries() -> dict[str, _SkillResources]:
+    """Derive per-skill resource listing from :data:`_RESOURCE_REGISTRY` and
+    :data:`_STATIC_RESOURCE_PATHS`.
+
+    Using the registries and static-path map as the single source of truth
+    prevents the CLI's ``list-resources`` output from drifting when new
+    resources are added — no extra dict needs updating.
     """
-    result: dict[str, list[str]] = {}
+    result: dict[str, _SkillResources] = {}
+    # Static (file-based) resources are all owned by _STATIC_RESOURCE_SKILL
+    if _STATIC_RESOURCE_PATHS:
+        entry = result.setdefault(
+            _STATIC_RESOURCE_SKILL, _SkillResources(static=[], dynamic=[])
+        )
+        entry["static"] = list(_STATIC_RESOURCE_PATHS)
+    # Dynamic resources from the registry
     for skill, resource in _RESOURCE_REGISTRY:
-        result.setdefault(skill, []).append(resource)
+        entry = result.setdefault(skill, _SkillResources(static=[], dynamic=[]))
+        entry["dynamic"].append(resource)
     return result
+
+
+def _all_skill_names() -> list[str]:
+    """Return the sorted union of skill names from all registries.
+
+    Includes skills from :data:`_SCRIPT_REGISTRY`, :data:`_RESOURCE_REGISTRY`,
+    and :data:`_STATIC_RESOURCE_SKILL` so that a skill whose only entries are
+    static file resources still appears in list-* output.  Used by the CLI's
+    list-* commands so that the skill set is always derived from a single source
+    of truth rather than being repeated in every error-message path.
+    """
+    return sorted(
+        {skill for skill, _ in _SCRIPT_REGISTRY}
+        | {skill for skill, _ in _RESOURCE_REGISTRY}
+        | {_STATIC_RESOURCE_SKILL}
+    )
 
 
 def run_skill_chain(
@@ -913,29 +1012,16 @@ class SkillsProviderCli:
         ),
     }
 
-    _RESOURCES: dict[str, dict[str, list[str]]] = {
-        "mdc-code-review": {
-            "static": ["architecture", "schemas", "grader", "evals"],
-            "dynamic": _dynamic_resources_from_registry().get("mdc-code-review", []),
-        },
-        "ai-docs-maintain": {
-            "static": [],
-            "dynamic": _dynamic_resources_from_registry().get("ai-docs-maintain", []),
-        },
-    }
+    #: Derived from :data:`_RESOURCE_REGISTRY` and :data:`_STATIC_RESOURCE_PATHS`
+    #: — do not edit by hand.  Adding a new dynamic resource to
+    #: ``_RESOURCE_REGISTRY`` or a new static path to ``_STATIC_RESOURCE_PATHS``
+    #: will automatically appear in ``list-resources`` output.
+    _RESOURCES: dict[str, _SkillResources] = _resources_from_registries()
 
     #: Derived from :data:`_SCRIPT_REGISTRY` — do not edit by hand.
     #: Adding a new ``@*.script(…)`` to ``_SCRIPT_REGISTRY`` will automatically
     #: appear in ``list-scripts`` output without any further change here.
     _SCRIPTS: dict[str, list[str]] = _scripts_from_registry()
-
-    # Static resource → file path (for read-resource fallback)
-    _STATIC_RESOURCE_PATHS: dict[str, Path] = {
-        "architecture": _REFS_DIR / "architecture.md",
-        "schemas": _REFS_DIR / "schemas.md",
-        "grader": _SKILL_DIR / "agents" / "grader.md",
-        "evals": _SKILL_DIR / "evals" / "evals.json",
-    }
 
     def __init__(self) -> None:
         self._parser = self._build_parser()
@@ -1059,15 +1145,18 @@ class SkillsProviderCli:
     # ------------------------------------------------------------------
 
     def _cmd_list(self) -> int:
+        # Derive the complete set of skill names from the registries so that
+        # newly added skills appear automatically without updating _SKILL_DESCRIPTIONS.
         print("Registered skills:\n")
-        for name, desc in self._SKILL_DESCRIPTIONS.items():
+        for name in _all_skill_names():
+            desc = self._SKILL_DESCRIPTIONS.get(name, "(no description)")
             print(f"  {name}")
             print(f"    {desc}\n")
         return 0
 
     def _cmd_list_resources(self, skill: str) -> int:
         if skill not in self._RESOURCES:
-            print(f"Unknown skill: '{skill}'. Available: {', '.join(self._RESOURCES)}")
+            print(f"Unknown skill: '{skill}'. Available: {', '.join(_all_skill_names())}")
             return 1
         r = self._RESOURCES[skill]
         print(f"Resources for '{skill}':\n")
@@ -1083,7 +1172,7 @@ class SkillsProviderCli:
 
     def _cmd_list_scripts(self, skill: str) -> int:
         if skill not in self._SCRIPTS:
-            print(f"Unknown skill: '{skill}'. Available: {', '.join(self._SCRIPTS)}")
+            print(f"Unknown skill: '{skill}'. Available: {', '.join(_all_skill_names())}")
             return 1
         print(f"Scripts for '{skill}':\n")
         for name in self._SCRIPTS[skill]:
@@ -1113,13 +1202,13 @@ class SkillsProviderCli:
             print(output)
             _logger.debug("Resource metrics: %s", record.to_dict())
             return 0
-        # Fallback: static file-based resources for mdc-code-review
-        if skill == "mdc-code-review" and resource in self._STATIC_RESOURCE_PATHS:
-            content = _read(self._STATIC_RESOURCE_PATHS[resource])
+        # Fallback: static file-based resources (keyed by _STATIC_RESOURCE_SKILL)
+        if skill == _STATIC_RESOURCE_SKILL and resource in _STATIC_RESOURCE_PATHS:
+            content = _read(_STATIC_RESOURCE_PATHS[resource])
             if content:
                 print(content)
                 return 0
-            print(f"Resource file not found: {self._STATIC_RESOURCE_PATHS[resource]}")
+            print(f"Resource file not found: {_STATIC_RESOURCE_PATHS[resource]}")
             return 1
         all_resources = (
             self._RESOURCES.get(skill, {}).get("static", [])
