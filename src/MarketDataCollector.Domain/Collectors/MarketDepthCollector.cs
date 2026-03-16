@@ -240,8 +240,10 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
             }
             finally
             {
-                if (rentedBids != null) ArrayPool<OrderBookLevel>.Shared.Return(rentedBids, clearArray: true);
-                if (rentedAsks != null) ArrayPool<OrderBookLevel>.Shared.Return(rentedAsks, clearArray: true);
+                if (rentedBids != null)
+                    ArrayPool<OrderBookLevel>.Shared.Return(rentedBids, clearArray: true);
+                if (rentedAsks != null)
+                    ArrayPool<OrderBookLevel>.Shared.Return(rentedAsks, clearArray: true);
             }
         }
 
@@ -386,8 +388,10 @@ public sealed class MarketDepthCollector : SymbolSubscriptionTracker
             }
             finally
             {
-                if (rentedBids != null) ArrayPool<OrderBookLevel>.Shared.Return(rentedBids, clearArray: true);
-                if (rentedAsks != null) ArrayPool<OrderBookLevel>.Shared.Return(rentedAsks, clearArray: true);
+                if (rentedBids != null)
+                    ArrayPool<OrderBookLevel>.Shared.Return(rentedBids, clearArray: true);
+                if (rentedAsks != null)
+                    ArrayPool<OrderBookLevel>.Shared.Return(rentedAsks, clearArray: true);
             }
 
             return DepthIntegrityKind.Ok;
