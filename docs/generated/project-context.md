@@ -1,6 +1,6 @@
 # MarketDataCollector Project Context
 
-**Generated:** 2026-03-17 10:23:01 UTC
+**Generated:** 2026-03-17 10:25:46 UTC
 **Source:** Auto-generated from code annotations
 
 ## Key Interfaces
