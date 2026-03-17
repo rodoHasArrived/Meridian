@@ -1,34 +1,34 @@
 # TODO Tracking
 
 > Auto-generated TODO documentation. Do not edit manually.
-> Last updated: 2026-03-17T08:16:51.628069+00:00
+> Last updated: 2026-03-17T08:18:17.901312+00:00
 
 ## Summary
 
 | Metric | Count |
 |--------|-------|
-| **Total Items** | 56 |
+| **Total Items** | 54 |
 | **Linked to Issues** | 0 |
-| **Untracked** | 56 |
+| **Untracked** | 54 |
 
 ### By Type
 
 | Type | Count | Description |
 |------|-------|-------------|
 | `TODO` | 36 | General tasks to complete |
-| `NOTE` | 20 | Important notes and documentation |
+| `NOTE` | 18 | Important notes and documentation |
 
 ### By Directory
 
 | Directory | Count |
 |-----------|-------|
 | `src/` | 41 |
-| `tests/` | 12 |
+| `tests/` | 10 |
 | `.github/` | 3 |
 
 ## Unassigned & Untracked
 
-56 items have no assignee and no issue tracking:
+54 items have no assignee and no issue tracking:
 
 Consider assigning ownership or creating tracking issues for these items.
 
@@ -144,7 +144,7 @@ Consider assigning ownership or creating tracking issues for these items.
 - [ ] `src/MarketDataCollector.Infrastructure/Adapters/_Template/TemplateSymbolSearchProvider.cs:147`
   > If the provider supports server-side filtering, implement it here. Otherwise, keep this call to the base class which filters client-side.
 
-### NOTE (20)
+### NOTE (18)
 
 - [ ] `.github/workflows/desktop-builds.yml:9`
   > UWP/WinUI 3 application has been removed. WPF is the sole desktop client.
@@ -181,12 +181,6 @@ Consider assigning ownership or creating tracking issues for these items.
 
 - [ ] `tests/MarketDataCollector.Tests/Application/Monitoring/DataQuality/DataFreshnessSlaMonitorTests.cs:525`
   > Actual result depends on current time, so we check the logic is working
-
-- [ ] `tests/MarketDataCollector.Tests/Application/Pipeline/EventPipelineTests.cs:293`
-  > the consumer drains the entire batch from the channel before processing, so the channel is empty once the consumer is blocked.
-
-- [ ] `tests/MarketDataCollector.Tests/Application/Pipeline/EventPipelineTests.cs:525`
-  > the consumer drains the entire batch from the channel before processing, so the channel is empty once the consumer is blocked.
 
 - [ ] `tests/MarketDataCollector.Tests/Application/Pipeline/FSharpEventValidatorTests.cs:72`
   > Trade.ctor only checks Price > 0, so $2,000,000 is constructible.
