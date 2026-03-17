@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-17 03:16:46 UTC
+> Auto-generated on 2026-03-17 03:28:25 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -14,7 +14,8 @@ This document provides an overview of the Market Data Collector repository struc
 Market-Data-Collector/
 ├── .claude/
 │   ├── agents/
-│   │   └── mdc-cleanup.md
+│   │   ├── mdc-cleanup.md
+│   │   └── mdc-docs.md
 │   ├── skills/
 │   │   ├── _shared/
 │   │   │   └── project-context.md
@@ -56,7 +57,10 @@ Market-Data-Collector/
 │   │       └── action.yml
 │   ├── agents/
 │   │   ├── code-review-agent.md
-│   │   └── documentation-agent.md
+│   │   ├── documentation-agent.md
+│   │   ├── mdc-brainstorm-agent.md
+│   │   ├── mdc-provider-builder-agent.md
+│   │   └── mdc-test-writer-agent.md
 │   ├── instructions/
 │   │   ├── csharp.instructions.md
 │   │   ├── docs.instructions.md

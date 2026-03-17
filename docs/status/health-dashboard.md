@@ -1,7 +1,7 @@
 # Documentation Health Dashboard
 
 > Auto-generated documentation health report. Do not edit manually.
-> Last updated: 2026-03-17T03:16:50.308250+00:00
+> Last updated: 2026-03-17T03:28:29.953000+00:00
 
 ## Overall Health Score
 
@@ -14,10 +14,10 @@
 
 | Metric | Value |
 |--------|-------|
-| Total documentation files | 200 |
-| Total lines | 79,252 |
-| Average file size (lines) | 396.3 |
-| Orphaned files | 35 |
+| Total documentation files | 204 |
+| Total lines | 80,478 |
+| Average file size (lines) | 394.5 |
+| Orphaned files | 34 |
 | Files without headings | 1 |
 | Stale files (>90 days) | 0 |
 | TODO/FIXME markers | 161 |
@@ -45,7 +45,6 @@ These files lack a Markdown heading, making them harder to navigate:
 
 These files are not linked from any other Markdown file in the repository:
 
-- `.claude/agents/mdc-cleanup.md`
 - `.claude/skills/mdc-brainstorm/references/competitive-landscape.md`
 - `.claude/skills/mdc-brainstorm/references/idea-dimensions.md`
 - `.claude/skills/mdc-code-review/agents/grader.md`
@@ -65,7 +64,8 @@ These files are not linked from any other Markdown file in the repository:
 - `docs/archived/IMPROVEMENTS_2026-02.md`
 - `docs/archived/QUICKSTART_2026-01-08.md`
 - `docs/archived/REDESIGN_IMPROVEMENTS.md`
-- ... and 15 more
+- `docs/archived/REPOSITORY_REORGANIZATION_PLAN.md`
+- ... and 14 more
 
 ## Trend
 
@@ -73,7 +73,7 @@ These files are not linked from any other Markdown file in the repository:
 
 | Date | Score | Files | Orphans | Stale |
 |------|-------|-------|---------|-------|
-| 2026-03-17 | 92 | 200 | 35 | 0 |
+| 2026-03-17 | 92 | 204 | 34 | 0 |
 
 ---
 

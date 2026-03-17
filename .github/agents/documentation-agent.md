@@ -38,7 +38,8 @@ MarketDataCollector/docs/
 Market-Data-Collector/
 ├── .claude/
 │   ├── agents/
-│   │   └── mdc-cleanup.md
+│   │   ├── mdc-cleanup.md
+│   │   └── mdc-docs.md
 │   ├── skills/
 │   │   ├── _shared/
 │   │   │   └── project-context.md
@@ -80,7 +81,10 @@ Market-Data-Collector/
 │   │       └── action.yml
 │   ├── agents/
 │   │   ├── code-review-agent.md
-│   │   └── documentation-agent.md
+│   │   ├── documentation-agent.md
+│   │   ├── mdc-brainstorm-agent.md
+│   │   ├── mdc-provider-builder-agent.md
+│   │   └── mdc-test-writer-agent.md
 │   ├── instructions/
 │   │   ├── csharp.instructions.md
 │   │   ├── docs.instructions.md
