@@ -477,6 +477,8 @@ Market-Data-Collector/
 │   │   ├── 2026-02_UI_IMPROVEMENTS_SUMMARY.md
 │   │   ├── 2026-02_VISUAL_CODE_EXAMPLES.md
 │   │   ├── ARTIFACT_ACTIONS_DOWNGRADE.md
+│   │   ├── c4-context-legacy.png
+│   │   ├── c4-context-legacy.puml
 │   │   ├── CHANGES_SUMMARY.md
 │   │   ├── CLEANUP_OPPORTUNITIES.md
 │   │   ├── CLEANUP_SUMMARY.md
@@ -670,34 +672,6 @@ Market-Data-Collector/
 │   │   ├── README.md
 │   │   ├── ROADMAP.md
 │   │   └── TODO.md
-│   ├── uml/
-│   │   ├── activity-diagram-backfill.png
-│   │   ├── activity-diagram-backfill.puml
-│   │   ├── activity-diagram.png
-│   │   ├── activity-diagram.puml
-│   │   ├── communication-diagram.png
-│   │   ├── communication-diagram.puml
-│   │   ├── interaction-overview-diagram.png
-│   │   ├── interaction-overview-diagram.puml
-│   │   ├── README.md
-│   │   ├── sequence-diagram-backfill.png
-│   │   ├── sequence-diagram-backfill.puml
-│   │   ├── sequence-diagram.png
-│   │   ├── sequence-diagram.puml
-│   │   ├── state-diagram-backfill.png
-│   │   ├── state-diagram-backfill.puml
-│   │   ├── state-diagram-orderbook.png
-│   │   ├── state-diagram-orderbook.puml
-│   │   ├── state-diagram-trade-sequence.png
-│   │   ├── state-diagram-trade-sequence.puml
-│   │   ├── state-diagram.png
-│   │   ├── state-diagram.puml
-│   │   ├── timing-diagram-backfill.png
-│   │   ├── timing-diagram-backfill.puml
-│   │   ├── timing-diagram.png
-│   │   ├── timing-diagram.puml
-│   │   ├── use-case-diagram.png
-│   │   └── use-case-diagram.puml
 │   ├── DEPENDENCIES.md
 │   ├── HELP.md
 │   ├── README.md

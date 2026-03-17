@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-17 00:41:34 UTC
+> Auto-generated on 2026-03-17 02:38:21 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -284,8 +284,6 @@ Market-Data-Collector/
 │   │   ├── ai-known-errors.md
 │   │   └── README.md
 │   ├── architecture/
-│   │   ├── c4-context.png
-│   │   ├── c4-context.puml
 │   │   ├── c4-diagrams.md
 │   │   ├── crystallized-storage-format.md
 │   │   ├── desktop-layers.md
@@ -303,6 +301,8 @@ Market-Data-Collector/
 │   │   ├── 2026-02_UI_IMPROVEMENTS_SUMMARY.md
 │   │   ├── 2026-02_VISUAL_CODE_EXAMPLES.md
 │   │   ├── ARTIFACT_ACTIONS_DOWNGRADE.md
+│   │   ├── c4-context-legacy.png
+│   │   ├── c4-context-legacy.puml
 │   │   ├── CHANGES_SUMMARY.md
 │   │   ├── CLEANUP_OPPORTUNITIES.md
 │   │   ├── CLEANUP_SUMMARY.md
@@ -340,9 +340,6 @@ Market-Data-Collector/
 │   │   ├── adding-custom-rules.md
 │   │   ├── build-observability.md
 │   │   ├── central-package-management.md
-│   │   ├── desktop-improvements-executive-summary.md
-│   │   ├── desktop-improvements-quick-reference.md
-│   │   ├── desktop-platform-improvements-implementation-guide.md
 │   │   ├── desktop-testing-guide.md
 │   │   ├── documentation-automation.md
 │   │   ├── documentation-contribution-guide.md
@@ -429,6 +426,9 @@ Market-Data-Collector/
 │   │   ├── assembly-performance-opportunities.md
 │   │   ├── data-quality-monitoring-evaluation.md
 │   │   ├── desktop-end-user-improvements.md
+│   │   ├── desktop-improvements-executive-summary.md
+│   │   ├── desktop-improvements-quick-reference.md
+│   │   ├── desktop-platform-improvements-implementation-guide.md
 │   │   ├── high-impact-improvement-brainstorm-2026-03.md
 │   │   ├── high-impact-improvements-brainstorm.md
 │   │   ├── high-value-low-cost-improvements-brainstorm.md
@@ -496,34 +496,6 @@ Market-Data-Collector/
 │   │   ├── README.md
 │   │   ├── ROADMAP.md
 │   │   └── TODO.md
-│   ├── uml/
-│   │   ├── activity-diagram-backfill.png
-│   │   ├── activity-diagram-backfill.puml
-│   │   ├── activity-diagram.png
-│   │   ├── activity-diagram.puml
-│   │   ├── communication-diagram.png
-│   │   ├── communication-diagram.puml
-│   │   ├── interaction-overview-diagram.png
-│   │   ├── interaction-overview-diagram.puml
-│   │   ├── README.md
-│   │   ├── sequence-diagram-backfill.png
-│   │   ├── sequence-diagram-backfill.puml
-│   │   ├── sequence-diagram.png
-│   │   ├── sequence-diagram.puml
-│   │   ├── state-diagram-backfill.png
-│   │   ├── state-diagram-backfill.puml
-│   │   ├── state-diagram-orderbook.png
-│   │   ├── state-diagram-orderbook.puml
-│   │   ├── state-diagram-trade-sequence.png
-│   │   ├── state-diagram-trade-sequence.puml
-│   │   ├── state-diagram.png
-│   │   ├── state-diagram.puml
-│   │   ├── timing-diagram-backfill.png
-│   │   ├── timing-diagram-backfill.puml
-│   │   ├── timing-diagram.png
-│   │   ├── timing-diagram.puml
-│   │   ├── use-case-diagram.png
-│   │   └── use-case-diagram.puml
 │   ├── DEPENDENCIES.md
 │   ├── HELP.md
 │   ├── README.md

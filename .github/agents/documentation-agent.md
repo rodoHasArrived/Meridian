@@ -325,6 +325,8 @@ Market-Data-Collector/
 │   │   ├── 2026-02_UI_IMPROVEMENTS_SUMMARY.md
 │   │   ├── 2026-02_VISUAL_CODE_EXAMPLES.md
 │   │   ├── ARTIFACT_ACTIONS_DOWNGRADE.md
+│   │   ├── c4-context-legacy.png
+│   │   ├── c4-context-legacy.puml
 │   │   ├── CHANGES_SUMMARY.md
 │   │   ├── CLEANUP_OPPORTUNITIES.md
 │   │   ├── CLEANUP_SUMMARY.md
@@ -362,9 +364,6 @@ Market-Data-Collector/
 │   │   ├── adding-custom-rules.md
 │   │   ├── build-observability.md
 │   │   ├── central-package-management.md
-│   │   ├── desktop-improvements-executive-summary.md
-│   │   ├── desktop-improvements-quick-reference.md
-│   │   ├── desktop-platform-improvements-implementation-guide.md
 │   │   ├── desktop-testing-guide.md
 │   │   ├── documentation-automation.md
 │   │   ├── documentation-contribution-guide.md
@@ -451,6 +450,9 @@ Market-Data-Collector/
 │   │   ├── assembly-performance-opportunities.md
 │   │   ├── data-quality-monitoring-evaluation.md
 │   │   ├── desktop-end-user-improvements.md
+│   │   ├── desktop-improvements-executive-summary.md
+│   │   ├── desktop-improvements-quick-reference.md
+│   │   ├── desktop-platform-improvements-implementation-guide.md
 │   │   ├── high-impact-improvement-brainstorm-2026-03.md
 │   │   ├── high-impact-improvements-brainstorm.md
 │   │   ├── high-value-low-cost-improvements-brainstorm.md
