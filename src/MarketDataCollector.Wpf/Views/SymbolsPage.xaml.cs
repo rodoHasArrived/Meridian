@@ -294,14 +294,30 @@ public partial class SymbolsPage : Page
         CallApplyFilters();
     }
 
-    private const string PageTag = "Symbols";
+    private async Task SyncAddSymbolToBackendAsync(
+        string symbol, bool subscribeTrades, bool subscribeDepth, int depthLevels, string exchange)
+    {
+        try
+        {
+            await _symbolManagementService.AddSymbolAsync(
+                symbol, subscribeTrades, subscribeDepth, depthLevels, exchange);
+        }
+        catch (Exception ex)
+        {
+            _loggingService.LogError("Backend sync failed for add", ex, ("Symbol", symbol));
+        }
+    }
 
     private void SavePageFilterState()
     {
-        var ws = WpfServices.WorkspaceService.Instance;
-        ws.UpdatePageFilterState(PageTag, "SearchText", SymbolSearchBox.Text);
-        ws.UpdatePageFilterState(PageTag, "FilterCombo", GetComboSelectedTag(FilterCombo) ?? "All");
-        ws.UpdatePageFilterState(PageTag, "ExchangeFilter", GetComboSelectedTag(ExchangeFilterCombo) ?? "All");
+        try
+        {
+            await _symbolManagementService.RemoveSymbolAsync(symbol);
+        }
+        catch (Exception ex)
+        {
+            _loggingService.LogError("Backend sync failed for remove", ex, ("Symbol", symbol));
+        }
     }
 
     private void RestorePageFilterState()

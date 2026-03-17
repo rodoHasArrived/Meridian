@@ -697,7 +697,7 @@ public partial class DataQualityPage : Page
         }
         catch (Exception ex)
         {
-            _loggingService.LogError("Failed to load provider comparison for symbol", ex, ("symbol", symbol));
+            _loggingService.LogError("Failed to load provider comparison", ex, ("Symbol", symbol));
         }
     }
 

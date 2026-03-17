@@ -80,6 +80,7 @@ Market-Data-Collector/
 │   │   └── setup-dotnet-cache/
 │   │       └── action.yml
 │   ├── agents/
+│   │   ├── adr-generator.agent.md
 │   │   ├── code-review-agent.md
 │   │   ├── documentation-agent.md
 │   │   ├── mdc-brainstorm-agent.md
