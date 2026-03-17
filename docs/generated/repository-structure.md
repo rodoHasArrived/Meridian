@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-17 03:41:36 UTC
+> Auto-generated on 2026-03-17 08:40:37 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -14,11 +14,17 @@ This document provides an overview of the Market Data Collector repository struc
 Market-Data-Collector/
 ├── .claude/
 │   ├── agents/
+│   │   ├── mdc-blueprint.md
 │   │   ├── mdc-cleanup.md
 │   │   └── mdc-docs.md
 │   ├── skills/
 │   │   ├── _shared/
 │   │   │   └── project-context.md
+│   │   ├── mdc-blueprint/
+│   │   │   ├── references/
+│   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
+│   │   │   └── SKILL.md
 │   │   ├── mdc-brainstorm/
 │   │   │   ├── references/
 │   │   │   │   ...
@@ -59,6 +65,7 @@ Market-Data-Collector/
 │   │   ├── adr-generator.agent.md
 │   │   ├── code-review-agent.md
 │   │   ├── documentation-agent.md
+│   │   ├── mdc-blueprint-agent.md
 │   │   ├── mdc-brainstorm-agent.md
 │   │   ├── mdc-provider-builder-agent.md
 │   │   └── mdc-test-writer-agent.md
@@ -434,7 +441,6 @@ Market-Data-Collector/
 │   │   ├── data-quality-monitoring-evaluation.md
 │   │   ├── desktop-end-user-improvements.md
 │   │   ├── desktop-improvements-executive-summary.md
-│   │   ├── desktop-improvements-quick-reference.md
 │   │   ├── desktop-platform-improvements-implementation-guide.md
 │   │   ├── high-impact-improvement-brainstorm-2026-03.md
 │   │   ├── high-impact-improvements-brainstorm.md
@@ -1206,10 +1212,18 @@ Market-Data-Collector/
 │       │   ├── IConnectionService.cs
 │       │   └── INavigationService.cs
 │       ├── Models/
+│       │   ├── ActivityLogModels.cs
 │       │   ├── AppConfig.cs
+│       │   ├── BackfillModels.cs
 │       │   ├── DashboardModels.cs
+│       │   ├── DataQualityModels.cs
 │       │   ├── LeanModels.cs
-│       │   └── StorageDisplayModels.cs
+│       │   ├── LiveDataModels.cs
+│       │   ├── NotificationModels.cs
+│       │   ├── OrderBookModels.cs
+│       │   ├── ProviderHealthModels.cs
+│       │   ├── StorageDisplayModels.cs
+│       │   └── SymbolsModels.cs
 │       ├── Services/
 │       │   ├── AdminMaintenanceService.cs
 │       │   ├── ArchiveHealthService.cs
@@ -1247,10 +1261,18 @@ Market-Data-Collector/
 │       │   ├── AppStyles.xaml
 │       │   └── IconResources.xaml
 │       ├── ViewModels/
+│       │   ├── ActivityLogViewModel.cs
+│       │   ├── BackfillViewModel.cs
 │       │   ├── BacktestViewModel.cs
 │       │   ├── BindableBase.cs
 │       │   ├── DashboardViewModel.cs
-│       │   └── LeanIntegrationViewModel.cs
+│       │   ├── DataQualityViewModel.cs
+│       │   ├── LeanIntegrationViewModel.cs
+│       │   ├── LiveDataViewerViewModel.cs
+│       │   ├── NotificationCenterViewModel.cs
+│       │   ├── OrderBookViewModel.cs
+│       │   ├── ProviderHealthViewModel.cs
+│       │   └── SymbolsPageViewModel.cs
 │       ├── Views/
 │       │   ├── ActivityLogPage.xaml
 │       │   ├── ActivityLogPage.xaml.cs

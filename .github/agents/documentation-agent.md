@@ -1,3 +1,8 @@
+---
+name: Documentation Agent
+description: Documentation specialist for the MarketDataCollector project, ensuring documentation is accurate, comprehensive, up-to-date, and follows established conventions.
+---
+
 # Documentation Agent Instructions
 
 This file contains instructions for an agent responsible for updating and maintaining the project's documentation.
@@ -38,11 +43,17 @@ MarketDataCollector/docs/
 Market-Data-Collector/
 ├── .claude/
 │   ├── agents/
+│   │   ├── mdc-blueprint.md
 │   │   ├── mdc-cleanup.md
 │   │   └── mdc-docs.md
 │   ├── skills/
 │   │   ├── _shared/
 │   │   │   └── project-context.md
+│   │   ├── mdc-blueprint/
+│   │   │   ├── references/
+│   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
+│   │   │   └── SKILL.md
 │   │   ├── mdc-brainstorm/
 │   │   │   ├── references/
 │   │   │   │   ...
@@ -83,6 +94,7 @@ Market-Data-Collector/
 │   │   ├── adr-generator.agent.md
 │   │   ├── code-review-agent.md
 │   │   ├── documentation-agent.md
+│   │   ├── mdc-blueprint-agent.md
 │   │   ├── mdc-brainstorm-agent.md
 │   │   ├── mdc-provider-builder-agent.md
 │   │   └── mdc-test-writer-agent.md
@@ -458,7 +470,6 @@ Market-Data-Collector/
 │   │   ├── data-quality-monitoring-evaluation.md
 │   │   ├── desktop-end-user-improvements.md
 │   │   ├── desktop-improvements-executive-summary.md
-│   │   ├── desktop-improvements-quick-reference.md
 │   │   ├── desktop-platform-improvements-implementation-guide.md
 │   │   ├── high-impact-improvement-brainstorm-2026-03.md
 │   │   ├── high-impact-improvements-brainstorm.md
@@ -1230,10 +1241,18 @@ Market-Data-Collector/
 │       │   ├── IConnectionService.cs
 │       │   └── INavigationService.cs
 │       ├── Models/
+│       │   ├── ActivityLogModels.cs
 │       │   ├── AppConfig.cs
+│       │   ├── BackfillModels.cs
 │       │   ├── DashboardModels.cs
+│       │   ├── DataQualityModels.cs
 │       │   ├── LeanModels.cs
-│       │   └── StorageDisplayModels.cs
+│       │   ├── LiveDataModels.cs
+│       │   ├── NotificationModels.cs
+│       │   ├── OrderBookModels.cs
+│       │   ├── ProviderHealthModels.cs
+│       │   ├── StorageDisplayModels.cs
+│       │   └── SymbolsModels.cs
 │       ├── Services/
 │       │   ├── AdminMaintenanceService.cs
 │       │   ├── ArchiveHealthService.cs
@@ -1271,10 +1290,18 @@ Market-Data-Collector/
 │       │   ├── AppStyles.xaml
 │       │   └── IconResources.xaml
 │       ├── ViewModels/
+│       │   ├── ActivityLogViewModel.cs
+│       │   ├── BackfillViewModel.cs
 │       │   ├── BacktestViewModel.cs
 │       │   ├── BindableBase.cs
 │       │   ├── DashboardViewModel.cs
-│       │   └── LeanIntegrationViewModel.cs
+│       │   ├── DataQualityViewModel.cs
+│       │   ├── LeanIntegrationViewModel.cs
+│       │   ├── LiveDataViewerViewModel.cs
+│       │   ├── NotificationCenterViewModel.cs
+│       │   ├── OrderBookViewModel.cs
+│       │   ├── ProviderHealthViewModel.cs
+│       │   └── SymbolsPageViewModel.cs
 │       ├── Views/
 │       │   ├── ActivityLogPage.xaml
 │       │   ├── ActivityLogPage.xaml.cs
