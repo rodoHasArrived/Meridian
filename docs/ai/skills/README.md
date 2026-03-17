@@ -13,9 +13,10 @@ automatically.
 **Directory:** [`.claude/skills/mdc-code-review/`](../../../.claude/skills/mdc-code-review/)
 **Entry point:** [`.claude/skills/mdc-code-review/SKILL.md`](../../../.claude/skills/mdc-code-review/SKILL.md)
 **Registered in:** [`.claude/skills/skills_provider.py`](../../../.claude/skills/skills_provider.py)
+**Copilot equivalent:** [`.github/agents/code-review-agent.md`](../../../.github/agents/code-review-agent.md)
 
 Code review and architecture compliance skill for the MarketDataCollector codebase. Applies the
-canonical 6-lens framework defined in
+canonical 7-lens framework defined in
 [`.github/agents/code-review-agent.md`](../../../.github/agents/code-review-agent.md).
 
 **Trigger conditions** (from system prompt):
@@ -49,6 +50,7 @@ canonical 6-lens framework defined in
 
 **Directory:** [`.claude/skills/mdc-brainstorm/`](../../../.claude/skills/mdc-brainstorm/)
 **Entry point:** [`.claude/skills/mdc-brainstorm/SKILL.md`](../../../.claude/skills/mdc-brainstorm/SKILL.md)
+**Copilot equivalent:** [`.github/agents/mdc-brainstorm-agent.md`](../../../.github/agents/mdc-brainstorm-agent.md)
 
 Brainstorming, ideation, and creative feature exploration skill for the MarketDataCollector project.
 
@@ -72,6 +74,7 @@ Brainstorming, ideation, and creative feature exploration skill for the MarketDa
 
 **Directory:** [`.claude/skills/mdc-provider-builder/`](../../../.claude/skills/mdc-provider-builder/)
 **Entry point:** [`.claude/skills/mdc-provider-builder/SKILL.md`](../../../.claude/skills/mdc-provider-builder/SKILL.md)
+**Copilot equivalent:** [`.github/agents/mdc-provider-builder-agent.md`](../../../.github/agents/mdc-provider-builder-agent.md)
 
 Step-by-step guided skill for building new data provider adapters for MarketDataCollector.
 Covers all three provider types (`IMarketDataClient`, `IHistoricalDataProvider`,
@@ -97,6 +100,7 @@ error table.
 
 **Directory:** [`.claude/skills/mdc-test-writer/`](../../../.claude/skills/mdc-test-writer/)
 **Entry point:** [`.claude/skills/mdc-test-writer/SKILL.md`](../../../.claude/skills/mdc-test-writer/SKILL.md)
+**Copilot equivalent:** [`.github/agents/mdc-test-writer-agent.md`](../../../.github/agents/mdc-test-writer-agent.md)
 
 Test generation skill for any MarketDataCollector component. Produces idiomatic xUnit +
 FluentAssertions tests with correct async patterns, isolation, naming conventions, and mock
@@ -222,4 +226,4 @@ python3 .claude/skills/mdc-code-review/eval-viewer/generate_review.py
 
 ---
 
-_Last Updated: 2026-03-16_
+_Last Updated: 2026-03-17_
