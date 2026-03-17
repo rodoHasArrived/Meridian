@@ -1,8 +1,8 @@
 name: Fix Build Errors Identified By Ci
 description: Fix build errors identified by CI
 # Auto-generated prompt from workflow results - test-matrix
-# Generated: 2026-03-15
-# Source: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/23105092534
+# Generated: 2026-03-17
+# Source: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/23176598032
 # Model-agnostic prompt - works with any capable LLM
 messages:
   - role: system
@@ -23,27 +23,23 @@ messages:
       - CS8600-CS8604: Nullable reference type warnings treated as errors
 
       ## Error Codes Found
-      - `CS0103`
+      - `CS0104`
       - `CS0219`
-      - `CS0246`
-      - `CS1503`
       - `CS1573`
       - `CS1734`
       - `CS1998`
-      - `CS4014`
-      - `CS8602`
 
       ## Failure Patterns
-      - `2026-03-15T06:36:08.9738171Z ##[error]/home/runner/work/Market-Data-Collector/Market-Data-Collector/tests/MarketDataCollector.Tests/Infrastructure/Providers/ProviderResilienceTests.cs(29,25): error CS...`
-      - `2026-03-15T06:36:08.9745592Z ##[error]/home/runner/work/Market-Data-Collector/Market-Data-Collector/tests/MarketDataCollector.Tests/Infrastructure/Providers/ProviderResilienceTests.cs(30,43): error CS...`
-      - `2026-03-15T06:36:08.9752232Z ##[error]/home/runner/work/Market-Data-Collector/Market-Data-Collector/tests/MarketDataCollector.Tests/Infrastructure/Providers/ProviderResilienceTests.cs(202,29): error C...`
-      - `2026-03-15T06:36:09.0171414Z ##[error]/home/runner/work/Market-Data-Collector/Market-Data-Collector/tests/MarketDataCollector.Tests/Infrastructure/Providers/ProviderResilienceTests.cs(29,25): error CS...`
-      - `2026-03-15T06:36:09.0178802Z ##[error]/home/runner/work/Market-Data-Collector/Market-Data-Collector/tests/MarketDataCollector.Tests/Infrastructure/Providers/ProviderResilienceTests.cs(30,43): error CS...`
-      - `2026-03-15T06:36:09.0186750Z ##[error]/home/runner/work/Market-Data-Collector/Market-Data-Collector/tests/MarketDataCollector.Tests/Infrastructure/Providers/ProviderResilienceTests.cs(202,29): error C...`
-      - `2026-03-15T06:37:54.0971446Z ##[error]D:\a\Market-Data-Collector\Market-Data-Collector\tests\MarketDataCollector.Tests\Infrastructure\Providers\ProviderResilienceTests.cs(29,25): error CS0246: The typ...`
-      - `2026-03-15T06:37:54.0978590Z ##[error]D:\a\Market-Data-Collector\Market-Data-Collector\tests\MarketDataCollector.Tests\Infrastructure\Providers\ProviderResilienceTests.cs(30,43): error CS0103: The nam...`
-      - `2026-03-15T06:37:54.0987473Z ##[error]D:\a\Market-Data-Collector\Market-Data-Collector\tests\MarketDataCollector.Tests\Infrastructure\Providers\ProviderResilienceTests.cs(202,29): error CS1503: Argume...`
-      - `2026-03-15T06:37:54.1705440Z ##[error]D:\a\Market-Data-Collector\Market-Data-Collector\tests\MarketDataCollector.Tests\Infrastructure\Providers\ProviderResilienceTests.cs(29,25): error CS0246: The typ...`
+      - `2026-03-17T03:13:04.4653516Z ##[error]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Backtesting\FillModels\BarMidpointFillModel.cs(16,58): error CS0104: 'MarketEvent' is an ...`
+      - `2026-03-17T03:13:04.4663649Z ##[error]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Backtesting\Engine\MultiSymbolMergeEnumerator.cs(14,40): error CS0104: 'MarketEvent' is a...`
+      - `2026-03-17T03:13:04.4675216Z ##[error]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Backtesting\Engine\MultiSymbolMergeEnumerator.cs(13,42): error CS0104: 'MarketEvent' is a...`
+      - `2026-03-17T03:13:04.4684135Z ##[error]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Backtesting\Engine\BacktestEngine.cs(135,51): error CS0104: 'MarketEvent' is an ambiguous...`
+      - `2026-03-17T03:13:04.4694046Z ##[error]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Backtesting\FillModels\IFillModel.cs(15,51): error CS0104: 'MarketEvent' is an ambiguous ...`
+      - `2026-03-17T03:13:04.4703577Z ##[error]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Backtesting\Engine\BacktestEngine.cs(153,26): error CS0104: 'MarketEvent' is an ambiguous...`
+      - `2026-03-17T03:13:04.4712869Z ##[error]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Backtesting\Engine\BacktestEngine.cs(152,43): error CS0104: 'MarketEvent' is an ambiguous...`
+      - `2026-03-17T03:13:04.4722547Z ##[error]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Backtesting\Engine\BacktestEngine.cs(168,71): error CS0104: 'MarketEvent' is an ambiguous...`
+      - `2026-03-17T03:13:04.4733212Z ##[error]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Backtesting\Engine\BacktestEngine.cs(181,88): error CS0104: 'MarketEvent' is an ambiguous...`
+      - `2026-03-17T03:13:04.4744209Z ##[error]D:\a\Market-Data-Collector\Market-Data-Collector\src\MarketDataCollector.Backtesting\Engine\BacktestEngine.cs(194,9): error CS0104: 'MarketEvent' is an ambiguous ...`
 
       ## Resolution Approach
       1. Read the error messages and stack traces carefully

@@ -1,7 +1,7 @@
 # TODO Tracking
 
 > Auto-generated TODO documentation. Do not edit manually.
-> Last updated: 2026-03-16T16:08:23.032241+00:00
+> Last updated: 2026-03-17T03:10:22.701622+00:00
 
 ## Summary
 
@@ -15,16 +15,16 @@
 
 | Type | Count | Description |
 |------|-------|-------------|
-| `TODO` | 42 | General tasks to complete |
-| `NOTE` | 19 | Important notes and documentation |
+| `TODO` | 41 | General tasks to complete |
+| `NOTE` | 20 | Important notes and documentation |
 
 ### By Directory
 
 | Directory | Count |
 |-----------|-------|
-| `src/` | 47 |
+| `src/` | 46 |
 | `tests/` | 12 |
-| `.github/` | 2 |
+| `.github/` | 3 |
 
 ## Unassigned & Untracked
 
@@ -34,7 +34,7 @@ Consider assigning ownership or creating tracking issues for these items.
 
 ## All Items
 
-### TODO (42)
+### TODO (41)
 
 - [ ] `src/MarketDataCollector.Infrastructure/Adapters/_Template/TemplateConstants.cs:10`
   > Add your provider's base URL or WebSocket URI. Examples:
@@ -47,9 +47,6 @@ Consider assigning ownership or creating tracking issues for these items.
 
 - [ ] `src/MarketDataCollector.Infrastructure/Adapters/_Template/TemplateConstants.cs:35`
   > Set the recommended minimum delay between consecutive requests. MinRequestDelay = Window / MaxRequestsPerWindow
-
-- [ ] `src/MarketDataCollector.Infrastructure/Adapters/_Template/TemplateConstants.cs:47`
-  > Add message type constants. Examples:
 
 - [ ] `src/MarketDataCollector.Infrastructure/Adapters/_Template/TemplateFactory.cs:91`
   > Remove this method entirely if the provider does not support symbol search.
@@ -162,10 +159,13 @@ Consider assigning ownership or creating tracking issues for these items.
 - [ ] `src/MarketDataCollector.Infrastructure/Adapters/_Template/TemplateSymbolSearchProvider.cs:147`
   > If the provider supports server-side filtering, implement it here. Otherwise, keep this call to the base class which filters client-side.
 
-### NOTE (19)
+### NOTE (20)
 
 - [ ] `.github/workflows/desktop-builds.yml:9`
   > UWP/WinUI 3 application has been removed. WPF is the sole desktop client.
+
+- [ ] `.github/workflows/skill-evals.yml:165`
+  > Live eval execution requires ANTHROPIC_API_KEY secret. The job below is a placeholder that documents the manual eval workflow. Enable it by adding ANTHROPIC_API_KEY to repository secrets and removing the `if: false` condition.
 
 - [ ] `.github/workflows/test-matrix.yml:5`
   > This workflow intentionally does NOT use reusable-dotnet-build.yml because it needs separate C# / F# test runs with per-language arguments, a Category!=Integration filter, platform-conditional jobs, and per-platform Codecov flags. The reusable template targets simpler "build + test entire solution" scenarios.

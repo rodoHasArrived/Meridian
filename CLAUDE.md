@@ -6,7 +6,7 @@ This document provides essential context for AI assistants (Claude, Copilot, etc
 
 Market Data Collector is a high-performance, cross-platform market data collection system built on **.NET 9.0** using **C# 13** and **F# 8.0**. It captures real-time and historical market microstructure data from multiple providers and persists it for downstream research, backtesting, and algorithmic trading.
 
-**Version:** 1.6.2 | **Status:** Development / Pilot Ready | **Files:** 779 source files
+**Version:** 1.6.2 | **Status:** Development / Pilot Ready | **Files:** 732 source files
 
 ### Key Capabilities
 - Real-time streaming from Interactive Brokers, Alpaca, NYSE, Polygon, StockSharp (90+ data sources)
@@ -22,10 +22,10 @@ Market Data Collector is a high-performance, cross-platform market data collecti
 ### Project Statistics
 | Metric | Count |
 |--------|-------|
-| Total Source Files | 779 |
-| C# Files | 769 |
+| Total Source Files | 732 |
+| C# Files | 732 |
 | F# Files | 14 |
-| Test Files | 266 |
+| Test Files | 252 |
 | Test Methods | ~4,135 |
 | Documentation Files | 163 |
 | Main Projects | 13 (+ 4 test + 1 benchmark) |
@@ -33,7 +33,7 @@ Market Data Collector is a high-performance, cross-platform market data collecti
 | Symbol Search Providers | 5 |
 | API Route Constants | 309 |
 | Endpoint Files | 39 |
-| CI/CD Workflows | 27 |
+| CI/CD Workflows | 28 |
 | Makefile Targets | 96 |
 
 ---
@@ -189,7 +189,17 @@ If the issue is tracked on GitHub, label it `ai-known-error` so the intake workf
 ```
 Market-Data-Collector/
 ├── .claude/
+│   ├── agents/
+│   │   ├── mdc-cleanup.md
+│   │   └── mdc-docs.md
 │   ├── skills/
+│   │   ├── _shared/
+│   │   │   └── project-context.md
+│   │   ├── mdc-brainstorm/
+│   │   │   ├── references/
+│   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
+│   │   │   └── SKILL.md
 │   │   ├── mdc-code-review/
 │   │   │   ├── agents/
 │   │   │   │   ...
@@ -201,6 +211,17 @@ Market-Data-Collector/
 │   │   │   │   ...
 │   │   │   ├── scripts/  # Automation scripts
 │   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
+│   │   │   └── SKILL.md
+│   │   ├── mdc-provider-builder/
+│   │   │   ├── references/
+│   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
+│   │   │   └── SKILL.md
+│   │   ├── mdc-test-writer/
+│   │   │   ├── references/
+│   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
 │   │   │   └── SKILL.md
 │   │   └── skills_provider.py
 │   └── settings.local.json
@@ -212,7 +233,10 @@ Market-Data-Collector/
 │   │       └── action.yml
 │   ├── agents/
 │   │   ├── code-review-agent.md
-│   │   └── documentation-agent.md
+│   │   ├── documentation-agent.md
+│   │   ├── mdc-brainstorm-agent.md
+│   │   ├── mdc-provider-builder-agent.md
+│   │   └── mdc-test-writer-agent.md
 │   ├── instructions/
 │   │   ├── csharp.instructions.md
 │   │   ├── docs.instructions.md
@@ -265,6 +289,7 @@ Market-Data-Collector/
 │   │   ├── reusable-dotnet-build.yml
 │   │   ├── scheduled-maintenance.yml
 │   │   ├── security.yml
+│   │   ├── skill-evals.yml
 │   │   ├── SKIPPED_JOBS_EXPLAINED.md
 │   │   ├── stale.yml
 │   │   ├── test-matrix.yml
@@ -371,6 +396,7 @@ Market-Data-Collector/
 │       │   ├── start-collector.sh
 │       │   ├── stop-collector.ps1
 │       │   └── stop-collector.sh
+│       ├── ai-architecture-check.py
 │       └── ai-repo-updater.py
 ├── config/  # Configuration files
 │   ├── appsettings.json
@@ -440,8 +466,6 @@ Market-Data-Collector/
 │   │   ├── ai-known-errors.md
 │   │   └── README.md
 │   ├── architecture/
-│   │   ├── c4-context.png
-│   │   ├── c4-context.puml
 │   │   ├── c4-diagrams.md
 │   │   ├── crystallized-storage-format.md
 │   │   ├── desktop-layers.md
@@ -459,6 +483,8 @@ Market-Data-Collector/
 │   │   ├── 2026-02_UI_IMPROVEMENTS_SUMMARY.md
 │   │   ├── 2026-02_VISUAL_CODE_EXAMPLES.md
 │   │   ├── ARTIFACT_ACTIONS_DOWNGRADE.md
+│   │   ├── c4-context-legacy.png
+│   │   ├── c4-context-legacy.puml
 │   │   ├── CHANGES_SUMMARY.md
 │   │   ├── CLEANUP_OPPORTUNITIES.md
 │   │   ├── CLEANUP_SUMMARY.md
@@ -487,6 +513,7 @@ Market-Data-Collector/
 │   │   ├── UWP_COMPREHENSIVE_AUDIT.md
 │   │   └── WORKFLOW_IMPROVEMENTS_2026-01-08.md
 │   ├── audits/
+│   │   ├── CODE_REVIEW_2026-03-16.md
 │   │   ├── FURTHER_SIMPLIFICATION_OPPORTUNITIES.md
 │   │   └── README.md
 │   ├── development/
@@ -495,9 +522,6 @@ Market-Data-Collector/
 │   │   ├── adding-custom-rules.md
 │   │   ├── build-observability.md
 │   │   ├── central-package-management.md
-│   │   ├── desktop-improvements-executive-summary.md
-│   │   ├── desktop-improvements-quick-reference.md
-│   │   ├── desktop-platform-improvements-implementation-guide.md
 │   │   ├── desktop-testing-guide.md
 │   │   ├── documentation-automation.md
 │   │   ├── documentation-contribution-guide.md
@@ -584,6 +608,9 @@ Market-Data-Collector/
 │   │   ├── assembly-performance-opportunities.md
 │   │   ├── data-quality-monitoring-evaluation.md
 │   │   ├── desktop-end-user-improvements.md
+│   │   ├── desktop-improvements-executive-summary.md
+│   │   ├── desktop-improvements-quick-reference.md
+│   │   ├── desktop-platform-improvements-implementation-guide.md
 │   │   ├── high-impact-improvement-brainstorm-2026-03.md
 │   │   ├── high-impact-improvements-brainstorm.md
 │   │   ├── high-value-low-cost-improvements-brainstorm.md
@@ -651,34 +678,6 @@ Market-Data-Collector/
 │   │   ├── README.md
 │   │   ├── ROADMAP.md
 │   │   └── TODO.md
-│   ├── uml/
-│   │   ├── activity-diagram-backfill.png
-│   │   ├── activity-diagram-backfill.puml
-│   │   ├── activity-diagram.png
-│   │   ├── activity-diagram.puml
-│   │   ├── communication-diagram.png
-│   │   ├── communication-diagram.puml
-│   │   ├── interaction-overview-diagram.png
-│   │   ├── interaction-overview-diagram.puml
-│   │   ├── README.md
-│   │   ├── sequence-diagram-backfill.png
-│   │   ├── sequence-diagram-backfill.puml
-│   │   ├── sequence-diagram.png
-│   │   ├── sequence-diagram.puml
-│   │   ├── state-diagram-backfill.png
-│   │   ├── state-diagram-backfill.puml
-│   │   ├── state-diagram-orderbook.png
-│   │   ├── state-diagram-orderbook.puml
-│   │   ├── state-diagram-trade-sequence.png
-│   │   ├── state-diagram-trade-sequence.puml
-│   │   ├── state-diagram.png
-│   │   ├── state-diagram.puml
-│   │   ├── timing-diagram-backfill.png
-│   │   ├── timing-diagram-backfill.puml
-│   │   ├── timing-diagram.png
-│   │   ├── timing-diagram.puml
-│   │   ├── use-case-diagram.png
-│   │   └── use-case-diagram.puml
 │   ├── DEPENDENCIES.md
 │   ├── HELP.md
 │   ├── README.md
@@ -734,7 +733,8 @@ Market-Data-Collector/
 │   │   │   ├── SchemaCheckCommand.cs
 │   │   │   ├── SelfTestCommand.cs
 │   │   │   ├── SymbolCommands.cs
-│   │   │   └── ValidateConfigCommand.cs
+│   │   │   ├── ValidateConfigCommand.cs
+│   │   │   └── WalRepairCommand.cs
 │   │   ├── Composition/
 │   │   │   ├── CircuitBreakerCallbackRouter.cs
 │   │   │   ├── HostAdapters.cs
@@ -855,6 +855,40 @@ Market-Data-Collector/
 │   │   │   └── TracedEventMetrics.cs
 │   │   ├── GlobalUsings.cs
 │   │   └── MarketDataCollector.Application.csproj
+│   ├── MarketDataCollector.Backtesting/
+│   │   ├── Engine/
+│   │   │   ├── BacktestContext.cs
+│   │   │   ├── BacktestEngine.cs
+│   │   │   ├── MultiSymbolMergeEnumerator.cs
+│   │   │   └── UniverseDiscovery.cs
+│   │   ├── FillModels/
+│   │   │   ├── BarMidpointFillModel.cs
+│   │   │   ├── IFillModel.cs
+│   │   │   └── OrderBookFillModel.cs
+│   │   ├── Metrics/
+│   │   │   ├── BacktestMetricsEngine.cs
+│   │   │   └── XirrCalculator.cs
+│   │   ├── Plugins/
+│   │   │   └── StrategyPluginLoader.cs
+│   │   ├── Portfolio/
+│   │   │   ├── ICommissionModel.cs
+│   │   │   └── SimulatedPortfolio.cs
+│   │   ├── GlobalUsings.cs
+│   │   └── MarketDataCollector.Backtesting.csproj
+│   ├── MarketDataCollector.Backtesting.Sdk/
+│   │   ├── BacktestProgressEvent.cs
+│   │   ├── BacktestRequest.cs
+│   │   ├── BacktestResult.cs
+│   │   ├── CashFlowEntry.cs
+│   │   ├── FillEvent.cs
+│   │   ├── GlobalUsings.cs
+│   │   ├── IBacktestContext.cs
+│   │   ├── IBacktestStrategy.cs
+│   │   ├── MarketDataCollector.Backtesting.Sdk.csproj
+│   │   ├── Order.cs
+│   │   ├── PortfolioSnapshot.cs
+│   │   ├── Position.cs
+│   │   └── StrategyParameterAttribute.cs
 │   ├── MarketDataCollector.Contracts/
 │   │   ├── Api/
 │   │   │   ├── BackfillApiModels.cs
@@ -912,6 +946,8 @@ Market-Data-Collector/
 │   │   │   └── ISchemaUpcaster.cs
 │   │   ├── Session/
 │   │   │   └── CollectionSession.cs
+│   │   ├── Store/
+│   │   │   └── MarketDataQuery.cs
 │   │   └── MarketDataCollector.Contracts.csproj
 │   ├── MarketDataCollector.Core/
 │   │   ├── Config/
@@ -1063,6 +1099,19 @@ Market-Data-Collector/
 │   │   ├── GlobalUsings.cs
 │   │   ├── MarketDataCollector.Infrastructure.csproj
 │   │   └── NoOpMarketDataClient.cs
+│   ├── MarketDataCollector.McpServer/
+│   │   ├── Prompts/
+│   │   │   └── MarketDataPrompts.cs
+│   │   ├── Resources/
+│   │   │   └── MarketDataResources.cs
+│   │   ├── Tools/
+│   │   │   ├── BackfillTools.cs
+│   │   │   ├── ProviderTools.cs
+│   │   │   ├── StorageTools.cs
+│   │   │   └── SymbolTools.cs
+│   │   ├── GlobalUsings.cs
+│   │   ├── MarketDataCollector.McpServer.csproj
+│   │   └── Program.cs
 │   ├── MarketDataCollector.ProviderSdk/
 │   │   ├── CredentialValidator.cs
 │   │   ├── DataSourceAttribute.cs
@@ -1101,6 +1150,7 @@ Market-Data-Collector/
 │   │   │   ├── ExportValidator.cs
 │   │   │   └── ExportVerificationReport.cs
 │   │   ├── Interfaces/
+│   │   │   ├── IMarketDataStore.cs
 │   │   │   ├── ISourceRegistry.cs
 │   │   │   ├── IStorageCatalogService.cs
 │   │   │   ├── IStoragePolicy.cs
@@ -1152,6 +1202,9 @@ Market-Data-Collector/
 │   │   │   ├── CompositeSink.cs
 │   │   │   ├── JsonlStorageSink.cs
 │   │   │   └── ParquetStorageSink.cs
+│   │   ├── Store/
+│   │   │   ├── CompositeMarketDataStore.cs
+│   │   │   └── JsonlMarketDataStore.cs
 │   │   ├── GlobalUsings.cs
 │   │   ├── MarketDataCollector.Storage.csproj
 │   │   ├── StorageOptions.cs
@@ -1337,6 +1390,7 @@ Market-Data-Collector/
 │       │   ├── ArchiveHealthService.cs
 │       │   ├── BackendServiceManager.cs
 │       │   ├── BackgroundTaskSchedulerService.cs
+│       │   ├── BacktestService.cs
 │       │   ├── BrushRegistry.cs
 │       │   ├── ConfigService.cs
 │       │   ├── ConnectionService.cs
@@ -1368,6 +1422,7 @@ Market-Data-Collector/
 │       │   ├── AppStyles.xaml
 │       │   └── IconResources.xaml
 │       ├── ViewModels/
+│       │   ├── BacktestViewModel.cs
 │       │   ├── BindableBase.cs
 │       │   ├── DashboardViewModel.cs
 │       │   └── LeanIntegrationViewModel.cs
@@ -1388,6 +1443,8 @@ Market-Data-Collector/
 │       │   ├── ArchiveHealthPage.xaml.cs
 │       │   ├── BackfillPage.xaml
 │       │   ├── BackfillPage.xaml.cs
+│       │   ├── BacktestPage.xaml
+│       │   ├── BacktestPage.xaml.cs
 │       │   ├── ChartingPage.xaml
 │       │   ├── ChartingPage.xaml.cs
 │       │   ├── CollectionSessionPage.xaml
@@ -1483,12 +1540,24 @@ Market-Data-Collector/
 │       ├── MarketDataCollector.Wpf.csproj
 │       └── README.md
 ├── tests/  # Test projects
+│   ├── MarketDataCollector.Backtesting.Tests/
+│   │   ├── FillModelTests.cs
+│   │   ├── GlobalUsings.cs
+│   │   ├── MarketDataCollector.Backtesting.Tests.csproj
+│   │   ├── SimulatedPortfolioTests.cs
+│   │   └── XirrCalculatorTests.cs
 │   ├── MarketDataCollector.FSharp.Tests/
 │   │   ├── CalculationTests.fs
 │   │   ├── DomainTests.fs
 │   │   ├── MarketDataCollector.FSharp.Tests.fsproj
 │   │   ├── PipelineTests.fs
 │   │   └── ValidationTests.fs
+│   ├── MarketDataCollector.McpServer.Tests/
+│   │   ├── Tools/
+│   │   │   ├── BackfillToolsTests.cs
+│   │   │   └── StorageToolsTests.cs
+│   │   ├── GlobalUsings.cs
+│   │   └── MarketDataCollector.McpServer.Tests.csproj
 │   ├── MarketDataCollector.Tests/
 │   │   ├── Application/
 │   │   │   ├── Backfill/
@@ -1566,6 +1635,7 @@ Market-Data-Collector/
 │   │   │   ├── StorageSinkRegistryTests.cs
 │   │   │   ├── SymbolRegistryServiceTests.cs
 │   │   │   ├── WriteAheadLogCorruptionModeTests.cs
+│   │   │   ├── WriteAheadLogFuzzTests.cs
 │   │   │   └── WriteAheadLogTests.cs
 │   │   ├── SymbolSearch/
 │   │   │   ├── OpenFigiClientTests.cs
@@ -1716,24 +1786,39 @@ When contributing to this project, **always follow these rules**:
 
 ### Historical Providers (IHistoricalDataProvider)
 
-| Provider | Free Tier | Data Types | Rate Limits |
-|----------|-----------|------------|-------------|
-| Alpaca | Yes (with account) | Bars, trades, quotes | 200/min |
-| Polygon | Limited | Bars, trades, quotes, aggregates | Varies |
-| Tiingo | Yes | Daily bars | 500/hour |
-| Yahoo Finance | Yes | Daily bars | Unofficial |
-| Stooq | Yes | Daily bars | Low |
-| StockSharp | Yes (with account) | Various | Varies |
-| Finnhub | Yes | Daily bars | 60/min |
-| Alpha Vantage | Yes | Daily bars | 5/min |
-| Nasdaq Data Link | Limited | Various | Varies |
-| Interactive Brokers | Yes (with account) | All types | IB pacing rules |
+| Provider | Class | Free Tier | Data Types | Rate Limits |
+|----------|-------|-----------|------------|-------------|
+| Alpaca | `AlpacaHistoricalDataProvider` | Yes (with account) | Bars, trades, quotes | 200/min |
+| Polygon | `PolygonHistoricalDataProvider` | Limited | Bars, trades, quotes, aggregates | Varies |
+| Tiingo | `TiingoHistoricalDataProvider` | Yes | Daily bars | 500/hour |
+| Yahoo Finance | `YahooFinanceHistoricalDataProvider` | Yes | Daily bars | Unofficial |
+| Stooq | `StooqHistoricalDataProvider` | Yes | Daily bars | Low |
+| StockSharp | `StockSharpHistoricalDataProvider` | Yes (with account) | Various | Varies |
+| Finnhub | `FinnhubHistoricalDataProvider` | Yes | Daily bars | 60/min |
+| Alpha Vantage | `AlphaVantageHistoricalDataProvider` | Yes | Daily bars | 5/min |
+| Nasdaq Data Link | `NasdaqDataLinkHistoricalDataProvider` | Limited | Various | Varies |
+| Interactive Brokers | `IBHistoricalDataProvider` | Yes (with account) | All types | IB pacing rules |
 
 **CompositeHistoricalDataProvider** provides automatic multi-provider routing with:
 - Priority-based fallback chain
 - Rate limit tracking
 - Provider health monitoring
 - Symbol resolution across providers
+
+**Provider base classes** (in `Infrastructure/Adapters/Core/`):
+
+| Base Class | Purpose |
+|------------|---------|
+| `BaseHistoricalDataProvider` | Abstract base with rate limiting and retry logic |
+| `BaseSymbolSearchProvider` | Abstract base for symbol search implementations |
+
+**Template scaffolding** (in `Infrastructure/Adapters/_Template/`):
+
+| Template Class | Purpose |
+|----------------|---------|
+| `TemplateHistoricalDataProvider` | Reference scaffold for new historical providers |
+| `TemplateMarketDataClient` | Reference scaffold for new streaming clients |
+| `TemplateSymbolSearchProvider` | Reference scaffold for new symbol search providers |
 
 ### Symbol Search Providers (ISymbolSearchProvider)
 

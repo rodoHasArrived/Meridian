@@ -4,7 +4,7 @@
 
 # GitHub Workflows Overview
 
-> Auto-generated on 2026-03-16 16:09:16 UTC
+> Auto-generated on 2026-03-17 03:28:25 UTC
 
 This document provides an overview of all GitHub Actions workflows in the repository.
 
@@ -18,7 +18,7 @@ This document provides an overview of all GitHub Actions workflows in the reposi
 | Build and Release | `dotnet-desktop.yml` | push, PR, manual |
 | Close Duplicate and Stale Auto-Generated Issues | `close-duplicate-issues.yml` | manual, scheduled |
 | Code Quality | `code-quality.yml` | push, PR, manual |
-| Copilot Pull Request Reviewer | `copilot-pull-request-reviewer.yml` | PR |
+| Copilot Pull Request Reviewer | `copilot-pull-request-reviewer.yml` | PR, manual |
 | Copilot SWE Agent / Copilot | `copilot-swe-agent-copilot.yml` | manual |
 | Copilot Setup Steps | `copilot-setup-steps.yml` | push, manual |
 | Desktop Builds | `desktop-builds.yml` | push, PR, manual |
@@ -35,6 +35,7 @@ This document provides an overview of all GitHub Actions workflows in the reposi
 | Reusable .NET Build | `reusable-dotnet-build.yml` | unknown |
 | Scheduled Maintenance | `scheduled-maintenance.yml` | manual, scheduled |
 | Security | `security.yml` | PR, manual, scheduled |
+| Skill Eval Regression Check | `skill-evals.yml` | PR, manual |
 | Test Matrix | `test-matrix.yml` | push, PR, manual |
 | Ticker Data Collection | `ticker-data-collection.yml` | manual |
 | Update Diagram Artifacts | `update-diagrams.yml` | push, manual |
@@ -62,7 +63,7 @@ This document provides an overview of all GitHub Actions workflows in the reposi
 
 ## Workflow Count
 
-- **Total workflows:** 28
+- **Total workflows:** 29
 
 ---
 
