@@ -65,7 +65,10 @@ docs/ai/
 .github/
 ├── agents/                          ← GitHub Copilot agent definitions (auto-discovered)
 │   ├── code-review-agent.md
-│   └── documentation-agent.md
+│   ├── documentation-agent.md
+│   ├── mdc-brainstorm-agent.md
+│   ├── mdc-provider-builder-agent.md
+│   └── mdc-test-writer-agent.md
 ├── copilot-instructions.md          ← Repository-wide Copilot instructions
 ├── instructions/                    ← Path-specific Copilot rules (auto-applied)
 │   ├── csharp.instructions.md
@@ -76,6 +79,9 @@ docs/ai/
     └── *.prompt.yml
 
 .claude/
+├── agents/                          ← Claude Code agent definitions (auto-discovered)
+│   ├── mdc-cleanup.md
+│   └── mdc-docs.md
 ├── settings.local.json              ← Claude Code permissions
 └── skills/                          ← Claude Code skill definitions (auto-discovered)
     ├── skills_provider.py
@@ -125,8 +131,13 @@ See [`agents/README.md`](agents/README.md) and [`skills/README.md`](skills/READM
 
 | File | Used By | Purpose |
 |------|---------|---------|
-| [`.github/agents/code-review-agent.md`](../../.github/agents/code-review-agent.md) | Copilot, Claude skill | **Canonical** 6-lens code review framework |
+| [`.github/agents/code-review-agent.md`](../../.github/agents/code-review-agent.md) | Copilot, Claude skill | **Canonical** 7-lens code review framework |
 | [`.github/agents/documentation-agent.md`](../../.github/agents/documentation-agent.md) | Copilot | Documentation maintenance agent |
+| [`.github/agents/mdc-brainstorm-agent.md`](../../.github/agents/mdc-brainstorm-agent.md) | Copilot | Brainstorming & ideation agent |
+| [`.github/agents/mdc-provider-builder-agent.md`](../../.github/agents/mdc-provider-builder-agent.md) | Copilot | Provider implementation agent |
+| [`.github/agents/mdc-test-writer-agent.md`](../../.github/agents/mdc-test-writer-agent.md) | Copilot | Test generation agent |
+| [`.claude/agents/mdc-cleanup.md`](../../.claude/agents/mdc-cleanup.md) | Claude Code | Code cleanup and anti-pattern correction agent |
+| [`.claude/agents/mdc-docs.md`](../../.claude/agents/mdc-docs.md) | Claude Code | Documentation maintenance agent |
 | [`.claude/skills/mdc-code-review/SKILL.md`](../../.claude/skills/mdc-code-review/SKILL.md) | Claude Code | Code review skill (wraps `code-review-agent.md`) |
 | [`.claude/skills/mdc-code-review/references/architecture.md`](../../.claude/skills/mdc-code-review/references/architecture.md) | Claude Code | Deep project context, dependency graph |
 | [`.claude/skills/skills_provider.py`](../../.claude/skills/skills_provider.py) | Claude Code | Skill registration and dynamic resources |
@@ -256,4 +267,4 @@ checks as Claude Code scripts. See [`skills/README.md`](skills/README.md) for de
 
 ---
 
-*Last Updated: 2026-03-16*
+*Last Updated: 2026-03-17*
