@@ -1,34 +1,34 @@
 # TODO Tracking
 
 > Auto-generated TODO documentation. Do not edit manually.
-> Last updated: 2026-03-17T10:43:53.830630+00:00
+> Last updated: 2026-03-17T10:51:04.499089+00:00
 
 ## Summary
 
 | Metric | Count |
 |--------|-------|
-| **Total Items** | 52 |
+| **Total Items** | 51 |
 | **Linked to Issues** | 0 |
-| **Untracked** | 52 |
+| **Untracked** | 51 |
 
 ### By Type
 
 | Type | Count | Description |
 |------|-------|-------------|
 | `TODO` | 36 | General tasks to complete |
-| `NOTE` | 16 | Important notes and documentation |
+| `NOTE` | 15 | Important notes and documentation |
 
 ### By Directory
 
 | Directory | Count |
 |-----------|-------|
 | `src/` | 39 |
-| `tests/` | 10 |
+| `tests/` | 9 |
 | `.github/` | 3 |
 
 ## Unassigned & Untracked
 
-52 items have no assignee and no issue tracking:
+51 items have no assignee and no issue tracking:
 
 Consider assigning ownership or creating tracking issues for these items.
 
@@ -144,7 +144,7 @@ Consider assigning ownership or creating tracking issues for these items.
 - [ ] `src/MarketDataCollector.Infrastructure/Adapters/_Template/TemplateSymbolSearchProvider.cs:147`
   > If the provider supports server-side filtering, implement it here. Otherwise, keep this call to the base class which filters client-side.
 
-### NOTE (16)
+### NOTE (15)
 
 - [ ] `.github/workflows/desktop-builds.yml:9`
   > UWP/WinUI 3 application has been removed. WPF is the sole desktop client.
@@ -184,9 +184,6 @@ Consider assigning ownership or creating tracking issues for these items.
 
 - [ ] `tests/MarketDataCollector.Ui.Tests/Services/ScheduledMaintenanceServiceTests.cs:85`
   > since this is a singleton shared across tests, if StartScheduler was previously called, we stop it first to ensure test isolation.
-
-- [ ] `tests/MarketDataCollector.Wpf.Tests/Services/NavigationServiceTests.cs:78`
-  > This test assumes NavigationService might not be initialized In production, Initialize should be called during app startup
 
 - [ ] `tests/MarketDataCollector.Wpf.Tests/Services/OfflineTrackingPersistenceServiceTests.cs:27`
   > Singleton state may persist across tests. We explicitly shut down first to verify the default state transition.
