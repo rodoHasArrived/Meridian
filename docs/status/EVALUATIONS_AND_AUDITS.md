@@ -748,9 +748,8 @@ All source documents that feed into this consolidation:
 | UWP Comprehensive Audit | `docs/archived/UWP_COMPREHENSIVE_AUDIT.md` | Audit | Archived |
 | Repository Cleanup Plan | `docs/archived/repository-cleanup-action-plan.md` | Plan | Archived |
 | Config Consolidation Report | `CONFIG_CONSOLIDATION_REPORT.md` | Report | Complete |
-| Desktop Improvements Exec Summary | `docs/development/desktop-improvements-executive-summary.md` | Summary | Current |
-| Desktop Improvements Quick Ref | `docs/development/desktop-improvements-quick-reference.md` | Reference | Current |
-| Desktop Platform Improvements Guide | `docs/development/desktop-platform-improvements-implementation-guide.md` | Guide | Current |
+| Desktop Improvements Exec Summary | `docs/evaluations/desktop-improvements-executive-summary.md` | Summary | Current |
+| Desktop Platform Improvements Guide | `docs/evaluations/desktop-platform-improvements-implementation-guide.md` | Guide | Current |
 | Desktop Improvement Shortlist | `docs/archived/desktop-end-user-improvements-shortlist.md` | Assessment | Archived |
 
 ---
