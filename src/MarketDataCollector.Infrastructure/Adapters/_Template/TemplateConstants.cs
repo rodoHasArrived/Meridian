@@ -32,9 +32,8 @@ internal static class TemplateRateLimits
     // TODO: Set the rate-limit window duration.
     public static readonly TimeSpan Window = TimeSpan.FromMinutes(1);
 
-    // TODO: Set the recommended minimum delay between consecutive requests.
-    //   MinRequestDelay = Window / MaxRequestsPerWindow
-    public static readonly TimeSpan MinRequestDelay = TimeSpan.FromSeconds(1);
+    /// <summary>Recommended minimum delay between consecutive requests (Window / MaxRequestsPerWindow).</summary>
+    public static readonly TimeSpan MinRequestDelay = Window / MaxRequestsPerWindow;
 }
 
 /// <summary>
