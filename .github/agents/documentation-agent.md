@@ -57,6 +57,7 @@ Market-Data-Collector/
 │   │   ├── mdc-brainstorm/
 │   │   │   ├── references/
 │   │   │   │   ...
+│   │   │   ├── brainstorm-history.jsonl
 │   │   │   ├── CHANGELOG.md
 │   │   │   └── SKILL.md
 │   │   ├── mdc-code-review/

@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-17 09:44:16 UTC
+> Auto-generated on 2026-03-17 10:22:57 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -28,6 +28,7 @@ Market-Data-Collector/
 │   │   ├── mdc-brainstorm/
 │   │   │   ├── references/
 │   │   │   │   ...
+│   │   │   ├── brainstorm-history.jsonl
 │   │   │   ├── CHANGELOG.md
 │   │   │   └── SKILL.md
 │   │   ├── mdc-code-review/
