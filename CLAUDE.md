@@ -190,11 +190,17 @@ If the issue is tracked on GitHub, label it `ai-known-error` so the intake workf
 Market-Data-Collector/
 ├── .claude/
 │   ├── agents/
+│   │   ├── mdc-blueprint.md
 │   │   ├── mdc-cleanup.md
 │   │   └── mdc-docs.md
 │   ├── skills/
 │   │   ├── _shared/
 │   │   │   └── project-context.md
+│   │   ├── mdc-blueprint/
+│   │   │   ├── references/
+│   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
+│   │   │   └── SKILL.md
 │   │   ├── mdc-brainstorm/
 │   │   │   ├── references/
 │   │   │   │   ...
@@ -235,6 +241,7 @@ Market-Data-Collector/
 │   │   ├── adr-generator.agent.md
 │   │   ├── code-review-agent.md
 │   │   ├── documentation-agent.md
+│   │   ├── mdc-blueprint-agent.md
 │   │   ├── mdc-brainstorm-agent.md
 │   │   ├── mdc-provider-builder-agent.md
 │   │   └── mdc-test-writer-agent.md
