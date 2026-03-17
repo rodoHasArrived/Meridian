@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-16 22:44:33 UTC
+> Auto-generated on 2026-03-17 00:29:35 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -31,6 +31,16 @@ Market-Data-Collector/
 │   │   │   ├── references/
 │   │   │   │   ...
 │   │   │   ├── scripts/  # Automation scripts
+│   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
+│   │   │   └── SKILL.md
+│   │   ├── mdc-provider-builder/
+│   │   │   ├── references/
+│   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
+│   │   │   └── SKILL.md
+│   │   ├── mdc-test-writer/
+│   │   │   ├── references/
 │   │   │   │   ...
 │   │   │   ├── CHANGELOG.md
 │   │   │   └── SKILL.md
@@ -204,6 +214,7 @@ Market-Data-Collector/
 │       │   ├── start-collector.sh
 │       │   ├── stop-collector.ps1
 │       │   └── stop-collector.sh
+│       ├── ai-architecture-check.py
 │       └── ai-repo-updater.py
 ├── config/  # Configuration files
 │   ├── appsettings.json

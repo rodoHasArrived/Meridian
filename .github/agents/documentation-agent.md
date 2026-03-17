@@ -58,6 +58,16 @@ Market-Data-Collector/
 │   │   │   │   ...
 │   │   │   ├── CHANGELOG.md
 │   │   │   └── SKILL.md
+│   │   ├── mdc-provider-builder/
+│   │   │   ├── references/
+│   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
+│   │   │   └── SKILL.md
+│   │   ├── mdc-test-writer/
+│   │   │   ├── references/
+│   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
+│   │   │   └── SKILL.md
 │   │   └── skills_provider.py
 │   └── settings.local.json
 ├── .devcontainer/
@@ -228,6 +238,7 @@ Market-Data-Collector/
 │       │   ├── start-collector.sh
 │       │   ├── stop-collector.ps1
 │       │   └── stop-collector.sh
+│       ├── ai-architecture-check.py
 │       └── ai-repo-updater.py
 ├── config/  # Configuration files
 │   ├── appsettings.json
