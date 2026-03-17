@@ -1,52 +1,40 @@
 # TODO Tracking
 
 > Auto-generated TODO documentation. Do not edit manually.
-> Last updated: 2026-03-17T08:07:45.723973+00:00
+> Last updated: 2026-03-17T08:10:18.323694+00:00
 
 ## Summary
 
 | Metric | Count |
 |--------|-------|
-| **Total Items** | 60 |
+| **Total Items** | 56 |
 | **Linked to Issues** | 0 |
-| **Untracked** | 60 |
+| **Untracked** | 56 |
 
 ### By Type
 
 | Type | Count | Description |
 |------|-------|-------------|
-| `TODO` | 40 | General tasks to complete |
+| `TODO` | 36 | General tasks to complete |
 | `NOTE` | 20 | Important notes and documentation |
 
 ### By Directory
 
 | Directory | Count |
 |-----------|-------|
-| `src/` | 45 |
+| `src/` | 41 |
 | `tests/` | 12 |
 | `.github/` | 3 |
 
 ## Unassigned & Untracked
 
-60 items have no assignee and no issue tracking:
+56 items have no assignee and no issue tracking:
 
 Consider assigning ownership or creating tracking issues for these items.
 
 ## All Items
 
-### TODO (40)
-
-- [ ] `src/MarketDataCollector.Infrastructure/Adapters/_Template/TemplateConstants.cs:10`
-  > Add your provider's base URL or WebSocket URI. Examples:
-
-- [ ] `src/MarketDataCollector.Infrastructure/Adapters/_Template/TemplateConstants.cs:29`
-  > Set the maximum number of requests allowed per window.
-
-- [ ] `src/MarketDataCollector.Infrastructure/Adapters/_Template/TemplateConstants.cs:32`
-  > Set the rate-limit window duration.
-
-- [ ] `src/MarketDataCollector.Infrastructure/Adapters/_Template/TemplateConstants.cs:35`
-  > Set the recommended minimum delay between consecutive requests. MinRequestDelay = Window / MaxRequestsPerWindow
+### TODO (36)
 
 - [ ] `src/MarketDataCollector.Infrastructure/Adapters/_Template/TemplateFactory.cs:157`
   > Register a named HttpClient for this provider: services.AddHttpClient(HttpClientNames.TemplateHistorical, client => { client.BaseAddress = new Uri(TemplateEndpoints.BaseUrl); client.DefaultRequestHeaders.Add("Accept", "application/json"); });
