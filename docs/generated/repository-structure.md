@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-17 11:06:59 UTC
+> Auto-generated on 2026-03-18 00:09:39 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -903,6 +903,8 @@ Market-Data-Collector/
 │   │   │   ├── Stooq/
 │   │   │   │   ...
 │   │   │   ├── Tiingo/
+│   │   │   │   ...
+│   │   │   ├── TwelveData/
 │   │   │   │   ...
 │   │   │   └── YahooFinance/
 │   │   │       ...
