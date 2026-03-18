@@ -717,8 +717,14 @@ Already fully specified in §3.10. Pure static extension methods, no state.
 User writes:  var spy = Data.Prices("SPY");
               var sma = spy.SMA(20);
               var stats = Stats.Compute(spy.Returns());
-              Plot.Line("SPY Close", spy.Dates, spy.Close);
-              Plot.Line("SMA 20", spy.Dates, sma);
+              Plot.Line(
+                  "SPY Close",
+                  spy.Dates.Select(d => d.ToOADate()).ToArray(),
+                  spy.Close.Select(c => (double)c).ToArray());
+              Plot.Line(
+                  "SMA 20",
+                  spy.Dates.Select(d => d.ToOADate()).ToArray(),
+                  sma.Select(x => (double)x).ToArray());
 
 Execution:
   ScriptText ──► RoslynScriptCompiler.Compile()
