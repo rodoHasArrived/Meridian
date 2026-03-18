@@ -1,6 +1,6 @@
 # Architecture Decision Records
 
-> Auto-generated on 2026-03-18 18:33:17 UTC
+> Auto-generated on 2026-03-18 20:00:45 UTC
 
 | ADR | Title | Status |
 |-----|-------|--------|
@@ -18,6 +18,7 @@
 | [012-monitoring-and-alerting-pipeline.md](../adr/012-monitoring-and-alerting-pipeline.md) | ADR-012: Unified Monitoring and Alerting Pipeline | Accepted |
 | [013-bounded-channel-policy.md](../adr/013-bounded-channel-policy.md) | ADR-013: Bounded Channel Pipeline Policy with Backpressure | Accepted |
 | [014-json-source-generators.md](../adr/014-json-source-generators.md) | ADR-014: High-Performance JSON Serialization via Source Generators | Accepted |
+| [ADR-015-platform-restructuring.md](../adr/ADR-015-platform-restructuring.md) | ADR-015: Platform Restructuring — MarketDataCollector → Meridian | Accepted |
 | [README.md](../adr/README.md) | Architectural Decision Records (ADRs) | Accepted |
 | [_template.md](../adr/_template.md) | ADR-XXX: [Title] | Superseded |
 

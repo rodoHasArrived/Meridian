@@ -312,6 +312,7 @@ Market-Data-Collector/
 │   │   ├── 013-bounded-channel-policy.md
 │   │   ├── 014-json-source-generators.md
 │   │   ├── _template.md
+│   │   ├── ADR-015-platform-restructuring.md
 │   │   └── README.md
 │   ├── ai/
 │   │   ├── agents/
@@ -839,7 +840,7 @@ Market-Data-Collector/
 │   │   │   ├── ConfigurationException.cs
 │   │   │   ├── ConnectionException.cs
 │   │   │   ├── DataProviderException.cs
-│   │   │   ├── MeridianException.cs
+│   │   │   ├── MarketDataCollectorException.cs
 │   │   │   ├── OperationTimeoutException.cs
 │   │   │   ├── RateLimitException.cs
 │   │   │   ├── SequenceValidationException.cs
@@ -894,6 +895,17 @@ Market-Data-Collector/
 │   │   ├── BannedReferences.txt
 │   │   ├── GlobalUsings.cs
 │   │   └── Meridian.Domain.csproj
+│   ├── Meridian.Execution/
+│   │   ├── IRiskValidator.cs
+│   │   ├── Meridian.Execution.csproj
+│   │   ├── OrderManagementSystem.cs
+│   │   └── PaperTradingGateway.cs
+│   ├── Meridian.Execution.Sdk/
+│   │   ├── IExecutionGateway.cs
+│   │   ├── IOrderManager.cs
+│   │   ├── IPositionTracker.cs
+│   │   ├── Meridian.Execution.Sdk.csproj
+│   │   └── Models.cs
 │   ├── Meridian.FSharp/
 │   │   ├── Calculations/
 │   │   │   ├── Aggregations.fs
@@ -904,6 +916,7 @@ Market-Data-Collector/
 │   │   │   ├── MarketEvents.fs
 │   │   │   └── Sides.fs
 │   │   ├── Generated/
+│   │   │   ├── MarketDataCollector.FSharp.Interop.g.cs
 │   │   │   └── Meridian.FSharp.Interop.g.cs
 │   │   ├── Pipeline/
 │   │   │   └── Transforms.fs
@@ -1023,6 +1036,14 @@ Market-Data-Collector/
 │   │   ├── IRealtimeDataSource.cs
 │   │   ├── Meridian.ProviderSdk.csproj
 │   │   └── ProviderHttpUtilities.cs
+│   ├── Meridian.Risk/
+│   │   ├── Rules/
+│   │   │   ├── DrawdownCircuitBreaker.cs
+│   │   │   ├── OrderRateThrottle.cs
+│   │   │   └── PositionLimitRule.cs
+│   │   ├── CompositeRiskValidator.cs
+│   │   ├── IRiskRule.cs
+│   │   └── Meridian.Risk.csproj
 │   ├── Meridian.Storage/
 │   │   ├── Archival/
 │   │   │   ├── ArchivalStorageService.cs
