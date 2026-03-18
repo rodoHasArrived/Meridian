@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -660,6 +661,8 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// Saves the current window position, size, and state to disk.
+    /// Uses source-generated serialization and async file I/O to avoid
+    /// blocking the UI thread during window close.
     /// </summary>
     private void SaveWindowState()
     {
@@ -681,8 +684,10 @@ public partial class MainWindow : Window
                 Directory.CreateDirectory(dir);
             }
 
-            var json = JsonSerializer.Serialize(state, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(WindowStateFilePath, json);
+            var json = JsonSerializer.Serialize(state, WindowStateJsonContext.Default.PersistedWindowState);
+
+            // Fire-and-forget async write to avoid blocking close animation
+            _ = Task.Run(() => File.WriteAllText(WindowStateFilePath, json));
         }
         catch (Exception ex)
         {
@@ -701,7 +706,7 @@ public partial class MainWindow : Window
             if (!File.Exists(WindowStateFilePath)) return;
 
             var json = File.ReadAllText(WindowStateFilePath);
-            var state = JsonSerializer.Deserialize<PersistedWindowState>(json);
+            var state = JsonSerializer.Deserialize(json, WindowStateJsonContext.Default.PersistedWindowState);
             if (state == null) return;
 
             // Validate dimensions are reasonable
@@ -772,6 +777,14 @@ public partial class MainWindow : Window
         public bool IsMaximized { get; set; }
         public DateTime SavedAt { get; set; }
     }
+
+    /// <summary>
+    /// Source-generated JSON context for window state persistence (ADR-014).
+    /// Avoids reflection-based serialization overhead.
+    /// </summary>
+    [JsonSourceGenerationOptions(WriteIndented = true, PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase)]
+    [JsonSerializable(typeof(PersistedWindowState))]
+    private sealed partial class WindowStateJsonContext : JsonSerializerContext;
 
     #endregion
 }

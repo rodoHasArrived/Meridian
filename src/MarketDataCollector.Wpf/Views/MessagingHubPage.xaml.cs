@@ -23,6 +23,9 @@ public partial class MessagingHubPage : Page
     private IDisposable? _messageSubscription;
     private int _totalMessages;
     private int _failedMessages;
+    private Brush? _infoBrush;
+    private Brush? _successBrush;
+    private Brush? _errorBrush;
 
     public MessagingHubPage()
     {
@@ -40,6 +43,11 @@ public partial class MessagingHubPage : Page
 
     private void OnPageLoaded(object sender, RoutedEventArgs e)
     {
+        // Cache brushes once to avoid resource dictionary walks on every message
+        _infoBrush = (Brush)FindResource("InfoColorBrush");
+        _successBrush = (Brush)FindResource("SuccessColorBrush");
+        _errorBrush = (Brush)FindResource("ErrorColorBrush");
+
         _messageSubscription = _messagingService.SubscribeAll(OnMessageReceived);
 
         LoadMessageTypes();
@@ -65,7 +73,7 @@ public partial class MessagingHubPage : Page
             _activityItems.Insert(0, new ActivityItem
             {
                 DirectionIcon = "\u2192",
-                DirectionColor = (Brush)FindResource("InfoColorBrush"),
+                DirectionColor = _infoBrush!,
                 MessageType = message.Length > 30 ? message[..30] + "..." : message,
                 Detail = "Delivered",
                 TimeText = "Just now"
@@ -151,12 +159,12 @@ public partial class MessagingHubPage : Page
         if (isConnected)
         {
             ConnectionStatusText.Text = "Active";
-            ConnectionBadge.Background = (Brush)FindResource("SuccessColorBrush");
+            ConnectionBadge.Background = _successBrush!;
         }
         else
         {
             ConnectionStatusText.Text = "Inactive";
-            ConnectionBadge.Background = (Brush)FindResource("ErrorColorBrush");
+            ConnectionBadge.Background = _errorBrush!;
         }
     }
 

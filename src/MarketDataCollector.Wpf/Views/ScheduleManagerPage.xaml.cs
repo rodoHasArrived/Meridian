@@ -12,6 +12,9 @@ public partial class ScheduleManagerPage : Page
     private readonly NavigationService _navigationService;
     private readonly NotificationService _notificationService;
     private readonly ScheduleManagerService _scheduleService;
+    private System.Windows.Media.Brush? _warningBrush;
+    private System.Windows.Media.Brush? _successBrush;
+    private System.Windows.Media.Brush? _errorBrush;
 
     public ScheduleManagerPage(
         NavigationService navigationService,
@@ -26,6 +29,11 @@ public partial class ScheduleManagerPage : Page
 
     private async void OnPageLoaded(object sender, RoutedEventArgs e)
     {
+        // Cache brushes once to avoid resource dictionary walks on every validation keystroke
+        _warningBrush = (System.Windows.Media.Brush)FindResource("WarningColorBrush");
+        _successBrush = (System.Windows.Media.Brush)FindResource("SuccessColorBrush");
+        _errorBrush = (System.Windows.Media.Brush)FindResource("ErrorColorBrush");
+
         await LoadBackfillSchedulesAsync();
         await LoadMaintenanceSchedulesAsync();
         await LoadTemplatesAsync();
@@ -47,7 +55,7 @@ public partial class ScheduleManagerPage : Page
         if (string.IsNullOrEmpty(expression))
         {
             CronValidationResult.Text = "Please enter a cron expression.";
-            CronValidationResult.Foreground = (System.Windows.Media.Brush)FindResource("WarningColorBrush");
+            CronValidationResult.Foreground = _warningBrush!;
             return;
         }
 
@@ -59,7 +67,7 @@ public partial class ScheduleManagerPage : Page
             if (result == null)
             {
                 CronValidationResult.Text = "Could not validate expression. Backend may be unavailable.";
-                CronValidationResult.Foreground = (System.Windows.Media.Brush)FindResource("WarningColorBrush");
+                CronValidationResult.Foreground = _warningBrush!;
                 return;
             }
 
@@ -75,18 +83,18 @@ public partial class ScheduleManagerPage : Page
                     }
                 }
                 CronValidationResult.Text = text;
-                CronValidationResult.Foreground = (System.Windows.Media.Brush)FindResource("SuccessColorBrush");
+                CronValidationResult.Foreground = _successBrush!;
             }
             else
             {
                 CronValidationResult.Text = $"Invalid: {result.ErrorMessage}";
-                CronValidationResult.Foreground = (System.Windows.Media.Brush)FindResource("ErrorColorBrush");
+                CronValidationResult.Foreground = _errorBrush!;
             }
         }
         catch (Exception ex)
         {
             CronValidationResult.Text = $"Validation failed: {ex.Message}";
-            CronValidationResult.Foreground = (System.Windows.Media.Brush)FindResource("ErrorColorBrush");
+            CronValidationResult.Foreground = _errorBrush!;
         }
     }
 
@@ -111,7 +119,7 @@ public partial class ScheduleManagerPage : Page
         catch (Exception ex)
         {
             BackfillSchedulesStatus.Text = $"Failed to load: {ex.Message}";
-            BackfillSchedulesStatus.Foreground = (System.Windows.Media.Brush)FindResource("ErrorColorBrush");
+            BackfillSchedulesStatus.Foreground = _errorBrush!;
         }
     }
 
@@ -136,7 +144,7 @@ public partial class ScheduleManagerPage : Page
         catch (Exception ex)
         {
             MaintenanceSchedulesStatus.Text = $"Failed to load: {ex.Message}";
-            MaintenanceSchedulesStatus.Foreground = (System.Windows.Media.Brush)FindResource("ErrorColorBrush");
+            MaintenanceSchedulesStatus.Foreground = _errorBrush!;
         }
     }
 
@@ -161,7 +169,7 @@ public partial class ScheduleManagerPage : Page
         catch (Exception ex)
         {
             TemplatesStatus.Text = $"Failed to load: {ex.Message}";
-            TemplatesStatus.Foreground = (System.Windows.Media.Brush)FindResource("ErrorColorBrush");
+            TemplatesStatus.Foreground = _errorBrush!;
         }
     }
 }
