@@ -7,8 +7,6 @@ namespace MarketDataCollector.Ui.Services;
 
 /// <summary>
 /// Default watchlist service for the shared UI services layer.
-/// Platform-specific projects (WPF) override this with their own implementations
-/// by setting the Instance property during app startup.
 /// </summary>
 public sealed class WatchlistService
 {
@@ -20,20 +18,18 @@ public sealed class WatchlistService
         set => _instance = value ?? throw new ArgumentNullException(nameof(value));
     }
 
-    public virtual Task<WatchlistData> LoadWatchlistAsync()
+    public Task<WatchlistData> LoadWatchlistAsync()
         => Task.FromResult(new WatchlistData());
 
     /// <summary>
     /// Creates a new watchlist or updates an existing one.
-    /// Platform-specific implementations should override this method.
     /// </summary>
     /// <param name="name">The watchlist name.</param>
     /// <param name="symbols">The symbols to add.</param>
     /// <param name="ct">Cancellation token.</param>
     /// <returns>True if successful, false otherwise.</returns>
-    public virtual Task<bool> CreateOrUpdateWatchlistAsync(string name, IEnumerable<string> symbols, CancellationToken ct = default)
+    public Task<bool> CreateOrUpdateWatchlistAsync(string name, IEnumerable<string> symbols, CancellationToken ct = default)
     {
-        // Default implementation - platform-specific implementations should override
         return Task.FromResult(false);
     }
 }

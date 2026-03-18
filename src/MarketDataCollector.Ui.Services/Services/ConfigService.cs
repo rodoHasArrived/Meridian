@@ -13,7 +13,6 @@ namespace MarketDataCollector.Ui.Services;
 /// <summary>
 /// Default configuration service for the shared UI services layer.
 /// Provides basic config loading/saving from the standard appsettings path.
-/// Platform-specific projects may override this by setting the Instance property.
 /// </summary>
 public sealed class ConfigService : IConfigService
 {
@@ -34,7 +33,7 @@ public sealed class ConfigService : IConfigService
         ConfigPath = Path.Combine(AppContext.BaseDirectory, "config", "appsettings.json");
     }
 
-    public virtual async Task<AppConfig?> LoadConfigAsync(CancellationToken ct = default)
+    public async Task<AppConfig?> LoadConfigAsync(CancellationToken ct = default)
     {
         if (!File.Exists(ConfigPath)) return null;
         try
@@ -46,7 +45,7 @@ public sealed class ConfigService : IConfigService
         catch (UnauthorizedAccessException) { return null; }
     }
 
-    public virtual async Task SaveConfigAsync(AppConfig config, CancellationToken ct = default)
+    public async Task SaveConfigAsync(AppConfig config, CancellationToken ct = default)
     {
         var dir = Path.GetDirectoryName(ConfigPath);
         if (dir != null) Directory.CreateDirectory(dir);
