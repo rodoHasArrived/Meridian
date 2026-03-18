@@ -1061,7 +1061,7 @@ All tests use xUnit + FluentAssertions. Mocking via NSubstitute.
 
 ## 8. Implementation Checklist
 
-### Phase 1: Foundation (3–4 days)
+### Phase 1: Foundation & Scripting Engine (6–8 days)
 
 - [ ] Create `src/MarketDataCollector.QuantScript/MarketDataCollector.QuantScript.csproj`
   - Target: `net9.0`
@@ -1075,24 +1075,18 @@ All tests use xUnit + FluentAssertions. Mocking via NSubstitute.
 - [ ] Add `[InternalsVisibleTo("MarketDataCollector.QuantScript")]` to `Backtesting.csproj` (for `BacktestMetricsEngine`)
 - [ ] Create test project `tests/MarketDataCollector.QuantScript.Tests/`
 - [ ] Write PriceSeries + ReturnSeries tests (tests 1–12)
-
-### Phase 2: Compilation & Execution (3–4 days)
-
 - [ ] Implement `IQuantScriptCompiler` and `RoslynScriptCompiler` (§3.3, §4.2)
 - [ ] Implement `IScriptRunner` and `ScriptRunner` (§3.4, §4.3)
 - [ ] Implement `PlotQueue` and `PlotRequest` (§3.5)
 - [ ] Implement `QuantScriptGlobals`, `DataProxy`, `BacktestProxy` (§3.7)
 - [ ] Write compiler + runner + PlotQueue tests (tests 19–32)
 
-### Phase 3: Data & Statistics (2–3 days)
+### Phase 2: Data Layer & WPF Integration (5–7 days)
 
 - [ ] Implement `IQuantDataContext` and `QuantDataContext` (§3.2, §4.1)
 - [ ] Implement `StatisticsEngine`, `PortfolioStatistics`, `CorrelationMatrix` (§3.6, §4.5)
 - [ ] Implement `TechnicalSeriesExtensions` (§3.10)
 - [ ] Write statistics + data context + indicator tests (tests 13–18, 33–38)
-
-### Phase 4: WPF Integration (3–4 days)
-
 - [ ] Add `AvalonEdit` and `ScottPlot.WPF` `<PackageReference>` to `MarketDataCollector.Wpf.csproj`
 - [ ] Add `MarketDataCollector.QuantScript` project reference to `MarketDataCollector.Wpf.csproj`
 - [ ] Create `QuantScriptModels.cs` in `Models/` (ScriptParameterViewModel, etc.)
@@ -1103,7 +1097,7 @@ All tests use xUnit + FluentAssertions. Mocking via NSubstitute.
 - [ ] Register DI services in WPF `App.xaml.cs`
 - [ ] Add default script template (momentum crossover example)
 
-### Phase 5: Script Persistence & Polish (1–2 days)
+### Phase 3: Persistence & Polish (1–2 days)
 
 - [ ] Implement save/load `.csx` files to `ScriptsDirectory`
 - [ ] Implement recent scripts tracking
@@ -1111,7 +1105,7 @@ All tests use xUnit + FluentAssertions. Mocking via NSubstitute.
 - [ ] Dark theme support for AvalonEdit (detect from `ThemeService`)
 - [ ] Add `QuantScript` section to `config/appsettings.sample.json`
 
-### Phase 6: End-to-End Testing & Docs (1–2 days)
+### Phase 4: End-to-End Testing & Docs (1–2 days)
 
 - [ ] Write end-to-end integration tests (tests 39–40)
 - [ ] Add page to WPF README
@@ -1119,7 +1113,7 @@ All tests use xUnit + FluentAssertions. Mocking via NSubstitute.
 - [ ] Add navigation menu icon and tooltip
 - [ ] Smoke test: load SPY data, compute SMA, plot, run simple backtest
 
-### Total Estimated Effort: ~15–19 working days (XL)
+### Total Estimated Effort: ~13–19 working days (XL)
 
 ---
 
