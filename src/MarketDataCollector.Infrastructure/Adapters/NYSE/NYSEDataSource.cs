@@ -215,6 +215,7 @@ public sealed class NYSEDataSource : DataSourceBase, IRealtimeDataSource, IHisto
     protected override async ValueTask OnDisposeAsync()
     {
         await DisconnectAsync().ConfigureAwait(false);
+        _reconnectCts.Dispose();
 
         _wsManager.ConnectionLost -= OnWsConnectionLostAsync;
         await _wsManager.DisposeAsync().ConfigureAwait(false);
