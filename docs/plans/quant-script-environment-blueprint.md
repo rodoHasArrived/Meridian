@@ -181,6 +181,10 @@ public sealed class ReturnSeries
 /// Pairs each value with its date so callers never lose temporal context.
 /// Supports operator chaining and rolling statistics to enable a pandas-like scripting style.
 /// </summary>
+/// <remarks>
+/// Precondition: <paramref name="dates"/> and <paramref name="values"/> must have equal length;
+/// the constructor throws <see cref="ArgumentException"/> otherwise.
+/// </remarks>
 public sealed class NumericSeries
 {
     public string Label { get; }
@@ -188,12 +192,17 @@ public sealed class NumericSeries
     public IReadOnlyList<double?> Values { get; }
     public int Count { get; }
 
+    /// <exception cref="ArgumentException">Thrown when <paramref name="dates"/> and <paramref name="values"/> differ in length.</exception>
     public NumericSeries(string label, IReadOnlyList<DateOnly> dates, IReadOnlyList<double?> values);
 
     // --- Arithmetic operators (inner-join on dates) ---
+    // Binary operators align on the shared date set (inner join); dates present in only one
+    // operand are dropped from the result. Null values in either operand propagate as null.
+    // Division by zero or a null denominator produces null (not an exception).
     public static NumericSeries operator +(NumericSeries a, NumericSeries b);
     public static NumericSeries operator -(NumericSeries a, NumericSeries b);
     public static NumericSeries operator *(NumericSeries a, double scalar);
+    public static NumericSeries operator *(double scalar, NumericSeries a);
     public static NumericSeries operator /(NumericSeries a, NumericSeries b);
 
     // --- Rolling statistics ---
@@ -207,7 +216,10 @@ public sealed class NumericSeries
     public NumericSeries Cumulative();
 
     // --- Filtering ---
-    /// <summary>Retain only entries where the predicate returns true; others become null.</summary>
+    /// <summary>
+    /// Masks entries where the predicate returns false to null.
+    /// <see cref="Dates"/> length is preserved; non-matching entries become null in <see cref="Values"/>.
+    /// </summary>
     public NumericSeries Where(Func<double?, bool> predicate);
 
     // --- Conversion ---
