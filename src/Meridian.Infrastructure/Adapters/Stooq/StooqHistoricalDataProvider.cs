@@ -3,6 +3,7 @@ using Meridian.Contracts.Domain.Models;
 using Meridian.Domain.Models;
 using Meridian.Infrastructure.Adapters.Core;
 using Meridian.Infrastructure.Contracts;
+using Meridian.Infrastructure.DataSources;
 using Meridian.Infrastructure.Http;
 using Meridian.Infrastructure.Utilities;
 using Serilog;
@@ -13,8 +14,11 @@ namespace Meridian.Infrastructure.Adapters.Stooq;
 /// Pulls free end-of-day historical bars from Stooq (https://stooq.pl).
 /// Extends BaseHistoricalDataProvider for common functionality.
 /// </summary>
+[DataSource("stooq", "Stooq (free EOD)", DataSourceType.Historical, DataSourceCategory.Free,
+    Priority = 15, Description = "Free end-of-day OHLCV data from Stooq")]
 [ImplementsAdr("ADR-001", "Stooq historical data provider implementation")]
 [ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+[ImplementsAdr("ADR-005", "Attribute-based provider discovery")]
 public sealed class StooqHistoricalDataProvider : BaseHistoricalDataProvider
 {
     private const string BaseUrl = "https://stooq.pl/q/d/l";

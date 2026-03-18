@@ -9,6 +9,7 @@ using Meridian.Domain.Models;
 using Meridian.Infrastructure.Adapters.Core;
 using Meridian.Infrastructure.Adapters.StockSharp.Converters;
 using Meridian.Infrastructure.Contracts;
+using Meridian.Infrastructure.DataSources;
 using Serilog;
 
 namespace Meridian.Infrastructure.Adapters.StockSharp;
@@ -34,8 +35,11 @@ namespace Meridian.Infrastructure.Adapters.StockSharp;
 /// - EnableHistorical must be true (default)
 /// - The connector must support historical data
 /// </remarks>
+[DataSource("stocksharp-historical", "StockSharp Historical", DataSourceType.Historical, DataSourceCategory.Aggregator,
+    Priority = 20, Description = "Historical data via StockSharp connector (IQFeed, Rithmic, CQG, IB)")]
 [ImplementsAdr("ADR-001", "StockSharp historical data provider implementation")]
 [ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+[ImplementsAdr("ADR-005", "Attribute-based provider discovery")]
 public sealed class StockSharpHistoricalDataProvider : IHistoricalDataProvider
 {
     private readonly ILogger _log = LoggingSetup.ForContext<StockSharpHistoricalDataProvider>();
