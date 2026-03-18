@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-17 02:38:21 UTC
+> Auto-generated on 2026-03-18 00:09:39 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -13,12 +13,22 @@ This document provides an overview of the Market Data Collector repository struc
 ```
 Market-Data-Collector/
 ├── .claude/
+│   ├── agents/
+│   │   ├── mdc-blueprint.md
+│   │   ├── mdc-cleanup.md
+│   │   └── mdc-docs.md
 │   ├── skills/
 │   │   ├── _shared/
 │   │   │   └── project-context.md
+│   │   ├── mdc-blueprint/
+│   │   │   ├── references/
+│   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
+│   │   │   └── SKILL.md
 │   │   ├── mdc-brainstorm/
 │   │   │   ├── references/
 │   │   │   │   ...
+│   │   │   ├── brainstorm-history.jsonl
 │   │   │   ├── CHANGELOG.md
 │   │   │   └── SKILL.md
 │   │   ├── mdc-code-review/
@@ -53,8 +63,13 @@ Market-Data-Collector/
 │   │   └── setup-dotnet-cache/
 │   │       └── action.yml
 │   ├── agents/
+│   │   ├── adr-generator.agent.md
 │   │   ├── code-review-agent.md
-│   │   └── documentation-agent.md
+│   │   ├── documentation-agent.md
+│   │   ├── mdc-blueprint-agent.md
+│   │   ├── mdc-brainstorm-agent.md
+│   │   ├── mdc-provider-builder-agent.md
+│   │   └── mdc-test-writer-agent.md
 │   ├── instructions/
 │   │   ├── csharp.instructions.md
 │   │   ├── docs.instructions.md
@@ -427,7 +442,6 @@ Market-Data-Collector/
 │   │   ├── data-quality-monitoring-evaluation.md
 │   │   ├── desktop-end-user-improvements.md
 │   │   ├── desktop-improvements-executive-summary.md
-│   │   ├── desktop-improvements-quick-reference.md
 │   │   ├── desktop-platform-improvements-implementation-guide.md
 │   │   ├── high-impact-improvement-brainstorm-2026-03.md
 │   │   ├── high-impact-improvements-brainstorm.md
@@ -466,6 +480,7 @@ Market-Data-Collector/
 │   │   ├── README.md
 │   │   └── service-level-objectives.md
 │   ├── plans/
+│   │   ├── assembly-performance-roadmap.md
 │   │   └── l3-inference-implementation-plan.md
 │   ├── providers/
 │   │   ├── alpaca-setup.md
@@ -551,7 +566,8 @@ Market-Data-Collector/
 │   │   │   ├── SchemaCheckCommand.cs
 │   │   │   ├── SelfTestCommand.cs
 │   │   │   ├── SymbolCommands.cs
-│   │   │   └── ValidateConfigCommand.cs
+│   │   │   ├── ValidateConfigCommand.cs
+│   │   │   └── WalRepairCommand.cs
 │   │   ├── Composition/
 │   │   │   ├── CircuitBreakerCallbackRouter.cs
 │   │   │   ├── HostAdapters.cs
@@ -763,6 +779,8 @@ Market-Data-Collector/
 │   │   │   └── ISchemaUpcaster.cs
 │   │   ├── Session/
 │   │   │   └── CollectionSession.cs
+│   │   ├── Store/
+│   │   │   └── MarketDataQuery.cs
 │   │   └── MarketDataCollector.Contracts.csproj
 │   ├── MarketDataCollector.Core/
 │   │   ├── Config/
@@ -886,6 +904,8 @@ Market-Data-Collector/
 │   │   │   │   ...
 │   │   │   ├── Tiingo/
 │   │   │   │   ...
+│   │   │   ├── TwelveData/
+│   │   │   │   ...
 │   │   │   └── YahooFinance/
 │   │   │       ...
 │   │   ├── Contracts/
@@ -914,6 +934,19 @@ Market-Data-Collector/
 │   │   ├── GlobalUsings.cs
 │   │   ├── MarketDataCollector.Infrastructure.csproj
 │   │   └── NoOpMarketDataClient.cs
+│   ├── MarketDataCollector.McpServer/
+│   │   ├── Prompts/
+│   │   │   └── MarketDataPrompts.cs
+│   │   ├── Resources/
+│   │   │   └── MarketDataResources.cs
+│   │   ├── Tools/
+│   │   │   ├── BackfillTools.cs
+│   │   │   ├── ProviderTools.cs
+│   │   │   ├── StorageTools.cs
+│   │   │   └── SymbolTools.cs
+│   │   ├── GlobalUsings.cs
+│   │   ├── MarketDataCollector.McpServer.csproj
+│   │   └── Program.cs
 │   ├── MarketDataCollector.ProviderSdk/
 │   │   ├── CredentialValidator.cs
 │   │   ├── DataSourceAttribute.cs
@@ -952,6 +985,7 @@ Market-Data-Collector/
 │   │   │   ├── ExportValidator.cs
 │   │   │   └── ExportVerificationReport.cs
 │   │   ├── Interfaces/
+│   │   │   ├── IMarketDataStore.cs
 │   │   │   ├── ISourceRegistry.cs
 │   │   │   ├── IStorageCatalogService.cs
 │   │   │   ├── IStoragePolicy.cs
@@ -1003,6 +1037,9 @@ Market-Data-Collector/
 │   │   │   ├── CompositeSink.cs
 │   │   │   ├── JsonlStorageSink.cs
 │   │   │   └── ParquetStorageSink.cs
+│   │   ├── Store/
+│   │   │   ├── CompositeMarketDataStore.cs
+│   │   │   └── JsonlMarketDataStore.cs
 │   │   ├── GlobalUsings.cs
 │   │   ├── MarketDataCollector.Storage.csproj
 │   │   ├── StorageOptions.cs
@@ -1179,12 +1216,19 @@ Market-Data-Collector/
 │       │   ├── IConnectionService.cs
 │       │   └── INavigationService.cs
 │       ├── Models/
+│       │   ├── ActivityLogModels.cs
 │       │   ├── AppConfig.cs
+│       │   ├── BackfillModels.cs
 │       │   ├── DashboardModels.cs
+│       │   ├── DataQualityModels.cs
 │       │   ├── LeanModels.cs
-│       │   └── StorageDisplayModels.cs
+│       │   ├── LiveDataModels.cs
+│       │   ├── NotificationModels.cs
+│       │   ├── OrderBookModels.cs
+│       │   ├── ProviderHealthModels.cs
+│       │   ├── StorageDisplayModels.cs
+│       │   └── SymbolsModels.cs
 │       ├── Services/
-│       │   ├── AdminMaintenanceService.cs
 │       │   ├── ArchiveHealthService.cs
 │       │   ├── BackendServiceManager.cs
 │       │   ├── BackgroundTaskSchedulerService.cs
@@ -1220,10 +1264,18 @@ Market-Data-Collector/
 │       │   ├── AppStyles.xaml
 │       │   └── IconResources.xaml
 │       ├── ViewModels/
+│       │   ├── ActivityLogViewModel.cs
+│       │   ├── BackfillViewModel.cs
 │       │   ├── BacktestViewModel.cs
 │       │   ├── BindableBase.cs
 │       │   ├── DashboardViewModel.cs
-│       │   └── LeanIntegrationViewModel.cs
+│       │   ├── DataQualityViewModel.cs
+│       │   ├── LeanIntegrationViewModel.cs
+│       │   ├── LiveDataViewerViewModel.cs
+│       │   ├── NotificationCenterViewModel.cs
+│       │   ├── OrderBookViewModel.cs
+│       │   ├── ProviderHealthViewModel.cs
+│       │   └── SymbolsPageViewModel.cs
 │       ├── Views/
 │       │   ├── ActivityLogPage.xaml
 │       │   ├── ActivityLogPage.xaml.cs
@@ -1350,6 +1402,12 @@ Market-Data-Collector/
 │   │   ├── MarketDataCollector.FSharp.Tests.fsproj
 │   │   ├── PipelineTests.fs
 │   │   └── ValidationTests.fs
+│   ├── MarketDataCollector.McpServer.Tests/
+│   │   ├── Tools/
+│   │   │   ├── BackfillToolsTests.cs
+│   │   │   └── StorageToolsTests.cs
+│   │   ├── GlobalUsings.cs
+│   │   └── MarketDataCollector.McpServer.Tests.csproj
 │   ├── MarketDataCollector.Tests/
 │   │   ├── Application/
 │   │   │   ├── Backfill/
@@ -1427,6 +1485,7 @@ Market-Data-Collector/
 │   │   │   ├── StorageSinkRegistryTests.cs
 │   │   │   ├── SymbolRegistryServiceTests.cs
 │   │   │   ├── WriteAheadLogCorruptionModeTests.cs
+│   │   │   ├── WriteAheadLogFuzzTests.cs
 │   │   │   └── WriteAheadLogTests.cs
 │   │   ├── SymbolSearch/
 │   │   │   ├── OpenFigiClientTests.cs
