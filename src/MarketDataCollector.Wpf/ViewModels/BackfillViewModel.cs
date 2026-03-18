@@ -417,6 +417,12 @@ public sealed class BackfillViewModel : BindableBase, IDisposable
         }
     }
 
+    public void DeleteScheduledJob(ScheduledJobInfo job)
+    {
+        ScheduledJobs.Remove(job);
+        HasNoScheduledJobs = ScheduledJobs.Count == 0;
+    }
+
     public void DismissJob(ResumableJobInfo job)
     {
         ResumableJobs.Remove(job);

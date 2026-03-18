@@ -618,11 +618,7 @@ public partial class BackfillPage : Page
             {
                 if (dialog.ShouldDelete)
                 {
-                    _viewModel.ScheduledJobs.Remove(job);
-                    NoScheduledJobsText.Visibility = _viewModel.ScheduledJobs.Count == 0
-                        ? Visibility.Visible
-                        : Visibility.Collapsed;
-
+                    _viewModel.DeleteScheduledJob(job);
                     _notificationService.ShowNotification(
                         "Job Deleted",
                         $"Scheduled job '{job.Name}' has been deleted.",
