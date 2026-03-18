@@ -311,10 +311,12 @@ Market-Data-Collector/
 │   │   │   └── README.md
 │   │   ├── claude/
 │   │   │   ├── CLAUDE.actions.md
+│   │   │   ├── CLAUDE.api.md
 │   │   │   ├── CLAUDE.fsharp.md
 │   │   │   ├── CLAUDE.providers.md
 │   │   │   ├── CLAUDE.repo-updater.md
 │   │   │   ├── CLAUDE.storage.md
+│   │   │   ├── CLAUDE.structure.md
 │   │   │   └── CLAUDE.testing.md
 │   │   ├── copilot/
 │   │   │   ├── ai-sync-workflow.md
@@ -510,7 +512,8 @@ Market-Data-Collector/
 │   │   └── service-level-objectives.md
 │   ├── plans/
 │   │   ├── assembly-performance-roadmap.md
-│   │   └── l3-inference-implementation-plan.md
+│   │   ├── l3-inference-implementation-plan.md
+│   │   └── quant-script-environment-blueprint.md
 │   ├── providers/
 │   │   ├── alpaca-setup.md
 │   │   ├── backfill-guide.md
@@ -963,6 +966,26 @@ Market-Data-Collector/
 │   │   ├── GlobalUsings.cs
 │   │   ├── MarketDataCollector.Infrastructure.csproj
 │   │   └── NoOpMarketDataClient.cs
+│   ├── MarketDataCollector.Mcp/
+│   │   ├── Prompts/
+│   │   │   ├── CodeReviewPrompts.cs
+│   │   │   ├── ProviderPrompts.cs
+│   │   │   └── TestWriterPrompts.cs
+│   │   ├── Resources/
+│   │   │   ├── AdrResources.cs
+│   │   │   ├── ConventionResources.cs
+│   │   │   └── TemplateResources.cs
+│   │   ├── Services/
+│   │   │   └── RepoPathService.cs
+│   │   ├── Tools/
+│   │   │   ├── AdrTools.cs
+│   │   │   ├── AuditTools.cs
+│   │   │   ├── ConventionTools.cs
+│   │   │   ├── KnownErrorTools.cs
+│   │   │   └── ProviderTools.cs
+│   │   ├── GlobalUsings.cs
+│   │   ├── MarketDataCollector.Mcp.csproj
+│   │   └── Program.cs
 │   ├── MarketDataCollector.McpServer/
 │   │   ├── Prompts/
 │   │   │   └── MarketDataPrompts.cs
