@@ -4,14 +4,14 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-18 20:35:53 UTC
+> Auto-generated on 2026-03-18 21:42:51 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
 ## Directory Layout
 
 ```
-Market-Data-Collector/
+Meridian/
 ├── .claude/
 │   ├── agents/
 │   │   ├── mdc-blueprint.md

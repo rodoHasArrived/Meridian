@@ -40,7 +40,7 @@ Meridian/docs/
 ## Repository Structure
 
 ```
-Market-Data-Collector/
+Meridian/
 ├── .claude/
 │   ├── agents/
 │   │   ├── mdc-blueprint.md
