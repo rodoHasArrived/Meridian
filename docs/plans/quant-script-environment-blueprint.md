@@ -336,7 +336,7 @@ public sealed class PlotQueue
         _queue.Enqueue(new PlotRequest(title, PlotType.Scatter, null, null, x, y, label, color));
     }
 
-    public void Histogram(string title, IReadOnlyList<double> values, int bins = 50,
+    public void Histogram(string title, IReadOnlyList<double> values,
         string? label = null)
     {
         _queue.Enqueue(new PlotRequest(title, PlotType.Histogram, null, null,
