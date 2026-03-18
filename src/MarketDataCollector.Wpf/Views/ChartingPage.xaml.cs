@@ -9,7 +9,7 @@ using MarketDataCollector.Wpf.ViewModels;
 
 namespace MarketDataCollector.Wpf.Views;
 
-public partial class ChartingPage : Page
+public sealed partial class ChartingPage : Page
 {
     private readonly ChartingPageViewModel _viewModel = new();
 

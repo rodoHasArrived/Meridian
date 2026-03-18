@@ -13,7 +13,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Retention assurance page for managing retention policies, guardrails,
 /// legal holds, and cleanup operations with full audit trail.
 /// </summary>
-public partial class RetentionAssurancePage : Page
+public sealed partial class RetentionAssurancePage : Page
 {
     private readonly WpfServices.RetentionAssuranceService _retentionService;
     private readonly WpfServices.LoggingService _loggingService;

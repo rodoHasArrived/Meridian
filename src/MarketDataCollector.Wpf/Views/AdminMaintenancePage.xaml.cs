@@ -13,7 +13,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Page for administrative and maintenance operations including
 /// archive scheduling, tier migration, retention policies, and cleanup.
 /// </summary>
-public partial class AdminMaintenancePage : Page
+public sealed partial class AdminMaintenancePage : Page
 {
     private readonly AdminMaintenanceServiceBase _adminService;
     private bool _isLoaded;

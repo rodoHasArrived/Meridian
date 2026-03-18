@@ -12,7 +12,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Index subscription page for subscribing to index constituents
 /// (S&amp;P 500, Nasdaq 100, Dow 30, sector ETFs) for bulk symbol management.
 /// </summary>
-public partial class IndexSubscriptionPage : Page
+public sealed partial class IndexSubscriptionPage : Page
 {
     private readonly PortfolioImportService _portfolioService;
     private readonly WpfServices.LoggingService _loggingService;

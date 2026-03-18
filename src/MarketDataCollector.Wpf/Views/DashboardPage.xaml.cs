@@ -9,7 +9,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Dashboard page — thin code-behind.
 /// All state, business logic, and timer management live in <see cref="DashboardViewModel"/>.
 /// </summary>
-public partial class DashboardPage : Page
+public sealed partial class DashboardPage : Page
 {
     private readonly DashboardViewModel _viewModel;
 

@@ -16,7 +16,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Code-behind handles only: DI wiring, alert group card building (uses FindResource),
 /// playbook display, snooze/suppress actions, and checkbox filter events.
 /// </summary>
-public partial class NotificationCenterPage : Page
+public sealed partial class NotificationCenterPage : Page
 {
     private readonly WpfServices.NotificationService _notificationService;
     private readonly AlertService _alertService;

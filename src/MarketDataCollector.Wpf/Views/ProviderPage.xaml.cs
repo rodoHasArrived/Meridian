@@ -19,7 +19,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Phase 3: Driven by provider metadata descriptors for dynamic UI.
 /// Phase 4: Validation, dry-run plan, audit trail.
 /// </summary>
-public partial class ProviderPage : Page
+public sealed partial class ProviderPage : Page
 {
     private readonly WpfServices.NavigationService _navigationService;
     private readonly WpfServices.NotificationService _notificationService;

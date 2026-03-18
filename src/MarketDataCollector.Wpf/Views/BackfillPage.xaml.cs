@@ -22,7 +22,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Wired to real BackfillApiService for live execution and progress tracking.
 /// Supports job resumability via BackfillCheckpointService.
 /// </summary>
-public partial class BackfillPage : Page
+public sealed partial class BackfillPage : Page
 {
     private readonly WpfServices.NotificationService _notificationService;
     private readonly WpfServices.NavigationService _navigationService;

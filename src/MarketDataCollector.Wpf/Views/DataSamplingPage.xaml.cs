@@ -7,7 +7,7 @@ using MarketDataCollector.Wpf.ViewModels;
 
 namespace MarketDataCollector.Wpf.Views;
 
-public partial class DataSamplingPage : Page
+public sealed partial class DataSamplingPage : Page
 {
     private readonly DataSamplingViewModel _viewModel = new();
 

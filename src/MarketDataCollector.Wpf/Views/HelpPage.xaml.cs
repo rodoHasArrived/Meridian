@@ -8,7 +8,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// <summary>
 /// Help page with tutorials, documentation, and support links.
 /// </summary>
-public partial class HelpPage : Page
+public sealed partial class HelpPage : Page
 {
     private readonly WpfServices.NavigationService _navigationService;
     private readonly WpfServices.NotificationService _notificationService;

@@ -8,7 +8,7 @@ using WpfServices = MarketDataCollector.Wpf.Services;
 
 namespace MarketDataCollector.Wpf.Views;
 
-public partial class StoragePage : Page
+public sealed partial class StoragePage : Page
 {
     private readonly StorageAnalyticsService _analyticsService;
     private readonly SettingsConfigurationService _settingsConfigService;

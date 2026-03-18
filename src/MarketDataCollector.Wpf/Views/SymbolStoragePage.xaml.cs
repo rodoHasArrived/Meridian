@@ -11,7 +11,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Symbol storage page showing per-symbol storage analytics, data type breakdown,
 /// file counts, and growth projections.
 /// </summary>
-public partial class SymbolStoragePage : Page
+public sealed partial class SymbolStoragePage : Page
 {
     private readonly StorageAnalyticsService _analyticsService;
     private readonly WpfServices.LoggingService _loggingService;

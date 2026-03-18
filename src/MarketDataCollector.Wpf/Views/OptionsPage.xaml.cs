@@ -13,7 +13,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Options chain page for viewing option expirations, strikes, greeks,
 /// and chain data for tracked underlying symbols.
 /// </summary>
-public partial class OptionsPage : Page
+public sealed partial class OptionsPage : Page
 {
     private readonly WpfServices.LoggingService _loggingService;
     private readonly UiApiClient? _apiClient;

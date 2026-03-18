@@ -15,7 +15,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Fetches live market state from the calendar API when the backend is running;
 /// falls back to a local Eastern-Time calculation when the backend is offline.
 /// </summary>
-public partial class TradingHoursPage : Page
+public sealed partial class TradingHoursPage : Page
 {
     private readonly ApiClientService _apiClient;
 

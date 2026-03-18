@@ -11,7 +11,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// The PropertyChanged relay for BidBarColumn/AskBarColumn is kept here because
 /// <see cref="ColumnDefinition.Width"/> does not support data binding in WPF.
 /// </summary>
-public partial class OrderBookPage : Page
+public sealed partial class OrderBookPage : Page
 {
     private readonly OrderBookViewModel _viewModel;
 

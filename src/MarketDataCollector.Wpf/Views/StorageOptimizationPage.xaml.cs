@@ -10,7 +10,7 @@ using WpfNotificationService = MarketDataCollector.Wpf.Services.NotificationServ
 
 namespace MarketDataCollector.Wpf.Views;
 
-public partial class StorageOptimizationPage : Page
+public sealed partial class StorageOptimizationPage : Page
 {
     private readonly NavigationService _navigationService;
     private readonly WpfNotificationService _notificationService;

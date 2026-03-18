@@ -13,7 +13,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Workspace management page for creating, editing, activating, and
 /// importing/exporting workspace templates with session restore.
 /// </summary>
-public partial class WorkspacePage : Page
+public sealed partial class WorkspacePage : Page
 {
     private readonly WpfServices.WorkspaceService _workspaceService;
     private readonly WpfServices.LoggingService _loggingService;

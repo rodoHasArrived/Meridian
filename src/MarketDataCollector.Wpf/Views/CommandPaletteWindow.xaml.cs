@@ -11,7 +11,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Command palette window providing quick navigation and action execution via Ctrl+K.
 /// Supports fuzzy search across all registered pages and actions.
 /// </summary>
-public partial class CommandPaletteWindow : Window
+public sealed partial class CommandPaletteWindow : Window
 {
     private readonly CommandPaletteService _paletteService;
 

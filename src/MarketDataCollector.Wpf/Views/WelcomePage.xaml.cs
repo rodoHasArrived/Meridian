@@ -12,7 +12,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// <summary>
 /// Welcome page with project branding, quick-start steps, system overview, and recent features.
 /// </summary>
-public partial class WelcomePage : Page
+public sealed partial class WelcomePage : Page
 {
     private readonly WpfServices.NavigationService _navigationService;
     private readonly WpfServices.NotificationService _notificationService;

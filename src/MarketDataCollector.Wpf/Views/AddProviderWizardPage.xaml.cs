@@ -13,7 +13,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Multi-step wizard for adding and configuring a new data provider.
 /// Guides the user through provider selection, credential entry, connection testing, and configuration.
 /// </summary>
-public partial class AddProviderWizardPage : Page
+public sealed partial class AddProviderWizardPage : Page
 {
     private readonly WpfServices.NavigationService _navigationService;
     private readonly WpfServices.NotificationService _notificationService;

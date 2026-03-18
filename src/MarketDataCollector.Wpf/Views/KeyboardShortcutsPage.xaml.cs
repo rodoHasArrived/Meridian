@@ -13,7 +13,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// from the KeyboardShortcutService, ensuring the display always reflects
 /// the current registered shortcuts.
 /// </summary>
-public partial class KeyboardShortcutsPage : Page
+public sealed partial class KeyboardShortcutsPage : Page
 {
     private readonly KeyboardShortcutService _keyboardShortcutService;
 

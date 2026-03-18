@@ -19,7 +19,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Main page with workspace-based navigation sidebar (Monitor, Collect, Storage, Quality, Settings)
 /// and command palette (Ctrl+K). Serves as the shell for all application content.
 /// </summary>
-public partial class MainPage : Page
+public sealed partial class MainPage : Page
 {
     private readonly NavigationService _navigationService;
     private readonly ConnectionService _connectionService;

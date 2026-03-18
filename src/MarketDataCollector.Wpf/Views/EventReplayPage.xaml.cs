@@ -8,7 +8,7 @@ using MarketDataCollector.Wpf.ViewModels;
 
 namespace MarketDataCollector.Wpf.Views;
 
-public partial class EventReplayPage : Page
+public sealed partial class EventReplayPage : Page
 {
     private readonly EventReplayViewModel _viewModel = new();
 

@@ -12,7 +12,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Page for advanced analytics including gap analysis, cross-provider comparison,
 /// latency histograms, anomaly detection, and detailed quality reports.
 /// </summary>
-public partial class AdvancedAnalyticsPage : Page
+public sealed partial class AdvancedAnalyticsPage : Page
 {
     private readonly AdvancedAnalyticsServiceBase _analyticsService;
     private GapAnalysisResult? _lastGapAnalysis;

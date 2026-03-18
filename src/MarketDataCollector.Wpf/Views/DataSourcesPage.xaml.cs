@@ -12,7 +12,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// <summary>
 /// Page for managing multiple data source configurations.
 /// </summary>
-public partial class DataSourcesPage : Page
+public sealed partial class DataSourcesPage : Page
 {
     private readonly WpfServices.ConfigService _configService;
     private string? _editingSourceId;

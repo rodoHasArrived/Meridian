@@ -17,7 +17,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Settings page for application configuration, notifications, and credentials.
 /// Enhanced with Quick Actions, Credential Vault, Storage Preview, and Configuration Profiles.
 /// </summary>
-public partial class SettingsPage : Page
+public sealed partial class SettingsPage : Page
 {
     private readonly WpfServices.ConfigService _configService;
     private readonly WpfServices.NotificationService _notificationService;

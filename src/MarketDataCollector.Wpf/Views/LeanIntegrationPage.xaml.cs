@@ -10,7 +10,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// All state, business logic, and timer management live in <see cref="LeanIntegrationViewModel"/>.
 /// Code-behind is limited to lifecycle wiring, folder/file dialogs (platform UI), and dialog display.
 /// </summary>
-public partial class LeanIntegrationPage : Page
+public sealed partial class LeanIntegrationPage : Page
 {
     private readonly LeanIntegrationViewModel _viewModel;
 

@@ -14,7 +14,7 @@ using WpfServices = MarketDataCollector.Wpf.Services;
 
 namespace MarketDataCollector.Wpf.Views;
 
-public partial class DataBrowserPage : Page
+public sealed partial class DataBrowserPage : Page
 {
     private const string PageTag = "DataBrowser";
     private readonly DataBrowserViewModel _viewModel = new();

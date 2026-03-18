@@ -8,7 +8,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// <summary>
 /// Backtesting page — three-panel layout with configuration, equity curve, and results tabs.
 /// </summary>
-public partial class BacktestPage : Page
+public sealed partial class BacktestPage : Page
 {
     private readonly BacktestViewModel _viewModel = new();
 

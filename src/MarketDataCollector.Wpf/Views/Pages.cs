@@ -3,74 +3,74 @@ using System.Windows.Controls;
 namespace MarketDataCollector.Wpf.Views;
 
 // Primary navigation pages
-public partial class DashboardPage : Page { }
-public partial class WatchlistPage : Page { }
+public sealed partial class DashboardPage : Page { }
+public sealed partial class WatchlistPage : Page { }
 
 // Data Sources pages
-public partial class ProviderPage : Page { }
-public partial class ProviderHealthPage : Page { }
-public partial class DataSourcesPage : Page { }
+public sealed partial class ProviderPage : Page { }
+public sealed partial class ProviderHealthPage : Page { }
+public sealed partial class DataSourcesPage : Page { }
 
 // Data Management pages
-public partial class LiveDataViewerPage : Page { }
-public partial class SymbolsPage : Page { }
-public partial class SymbolMappingPage : Page { }
-public partial class SymbolStoragePage : Page { }
-public partial class StoragePage : Page { }
-public partial class BackfillPage : Page { }
-public partial class PortfolioImportPage : Page { }
-public partial class IndexSubscriptionPage : Page { }
-public partial class OptionsPage : Page { }
-public partial class ScheduleManagerPage : Page { }
+public sealed partial class LiveDataViewerPage : Page { }
+public sealed partial class SymbolsPage : Page { }
+public sealed partial class SymbolMappingPage : Page { }
+public sealed partial class SymbolStoragePage : Page { }
+public sealed partial class StoragePage : Page { }
+public sealed partial class BackfillPage : Page { }
+public sealed partial class PortfolioImportPage : Page { }
+public sealed partial class IndexSubscriptionPage : Page { }
+public sealed partial class OptionsPage : Page { }
+public sealed partial class ScheduleManagerPage : Page { }
 
 // Monitoring pages
-public partial class DataQualityPage : Page { }
-public partial class CollectionSessionPage : Page { }
-public partial class ArchiveHealthPage : Page { }
-public partial class ServiceManagerPage : Page { }
-public partial class SystemHealthPage : Page { }
-public partial class DiagnosticsPage : Page { }
+public sealed partial class DataQualityPage : Page { }
+public sealed partial class CollectionSessionPage : Page { }
+public sealed partial class ArchiveHealthPage : Page { }
+public sealed partial class ServiceManagerPage : Page { }
+public sealed partial class SystemHealthPage : Page { }
+public sealed partial class DiagnosticsPage : Page { }
 
 // Tools pages
-public partial class DataExportPage : Page { }
-public partial class DataSamplingPage : Page { }
-public partial class TimeSeriesAlignmentPage : Page { }
-public partial class ExportPresetsPage : Page { }
-public partial class AnalysisExportPage : Page { }
-public partial class AnalysisExportWizardPage : Page { }
-public partial class EventReplayPage : Page { }
-public partial class PackageManagerPage : Page { }
-public partial class TradingHoursPage : Page { }
+public sealed partial class DataExportPage : Page { }
+public sealed partial class DataSamplingPage : Page { }
+public sealed partial class TimeSeriesAlignmentPage : Page { }
+public sealed partial class ExportPresetsPage : Page { }
+public sealed partial class AnalysisExportPage : Page { }
+public sealed partial class AnalysisExportWizardPage : Page { }
+public sealed partial class EventReplayPage : Page { }
+public sealed partial class PackageManagerPage : Page { }
+public sealed partial class TradingHoursPage : Page { }
 
 // Analytics & Visualization pages
-public partial class AdvancedAnalyticsPage : Page { }
-public partial class ChartingPage : Page { }
-public partial class OrderBookPage : Page { }
-public partial class DataCalendarPage : Page { }
+public sealed partial class AdvancedAnalyticsPage : Page { }
+public sealed partial class ChartingPage : Page { }
+public sealed partial class OrderBookPage : Page { }
+public sealed partial class DataCalendarPage : Page { }
 
 // Storage & Maintenance pages
-public partial class StorageOptimizationPage : Page { }
-public partial class RetentionAssurancePage : Page { }
-public partial class AdminMaintenancePage : Page { }
+public sealed partial class StorageOptimizationPage : Page { }
+public sealed partial class RetentionAssurancePage : Page { }
+public sealed partial class AdminMaintenancePage : Page { }
 
 // Integrations pages
-public partial class LeanIntegrationPage : Page { }
-public partial class MessagingHubPage : Page { }
+public sealed partial class LeanIntegrationPage : Page { }
+public sealed partial class MessagingHubPage : Page { }
 
 // Backtesting pages
-public partial class BacktestPage : Page { }
+public sealed partial class BacktestPage : Page { }
 
 // Workspaces & Notifications pages
-public partial class WorkspacePage : Page { }
-public partial class NotificationCenterPage : Page { }
+public sealed partial class WorkspacePage : Page { }
+public sealed partial class NotificationCenterPage : Page { }
 
 // Support & Setup pages
-public partial class HelpPage : Page { }
-public partial class WelcomePage : Page { }
-public partial class SettingsPage : Page { }
-public partial class KeyboardShortcutsPage : Page { }
-public partial class SetupWizardPage : Page { }
-public partial class AddProviderWizardPage : Page { }
+public sealed partial class HelpPage : Page { }
+public sealed partial class WelcomePage : Page { }
+public sealed partial class SettingsPage : Page { }
+public sealed partial class KeyboardShortcutsPage : Page { }
+public sealed partial class SetupWizardPage : Page { }
+public sealed partial class AddProviderWizardPage : Page { }
 
 // Activity Log page
-public partial class ActivityLogPage : Page { }
+public sealed partial class ActivityLogPage : Page { }

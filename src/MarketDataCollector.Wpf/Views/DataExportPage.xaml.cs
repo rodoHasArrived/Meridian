@@ -10,7 +10,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// <summary>
 /// Page for exporting collected market data and configuring integrations.
 /// </summary>
-public partial class DataExportPage : Page
+public sealed partial class DataExportPage : Page
 {
     public ObservableCollection<string> SelectedSymbols { get; } = new();
     public ObservableCollection<ExportHistoryItem> ExportHistory { get; } = new();

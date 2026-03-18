@@ -13,7 +13,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Symbol mapping page for managing provider-specific symbol translations,
 /// testing mappings, and importing/exporting CSV mapping files.
 /// </summary>
-public partial class SymbolMappingPage : Page
+public sealed partial class SymbolMappingPage : Page
 {
     private readonly SymbolMappingService _mappingService;
     private readonly WpfServices.LoggingService _loggingService;

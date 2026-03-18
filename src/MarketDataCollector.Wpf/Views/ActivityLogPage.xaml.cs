@@ -13,7 +13,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// The only UI-level action kept here is <c>LogList.ScrollIntoView</c> which requires
 /// a direct reference to the list control.
 /// </summary>
-public partial class ActivityLogPage : Page
+public sealed partial class ActivityLogPage : Page
 {
     private readonly ActivityLogViewModel _viewModel;
 

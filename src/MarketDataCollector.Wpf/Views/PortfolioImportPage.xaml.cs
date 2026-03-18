@@ -9,7 +9,7 @@ using MarketDataCollector.Wpf.ViewModels;
 
 namespace MarketDataCollector.Wpf.Views;
 
-public partial class PortfolioImportPage : Page
+public sealed partial class PortfolioImportPage : Page
 {
     private readonly PortfolioImportService _importService = PortfolioImportService.Instance;
     private readonly ObservableCollection<ImportHistoryEntry> _importHistory = new();

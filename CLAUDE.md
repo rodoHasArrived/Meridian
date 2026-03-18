@@ -6,7 +6,7 @@ This document provides essential context for AI assistants (Claude, Copilot, etc
 
 Market Data Collector is a high-performance, cross-platform market data collection system built on **.NET 9.0** using **C# 13** and **F# 8.0**. It captures real-time and historical market microstructure data from multiple providers and persists it for downstream research, backtesting, and algorithmic trading.
 
-**Version:** 1.6.2 | **Status:** Development / Pilot Ready | **Files:** 773 source files
+**Version:** 1.6.2 | **Status:** Development / Pilot Ready | **Files:** 789 source files
 
 ### Key Capabilities
 - Real-time streaming from Interactive Brokers, Alpaca, NYSE, Polygon, StockSharp (90+ data sources)
@@ -22,14 +22,14 @@ Market Data Collector is a high-performance, cross-platform market data collecti
 ### Project Statistics
 | Metric | Count |
 |--------|-------|
-| Total Source Files | 773 |
-| C# Files | 773 |
+| Total Source Files | 789 |
+| C# Files | 789 |
 | F# Files | 14 |
 | Test Files | 252 |
 | Test Methods | ~4,135 |
 | Documentation Files | 163 |
 | Main Projects | 13 (+ 4 test + 1 benchmark) |
-| Provider Implementations | 5 streaming, 10 historical |
+| Provider Implementations | 5 streaming, 11 historical |
 | Symbol Search Providers | 5 |
 | API Route Constants | 309 |
 | Endpoint Files | 39 |
@@ -1819,6 +1819,7 @@ When contributing to this project, **always follow these rules**:
 | Tiingo | `TiingoHistoricalDataProvider` | Yes | Daily bars | 500/hour |
 | Yahoo Finance | `YahooFinanceHistoricalDataProvider` | Yes | Daily bars | Unofficial |
 | Stooq | `StooqHistoricalDataProvider` | Yes | Daily bars | Low |
+| Twelve Data | `TwelveDataHistoricalDataProvider` | Limited | Daily bars, intraday | 8/min (free) |
 | StockSharp | `StockSharpHistoricalDataProvider` | Yes (with account) | Various | Varies |
 | Finnhub | `FinnhubHistoricalDataProvider` | Yes | Daily bars | 60/min |
 | Alpha Vantage | `AlphaVantageHistoricalDataProvider` | Yes | Daily bars | 5/min |

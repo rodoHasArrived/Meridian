@@ -10,7 +10,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// All state, HTTP loading, timers, and connection-event tracking live in
 /// <see cref="ProviderHealthViewModel"/>.
 /// </summary>
-public partial class ProviderHealthPage : Page
+public sealed partial class ProviderHealthPage : Page
 {
     private readonly ProviderHealthViewModel _viewModel;
 

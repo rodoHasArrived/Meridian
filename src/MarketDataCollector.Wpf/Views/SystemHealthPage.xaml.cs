@@ -14,7 +14,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// System health monitoring page showing real-time metrics, provider health,
 /// storage status, and recent system events with auto-refresh.
 /// </summary>
-public partial class SystemHealthPage : Page
+public sealed partial class SystemHealthPage : Page
 {
     private readonly SystemHealthService _healthService;
     private readonly WpfServices.LoggingService _loggingService;

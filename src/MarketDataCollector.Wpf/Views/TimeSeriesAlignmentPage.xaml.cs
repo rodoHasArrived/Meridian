@@ -8,7 +8,7 @@ using MarketDataCollector.Wpf.ViewModels;
 
 namespace MarketDataCollector.Wpf.Views;
 
-public partial class TimeSeriesAlignmentPage : Page
+public sealed partial class TimeSeriesAlignmentPage : Page
 {
     private readonly TimeSeriesAlignmentService _alignmentService = TimeSeriesAlignmentService.Instance;
     private readonly ObservableCollection<string> _selectedSymbols = new();

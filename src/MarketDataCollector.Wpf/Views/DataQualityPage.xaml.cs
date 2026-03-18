@@ -19,7 +19,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// <summary>
 /// Data quality monitoring page showing completeness, gaps, and anomalies.
 /// </summary>
-public partial class DataQualityPage : Page
+public sealed partial class DataQualityPage : Page
 {
     private readonly HttpClient _httpClient = new();
     private readonly ObservableCollection<SymbolQualityModel> _symbolQuality = new();

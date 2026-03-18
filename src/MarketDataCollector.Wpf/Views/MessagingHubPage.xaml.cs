@@ -12,7 +12,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Messaging Hub page for monitoring inter-service messaging activity,
 /// registered message types, and recent message delivery status.
 /// </summary>
-public partial class MessagingHubPage : Page
+public sealed partial class MessagingHubPage : Page
 {
     private readonly WpfServices.MessagingService _messagingService;
     private readonly WpfServices.LoggingService _loggingService;

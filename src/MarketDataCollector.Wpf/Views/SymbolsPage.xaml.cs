@@ -15,7 +15,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// All state, business logic, watchlist event handling, and backend sync live in
 /// <see cref="SymbolsPageViewModel"/>.
 /// </summary>
-public partial class SymbolsPage : Page
+public sealed partial class SymbolsPage : Page
 {
     private readonly SymbolsPageViewModel _vm;
     private readonly WpfServices.NavigationService _navigationService;

@@ -16,7 +16,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// Diagnostics page providing system information, configuration checks,
 /// and diagnostic actions for troubleshooting the Market Data Collector.
 /// </summary>
-public partial class DiagnosticsPage : Page
+public sealed partial class DiagnosticsPage : Page
 {
     private const string AppVersion = "1.6.1";
     private const string ConfigFileName = "appsettings.json";

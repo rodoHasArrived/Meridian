@@ -7,7 +7,7 @@ using ScheduleManagerService = MarketDataCollector.Ui.Services.ScheduleManagerSe
 
 namespace MarketDataCollector.Wpf.Views;
 
-public partial class ScheduleManagerPage : Page
+public sealed partial class ScheduleManagerPage : Page
 {
     private readonly NavigationService _navigationService;
     private readonly NotificationService _notificationService;

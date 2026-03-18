@@ -16,7 +16,7 @@ namespace MarketDataCollector.Wpf;
 /// Market Data Collector WPF Application
 /// Provides maximum stability through WPF (.NET 9) for Windows-only deployment.
 /// </summary>
-public partial class App : Application
+public sealed partial class App : Application
 {
     private static bool _isFirstRun;
     private static bool _isFixtureMode;

@@ -21,7 +21,7 @@ namespace MarketDataCollector.Wpf;
 /// Main application window containing the navigation frame.
 /// Handles global keyboard shortcuts, command palette, and window state persistence.
 /// </summary>
-public partial class MainWindow : Window
+public sealed partial class MainWindow : Window
 {
     private readonly IConnectionService _connectionService;
     private readonly WpfServices.NavigationService _navigationService;

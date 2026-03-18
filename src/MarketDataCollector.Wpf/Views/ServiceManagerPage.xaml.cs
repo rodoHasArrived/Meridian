@@ -7,7 +7,7 @@ using WpfServices = MarketDataCollector.Wpf.Services;
 using MarketDataCollector.Wpf.Services;
 namespace MarketDataCollector.Wpf.Views;
 
-public partial class ServiceManagerPage : Page
+public sealed partial class ServiceManagerPage : Page
 {
     private readonly BackendServiceManager _serviceManager;
     private readonly WpfServices.LoggingService _loggingService;

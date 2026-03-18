@@ -14,7 +14,7 @@ using MarketDataCollector.Wpf.Services;
 
 namespace MarketDataCollector.Wpf.Views;
 
-public partial class SetupWizardPage : Page
+public sealed partial class SetupWizardPage : Page
 {
     private static readonly string[] ProviderOptions =
     {

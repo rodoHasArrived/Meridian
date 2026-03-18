@@ -17,7 +17,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// <summary>
 /// WpfServices.Watchlist management page for creating, editing, and organizing symbol watchlists.
 /// </summary>
-public partial class WatchlistPage : Page
+public sealed partial class WatchlistPage : Page
 {
     private readonly WpfServices.WatchlistService _watchlistService;
     private readonly WpfServices.LoggingService _loggingService;

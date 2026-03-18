@@ -8,7 +8,7 @@ using DataCalendarService = MarketDataCollector.Ui.Services.DataCalendarService;
 
 namespace MarketDataCollector.Wpf.Views;
 
-public partial class DataCalendarPage : Page
+public sealed partial class DataCalendarPage : Page
 {
     private readonly NavigationService _navigationService;
     private readonly NotificationService _notificationService;

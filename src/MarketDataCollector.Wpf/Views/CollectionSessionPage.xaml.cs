@@ -8,7 +8,7 @@ using CollectionSessionService = MarketDataCollector.Ui.Services.CollectionSessi
 
 namespace MarketDataCollector.Wpf.Views;
 
-public partial class CollectionSessionPage : Page
+public sealed partial class CollectionSessionPage : Page
 {
     private readonly NavigationService _navigationService;
     private readonly NotificationService _notificationService;

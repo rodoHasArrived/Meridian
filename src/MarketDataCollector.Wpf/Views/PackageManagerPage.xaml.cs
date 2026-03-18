@@ -12,7 +12,7 @@ using PortablePackagerService = MarketDataCollector.Ui.Services.PortablePackager
 
 namespace MarketDataCollector.Wpf.Views;
 
-public partial class PackageManagerPage : Page
+public sealed partial class PackageManagerPage : Page
 {
     private readonly NavigationService _navigationService;
     private readonly NotificationService _notificationService;

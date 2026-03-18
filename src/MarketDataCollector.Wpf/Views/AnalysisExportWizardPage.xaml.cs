@@ -9,7 +9,7 @@ using MarketDataCollector.Wpf.ViewModels;
 
 namespace MarketDataCollector.Wpf.Views;
 
-public partial class AnalysisExportWizardPage : Page
+public sealed partial class AnalysisExportWizardPage : Page
 {
     private readonly AnalysisExportWizardViewModel _viewModel = new();
 

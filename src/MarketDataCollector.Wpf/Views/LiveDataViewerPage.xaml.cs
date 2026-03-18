@@ -11,7 +11,7 @@ namespace MarketDataCollector.Wpf.Views;
 /// All state, timers, HTTP loading, and session statistics live in
 /// <see cref="LiveDataViewerViewModel"/>.
 /// </summary>
-public partial class LiveDataViewerPage : Page
+public sealed partial class LiveDataViewerPage : Page
 {
     private readonly LiveDataViewerViewModel _vm;
 
