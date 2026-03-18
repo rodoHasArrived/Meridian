@@ -366,7 +366,17 @@ public partial class MainWindow : Window
         if (!Dispatcher.CheckAccess())
         {
             // InvokeAsync is non-blocking — background thread is not stalled waiting for UI [P2]
-            _ = Dispatcher.InvokeAsync(() => OnFixtureModeChanged(sender, e));
+            _ = Dispatcher.InvokeAsync(() =>
+            {
+                try
+                {
+                    OnFixtureModeChanged(sender, e);
+                }
+                catch (Exception ex)
+                {
+                    _notificationService.ShowNotification("UI Error", $"Failed to update fixture mode UI: {ex.Message}", NotificationType.Error);
+                }
+            });
             return;
         }
 
@@ -400,7 +410,17 @@ public partial class MainWindow : Window
     {
         if (!Dispatcher.CheckAccess())
         {
-            _ = Dispatcher.InvokeAsync(() => OnTourStepChanged(sender, e));
+            _ = Dispatcher.InvokeAsync(() =>
+            {
+                try
+                {
+                    OnTourStepChanged(sender, e);
+                }
+                catch (Exception ex)
+                {
+                    _notificationService.ShowNotification("UI Error", $"Failed to update tour step UI: {ex.Message}", NotificationType.Error);
+                }
+            });
             return;
         }
 
@@ -411,7 +431,17 @@ public partial class MainWindow : Window
     {
         if (!Dispatcher.CheckAccess())
         {
-            _ = Dispatcher.InvokeAsync(() => OnTourCompleted(sender, e));
+            _ = Dispatcher.InvokeAsync(() =>
+            {
+                try
+                {
+                    OnTourCompleted(sender, e);
+                }
+                catch (Exception ex)
+                {
+                    _notificationService.ShowNotification("UI Error", $"Failed to update tour completed UI: {ex.Message}", NotificationType.Error);
+                }
+            });
             return;
         }
 
@@ -451,7 +481,17 @@ public partial class MainWindow : Window
 
         if (!Dispatcher.CheckAccess())
         {
-            _ = Dispatcher.InvokeAsync(() => OnAlertRaised(sender, e));
+            _ = Dispatcher.InvokeAsync(() =>
+            {
+                try
+                {
+                    OnAlertRaised(sender, e);
+                }
+                catch (Exception ex)
+                {
+                    _notificationService.ShowNotification("UI Error", $"Failed to display alert notification: {ex.Message}", NotificationType.Error);
+                }
+            });
             return;
         }
 
