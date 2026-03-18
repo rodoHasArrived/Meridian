@@ -1321,6 +1321,7 @@ Market-Data-Collector/
 │       │   ├── BackfillViewModel.cs
 │       │   ├── BacktestViewModel.cs
 │       │   ├── BindableBase.cs
+│       │   ├── ChartingPageViewModel.cs
 │       │   ├── DashboardViewModel.cs
 │       │   ├── DataQualityViewModel.cs
 │       │   ├── LeanIntegrationViewModel.cs
@@ -1328,6 +1329,7 @@ Market-Data-Collector/
 │       │   ├── NotificationCenterViewModel.cs
 │       │   ├── OrderBookViewModel.cs
 │       │   ├── ProviderHealthViewModel.cs
+│       │   ├── ProviderPageModels.cs
 │       │   └── SymbolsPageViewModel.cs
 │       ├── Views/
 │       │   ├── ActivityLogPage.xaml

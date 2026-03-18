@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-18 06:40:52 UTC
+> Auto-generated on 2026-03-18 07:50:33 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -1292,6 +1292,7 @@ Market-Data-Collector/
 │       │   ├── BackfillViewModel.cs
 │       │   ├── BacktestViewModel.cs
 │       │   ├── BindableBase.cs
+│       │   ├── ChartingPageViewModel.cs
 │       │   ├── DashboardViewModel.cs
 │       │   ├── DataQualityViewModel.cs
 │       │   ├── LeanIntegrationViewModel.cs
@@ -1299,6 +1300,7 @@ Market-Data-Collector/
 │       │   ├── NotificationCenterViewModel.cs
 │       │   ├── OrderBookViewModel.cs
 │       │   ├── ProviderHealthViewModel.cs
+│       │   ├── ProviderPageModels.cs
 │       │   └── SymbolsPageViewModel.cs
 │       ├── Views/
 │       │   ├── ActivityLogPage.xaml
