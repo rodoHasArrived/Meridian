@@ -45,6 +45,10 @@ public sealed class IBHistoricalDataProvider : IHistoricalDataProvider, IRateLim
     public string DisplayName => "Interactive Brokers";
     public string Description => "Historical OHLCV data via TWS API. Requires active streaming subscription for US equities.";
 
+    // IB-mandated cooldown after a pacing-violation response (error 162). Centralised here so both
+    // GetHistoricalBarsAsync and GetIntradayBarsAsync use the same value. [P1]
+    private static readonly TimeSpan PacingViolationCooldown = TimeSpan.FromSeconds(30);
+
     public int Priority => _priority;
     public TimeSpan RateLimitDelay => TimeSpan.FromSeconds(IBApiLimits.MinSecondsBetweenIdenticalRequests);
     public int MaxRequestsPerWindow => IBApiLimits.MaxHistoricalRequestsPer10Min;
@@ -252,13 +256,14 @@ public sealed class IBHistoricalDataProvider : IHistoricalDataProvider, IRateLim
             }
             catch (Exception ex) when (ex.Message.Contains("pacing", StringComparison.OrdinalIgnoreCase))
             {
-                // Pacing violation - wait and retry
+                // Pacing violation - wait and retry using the shared cooldown constant [P1]
                 _isRateLimited = true;
-                _rateLimitResetsAt = DateTimeOffset.UtcNow + TimeSpan.FromSeconds(30);
+                _rateLimitResetsAt = DateTimeOffset.UtcNow + PacingViolationCooldown;
                 OnRateLimitHit?.Invoke(GetRateLimitInfo());
 
-                _log.Warning("IB pacing violation for {Symbol}, waiting 30 seconds", symbol);
-                await Task.Delay(TimeSpan.FromSeconds(30), ct).ConfigureAwait(false);
+                _log.Warning("IB pacing violation for {Symbol}, waiting {Seconds}s",
+                    symbol, (int)PacingViolationCooldown.TotalSeconds);
+                await Task.Delay(PacingViolationCooldown, ct).ConfigureAwait(false);
                 // Don't move currentEnd, retry same period
             }
         }
@@ -409,11 +414,12 @@ public sealed class IBHistoricalDataProvider : IHistoricalDataProvider, IRateLim
             catch (Exception ex) when (ex.Message.Contains("pacing", StringComparison.OrdinalIgnoreCase))
             {
                 _isRateLimited = true;
-                _rateLimitResetsAt = DateTimeOffset.UtcNow + TimeSpan.FromSeconds(30);
+                _rateLimitResetsAt = DateTimeOffset.UtcNow + PacingViolationCooldown;
                 OnRateLimitHit?.Invoke(GetRateLimitInfo());
 
-                _log.Warning("IB pacing violation for {Symbol} intraday, waiting 30 seconds", symbol);
-                await Task.Delay(TimeSpan.FromSeconds(30), ct).ConfigureAwait(false);
+                _log.Warning("IB pacing violation for {Symbol} intraday, waiting {Seconds}s",
+                    symbol, (int)PacingViolationCooldown.TotalSeconds);
+                await Task.Delay(PacingViolationCooldown, ct).ConfigureAwait(false);
             }
         }
 

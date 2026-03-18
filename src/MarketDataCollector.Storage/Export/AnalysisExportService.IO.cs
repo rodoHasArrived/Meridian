@@ -2,6 +2,7 @@ using System.IO.Compression;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using MarketDataCollector.Storage.Archival;
 
 namespace MarketDataCollector.Storage.Export;
 
@@ -348,7 +349,9 @@ load_trades <- function(symbol = NULL) {
             WriteIndented = true,
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase
         });
-        await File.WriteAllTextAsync(manifestPath, json, ct);
+
+        // AtomicFileWriter (write-to-temp-then-rename) prevents partial manifest files on crash [S1]
+        await AtomicFileWriter.WriteAsync(manifestPath, json, ct).ConfigureAwait(false);
 
         return manifestPath;
     }
