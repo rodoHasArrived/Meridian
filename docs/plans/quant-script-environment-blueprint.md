@@ -478,8 +478,8 @@ public sealed class BacktestProxy
     /// Run a backtest with the given strategy.
     /// Scripts implement IBacktestStrategy directly in their code.
     /// </summary>
-    public BacktestResult Run(BacktestRequest request, IBacktestStrategy strategy)
-        => _engine.RunAsync(request, strategy, progress: null, _ct).GetAwaiter().GetResult();
+    public Task<BacktestResult> RunAsync(BacktestRequest request, IBacktestStrategy strategy)
+        => _engine.RunAsync(request, strategy, progress: null, _ct);
 }
 ```
 
