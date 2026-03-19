@@ -1,4 +1,4 @@
-# Market Data Collector
+# Meridian
 
 A high-performance, self-hosted algorithmic trading platform — **collect**, **backtest**, and **execute** strategies over real-time and historical market data.
 
