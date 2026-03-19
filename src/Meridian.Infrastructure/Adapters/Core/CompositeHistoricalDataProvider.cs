@@ -6,6 +6,7 @@ using Meridian.Contracts.Domain.Models;
 using Meridian.Domain.Models;
 using Meridian.Infrastructure.Adapters.Core.SymbolResolution;
 using Meridian.Infrastructure.Contracts;
+using Meridian.Infrastructure.DataSources;
 using Serilog;
 
 namespace Meridian.Infrastructure.Adapters.Core;
@@ -15,8 +16,11 @@ namespace Meridian.Infrastructure.Adapters.Core;
 /// Supports symbol resolution, provider health tracking, rate-limit aware rotation,
 /// and cross-provider validation.
 /// </summary>
+[DataSource("composite", "Multi-Source (Auto-Failover)", DataSourceType.Historical, DataSourceCategory.Aggregator,
+    Priority = 0, Description = "Composite provider with automatic failover across multiple historical data sources")]
 [ImplementsAdr("ADR-001", "Composite historical data provider with failover")]
 [ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+[ImplementsAdr("ADR-005", "Attribute-based provider discovery")]
 public sealed class CompositeHistoricalDataProvider : IHistoricalDataProvider, IDisposable
 {
     private readonly List<IHistoricalDataProvider> _providers;

@@ -1,5 +1,6 @@
 using Meridian.Application.Subscriptions.Models;
 using Meridian.Infrastructure.Adapters.Core;
+using Meridian.Infrastructure.Contracts;
 
 namespace Meridian.Infrastructure.Adapters.Core;
 
@@ -80,6 +81,8 @@ public interface ISymbolSearchProvider : IProviderMetadata
 /// The <see cref="IProviderMetadata.ProviderCapabilities"/> property is overridden to
 /// include filter capabilities.
 /// </remarks>
+[ImplementsAdr("ADR-001", "ISymbolSearchProvider contract with filtering capabilities")]
+[ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
 public interface IFilterableSymbolSearchProvider : ISymbolSearchProvider
 {
     /// <summary>

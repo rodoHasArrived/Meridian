@@ -10,6 +10,7 @@ using Meridian.Contracts.Domain.Models;
 using Meridian.Domain.Models;
 using Meridian.Infrastructure.Adapters.Core;
 using Meridian.Infrastructure.Contracts;
+using Meridian.Infrastructure.DataSources;
 using Meridian.Infrastructure.Http;
 using Serilog;
 
@@ -21,8 +22,11 @@ namespace Meridian.Infrastructure.Adapters.TwelveData;
 /// Free tier: 800 requests/day, 8 requests/minute.
 /// Extends BaseHistoricalDataProvider for common functionality.
 /// </summary>
+[DataSource("twelvedata", "Twelve Data", DataSourceType.Historical, DataSourceCategory.Premium,
+    Priority = 22, Description = "Historical OHLCV via Twelve Data API (free/paid tiers)")]
 [ImplementsAdr("ADR-001", "TwelveData historical data provider implementation")]
 [ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+[ImplementsAdr("ADR-005", "Attribute-based provider discovery")]
 public sealed class TwelveDataHistoricalDataProvider : BaseHistoricalDataProvider
 {
     private const string BaseUrl = "https://api.twelvedata.com/time_series";

@@ -9,7 +9,9 @@ using Meridian.Contracts.Domain.Models;
 using Meridian.Domain.Models;
 using Meridian.Infrastructure.Contracts;
 using Meridian.Infrastructure.Adapters.Core;
+using Meridian.Infrastructure.DataSources;
 using Serilog;
+using DataSourceType = Meridian.Infrastructure.DataSources.DataSourceType;
 
 namespace Meridian.Infrastructure.Adapters.InteractiveBrokers;
 
@@ -25,8 +27,11 @@ namespace Meridian.Infrastructure.Adapters.InteractiveBrokers;
 /// Historical data requires active Level 1 streaming subscription for US equities.
 /// Free streaming data is available via Cboe One + IEX (non-consolidated).
 /// </remarks>
+[DataSource("ibkr", "Interactive Brokers", DataSourceType.Historical, DataSourceCategory.Broker,
+    Priority = 10, Description = "Historical OHLCV data via Interactive Brokers TWS API")]
 [ImplementsAdr("ADR-001", "Interactive Brokers historical data provider implementation")]
 [ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+[ImplementsAdr("ADR-005", "Attribute-based provider discovery")]
 public sealed class IBHistoricalDataProvider : IHistoricalDataProvider, IRateLimitAwareProvider, IDisposable
 {
     private readonly EnhancedIBConnectionManager _connectionManager;
@@ -525,6 +530,7 @@ using Meridian.Application.Logging;
 using Meridian.Contracts.Domain.Models;
 using Meridian.Infrastructure.Adapters.Core;
 using Meridian.Infrastructure.Contracts;
+using Meridian.Infrastructure.DataSources;
 
 namespace Meridian.Infrastructure.Adapters.InteractiveBrokers;
 
@@ -532,7 +538,11 @@ namespace Meridian.Infrastructure.Adapters.InteractiveBrokers;
 /// Stub IB historical data provider for non-IBAPI builds.
 /// Registers in the provider list so users can see IB is available but requires IBAPI.
 /// </summary>
+[DataSource("ibkr", "Interactive Brokers", DataSourceType.Historical, DataSourceCategory.Broker,
+    Priority = 80, Description = "Stub provider — build with IBAPI to enable real IB historical data")]
 [ImplementsAdr("ADR-001", "Interactive Brokers historical data provider stub")]
+[ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+[ImplementsAdr("ADR-005", "Attribute-based provider discovery")]
 public sealed class IBHistoricalDataProvider : IHistoricalDataProvider
 {
     private static readonly Serilog.ILogger _log = LoggingSetup.ForContext<IBHistoricalDataProvider>();
