@@ -102,7 +102,7 @@ public class EventPipelineMetricsTests : IAsyncLifetime
         // At least some events should have been accepted
         published.Should().BeGreaterThan(0);
         // Sum should be less than or equal to total attempted (race conditions possible)
-        (published + dropped).Should().BeLessOrEqualTo(totalAttempted);
+        (published + dropped).Should().BeLessThanOrEqualTo(totalAttempted);
     }
 
     [Fact]

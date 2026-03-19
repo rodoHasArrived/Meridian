@@ -217,8 +217,8 @@ public sealed class TradingCalendarTests
     {
         // NYSE has 9 holidays (10 starting 2022 with Juneteenth)
         var holidays = _sut.GetHolidays(2025);
-        holidays.Count.Should().BeGreaterOrEqualTo(9);
-        holidays.Count.Should().BeLessOrEqualTo(10);
+        holidays.Count.Should().BeGreaterThanOrEqualTo(9);
+        holidays.Count.Should().BeLessThanOrEqualTo(10);
     }
 
     [Fact]

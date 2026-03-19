@@ -1,4 +1,4 @@
-using MarketDataCollector.Contracts.Domain.Models;
+using Meridian.Contracts.Domain.Models;
 using MarketDataCollector.Execution.Models;
 
 namespace MarketDataCollector.Execution.Interfaces;

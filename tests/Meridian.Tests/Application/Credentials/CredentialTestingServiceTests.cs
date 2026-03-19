@@ -232,7 +232,7 @@ public class CredentialTestingServiceTests : IAsyncLifetime
 
         // Assert
         result.ResponseTimeMs.Should().NotBeNull();
-        result.ResponseTimeMs.Should().BeGreaterOrEqualTo(0);
+        result.ResponseTimeMs.Should().BeGreaterThanOrEqualTo(0);
     }
 }
 

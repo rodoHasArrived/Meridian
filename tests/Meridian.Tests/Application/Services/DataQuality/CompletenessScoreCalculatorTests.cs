@@ -92,7 +92,7 @@ public sealed class CompletenessScoreCalculatorTests : IDisposable
         score.Should().NotBeNull();
         score!.Score.Should().BeInRange(0.0, 1.0);
         score.ExpectedEvents.Should().BeGreaterThan(0);
-        score.MissingEvents.Should().BeGreaterOrEqualTo(0);
+        score.MissingEvents.Should().BeGreaterThanOrEqualTo(0);
     }
 
     [Fact]

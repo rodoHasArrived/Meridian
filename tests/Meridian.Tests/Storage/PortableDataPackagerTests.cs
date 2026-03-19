@@ -427,7 +427,7 @@ public class PortableDataPackagerTests : IDisposable
         // Assert
         maxResult.Success.Should().BeTrue();
         noneResult.Success.Should().BeTrue();
-        maxResult.PackageSizeBytes.Should().BeLessOrEqualTo(noneResult.PackageSizeBytes);
+        maxResult.PackageSizeBytes.Should().BeLessThanOrEqualTo(noneResult.PackageSizeBytes);
     }
 
     [Fact]

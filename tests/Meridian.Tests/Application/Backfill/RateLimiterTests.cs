@@ -353,8 +353,8 @@ public class RateLimiterTests : IDisposable
         var immediateRequests = waitTimes.Count(t => t.TotalMilliseconds < 50);
         var delayedRequests = waitTimes.Count(t => t.TotalMilliseconds >= 50);
 
-        immediateRequests.Should().BeGreaterOrEqualTo(3, "at least 3 requests should proceed immediately");
-        delayedRequests.Should().BeGreaterOrEqualTo(3, "at least 3 requests should be delayed by rate limiting");
+        immediateRequests.Should().BeGreaterThanOrEqualTo(3, "at least 3 requests should proceed immediately");
+        delayedRequests.Should().BeGreaterThanOrEqualTo(3, "at least 3 requests should be delayed by rate limiting");
 
         // At least some requests should have waited a non-trivial duration (>= window/2)
         waitTimes.Should().Contain(t => t.TotalMilliseconds >= 50, "some requests should wait for rate limit window");

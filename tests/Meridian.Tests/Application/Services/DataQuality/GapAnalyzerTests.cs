@@ -124,7 +124,7 @@ public sealed class GapAnalyzerTests : IDisposable
 
         var result = _sut.AnalyzeGaps("SPY", today, "trade");
 
-        result.TotalGaps.Should().BeGreaterOrEqualTo(1);
+        result.TotalGaps.Should().BeGreaterThanOrEqualTo(1);
         result.TotalGapDuration.Should().BeGreaterThan(TimeSpan.Zero);
     }
 
