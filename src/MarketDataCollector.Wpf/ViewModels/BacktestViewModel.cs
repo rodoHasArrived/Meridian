@@ -5,6 +5,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using CommunityToolkit.Mvvm.Input;
 using MarketDataCollector.Backtesting.Sdk;
+using MarketDataCollector.Contracts.Domain.Models;
 using MarketDataCollector.Wpf.Services;
 
 namespace MarketDataCollector.Wpf.ViewModels;

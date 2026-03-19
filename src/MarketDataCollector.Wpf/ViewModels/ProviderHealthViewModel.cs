@@ -153,21 +153,21 @@ public sealed class ProviderHealthViewModel : BindableBase, IDisposable
             NotificationType.Info);
     }
 
-    private void OnConnectionStateChanged(object? sender, WpfServices.ConnectionStateChangedEventArgs e)
+    private void OnConnectionStateChanged(object? sender, ConnectionStateChangedEventArgs e)
     {
         _ = System.Windows.Application.Current?.Dispatcher.InvokeAsync(() =>
         {
             AddConnectionEvent(
-                e.NewState == WpfServices.ConnectionState.Connected ? "Connected" :
-                e.NewState == WpfServices.ConnectionState.Disconnected ? "Disconnected" :
-                e.NewState == WpfServices.ConnectionState.Reconnecting ? "Reconnecting" : "Unknown",
+                e.NewState == ConnectionState.Connected ? "Connected" :
+                e.NewState == ConnectionState.Disconnected ? "Disconnected" :
+                e.NewState == ConnectionState.Reconnecting ? "Reconnecting" : "Unknown",
                 e.Provider,
-                e.NewState == WpfServices.ConnectionState.Connected ? EventType.Success :
-                e.NewState == WpfServices.ConnectionState.Disconnected ? EventType.Error : EventType.Warning);
+                e.NewState == ConnectionState.Connected ? EventType.Success :
+                e.NewState == ConnectionState.Disconnected ? EventType.Error : EventType.Warning);
         });
     }
 
-    private void OnConnectionHealthUpdated(object? sender, WpfServices.ConnectionHealthEventArgs e)
+    private void OnConnectionHealthUpdated(object? sender, ConnectionHealthEventArgs e)
     {
         if (!e.IsHealthy)
         {

@@ -16,8 +16,8 @@ public partial class LiveDataViewerPage : Page
     private readonly LiveDataViewerViewModel _vm;
 
     public LiveDataViewerPage(
-        StatusService statusService,
-        ConnectionService connectionService,
+        WpfServices.StatusService statusService,
+        WpfServices.ConnectionService connectionService,
         WpfServices.LoggingService loggingService,
         WpfServices.NotificationService notificationService)
     {

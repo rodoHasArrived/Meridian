@@ -279,7 +279,7 @@ public sealed class BackfillViewModel : BindableBase, IDisposable
     }
 
     // Status from API (exposed for code-behind to render into named elements)
-    public MarketDataCollector.Ui.Services.BackfillResultDto? LastApiStatus { get; private set; }
+    public MarketDataCollector.Contracts.Api.BackfillResultDto? LastApiStatus { get; private set; }
     public bool HasApiStatus { get; private set; }
 
     // ── Backfill control ────────────────────────────────────────────────────

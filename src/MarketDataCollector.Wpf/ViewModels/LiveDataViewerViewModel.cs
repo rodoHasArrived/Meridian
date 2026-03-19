@@ -21,8 +21,8 @@ namespace MarketDataCollector.Wpf.ViewModels;
 public sealed class LiveDataViewerViewModel : BindableBase, IDisposable
 {
     private readonly HttpClient _httpClient = new();
-    private readonly StatusService _statusService;
-    private readonly ConnectionService _connectionService;
+    private readonly WpfServices.StatusService _statusService;
+    private readonly WpfServices.ConnectionService _connectionService;
     private readonly WpfServices.LoggingService _loggingService;
     private readonly WpfServices.NotificationService _notificationService;
 
@@ -117,8 +117,8 @@ public sealed class LiveDataViewerViewModel : BindableBase, IDisposable
     public event EventHandler? AutoScrollRequested;
 
     public LiveDataViewerViewModel(
-        StatusService statusService,
-        ConnectionService connectionService,
+        WpfServices.StatusService statusService,
+        WpfServices.ConnectionService connectionService,
         WpfServices.LoggingService loggingService,
         WpfServices.NotificationService notificationService)
     {
