@@ -5,6 +5,7 @@ using Meridian.Contracts.Domain.Models;
 using Meridian.Domain.Models;
 using Meridian.Infrastructure.Adapters.Core;
 using Meridian.Infrastructure.Contracts;
+using Meridian.Infrastructure.DataSources;
 using Meridian.Infrastructure.Http;
 using Meridian.Infrastructure.Utilities;
 using Serilog;
@@ -17,8 +18,11 @@ namespace Meridian.Infrastructure.Adapters.YahooFinance;
 /// Coverage: 50,000+ global equities, ETFs, indices, crypto.
 /// Extends BaseHistoricalDataProvider for common functionality.
 /// </summary>
+[DataSource("yahoo", "Yahoo Finance (free)", DataSourceType.Historical, DataSourceCategory.Free,
+    Priority = 60, Description = "Free daily OHLCV via Yahoo Finance unofficial API")]
 [ImplementsAdr("ADR-001", "Yahoo Finance historical data provider implementation")]
 [ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+[ImplementsAdr("ADR-005", "Attribute-based provider discovery")]
 public sealed class YahooFinanceHistoricalDataProvider : BaseHistoricalDataProvider
 {
     private const string ApiBaseUrl = "https://query1.finance.yahoo.com/v8/finance/chart";

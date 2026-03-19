@@ -6,6 +6,7 @@ using Meridian.Contracts.Domain.Models;
 using Meridian.Domain.Models;
 using Meridian.Infrastructure.Adapters.Core;
 using Meridian.Infrastructure.Contracts;
+using Meridian.Infrastructure.DataSources;
 using Meridian.Infrastructure.Http;
 using Meridian.Infrastructure.Utilities;
 using Serilog;
@@ -19,8 +20,11 @@ namespace Meridian.Infrastructure.Adapters.Tiingo;
 /// Free tier: 1,000 requests/day, 50 requests/hour.
 /// Extends BaseHistoricalDataProvider for common functionality.
 /// </summary>
+[DataSource("tiingo", "Tiingo (free tier)", DataSourceType.Historical, DataSourceCategory.Free,
+    Priority = 35, Description = "Dividend-adjusted historical OHLCV data via Tiingo API")]
 [ImplementsAdr("ADR-001", "Tiingo historical data provider implementation")]
 [ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+[ImplementsAdr("ADR-005", "Attribute-based provider discovery")]
 public sealed class TiingoHistoricalDataProvider : BaseHistoricalDataProvider
 {
     private const string BaseUrl = "https://api.tiingo.com/tiingo/daily";
