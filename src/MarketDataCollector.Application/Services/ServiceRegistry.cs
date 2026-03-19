@@ -151,9 +151,9 @@ public sealed class ServiceRegistry : IDisposable
                 if (instance is IDisposable disposable)
                     disposable.Dispose();
                 else if (instance is IAsyncDisposable asyncDisposable)
-                    // Fire-and-forget with a synchronization-context-free wait to avoid
-                    // deadlocking the WPF dispatcher when Dispose() is called on the UI thread.
-                    asyncDisposable.DisposeAsync().AsTask().ConfigureAwait(false).GetAwaiter().GetResult();
+                    // Offload to a thread-pool thread so the async dispose runs without any
+                    // synchronization context, preventing deadlocks on WPF/ASP.NET callers.
+                    Task.Run(() => asyncDisposable.DisposeAsync().AsTask()).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {

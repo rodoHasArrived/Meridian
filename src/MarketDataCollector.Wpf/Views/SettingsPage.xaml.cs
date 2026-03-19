@@ -280,15 +280,11 @@ public partial class SettingsPage : Page
                 ConnectionTestResult.Foreground = new SolidColorBrush(Color.FromRgb(248, 81, 73));
             }
         }
-        catch (Exception ex) when (ex is HttpRequestException or TimeoutException or TaskCanceledException)
+        catch (Exception ex)
         {
             ConnectionTestResult.Text = "Error";
             ConnectionTestResult.Foreground = new SolidColorBrush(Color.FromRgb(248, 81, 73));
-        }
-        catch (Exception)
-        {
-            ConnectionTestResult.Text = "Error";
-            ConnectionTestResult.Foreground = new SolidColorBrush(Color.FromRgb(248, 81, 73));
+            _notificationService.ShowNotification("Connection Test Failed", ex.Message, NotificationType.Warning);
         }
     }
 

@@ -332,10 +332,10 @@ public sealed class DataGapRepairService
         string symbol,
         CancellationToken ct)
     {
-        // Pre-materialize availability checks asynchronously to avoid blocking on the calling thread.
-        var availabilityTasks = _providers.Select(p => p.IsAvailableAsync(ct)).ToArray();
-        var results = await Task.WhenAll(availabilityTasks).ConfigureAwait(false);
-        var availableProviders = _providers
+        // Materialize once so both the task list and the index-based filter use the same stable ordering.
+        var providers = _providers.ToArray();
+        var results = await Task.WhenAll(providers.Select(p => p.IsAvailableAsync(ct))).ConfigureAwait(false);
+        var availableProviders = providers
             .Where((_, i) => results[i])
             .Select(p => p.Name)
             .ToArray();

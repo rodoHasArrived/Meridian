@@ -56,7 +56,7 @@ public partial class WatchlistPage : Page
         _ = Dispatcher.InvokeAsync(async () =>
         {
             try { await LoadWatchlistsAsync(); }
-            catch (Exception ex) { _loggingService?.LogError("Failed to reload watchlists", ex); }
+            catch (Exception ex) { _loggingService.LogError("Failed to reload watchlists", ex); }
         });
     }
 
