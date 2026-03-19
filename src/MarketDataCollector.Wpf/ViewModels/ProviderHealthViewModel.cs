@@ -220,8 +220,8 @@ public sealed class ProviderHealthViewModel : BindableBase, IDisposable
         foreach (var provider in streaming)
         {
             var isActive = provider.ProviderId.Equals(currentProvider, StringComparison.OrdinalIgnoreCase);
-            var isConnected = isActive && connectionState == WpfServices.ConnectionState.Connected;
-            var isReconnecting = isActive && connectionState == WpfServices.ConnectionState.Reconnecting;
+            var isConnected = isActive && connectionState == ConnectionState.Connected;
+            var isReconnecting = isActive && connectionState == ConnectionState.Reconnecting;
 
             StreamingProviders.Add(new ProviderStatusModel
             {
@@ -350,7 +350,7 @@ public sealed class ProviderHealthViewModel : BindableBase, IDisposable
         ConnectedCount = connected.ToString();
         DisconnectedCount = disconnected.ToString();
         TotalProviders = (StreamingProviders.Count + BackfillProviders.Count).ToString();
-        AvgLatency = _connectionService.State == WpfServices.ConnectionState.Connected
+        AvgLatency = _connectionService.State == ConnectionState.Connected
             ? $"{_connectionService.LastLatencyMs:F0}"
             : "--";
     }
