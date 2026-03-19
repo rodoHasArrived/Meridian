@@ -565,43 +565,6 @@ Meridian/
 │       ├── desktop-dev.ps1
 │       └── diagnose-uwp-xaml.ps1
 ├── src/  # Source code
-│   ├── MarketDataCollector.Execution/
-│   │   ├── Adapters/
-│   │   │   └── PaperTradingGateway.cs
-│   │   ├── Interfaces/
-│   │   │   ├── IExecutionContext.cs
-│   │   │   ├── ILiveFeedAdapter.cs
-│   │   │   └── IOrderGateway.cs
-│   │   ├── Models/
-│   │   │   ├── ExecutionMode.cs
-│   │   │   ├── ExecutionPosition.cs
-│   │   │   ├── IPortfolioState.cs
-│   │   │   ├── OrderAcknowledgement.cs
-│   │   │   ├── OrderRequest.cs
-│   │   │   ├── OrderStatus.cs
-│   │   │   ├── OrderStatusUpdate.cs
-│   │   │   └── OrderType.cs
-│   │   ├── Services/
-│   │   │   └── OrderLifecycleManager.cs
-│   │   ├── GlobalUsings.cs
-│   │   └── MarketDataCollector.Execution.csproj
-│   ├── MarketDataCollector.Strategies/
-│   │   ├── Interfaces/
-│   │   │   ├── ILiveStrategy.cs
-│   │   │   ├── IStrategyLifecycle.cs
-│   │   │   └── IStrategyRepository.cs
-│   │   ├── Models/
-│   │   │   ├── RunType.cs
-│   │   │   ├── StrategyRunEntry.cs
-│   │   │   └── StrategyStatus.cs
-│   │   ├── Promotions/
-│   │   │   └── BacktestToLivePromoter.cs
-│   │   ├── Services/
-│   │   │   └── StrategyLifecycleManager.cs
-│   │   ├── Storage/
-│   │   │   └── StrategyRunStore.cs
-│   │   ├── GlobalUsings.cs
-│   │   └── MarketDataCollector.Strategies.csproj
 │   ├── Meridian/
 │   │   ├── Integrations/
 │   │   │   └── Lean/
@@ -937,6 +900,24 @@ Meridian/
 │   │   ├── GlobalUsings.cs
 │   │   └── Meridian.Domain.csproj
 │   ├── Meridian.Execution/
+│   │   ├── Adapters/
+│   │   │   └── PaperTradingGateway.cs
+│   │   ├── Interfaces/
+│   │   │   ├── IExecutionContext.cs
+│   │   │   ├── ILiveFeedAdapter.cs
+│   │   │   └── IOrderGateway.cs
+│   │   ├── Models/
+│   │   │   ├── ExecutionMode.cs
+│   │   │   ├── ExecutionPosition.cs
+│   │   │   ├── IPortfolioState.cs
+│   │   │   ├── OrderAcknowledgement.cs
+│   │   │   ├── OrderRequest.cs
+│   │   │   ├── OrderStatus.cs
+│   │   │   ├── OrderStatusUpdate.cs
+│   │   │   └── OrderType.cs
+│   │   ├── Services/
+│   │   │   └── OrderLifecycleManager.cs
+│   │   ├── GlobalUsings.cs
 │   │   ├── IRiskValidator.cs
 │   │   ├── Meridian.Execution.csproj
 │   │   ├── OrderManagementSystem.cs
@@ -1167,6 +1148,23 @@ Meridian/
 │   │   ├── StorageProfiles.cs
 │   │   ├── StorageSinkAttribute.cs
 │   │   └── StorageSinkRegistry.cs
+│   ├── Meridian.Strategies/
+│   │   ├── Interfaces/
+│   │   │   ├── ILiveStrategy.cs
+│   │   │   ├── IStrategyLifecycle.cs
+│   │   │   └── IStrategyRepository.cs
+│   │   ├── Models/
+│   │   │   ├── RunType.cs
+│   │   │   ├── StrategyRunEntry.cs
+│   │   │   └── StrategyStatus.cs
+│   │   ├── Promotions/
+│   │   │   └── BacktestToLivePromoter.cs
+│   │   ├── Services/
+│   │   │   └── StrategyLifecycleManager.cs
+│   │   ├── Storage/
+│   │   │   └── StrategyRunStore.cs
+│   │   ├── GlobalUsings.cs
+│   │   └── Meridian.Strategies.csproj
 │   ├── Meridian.Ui/
 │   │   ├── wwwroot/
 │   │   │   └── static/
