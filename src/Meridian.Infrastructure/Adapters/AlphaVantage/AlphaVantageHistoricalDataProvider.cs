@@ -19,8 +19,11 @@ namespace Meridian.Infrastructure.Adapters.AlphaVantage;
 /// Free tier: 25 requests/day (severely limited), 5 calls/minute.
 /// Extends BaseHistoricalDataProvider for common functionality.
 /// </summary>
+[DataSource("alphavantage", "Alpha Vantage (free tier)", DataSourceType.Historical, DataSourceCategory.Free,
+    Priority = 25, Description = "Free tier historical OHLCV data via Alpha Vantage API")]
 [ImplementsAdr("ADR-001", "Alpha Vantage historical data provider implementation")]
 [ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+[ImplementsAdr("ADR-005", "Attribute-based provider discovery")]
 public sealed class AlphaVantageHistoricalDataProvider : BaseHistoricalDataProvider
 {
     private const string ApiBaseUrl = "https://www.alphavantage.co/query";

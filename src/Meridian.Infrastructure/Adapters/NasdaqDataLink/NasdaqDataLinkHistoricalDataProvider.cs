@@ -5,6 +5,7 @@ using Meridian.Contracts.Domain.Models;
 using Meridian.Domain.Models;
 using Meridian.Infrastructure.Adapters.Core;
 using Meridian.Infrastructure.Contracts;
+using Meridian.Infrastructure.DataSources;
 using Meridian.Infrastructure.Http;
 using Meridian.Infrastructure.Utilities;
 using Serilog;
@@ -17,8 +18,11 @@ namespace Meridian.Infrastructure.Adapters.NasdaqDataLink;
 /// Provides access to various datasets including WIKI (end-of-life) and premium datasets.
 /// Extends BaseHistoricalDataProvider for common functionality.
 /// </summary>
+[DataSource("nasdaq", "Nasdaq Data Link (Quandl)", DataSourceType.Historical, DataSourceCategory.Aggregator,
+    Priority = 30, Description = "Historical data via Nasdaq Data Link (formerly Quandl) API")]
 [ImplementsAdr("ADR-001", "Nasdaq Data Link historical data provider implementation")]
 [ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+[ImplementsAdr("ADR-005", "Attribute-based provider discovery")]
 public sealed class NasdaqDataLinkHistoricalDataProvider : BaseHistoricalDataProvider
 {
     private const string ApiBaseUrl = "https://data.nasdaq.com/api/v3";

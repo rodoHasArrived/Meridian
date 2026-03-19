@@ -1,7 +1,7 @@
 # Documentation Health Dashboard
 
 > Auto-generated documentation health report. Do not edit manually.
-> Last updated: 2026-03-18T18:33:20.927891+00:00
+> Last updated: 2026-03-19T18:38:45.705137+00:00
 
 ## Overall Health Score
 
@@ -14,13 +14,13 @@
 
 | Metric | Value |
 |--------|-------|
-| Total documentation files | 219 |
-| Total lines | 85,615 |
-| Average file size (lines) | 390.9 |
-| Orphaned files | 38 |
+| Total documentation files | 224 |
+| Total lines | 87,048 |
+| Average file size (lines) | 388.6 |
+| Orphaned files | 40 |
 | Files without headings | 2 |
 | Stale files (>90 days) | 0 |
-| TODO/FIXME markers | 179 |
+| TODO/FIXME markers | 180 |
 | **Health score** | **91/100** |
 
 ### Score Breakdown
@@ -54,6 +54,7 @@ These files are not linked from any other Markdown file in the repository:
 - `.github/agents/cleanup-specialist.agent.md`
 - `.github/pull_request_template_desktop.md`
 - `.github/workflows/SKIPPED_JOBS_EXPLAINED.md`
+- `AUDIT_REPORT.md`
 - `benchmarks/BOTTLENECK_REPORT.md`
 - `docs/archived/2026-02_PR_SUMMARY.md`
 - `docs/archived/2026-02_UI_IMPROVEMENTS_SUMMARY.md`
@@ -65,8 +66,7 @@ These files are not linked from any other Markdown file in the repository:
 - `docs/archived/DUPLICATE_CODE_ANALYSIS.md`
 - `docs/archived/IMPROVEMENTS_2026-02.md`
 - `docs/archived/QUICKSTART_2026-01-08.md`
-- `docs/archived/REDESIGN_IMPROVEMENTS.md`
-- ... and 18 more
+- ... and 20 more
 
 ## Trend
 
@@ -74,7 +74,7 @@ These files are not linked from any other Markdown file in the repository:
 
 | Date | Score | Files | Orphans | Stale |
 |------|-------|-------|---------|-------|
-| 2026-03-18 | 91 | 219 | 38 | 0 |
+| 2026-03-19 | 91 | 224 | 40 | 0 |
 
 ---
 

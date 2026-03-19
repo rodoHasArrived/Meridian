@@ -6,7 +6,9 @@ using Meridian.Contracts.Domain.Models;
 using Meridian.Domain.Events;
 using Meridian.Infrastructure.Adapters.Core;
 using Meridian.Infrastructure.Contracts;
+using Meridian.Infrastructure.DataSources;
 using Serilog;
+using DataSourceType = Meridian.Infrastructure.DataSources.DataSourceType;
 
 namespace Meridian.Infrastructure.Adapters.InteractiveBrokers;
 
@@ -15,6 +17,11 @@ namespace Meridian.Infrastructure.Adapters.InteractiveBrokers;
 /// Generates synthetic market data that mimics IB's data patterns.
 /// Activated when DataSource is "IB" and IBAPI is not compiled in.
 /// </summary>
+[DataSource("ib-sim", "Interactive Brokers (Simulation)", DataSourceType.Realtime, DataSourceCategory.Broker,
+    EnabledByDefault = false, Description = "Synthetic market data generator for IB development without TWS/Gateway")]
+[ImplementsAdr("ADR-001", "IB simulation client for non-IBAPI builds")]
+[ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+[ImplementsAdr("ADR-005", "Attribute-based provider discovery")]
 public sealed class IBSimulationClient : IMarketDataClient
 {
     private static readonly ILogger _log = LoggingSetup.ForContext<IBSimulationClient>();

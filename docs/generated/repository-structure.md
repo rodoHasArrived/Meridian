@@ -4,14 +4,14 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-18 18:33:17 UTC
+> Auto-generated on 2026-03-19 18:38:41 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
 ## Directory Layout
 
 ```
-Market-Data-Collector/
+Meridian/
 ├── .claude/
 │   ├── agents/
 │   │   ├── mdc-blueprint.md
@@ -282,7 +282,10 @@ Market-Data-Collector/
 │   │   ├── 012-monitoring-and-alerting-pipeline.md
 │   │   ├── 013-bounded-channel-policy.md
 │   │   ├── 014-json-source-generators.md
+│   │   ├── 015-strategy-execution-contract.md
+│   │   ├── 016-platform-architecture-migration.md
 │   │   ├── _template.md
+│   │   ├── ADR-015-platform-restructuring.md
 │   │   └── README.md
 │   ├── ai/
 │   │   ├── agents/
@@ -491,6 +494,7 @@ Market-Data-Collector/
 │   │   └── service-level-objectives.md
 │   ├── plans/
 │   │   ├── assembly-performance-roadmap.md
+│   │   ├── codebase-audit-cleanup-roadmap.md
 │   │   ├── l3-inference-implementation-plan.md
 │   │   └── quant-script-environment-blueprint.md
 │   ├── providers/
@@ -531,6 +535,43 @@ Market-Data-Collector/
 │       ├── desktop-dev.ps1
 │       └── diagnose-uwp-xaml.ps1
 ├── src/  # Source code
+│   ├── MarketDataCollector.Execution/
+│   │   ├── Adapters/
+│   │   │   └── PaperTradingGateway.cs
+│   │   ├── Interfaces/
+│   │   │   ├── IExecutionContext.cs
+│   │   │   ├── ILiveFeedAdapter.cs
+│   │   │   └── IOrderGateway.cs
+│   │   ├── Models/
+│   │   │   ├── ExecutionMode.cs
+│   │   │   ├── ExecutionPosition.cs
+│   │   │   ├── IPortfolioState.cs
+│   │   │   ├── OrderAcknowledgement.cs
+│   │   │   ├── OrderRequest.cs
+│   │   │   ├── OrderStatus.cs
+│   │   │   ├── OrderStatusUpdate.cs
+│   │   │   └── OrderType.cs
+│   │   ├── Services/
+│   │   │   └── OrderLifecycleManager.cs
+│   │   ├── GlobalUsings.cs
+│   │   └── MarketDataCollector.Execution.csproj
+│   ├── MarketDataCollector.Strategies/
+│   │   ├── Interfaces/
+│   │   │   ├── ILiveStrategy.cs
+│   │   │   ├── IStrategyLifecycle.cs
+│   │   │   └── IStrategyRepository.cs
+│   │   ├── Models/
+│   │   │   ├── RunType.cs
+│   │   │   ├── StrategyRunEntry.cs
+│   │   │   └── StrategyStatus.cs
+│   │   ├── Promotions/
+│   │   │   └── BacktestToLivePromoter.cs
+│   │   ├── Services/
+│   │   │   └── StrategyLifecycleManager.cs
+│   │   ├── Storage/
+│   │   │   └── StrategyRunStore.cs
+│   │   ├── GlobalUsings.cs
+│   │   └── MarketDataCollector.Strategies.csproj
 │   ├── Meridian/
 │   │   ├── Integrations/
 │   │   │   └── Lean/
@@ -865,6 +906,17 @@ Market-Data-Collector/
 │   │   ├── BannedReferences.txt
 │   │   ├── GlobalUsings.cs
 │   │   └── Meridian.Domain.csproj
+│   ├── Meridian.Execution/
+│   │   ├── IRiskValidator.cs
+│   │   ├── Meridian.Execution.csproj
+│   │   ├── OrderManagementSystem.cs
+│   │   └── PaperTradingGateway.cs
+│   ├── Meridian.Execution.Sdk/
+│   │   ├── IExecutionGateway.cs
+│   │   ├── IOrderManager.cs
+│   │   ├── IPositionTracker.cs
+│   │   ├── Meridian.Execution.Sdk.csproj
+│   │   └── Models.cs
 │   ├── Meridian.FSharp/
 │   │   ├── Calculations/
 │   │   │   ├── Aggregations.fs
@@ -994,6 +1046,14 @@ Market-Data-Collector/
 │   │   ├── IRealtimeDataSource.cs
 │   │   ├── Meridian.ProviderSdk.csproj
 │   │   └── ProviderHttpUtilities.cs
+│   ├── Meridian.Risk/
+│   │   ├── Rules/
+│   │   │   ├── DrawdownCircuitBreaker.cs
+│   │   │   ├── OrderRateThrottle.cs
+│   │   │   └── PositionLimitRule.cs
+│   │   ├── CompositeRiskValidator.cs
+│   │   ├── IRiskRule.cs
+│   │   └── Meridian.Risk.csproj
 │   ├── Meridian.Storage/
 │   │   ├── Archival/
 │   │   │   ├── ArchivalStorageService.cs
@@ -1616,6 +1676,9 @@ Market-Data-Collector/
 ├── .gitignore
 ├── .globalconfig
 ├── .markdownlint.json
+├── audit-architecture-results.txt
+├── audit-code-results.json
+├── AUDIT_REPORT.md
 ├── CLAUDE.md
 ├── Directory.Build.props
 ├── Directory.Packages.props
