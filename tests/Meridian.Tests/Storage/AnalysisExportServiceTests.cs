@@ -340,7 +340,7 @@ public class AnalysisExportServiceTests : IDisposable
         preview.TotalRecords.Should().Be(2);
         preview.SourceFileCount.Should().Be(1);
         preview.Symbols.Should().Contain("AAPL");
-        preview.SampleRecords.Should().HaveCountGreaterOrEqualTo(1);
+        preview.SampleRecords.Should().HaveCountGreaterThanOrEqualTo(1);
         preview.EstimatedOutputBytes.Should().BeGreaterThan(0);
 
         // No files should have been written to the output directory

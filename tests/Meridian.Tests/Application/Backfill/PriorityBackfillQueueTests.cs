@@ -327,7 +327,7 @@ public sealed class PriorityBackfillQueueTests : IDisposable
         var job = await _queue.EnqueueAsync(CreateRequest("SPY"));
         _queue.CancelJob(job.JobId);
 
-        events.Should().HaveCountGreaterOrEqualTo(1);
+        events.Should().HaveCountGreaterThanOrEqualTo(1);
         events.Should().Contain(e => e.CurrentStatus == BackfillJobStatus.Cancelled);
     }
 

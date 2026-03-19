@@ -221,7 +221,7 @@ public sealed class SequenceErrorTrackerTests : IDisposable
 
         var summary = _sut.GetSummary("SPY");
 
-        summary.TotalErrors.Should().BeGreaterOrEqualTo(2);
+        summary.TotalErrors.Should().BeGreaterThanOrEqualTo(2);
         summary.Symbol.Should().Be("SPY");
     }
 
@@ -240,7 +240,7 @@ public sealed class SequenceErrorTrackerTests : IDisposable
         var stats = _sut.GetStatistics();
 
         stats.TotalEventsChecked.Should().Be(2);
-        stats.TotalErrors.Should().BeGreaterOrEqualTo(1);
+        stats.TotalErrors.Should().BeGreaterThanOrEqualTo(1);
         stats.ErrorsByType.Should().ContainKey(SequenceErrorType.Gap);
         stats.CalculatedAt.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(5));
     }
@@ -269,7 +269,7 @@ public sealed class SequenceErrorTrackerTests : IDisposable
 
         var errors = _sut.GetRecentErrors(10);
 
-        errors.Should().HaveCountGreaterOrEqualTo(2);
+        errors.Should().HaveCountGreaterThanOrEqualTo(2);
         errors.Should().BeInDescendingOrder(e => e.Timestamp);
     }
 
@@ -293,7 +293,7 @@ public sealed class SequenceErrorTrackerTests : IDisposable
         var topSymbols = _sut.GetSymbolsWithMostErrors(10);
 
         topSymbols.Should().NotBeEmpty();
-        topSymbols[0].ErrorCount.Should().BeGreaterOrEqualTo(topSymbols.Last().ErrorCount);
+        topSymbols[0].ErrorCount.Should().BeGreaterThanOrEqualTo(topSymbols.Last().ErrorCount);
     }
 
     #endregion

@@ -1,4 +1,4 @@
-using MarketDataCollector.Backtesting.Sdk;
+using Meridian.Backtesting.Sdk;
 
 namespace MarketDataCollector.Strategies.Models;
 

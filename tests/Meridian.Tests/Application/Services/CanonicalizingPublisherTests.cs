@@ -174,7 +174,7 @@ public sealed class CanonicalizingPublisherTests
 
         publisher.TryPublish(in evt);
 
-        publisher.AverageDurationUs.Should().BeGreaterOrEqualTo(0);
+        publisher.AverageDurationUs.Should().BeGreaterThanOrEqualTo(0);
     }
 
     [Fact]
