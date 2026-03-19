@@ -1,6 +1,6 @@
-using MarketDataCollector.Strategies.Models;
+using Meridian.Strategies.Models;
 
-namespace MarketDataCollector.Strategies.Services;
+namespace Meridian.Strategies.Services;
 
 /// <summary>
 /// Manages the lifecycle of registered <see cref="ILiveStrategy"/> instances.

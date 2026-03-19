@@ -1,4 +1,4 @@
-namespace MarketDataCollector.Strategies.Models;
+namespace Meridian.Strategies.Models;
 
 /// <summary>The lifecycle state of a registered strategy.</summary>
 public enum StrategyStatus

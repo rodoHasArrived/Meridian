@@ -1,6 +1,6 @@
-using MarketDataCollector.Strategies.Models;
+using Meridian.Strategies.Models;
 
-namespace MarketDataCollector.Strategies.Storage;
+namespace Meridian.Strategies.Storage;
 
 /// <summary>
 /// In-memory run store used for development and testing.

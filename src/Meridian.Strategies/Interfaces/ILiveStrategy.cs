@@ -1,4 +1,4 @@
-namespace MarketDataCollector.Strategies.Interfaces;
+namespace Meridian.Strategies.Interfaces;
 
 /// <summary>
 /// A strategy that can participate in both the backtest engine and live execution.

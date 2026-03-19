@@ -1,6 +1,6 @@
-using MarketDataCollector.Strategies.Models;
+using Meridian.Strategies.Models;
 
-namespace MarketDataCollector.Strategies.Interfaces;
+namespace Meridian.Strategies.Interfaces;
 
 /// <summary>
 /// Persists and retrieves the run history for all registered strategies.

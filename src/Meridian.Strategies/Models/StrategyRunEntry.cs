@@ -1,6 +1,6 @@
 using Meridian.Backtesting.Sdk;
 
-namespace MarketDataCollector.Strategies.Models;
+namespace Meridian.Strategies.Models;
 
 /// <summary>
 /// An immutable record of a single strategy run (backtest, paper, or live).
