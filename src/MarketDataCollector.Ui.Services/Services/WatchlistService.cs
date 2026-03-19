@@ -2,33 +2,36 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using MarketDataCollector.Ui.Services.Contracts;
 
 namespace MarketDataCollector.Ui.Services;
 
 /// <summary>
-/// No-op placeholder watchlist service for the shared UI services layer.
-/// Returns empty data and does not persist state.
-/// Platform-specific projects register their own implementations via the DI container.
+/// Default watchlist service for the shared UI services layer.
+/// Platform-specific projects (WPF) can supply their own <see cref="IWatchlistService"/>
+/// implementation by assigning it to <see cref="Instance"/> during app startup.
 /// </summary>
-public sealed class WatchlistService
+public sealed class WatchlistService : IWatchlistService
 {
-    private static readonly Lazy<WatchlistService> _instance = new(() => new WatchlistService());
+    private static IWatchlistService _instance = new WatchlistService();
 
-    public static WatchlistService Instance => _instance.Value;
+    /// <summary>
+    /// Gets or sets the active <see cref="IWatchlistService"/> implementation.
+    /// Replace with a platform-specific implementation during app startup.
+    /// </summary>
+    public static IWatchlistService Instance
+    {
+        get => _instance;
+        set => _instance = value ?? throw new ArgumentNullException(nameof(value));
+    }
 
+    /// <inheritdoc/>
     public Task<WatchlistData> LoadWatchlistAsync()
         => Task.FromResult(new WatchlistData());
 
-    /// <summary>
-    /// No-op placeholder that always returns <see langword="false"/>.
-    /// </summary>
-    /// <param name="name">The watchlist name.</param>
-    /// <param name="symbols">The symbols to add.</param>
-    /// <param name="ct">Cancellation token.</param>
-    /// <returns><see langword="false"/>.</returns>
+    /// <inheritdoc/>
     public Task<bool> CreateOrUpdateWatchlistAsync(string name, IEnumerable<string> symbols, CancellationToken ct = default)
     {
-        ct.ThrowIfCancellationRequested();
         return Task.FromResult(false);
     }
 }

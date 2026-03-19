@@ -13,6 +13,8 @@ namespace MarketDataCollector.Ui.Services;
 /// <summary>
 /// Default configuration service for the shared UI services layer.
 /// Provides basic config loading/saving from the standard appsettings path.
+/// Platform-specific projects can supply their own <see cref="IConfigService"/>
+/// implementation by registering it in the DI container during app startup.
 /// </summary>
 public sealed class ConfigService : IConfigService
 {
