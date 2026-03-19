@@ -403,7 +403,7 @@ If headings are missing, the workflow still creates an entry with safe defaults 
 - **Verification commands**:
   - `dotnet build src/MarketDataCollector.Wpf/MarketDataCollector.Wpf.csproj -c Release /p:EnableWindowsTargeting=true`
   - `dotnet build src/MarketDataCollector.Ui.Services/MarketDataCollector.Ui.Services.csproj -c Release /p:EnableWindowsTargeting=true`
-  - `grep -n "Compile Include" src/MarketDataCollector.Ui.Services/MarketDataCollector.Ui.Services.csproj` (should return no results after fix)
+  - `grep -n "<Compile Include=" src/MarketDataCollector.Ui.Services/MarketDataCollector.Ui.Services.csproj` (should return no results after fix; the `=` distinguishes the XML element from prose comments that mention it)
 - **Source issue**: PR "Fix CS0433 type ambiguity errors breaking WPF desktop build"
 - **Status**: fixed
 - **Fixed in**: `src/MarketDataCollector.Ui.Services/MarketDataCollector.Ui.Services.csproj` — replaced the entire `<Compile Include>` block sourcing Contracts files with a single `<ProjectReference Include="..\MarketDataCollector.Contracts\MarketDataCollector.Contracts.csproj" />`
