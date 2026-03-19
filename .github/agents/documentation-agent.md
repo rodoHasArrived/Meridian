@@ -754,6 +754,13 @@ Meridian/
 │   │   ├── GlobalUsings.cs
 │   │   └── Meridian.Backtesting.csproj
 │   ├── Meridian.Backtesting.Sdk/
+│   │   ├── Ledger/
+│   │   │   ├── BacktestLedger.cs
+│   │   │   ├── JournalEntry.cs
+│   │   │   ├── LedgerAccount.cs
+│   │   │   ├── LedgerAccounts.cs
+│   │   │   ├── LedgerAccountType.cs
+│   │   │   └── LedgerEntry.cs
 │   │   ├── BacktestProgressEvent.cs
 │   │   ├── BacktestRequest.cs
 │   │   ├── BacktestResult.cs
@@ -1008,6 +1015,17 @@ Meridian/
 │   │   ├── GlobalUsings.cs
 │   │   ├── Meridian.Infrastructure.csproj
 │   │   └── NoOpMarketDataClient.cs
+│   ├── Meridian.Ledger/
+│   │   ├── GlobalUsings.cs
+│   │   ├── IReadOnlyLedger.cs
+│   │   ├── JournalEntry.cs
+│   │   ├── Ledger.cs
+│   │   ├── LedgerAccount.cs
+│   │   ├── LedgerAccounts.cs
+│   │   ├── LedgerAccountType.cs
+│   │   ├── LedgerEntry.cs
+│   │   ├── LedgerValidationException.cs
+│   │   └── Meridian.Ledger.csproj
 │   ├── Meridian.Mcp/
 │   │   ├── Prompts/
 │   │   │   ├── CodeReviewPrompts.cs
