@@ -1,7 +1,7 @@
 using Meridian.Backtesting.Sdk;
-using MarketDataCollector.Strategies.Models;
+using Meridian.Strategies.Models;
 
-namespace MarketDataCollector.Strategies.Promotions;
+namespace Meridian.Strategies.Promotions;
 
 /// <summary>
 /// Evaluates whether a strategy is eligible to be promoted from backtest → paper,

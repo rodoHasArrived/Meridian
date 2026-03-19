@@ -1,4 +1,4 @@
-namespace MarketDataCollector.Strategies.Models;
+namespace Meridian.Strategies.Models;
 
 /// <summary>Classifies a strategy run by the execution environment it used.</summary>
 public enum RunType

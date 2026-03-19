@@ -1,6 +1,6 @@
-using MarketDataCollector.Strategies.Models;
+using Meridian.Strategies.Models;
 
-namespace MarketDataCollector.Strategies.Interfaces;
+namespace Meridian.Strategies.Interfaces;
 
 /// <summary>
 /// Manages the lifecycle of a strategy that can run in live or paper execution mode.
