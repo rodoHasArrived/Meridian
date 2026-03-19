@@ -20,12 +20,6 @@ public sealed class ConfigService : IConfigService
 
     public static ConfigService Instance => _instance.Value;
 
-    private static readonly JsonSerializerOptions _jsonOptions = new()
-    {
-        WriteIndented = true,
-        PropertyNameCaseInsensitive = true
-    };
-
     public string ConfigPath { get; }
 
     public ConfigService()
@@ -39,7 +33,7 @@ public sealed class ConfigService : IConfigService
         try
         {
             var json = await File.ReadAllTextAsync(ConfigPath, ct);
-            return JsonSerializer.Deserialize<AppConfig>(json, _jsonOptions);
+            return JsonSerializer.Deserialize(json, UiServicesJsonContext.Default.AppConfigDto);
         }
         catch (IOException) { return null; }
         catch (UnauthorizedAccessException) { return null; }
@@ -49,7 +43,7 @@ public sealed class ConfigService : IConfigService
     {
         var dir = Path.GetDirectoryName(ConfigPath);
         if (dir != null) Directory.CreateDirectory(dir);
-        var json = JsonSerializer.Serialize(config, _jsonOptions);
+        var json = JsonSerializer.Serialize(config, UiServicesJsonContext.Default.AppConfigDto);
         await File.WriteAllTextAsync(ConfigPath, json, ct);
     }
 

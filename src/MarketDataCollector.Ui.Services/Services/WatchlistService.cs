@@ -6,30 +6,29 @@ using System.Threading.Tasks;
 namespace MarketDataCollector.Ui.Services;
 
 /// <summary>
-/// Default watchlist service for the shared UI services layer.
+/// No-op placeholder watchlist service for the shared UI services layer.
+/// Returns empty data and does not persist state.
+/// Platform-specific projects register their own implementations via the DI container.
 /// </summary>
 public sealed class WatchlistService
 {
-    private static WatchlistService _instance = new WatchlistService();
+    private static readonly Lazy<WatchlistService> _instance = new(() => new WatchlistService());
 
-    public static WatchlistService Instance
-    {
-        get => _instance;
-        set => _instance = value ?? throw new ArgumentNullException(nameof(value));
-    }
+    public static WatchlistService Instance => _instance.Value;
 
     public Task<WatchlistData> LoadWatchlistAsync()
         => Task.FromResult(new WatchlistData());
 
     /// <summary>
-    /// Creates a new watchlist or updates an existing one.
+    /// No-op placeholder that always returns <see langword="false"/>.
     /// </summary>
     /// <param name="name">The watchlist name.</param>
     /// <param name="symbols">The symbols to add.</param>
     /// <param name="ct">Cancellation token.</param>
-    /// <returns>True if successful, false otherwise.</returns>
+    /// <returns><see langword="false"/>.</returns>
     public Task<bool> CreateOrUpdateWatchlistAsync(string name, IEnumerable<string> symbols, CancellationToken ct = default)
     {
+        ct.ThrowIfCancellationRequested();
         return Task.FromResult(false);
     }
 }
