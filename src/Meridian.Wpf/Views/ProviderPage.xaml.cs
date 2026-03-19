@@ -26,6 +26,11 @@ public partial class ProviderPage : Page
     private readonly BackfillProviderConfigService _providerConfigService;
     private bool _isLoading;
 
+    // Cached brushes — avoids repeated FindResource lookups in ValidateConfig_Click [P1]
+    private Brush _validationSuccessBrush = Brushes.Green;
+    private Brush _validationWarningBrush = Brushes.Orange;
+    private Brush _validationErrorBrush = Brushes.Red;
+
     public ProviderPage(
         WpfServices.NavigationService navigationService,
         WpfServices.NotificationService notificationService,
@@ -42,6 +47,11 @@ public partial class ProviderPage : Page
 
     private async void OnPageLoaded(object sender, RoutedEventArgs e)
     {
+        // Cache resource brushes once at load time [P1]
+        _validationSuccessBrush = (Brush)FindResource("SuccessColorBrush");
+        _validationWarningBrush = (Brush)FindResource("WarningColorBrush");
+        _validationErrorBrush   = (Brush)FindResource("ErrorColorBrush");
+
         await LoadProviderSettingsAsync();
     }
 
@@ -276,9 +286,10 @@ public partial class ProviderPage : Page
 
             if (result.IsValid && result.Warnings.Length == 0)
             {
+                // Use cached brushes — no FindResource per-click [P1]
                 ValidationPanel.Background = new SolidColorBrush(Color.FromArgb(30, 0, 180, 0));
                 ValidationText.Text = "Configuration is valid.";
-                ValidationText.Foreground = (Brush)FindResource("SuccessColorBrush");
+                ValidationText.Foreground = _validationSuccessBrush;
             }
             else if (result.IsValid)
             {
@@ -286,7 +297,7 @@ public partial class ProviderPage : Page
                 var text = "Configuration is valid with warnings:\n" +
                     string.Join("\n", result.Warnings.Select(w => $"  - {w}"));
                 ValidationText.Text = text;
-                ValidationText.Foreground = (Brush)FindResource("WarningColorBrush");
+                ValidationText.Foreground = _validationWarningBrush;
             }
             else
             {
@@ -299,7 +310,7 @@ public partial class ProviderPage : Page
                         string.Join("\n", result.Warnings.Select(w => $"  - {w}"));
                 }
                 ValidationText.Text = text;
-                ValidationText.Foreground = (Brush)FindResource("ErrorColorBrush");
+                ValidationText.Foreground = _validationErrorBrush;
             }
         }
         catch (Exception ex)

@@ -389,3 +389,21 @@ If headings are missing, the workflow still creates an entry with safe defaults 
 - **Source issue**: https://github.com/rodoHasArrived/Market-Data-Collector/actions/runs/23176103636, #2005
 - **Status**: fixed
 - **Fixed in**: `src/Meridian.Backtesting/GlobalUsings.cs` — removed `global using Meridian.Contracts.Domain.Events;`; also added `[assembly: InternalsVisibleTo("Meridian.Backtesting.Tests")]` following the pattern in `Application/GlobalUsings.cs`
+
+### AI-20260318-cs0433-compile-include-contracts-ambiguity
+- **ID**: AI-20260318-cs0433-compile-include-contracts-ambiguity
+- **Area**: build/project-structure
+- **Symptoms**: WPF desktop build fails with dozens of CS0433 errors: "The type 'X' exists in both 'Meridian.Ui.Services' and 'Meridian.Contracts'" across every Contracts type referenced in the WPF project.
+- **Root cause**: `Ui.Services.csproj` used `<Compile Include>` to source-link all Contracts `.cs` files directly into the `Ui.Services` assembly. When the WPF project referenced both `Ui.Services` AND `Backtesting` (which brings in `Contracts.dll` transitively), the same types existed in two assemblies simultaneously, causing unresolvable CS0433 ambiguity at every usage site.
+- **Prevention checklist**:
+  - [ ] Never use `<Compile Include>` to copy source files from a referenced project into a consuming library — this creates duplicate type definitions when the source project is also referenced transitively elsewhere
+  - [ ] Always express library-to-library dependencies as `<ProjectReference>` so MSBuild deduplicates the assembly graph
+  - [ ] After wiring a new `<ProjectReference>`, build the full solution: `dotnet build Meridian.sln -c Release /p:EnableWindowsTargeting=true`
+  - [ ] If a project conditionally excludes all source on non-Windows (`EnableDefaultCompileItems=false`), ensure the `<ProjectReference>` carries the same platform condition so the stub still compiles
+- **Verification commands**:
+  - `dotnet build src/Meridian.Wpf/Meridian.Wpf.csproj -c Release /p:EnableWindowsTargeting=true`
+  - `dotnet build src/Meridian.Ui.Services/Meridian.Ui.Services.csproj -c Release /p:EnableWindowsTargeting=true`
+  - `grep -n "<Compile Include=" src/Meridian.Ui.Services/Meridian.Ui.Services.csproj` (should return no results after fix; the `=` distinguishes the XML element from prose comments that mention it)
+- **Source issue**: PR "Fix CS0433 type ambiguity errors breaking WPF desktop build"
+- **Status**: fixed
+- **Fixed in**: `src/Meridian.Ui.Services/Meridian.Ui.Services.csproj` — replaced the entire `<Compile Include>` block sourcing Contracts files with a single `<ProjectReference Include="..\Meridian.Contracts\Meridian.Contracts.csproj" />`

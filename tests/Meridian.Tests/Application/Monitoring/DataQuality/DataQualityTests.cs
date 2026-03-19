@@ -156,7 +156,7 @@ public sealed class GapAnalyzerTests : IDisposable
         // Assert
         analysis.Should().NotBeNull();
         analysis.Symbol.Should().Be("AAPL");
-        analysis.TotalGaps.Should().BeGreaterOrEqualTo(0);
+        analysis.TotalGaps.Should().BeGreaterThanOrEqualTo(0);
         analysis.Timeline.Should().NotBeEmpty();
     }
 
@@ -483,8 +483,8 @@ public sealed class LatencyHistogramTests : IDisposable
         // Assert
         distribution.Should().NotBeNull();
         distribution!.SampleCount.Should().Be(100);
-        distribution.MinLatencyMs.Should().BeGreaterOrEqualTo(0);
-        distribution.MaxLatencyMs.Should().BeGreaterOrEqualTo(0);
+        distribution.MinLatencyMs.Should().BeGreaterThanOrEqualTo(0);
+        distribution.MaxLatencyMs.Should().BeGreaterThanOrEqualTo(0);
     }
 
     [Fact]
@@ -679,7 +679,7 @@ public sealed class DataQualityMonitoringServiceTests : IAsyncLifetime
 
         // Assert
         metrics.Should().NotBeNull();
-        metrics.ActiveSymbols.Should().BeGreaterOrEqualTo(1);
+        metrics.ActiveSymbols.Should().BeGreaterThanOrEqualTo(1);
         metrics.Timestamp.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(5));
     }
 
@@ -718,6 +718,6 @@ public sealed class DataQualityMonitoringServiceTests : IAsyncLifetime
         // Assert
         report.Should().NotBeNull();
         report.Date.Should().Be(DateOnly.FromDateTime(DateTime.UtcNow));
-        report.SymbolsAnalyzed.Should().BeGreaterOrEqualTo(0);
+        report.SymbolsAnalyzed.Should().BeGreaterThanOrEqualTo(0);
     }
 }

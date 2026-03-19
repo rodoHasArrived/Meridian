@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-19 02:32:27 UTC
+> Auto-generated on 2026-03-19 22:22:13 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -132,6 +132,7 @@ Meridian/
 │   │   ├── skill-evals.yml
 │   │   ├── SKIPPED_JOBS_EXPLAINED.md
 │   │   ├── stale.yml
+│   │   ├── static.yml
 │   │   ├── test-matrix.yml
 │   │   ├── ticker-data-collection.yml
 │   │   ├── update-diagrams.yml
@@ -494,6 +495,7 @@ Meridian/
 │   │   └── service-level-objectives.md
 │   ├── plans/
 │   │   ├── assembly-performance-roadmap.md
+│   │   ├── codebase-audit-cleanup-roadmap.md
 │   │   ├── l3-inference-implementation-plan.md
 │   │   └── quant-script-environment-blueprint.md
 │   ├── providers/

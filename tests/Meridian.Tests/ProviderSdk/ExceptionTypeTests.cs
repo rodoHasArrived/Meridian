@@ -316,7 +316,7 @@ public sealed class ExceptionTypeTests
     {
         var types = Enum.GetValues<SequenceValidationType>();
 
-        types.Should().HaveCountGreaterOrEqualTo(4);
+        types.Should().HaveCountGreaterThanOrEqualTo(4);
         types.Should().Contain(SequenceValidationType.Gap);
         types.Should().Contain(SequenceValidationType.OutOfOrder);
         types.Should().Contain(SequenceValidationType.Duplicate);

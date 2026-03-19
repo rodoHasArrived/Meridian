@@ -17,7 +17,7 @@ public sealed class SloDefinitionRegistryTests
         var all = registry.GetAll();
 
         all.Should().NotBeEmpty();
-        all.Count.Should().BeGreaterOrEqualTo(7);
+        all.Count.Should().BeGreaterThanOrEqualTo(7);
     }
 
     [Fact]
@@ -47,7 +47,7 @@ public sealed class SloDefinitionRegistryTests
         var registry = SloDefinitionRegistry.Instance;
 
         var ingestion = registry.GetAll(SloSubsystem.Ingestion);
-        ingestion.Should().HaveCountGreaterOrEqualTo(2);
+        ingestion.Should().HaveCountGreaterThanOrEqualTo(2);
         ingestion.Should().OnlyContain(d => d.Subsystem == SloSubsystem.Ingestion);
     }
 
@@ -118,7 +118,7 @@ public sealed class SloDefinitionRegistryTests
 
         var dashboard = registry.GetDashboard();
 
-        dashboard.TotalSlos.Should().BeGreaterOrEqualTo(7);
+        dashboard.TotalSlos.Should().BeGreaterThanOrEqualTo(7);
         dashboard.Subsystems.Should().NotBeEmpty();
         dashboard.Subsystems.Should().Contain(s => s.Subsystem == "Ingestion");
         dashboard.Subsystems.Should().Contain(s => s.Subsystem == "DataFreshness");
@@ -183,7 +183,7 @@ public sealed class AlertRunbookRegistryTests
         var all = registry.GetAll();
 
         all.Should().NotBeEmpty();
-        all.Count.Should().BeGreaterOrEqualTo(11);
+        all.Count.Should().BeGreaterThanOrEqualTo(11);
     }
 
     [Fact]

@@ -23,8 +23,11 @@ namespace Meridian.Infrastructure.Adapters.Finnhub;
 /// - Rate limit tracking with IRateLimitAwareProvider
 /// - Centralized error handling
 /// </summary>
+[DataSource("finnhub", "Finnhub (free tier)", DataSourceType.Historical, DataSourceCategory.Free,
+    Priority = 18, Description = "Historical OHLCV data via Finnhub free tier API")]
 [ImplementsAdr("ADR-001", "Finnhub historical data provider implementation")]
 [ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+[ImplementsAdr("ADR-005", "Attribute-based provider discovery")]
 public sealed class FinnhubHistoricalDataProvider : BaseHistoricalDataProvider
 {
     private const string BaseUrl = "https://finnhub.io/api/v1";

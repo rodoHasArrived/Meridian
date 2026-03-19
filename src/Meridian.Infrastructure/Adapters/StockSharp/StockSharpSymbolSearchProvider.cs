@@ -8,7 +8,9 @@ using Meridian.Application.Logging;
 using Meridian.Application.Subscriptions.Models;
 using Meridian.Infrastructure.Adapters.Core;
 using Meridian.Infrastructure.Contracts;
+using Meridian.Infrastructure.DataSources;
 using Serilog;
+using DataSourceType = Meridian.Infrastructure.DataSources.DataSourceType;
 
 namespace Meridian.Infrastructure.Adapters.StockSharp;
 
@@ -31,8 +33,11 @@ namespace Meridian.Infrastructure.Adapters.StockSharp;
 /// - StockSharp must be enabled in configuration (StockSharp:Enabled = true)
 /// - The connector must support SecurityLookupMessage
 /// </remarks>
+[DataSource("stocksharp-symbols", "StockSharp Symbol Search", DataSourceType.Historical, DataSourceCategory.Aggregator,
+    Priority = 20, Description = "Symbol search via StockSharp connector (IQFeed, IB, CQG, Rithmic)")]
 [ImplementsAdr("ADR-001", "StockSharp symbol search provider implementation")]
 [ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+[ImplementsAdr("ADR-005", "Attribute-based provider discovery")]
 public sealed class StockSharpSymbolSearchProvider : ISymbolSearchProvider, IDisposable
 {
     private readonly ILogger _log = LoggingSetup.ForContext<StockSharpSymbolSearchProvider>();

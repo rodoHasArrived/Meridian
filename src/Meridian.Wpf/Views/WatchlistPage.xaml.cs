@@ -53,9 +53,17 @@ public partial class WatchlistPage : Page
 
     private void OnWatchlistsChanged(object? sender, WpfServices.WatchlistsChangedEventArgs e)
     {
+        // InvokeAsync + explicit await: errors are captured rather than silently discarded [P2, E1]
         _ = Dispatcher.InvokeAsync(async () =>
         {
-            await LoadWatchlistsAsync();
+            try
+            {
+                await LoadWatchlistsAsync().ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                _loggingService.LogError("Failed to reload watchlists on change notification", ex);
+            }
         });
     }
 

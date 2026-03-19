@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 using Meridian.Application.Subscriptions.Models;
 using Meridian.Infrastructure.Adapters.Core;
 using Meridian.Infrastructure.Contracts;
+using Meridian.Infrastructure.DataSources;
 using Meridian.Infrastructure.Http;
 using Serilog;
 
@@ -16,7 +17,11 @@ namespace Meridian.Infrastructure.Adapters.Finnhub;
 /// This refactored version eliminates ~200 lines of boilerplate code by leveraging
 /// the BaseSymbolSearchProvider abstract class for common functionality.
 /// </remarks>
+[DataSource("finnhub-symbols", "Finnhub (Symbol Search)", DataSourceType.Historical, DataSourceCategory.Free,
+    Priority = 10, Description = "Symbol search and lookup via Finnhub API")]
 [ImplementsAdr("ADR-001", "Finnhub symbol search provider implementation")]
+[ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+[ImplementsAdr("ADR-005", "Attribute-based provider discovery")]
 public sealed class FinnhubSymbolSearchProviderRefactored : BaseSymbolSearchProvider
 {
     public override string Name => "finnhub";

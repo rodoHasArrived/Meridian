@@ -55,6 +55,9 @@ public sealed class NYSEDataSource : DataSourceBase, IRealtimeDataSource, IHisto
     // WebSocket lifecycle managed by WebSocketConnectionManager (replaces _webSocket, _connectionCts, _receiveTask)
     private readonly WebSocketConnectionManager _wsManager;
 
+    // CancellationTokenSource cancelled on DisconnectAsync so reconnect delays honour shutdown signals
+    private CancellationTokenSource _reconnectCts = new();
+
     private readonly Subject<RealtimeTrade> _trades = new();
     private readonly Subject<RealtimeQuote> _quotes = new();
     private readonly Subject<RealtimeDepthUpdate> _depthUpdates = new();
@@ -225,6 +228,7 @@ public sealed class NYSEDataSource : DataSourceBase, IRealtimeDataSource, IHisto
 
         _authLock.Dispose();
         _httpClient.Dispose();
+        _reconnectCts.Dispose();
     }
 
     #endregion
@@ -275,6 +279,9 @@ public sealed class NYSEDataSource : DataSourceBase, IRealtimeDataSource, IHisto
             return;
 
         Log.Information("Disconnecting from NYSE WebSocket");
+
+        // Signal any in-progress reconnect delay to abort immediately
+        _reconnectCts.Cancel();
 
         try
         {
@@ -717,18 +724,57 @@ public sealed class NYSEDataSource : DataSourceBase, IRealtimeDataSource, IHisto
     private async Task OnWsConnectionLostAsync()
     {
         Status = DataSourceStatus.Disconnected;
+
+        // Create a fresh CTS for this reconnect session so ConnectAsync calls
+        // during the loop do not cancel the token the loop itself is watching.
+        _reconnectCts.Dispose();
+        _reconnectCts = new CancellationTokenSource();
+        var ct = _reconnectCts.Token;
+
         for (int attempt = 1; attempt <= _options.MaxReconnectAttempts; attempt++)
         {
+            if (ct.IsCancellationRequested)
+            {
+                Log.Debug("NYSE reconnection loop cancelled by shutdown signal");
+                return;
+            }
+
             MigrationDiagnostics.IncReconnectAttempt("nyse");
             Log.Information("NYSE reconnection attempt {Attempt}/{Max}", attempt, _options.MaxReconnectAttempts);
 
-            await Task.Delay(TimeSpan.FromSeconds(_options.ReconnectDelaySeconds * attempt))
-                .ConfigureAwait(false);
+            // Exponential backoff with ±15% jitter; cap at 60 s [P3]
+            var jitter = Random.Shared.NextDouble() * 0.3 + 0.85;
+            var delaySecs = Math.Min(_options.ReconnectDelaySeconds * Math.Pow(2, attempt - 1) * jitter, 60.0);
+            try
+            {
+                await Task.Delay(TimeSpan.FromSeconds(delaySecs), ct).ConfigureAwait(false);
+            }
+            catch (OperationCanceledException)
+            {
+                Log.Debug("NYSE reconnect delay cancelled");
+                return;
+            }
+
+            // Check cancellation immediately before attempting the connect so that a
+            // shutdown signal received during the backoff delay is still honoured.
+            if (ct.IsCancellationRequested)
+            {
+                Log.Debug("NYSE reconnection loop cancelled by shutdown signal");
+                return;
+            }
 
             try
             {
-                await ConnectAsync().ConfigureAwait(false);
+                // Pass ct so that a shutdown signal also cancels the connect operation itself,
+                // not just the backoff delay.  ConnectAsync no longer resets _reconnectCts so
+                // ct remains valid for the duration of the connect call.
+                await ConnectAsync(ct).ConfigureAwait(false);
                 MigrationDiagnostics.IncReconnectSuccess("nyse");
+                return;
+            }
+            catch (OperationCanceledException)
+            {
+                Log.Debug("NYSE reconnect cancelled during connect");
                 return;
             }
             catch (Exception ex)

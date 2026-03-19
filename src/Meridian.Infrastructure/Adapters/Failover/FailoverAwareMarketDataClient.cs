@@ -3,7 +3,9 @@ using Meridian.Application.Config;
 using Meridian.Application.Logging;
 using Meridian.Infrastructure.Adapters.Core;
 using Meridian.Infrastructure.Contracts;
+using Meridian.Infrastructure.DataSources;
 using Serilog;
+using DataSourceType = Meridian.Infrastructure.DataSources.DataSourceType;
 
 namespace Meridian.Infrastructure.Adapters.Failover;
 
@@ -18,8 +20,11 @@ namespace Meridian.Infrastructure.Adapters.Failover;
 /// it disconnects the failed provider, connects the new one, and re-subscribes all active
 /// symbols.
 /// </remarks>
+[DataSource("failover", "Failover-Aware Streaming Client", DataSourceType.Realtime, DataSourceCategory.Aggregator,
+    Priority = 50, EnabledByDefault = false, Description = "Composite failover client that switches between providers on failure")]
 [ImplementsAdr("ADR-001", "Failover-aware composite streaming client")]
 [ImplementsAdr("ADR-004", "All async methods support CancellationToken")]
+[ImplementsAdr("ADR-005", "Attribute-based provider discovery")]
 public sealed class FailoverAwareMarketDataClient : IMarketDataClient
 {
     private readonly ILogger _log = LoggingSetup.ForContext<FailoverAwareMarketDataClient>();

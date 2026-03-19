@@ -23,11 +23,12 @@ public partial class SystemHealthPage : Page
     private readonly DispatcherTimer _refreshTimer;
     private readonly DateTime _startTime = DateTime.UtcNow;
 
-    private Brush _errorBrush = null!;
-    private Brush _warningBrush = null!;
-    private Brush _successBrush = null!;
-    private Brush _infoBrush = null!;
-    private Brush _mutedBrush = null!;
+    // Cached brush lookups — initialized in OnPageLoaded to avoid per-refresh FindResource calls [P1]
+    private Brush _errorBrush = Brushes.Red;
+    private Brush _warningBrush = Brushes.Orange;
+    private Brush _successBrush = Brushes.Green;
+    private Brush _infoBrush = Brushes.LightBlue;
+    private Brush _mutedBrush = Brushes.Gray;
 
     public SystemHealthPage()
     {
@@ -45,11 +46,12 @@ public partial class SystemHealthPage : Page
 
     private async void OnPageLoaded(object sender, RoutedEventArgs e)
     {
-        _errorBrush = (Brush)FindResource("ErrorColorBrush");
+        // Cache resource brushes once — avoids repeated dictionary lookups on every refresh [P1]
+        _errorBrush   = (Brush)FindResource("ErrorColorBrush");
         _warningBrush = (Brush)FindResource("WarningColorBrush");
         _successBrush = (Brush)FindResource("SuccessColorBrush");
-        _infoBrush = (Brush)FindResource("InfoColorBrush");
-        _mutedBrush = (Brush)FindResource("ConsoleTextMutedBrush");
+        _infoBrush    = (Brush)FindResource("InfoColorBrush");
+        _mutedBrush   = (Brush)FindResource("ConsoleTextMutedBrush");
 
         await LoadDataAsync();
         _refreshTimer.Start();
@@ -128,6 +130,7 @@ public partial class SystemHealthPage : Page
             var metrics = await _healthService.GetSystemMetricsAsync();
             if (metrics != null)
             {
+                // InvokeAsync is non-blocking — does not block the thread-pool thread completing the await [P2]
                 await Dispatcher.InvokeAsync(() =>
                 {
                     CpuText.Text = $"{metrics.CpuUsagePercent:F0}%";
