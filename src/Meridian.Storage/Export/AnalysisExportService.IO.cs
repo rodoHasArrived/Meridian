@@ -349,6 +349,8 @@ load_trades <- function(symbol = NULL) {
             WriteIndented = true,
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase
         });
+
+        // AtomicFileWriter (write-to-temp-then-rename) prevents partial manifest files on crash [S1]
         await AtomicFileWriter.WriteAsync(manifestPath, json, ct);
 
         return manifestPath;
