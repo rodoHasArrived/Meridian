@@ -192,7 +192,7 @@ internal sealed class SimulatedPortfolio
         var impactedUnits = existingQty;
         decimal totalCashImpact = 0m;
 
-        if (assetEvent.CashPerShare != 0m && existingQty != 0)
+        foreach (var account in _accounts.Values)
         {
             totalCashImpact += ApplyPerShareCashAdjustment(account, assetEvent, existingQty);
         }
@@ -202,8 +202,10 @@ internal sealed class SimulatedPortfolio
             totalCashImpact += ApplyPositionTransformation(account, assetEvent, existingQty, targetSymbol);
         }
 
-        if (totalCashImpact == 0m && existingQty == 0)
-            return;
+            if (assetEvent.CashPerShare != 0m && existingQty != 0)
+            {
+                totalCashImpact += ApplyPerShareCashAdjustment(account, assetEvent, existingQty);
+            }
 
         if (account.Cash < 0)
             account.MarginBalance = Math.Min(account.MarginBalance, account.Cash);

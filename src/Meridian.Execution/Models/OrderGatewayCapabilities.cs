@@ -1,4 +1,6 @@
 using Meridian.Execution.Sdk;
+using OrderType = Meridian.Execution.Sdk.OrderType;
+using TimeInForce = Meridian.Execution.Sdk.TimeInForce;
 
 namespace Meridian.Execution.Models;
 

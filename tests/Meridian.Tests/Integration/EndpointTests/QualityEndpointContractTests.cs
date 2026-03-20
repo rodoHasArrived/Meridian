@@ -27,7 +27,7 @@ public sealed class QualityEndpointContractTests
     [Fact]
     public async Task QualityDashboard_ReturnsStableDashboardContract()
     {
-        await using var host = await CreateHostAsync(out _, out _);
+        var _r = await CreateHostAsync(); await using var host = _r.App;
         using var client = host.GetTestClient();
 
         var response = await client.GetAsync(UiApiRoutes.QualityDashboard);
@@ -49,7 +49,7 @@ public sealed class QualityEndpointContractTests
     [Fact]
     public async Task QualityGaps_ReturnsStableGapContract()
     {
-        await using var host = await CreateHostAsync(out _, out _);
+        var _r = await CreateHostAsync(); await using var host = _r.App;
         using var client = host.GetTestClient();
 
         var response = await client.GetAsync($"{UiApiRoutes.QualityGaps}?count=10");
@@ -65,7 +65,7 @@ public sealed class QualityEndpointContractTests
     [Fact]
     public async Task QualityAnomalies_ReturnsStableAnomalyContract()
     {
-        await using var host = await CreateHostAsync(out _, out _);
+        var _r = await CreateHostAsync(); await using var host = _r.App;
         using var client = host.GetTestClient();
 
         var response = await client.GetAsync($"{UiApiRoutes.QualityAnomalies}?count=10");
@@ -81,7 +81,7 @@ public sealed class QualityEndpointContractTests
     [Fact]
     public async Task QualityLatencyStatistics_ReturnsStableLatencyContract()
     {
-        await using var host = await CreateHostAsync(out _, out _);
+        var _r = await CreateHostAsync(); await using var host = _r.App;
         using var client = host.GetTestClient();
 
         var response = await client.GetAsync(UiApiRoutes.QualityLatencyStatistics);
@@ -97,7 +97,7 @@ public sealed class QualityEndpointContractTests
     [Fact]
     public async Task QualityComparison_ReturnsStableComparisonContract()
     {
-        await using var host = await CreateHostAsync(out _, out _);
+        var _r = await CreateHostAsync(); await using var host = _r.App;
         using var client = host.GetTestClient();
 
         var route = UiApiRoutes.WithParam(UiApiRoutes.QualityComparison, "symbol", "AAPL");
@@ -114,7 +114,9 @@ public sealed class QualityEndpointContractTests
     [Fact]
     public async Task QualityAnomalyAcknowledgement_ReturnsStableAcknowledgementContract()
     {
-        await using var host = await CreateHostAsync(out var qualityService, out var anomalyId);
+        var _r = await CreateHostAsync(); await using var host = _r.App;
+        var qualityService = _r.QualityService;
+        var anomalyId = _r.AnomalyId;
         using var client = host.GetTestClient();
 
         var route = UiApiRoutes.WithParam(UiApiRoutes.QualityAnomaliesAcknowledge, "anomalyId", anomalyId);
@@ -131,8 +133,8 @@ public sealed class QualityEndpointContractTests
         out DataQualityMonitoringService qualityService,
         out string anomalyId)
     {
-        qualityService = CreateSeededQualityService();
-        anomalyId = qualityService.AnomalyDetector.GetRecentAnomalies(10).Single().Id;
+        var qualityService = CreateSeededQualityService();
+        var anomalyId = qualityService.AnomalyDetector.GetRecentAnomalies(10).Single().Id;
 
         var builder = WebApplication.CreateBuilder();
         builder.WebHost.UseTestServer();
