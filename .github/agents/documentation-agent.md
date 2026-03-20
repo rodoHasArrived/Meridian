@@ -369,6 +369,7 @@ Meridian/
 │   │   ├── desktop-app-xaml-compiler-errors.md
 │   │   ├── desktop-devex-high-value-improvements.md
 │   │   ├── desktop-end-user-improvements-shortlist.md
+│   │   ├── desktop-end-user-improvements.md
 │   │   ├── desktop-ui-alternatives-evaluation.md
 │   │   ├── DUPLICATE_CODE_ANALYSIS.md
 │   │   ├── H3_DEBUG_CODE_ANALYSIS.md
