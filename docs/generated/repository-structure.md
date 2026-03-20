@@ -113,11 +113,9 @@ Meridian/
 │   │   ├── copilot-setup-steps.yml
 │   │   ├── copilot-swe-agent-copilot.yml
 │   │   ├── desktop-builds.yml
-│   │   ├── docker-image.yml
 │   │   ├── docker.yml
 │   │   ├── docs-check.yml
 │   │   ├── documentation.yml
-│   │   ├── dotnet-desktop.yml
 │   │   ├── export-project-artifact.yml
 │   │   ├── golden-path-validation.yml
 │   │   ├── labeling.yml
@@ -141,7 +139,6 @@ Meridian/
 │   │   ├── test-matrix.yml
 │   │   ├── ticker-data-collection.yml
 │   │   ├── update-diagrams.yml
-│   │   ├── update-uml-diagrams.yml
 │   │   └── validate-workflows.yml
 │   ├── copilot-instructions.md
 │   ├── dependabot.yml

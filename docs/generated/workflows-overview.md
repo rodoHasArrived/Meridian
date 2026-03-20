@@ -15,16 +15,13 @@ This document provides an overview of all GitHub Actions workflows in the reposi
 | Benchmark Performance | `benchmark.yml` | push, PR, manual |
 | Bottleneck Detection | `bottleneck-detection.yml` | PR, manual |
 | Build Observability | `build-observability.yml` | push, PR, manual |
-| Build and Release | `dotnet-desktop.yml` | push, PR, manual |
 | Close Duplicate and Stale Auto-Generated Issues | `close-duplicate-issues.yml` | manual, scheduled |
-| Code Quality | `code-quality.yml` | push, PR, manual |
 | Copilot Pull Request Reviewer | `copilot-pull-request-reviewer.yml` | PR, manual |
 | Copilot SWE Agent / Copilot | `copilot-swe-agent-copilot.yml` | manual |
 | Copilot Setup Steps | `copilot-setup-steps.yml` | push, manual |
 | Deploy static content to Pages | `static.yml` | push, manual |
 | Desktop Builds | `desktop-builds.yml` | push, PR, manual |
 | Docker | `docker.yml` | push, PR, manual |
-| Docker Image CI | `docker-image.yml` | push, PR |
 | Documentation Automation | `documentation.yml` | push, PR, manual, scheduled |
 | Documentation Checks | `docs-check.yml` | push, PR, manual |
 | Export Project Artifact | `export-project-artifact.yml` | manual |
@@ -47,7 +44,6 @@ This document provides an overview of all GitHub Actions workflows in the reposi
 | Test Matrix | `test-matrix.yml` | push, PR, manual |
 | Ticker Data Collection | `ticker-data-collection.yml` | manual |
 | Update Diagram Artifacts | `update-diagrams.yml` | push, manual |
-| Update UML Diagram Artifacts | `update-uml-diagrams.yml` | push, manual |
 | Validate Workflows | `validate-workflows.yml` | PR, manual |
 
 ## Workflow Categories
