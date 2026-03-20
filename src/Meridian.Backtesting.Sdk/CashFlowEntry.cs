@@ -47,3 +47,15 @@ public sealed record DividendCashFlow(
     string Symbol,
     long Shares,
     decimal DividendPerShare) : CashFlowEntry(Timestamp, Amount);
+
+/// <summary>Generic cash-flow caused by a scheduled asset-level event.</summary>
+public sealed record AssetEventCashFlow(
+    DateTimeOffset Timestamp,
+    decimal Amount,
+    string Symbol,
+    AssetEventType EventType,
+    long UnitsImpacted,
+    decimal CashPerShare,
+    string? RelatedSymbol = null,
+    decimal PositionFactor = 1m,
+    string? Description = null) : CashFlowEntry(Timestamp, Amount);
