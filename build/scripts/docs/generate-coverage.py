@@ -20,7 +20,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import re
 import sys
 from dataclasses import dataclass, field
@@ -558,7 +557,7 @@ def _grade(pct: float) -> str:
     return "F"
 
 
-def _recommendations(report: CoverageReport) -> List[str]:
+def _recommendations(report: CoverageReport) -> List[str]:  # noqa: C901
     """Generate human-readable improvement recommendations."""
     recs: List[str] = []
 
@@ -642,9 +641,9 @@ def generate_markdown(report: CoverageReport) -> str:
         f"(**{report.overall_pct:.1f}%**) &mdash; Grade: **{grade}**"
     )
     lines.append("")
-    lines.append(f"```")
+    lines.append("```")
     lines.append(f"[{_coverage_bar(report.overall_pct)}] {report.overall_pct:.1f}%")
-    lines.append(f"```")
+    lines.append("```")
     lines.append("")
 
     # --- Per-category table ---

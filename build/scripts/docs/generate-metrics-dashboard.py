@@ -23,14 +23,11 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
-import re
-import subprocess
 import sys
 from dataclasses import asdict, dataclass, field
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Optional
+from typing import Optional
 
 
 # ---------------------------------------------------------------------------
@@ -67,8 +64,8 @@ class WorkflowRun:
     duration_seconds: float
     timestamp: datetime
     commit_sha: str = ""
-    
-    
+
+
 @dataclass
 class WorkflowMetrics:
     """Aggregated metrics for a workflow."""
@@ -82,7 +79,7 @@ class WorkflowMetrics:
     max_duration_seconds: float = 0.0
     success_rate: float = 0.0
     runs: list[WorkflowRun] = field(default_factory=list)
-    
+
     @property
     def failure_rate(self) -> float:
         """Calculate failure rate as percentage."""
@@ -100,7 +97,7 @@ class TestMetrics:
     skipped_tests: int = 0
     avg_duration_ms: float = 0.0
     pass_rate: float = 0.0
-    
+
 
 @dataclass
 class BuildMetrics:
@@ -120,7 +117,7 @@ class MetricsDashboard:
     builds: BuildMetrics = field(default_factory=BuildMetrics)
     generated_at: str = ""
     lookback_days: int = 30
-    
+
     def to_dict(self) -> dict:
         """Convert to dictionary for JSON serialization."""
         return {
@@ -145,12 +142,12 @@ def _parse_test_results(root: Path, lookback_days: int) -> TestMetrics:
     """Parse test results from recent test runs."""
     # Look for test results in TestResults directory or CI logs
     test_results_dir = root / "TestResults"
-    
+
     metrics = TestMetrics()
-    
+
     if not test_results_dir.exists():
         return metrics
-    
+
     # In a real implementation, parse .trx files or test output
     # For now, return empty metrics
     return metrics
@@ -159,16 +156,16 @@ def _parse_test_results(root: Path, lookback_days: int) -> TestMetrics:
 def _parse_workflow_history(root: Path, lookback_days: int) -> dict[str, WorkflowMetrics]:
     """Parse workflow execution history from git logs."""
     workflows: dict[str, WorkflowMetrics] = {}
-    
+
     # For each known workflow, create initial metrics
     for workflow_file, workflow_name in WORKFLOW_FILES.items():
         workflows[workflow_name] = WorkflowMetrics(name=workflow_name)
-    
+
     # In a real implementation, this would:
     # 1. Parse GitHub Actions logs
     # 2. Query GitHub API for workflow runs
     # 3. Extract timing and status information
-    
+
     # For now, return placeholder data
     return workflows
 
@@ -176,12 +173,12 @@ def _parse_workflow_history(root: Path, lookback_days: int) -> dict[str, Workflo
 def _parse_build_metrics(root: Path, lookback_days: int) -> BuildMetrics:
     """Extract build metrics from logs."""
     metrics = BuildMetrics()
-    
+
     # In a real implementation:
     # 1. Parse build logs
     # 2. Extract timing from msbuild/dotnet output
     # 3. Track success/failure rates
-    
+
     return metrics
 
 
@@ -189,10 +186,10 @@ def _compute_trend_direction(values: list[float]) -> str:
     """Determine trend direction from recent values."""
     if len(values) < 2:
         return "stable"
-    
+
     recent_avg = sum(values[-3:]) / min(3, len(values))
     older_avg = sum(values[:3]) / min(3, len(values))
-    
+
     if recent_avg > older_avg * 1.1:
         return "increasing"
     elif recent_avg < older_avg * 0.9:
@@ -208,14 +205,14 @@ def _ascii_chart(values: list[float], width: int = 40, height: int = 10) -> str:
     """Generate ASCII sparkline chart."""
     if not values:
         return ""
-    
+
     min_val = min(values)
     max_val = max(values)
     range_val = max_val - min_val if max_val > min_val else 1
-    
+
     # Normalize values to chart height
     normalized = [int((v - min_val) / range_val * (height - 1)) for v in values]
-    
+
     lines = []
     for h in range(height - 1, -1, -1):
         line = ""
@@ -225,7 +222,7 @@ def _ascii_chart(values: list[float], width: int = 40, height: int = 10) -> str:
             else:
                 line += " "
         lines.append(line)
-    
+
     return "\n".join(lines)
 
 
@@ -244,24 +241,24 @@ def _status_badge(rate: float) -> str:
 def generate_markdown(dashboard: MetricsDashboard) -> str:
     """Generate Markdown metrics dashboard."""
     lines = []
-    
+
     lines.append("# Build Metrics Dashboard")
     lines.append("")
     lines.append("> Auto-generated build and test metrics. Do not edit manually.")
     lines.append(f"> Generated: {dashboard.generated_at}")
     lines.append(f"> Data period: Last {dashboard.lookback_days} days")
     lines.append("")
-    
+
     # Overall Summary
     lines.append("## Summary")
     lines.append("")
-    
+
     total_workflow_runs = sum(w.total_runs for w in dashboard.workflows.values())
     avg_success_rate = (
         sum(w.success_rate for w in dashboard.workflows.values()) / len(dashboard.workflows)
         if dashboard.workflows else 0.0
     )
-    
+
     lines.append("| Metric | Value |")
     lines.append("|--------|-------|")
     lines.append(f"| Total Workflow Runs | {total_workflow_runs} |")
@@ -271,14 +268,14 @@ def generate_markdown(dashboard: MetricsDashboard) -> str:
     lines.append(f"| Total Builds | {dashboard.builds.total_builds} |")
     lines.append(f"| Build Success Rate | {dashboard.builds.success_rate:.1f}% |")
     lines.append("")
-    
+
     # Workflow Metrics
     if dashboard.workflows:
         lines.append("## Workflow Metrics")
         lines.append("")
         lines.append("| Workflow | Runs | Success Rate | Avg Duration | Status |")
         lines.append("|----------|------|--------------|--------------|--------|")
-        
+
         for name, metrics in sorted(dashboard.workflows.items()):
             avg_dur = f"{metrics.avg_duration_seconds:.1f}s" if metrics.avg_duration_seconds > 0 else "N/A"
             status = _status_badge(metrics.success_rate)
@@ -287,7 +284,7 @@ def generate_markdown(dashboard: MetricsDashboard) -> str:
                 f"{avg_dur} | {status} |"
             )
         lines.append("")
-    
+
     # Test Metrics
     lines.append("## Test Metrics")
     lines.append("")
@@ -298,11 +295,11 @@ def generate_markdown(dashboard: MetricsDashboard) -> str:
     lines.append(f"| Failed | {dashboard.tests.failed_tests} |")
     lines.append(f"| Skipped | {dashboard.tests.skipped_tests} |")
     lines.append(f"| Pass Rate | {dashboard.tests.pass_rate:.1f}% {_status_badge(dashboard.tests.pass_rate)} |")
-    
+
     if dashboard.tests.avg_duration_ms > 0:
         lines.append(f"| Avg Duration | {dashboard.tests.avg_duration_ms:.0f}ms |")
     lines.append("")
-    
+
     # Build Metrics
     lines.append("## Build Metrics")
     lines.append("")
@@ -312,50 +309,50 @@ def generate_markdown(dashboard: MetricsDashboard) -> str:
     lines.append(f"| Successful | {dashboard.builds.successful_builds} |")
     lines.append(f"| Failed | {dashboard.builds.failed_builds} |")
     lines.append(f"| Success Rate | {dashboard.builds.success_rate:.1f}% {_status_badge(dashboard.builds.success_rate)} |")
-    
+
     if dashboard.builds.avg_build_time_seconds > 0:
         lines.append(f"| Avg Build Time | {dashboard.builds.avg_build_time_seconds:.1f}s |")
     lines.append("")
-    
+
     # Trends
     lines.append("## Trends")
     lines.append("")
     lines.append("*Historical trend analysis will be available after multiple runs.*")
     lines.append("")
-    
+
     # Recommendations
     lines.append("## Recommendations")
     lines.append("")
-    
+
     has_recommendations = False
-    
+
     for name, metrics in dashboard.workflows.items():
         if metrics.success_rate < 85:
             has_recommendations = True
             lines.append(f"- **{name}**: Success rate is {metrics.success_rate:.1f}%. "
-                        "Review recent failures and improve test stability.")
-    
+                         "Review recent failures and improve test stability.")
+
     if dashboard.tests.pass_rate < 95:
         has_recommendations = True
         lines.append(f"- **Tests**: Pass rate is {dashboard.tests.pass_rate:.1f}%. "
-                    "Address failing tests to improve reliability.")
-    
+                     "Address failing tests to improve reliability.")
+
     if dashboard.builds.success_rate < 90:
         has_recommendations = True
         lines.append(f"- **Builds**: Success rate is {dashboard.builds.success_rate:.1f}%. "
-                    "Investigate build failures and improve stability.")
-    
+                     "Investigate build failures and improve stability.")
+
     if not has_recommendations:
         lines.append("All metrics are within acceptable ranges. Keep up the good work!")
-    
+
     lines.append("")
-    
+
     # Footer
     lines.append("---")
     lines.append("")
     lines.append("*This dashboard is auto-generated. For detailed logs, check GitHub Actions.*")
     lines.append("")
-    
+
     return "\n".join(lines)
 
 
@@ -366,7 +363,7 @@ def generate_summary(dashboard: MetricsDashboard) -> str:
         sum(w.success_rate for w in dashboard.workflows.values()) / len(dashboard.workflows)
         if dashboard.workflows else 0.0
     )
-    
+
     return (
         f"### Build Metrics ({dashboard.lookback_days}d)\n\n"
         f"- **Workflow Runs**: {total_runs}\n"
@@ -386,12 +383,12 @@ def build_dashboard(root: Path, lookback_days: int) -> MetricsDashboard:
         generated_at=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC"),
         lookback_days=lookback_days,
     )
-    
+
     # Gather metrics
     dashboard.workflows = _parse_workflow_history(root, lookback_days)
     dashboard.tests = _parse_test_results(root, lookback_days)
     dashboard.builds = _parse_build_metrics(root, lookback_days)
-    
+
     return dashboard
 
 
@@ -427,27 +424,27 @@ def main(argv: Optional[list[str]] = None) -> int:
         action='store_true',
         help='Print summary to stdout'
     )
-    
+
     args = parser.parse_args(argv)
-    
+
     root = args.root.resolve()
     if not root.is_dir():
         print(f"Error: root directory does not exist: {root}", file=sys.stderr)
         return 1
-    
+
     try:
         dashboard = build_dashboard(root, args.days)
     except Exception as exc:
         print(f"Error building dashboard: {exc}", file=sys.stderr)
         return 1
-    
+
     # Write Markdown
     if args.output:
         md = generate_markdown(dashboard)
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(md, encoding='utf-8')
         print(f"Metrics dashboard written to {args.output}")
-    
+
     # Write JSON
     if args.json_output:
         args.json_output.parent.mkdir(parents=True, exist_ok=True)
@@ -456,13 +453,13 @@ def main(argv: Optional[list[str]] = None) -> int:
             encoding='utf-8'
         )
         print(f"JSON metrics written to {args.json_output}")
-    
+
     # Print summary
     if args.summary:
         print(generate_summary(dashboard))
     elif not args.output and not args.json_output:
         print(generate_summary(dashboard))
-    
+
     return 0
 
 

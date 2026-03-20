@@ -48,7 +48,7 @@ import sys
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 
 # ---------------------------------------------------------------------------
@@ -241,7 +241,7 @@ def is_inside_string_literal(line: str, index: int) -> bool:
 # Analysers
 # ---------------------------------------------------------------------------
 
-def audit_code(root: Path, report: AuditReport) -> None:
+def audit_code(root: Path, report: AuditReport) -> None:  # noqa: C901
     """Analyse C#/F# source files for convention violations."""
     src_dir = root / "src"
     if not src_dir.exists():
@@ -250,7 +250,6 @@ def audit_code(root: Path, report: AuditReport) -> None:
     for path in walk_files(src_dir, SOURCE_EXTENSIONS):
         rel = str(path.relative_to(root))
         lines = read_lines(path)
-        text = "\n".join(lines)
 
         # Skip generated files
         if ".g.cs" in rel or "GlobalUsings.cs" in rel:
@@ -360,7 +359,7 @@ def audit_code(root: Path, report: AuditReport) -> None:
                         ))
 
 
-def audit_docs(root: Path, report: AuditReport) -> None:
+def audit_docs(root: Path, report: AuditReport) -> None:  # noqa: C901
     """Analyse documentation quality and coverage."""
     docs_dir = root / "docs"
     if not docs_dir.exists():
@@ -404,7 +403,7 @@ def audit_docs(root: Path, report: AuditReport) -> None:
     for path in doc_files:
         rel = str(path.relative_to(root))
         lines = read_lines(path)
-        content_lines = [l for l in lines if l.strip() and not l.strip().startswith("#")]
+        content_lines = [ln for ln in lines if ln.strip() and not ln.strip().startswith("#")]
         if len(content_lines) < 3:
             report.add(Finding(
                 category="stub-documentation",
@@ -457,7 +456,7 @@ def audit_docs(root: Path, report: AuditReport) -> None:
                 ))
 
 
-def audit_tests(root: Path, report: AuditReport) -> None:
+def audit_tests(root: Path, report: AuditReport) -> None:  # noqa: C901
     """Analyse test coverage gaps."""
     src_dir = root / "src"
     test_dir = root / "tests"
@@ -504,7 +503,7 @@ def audit_tests(root: Path, report: AuditReport) -> None:
                 ))
 
 
-def audit_config(root: Path, report: AuditReport) -> None:
+def audit_config(root: Path, report: AuditReport) -> None:  # noqa: C901
     """Analyse configuration and CI/CD files."""
     # --- Check: workflows with potential issues ---
     workflows_dir = root / ".github" / "workflows"
@@ -658,7 +657,7 @@ def run_verify(root: Path) -> dict[str, Any]:
     steps = [
         ("build", ["dotnet", "build", "-c", "Release", "--nologo", "-v", "quiet"]),
         ("test", ["dotnet", "test", "tests/Meridian.Tests", "-c", "Release",
-                   "--nologo", "-v", "quiet", "--no-build"]),
+                  "--nologo", "-v", "quiet", "--no-build"]),
         ("lint", ["dotnet", "format", "--verify-no-changes", "--no-restore"]),
     ]
     overall_ok = True
@@ -890,8 +889,8 @@ def generate_maintenance_markdown(status: dict[str, Any]) -> str:
 
     lines.extend([
         "Commands:",
-        f"- python3 build/scripts/ai-repo-updater.py maintenance-light --summary",
-        f"- python3 build/scripts/ai-repo-updater.py maintenance-full --summary",
+        "- python3 build/scripts/ai-repo-updater.py maintenance-light --summary",
+        "- python3 build/scripts/ai-repo-updater.py maintenance-full --summary",
     ])
     return "\n".join(lines)
 
@@ -948,7 +947,7 @@ def run_maintenance(root: Path, lane: str) -> dict[str, Any]:
             run_maintenance_step(
                 root,
                 "dotnet-build",
-                ["dotnet", "build", "Meridian.sln", "-c", "Release", "--no-restore", "/p:EnableWindowsTargeting=true", "--verbosity", "minimal"],
+                ["dotnet", "build", "Meridian.sln", "-c", "Release", "--no-restore", "/p:EnableWindowsTargeting=true", "--verbosity", "minimal"],  # noqa: E501
                 required=True,
                 env_ready=dotnet_ready,
                 timeout=1200,
@@ -956,7 +955,7 @@ def run_maintenance(root: Path, lane: str) -> dict[str, Any]:
             run_maintenance_step(
                 root,
                 "dotnet-test",
-                ["dotnet", "test", "tests/Meridian.Tests/Meridian.Tests.csproj", "-c", "Release", "--no-build", "--verbosity", "minimal", "--filter", "Category!=Integration"],
+                ["dotnet", "test", "tests/Meridian.Tests/Meridian.Tests.csproj", "-c", "Release", "--no-build", "--verbosity", "minimal", "--filter", "Category!=Integration"],  # noqa: E501
                 required=True,
                 env_ready=dotnet_ready,
                 timeout=1200,
@@ -1013,9 +1012,9 @@ def generate_diff_summary(root: Path) -> dict[str, Any]:
             cwd=root, capture_output=True, text=True, timeout=30
         )
         lines = status.stdout.strip().splitlines()
-        added = [l[3:] for l in lines if l.startswith("A ") or l.startswith("?? ")]
-        modified = [l[3:] for l in lines if l.startswith(" M") or l.startswith("M ")]
-        deleted = [l[3:] for l in lines if l.startswith(" D") or l.startswith("D ")]
+        added = [ln[3:] for ln in lines if ln.startswith("A ") or ln.startswith("?? ")]
+        modified = [ln[3:] for ln in lines if ln.startswith(" M") or ln.startswith("M ")]
+        deleted = [ln[3:] for ln in lines if ln.startswith(" D") or ln.startswith("D ")]
         result["files_added"] = added
         result["files_modified"] = modified
         result["files_deleted"] = deleted
@@ -1069,7 +1068,7 @@ def load_known_errors(root: Path) -> list[dict[str, str]]:
 # Report Generation
 # ---------------------------------------------------------------------------
 
-def generate_markdown_report(report: AuditReport) -> str:
+def generate_markdown_report(report: AuditReport) -> str:  # noqa: C901
     """Generate a markdown improvement report."""
     lines: list[str] = [
         "# Repository Improvement Report",
@@ -1079,8 +1078,8 @@ def generate_markdown_report(report: AuditReport) -> str:
         "",
         "## Summary",
         "",
-        f"| Severity | Count |",
-        f"|----------|-------|",
+        "| Severity | Count |",
+        "|----------|-------|",
     ]
     for sev in ("critical", "warning", "info", "suggestion"):
         lines.append(f"| {sev.capitalize()} | {report.summary.get(sev, 0)} |")
@@ -1121,7 +1120,7 @@ def generate_markdown_report(report: AuditReport) -> str:
             lines.append("")
 
     lines.append("---")
-    lines.append(f"*Report generated by ai-repo-updater.py*")
+    lines.append("*Report generated by ai-repo-updater.py*")
     return "\n".join(lines)
 
 
@@ -1150,7 +1149,7 @@ def run_audit(root: Path, command: str) -> AuditReport:
     return report
 
 
-def main(argv: list[str] | None = None) -> int:
+def main(argv: list[str] | None = None) -> int:  # noqa: C901
     parser = argparse.ArgumentParser(
         description="AI Repository Updater — audit and improve the codebase.",
         formatter_class=argparse.RawDescriptionHelpFormatter,

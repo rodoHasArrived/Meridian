@@ -30,7 +30,7 @@ DEFAULT_PROJECT = "src/Meridian/Meridian.csproj"
 DEFAULT_TEST_PROJECT = "tests/Meridian.Tests/Meridian.Tests.csproj"
 
 
-def run_build(args: argparse.Namespace) -> int:
+def run_build(args: argparse.Namespace) -> int:  # noqa: C901
     output_dir = ROOT / ".build-system"
     logs_dir = output_dir / "logs"
     ensure_directory(logs_dir)
@@ -360,11 +360,11 @@ def build_parser() -> argparse.ArgumentParser:
     debug.add_argument("--project", default=DEFAULT_PROJECT)
     debug.add_argument("--configuration", default="Release")
 
-    profile = sub.add_parser("build-profile", help="Show build profile")
+    sub.add_parser("build-profile", help="Show build profile")
 
-    metrics = sub.add_parser("metrics", help="Show metrics summary")
+    sub.add_parser("metrics", help="Show metrics summary")
 
-    history = sub.add_parser("history", help="Show build history summary")
+    sub.add_parser("history", help="Show build history summary")
 
     impact = sub.add_parser("impact", help="Analyze impact of file change")
     impact.add_argument("--file", required=True)
@@ -383,7 +383,7 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def main() -> int:
+def main() -> int:  # noqa: C901
     parser = build_parser()
     args = parser.parse_args()
     if args.command == "build":
