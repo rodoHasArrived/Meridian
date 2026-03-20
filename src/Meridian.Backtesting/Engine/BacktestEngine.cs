@@ -53,8 +53,9 @@ public sealed class BacktestEngine(
         var commissionModel = new PerShareCommissionModel();
         var ledger = new BacktestLedger();
         var startTimestamp = new DateTimeOffset(request.From.ToDateTime(TimeOnly.MinValue), TimeSpan.Zero);
-        var portfolio = new SimulatedPortfolio(request.InitialCash, commissionModel, request.AnnualMarginRate, request.AnnualShortRebateRate, ledger, startTimestamp);
-        var ctx = new BacktestContext(portfolio, universe, ledger);
+        var accounts = request.ResolveAccounts();
+        var portfolio = new SimulatedPortfolio(accounts, request.DefaultBrokerageAccountId, commissionModel, ledger, startTimestamp);
+        var ctx = new BacktestContext(portfolio, universe, ledger, request.DefaultBrokerageAccountId);
         var orderBookFillModel = new OrderBookFillModel(commissionModel);
         var barFillModel = new BarMidpointFillModel(commissionModel);
 
