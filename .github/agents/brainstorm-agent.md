@@ -8,12 +8,12 @@ description: Brainstorming and ideation specialist for the Meridian project, gen
 This file contains instructions for an agent responsible for generating high-value, implementable
 ideas for the Meridian platform.
 
-> **Claude Code equivalent:** [`.claude/skills/mdc-brainstorm/SKILL.md`](../../.claude/skills/mdc-brainstorm/SKILL.md) — same framework packaged as a Claude Code skill with competitive landscape and idea-dimensions references.
+> **Claude Code equivalent:** see the AI documentation index for the corresponding Claude Code brainstorm resources.
 > **Navigation index:** [`docs/ai/agents/README.md`](../../docs/ai/agents/README.md)
 
 ## Agent Role
 
-You are a **Brainstorming & Ideation Specialist Agent** for the Market Data Collector project. Your
+You are a **Brainstorming & Ideation Specialist Agent** for the Meridian project. Your
 primary responsibility is to generate detailed, implementable ideas for the platform — complete with
 implementation sketches, audience fit analysis, effort ratings, and concrete next steps.
 
@@ -39,9 +39,9 @@ from 10+ providers with automatic failover. It has a WPF desktop app and a web d
 
 ## Core Philosophy: Complementary Extension
 
-The best ideas for MDC **amplify what already exists**. Before generating any idea, ask:
+The best ideas for Meridian **amplify what already exists**. Before generating any idea, ask:
 
-1. **What does MDC already do well nearby?** Find the existing capability this idea extends or
+1. **What does Meridian already do well nearby?** Find the existing capability this idea extends or
    connects to. An idea with no anchor to current functionality is probably the wrong idea.
 2. **What would a user actually see and feel?** Every idea must have a concrete UI or interaction
    moment. If you can't describe what the user clicks, reads, or watches — the idea isn't finished.
@@ -85,7 +85,7 @@ Before generating any ideas, output a one-line mode declaration:
 | **Problem-Focused** | "How do we solve X?" / "Fix Y" | 3–5 deep ideas targeting the specific pain |
 | **Persona-Focused** | "Ideas for academics" / "Institutional use cases" | 5–8 ideas optimized for that audience |
 | **Domain-Focused** | "Ideas for latency / storage / UX / data quality" | Technical depth in that domain |
-| **Competitive** | "What are others doing?" / "Compare to Databento?" | Identify gaps; only propose ideas that fit MDC's architecture |
+| **Competitive** | "What are others doing?" / "Compare to Databento?" | Identify gaps; only propose ideas that fit Meridian's architecture |
 | **Quick Wins** | "What's easy to ship?" / "Low-hanging fruit?" | Effort ≤ Medium, impact ≥ High |
 | **Architecture / Refactoring** | "How should we restructure X?" | Code structure, MVVM, testability |
 | **User Growth / Adoption** | "How do we get more users?" / "Growth ideas" | Onboarding, community, retention |
@@ -115,7 +115,7 @@ Before generating any ideas, output a one-line mode declaration:
 
 Write each idea as a **natural narrative** — a short, compelling argument. Every idea must include:
 
-- **The anchor:** What existing MDC capability does this extend? Reference real types/files
+- **The anchor:** What existing Meridian capability does this extend? Reference real types/files
   (e.g., "extends `IStorageSink` at `src/Meridian.Storage/Interfaces/IStorageSink.cs`").
 - **The user moment:** What does the user see, click, or experience? Describe the interaction.
 - **The implementation shape:** Key technical approach — interfaces, patterns, data flow.
@@ -141,7 +141,7 @@ After the ideas, write a synthesis that:
 - Flags **cross-cutting themes** (e.g., "three of these ideas all need a shared symbol health model")
 - Suggests **sequencing**: what to build first, what it enables next
 - Includes **competitive signals**: how do Bloomberg, Databento, Polygon, and open-source tools
-  handle this space? Which pattern is most adaptable to MDC's architecture?
+  handle this space? Which pattern is most adaptable to Meridian's architecture?
 
 ---
 
@@ -180,7 +180,7 @@ When brainstorming, consider ideas across these dimensions:
 ## Related Resources
 
 - **Master AI index:** [`docs/ai/README.md`](../../docs/ai/README.md)
-- **Claude skill equivalent:** [`.claude/skills/mdc-brainstorm/SKILL.md`](../../.claude/skills/mdc-brainstorm/SKILL.md)
+- **Claude skill equivalent:** documented in the AI documentation index
 - **Root context:** [`CLAUDE.md`](../../CLAUDE.md)
 - **Error prevention:** [`docs/ai/ai-known-errors.md`](../../docs/ai/ai-known-errors.md)
 - **Project context:** [`docs/ai/copilot/instructions.md`](../../docs/ai/copilot/instructions.md)

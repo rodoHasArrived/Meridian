@@ -8,11 +8,11 @@ A high-performance, self-hosted algorithmic trading platform — **collect**, **
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/license-See%20LICENSE-green)](LICENSE)
 
-[![Build and Release](https://github.com/rodoHasArrived/Market-Data-Collector/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/rodoHasArrived/Market-Data-Collector/actions/workflows/dotnet-desktop.yml)
-[![Security](https://github.com/rodoHasArrived/Market-Data-Collector/actions/workflows/security.yml/badge.svg)](https://github.com/rodoHasArrived/Market-Data-Collector/actions/workflows/security.yml)
-[![Docker Build](https://github.com/rodoHasArrived/Market-Data-Collector/actions/workflows/docker.yml/badge.svg)](https://github.com/rodoHasArrived/Market-Data-Collector/actions/workflows/docker.yml)
-[![Code Quality](https://github.com/rodoHasArrived/Market-Data-Collector/actions/workflows/code-quality.yml/badge.svg)](https://github.com/rodoHasArrived/Market-Data-Collector/actions/workflows/code-quality.yml)
-[![Copilot SWE Agent](https://github.com/rodoHasArrived/Market-Data-Collector/actions/workflows/copilot-swe-agent-copilot.yml/badge.svg)](https://github.com/rodoHasArrived/Market-Data-Collector/actions/workflows/copilot-swe-agent-copilot.yml)
+[![Build and Release](https://github.com/rodoHasArrived/Meridian/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/rodoHasArrived/Meridian/actions/workflows/dotnet-desktop.yml)
+[![Security](https://github.com/rodoHasArrived/Meridian/actions/workflows/security.yml/badge.svg)](https://github.com/rodoHasArrived/Meridian/actions/workflows/security.yml)
+[![Docker Build](https://github.com/rodoHasArrived/Meridian/actions/workflows/docker.yml/badge.svg)](https://github.com/rodoHasArrived/Meridian/actions/workflows/docker.yml)
+[![Code Quality](https://github.com/rodoHasArrived/Meridian/actions/workflows/code-quality.yml/badge.svg)](https://github.com/rodoHasArrived/Meridian/actions/workflows/code-quality.yml)
+[![Copilot SWE Agent](https://github.com/rodoHasArrived/Meridian/actions/workflows/copilot-swe-agent-copilot.yml/badge.svg)](https://github.com/rodoHasArrived/Meridian/actions/workflows/copilot-swe-agent-copilot.yml)
 
 **Status**: Development / Pilot Ready (trading workstation migration planning active)
 

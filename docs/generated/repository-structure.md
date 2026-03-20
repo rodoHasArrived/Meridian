@@ -6,7 +6,7 @@
 
 > Auto-generated on 2026-03-20 16:44:58 UTC
 
-This document provides an overview of the Market Data Collector repository structure.
+This document provides an overview of the Meridian repository structure.
 
 ## Directory Layout
 
@@ -14,46 +14,11 @@ This document provides an overview of the Market Data Collector repository struc
 Meridian/
 ├── .claude/
 │   ├── agents/
-│   │   ├── mdc-blueprint.md
-│   │   ├── mdc-cleanup.md
-│   │   └── mdc-docs.md
+│   │   └── ... Claude Code agent definitions
 │   ├── skills/
 │   │   ├── _shared/
 │   │   │   └── project-context.md
-│   │   ├── mdc-blueprint/
-│   │   │   ├── references/
-│   │   │   │   ...
-│   │   │   ├── CHANGELOG.md
-│   │   │   └── SKILL.md
-│   │   ├── mdc-brainstorm/
-│   │   │   ├── references/
-│   │   │   │   ...
-│   │   │   ├── brainstorm-history.jsonl
-│   │   │   ├── CHANGELOG.md
-│   │   │   └── SKILL.md
-│   │   ├── mdc-code-review/
-│   │   │   ├── agents/
-│   │   │   │   ...
-│   │   │   ├── eval-viewer/
-│   │   │   │   ...
-│   │   │   ├── evals/
-│   │   │   │   ...
-│   │   │   ├── references/
-│   │   │   │   ...
-│   │   │   ├── scripts/  # Automation scripts
-│   │   │   │   ...
-│   │   │   ├── CHANGELOG.md
-│   │   │   └── SKILL.md
-│   │   ├── mdc-provider-builder/
-│   │   │   ├── references/
-│   │   │   │   ...
-│   │   │   ├── CHANGELOG.md
-│   │   │   └── SKILL.md
-│   │   ├── mdc-test-writer/
-│   │   │   ├── references/
-│   │   │   │   ...
-│   │   │   ├── CHANGELOG.md
-│   │   │   └── SKILL.md
+│   │   ├── ... Claude Code skills, references, evals, and scripts
 │   │   └── skills_provider.py
 │   ├── settings.json
 │   └── settings.local.json
@@ -68,13 +33,13 @@ Meridian/
 │   │   ├── cleanup-specialist.agent.md
 │   │   ├── code-review-agent.md
 │   │   ├── documentation-agent.md
-│   │   ├── mdc-blueprint-agent.md
-│   │   ├── mdc-brainstorm-agent.md
-│   │   ├── mdc-bug-fix-agent.md
-│   │   ├── mdc-cleanup-agent.md
-│   │   ├── mdc-performance-agent.md
-│   │   ├── mdc-provider-builder-agent.md
-│   │   └── mdc-test-writer-agent.md
+│   │   ├── blueprint-agent.md
+│   │   ├── brainstorm-agent.md
+│   │   ├── bug-fix-agent.md
+│   │   ├── cleanup-agent.md
+│   │   ├── performance-agent.md
+│   │   ├── provider-builder-agent.md
+│   │   └── test-writer-agent.md
 │   ├── instructions/
 │   │   ├── csharp.instructions.md
 │   │   ├── docs.instructions.md

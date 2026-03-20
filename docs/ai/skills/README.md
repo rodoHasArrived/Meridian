@@ -1,24 +1,24 @@
 # Claude Code Skills
 
-This directory is the navigation index for **Claude Code skill definitions** used in the Market Data
-Collector project. Skills live in `.claude/skills/` so that Claude Code can discover and load them
+This directory is the navigation index for **Claude Code skill definitions** used in the Meridian
+project. Skills live in `.claude/skills/` so that Claude Code can discover and load them
 automatically.
 
 ---
 
 ## Available Skills
 
-### mdc-blueprint
+### Blueprint Skill
 
-**Directory:** [`.claude/skills/mdc-blueprint/`](../../../.claude/skills/mdc-blueprint/)
-**Entry point:** [`.claude/skills/mdc-blueprint/SKILL.md`](../../../.claude/skills/mdc-blueprint/SKILL.md)
+**Location:** `.claude/skills/`
+**Entry point:** the Blueprint skill in `.claude/skills/`
 **Registered in:** [`.claude/skills/skills_provider.py`](../../../.claude/skills/skills_provider.py)
-**Copilot equivalent:** [`.github/agents/mdc-blueprint-agent.md`](../../../.github/agents/mdc-blueprint-agent.md)
-**Claude agent:** [`.claude/agents/mdc-blueprint.md`](../../../.claude/agents/mdc-blueprint.md)
+**Copilot equivalent:** [`.github/agents/blueprint-agent.md`](../../../.github/agents/blueprint-agent.md)
+**Claude agent:** the Blueprint agent in `.claude/agents/`
 
 Blueprint Mode skill for the Meridian project. Translates a single prioritised idea
 into a complete, code-ready technical design document — interfaces, component designs, data flows,
-XAML sketches, test plans, and implementation checklists — grounded in MDC's actual stack
+XAML sketches, test plans, and implementation checklists — grounded in Meridian's actual stack
 (C# 13, F# 8, .NET 9, WPF, MVVM via `BindableBase`, `EventPipeline`, `IMarketDataClient`,
 `IStorageSink`, `IHistoricalDataProvider`, Options pattern, Bounded Channels).
 
@@ -46,10 +46,10 @@ XAML sketches, test plans, and implementation checklists — grounded in MDC's a
 
 ---
 
-### mdc-code-review
+### Code Review Skill
 
-**Directory:** [`.claude/skills/mdc-code-review/`](../../../.claude/skills/mdc-code-review/)
-**Entry point:** [`.claude/skills/mdc-code-review/SKILL.md`](../../../.claude/skills/mdc-code-review/SKILL.md)
+**Location:** `.claude/skills/`
+**Entry point:** the Code Review skill in `.claude/skills/`
 **Registered in:** [`.claude/skills/skills_provider.py`](../../../.claude/skills/skills_provider.py)
 **Copilot equivalent:** [`.github/agents/code-review-agent.md`](../../../.github/agents/code-review-agent.md)
 
@@ -84,11 +84,11 @@ canonical 7-lens framework defined in
 
 ---
 
-### mdc-brainstorm
+### Brainstorm Skill
 
-**Directory:** [`.claude/skills/mdc-brainstorm/`](../../../.claude/skills/mdc-brainstorm/)
-**Entry point:** [`.claude/skills/mdc-brainstorm/SKILL.md`](../../../.claude/skills/mdc-brainstorm/SKILL.md)
-**Copilot equivalent:** [`.github/agents/mdc-brainstorm-agent.md`](../../../.github/agents/mdc-brainstorm-agent.md)
+**Location:** `.claude/skills/`
+**Entry point:** the Brainstorm skill in `.claude/skills/`
+**Copilot equivalent:** [`.github/agents/brainstorm-agent.md`](../../../.github/agents/brainstorm-agent.md)
 
 Brainstorming, ideation, and creative feature exploration skill for the Meridian project.
 
@@ -108,11 +108,11 @@ Brainstorming, ideation, and creative feature exploration skill for the Meridian
 
 ---
 
-### mdc-provider-builder
+### Provider Builder Skill
 
-**Directory:** [`.claude/skills/mdc-provider-builder/`](../../../.claude/skills/mdc-provider-builder/)
-**Entry point:** [`.claude/skills/mdc-provider-builder/SKILL.md`](../../../.claude/skills/mdc-provider-builder/SKILL.md)
-**Copilot equivalent:** [`.github/agents/mdc-provider-builder-agent.md`](../../../.github/agents/mdc-provider-builder-agent.md)
+**Location:** `.claude/skills/`
+**Entry point:** the Provider Builder skill in `.claude/skills/`
+**Copilot equivalent:** [`.github/agents/provider-builder-agent.md`](../../../.github/agents/provider-builder-agent.md)
 
 Step-by-step guided skill for building new data provider adapters for Meridian.
 Covers all three provider types (`IMarketDataClient`, `IHistoricalDataProvider`,
@@ -134,11 +134,11 @@ error table.
 
 ---
 
-### mdc-test-writer
+### Test Writer Skill
 
-**Directory:** [`.claude/skills/mdc-test-writer/`](../../../.claude/skills/mdc-test-writer/)
-**Entry point:** [`.claude/skills/mdc-test-writer/SKILL.md`](../../../.claude/skills/mdc-test-writer/SKILL.md)
-**Copilot equivalent:** [`.github/agents/mdc-test-writer-agent.md`](../../../.github/agents/mdc-test-writer-agent.md)
+**Location:** `.claude/skills/`
+**Entry point:** the Test Writer skill in `.claude/skills/`
+**Copilot equivalent:** [`.github/agents/test-writer-agent.md`](../../../.github/agents/test-writer-agent.md)
 
 Test generation skill for any Meridian component. Produces idiomatic xUnit +
 FluentAssertions tests with correct async patterns, isolation, naming conventions, and mock
@@ -146,8 +146,8 @@ setup for all major component types.
 
 **Trigger conditions:**
 
-- User asks to write, add, or expand tests for any MDC component
-- Code review (mdc-code-review Lens 4) identified test quality issues or gaps
+- User asks to write, add, or expand tests for any Meridian component
+- Code review (Lens 4) identified test quality issues or gaps
 - New provider, service, or storage component needs a test scaffold
 - Tasks involving `async void`, missing `CancellationToken`, or `Task.Delay` in tests
 
@@ -190,8 +190,8 @@ AI documentation maintenance skill. Delegates to `build/scripts/docs/ai-docs-mai
 
 The skills provider [`skills_provider.py`](../../../.claude/skills/skills_provider.py) handles:
 
-- File-based skill discovery from `.claude/skills/mdc-code-review/`
-- Code-defined skill registration (`mdc-code-review` fallback, `ai-docs-maintain`)
+- File-based skill discovery from `.claude/skills/`
+- Code-defined skill registration (`ai-docs-maintain` and review helpers)
 - Dynamic resource evaluation (live project stats, git context)
 - In-process script execution (validate-skill, run-eval, aggregate-benchmark)
 - File-based script subprocess execution
@@ -200,7 +200,7 @@ The skills provider [`skills_provider.py`](../../../.claude/skills/skills_provid
 
 ## Architecture Guard Tool
 
-The `mdc-architecture-guard` tool is a standalone Python compliance checker at
+The `architecture-guard` tool is a standalone Python compliance checker at
 [`build/scripts/ai-architecture-check.py`](../../../build/scripts/ai-architecture-check.py).
 It is not a skill invoked via the Claude skill system — it is a command-line tool that AI agents
 run before submitting a PR to catch architecture violations.
@@ -241,15 +241,15 @@ python3 build/scripts/ai-architecture-check.py --src src/ check-channels
 
 ```bash
 # Validate skill definition
-python3 .claude/skills/mdc-code-review/scripts/quick_validate.py
+python3 .claude/skills/<review-skill>/scripts/quick_validate.py
 
 # Run eval set (8 test cases)
-python3 .claude/skills/mdc-code-review/scripts/run_eval.py \
-  --eval-set .claude/skills/mdc-code-review/evals/evals.json \
-  --skill-path .claude/skills/mdc-code-review
+python3 .claude/skills/<review-skill>/scripts/run_eval.py \
+  --eval-set .claude/skills/<review-skill>/evals/evals.json \
+  --skill-path .claude/skills/<review-skill>
 
 # Launch interactive eval viewer
-python3 .claude/skills/mdc-code-review/eval-viewer/generate_review.py
+python3 .claude/skills/<review-skill>/eval-viewer/generate_review.py
 ```
 
 ---

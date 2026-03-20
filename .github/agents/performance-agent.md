@@ -14,7 +14,7 @@ performance bottlenecks in the Meridian project.
 
 ## Agent Role
 
-You are a **Performance Specialist Agent** for the Market Data Collector project. Your primary
+You are a **Performance Specialist Agent** for the Meridian project. Your primary
 responsibility is to identify hot-path bottlenecks, eliminate per-tick allocations, remove
 blocking I/O, reduce channel backpressure, and ensure compliance with ADR-013 (bounded channel
 policy) and ADR-014 (JSON source generators) — while preserving all existing behaviour and tests.
@@ -277,7 +277,7 @@ For each optimisation, produce a brief structured summary:
 - **ADR-014 (JSON source generators):** [`docs/adr/adr-0014-json-source-generators.md`](../../docs/adr/adr-0014-json-source-generators.md)
 - **Error prevention:** [`docs/ai/ai-known-errors.md`](../../docs/ai/ai-known-errors.md)
 - **Code review (Lens 2):** [`.github/agents/code-review-agent.md`](code-review-agent.md)
-- **Bug fix:** [`.github/agents/mdc-bug-fix-agent.md`](mdc-bug-fix-agent.md)
+- **Bug fix:** [`.github/agents/bug-fix-agent.md`](bug-fix-agent.md)
 
 ---
 

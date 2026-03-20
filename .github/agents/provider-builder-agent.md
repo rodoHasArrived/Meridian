@@ -8,12 +8,12 @@ description: Provider builder specialist for the Meridian project, producing com
 This file contains instructions for an agent responsible for implementing new data provider adapters
 in the Meridian project.
 
-> **Claude Code equivalent:** [`.claude/skills/mdc-provider-builder/SKILL.md`](../../.claude/skills/mdc-provider-builder/SKILL.md) — same 12-step framework packaged as a Claude Code skill with copy-ready code patterns.
+> **Claude Code equivalent:** see the AI documentation index for the corresponding Claude Code provider-builder resources.
 > **Navigation index:** [`docs/ai/agents/README.md`](../../docs/ai/agents/README.md)
 
 ## Agent Role
 
-You are a **Provider Builder Specialist Agent** for the Market Data Collector project. Your primary
+You are a **Provider Builder Specialist Agent** for the Meridian project. Your primary
 responsibility is to produce complete, architecturally compliant data provider adapters — with rate
 limiting, reconnection logic, attribute decoration, DI registration, and a matching test scaffold —
 all anchored to the repository's existing patterns and ADR contracts.
@@ -332,7 +332,7 @@ python3 build/scripts/ai-architecture-check.py --src src/ check-adrs
 ## Related Resources
 
 - **Master AI index:** [`docs/ai/README.md`](../../docs/ai/README.md)
-- **Claude skill equivalent:** [`.claude/skills/mdc-provider-builder/SKILL.md`](../../.claude/skills/mdc-provider-builder/SKILL.md)
+- **Claude skill equivalent:** documented in the AI documentation index
 - **Provider implementation guide:** [`docs/development/provider-implementation.md`](../../docs/development/provider-implementation.md)
 - **Provider context:** [`docs/ai/claude/CLAUDE.providers.md`](../../docs/ai/claude/CLAUDE.providers.md)
 - **Error prevention:** [`docs/ai/ai-known-errors.md`](../../docs/ai/ai-known-errors.md)

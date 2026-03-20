@@ -1,6 +1,6 @@
 # AI Agent Definitions
 
-This directory is the navigation index for AI **agent definitions** used in the Market Data Collector
+This directory is the navigation index for AI **agent definitions** used in the Meridian
 project. Copilot agent files live in `.github/agents/`; Claude agent files live in `.claude/agents/`.
 Both sets are kept in sync so that Claude and Copilot have access to equivalent tooling.
 
@@ -27,9 +27,9 @@ points (POS-NNN, NEG-NNN, ALT-NNN, IMP-NNN, REF-NNN), and a 15-item quality chec
 
 ### Blueprint Mode Agent
 
-**File:** [`.github/agents/mdc-blueprint-agent.md`](../../../.github/agents/mdc-blueprint-agent.md)
+**File:** [`.github/agents/blueprint-agent.md`](../../../.github/agents/blueprint-agent.md)
 **Used by:** GitHub Copilot agents
-**Claude Code equivalent:** [`.claude/agents/mdc-blueprint.md`](../../../.claude/agents/mdc-blueprint.md) and [`mdc-blueprint`](../skills/README.md#mdc-blueprint) skill
+**Claude Code equivalent:** the corresponding Blueprint resources in `.claude/agents/` and `.claude/skills/`.
 
 Translates a single prioritised idea into a complete, code-ready technical design document.
 Supports three depth modes (`full`, `spike`, `interface-only`) and produces a 9-step blueprint:
@@ -56,7 +56,7 @@ Brainstorm → Roadmap → Blueprint (this agent) → Implementation → Code Re
 ### Code Review Agent
 
 **File:** [`.github/agents/code-review-agent.md`](../../../.github/agents/code-review-agent.md)
-**Used by:** GitHub Copilot agents, Claude Code (`mdc-code-review` skill)
+**Used by:** GitHub Copilot agents and the corresponding Claude Code review skill
 
 Defines the canonical **7-lens code review framework** for the Meridian codebase:
 
@@ -70,7 +70,7 @@ Defines the canonical **7-lens code review framework** for the Meridian codebase
 | 6 | Cross-Cutting Concerns | Dependency rules, C#/F# interop, benchmark conventions |
 | 7 | Storage & Pipeline Integrity | AtomicFileWriter, WAL flush ordering, sink registration |
 
-The Claude Code equivalent is the [`mdc-code-review`](../skills/README.md) skill.
+The Claude Code equivalent is the corresponding review skill documented in the AI resource indexes.
 
 ---
 
@@ -78,7 +78,7 @@ The Claude Code equivalent is the [`mdc-code-review`](../skills/README.md) skill
 
 **File:** [`.github/agents/documentation-agent.md`](../../../.github/agents/documentation-agent.md)
 **Used by:** GitHub Copilot agents
-**Claude Code equivalent:** [`.claude/agents/mdc-docs.md`](../../../.claude/agents/mdc-docs.md)
+**Claude Code equivalent:** the corresponding documentation agent in `.claude/agents/`.
 
 Handles documentation maintenance and quality tasks:
 
@@ -91,9 +91,9 @@ Handles documentation maintenance and quality tasks:
 
 ### Brainstorming & Ideation Agent
 
-**File:** [`.github/agents/mdc-brainstorm-agent.md`](../../../.github/agents/mdc-brainstorm-agent.md)
+**File:** [`.github/agents/brainstorm-agent.md`](../../../.github/agents/brainstorm-agent.md)
 **Used by:** GitHub Copilot agents
-**Claude Code equivalent:** [`mdc-brainstorm`](../skills/README.md#mdc-brainstorm) skill
+**Claude Code equivalent:** the corresponding brainstorm resources in `.claude/skills/`.
 
 Generates high-value, implementable ideas for the Meridian platform. Supports 11
 brainstorm modes (Open Exploration, Problem-Focused, Persona-Focused, Domain-Focused, Competitive,
@@ -104,9 +104,9 @@ Skill Improvement). Produces a summary table + narrative ideas + synthesis with 
 
 ### Provider Builder Agent
 
-**File:** [`.github/agents/mdc-provider-builder-agent.md`](../../../.github/agents/mdc-provider-builder-agent.md)
+**File:** [`.github/agents/provider-builder-agent.md`](../../../.github/agents/provider-builder-agent.md)
 **Used by:** GitHub Copilot agents
-**Claude Code equivalent:** [`mdc-provider-builder`](../skills/README.md#mdc-provider-builder) skill
+**Claude Code equivalent:** the corresponding provider-builder resources in `.claude/skills/`.
 
 Builds complete, architecturally compliant data provider adapters via a 12-step guided process.
 Covers `IMarketDataClient` (streaming), `IHistoricalDataProvider` (backfill), and
@@ -117,21 +117,21 @@ DI registration, and a matching test scaffold.
 
 ### Test Writer Agent
 
-**File:** [`.github/agents/mdc-test-writer-agent.md`](../../../.github/agents/mdc-test-writer-agent.md)
+**File:** [`.github/agents/test-writer-agent.md`](../../../.github/agents/test-writer-agent.md)
 **Used by:** GitHub Copilot agents
-**Claude Code equivalent:** [`mdc-test-writer`](../skills/README.md#mdc-test-writer) skill
+**Claude Code equivalent:** the corresponding test-writing resources in `.claude/skills/`.
 
 Generates idiomatic xUnit + FluentAssertions tests with correct async patterns, isolation, naming
-conventions, and mock setup for all major MDC component types. Applies 7 universal quality rules
+conventions, and mock setup for all major Meridian component types. Applies 7 universal quality rules
 and selects from 8 named patterns (A–H) based on the component type.
 
 ---
 
 ### Cleanup Agent
 
-**File:** [`.github/agents/mdc-cleanup-agent.md`](../../../.github/agents/mdc-cleanup-agent.md)
+**File:** [`.github/agents/cleanup-agent.md`](../../../.github/agents/cleanup-agent.md)
 **Used by:** GitHub Copilot agents
-**Claude Code equivalent:** [`.claude/agents/mdc-cleanup.md`](../../../.claude/agents/mdc-cleanup.md)
+**Claude Code equivalent:** the corresponding cleanup agent in `.claude/agents/`.
 
 Removes dead code, duplication, anti-patterns, and stale documentation without changing
 observable behaviour. Covers 7 categories:
@@ -139,7 +139,7 @@ observable behaviour. Covers 7 categories:
 | # | Category |
 |---|---------|
 | 1 | Dead code removal (C# / F#) |
-| 2 | Anti-pattern correction (MDC-specific) |
+| 2 | Anti-pattern correction (Meridian-specific) |
 | 3 | Duplication consolidation |
 | 4 | WPF code-behind mechanical cleanup |
 | 5 | Documentation cleanup (stale refs, broken links) |
@@ -150,10 +150,10 @@ observable behaviour. Covers 7 categories:
 
 ### Bug Fix Agent
 
-**File:** [`.github/agents/mdc-bug-fix-agent.md`](../../../.github/agents/mdc-bug-fix-agent.md)
+**File:** [`.github/agents/bug-fix-agent.md`](../../../.github/agents/bug-fix-agent.md)
 **Used by:** GitHub Copilot agents
 
-Traces failures from symptom to root cause across all MDC layers and applies the minimal
+Traces failures from symptom to root cause across all Meridian layers and applies the minimal
 correct fix with a mandatory regression test. Follows a 5-step workflow:
 
 | Step | Action |
@@ -168,7 +168,7 @@ correct fix with a mandatory regression test. Follows a 5-step workflow:
 
 ### Performance Agent
 
-**File:** [`.github/agents/mdc-performance-agent.md`](../../../.github/agents/mdc-performance-agent.md)
+**File:** [`.github/agents/performance-agent.md`](../../../.github/agents/performance-agent.md)
 **Used by:** GitHub Copilot agents
 
 Identifies and eliminates hot-path bottlenecks across streaming pipelines, storage sinks, and
@@ -187,24 +187,24 @@ provider adapters. Operates only on **measured** bottlenecks (BenchmarkDotNet / 
 
 ## Claude Code Agents (`.claude/agents/`)
 
-### mdc-blueprint
+### Claude Blueprint Agent
 
-**File:** [`.claude/agents/mdc-blueprint.md`](../../../.claude/agents/mdc-blueprint.md)
+**Location:** `.claude/agents/`
 **Used by:** Claude Code
-**Copilot equivalent:** [`.github/agents/mdc-blueprint-agent.md`](../../../.github/agents/mdc-blueprint-agent.md)
-**Skill equivalent:** [`mdc-blueprint`](../skills/README.md#mdc-blueprint)
+**Copilot equivalent:** [`.github/agents/blueprint-agent.md`](../../../.github/agents/blueprint-agent.md)
+**Skill equivalent:** the Blueprint skill documented under `.claude/skills/`
 
 Blueprint Mode specialist. Translates a single prioritised idea into a complete, code-ready
 technical design document — interfaces, component designs, data flows, XAML sketches, test plans,
-and implementation checklists — grounded in MDC's actual stack.
+and implementation checklists — grounded in Meridian's actual stack.
 
 ---
 
-### mdc-cleanup
+### Claude Cleanup Agent
 
-**File:** [`.claude/agents/mdc-cleanup.md`](../../../.claude/agents/mdc-cleanup.md)
+**Location:** `.claude/agents/`
 **Used by:** Claude Code
-**Copilot equivalent:** [`.github/agents/mdc-cleanup-agent.md`](../../../.github/agents/mdc-cleanup-agent.md)
+**Copilot equivalent:** [`.github/agents/cleanup-agent.md`](../../../.github/agents/cleanup-agent.md)
 
 Cleanup specialist for the Meridian repository. Removes dead code, duplication,
 anti-patterns, and stale documentation across C# 13, F# 8, WPF, and .NET 9 source files —
@@ -214,9 +214,9 @@ and ADR attribute cleanup.
 
 ---
 
-### mdc-docs
+### Claude Documentation Agent
 
-**File:** [`.claude/agents/mdc-docs.md`](../../../.claude/agents/mdc-docs.md)
+**Location:** `.claude/agents/`
 **Used by:** Claude Code
 **Copilot equivalent:** [`.github/agents/documentation-agent.md`](../../../.github/agents/documentation-agent.md)
 
@@ -231,15 +231,15 @@ provider docs, developer guides, `CLAUDE.md`, and the `ai-known-errors.md` regis
 | Capability | Copilot Agent | Claude Agent / Skill |
 |-----------|--------------|---------------------|
 | ADR creation | `adr-generator.agent.md` | *(Copilot-only)* |
-| Blueprint / technical design | `mdc-blueprint-agent.md` | `mdc-blueprint` agent + `mdc-blueprint` skill |
-| Code review (7 lenses) | `code-review-agent.md` | `mdc-code-review` skill |
-| Brainstorming & ideation | `mdc-brainstorm-agent.md` | `mdc-brainstorm` skill |
-| Provider implementation | `mdc-provider-builder-agent.md` | `mdc-provider-builder` skill |
-| Test generation | `mdc-test-writer-agent.md` | `mdc-test-writer` skill |
-| Documentation maintenance | `documentation-agent.md` | `mdc-docs` agent |
-| Code cleanup / anti-pattern fix | `mdc-cleanup-agent.md` | `mdc-cleanup` agent |
-| Bug diagnosis & fix | `mdc-bug-fix-agent.md` | *(Copilot-only)* |
-| Performance profiling & optimisation | `mdc-performance-agent.md` | *(Copilot-only)* |
+| Blueprint / technical design | `blueprint-agent.md` | Blueprint resources in `.claude/agents/` and `.claude/skills/` |
+| Code review (7 lenses) | `code-review-agent.md` | Corresponding Claude Code review skill |
+| Brainstorming & ideation | `brainstorm-agent.md` | Corresponding Claude Code brainstorm resources |
+| Provider implementation | `provider-builder-agent.md` | Corresponding Claude Code provider-builder resources |
+| Test generation | `test-writer-agent.md` | Corresponding Claude Code test-writing resources |
+| Documentation maintenance | `documentation-agent.md` | Corresponding Claude Code documentation agent |
+| Code cleanup / anti-pattern fix | `cleanup-agent.md` | Corresponding Claude Code cleanup agent |
+| Bug diagnosis & fix | `bug-fix-agent.md` | *(Copilot-only)* |
+| Performance profiling & optimisation | `performance-agent.md` | *(Copilot-only)* |
 
 ---
 
