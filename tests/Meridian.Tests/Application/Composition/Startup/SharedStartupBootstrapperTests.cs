@@ -4,9 +4,11 @@ using Meridian.Application.Composition.Startup;
 using Meridian.Application.Config;
 using Meridian.Application.Services;
 using Serilog;
+using Xunit;
 
 namespace Meridian.Tests.Application.Composition.Startup;
 
+[Collection("Sequential")]
 public sealed class SharedStartupBootstrapperTests : IDisposable
 {
     private readonly string? _originalConfigPath = Environment.GetEnvironmentVariable("MDC_CONFIG_PATH");
