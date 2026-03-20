@@ -969,8 +969,7 @@ Meridian/
 │   │   │   ├── OrderAcknowledgement.cs
 │   │   │   ├── OrderGatewayCapabilities.cs
 │   │   │   ├── OrderStatus.cs
-│   │   │   ├── OrderStatusUpdate.cs
-│   │   │   └── OrderType.cs
+│   │   │   └── OrderStatusUpdate.cs
 │   │   ├── Services/
 │   │   │   └── OrderLifecycleManager.cs
 │   │   ├── GlobalUsings.cs
