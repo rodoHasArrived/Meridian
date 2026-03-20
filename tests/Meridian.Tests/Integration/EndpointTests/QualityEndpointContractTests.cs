@@ -129,7 +129,9 @@ public sealed class QualityEndpointContractTests
         qualityService.AnomalyDetector.GetRecentAnomalies(10).Single().IsAcknowledged.Should().BeTrue();
     }
 
-    private static async Task<(WebApplication App, DataQualityMonitoringService QualityService, string AnomalyId)> CreateHostAsync()
+    private static Task<WebApplication> CreateHostAsync(
+        out DataQualityMonitoringService qualityService,
+        out string anomalyId)
     {
         var qualityService = CreateSeededQualityService();
         var anomalyId = qualityService.AnomalyDetector.GetRecentAnomalies(10).Single().Id;
@@ -141,8 +143,8 @@ public sealed class QualityEndpointContractTests
 
         var app = builder.Build();
         app.MapDataQualityEndpoints(app.Services.GetRequiredService<DataQualityMonitoringService>());
-        await app.StartAsync();
-        return (app, qualityService, anomalyId);
+        app.StartAsync().GetAwaiter().GetResult();
+        return Task.FromResult(app);
     }
 
     private static DataQualityMonitoringService CreateSeededQualityService()

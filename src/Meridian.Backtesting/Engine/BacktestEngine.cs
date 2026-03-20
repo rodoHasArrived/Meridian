@@ -88,7 +88,7 @@ public sealed class BacktestEngine(
             // Day boundary — close out the previous day and apply any gap-day asset events.
             if (evtDate > currentDay)
             {
-                await AdvanceDaysAsync(currentDay, evtDate, portfolio, pendingOrders, ctx, strategy, allSnapshots, allCashFlows, assetEventsByDate, progress, request.From, totalDays, eventsProcessed, ct);
+                await AdvanceDaysAsync(currentDay, evtDate, portfolio, ctx, strategy, pendingOrders, allSnapshots, allCashFlows, assetEventsByDate, progress, request.From, totalDays, eventsProcessed, ct);
                 currentDay = evtDate;
             }
 
@@ -195,6 +195,7 @@ public sealed class BacktestEngine(
         List<Order> pendingOrders,
         BacktestContext ctx,
         IBacktestStrategy strategy,
+        List<Order> pendingOrders,
         List<PortfolioSnapshot> snapshots,
         List<CashFlowEntry> allCashFlows,
         IReadOnlyDictionary<DateOnly, List<AssetEvent>> assetEventsByDate,

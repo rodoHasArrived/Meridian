@@ -185,45 +185,41 @@ internal sealed class SimulatedPortfolio
     {
         ArgumentNullException.ThrowIfNull(assetEvent);
 
+        var account = ResolveBrokerageAccount(null);
         var symbol = assetEvent.Symbol;
         var targetSymbol = assetEvent.DestinationSymbol;
+        var existingQty = account.Positions.GetValueOrDefault(symbol);
+        var impactedUnits = existingQty;
+        decimal totalCashImpact = 0m;
 
         foreach (var account in _accounts.Values)
         {
-            if (account.Account.Kind != FinancialAccountKind.Brokerage)
-                continue;
+            totalCashImpact += ApplyPerShareCashAdjustment(account, assetEvent, existingQty);
+        }
 
-            var existingQty = account.Positions.GetValueOrDefault(symbol);
-            var impactedUnits = existingQty;
-            decimal totalCashImpact = 0m;
+        if (assetEvent.HasPositionTransformation && existingQty != 0)
+        {
+            totalCashImpact += ApplyPositionTransformation(account, assetEvent, existingQty, targetSymbol);
+        }
 
             if (assetEvent.CashPerShare != 0m && existingQty != 0)
             {
                 totalCashImpact += ApplyPerShareCashAdjustment(account, assetEvent, existingQty);
             }
 
-            if (assetEvent.HasPositionTransformation && existingQty != 0)
-            {
-                totalCashImpact += ApplyPositionTransformation(account, assetEvent, existingQty, targetSymbol);
-            }
+        if (account.Cash < 0)
+            account.MarginBalance = Math.Min(account.MarginBalance, account.Cash);
 
-            if (totalCashImpact == 0m && existingQty == 0)
-                continue;
-
-            if (account.Cash < 0)
-                account.MarginBalance = Math.Min(account.MarginBalance, account.Cash);
-
-            _cashFlows.Add(new AssetEventCashFlow(
-                assetEvent.EffectiveAt,
-                totalCashImpact,
-                symbol,
-                assetEvent.EventType,
-                impactedUnits,
-                assetEvent.CashPerShare,
-                assetEvent.TargetSymbol,
-                assetEvent.PositionFactor,
-                assetEvent.Description));
-        }
+        _cashFlows.Add(new AssetEventCashFlow(
+            assetEvent.EffectiveAt,
+            totalCashImpact,
+            symbol,
+            assetEvent.EventType,
+            impactedUnits,
+            assetEvent.CashPerShare,
+            assetEvent.TargetSymbol,
+            assetEvent.PositionFactor,
+            assetEvent.Description));
     }
 
     // ── Day-end accruals ─────────────────────────────────────────────────────
@@ -323,7 +319,6 @@ internal sealed class SimulatedPortfolio
     {
         var amount = quantity * assetEvent.CashPerShare;
         account.Cash += amount;
-        account.MarginBalance = account.Cash < 0m ? account.Cash : 0m;
         PostAssetCashLedgerEntry(assetEvent, amount, quantity, assetEvent.Symbol, assetEvent.TargetSymbol);
         return amount;
     }
@@ -362,7 +357,6 @@ internal sealed class SimulatedPortfolio
         if (cashInLieu != 0m)
         {
             account.Cash += cashInLieu;
-            account.MarginBalance = account.Cash < 0m ? account.Cash : 0m;
             PostAssetCashLedgerEntry(assetEvent, cashInLieu, existingQty, assetEvent.Symbol, targetSymbol, suffix: "cash in lieu");
         }
 
@@ -487,7 +481,7 @@ internal sealed class SimulatedPortfolio
         account.RealizedPnl.Remove(symbol);
     }
 
-    private static void CleanupSymbolIfFlat(AccountState account, string symbol)
+    private void CleanupSymbolIfFlat(AccountState account, string symbol)
     {
         if (account.Positions.GetValueOrDefault(symbol) != 0)
             return;
