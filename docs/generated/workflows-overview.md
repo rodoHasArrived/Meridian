@@ -4,7 +4,7 @@
 
 # GitHub Workflows Overview
 
-> Auto-generated on 2026-03-20 07:00:23 UTC
+> Auto-generated on 2026-03-20 07:13:54 UTC
 
 This document provides an overview of all GitHub Actions workflows in the repository.
 
@@ -24,9 +24,7 @@ This document provides an overview of all GitHub Actions workflows in the reposi
 | Deploy static content to Pages | `static.yml` | push, manual |
 | Desktop Builds | `desktop-builds.yml` | push, PR, manual |
 | Docker | `docker.yml` | push, PR, manual |
-| Docker Image CI | `docker-image.yml` | push, PR |
 | Documentation Automation | `documentation.yml` | push, PR, manual, scheduled |
-| Documentation Checks | `docs-check.yml` | push, PR, manual |
 | Export Project Artifact | `export-project-artifact.yml` | manual |
 | Golden Path Validation | `golden-path-validation.yml` | push, PR, manual |
 | Labeling | `labeling.yml` | PR, manual |
@@ -47,7 +45,6 @@ This document provides an overview of all GitHub Actions workflows in the reposi
 | Test Matrix | `test-matrix.yml` | push, PR, manual |
 | Ticker Data Collection | `ticker-data-collection.yml` | manual |
 | Update Diagram Artifacts | `update-diagrams.yml` | push, manual |
-| Update UML Diagram Artifacts | `update-uml-diagrams.yml` | push, manual |
 | Validate Workflows | `validate-workflows.yml` | PR, manual |
 
 ## Workflow Categories
@@ -71,7 +68,7 @@ This document provides an overview of all GitHub Actions workflows in the reposi
 
 ## Workflow Count
 
-- **Total workflows:** 37
+- **Total workflows:** 34
 
 ---
 

@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-20 07:00:23 UTC
+> Auto-generated on 2026-03-20 07:13:54 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -113,9 +113,7 @@ Meridian/
 │   │   ├── copilot-setup-steps.yml
 │   │   ├── copilot-swe-agent-copilot.yml
 │   │   ├── desktop-builds.yml
-│   │   ├── docker-image.yml
 │   │   ├── docker.yml
-│   │   ├── docs-check.yml
 │   │   ├── documentation.yml
 │   │   ├── dotnet-desktop.yml
 │   │   ├── export-project-artifact.yml
@@ -141,7 +139,6 @@ Meridian/
 │   │   ├── test-matrix.yml
 │   │   ├── ticker-data-collection.yml
 │   │   ├── update-diagrams.yml
-│   │   ├── update-uml-diagrams.yml
 │   │   └── validate-workflows.yml
 │   ├── copilot-instructions.md
 │   ├── dependabot.yml
