@@ -21,6 +21,7 @@
         docs verify-adrs verify-contracts gen-context \
         gen-interfaces gen-structure gen-providers gen-workflows update-claude-md docs-all \
         doctor doctor-ci doctor-quick doctor-fix diagnose diagnose-build \
+        verify-setup \
         collect-debug collect-debug-minimal build-profile build-binlog validate-data analyze-errors \
         build-graph fingerprint env-capture env-diff impact bisect metrics history app-metrics \
         icons desktop desktop-publish install-hooks \
@@ -114,7 +115,7 @@ help: ## Show this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | grep -E 'skill-' | awk 'BEGIN {FS = ":.*?## "}; {printf "  $(GREEN)%-24s$(NC) %s\n", $$1, $$2}'
 	@echo ""
 	@echo "$(BLUE)Diagnostics:$(NC)"
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | grep -E 'doctor|diagnose|collect-debug|build-profile|build-binlog|build-graph|fingerprint|env-|impact|bisect|metrics|history|validate-data|analyze-errors' | awk 'BEGIN {FS = ":.*?## "}; {printf "  $(GREEN)%-18s$(NC) %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | grep -E 'doctor|diagnose|verify-setup|collect-debug|build-profile|build-binlog|build-graph|fingerprint|env-|impact|bisect|metrics|history|validate-data|analyze-errors' | awk 'BEGIN {FS = ":.*?## "}; {printf "  $(GREEN)%-18s$(NC) %s\n", $$1, $$2}'
 	@echo ""
 
 # =============================================================================
@@ -476,6 +477,37 @@ doctor-quick: ## Run quick environment check
 doctor-fix: ## Run environment check and auto-fix issues
 	@echo "$(YELLOW)Auto-fix not yet implemented in buildctl doctor$(NC)"
 	@$(BUILDCTL) doctor
+
+verify-setup: ## Verify the development environment is correctly set up
+	@echo ""
+	@echo "$(BLUE)Verifying development setup...$(NC)"
+	@echo ""
+	@PASS=true; \
+	printf "  Restoring dependencies... "; \
+	if dotnet restore Meridian.sln /p:EnableWindowsTargeting=true --verbosity quiet 2>&1; then \
+		echo "$(GREEN)✓ pass$(NC)"; \
+	else \
+		echo "$(RED)✗ FAIL$(NC)"; PASS=false; \
+	fi; \
+	printf "  Building solution...      "; \
+	if dotnet build Meridian.sln -c Release --no-restore /p:EnableWindowsTargeting=true --verbosity quiet 2>&1; then \
+		echo "$(GREEN)✓ pass$(NC)"; \
+	else \
+		echo "$(RED)✗ FAIL$(NC)"; PASS=false; \
+	fi; \
+	printf "  Running unit tests...     "; \
+	if dotnet test tests/Meridian.Tests/Meridian.Tests.csproj -c Release --no-build --verbosity quiet --filter "Category!=Integration" 2>&1; then \
+		echo "$(GREEN)✓ pass$(NC)"; \
+	else \
+		echo "$(RED)✗ FAIL$(NC)"; PASS=false; \
+	fi; \
+	echo ""; \
+	if [ "$$PASS" = "true" ]; then \
+		echo "$(GREEN)Setup verified successfully.$(NC)"; \
+	else \
+		echo "$(RED)Setup verification FAILED. Check output above.$(NC)"; \
+		exit 1; \
+	fi
 
 diagnose: ## Run build diagnostics (alias)
 	@$(BUILDCTL) build --project $(PROJECT) --configuration Release

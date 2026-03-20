@@ -45,6 +45,26 @@ jobs:
           exit 1
         fi
 
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v5.2.0
+      with:
+        dotnet-version: '9.0.x'
+
+    - name: Generate SBOM (CycloneDX)
+      run: |
+        dotnet tool install --global CycloneDX
+        dotnet CycloneDX Meridian.sln \
+          --json \
+          --out ./sbom \
+          --filename "sbom-${{ github.event.inputs.version }}.json"
+
+    - name: Upload SBOM artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: sbom-${{ github.event.inputs.version }}
+        path: ./sbom/sbom-${{ github.event.inputs.version }}.json
+        retention-days: 365
+
     - name: Generate changelog
       id: changelog
       uses: actions/github-script@v8
