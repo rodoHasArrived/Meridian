@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-20 02:35:11 UTC
+> Auto-generated on 2026-03-20 02:51:23 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -451,7 +451,11 @@ Meridian/
 │   │   ├── resilience-patterns.svg
 │   │   ├── storage-architecture.dot
 │   │   ├── storage-architecture.png
-│   │   └── storage-architecture.svg
+│   │   ├── storage-architecture.svg
+│   │   ├── ui-implementation-flow.dot
+│   │   ├── ui-implementation-flow.svg
+│   │   ├── ui-navigation-map.dot
+│   │   └── ui-navigation-map.svg
 │   ├── docfx/
 │   │   ├── docfx.json
 │   │   └── README.md
@@ -545,9 +549,14 @@ Meridian/
 │   │   ├── maintenance.sh
 │   │   ├── route-maintenance.sh
 │   │   └── setup-ai-agent.sh
-│   └── dev/
-│       ├── desktop-dev.ps1
-│       └── diagnose-uwp-xaml.ps1
+│   ├── dev/
+│   │   ├── desktop-dev.ps1
+│   │   └── diagnose-uwp-xaml.ps1
+│   ├── lib/
+│   │   ├── ui-diagram-generator.mjs
+│   │   └── ui-diagram-generator.test.mjs
+│   ├── compare_benchmarks.py
+│   └── generate-diagrams.mjs
 ├── src/  # Source code
 │   ├── Meridian/
 │   │   ├── Integrations/
@@ -752,6 +761,8 @@ Meridian/
 │   │   ├── BacktestResult.cs
 │   │   ├── CashFlowEntry.cs
 │   │   ├── FillEvent.cs
+│   │   ├── FinancialAccount.cs
+│   │   ├── FinancialAccountSnapshot.cs
 │   │   ├── GlobalUsings.cs
 │   │   ├── IBacktestContext.cs
 │   │   ├── IBacktestStrategy.cs
@@ -832,6 +843,7 @@ Meridian/
 │   │   │   ├── DerivativesConfig.cs
 │   │   │   ├── IConfigurationProvider.cs
 │   │   │   ├── StockSharpConfig.cs
+│   │   │   ├── SyntheticMarketDataConfig.cs
 │   │   │   └── ValidatedConfig.cs
 │   │   ├── Exceptions/
 │   │   │   ├── ConfigurationException.cs
@@ -970,6 +982,8 @@ Meridian/
 │   │   │   ├── StockSharp/
 │   │   │   │   ...
 │   │   │   ├── Stooq/
+│   │   │   │   ...
+│   │   │   ├── Synthetic/
 │   │   │   │   ...
 │   │   │   ├── Tiingo/
 │   │   │   │   ...
@@ -1628,6 +1642,9 @@ Meridian/
 │   │   ├── SymbolSearch/
 │   │   │   ├── OpenFigiClientTests.cs
 │   │   │   └── SymbolSearchServiceTests.cs
+│   │   ├── TestData/
+│   │   │   └── Golden/
+│   │   │       ...
 │   │   ├── TestHelpers/
 │   │   │   └── TestMarketEventPublisher.cs
 │   │   ├── GlobalUsings.cs

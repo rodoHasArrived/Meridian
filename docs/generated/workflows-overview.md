@@ -4,7 +4,7 @@
 
 # GitHub Workflows Overview
 
-> Auto-generated on 2026-03-20 02:35:12 UTC
+> Auto-generated on 2026-03-20 02:51:23 UTC
 
 This document provides an overview of all GitHub Actions workflows in the repository.
 
@@ -12,7 +12,7 @@ This document provides an overview of all GitHub Actions workflows in the reposi
 
 | Workflow | File | Triggers |
 |----------|------|----------|
-| Benchmark Performance | `benchmark.yml` | push, manual |
+| Benchmark Performance | `benchmark.yml` | push, PR, manual |
 | Bottleneck Detection | `bottleneck-detection.yml` | PR, manual |
 | Build Observability | `build-observability.yml` | push, PR, manual |
 | Build and Release | `dotnet-desktop.yml` | push, PR, manual |
