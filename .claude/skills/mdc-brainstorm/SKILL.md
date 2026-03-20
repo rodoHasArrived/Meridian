@@ -61,24 +61,35 @@ The best ideas for MDC aren't isolated features. They're extensions that **ampli
 ## Project Context
 
 **What Meridian is:**
-A provider-agnostic .NET 9 / C# 13 platform for real-time and historical market data collection. Streams from Interactive Brokers TWS, Alpaca Markets, and (planned) 90+ providers via StockSharp. Sub-2ms event pipeline, JSONL storage, WebSocket + REST APIs, OpenTelemetry observability, WPF desktop app + web dashboard.
+A provider-agnostic .NET 9 / C# 13 platform for real-time and historical market data collection, backtesting, live execution, and strategy lifecycle management. Streams from Interactive Brokers TWS, Alpaca Markets, Polygon, NYSE, and (via StockSharp) 90+ additional providers. Sub-2ms event pipeline, JSONL/Parquet storage, WebSocket + REST APIs, OpenTelemetry observability, WPF desktop app + web dashboard, MCP server for AI tooling.
 
-**Tech stack:** C# 13 (infrastructure), F# (domain models), planned C++ (ultra-low-latency hot paths), .NET 9, WPF (desktop UI, migrated from UWP), Docker, Prometheus/Grafana, OpenTelemetry, Bounded Channels, WAL storage, JSONL → Parquet (planned), GitHub Actions CI/CD.
+**Tech stack:** C# 13 (infrastructure), F# 8 (domain models), .NET 9, WPF (desktop UI), Docker, Prometheus/Grafana, OpenTelemetry, Bounded Channels, WAL storage, JSONL + Parquet (simultaneous), GitHub Actions CI/CD.
+
+**Four-pillar architecture (ADR-016):**
+- **Data Collection** — streaming ingestion, historical backfill, storage, data quality monitoring
+- **Backtesting** — historical tick replay, fill simulation, portfolio metrics, Ledger-based P&L
+- **Execution** — live/simulated order routing, `IOrderGateway`, `PaperTradingGateway`, broker adapters, pre-trade risk (`Meridian.Risk`)
+- **Strategies** — strategy lifecycle management, run archive, paper→live promotion workflow
 
 **Current capabilities:**
 
-- Real-time streaming: trades, quotes, L2 order book depth
-- Historical backfill: JSONL files, gap detection, 10+ providers with auto-fallback
-- Multi-provider: IB TWS + Alpaca + Polygon + StockSharp + NYSE, abstracted behind `IMarketDataClient`
-- WPF desktop app: MVVM architecture with BindableBase, real-time status, config management
-- Web dashboard: live status, data browser
+- Real-time streaming: trades, quotes, L2 order book depth from 5 providers
+- Historical backfill: 11 providers with auto-fallback chain
+- Multi-provider failover via `FailoverAwareMarketDataClient`
+- Backtesting engine with tick-by-tick replay, fill models, and double-entry `Ledger` P&L
+- Paper trading gateway (`PaperTradingGateway`) for risk-free strategy validation
+- Strategy lifecycle: register, run, pause, promote paper→live
+- Pre-trade risk validation via `CompositeRiskValidator` / `IRiskRule`
+- WPF desktop app: MVVM with `BindableBase`, real-time status, config management
+- Web dashboard: live status, data browser, API endpoints
+- MCP server layer (`Meridian.Mcp` / `Meridian.McpServer`) exposing tools + prompts for AI agents
 - Deployment: Docker Compose, systemd, Kubernetes
 - Observability: OpenTelemetry tracing, Prometheus metrics, Grafana dashboards
-- CI/CD: GitHub Actions workflows for build, test, and automated documentation (27 workflows)
+- CI/CD: 33 GitHub Actions workflows for build, test, and automated documentation
 
-**What's coming:** StockSharp (90+ providers), binary compression (95% ratio), Python-accessible layer, remote job management, cloud integration, tiered storage, automated code quality audits, comprehensive architecture compliance tooling.
+**What's coming:** StockSharp 90+ provider activation, Python-accessible layer, Arrow Flight / DuckDB integration, assembly-level SIMD hot-path optimizations, full WPF UX parity (6 pages still showing placeholder data), live broker adapters beyond paper trading.
 
-**Current count (authoritative: `../_shared/project-context.md`):** 779 source files, 266 test files, 13 main projects, 27 CI/CD workflows.
+**Current count (authoritative: `../_shared/project-context.md`):** 868 source files (856 C# + 12 F#), 261 test files, 22 main projects, 33 CI/CD workflows.
 
 ---
 
