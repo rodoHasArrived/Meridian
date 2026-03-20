@@ -4,7 +4,7 @@ This guide covers the CI/CD pipeline for the Market Data Collector, including wo
 
 ## Workflow Inventory
 
-The project uses 33 GitHub Actions workflows in `.github/workflows/`:
+The project uses multiple GitHub Actions workflows in `.github/workflows/`. The table below highlights the primary workflows you will interact with most often:
 
 | Workflow | File | Trigger | Purpose |
 |----------|------|---------|---------|
