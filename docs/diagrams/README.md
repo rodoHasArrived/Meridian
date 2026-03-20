@@ -27,6 +27,8 @@ This folder contains architecture diagrams for the Market Data Collector system,
 | **Onboarding Flow** | User journey from first-run to operation | `onboarding-flow.dot` |
 | **CLI Commands** | All CLI flags and commands reference | `cli-commands.dot` |
 | **Project Dependencies** | Project layer dependencies and test coverage | `project-dependencies.dot` |
+| **UI Navigation Map** | Auto-generated WPF sidebar/workspace navigation map from source code without hand-maintained drift | `ui-navigation-map.dot` |
+| **UI Implementation Flow** | Auto-generated WPF shell/DI/navigation flow from source code without hand-maintained drift | `ui-implementation-flow.dot` |
 
 ---
 
@@ -169,13 +171,38 @@ Shows the project layer dependencies:
 - **Tests**: 140 main tests, 4 F# tests, 19 WPF tests, 50 UI tests
 - **Benchmarks**: BenchmarkDotNet performance tests
 
+### UI Navigation Map *(auto-generated)*
+
+Shows the current WPF sidebar implementation as it exists in source control:
+- **Shell source**: `src/Meridian.Wpf/Views/MainPage.xaml`
+- **Navigation registry**: `src/Meridian.Wpf/Services/NavigationService.cs`
+- **Coverage**: workspace groups, sidebar-visible pages, and registered-but-hidden routes
+- **Purpose**: makes navigation drift obvious whenever pages are added, moved, or orphaned
+
+### UI Implementation Flow *(auto-generated)*
+
+Shows how the WPF desktop host wires the UI together:
+- **App composition**: `src/Meridian.Wpf/App.xaml.cs`
+- **Window shell**: `src/Meridian.Wpf/MainWindow.xaml.cs`
+- **Main page shell**: `src/Meridian.Wpf/Views/MainPage.xaml.cs`
+- **Page inventory**: `src/Meridian.Wpf/Views/Pages.cs`
+- **Purpose**: tracks DI composition, shell responsibilities, and navigation/page inventory as development changes progress while keeping outputs deterministic unless the underlying WPF source changes
+
 ---
 
 ## Generating Images
 
 ### Prerequisites
 
-Install Graphviz:
+The repository can regenerate diagrams with the committed Node-based renderer (recommended) or Graphviz. The Node path also refreshes the auto-generated WPF UI diagrams from source code without hand-maintained drift before rendering.
+
+Install Node dependencies:
+
+```bash
+npm ci
+```
+
+Optional Graphviz install (useful for ad-hoc manual rendering):
 
 ```bash
 # Ubuntu/Debian
@@ -188,34 +215,28 @@ brew install graphviz
 choco install graphviz
 ```
 
-### Generate PNG Images
+### Generate SVG Images (recommended)
+
+```bash
+# From the repository root
+npm run generate-diagrams
+```
+
+This command:
+- refreshes `ui-navigation-map.dot` and `ui-implementation-flow.dot` from the current WPF source files
+- renders the auto-generated UI diagrams to committed `.svg` artifacts
+
+To render every DOT file through the Node pipeline instead, run:
+
+```bash
+npm run generate-diagrams -- --all
+```
+
+### Generate with Graphviz manually
 
 ```bash
 cd docs/diagrams
 
-# Generate all PNGs
-for f in *.dot; do
-  dot -Tpng "$f" -o "${f%.dot}.png"
-done
-
-# Or generate individual files
-dot -Tpng c4-level1-context.dot -o c4-level1-context.png
-dot -Tpng c4-level2-containers.dot -o c4-level2-containers.png
-dot -Tpng c4-level3-components.dot -o c4-level3-components.png
-dot -Tpng data-flow.dot -o data-flow.png
-dot -Tpng provider-architecture.dot -o provider-architecture.png
-dot -Tpng storage-architecture.dot -o storage-architecture.png
-dot -Tpng event-pipeline-sequence.dot -o event-pipeline-sequence.png
-dot -Tpng resilience-patterns.dot -o resilience-patterns.png
-dot -Tpng deployment-options.dot -o deployment-options.png
-dot -Tpng onboarding-flow.dot -o onboarding-flow.png
-dot -Tpng cli-commands.dot -o cli-commands.png
-dot -Tpng project-dependencies.dot -o project-dependencies.png
-```
-
-### Generate SVG Images
-
-```bash
 # Generate all SVGs
 for f in *.dot; do
   dot -Tsvg "$f" -o "${f%.dot}.svg"

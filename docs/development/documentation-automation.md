@@ -10,6 +10,7 @@ The documentation automation system keeps project documentation accurate and up-
 
 | Feature | Description |
 |---------|-------------|
+| **UI Diagram Refresh** | Regenerates WPF UI implementation diagrams from live source files before rendering committed SVG artifacts |
 | **Structure Generation** | Auto-generates repository structure docs from the file tree |
 | **Provider Registry** | Extracts provider metadata from `[DataSource]` attributes |
 | **ADR Indexing** | Builds an index of Architecture Decision Records |
@@ -23,6 +24,24 @@ The documentation automation system keeps project documentation accurate and up-
 | **Custom Rules Engine** | Enforces project-specific documentation rules |
 | **Automatic TODO Issue Creation** | Converts untracked TODO/FIXME items into GitHub issues automatically |
 | **Local Orchestration Runner** | Runs documentation automation profiles from one command with JSON/Markdown summaries |
+
+## Diagram Automation
+
+WPF UI implementation diagrams are generated from source code without hand-maintained drift instead of being maintained by hand:
+
+```bash
+npm run generate-diagrams
+```
+
+That command updates `docs/diagrams/ui-navigation-map.dot` and `docs/diagrams/ui-implementation-flow.dot` from these inputs:
+- `src/Meridian.Wpf/App.xaml.cs`
+- `src/Meridian.Wpf/MainWindow.xaml.cs`
+- `src/Meridian.Wpf/Services/NavigationService.cs`
+- `src/Meridian.Wpf/Views/MainPage.xaml`
+- `src/Meridian.Wpf/Views/MainPage.xaml.cs`
+- `src/Meridian.Wpf/Views/Pages.cs`
+
+The `update-diagrams.yml` workflow now listens for those files, so the committed UI diagrams stay synchronized as the desktop implementation evolves.
 
 ## Workflow Triggers
 
