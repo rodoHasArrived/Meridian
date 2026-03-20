@@ -149,6 +149,7 @@ Meridian/
 │   │   ├── export-project-artifact.yml
 │   │   ├── golden-path-validation.yml
 │   │   ├── labeling.yml
+│   │   ├── maintenance-self-test.yml
 │   │   ├── maintenance.yml
 │   │   ├── makefile.yml
 │   │   ├── nightly.yml
@@ -157,6 +158,7 @@ Meridian/
 │   │   ├── python-package-conda.yml
 │   │   ├── README.md
 │   │   ├── release.yml
+│   │   ├── repo-health.yml
 │   │   ├── reusable-dotnet-build.yml
 │   │   ├── scheduled-maintenance.yml
 │   │   ├── security.yml
@@ -568,6 +570,7 @@ Meridian/
 │   │   ├── common.sh
 │   │   ├── maintenance-full.sh
 │   │   ├── maintenance-light.sh
+│   │   ├── maintenance.sh
 │   │   ├── route-maintenance.sh
 │   │   └── setup-ai-agent.sh
 │   └── dev/

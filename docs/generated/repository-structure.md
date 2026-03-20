@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-20 01:37:23 UTC
+> Auto-generated on 2026-03-20 01:41:53 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -120,6 +120,7 @@ Meridian/
 │   │   ├── export-project-artifact.yml
 │   │   ├── golden-path-validation.yml
 │   │   ├── labeling.yml
+│   │   ├── maintenance-self-test.yml
 │   │   ├── maintenance.yml
 │   │   ├── makefile.yml
 │   │   ├── nightly.yml
@@ -128,6 +129,7 @@ Meridian/
 │   │   ├── python-package-conda.yml
 │   │   ├── README.md
 │   │   ├── release.yml
+│   │   ├── repo-health.yml
 │   │   ├── reusable-dotnet-build.yml
 │   │   ├── scheduled-maintenance.yml
 │   │   ├── security.yml
@@ -539,6 +541,7 @@ Meridian/
 │   │   ├── common.sh
 │   │   ├── maintenance-full.sh
 │   │   ├── maintenance-light.sh
+│   │   ├── maintenance.sh
 │   │   ├── route-maintenance.sh
 │   │   └── setup-ai-agent.sh
 │   └── dev/
