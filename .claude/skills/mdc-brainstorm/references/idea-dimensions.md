@@ -48,6 +48,21 @@ Use these when referencing specific abstractions in ideas. File paths are relati
 | Configuration pipeline | `ConfigurationPipeline` | `src/Meridian.Application/Config/ConfigurationPipeline.cs` |
 | Hot-path batch serializer | `HotPathBatchSerializer` | `src/Meridian.Application/Pipeline/HotPathBatchSerializer.cs` |
 | Portable data packaging | `PortableDataPackager` | `src/Meridian.Storage/Packaging/PortableDataPackager.cs` |
+| Order gateway (broker-agnostic) | `IOrderGateway` | `src/Meridian.Execution/Interfaces/IOrderGateway.cs` |
+| Broker adapter SDK contract | `IExecutionGateway` | `src/Meridian.Execution.Sdk/IExecutionGateway.cs` |
+| Live strategy context | `IExecutionContext` | `src/Meridian.Execution/Interfaces/IExecutionContext.cs` |
+| Paper trading gateway | `PaperTradingGateway` | `src/Meridian.Execution/Adapters/PaperTradingGateway.cs` |
+| Order lifecycle tracking | `OrderManagementSystem` | `src/Meridian.Execution/OrderManagementSystem.cs` |
+| Pre-trade risk validation | `CompositeRiskValidator` | `src/Meridian.Risk/CompositeRiskValidator.cs` |
+| Risk rule contract | `IRiskRule` | `src/Meridian.Risk/IRiskRule.cs` |
+| Strategy lifecycle contract | `IStrategyLifecycle` | `src/Meridian.Strategies/Interfaces/IStrategyLifecycle.cs` |
+| Strategy run archive | `StrategyRunStore` | `src/Meridian.Strategies/Storage/StrategyRunStore.cs` |
+| Live strategy contract | `ILiveStrategy` | `src/Meridian.Strategies/Interfaces/ILiveStrategy.cs` |
+| P&L ledger (double-entry) | `Ledger` | `src/Meridian.Ledger/Ledger.cs` |
+| Ledger read-only view | `IReadOnlyLedger` | `src/Meridian.Ledger/IReadOnlyLedger.cs` |
+| Backtest strategy contract | `IBacktestStrategy` | `src/Meridian.Backtesting.Sdk/IBacktestStrategy.cs` |
+| Backtest context | `IBacktestContext` | `src/Meridian.Backtesting.Sdk/IBacktestContext.cs` |
+| Backtest engine | `BacktestEngine` | `src/Meridian.Backtesting/Engine/` |
 
 ---
 

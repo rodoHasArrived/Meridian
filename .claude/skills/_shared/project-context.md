@@ -2,7 +2,7 @@
 
 > **Canonical reference.** This file is the single source of truth for project statistics, provider inventory, key abstractions with file paths, and storage design. Both `mdc-brainstorm` and `mdc-code-review` skills reference this file. Update here first; do not maintain separate copies.
 >
-> **Last verified:** 2026-03-16
+> **Last verified:** 2026-03-19
 > **Refresh command:** `python3 build/scripts/ai-repo-updater.py audit`
 
 ---
@@ -11,24 +11,24 @@
 
 | Metric | Count |
 |--------|-------|
-| Total Source Files | 779 |
-| C# Files | 769 |
-| F# Files | 14 (8 modules + 6 interop) |
+| Total Source Files | 868 (856 C# + 12 F#) |
+| C# Files | 856 |
+| F# Files | 12 (6 modules + 6 interop) |
 | Test Projects | 4 |
-| Test Files | 266 |
+| Test Files | 261 |
 | Test Methods | ~4,135 |
-| Documentation Files | 163 |
-| Main Projects | 15 (+ 4 test + 1 benchmark) |
-| CI/CD Workflows | 27 |
+| Documentation Files | 171 |
+| Main Projects | 22 (+ 4 test + 1 benchmark) |
+| CI/CD Workflows | 33 |
 | Makefile Targets | 96 |
-| Provider Implementations | 5 streaming, 10 historical |
+| Provider Implementations | 5 streaming, 11 historical |
 | Symbol Search Providers | 5 |
 | API Route Constants | 309 |
 | Endpoint Files | 39 |
 
 ---
 
-## Solution Layout (15 main projects)
+## Solution Layout (22 main projects)
 
 ```
 Meridian.sln
@@ -46,13 +46,20 @@ Meridian.sln
 │   ├── Meridian.Ui.Services/       # Shared UI services (platform-neutral)
 │   ├── Meridian.Ui.Shared/         # Shared endpoint handlers (platform-neutral)
 │   ├── Meridian.Wpf/               # WPF desktop app (recommended Windows client)
-│   ├── MarketDataCollector.Execution/   # [NEW] IOrderGateway, PaperTradingGateway, broker adapters (ADR-015)
-│   └── MarketDataCollector.Strategies/  # [NEW] IStrategyLifecycle, StrategyRunStore, promotion workflow (ADR-016)
+│   ├── Meridian.Backtesting/       # Backtest engine, fill models, portfolio metrics
+│   ├── Meridian.Backtesting.Sdk/   # IBacktestStrategy, IBacktestContext, BacktestResult SDK
+│   ├── Meridian.Execution/         # IOrderGateway, PaperTradingGateway, broker adapters (ADR-015)
+│   ├── Meridian.Execution.Sdk/     # IExecutionGateway, IOrderManager, IPositionTracker (broker SDK)
+│   ├── Meridian.Ledger/            # Double-entry accounting ledger for P&L tracking
+│   ├── Meridian.Mcp/               # MCP server host (Program.cs, tools, prompts)
+│   ├── Meridian.McpServer/         # MCP server tools and resources (alternative host)
+│   ├── Meridian.Risk/              # IRiskRule, CompositeRiskValidator, pre-trade risk checks
+│   └── Meridian.Strategies/        # IStrategyLifecycle, StrategyRunStore, promotion workflow (ADR-016)
 ├── tests/
-│   ├── Meridian.Tests/             # 266 test files, ~4135 test methods
+│   ├── Meridian.Tests/             # ~261 test files, ~4135 test methods
 │   ├── Meridian.FSharp.Tests/      # F# unit tests (expecto/xUnit)
-│   ├── Meridian.Wpf.Tests/         # WPF service tests (Windows only, 324 tests)
-│   └── Meridian.Ui.Tests/          # UI service tests (Windows only, 927 tests)
+│   ├── Meridian.Wpf.Tests/         # WPF service tests (Windows only)
+│   └── Meridian.Ui.Tests/          # UI service tests (Windows only)
 └── benchmarks/
     └── Meridian.Benchmarks/        # BenchmarkDotNet performance benchmarks
 ```
@@ -75,8 +82,14 @@ Contracts       → nothing (leaf project)
 Storage         → Contracts, Core
 Domain          → Contracts, Core
 Web host        → Ui.Services, Ui.Shared, Contracts
-Execution       → Contracts, Core, ProviderSdk  (ADR-015)
-Strategies      → Contracts, Core, Backtesting.Sdk, Execution    (ADR-016)
+Backtesting     → Contracts, Core, Backtesting.Sdk, Ledger
+Backtesting.Sdk → Contracts, Core, Ledger
+Execution       → Contracts, Core, Execution.Sdk  (ADR-015)
+Execution.Sdk   → Contracts only  (broker SDK leaf)
+Ledger          → nothing (zero-dependency leaf project)
+Risk            → Contracts, Core, Execution.Sdk
+Strategies      → Contracts, Core, Backtesting.Sdk, Execution.Sdk  (ADR-016)
+Mcp / McpServer → Application, Contracts, Core  (MCP server layer)
 ```
 
 **Forbidden (flag as CRITICAL in reviews):**
@@ -87,6 +100,8 @@ Ui.Shared       → WPF-only APIs           (platform leak)
 Ui.Shared       → UWP/WinRT APIs          (platform leak + deprecated)
 Any project     → Meridian.Uwp  (UWP fully removed)
 ProviderSdk     → anything except Contracts
+Execution.Sdk   → anything except Contracts
+Ledger          → any other Meridian project
 FSharp          → anything except Contracts
 Contracts       → Infrastructure           (dependency inversion)
 Core/Domain     → Infrastructure           (dependency inversion)
@@ -192,6 +207,44 @@ public abstract class BindableBase : INotifyPropertyChanged
 - All serialization must reference this context — no `JsonSerializer.Serialize(obj)` without context
 - Add new types with `[JsonSerializable(typeof(T))]` on this context
 
+### IOrderGateway (Order Routing)
+**File:** `src/Meridian.Execution/Interfaces/IOrderGateway.cs`
+
+- Broker-agnostic interface for submitting, cancelling, and monitoring orders (ADR-015)
+- All broker adapters (PaperTradingGateway, IB, Alpaca) implement this
+- Strategies depend only on `IOrderGateway` — not any concrete broker type
+
+### IExecutionGateway (Broker Adapter SDK)
+**File:** `src/Meridian.Execution.Sdk/IExecutionGateway.cs`
+
+- Lower-level broker adapter contract in `Meridian.Execution.Sdk` (leaf project)
+- Exposes `SubmitOrderAsync`, `CancelOrderAsync`, `StreamExecutionReportsAsync`
+
+### IExecutionContext (Live-Strategy Context)
+**File:** `src/Meridian.Execution/Interfaces/IExecutionContext.cs`
+
+- Live-mode analogue of `IBacktestContext` — provides a strategy with unified feed + portfolio + gateway
+- Enables broker-agnostic strategies: paper → live is a config change, not a code change
+
+### IRiskValidator / IRiskRule (Pre-Trade Risk)
+**File:** `src/Meridian.Risk/IRiskValidator.cs`, `src/Meridian.Risk/IRiskRule.cs`
+
+- `CompositeRiskValidator` evaluates all registered `IRiskRule` implementations in sequence
+- Rejects the order on first rule failure; logs rejection reason with structured logging
+
+### IStrategyLifecycle (Strategy Management)
+**File:** `src/Meridian.Strategies/Interfaces/IStrategyLifecycle.cs`
+
+- Strategy lifecycle contract: register, start, pause, stop, promote (paper → live)
+- `StrategyRunStore` at `src/Meridian.Strategies/Storage/StrategyRunStore.cs` archives runs
+
+### Ledger (Double-Entry Accounting)
+**File:** `src/Meridian.Ledger/Ledger.cs`
+
+- Zero-dependency double-entry ledger used by Backtesting for P&L tracking
+- `IReadOnlyLedger` exposes `Journal`, `GetEntries`, `GetBalance`, `TrialBalance`
+- Aliased as `BacktestLedger` in `Meridian.Backtesting` global usings to avoid name collision
+
 ---
 
 ## Provider Inventory
@@ -222,6 +275,7 @@ public abstract class BindableBase : INotifyPropertyChanged
 | Alpha Vantage | Yes | 5/min |
 | Nasdaq Data Link | Limited | Varies |
 | Interactive Brokers | Yes (with account) | IB pacing rules |
+| Twelve Data | Limited free tier | 8/min free |
 
 ---
 
@@ -270,6 +324,8 @@ data/
 | ADR-009 | F# type-safe domain with C# interop | Handle `FSharpOption<T>` properly at boundary |
 | ADR-013 | Bounded channel with `DropOldest` policy | `EventPipelinePolicy.*.CreateChannel<T>()` only |
 | ADR-014 | JSON source generators — no reflection | `MarketDataJsonContext` on all `JsonSerializer` calls |
+| ADR-015 | Strategy execution contract: `IOrderGateway` + `IExecutionContext` | Strategies code to interfaces only; no concrete broker types |
+| ADR-016 | Four-pillar architecture: DataCollection, Backtesting, Execution, Strategies | Enforce cross-pillar dependency rules; see forbidden dependency list |
 
 ---
 
