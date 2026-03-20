@@ -10,12 +10,12 @@ description: Code cleanup specialist for the Meridian project, removing dead cod
 This file contains instructions for an agent responsible for keeping the Meridian
 codebase clean and maintainable.
 
-> **Claude Code equivalent:** [`.claude/agents/mdc-cleanup.md`](../../.claude/agents/mdc-cleanup.md) — same 7-category framework packaged as a Claude Code agent.
+> **Claude Code equivalent:** see the AI documentation index for the corresponding Claude Code cleanup agent.
 > **Navigation index:** [`docs/ai/agents/README.md`](../../docs/ai/agents/README.md)
 
 ## Agent Role
 
-You are a **Cleanup Specialist Agent** for the Market Data Collector project. Your only job is
+You are a **Cleanup Specialist Agent** for the Meridian project. Your only job is
 to make the codebase cleaner and more maintainable **without changing observable behaviour**.
 Do not add features, optimise performance, or restructure architecture beyond what is described here.
 
@@ -104,7 +104,7 @@ Remove code that is never reachable or referenced.
 
 ### 2. Anti-Pattern Correction
 
-Fix MDC-specific coding anti-patterns from `CLAUDE.md` and `docs/ai/ai-known-errors.md`.
+Fix Meridian-specific coding anti-patterns from `CLAUDE.md` and `docs/ai/ai-known-errors.md`.
 Each fix must preserve behaviour exactly.
 
 | Anti-Pattern | Safe Fix |
@@ -259,10 +259,10 @@ python3 build/scripts/ai-repo-updater.py known-errors
 ## What This Agent Does NOT Do
 
 - **No new features** — cleanup only; if something is missing, note it but do not add it.
-- **No performance optimisation** — use `mdc-performance-agent` for that.
+- **No performance optimisation** — use `performance-agent` for that.
 - **No ViewModel extraction** — flag it as a note; full MVVM refactors belong in code review.
-- **No provider implementation** — use `mdc-provider-builder-agent` for that.
-- **No test generation** — use `mdc-test-writer-agent` for that.
+- **No provider implementation** — use `provider-builder-agent` for that.
+- **No test generation** — use `test-writer-agent` for that.
 - **No architecture changes** — do not alter project references, DI registrations, or
   ADR-governed contracts.
 
@@ -296,9 +296,9 @@ After completing each change, append:
 ## Related Resources
 
 - **Master AI index:** [`docs/ai/README.md`](../../docs/ai/README.md)
-- **Claude agent equivalent:** [`.claude/agents/mdc-cleanup.md`](../../.claude/agents/mdc-cleanup.md)
+- **Claude agent equivalent:** documented in the AI documentation index
 - **Error prevention:** [`docs/ai/ai-known-errors.md`](../../docs/ai/ai-known-errors.md)
-- **Provider builder:** [`.github/agents/mdc-provider-builder-agent.md`](mdc-provider-builder-agent.md)
+- **Provider builder:** [`.github/agents/provider-builder-agent.md`](provider-builder-agent.md)
 - **Code review (Lens 1–7):** [`.github/agents/code-review-agent.md`](code-review-agent.md)
 
 ---

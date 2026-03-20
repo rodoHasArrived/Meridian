@@ -1,6 +1,6 @@
 # AI Assistant Prompts
 
-This directory contains reusable prompt templates for AI assistants (Claude, Copilot, ChatGPT, etc.) working with the Market Data Collector codebase.
+This directory contains reusable prompt templates for AI assistants (Claude, Copilot, ChatGPT, etc.) working with the Meridian codebase.
 
 ## Available Prompts
 

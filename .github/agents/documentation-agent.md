@@ -9,13 +9,13 @@ This file contains instructions for an agent responsible for updating and mainta
 
 ## Agent Role
 
-You are a **Documentation Specialist Agent** for the Market Data Collector project. Your primary responsibility is to ensure the project's documentation is accurate, comprehensive, up-to-date, and follows established conventions.
+You are a **Documentation Specialist Agent** for the Meridian project. Your primary responsibility is to ensure the project's documentation is accurate, comprehensive, up-to-date, and follows established conventions.
 
 ---
 
 ## Documentation Overview
 
-The Market Data Collector has extensive documentation organized across multiple directories:
+The Meridian repository has extensive documentation organized across multiple directories:
 
 ### Documentation Structure
 
@@ -43,46 +43,11 @@ Meridian/docs/
 Meridian/
 ├── .claude/
 │   ├── agents/
-│   │   ├── mdc-blueprint.md
-│   │   ├── mdc-cleanup.md
-│   │   └── mdc-docs.md
+│   │   └── ... Claude Code agent definitions
 │   ├── skills/
 │   │   ├── _shared/
 │   │   │   └── project-context.md
-│   │   ├── mdc-blueprint/
-│   │   │   ├── references/
-│   │   │   │   ...
-│   │   │   ├── CHANGELOG.md
-│   │   │   └── SKILL.md
-│   │   ├── mdc-brainstorm/
-│   │   │   ├── references/
-│   │   │   │   ...
-│   │   │   ├── brainstorm-history.jsonl
-│   │   │   ├── CHANGELOG.md
-│   │   │   └── SKILL.md
-│   │   ├── mdc-code-review/
-│   │   │   ├── agents/
-│   │   │   │   ...
-│   │   │   ├── eval-viewer/
-│   │   │   │   ...
-│   │   │   ├── evals/
-│   │   │   │   ...
-│   │   │   ├── references/
-│   │   │   │   ...
-│   │   │   ├── scripts/  # Automation scripts
-│   │   │   │   ...
-│   │   │   ├── CHANGELOG.md
-│   │   │   └── SKILL.md
-│   │   ├── mdc-provider-builder/
-│   │   │   ├── references/
-│   │   │   │   ...
-│   │   │   ├── CHANGELOG.md
-│   │   │   └── SKILL.md
-│   │   ├── mdc-test-writer/
-│   │   │   ├── references/
-│   │   │   │   ...
-│   │   │   ├── CHANGELOG.md
-│   │   │   └── SKILL.md
+│   │   ├── ... Claude Code skills, references, evals, and scripts
 │   │   └── skills_provider.py
 │   ├── settings.json
 │   └── settings.local.json
@@ -97,13 +62,13 @@ Meridian/
 │   │   ├── cleanup-specialist.agent.md
 │   │   ├── code-review-agent.md
 │   │   ├── documentation-agent.md
-│   │   ├── mdc-blueprint-agent.md
-│   │   ├── mdc-brainstorm-agent.md
-│   │   ├── mdc-bug-fix-agent.md
-│   │   ├── mdc-cleanup-agent.md
-│   │   ├── mdc-performance-agent.md
-│   │   ├── mdc-provider-builder-agent.md
-│   │   └── mdc-test-writer-agent.md
+│   │   ├── blueprint-agent.md
+│   │   ├── brainstorm-agent.md
+│   │   ├── bug-fix-agent.md
+│   │   ├── cleanup-agent.md
+│   │   ├── performance-agent.md
+│   │   ├── provider-builder-agent.md
+│   │   └── test-writer-agent.md
 │   ├── instructions/
 │   │   ├── csharp.instructions.md
 │   │   ├── docs.instructions.md

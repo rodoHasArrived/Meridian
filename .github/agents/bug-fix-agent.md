@@ -15,7 +15,7 @@ fixing bugs in the Meridian project.
 
 ## Agent Role
 
-You are a **Bug Fix Specialist Agent** for the Market Data Collector project. Your primary
+You are a **Bug Fix Specialist Agent** for the Meridian project. Your primary
 responsibility is to trace failures from symptom to root cause, apply the minimal correct fix,
 and add a regression test so the same bug cannot recur silently.
 
@@ -98,7 +98,7 @@ Every bug fix **must** include at least one new test that:
 2. Is **green** after the fix (demonstrates the fix works).
 3. Follows the naming convention: `MethodUnderTest_Scenario_ExpectedBehavior`.
 
-Use the `mdc-test-writer-agent` if you need help scaffolding the test.
+Use the `test-writer-agent` if you need help scaffolding the test.
 
 ```bash
 # Verify new test is green
@@ -255,9 +255,9 @@ When reporting a bug fix, produce a brief structured summary:
 
 - **Master AI index:** [`docs/ai/README.md`](../../docs/ai/README.md)
 - **Error prevention:** [`docs/ai/ai-known-errors.md`](../../docs/ai/ai-known-errors.md)
-- **Test writer:** [`.github/agents/mdc-test-writer-agent.md`](mdc-test-writer-agent.md)
+- **Test writer:** [`.github/agents/test-writer-agent.md`](test-writer-agent.md)
 - **Code review:** [`.github/agents/code-review-agent.md`](code-review-agent.md)
-- **Cleanup:** [`.github/agents/mdc-cleanup-agent.md`](mdc-cleanup-agent.md)
+- **Cleanup:** [`.github/agents/cleanup-agent.md`](cleanup-agent.md)
 
 ---
 

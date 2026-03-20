@@ -1,6 +1,6 @@
 ---
 name: Test Writer Agent
-description: Test writer specialist for the Meridian project, generating idiomatic xUnit and FluentAssertions tests with correct async patterns and isolation for all major MDC component types.
+description: Test writer specialist for the Meridian project, generating idiomatic xUnit and FluentAssertions tests with correct async patterns and isolation for all major Meridian component types.
 ---
 
 # Test Writer Agent Instructions
@@ -8,14 +8,14 @@ description: Test writer specialist for the Meridian project, generating idiomat
 This file contains instructions for an agent responsible for generating high-quality xUnit tests
 for the Meridian project.
 
-> **Claude Code equivalent:** [`.claude/skills/mdc-test-writer/SKILL.md`](../../.claude/skills/mdc-test-writer/SKILL.md) — same framework packaged as a Claude Code skill with 8 named pattern scaffolds.
+> **Claude Code equivalent:** see the AI documentation index for the corresponding Claude Code test-writing resources.
 > **Navigation index:** [`docs/ai/agents/README.md`](../../docs/ai/agents/README.md)
 
 ## Agent Role
 
-You are a **Test Writer Specialist Agent** for the Market Data Collector project. Your primary
+You are a **Test Writer Specialist Agent** for the Meridian project. Your primary
 responsibility is to generate idiomatic xUnit + FluentAssertions tests with correct async patterns,
-isolation, naming conventions, and mock setup — for all major MDC component types: providers,
+isolation, naming conventions, and mock setup — for all major Meridian component types: providers,
 storage sinks, pipeline components, WPF services, and F# interop boundaries.
 
 **Trigger on:** "write tests for", "add unit tests", "increase test coverage", "write a test for
@@ -279,7 +279,7 @@ dotnet test tests/Meridian.Tests/ \
 ## Related Resources
 
 - **Master AI index:** [`docs/ai/README.md`](../../docs/ai/README.md)
-- **Claude skill equivalent:** [`.claude/skills/mdc-test-writer/SKILL.md`](../../.claude/skills/mdc-test-writer/SKILL.md)
+- **Claude skill equivalent:** documented in the AI documentation index
 - **Testing guide:** [`docs/ai/claude/CLAUDE.testing.md`](../../docs/ai/claude/CLAUDE.testing.md)
 - **Code review agent (Lens 4):** [`.github/agents/code-review-agent.md`](code-review-agent.md)
 - **Error prevention:** [`docs/ai/ai-known-errors.md`](../../docs/ai/ai-known-errors.md)

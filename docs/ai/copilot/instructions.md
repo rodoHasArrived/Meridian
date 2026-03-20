@@ -1,4 +1,4 @@
-# Market Data Collector - Copilot Instructions
+# Meridian - Copilot Instructions
 
 **Last Updated:** 2026-03-16
 
@@ -33,7 +33,7 @@ Before producing code, Copilot should:
 
 ## Repository Overview
 
-**Market Data Collector** is a high-performance, cross-platform market data collection system for real-time and historical market microstructure data. It's a production-ready .NET 9.0 solution with F# domain libraries, supporting multiple data providers (Interactive Brokers, Alpaca, NYSE, Polygon, StockSharp) and offering flexible storage options.
+**Meridian** is a high-performance, cross-platform market data collection system for real-time and historical market microstructure data. It's a production-ready .NET 9.0 solution with F# domain libraries, supporting multiple data providers (Interactive Brokers, Alpaca, NYSE, Polygon, StockSharp) and offering flexible storage options.
 
 | Attribute | Value |
 |-----------|-------|
@@ -114,7 +114,7 @@ dotnet run --project src/Meridian/Meridian.csproj -- --backfill --backfill-provi
 ### Solution Layout
 
 ```
-Market-Data-Collector/
+Meridian/
 ├── src/
 │   ├── Meridian/              # Main console application & entry point
 │   ├── Meridian.Application/  # Application services, commands, pipelines

@@ -5,14 +5,14 @@ description: Code review specialist for the Meridian project, identifying archit
 
 # Code Review Agent Instructions
 
-This file contains instructions for an agent responsible for performing code review and architecture compliance checks on the Market Data Collector project.
+This file contains instructions for an agent responsible for performing code review and architecture compliance checks on the Meridian project.
 
-> **Claude Code equivalent:** [`.claude/skills/mdc-code-review/SKILL.md`](../../.claude/skills/mdc-code-review/SKILL.md) — same 7-lens framework packaged as a Claude Code skill with evals and dynamic resources.
+> **Claude Code equivalent:** see the AI documentation index for the corresponding Claude Code review skill.
 > **Navigation index:** [`docs/ai/agents/README.md`](../../docs/ai/agents/README.md)
 
 ## Agent Role
 
-You are a **Code Review Specialist Agent** for the Market Data Collector project. Your primary responsibility is to identify architecture violations, performance anti-patterns, error handling gaps, test quality issues, and provider compliance problems in the Meridian codebase.
+You are a **Code Review Specialist Agent** for the Meridian project. Your primary responsibility is to identify architecture violations, performance anti-patterns, error handling gaps, test quality issues, and provider compliance problems in the Meridian codebase.
 
 ---
 
@@ -32,10 +32,10 @@ Meridian is a high-throughput .NET 9 / C# 13 system (with F# 8.0 domain models) 
 ## Repository Structure
 
 ```
-Market-Data-Collector/
+Meridian/
 ├── .claude/
 │   └── skills/
-│       └── mdc-code-review/       ← Claude skill equivalent of this agent
+│       └── ... Claude Code review resources
 ├── .github/
 │   ├── agents/
 │   │   ├── code-review-agent.md   ← you are here
@@ -501,7 +501,7 @@ dotnet test tests/Meridian.FSharp.Tests/Meridian.FSharp.Tests.fsproj -c Release 
 ## Related Resources
 
 - **Master AI index:** [`docs/ai/README.md`](../../docs/ai/README.md)
-- **Claude skill equivalent:** [`.claude/skills/mdc-code-review/SKILL.md`](../../.claude/skills/mdc-code-review/SKILL.md)
+- **Claude skill equivalent:** documented in the AI documentation index
 - **Root context:** [`CLAUDE.md`](../../CLAUDE.md)
 - **Error prevention:** [`docs/ai/ai-known-errors.md`](../../docs/ai/ai-known-errors.md)
 

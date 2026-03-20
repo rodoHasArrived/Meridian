@@ -10,47 +10,13 @@ Full annotated file tree for Meridian (704 source files: 692 C# + 12 F#).
 Meridian/
 ├── .claude/
 │   ├── agents/
-│   │   ├── mdc-blueprint.md
-│   │   ├── mdc-cleanup.md
-│   │   └── mdc-docs.md
+│   │   └── ... Claude Code agent definitions
 │   ├── skills/
 │   │   ├── _shared/
 │   │   │   └── project-context.md
-│   │   ├── mdc-blueprint/
-│   │   │   ├── references/
-│   │   │   │   ...
-│   │   │   ├── CHANGELOG.md
-│   │   │   └── SKILL.md
-│   │   ├── mdc-brainstorm/
-│   │   │   ├── references/
-│   │   │   │   ...
-│   │   │   ├── brainstorm-history.jsonl
-│   │   │   ├── CHANGELOG.md
-│   │   │   └── SKILL.md
-│   │   ├── mdc-code-review/
-│   │   │   ├── agents/
-│   │   │   │   ...
-│   │   │   ├── eval-viewer/
-│   │   │   │   ...
-│   │   │   ├── evals/
-│   │   │   │   ...
-│   │   │   ├── references/
-│   │   │   │   ...
-│   │   │   ├── scripts/  # Automation scripts
-│   │   │   │   ...
-│   │   │   ├── CHANGELOG.md
-│   │   │   └── SKILL.md
-│   │   ├── mdc-provider-builder/
-│   │   │   ├── references/
-│   │   │   │   ...
-│   │   │   ├── CHANGELOG.md
-│   │   │   └── SKILL.md
-│   │   ├── mdc-test-writer/
-│   │   │   ├── references/
-│   │   │   │   ...
-│   │   │   ├── CHANGELOG.md
-│   │   │   └── SKILL.md
+│   │   ├── ... Claude Code skills, references, evals, and scripts
 │   │   └── skills_provider.py
+│   ├── settings.json
 │   └── settings.local.json
 ├── .devcontainer/
 │   └── devcontainer.json
@@ -62,10 +28,10 @@ Meridian/
 │   │   ├── adr-generator.agent.md
 │   │   ├── code-review-agent.md
 │   │   ├── documentation-agent.md
-│   │   ├── mdc-blueprint-agent.md
-│   │   ├── mdc-brainstorm-agent.md
-│   │   ├── mdc-provider-builder-agent.md
-│   │   └── mdc-test-writer-agent.md
+│   │   ├── blueprint-agent.md
+│   │   ├── brainstorm-agent.md
+│   │   ├── provider-builder-agent.md
+│   │   └── test-writer-agent.md
 │   ├── instructions/
 │   │   ├── csharp.instructions.md
 │   │   ├── docs.instructions.md
