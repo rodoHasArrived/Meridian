@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-20 03:30:09 UTC
+> Auto-generated on 2026-03-20 03:38:52 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -613,6 +613,8 @@ Meridian/
 │   │   │   ├── ValidateConfigCommand.cs
 │   │   │   └── WalRepairCommand.cs
 │   │   ├── Composition/
+│   │   │   ├── Features/
+│   │   │   │   ...
 │   │   │   ├── Startup/
 │   │   │   │   ...
 │   │   │   ├── CircuitBreakerCallbackRouter.cs

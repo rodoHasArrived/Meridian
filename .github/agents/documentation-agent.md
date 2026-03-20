@@ -642,6 +642,8 @@ Meridian/
 │   │   │   ├── ValidateConfigCommand.cs
 │   │   │   └── WalRepairCommand.cs
 │   │   ├── Composition/
+│   │   │   ├── Features/
+│   │   │   │   ...
 │   │   │   ├── Startup/
 │   │   │   │   ...
 │   │   │   ├── CircuitBreakerCallbackRouter.cs
