@@ -85,20 +85,20 @@ def load_todos(path: Path) -> list[TodoItem]:
     except Exception as exc:
         print(f"Error: failed to read scan JSON: {exc}", file=sys.stderr)
         raise
-    
+
     try:
         payload = json.loads(content)
     except json.JSONDecodeError as exc:
         print(f"Error: invalid JSON in scan file: {exc}", file=sys.stderr)
         raise
-    
+
     if not isinstance(payload, dict):
         raise ValueError(f"Expected JSON object at root, got {type(payload).__name__}")
-    
+
     todos_list = payload.get("todos", [])
     if not isinstance(todos_list, list):
         raise ValueError(f"Expected 'todos' to be a list, got {type(todos_list).__name__}")
-    
+
     items = []
     for index, raw in enumerate(todos_list):
         if not isinstance(raw, dict):
@@ -107,7 +107,7 @@ def load_todos(path: Path) -> list[TodoItem]:
             )
         try:
             line_value = raw.get("line", 0)
-            line = int(line_value)
+            int(line_value)  # validate it is a valid integer
         except (TypeError, ValueError) as exc:
             raise ValueError(
                 f"Invalid 'line' value for TODO item at index {index} "
@@ -179,7 +179,7 @@ def find_existing_issue(repo: str, token: str, marker: str) -> int | None:
 
 def create_issue(repo: str, token: str, todo: TodoItem, label: str, dry_run: bool) -> tuple[str, int | None]:
     """Create or find issue for a TODO item.
-    
+
     Returns:
         Tuple of (status, issue_number) where status is one of:
         - "existing": Issue already exists
@@ -277,7 +277,7 @@ def main() -> int:
     dry_run_count = 0
     skipped = 0
     issues_list = []
-    
+
     for todo in untracked:
         if created + existing_count + dry_run_count >= args.max_issues:
             skipped += 1
@@ -303,7 +303,6 @@ def main() -> int:
             dry_run_count += 1
             issues_list.append({"status": "dry-run", "number": None, "file": todo.file, "line": todo.line})
 
-    total_processed = created + existing_count + dry_run_count
     print(
         f"TODO issue creation complete: "
         f"created={created}, existing={existing_count}, dry_run={dry_run_count}, "

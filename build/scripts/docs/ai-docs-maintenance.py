@@ -42,7 +42,6 @@ import sys
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -329,7 +328,7 @@ def _check_archive_candidates(docs_dir: Path) -> list[Finding]:
             ))
 
         # Check for stub files (< 3 meaningful lines)
-        lines = [l for l in content.splitlines() if l.strip() and not l.startswith("#")]
+        lines = [ln for ln in content.splitlines() if ln.strip() and not ln.startswith("#")]
         if len(lines) < 3 and age_days > 90:
             findings.append(Finding(
                 file=_relative(md_file),
@@ -450,7 +449,6 @@ def cmd_drift(report: Report) -> None:
         tests_dir = str(REPO_ROOT / "tests")
 
         actual_cs = _count_files(src_dir, ".cs")
-        actual_fs = _count_files(src_dir, ".fs")
         actual_test = _count_files(tests_dir, ".cs")
 
         # Check C# count

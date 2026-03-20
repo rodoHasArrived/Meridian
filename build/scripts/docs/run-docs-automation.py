@@ -195,7 +195,7 @@ def resolve_selected_scripts(args: argparse.Namespace) -> List[str]:
     unknown = [name for name in selected if name not in SCRIPT_CONFIG]
     if unknown:
         raise ValueError(f"Unknown script names: {', '.join(unknown)}")
-    
+
     # Validation: --auto-create-todos requires scan-todos
     if args.auto_create_todos and "scan-todos" not in selected:
         raise ValueError(
@@ -331,7 +331,6 @@ def main() -> int:
             )
             print(f"[dry-run] {' '.join(issue_cmd)}")
     else:
-        scan_todos_succeeded = True
         for name in selected:
             extra_args: List[str] = []
             if name == "scan-todos" and args.auto_create_todos:
@@ -341,10 +340,6 @@ def main() -> int:
             result = run_script_with_args(name, root, extra_args=extra_args)
             results.append(result)
             print(f" -> {result.status} ({result.duration_seconds:.3f}s)")
-
-            # Track if scan-todos failed
-            if name == "scan-todos" and result.status != "success":
-                scan_todos_succeeded = False
 
             if result.status != "success" and not args.continue_on_error:
                 print("Stopping due to failure. Use --continue-on-error to continue.", file=sys.stderr)

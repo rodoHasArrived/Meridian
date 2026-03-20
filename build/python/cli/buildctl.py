@@ -360,11 +360,11 @@ def build_parser() -> argparse.ArgumentParser:
     debug.add_argument("--project", default=DEFAULT_PROJECT)
     debug.add_argument("--configuration", default="Release")
 
-    profile = sub.add_parser("build-profile", help="Show build profile")
+    sub.add_parser("build-profile", help="Show build profile")
 
-    metrics = sub.add_parser("metrics", help="Show metrics summary")
+    sub.add_parser("metrics", help="Show metrics summary")
 
-    history = sub.add_parser("history", help="Show build history summary")
+    sub.add_parser("history", help="Show build history summary")
 
     impact = sub.add_parser("impact", help="Analyze impact of file change")
     impact.add_argument("--file", required=True)

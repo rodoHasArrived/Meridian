@@ -19,7 +19,6 @@ Usage:
 
 import argparse
 import json
-import os
 import re
 import subprocess
 import sys
@@ -91,7 +90,7 @@ ISSUE_PATTERNS = [
     r'#(\d+)',                      # #123
     r'issue\s*#?(\d+)',             # issue #123, issue 123
     r'issues/(\d+)',                # issues/123
-    r'github\.com/.+/issues/(\d+)', # full GitHub URL
+    r'github\.com/.+/issues/(\d+)',  # full GitHub URL
     r'Track with issue #(\d+)',     # Track with issue #123
 ]
 
@@ -188,7 +187,7 @@ def get_file_last_modified_date(file_path: Path, root: Path) -> tuple[str, int]:
             return date_str[:10], age_days
     except Exception:
         pass
-    
+
     return "", 0
 
 
@@ -228,7 +227,7 @@ def scan_file(file_path: Path, include_notes: bool, root: Path) -> Generator[Tod
     comment_patterns = get_comment_patterns(ext)
 
     types_to_find = TODO_TYPES + ([NOTE_TYPE] if include_notes else [])
-    
+
     # Get file modification info once for all TODOs in this file
     last_modified, age_days = get_file_last_modified_date(file_path, root)
 
@@ -412,7 +411,7 @@ def generate_markdown(results: ScanResults) -> str:
             lines.append(f"- **[{todo.type}]** `{todo.file}:{todo.line}`{issue_link}{assignee_str}{age_str}")
             lines.append(f"  - {todo.text}")
         lines.append("")
-    
+
     # Stale TODOs (older than 90 days)
     stale_todos = [t for t in results.todos if t.age_days > 90]
     if stale_todos:
@@ -428,7 +427,7 @@ def generate_markdown(results: ScanResults) -> str:
         if len(stale_todos) > 20:
             lines.append(f"- ... and {len(stale_todos) - 20} more stale items")
         lines.append("")
-    
+
     # Unassigned TODOs
     unassigned = [t for t in results.todos if not t.assignee and not t.has_issue]
     if unassigned and len(unassigned) > 10:

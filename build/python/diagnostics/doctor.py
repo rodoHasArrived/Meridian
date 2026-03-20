@@ -1,9 +1,7 @@
 import json
 import os
-import platform
 import shutil
 import socket
-import sys
 import urllib.request
 from dataclasses import dataclass
 from pathlib import Path

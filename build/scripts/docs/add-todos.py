@@ -24,10 +24,8 @@ from __future__ import annotations
 
 import argparse
 import re
-import subprocess
 import sys
 from dataclasses import dataclass
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
@@ -82,19 +80,19 @@ class TodoItem:
     issue_number: Optional[int] = None
     assignee: Optional[str] = None
     priority: str = 'normal'
-    
+
     def format_comment(self, comment_prefix: str) -> str:
         """Format the TODO as a comment string."""
         parts = [f"{comment_prefix} {self.todo_type}:"]
-        
+
         if self.assignee:
             parts.append(f"@{self.assignee}")
-        
+
         if self.issue_number:
             parts.append(f"Track with issue #{self.issue_number} -")
-        
+
         parts.append(self.description)
-        
+
         return " ".join(parts)
 
 
@@ -112,14 +110,14 @@ def validate_issue_number(issue_num: str) -> Optional[int]:
     """Validate and parse issue number."""
     if not issue_num:
         return None
-    
+
     try:
         num = int(issue_num.strip('#'))
         if num > 0:
             return num
     except ValueError:
         pass
-    
+
     return None
 
 
@@ -127,11 +125,11 @@ def validate_username(username: str) -> Optional[str]:
     """Validate GitHub username format."""
     if not username:
         return None
-    
+
     username = username.strip('@')
     if re.match(r'^[a-zA-Z0-9_-]+$', username):
         return username
-    
+
     return None
 
 
@@ -150,16 +148,16 @@ def insert_todo_at_line(file_path: Path, line_number: int, todo_comment: str) ->
     """Insert TODO comment at specified line in file."""
     try:
         lines = file_path.read_text(encoding='utf-8').splitlines(keepends=True)
-        
+
         # Adjust line number (1-indexed to 0-indexed)
         insert_pos = max(0, line_number - 1)
-        
+
         # Add newline if not present
         if not todo_comment.endswith('\n'):
             todo_comment += '\n'
-        
+
         lines.insert(insert_pos, todo_comment)
-        
+
         file_path.write_text(''.join(lines), encoding='utf-8')
         return True
     except Exception as e:
@@ -190,7 +188,7 @@ def prompt_user(message: str, default: str = '') -> str:
         prompt = f"{message} [{default}]: "
     else:
         prompt = f"{message}: "
-    
+
     response = input(prompt).strip()
     return response if response else default
 
@@ -201,53 +199,53 @@ def prompt_choice(message: str, choices: list[str], default: str = '') -> str:
     for i, choice in enumerate(choices, 1):
         marker = '*' if choice == default else ' '
         print(f"  {marker} {i}. {choice}")
-    
+
     while True:
         response = input(f"Select [1-{len(choices)}]: ").strip()
         if not response and default:
             return default
-        
+
         try:
             idx = int(response) - 1
             if 0 <= idx < len(choices):
                 return choices[idx]
         except ValueError:
             pass
-        
+
         print(f"Invalid choice. Please enter 1-{len(choices)}")
 
 
 def interactive_mode(root: Path) -> Optional[TodoItem]:
     """Run interactive mode to create a TODO item."""
     print("\n=== TODO Item Creator ===\n")
-    
+
     # Select TODO type
     todo_type = prompt_choice(
         "Select TODO type:",
         TODO_TYPES,
         default='TODO'
     )
-    
+
     # Get description
     description = prompt_user("Enter description")
     if not description:
         print("Error: Description is required", file=sys.stderr)
         return None
-    
+
     # Select file
     print("\nEnter file path (relative to repo root):")
     file_str = prompt_user("File path")
     if not file_str:
         print("Error: File path is required", file=sys.stderr)
         return None
-    
+
     file_path = root / file_str
     if not file_path.exists():
         print(f"Warning: File does not exist: {file_path}", file=sys.stderr)
         create = prompt_user("Create file? (y/n)", default='n')
         if create.lower() != 'y':
             return None
-    
+
     # Optional: Line number
     line_str = prompt_user("Line number (or press Enter to append to end)", default='')
     line_number = None
@@ -256,22 +254,22 @@ def interactive_mode(root: Path) -> Optional[TodoItem]:
             line_number = int(line_str)
         except ValueError:
             print("Warning: Invalid line number, will append to end", file=sys.stderr)
-    
+
     # Optional: Issue number
     issue_str = prompt_user("GitHub issue number (or press Enter to skip)", default='')
     issue_number = validate_issue_number(issue_str)
-    
+
     # Optional: Assignee
     assignee_str = prompt_user("Assignee username (or press Enter to skip)", default='')
     assignee = validate_username(assignee_str)
-    
+
     # Priority
     priority = prompt_choice(
         "Select priority:",
         PRIORITY_LEVELS,
         default='normal'
     )
-    
+
     return TodoItem(
         todo_type=todo_type,
         description=description,
@@ -290,25 +288,25 @@ def interactive_mode(root: Path) -> Optional[TodoItem]:
 def print_template() -> None:
     """Print TODO comment templates."""
     print("\n=== TODO Comment Templates ===\n")
-    
+
     print("Basic TODO:")
     print("  // TODO: Description of what needs to be done\n")
-    
+
     print("TODO with issue tracking:")
     print("  // TODO: Track with issue #123 - Description\n")
-    
+
     print("TODO with assignee:")
     print("  // TODO: @username Description\n")
-    
+
     print("TODO with priority (implicit from type):")
     print("  // FIXME: Critical bug that needs immediate attention")
     print("  // TODO: Nice to have feature")
     print("  // HACK: Temporary workaround\n")
-    
+
     print("Complete TODO with all metadata:")
     print("  // TODO: @alice Track with issue #456 - Implement retry logic")
     print("  // This is needed because the API occasionally returns 503 errors.\n")
-    
+
     print("Multi-line TODO:")
     print("  // TODO: Track with issue #789 - Refactor authentication logic")
     print("  // The current implementation has the following issues:")
@@ -384,19 +382,19 @@ def main(argv: Optional[list[str]] = None) -> int:
         action='store_true',
         help='Show what would be added without modifying files'
     )
-    
+
     args = parser.parse_args(argv)
-    
+
     root = args.root.resolve()
     if not root.is_dir():
         print(f"Error: root directory does not exist: {root}", file=sys.stderr)
         return 1
-    
+
     # Template mode
     if args.template:
         print_template()
         return 0
-    
+
     # Interactive mode
     if args.interactive:
         todo_item = interactive_mode(root)
@@ -407,13 +405,13 @@ def main(argv: Optional[list[str]] = None) -> int:
         if not args.file:
             print("Error: --file is required (or use --interactive)", file=sys.stderr)
             return 1
-        
+
         if not args.description:
             print("Error: --description is required (or use --interactive)", file=sys.stderr)
             return 1
-        
+
         file_path = args.file if args.file.is_absolute() else root / args.file
-        
+
         todo_item = TodoItem(
             todo_type=args.type,
             description=args.description,
@@ -423,11 +421,11 @@ def main(argv: Optional[list[str]] = None) -> int:
             assignee=args.assignee,
             priority=args.priority
         )
-    
+
     # Format the TODO comment
     comment_prefix = get_comment_prefix(todo_item.file_path)
     todo_comment = todo_item.format_comment(comment_prefix)
-    
+
     # Show what will be added
     print(f"\nTODO to be added:")
     print(f"  File: {todo_item.file_path.relative_to(root) if todo_item.file_path.is_relative_to(root) else todo_item.file_path}")
@@ -437,17 +435,17 @@ def main(argv: Optional[list[str]] = None) -> int:
         print(f"  Position: End of file")
     print(f"  Comment: {todo_comment}")
     print()
-    
+
     if args.dry_run:
         print("Dry run - no changes made")
         return 0
-    
+
     # Add the TODO
     if todo_item.line_number:
         success = insert_todo_at_line(todo_item.file_path, todo_item.line_number, todo_comment)
     else:
         success = append_todo_to_file(todo_item.file_path, todo_comment)
-    
+
     if success:
         print(f"✓ TODO added successfully to {todo_item.file_path.name}")
         print(f"\nNext steps:")

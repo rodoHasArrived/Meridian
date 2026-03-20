@@ -19,7 +19,6 @@ from __future__ import annotations
 
 import argparse
 import glob
-import os
 import re
 import sys
 from dataclasses import dataclass, field
@@ -200,7 +199,7 @@ def _parse_mapping(lines: list[str], idx: int, base_indent: int) -> tuple[dict[s
 
         key = stripped[:colon_idx].strip()
         key = _strip_yaml_quotes(key)
-        rest = stripped[colon_idx + 1 :].strip()
+        rest = stripped[colon_idx + 1:].strip()
 
         if rest:
             result[key] = _parse_yaml_value(rest)

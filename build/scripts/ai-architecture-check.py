@@ -41,7 +41,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import re
 import sys
 from dataclasses import dataclass, field, asdict
@@ -99,11 +98,11 @@ def _c(code: str, text: str) -> str:
     return f"\033[{code}m{text}\033[0m"
 
 
-def red(t: str) -> str:    return _c("31;1", t)
+def red(t: str) -> str: return _c("31;1", t)
 def yellow(t: str) -> str: return _c("33;1", t)
-def cyan(t: str) -> str:   return _c("36", t)
-def green(t: str) -> str:  return _c("32;1", t)
-def dim(t: str) -> str:    return _c("2", t)
+def cyan(t: str) -> str: return _c("36", t)
+def green(t: str) -> str: return _c("32;1", t)
+def dim(t: str) -> str: return _c("2", t)
 
 
 # ---------------------------------------------------------------------------
@@ -560,7 +559,7 @@ def print_human_report(results: list[CheckResult]) -> int:
 
     print()
     print("=" * 70)
-    print(f"  AI Architecture Guard — Meridian")
+    print("  AI Architecture Guard — Meridian")
     print("=" * 70)
     print(f"  Files scanned : {total_files}")
     print(f"  Total findings: {total_findings}  "
@@ -705,12 +704,12 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     check_map = {
         "check":          run_all_checks,
-        "check-cpm":      lambda r: [check_cpm(r)],
-        "check-deps":     lambda r: [check_deps(r)],
-        "check-adrs":     lambda r: [check_adrs(r)],
+        "check-cpm": lambda r: [check_cpm(r)],
+        "check-deps": lambda r: [check_deps(r)],
+        "check-adrs": lambda r: [check_adrs(r)],
         "check-channels": lambda r: [check_channels(r)],
-        "check-sinks":    lambda r: [check_sinks(r)],
-        "check-json":     lambda r: [check_json(r)],
+        "check-sinks": lambda r: [check_sinks(r)],
+        "check-json": lambda r: [check_json(r)],
     }
     run_fn = check_map.get(command, run_all_checks)
     results = run_fn(src_root)
