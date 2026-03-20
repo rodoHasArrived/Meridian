@@ -37,6 +37,26 @@ public static class LedgerAccounts
     public static readonly LedgerAccount DividendIncome =
         new("Dividend Income", LedgerAccountType.Revenue);
 
+    /// <summary>Dividend expense owed on short positions or other negative dividend adjustments.</summary>
+    public static readonly LedgerAccount DividendExpense =
+        new("Dividend Expense", LedgerAccountType.Expense);
+
+    /// <summary>Bond or fund coupon income received on held units.</summary>
+    public static readonly LedgerAccount CouponIncome =
+        new("Coupon Income", LedgerAccountType.Revenue);
+
+    /// <summary>Coupon expense owed on short positions or negative coupon adjustments.</summary>
+    public static readonly LedgerAccount CouponExpense =
+        new("Coupon Expense", LedgerAccountType.Expense);
+
+    /// <summary>Income from non-dividend corporate actions, merger cash, and miscellaneous asset events.</summary>
+    public static readonly LedgerAccount CorporateActionIncome =
+        new("Corporate Action Income", LedgerAccountType.Revenue);
+
+    /// <summary>Expense from fees, merger charges, and other negative asset-event cash adjustments.</summary>
+    public static readonly LedgerAccount CorporateActionExpense =
+        new("Corporate Action Expense", LedgerAccountType.Expense);
+
     /// <summary>
     /// Returns the asset account representing equity holdings in <paramref name="symbol"/>.
     /// Each symbol has its own securities account so per-symbol cost-basis is tracked separately.

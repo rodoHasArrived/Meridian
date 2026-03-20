@@ -20,4 +20,5 @@ public sealed record BacktestRequest(
     double AnnualMarginRate = 0.05,
     double AnnualShortRebateRate = 0.02,
     string DataRoot = "./data",
-    string? StrategyAssemblyPath = null);
+    string? StrategyAssemblyPath = null,
+    IReadOnlyList<AssetEvent>? AssetEvents = null);
