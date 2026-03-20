@@ -147,6 +147,7 @@ Meridian/
 │   │   ├── documentation.yml
 │   │   ├── dotnet-desktop.yml
 │   │   ├── export-project-artifact.yml
+│   │   ├── golden-path-validation.yml
 │   │   ├── labeling.yml
 │   │   ├── makefile.yml
 │   │   ├── nightly.yml
@@ -251,7 +252,8 @@ Meridian/
 │       │   ├── update-claude-md.py
 │       │   ├── validate-api-docs.py
 │       │   ├── validate-docs-structure.py
-│       │   └── validate-examples.py
+│       │   ├── validate-examples.py
+│       │   └── validate-golden-path.sh
 │       ├── hooks/
 │       │   ├── commit-msg
 │       │   ├── install-hooks.sh

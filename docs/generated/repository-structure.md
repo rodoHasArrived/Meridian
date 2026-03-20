@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-20 01:12:15 UTC
+> Auto-generated on 2026-03-20 01:18:01 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -118,6 +118,7 @@ Meridian/
 │   │   ├── documentation.yml
 │   │   ├── dotnet-desktop.yml
 │   │   ├── export-project-artifact.yml
+│   │   ├── golden-path-validation.yml
 │   │   ├── labeling.yml
 │   │   ├── makefile.yml
 │   │   ├── nightly.yml
@@ -222,7 +223,8 @@ Meridian/
 │       │   ├── update-claude-md.py
 │       │   ├── validate-api-docs.py
 │       │   ├── validate-docs-structure.py
-│       │   └── validate-examples.py
+│       │   ├── validate-examples.py
+│       │   └── validate-golden-path.sh
 │       ├── hooks/
 │       │   ├── commit-msg
 │       │   ├── install-hooks.sh

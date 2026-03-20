@@ -4,7 +4,7 @@
 
 # GitHub Workflows Overview
 
-> Auto-generated on 2026-03-20 01:12:15 UTC
+> Auto-generated on 2026-03-20 01:18:01 UTC
 
 This document provides an overview of all GitHub Actions workflows in the repository.
 
@@ -28,6 +28,7 @@ This document provides an overview of all GitHub Actions workflows in the reposi
 | Documentation Automation | `documentation.yml` | push, PR, manual, scheduled |
 | Documentation Checks | `docs-check.yml` | push, PR, manual |
 | Export Project Artifact | `export-project-artifact.yml` | manual |
+| Golden Path Validation | `golden-path-validation.yml` | push, PR, manual |
 | Labeling | `labeling.yml` | PR, manual |
 | Makefile CI | `makefile.yml` | push, PR |
 | Mark Stale Issues and PRs | `stale.yml` | manual, scheduled |
@@ -67,7 +68,7 @@ This document provides an overview of all GitHub Actions workflows in the reposi
 
 ## Workflow Count
 
-- **Total workflows:** 33
+- **Total workflows:** 34
 
 ---
 
