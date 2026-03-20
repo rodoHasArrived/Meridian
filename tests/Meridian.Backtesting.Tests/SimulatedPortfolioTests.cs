@@ -317,6 +317,8 @@ public sealed class SimulatedPortfolioTests
 
         ledger.TrialBalance("broker-1").Keys.Should().OnlyContain(account => account.FinancialAccountId == "broker-1");
         ledger.TrialBalance("broker-2").Keys.Should().OnlyContain(account => account.FinancialAccountId == "broker-2");
+    }
+
     [Fact]
     public void ApplyAssetEvent_Dividend_CreditsCash_AndRecordsLedgerIncome()
     {
