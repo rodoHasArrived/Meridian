@@ -20,7 +20,9 @@
 
   "onCreateCommand": "dotnet restore Meridian.sln /p:EnableWindowsTargeting=true --verbosity minimal && npm ci --silent",
 
-  "postCreateCommand": "cp -n config/appsettings.sample.json config/appsettings.json 2>/dev/null || true && ./build/scripts/hooks/install-hooks.sh && mkdir -p data logs && dotnet build Meridian.sln -c Debug --no-restore /p:EnableWindowsTargeting=true --verbosity quiet",
+  "updateContentCommand": "cp -n config/appsettings.sample.json config/appsettings.json 2>/dev/null || true && mkdir -p data logs && dotnet build Meridian.sln -c Debug --no-restore /p:EnableWindowsTargeting=true --verbosity quiet",
+
+  "postCreateCommand": "./build/scripts/hooks/install-hooks.sh",
 
   "forwardPorts": [8080],
   "portsAttributes": {
