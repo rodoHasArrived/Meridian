@@ -672,7 +672,7 @@ public sealed class EventPipeline : IMarketEventPublisher, IBackpressureSignal, 
         );
     }
 
-    private async Task ConsumeAsync()
+    private async Task ConsumeAsync(CancellationToken ct = default)
     {
         // Set thread priority for consistent throughput
         ThreadingUtilities.SetAboveNormalPriority();
