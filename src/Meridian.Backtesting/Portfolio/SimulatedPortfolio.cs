@@ -177,8 +177,8 @@ internal sealed class SimulatedPortfolio
             _cashFlows.Add(new CommissionCashFlow(fill.FilledAt, -commission, symbol, fill.OrderId, accountId));
 
         // Post double-entry journal entries to ledger
-        PostFillLedgerEntries(fill, qty, price, commission, existingQty, realised, costBasisRemoved, shortOpenQty, shortRealised, shortOriginalProceeds);
-        CleanupSymbolIfFlat(symbol);
+        PostFillLedgerEntries(account, fill, qty, price, commission, existingQty, realised, costBasisRemoved, shortOpenQty, shortRealised, shortOriginalProceeds);
+        CleanupSymbolIfFlat(account, symbol);
     }
 
     public void ApplyAssetEvent(AssetEvent assetEvent)
@@ -187,36 +187,43 @@ internal sealed class SimulatedPortfolio
 
         var symbol = assetEvent.Symbol;
         var targetSymbol = assetEvent.DestinationSymbol;
-        var existingQty = _positions.GetValueOrDefault(symbol);
-        var impactedUnits = existingQty;
-        decimal totalCashImpact = 0m;
 
-        if (assetEvent.CashPerShare != 0m && existingQty != 0)
+        foreach (var account in _accounts.Values)
         {
-            totalCashImpact += ApplyPerShareCashAdjustment(assetEvent, existingQty);
+            if (account.Account.Kind != FinancialAccountKind.Brokerage)
+                continue;
+
+            var existingQty = account.Positions.GetValueOrDefault(symbol);
+            var impactedUnits = existingQty;
+            decimal totalCashImpact = 0m;
+
+            if (assetEvent.CashPerShare != 0m && existingQty != 0)
+            {
+                totalCashImpact += ApplyPerShareCashAdjustment(account, assetEvent, existingQty);
+            }
+
+            if (assetEvent.HasPositionTransformation && existingQty != 0)
+            {
+                totalCashImpact += ApplyPositionTransformation(account, assetEvent, existingQty, targetSymbol);
+            }
+
+            if (totalCashImpact == 0m && existingQty == 0)
+                continue;
+
+            if (account.Cash < 0)
+                account.MarginBalance = Math.Min(account.MarginBalance, account.Cash);
+
+            _cashFlows.Add(new AssetEventCashFlow(
+                assetEvent.EffectiveAt,
+                totalCashImpact,
+                symbol,
+                assetEvent.EventType,
+                impactedUnits,
+                assetEvent.CashPerShare,
+                assetEvent.TargetSymbol,
+                assetEvent.PositionFactor,
+                assetEvent.Description));
         }
-
-        if (assetEvent.HasPositionTransformation && existingQty != 0)
-        {
-            totalCashImpact += ApplyPositionTransformation(assetEvent, existingQty, targetSymbol);
-        }
-
-        if (totalCashImpact == 0m && existingQty == 0)
-            return;
-
-        if (Cash < 0)
-            MarginBalance = Math.Min(MarginBalance, Cash);
-
-        _cashFlows.Add(new AssetEventCashFlow(
-            assetEvent.EffectiveAt,
-            totalCashImpact,
-            symbol,
-            assetEvent.EventType,
-            impactedUnits,
-            assetEvent.CashPerShare,
-            assetEvent.TargetSymbol,
-            assetEvent.PositionFactor,
-            assetEvent.Description));
     }
 
     // ── Day-end accruals ─────────────────────────────────────────────────────
@@ -312,15 +319,16 @@ internal sealed class SimulatedPortfolio
 
     // ── Private helpers ──────────────────────────────────────────────────────
 
-    private decimal ApplyPerShareCashAdjustment(AssetEvent assetEvent, long quantity)
+    private decimal ApplyPerShareCashAdjustment(AccountState account, AssetEvent assetEvent, long quantity)
     {
         var amount = quantity * assetEvent.CashPerShare;
-        Cash += amount;
+        account.Cash += amount;
+        account.MarginBalance = account.Cash < 0m ? account.Cash : 0m;
         PostAssetCashLedgerEntry(assetEvent, amount, quantity, assetEvent.Symbol, assetEvent.TargetSymbol);
         return amount;
     }
 
-    private decimal ApplyPositionTransformation(AssetEvent assetEvent, long existingQty, string targetSymbol)
+    private decimal ApplyPositionTransformation(AccountState account, AssetEvent assetEvent, long existingQty, string targetSymbol)
     {
         var factor = assetEvent.PositionFactor;
         if (factor == 0m)
@@ -329,38 +337,39 @@ internal sealed class SimulatedPortfolio
         var transformedQtyDecimal = existingQty * factor;
         var transformedQty = ConvertToWholeUnits(transformedQtyDecimal);
         var fractionalUnits = transformedQtyDecimal - transformedQty;
-        var referencePrice = ResolveReferencePrice(assetEvent, existingQty, factor);
+        var referencePrice = ResolveReferencePrice(account, assetEvent, existingQty, factor);
         var cashInLieu = fractionalUnits * referencePrice;
 
-        var transformedLongLots = TransformLots(_lots.GetValueOrDefault(assetEvent.Symbol), factor);
-        var transformedShortLots = TransformLots(_shortLots.GetValueOrDefault(assetEvent.Symbol), factor);
-        var transformedRealized = _realizedPnl.GetValueOrDefault(assetEvent.Symbol);
-        var existingTargetRealized = _realizedPnl.GetValueOrDefault(targetSymbol);
+        var transformedLongLots = TransformLots(account.Lots.GetValueOrDefault(assetEvent.Symbol), factor);
+        var transformedShortLots = TransformLots(account.ShortLots.GetValueOrDefault(assetEvent.Symbol), factor);
+        var transformedRealized = account.RealizedPnl.GetValueOrDefault(assetEvent.Symbol);
+        var existingTargetRealized = account.RealizedPnl.GetValueOrDefault(targetSymbol);
         var transformedPrice = referencePrice > 0m ? referencePrice : _lastPrices.GetValueOrDefault(assetEvent.Symbol, 0m);
 
-        RemoveSymbolState(assetEvent.Symbol);
+        RemoveSymbolState(account, assetEvent.Symbol);
 
         if (transformedQty != 0)
         {
-            _positions[targetSymbol] = _positions.GetValueOrDefault(targetSymbol) + transformedQty;
-            MergeLots(_lots, targetSymbol, transformedLongLots);
-            MergeLots(_shortLots, targetSymbol, transformedShortLots);
-            _avgCost[targetSymbol] = ComputeAvgCost(targetSymbol);
-            _realizedPnl[targetSymbol] = existingTargetRealized + transformedRealized;
+            account.Positions[targetSymbol] = account.Positions.GetValueOrDefault(targetSymbol) + transformedQty;
+            MergeLots(account.Lots, targetSymbol, transformedLongLots);
+            MergeLots(account.ShortLots, targetSymbol, transformedShortLots);
+            account.AvgCost[targetSymbol] = ComputeAvgCost(account, targetSymbol);
+            account.RealizedPnl[targetSymbol] = existingTargetRealized + transformedRealized;
             if (transformedPrice > 0m)
                 _lastPrices[targetSymbol] = transformedPrice;
         }
 
         if (cashInLieu != 0m)
         {
-            Cash += cashInLieu;
+            account.Cash += cashInLieu;
+            account.MarginBalance = account.Cash < 0m ? account.Cash : 0m;
             PostAssetCashLedgerEntry(assetEvent, cashInLieu, existingQty, assetEvent.Symbol, targetSymbol, suffix: "cash in lieu");
         }
 
         return cashInLieu;
     }
 
-    private decimal ResolveReferencePrice(AssetEvent assetEvent, long existingQty, decimal factor)
+    private decimal ResolveReferencePrice(AccountState account, AssetEvent assetEvent, long existingQty, decimal factor)
     {
         if (assetEvent.ReferencePrice is { } explicitReference && explicitReference > 0m)
             return explicitReference;
@@ -371,7 +380,7 @@ internal sealed class SimulatedPortfolio
         if (_lastPrices.TryGetValue(assetEvent.Symbol, out var sourcePrice) && sourcePrice > 0m)
             return factor == 0m ? sourcePrice : sourcePrice / Math.Abs(factor);
 
-        var avgCost = _avgCost.GetValueOrDefault(assetEvent.Symbol, 0m);
+        var avgCost = account.AvgCost.GetValueOrDefault(assetEvent.Symbol, 0m);
         if (avgCost > 0m)
             return factor == 0m ? avgCost : avgCost / Math.Abs(factor);
 
@@ -468,28 +477,28 @@ internal sealed class SimulatedPortfolio
             existing.Enqueue(lot);
     }
 
-    private void RemoveSymbolState(string symbol)
+    private void RemoveSymbolState(AccountState account, string symbol)
     {
-        _positions.Remove(symbol);
-        _avgCost.Remove(symbol);
-        _lots.Remove(symbol);
-        _shortLots.Remove(symbol);
+        account.Positions.Remove(symbol);
+        account.AvgCost.Remove(symbol);
+        account.Lots.Remove(symbol);
+        account.ShortLots.Remove(symbol);
         _lastPrices.Remove(symbol);
-        _realizedPnl.Remove(symbol);
+        account.RealizedPnl.Remove(symbol);
     }
 
-    private void CleanupSymbolIfFlat(string symbol)
+    private static void CleanupSymbolIfFlat(AccountState account, string symbol)
     {
-        if (_positions.GetValueOrDefault(symbol) != 0)
+        if (account.Positions.GetValueOrDefault(symbol) != 0)
             return;
 
-        _positions.Remove(symbol);
-        _avgCost.Remove(symbol);
+        account.Positions.Remove(symbol);
+        account.AvgCost.Remove(symbol);
 
-        if (_lots.TryGetValue(symbol, out var lots) && lots.Count == 0)
-            _lots.Remove(symbol);
-        if (_shortLots.TryGetValue(symbol, out var shortLots) && shortLots.Count == 0)
-            _shortLots.Remove(symbol);
+        if (account.Lots.TryGetValue(symbol, out var lots) && lots.Count == 0)
+            account.Lots.Remove(symbol);
+        if (account.ShortLots.TryGetValue(symbol, out var shortLots) && shortLots.Count == 0)
+            account.ShortLots.Remove(symbol);
     }
 
     private void PostFillLedgerEntries(
