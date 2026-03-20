@@ -1,8 +1,8 @@
 name: Fix Build Errors Identified By Ci
 description: Fix build errors identified by CI
 # Auto-generated prompt from workflow results - test-matrix
-# Generated: 2026-03-19
-# Source: https://github.com/rodoHasArrived/Meridian/actions/runs/23322476846
+# Generated: 2026-03-20
+# Source: https://github.com/rodoHasArrived/Meridian/actions/runs/23328781150
 # Model-agnostic prompt - works with any capable LLM
 messages:
   - role: system
@@ -25,26 +25,24 @@ messages:
       ## Error Codes Found
       - `CS0103`
       - `CS0104`
-      - `CS0118`
-      - `CS0219`
-      - `CS0234`
+      - `CS0200`
       - `CS0246`
-      - `CS0535`
+      - `CS0738`
       - `CS1061`
-      - `CS1574`
-      - `CS8300`
+      - `CS1503`
+      - `CS7036`
 
       ## Failure Patterns
-      - `2026-03-19T23:52:31.5167673Z ##[error]D:\a\Meridian\Meridian\tests\Meridian.Ui.Tests\Collections\BoundedObservableCollectionTests.cs(166,35): error CS1061: 'NumericAssertions<int>' does not contain a ...`
-      - `2026-03-19T23:52:31.5195453Z ##[error]D:\a\Meridian\Meridian\tests\Meridian.Ui.Tests\Services\TimeSeriesAlignmentServiceTests.cs(173,28): error CS1061: 'GenericCollectionAssertions<AlignmentInterval>'...`
-      - `2026-03-19T23:52:31.5247401Z ##[error]D:\a\Meridian\Meridian\tests\Meridian.Ui.Tests\Services\TimeSeriesAlignmentServiceTests.cs(190,26): error CS1061: 'GenericCollectionAssertions<AggregationMethod>'...`
-      - `2026-03-19T23:52:31.5260507Z ##[error]D:\a\Meridian\Meridian\tests\Meridian.Ui.Tests\Services\TimeSeriesAlignmentServiceTests.cs(206,29): error CS1061: 'GenericCollectionAssertions<GapHandlingStrategy...`
-      - `2026-03-19T23:52:31.5427539Z ##[error]D:\a\Meridian\Meridian\tests\Meridian.Ui.Tests\Services\TimeSeriesAlignmentServiceTests.cs(223,26): error CS1061: 'GenericCollectionAssertions<AlignmentPreset>' d...`
-      - `2026-03-19T23:52:31.5454782Z ##[error]D:\a\Meridian\Meridian\tests\Meridian.Ui.Tests\Services\ActivityFeedServiceTests.cs(349,49): error CS1061: 'GenericCollectionAssertions<ActivityType>' does not co...`
-      - `2026-03-19T23:52:31.5469198Z ##[error]D:\a\Meridian\Meridian\tests\Meridian.Ui.Tests\Services\AlertServiceTests.cs(251,48): error CS1061: 'NumericAssertions<int>' does not contain a definition for 'Be...`
-      - `2026-03-19T23:52:31.5492433Z ##[error]D:\a\Meridian\Meridian\tests\Meridian.Ui.Tests\Services\BackfillProviderConfigServiceTests.cs(55,40): error CS1061: 'NumericAssertions<int>' does not contain a de...`
-      - `2026-03-19T23:52:31.5500842Z ##[error]D:\a\Meridian\Meridian\tests\Meridian.Ui.Tests\Services\BackfillProviderConfigServiceTests.cs(230,26): error CS1061: 'GenericCollectionAssertions<ProviderConfigAu...`
-      - `2026-03-19T23:52:31.5509855Z ##[error]D:\a\Meridian\Meridian\tests\Meridian.Ui.Tests\Services\ChartingServiceTests.cs(227,29): error CS1061: 'GenericCollectionAssertions<TechnicalIndicatorInfo>' does ...`
+      - `2026-03-20T04:17:38.4845170Z ##[error]D:\a\Meridian\Meridian\src\Meridian.Ui.Services\Services\DataQuality\IDataQualityApiClient.cs(22,10): error CS0246: The type or namespace name 'QualityCheckResult...`
+      - `2026-03-20T04:17:38.5000289Z ##[error]D:\a\Meridian\Meridian\src\Meridian.Ui.Services\Services\DataQuality\DataQualityApiClient.cs(13,68): error CS0738: 'DataQualityApiClient' does not implement inter...`
+      - `2026-03-20T04:17:58.6365812Z ##[error]D:\a\Meridian\Meridian\src\Meridian.Backtesting\Portfolio\SimulatedPortfolio.cs(180,9): error CS7036: There is no argument given that corresponds to the required ...`
+      - `2026-03-20T04:17:58.6702502Z ##[error]D:\a\Meridian\Meridian\src\Meridian.Backtesting\Portfolio\SimulatedPortfolio.cs(190,27): error CS0103: The name '_positions' does not exist in the current context...`
+      - `2026-03-20T04:17:58.6850068Z ##[error]D:\a\Meridian\Meridian\src\Meridian.Backtesting\Portfolio\SimulatedPortfolio.cs(208,13): error CS0200: Property or indexer 'SimulatedPortfolio.MarginBalance' cann...`
+      - `2026-03-20T04:17:58.7027641Z ##[error]D:\a\Meridian\Meridian\src\Meridian.Backtesting\Engine\BacktestEngine.cs(43,44): error CS1061: 'BacktestRequest' does not contain a definition for 'AssetEvents' a...`
+      - `2026-03-20T04:17:58.7383007Z ##[error]D:\a\Meridian\Meridian\src\Meridian.Backtesting\Engine\BacktestEngine.cs(66,62): error CS1061: 'BacktestRequest' does not contain a definition for 'AssetEvents' a...`
+      - `2026-03-20T04:17:58.7665305Z ##[error]D:\a\Meridian\Meridian\src\Meridian.Backtesting\Engine\BacktestEngine.cs(114,57): error CS1503: Argument 3: cannot convert from 'Meridian.Backtesting.Engine.Backt...`
+      - `2026-03-20T04:17:58.8050445Z ##[error]D:\a\Meridian\Meridian\src\Meridian.Backtesting\Engine\BacktestEngine.cs(114,62): error CS1503: Argument 4: cannot convert from 'Meridian.Backtesting.Sdk.IBacktes...`
+      - `2026-03-20T04:17:58.8082708Z ##[error]D:\a\Meridian\Meridian\src\Meridian.Backtesting\Engine\BacktestEngine.cs(114,72): error CS1503: Argument 5: cannot convert from 'System.Collections.Generic.List<M...`
 
       ## Resolution Approach
       1. Read the error messages and stack traces carefully
