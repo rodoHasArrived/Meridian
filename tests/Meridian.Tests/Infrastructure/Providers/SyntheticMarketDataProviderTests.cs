@@ -62,9 +62,9 @@ public sealed class SyntheticMarketDataProviderTests
         client.UnsubscribeMarketDepth(depthSub);
         await client.DisconnectAsync();
 
-        publisher.Events.Should().Contain(e => e.EventType == Meridian.Contracts.Domain.Enums.MarketEventType.Trade);
-        publisher.Events.Should().Contain(e => e.EventType == Meridian.Contracts.Domain.Enums.MarketEventType.BboQuote);
-        publisher.Events.Should().Contain(e => e.EventType == Meridian.Contracts.Domain.Enums.MarketEventType.L2Snapshot);
+        publisher.Events.Should().Contain(e => e.Type == Meridian.Contracts.Domain.Enums.MarketEventType.Trade);
+        publisher.Events.Should().Contain(e => e.Type == Meridian.Contracts.Domain.Enums.MarketEventType.BboQuote);
+        publisher.Events.Should().Contain(e => e.Type == Meridian.Contracts.Domain.Enums.MarketEventType.L2Snapshot);
         publisher.Events.Should().Contain(e => e.Symbol == "AAPL");
         publisher.Events.OfType<MarketEvent>().Where(e => e.Payload is LOBSnapshot).Should().OnlyContain(e => ((LOBSnapshot)e.Payload).Bids.Count == 5);
     }
