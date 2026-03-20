@@ -253,7 +253,8 @@ Meridian/
 │       │   ├── validate-api-docs.py
 │       │   ├── validate-docs-structure.py
 │       │   ├── validate-examples.py
-│       │   └── validate-golden-path.sh
+│       │   ├── validate-golden-path.sh
+│       │   └── validate-skill-packages.py
 │       ├── hooks/
 │       │   ├── commit-msg
 │       │   ├── install-hooks.sh

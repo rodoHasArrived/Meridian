@@ -4,7 +4,7 @@
 
 # GitHub Workflows Overview
 
-> Auto-generated on 2026-03-20 17:21:50 UTC
+> Auto-generated on 2026-03-20 18:04:34 UTC
 
 This document provides an overview of all GitHub Actions workflows in the repository.
 
@@ -29,7 +29,7 @@ This document provides an overview of all GitHub Actions workflows in the reposi
 | Labeling | `labeling.yml` | PR, manual |
 | Maintenance Checks | `maintenance.yml` | push, PR, manual, scheduled |
 | Maintenance Self-Test | `maintenance-self-test.yml` | PR, manual |
-| Makefile CI | `makefile.yml` | push, PR |
+| Makefile CI | `makefile.yml` | push, PR, manual |
 | Mark Stale Issues and PRs | `stale.yml` | manual, scheduled |
 | Nightly Testing | `nightly.yml` | manual, scheduled |
 | Prompt Generation | `prompt-generation.yml` | manual |
