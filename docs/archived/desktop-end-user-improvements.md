@@ -3,8 +3,10 @@
 ## Market Data Collector — Desktop UX Assessment
 
 **Date:** 2026-03-12 (Updated)
-**Status:** Evaluation Complete — All Sections Documented, Significant Implementation Progress
+**Status:** Archived — superseded by active desktop evaluations and implementation guides
 **Author:** Architecture Review
+
+> **Archived:** This assessment is preserved for historical reference. For current desktop guidance, start with [Desktop Improvements Executive Summary](../evaluations/desktop-improvements-executive-summary.md), [Desktop Platform Improvements Guide](../evaluations/desktop-platform-improvements-implementation-guide.md), and [Windows Desktop Provider Configurability](../evaluations/windows-desktop-provider-configurability-assessment.md).
 
 ---
 

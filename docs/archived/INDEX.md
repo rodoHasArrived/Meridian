@@ -1,6 +1,6 @@
 # Archived Documentation Index
 
-**Last Updated:** 2026-03-15
+**Last Updated:** 2026-03-20
 
 This folder contains historical documentation that has been superseded by newer guides or is no longer actively maintained. These documents are preserved for historical reference and to understand the evolution of the project.
 
@@ -78,7 +78,8 @@ Documents are archived when:
 
 | Document | Date Archived | Reason | Current Reference |
 |----------|---------------|--------|-------------------|
-| **desktop-end-user-improvements-shortlist.md** | 2026-03-04 | Subset of full desktop evaluation | [Desktop End-User Improvements](../archive/desktop-end-user-improvements.md) |
+| **desktop-end-user-improvements.md** | 2026-03-20 | Full desktop UX assessment superseded by the active desktop evaluation set | [Desktop Improvements Executive Summary](../evaluations/desktop-improvements-executive-summary.md) |
+| **desktop-end-user-improvements-shortlist.md** | 2026-03-04 | Subset of full desktop evaluation | [Desktop End-User Improvements](./desktop-end-user-improvements.md) |
 
 ### Design Documents
 

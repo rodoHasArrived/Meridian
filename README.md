@@ -217,7 +217,7 @@ Meridian is built on **.NET 9.0** using **C# 13** and **F# 8.0** across **704 so
 - ⚠️ Some providers require credentials or build flags (Interactive Brokers needs `IBAPI` constant; NYSE/Polygon need API keys)
 - 📝 End-to-end OpenTelemetry trace propagation and multi-instance coordination (planned for Phase 13–15)
 
-**For detailed status:** See [docs/status/production-status.md](docs/status/production-status.md), [docs/status/FEATURE_INVENTORY.md](docs/status/FEATURE_INVENTORY.md), and [docs/status/ROADMAP.md](docs/status/ROADMAP.md).
+**For detailed status:** See [docs/status/production-status.md](docs/status/production-status.md), [docs/status/FEATURE_INVENTORY.md](docs/status/FEATURE_INVENTORY.md), and [docs/status/ROADMAP.md](docs/status/ROADMAP.md). Historical and deprecated documentation is centralized in [docs/archived/INDEX.md](docs/archived/INDEX.md).
 
 ## Pillar Details
 

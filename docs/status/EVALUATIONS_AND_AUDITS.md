@@ -256,8 +256,8 @@ This document consolidates all architecture evaluations, code audits, desktop as
 
 ### Desktop UX Assessment
 
-> Source: `docs/evaluations/desktop-end-user-improvements.md`
-> Date: 2026-02-21 | Status: Partial Implementation In Progress
+> Source: `docs/archived/desktop-end-user-improvements.md`
+> Date: 2026-03-20 | Status: Archived historical assessment
 
 **Scope:** 49 XAML pages, 104 services (72 shared + 32 WPF-specific), 1,266 tests
 
@@ -747,7 +747,7 @@ All source documents that feed into this consolidation:
 | Historical Data Providers Evaluation | `docs/evaluations/historical-data-providers-evaluation.md` | Evaluation | Current |
 | Ingestion Orchestration Evaluation | `docs/evaluations/ingestion-orchestration-evaluation.md` | Evaluation | Current |
 | Operational Readiness Evaluation | `docs/evaluations/operational-readiness-evaluation.md` | Evaluation | Current |
-| Desktop End-User Improvements | `docs/evaluations/desktop-end-user-improvements.md` | Assessment | Current |
+| Desktop End-User Improvements | `docs/archived/desktop-end-user-improvements.md` | Assessment | Archived |
 | Desktop Provider Configurability | `docs/evaluations/windows-desktop-provider-configurability-assessment.md` | Assessment | Current |
 | High-Impact Improvement Brainstorm (Mar 2026) | `docs/evaluations/high-impact-improvement-brainstorm-2026-03.md` | Brainstorm | Active |
 | High-Impact Improvements Brainstorm | `docs/evaluations/high-impact-improvements-brainstorm.md` | Brainstorm | Active |
