@@ -1,45 +1,15 @@
-name: Fix Test Failures Identified By Ci
-description: Fix test failures identified by CI
-# Auto-generated prompt from workflow results - test-matrix
-# Generated: 2026-03-19
-# Source: https://github.com/rodoHasArrived/Meridian/actions/runs/23317515114
+name: {name}
+description: {description}
+# Auto-generated prompt from workflow results - {workflow_name}
+# Generated: {now}
+# Source: {run_url}
 # Model-agnostic prompt - works with any capable LLM
 messages:
   - role: system
     content: |
-      You are a senior .NET developer fixing test failures in a market data collection system.
+{system_content}
 
-      ## Test Framework
-      - xUnit for test framework
-      - FluentAssertions for assertions
-      - Moq / NSubstitute for mocking
-      - Tests in tests/Meridian.Tests/ and tests/Meridian.FSharp.Tests/
-
-      ## Test Patterns
-      - Arrange-Act-Assert structure
-      - Mock external dependencies (providers, storage)
-      - Test edge cases: null inputs, empty collections, boundary values
-      - Run tests: `dotnet test tests/Meridian.Tests`
-
-      ## Error Codes Found
-      - `CS0118`
-      - `CS0219`
-      - `CS0234`
-      - `CS0246`
-      - `CS0535`
-      - `CS1061`
-
-      ## Failure Patterns
-      - `2026-03-19T21:23:52.2397870Z Failed!  - Failed:     1, Passed:  2845, Skipped:     0, Total:  2846, Duration: 17 s - Meridian.Tests.dll (net9.0)`
-      - `2026-03-19T21:24:29.3496476Z Failed!  - Failed:     1, Passed:  2845, Skipped:     0, Total:  2846, Duration: 14 s - Meridian.Tests.dll (net9.0)`
-      - `2026-03-19T21:23:38.1105740Z [xUnit.net 00:00:03.75]     Meridian.Tests.Storage.WriteAheadLogFuzzTests.RepairAsync_TruncatedLastRecord_RewritesFileWithOnlyValidRecords [FAIL]`
-      - `2026-03-19T21:24:18.2257053Z [xUnit.net 00:00:06.73]     Meridian.Tests.Storage.WriteAheadLogFuzzTests.RepairAsync_TruncatedLastRecord_RewritesFileWithOnlyValidRecords [FAIL]`
-
-      ## Failed Tests
-      - `2026-03-19T21:23:38.1192990Z   Failed Meridian.Tests.Storage.WriteAheadLogFuzzTests.RepairAsync_TruncatedLastRecord_RewritesFileWithOnlyValidRecords [22 ms]`
-      - `2026-03-19T21:24:18.2302621Z   Failed Meridian.Tests.Storage.WriteAheadLogFuzzTests.RepairAsync_TruncatedLastRecord_RewritesFileWithOnlyValidRecords [25 ms]`
-      - `Meridian.Tests.Storage.WriteAheadLogFuzzTests.RepairAsync_TruncatedLastRecord_RewritesFileWithOnlyValidRecords`
-
+{error_context}
       ## Resolution Approach
       1. Read the error messages and stack traces carefully
       2. Identify the root cause (not just symptoms)
@@ -50,15 +20,15 @@ messages:
 
   - role: user
     content: |
-      The CI workflow `test-matrix` has reported failures that need attention.
+      The CI workflow `{workflow_name}` has reported failures that need attention.
 
       Error details:
       ```
-      {{error_details}}
+      {{{{error_details}}}}
       ```
 
       Affected files:
-      {{affected_files}}
+      {{{{affected_files}}}}
 
       Please provide:
       1. Root cause analysis of each failure
