@@ -538,6 +538,7 @@ Meridian/
 │   │   ├── codebase-audit-cleanup-roadmap.md
 │   │   ├── l3-inference-implementation-plan.md
 │   │   ├── quant-script-environment-blueprint.md
+│   │   ├── readability-refactor-baseline.md
 │   │   ├── readability-refactor-roadmap.md
 │   │   ├── readability-refactor-technical-design-pack.md
 │   │   └── trading-workstation-migration-blueprint.md
@@ -601,6 +602,7 @@ Meridian/
 │   │   │   └── templates/
 │   │   │       ...
 │   │   ├── app.manifest
+│   │   ├── DashboardServerBridge.cs
 │   │   ├── GlobalUsings.cs
 │   │   ├── Meridian.csproj
 │   │   ├── Program.cs
@@ -640,6 +642,8 @@ Meridian/
 │   │   │   ├── ValidateConfigCommand.cs
 │   │   │   └── WalRepairCommand.cs
 │   │   ├── Composition/
+│   │   │   ├── Startup/
+│   │   │   │   ...
 │   │   │   ├── CircuitBreakerCallbackRouter.cs
 │   │   │   ├── HostAdapters.cs
 │   │   │   ├── HostStartup.cs
@@ -806,6 +810,8 @@ Meridian/
 │   │   └── StrategyParameterAttribute.cs
 │   ├── Meridian.Contracts/
 │   │   ├── Api/
+│   │   │   ├── Quality/
+│   │   │   │   ...
 │   │   │   ├── BackfillApiModels.cs
 │   │   │   ├── ClientModels.cs
 │   │   │   ├── ErrorResponse.cs
@@ -973,6 +979,8 @@ Meridian/
 │   │   │   ├── Aggregations.fs
 │   │   │   ├── Imbalance.fs
 │   │   │   └── Spread.fs
+│   │   ├── Canonicalization/
+│   │   │   └── MappingRules.fs
 │   │   ├── Domain/
 │   │   │   ├── Integrity.fs
 │   │   │   ├── MarketEvents.fs
@@ -1246,6 +1254,7 @@ Meridian/
 │   │   │   ├── INotificationService.cs
 │   │   │   ├── IOfflineTrackingPersistenceService.cs
 │   │   │   ├── IPendingOperationsQueueService.cs
+│   │   │   ├── IRefreshScheduler.cs
 │   │   │   ├── ISchemaService.cs
 │   │   │   ├── IStatusService.cs
 │   │   │   ├── IThemeService.cs
@@ -1279,6 +1288,7 @@ Meridian/
 │   │   │   ├── CredentialService.cs
 │   │   │   ├── DataCalendarService.cs
 │   │   │   ├── DataCompletenessService.cs
+│   │   │   ├── DataQualityRefreshCoordinator.cs
 │   │   │   ├── DataQualityServiceBase.cs
 │   │   │   ├── DataSamplingService.cs
 │   │   │   ├── DesktopJsonOptions.cs
@@ -1306,6 +1316,7 @@ Meridian/
 │   │   │   ├── OnboardingTourService.cs
 │   │   │   ├── OperationResult.cs
 │   │   │   ├── OrderBookVisualizationService.cs
+│   │   │   ├── PeriodicRefreshScheduler.cs
 │   │   │   ├── PortablePackagerService.cs
 │   │   │   ├── PortfolioImportService.cs
 │   │   │   ├── ProviderHealthService.cs
@@ -1581,6 +1592,7 @@ Meridian/
 │   │   └── XirrCalculatorTests.cs
 │   ├── Meridian.FSharp.Tests/
 │   │   ├── CalculationTests.fs
+│   │   ├── CanonicalizationTests.fs
 │   │   ├── DomainTests.fs
 │   │   ├── Meridian.FSharp.Tests.fsproj
 │   │   ├── PipelineTests.fs
@@ -1706,6 +1718,7 @@ Meridian/
 │   │   │   ├── CredentialServiceTests.cs
 │   │   │   ├── DataCalendarServiceTests.cs
 │   │   │   ├── DataCompletenessServiceTests.cs
+│   │   │   ├── DataQualityRefreshCoordinatorTests.cs
 │   │   │   ├── DataQualityServiceBaseTests.cs
 │   │   │   ├── DataSamplingServiceTests.cs
 │   │   │   ├── DiagnosticsServiceTests.cs
@@ -1760,6 +1773,8 @@ Meridian/
 │   │   │   ├── TooltipServiceTests.cs
 │   │   │   ├── WatchlistServiceTests.cs
 │   │   │   └── WorkspaceServiceTests.cs
+│   │   ├── ViewModels/
+│   │   │   └── DataQualityViewModelCharacterizationTests.cs
 │   │   ├── GlobalUsings.cs
 │   │   └── Meridian.Wpf.Tests.csproj
 │   ├── scripts/  # Automation scripts
