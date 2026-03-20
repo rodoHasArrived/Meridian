@@ -765,9 +765,9 @@ public sealed class NYSEDataSource : DataSourceBase, IRealtimeDataSource, IHisto
 
             try
             {
-                // Pass reconnectCt so that a shutdown signal also cancels the connect operation itself,
-                // not just the backoff delay.  ConnectAsync no longer resets _reconnectCts so
-                // reconnectCt remains valid for the duration of the connect call.
+                // Pass reconnectCt so that a shutdown signal also cancels the connect operation
+                // itself, not just the backoff delay.  ConnectAsync no longer resets _reconnectCts
+                // so reconnectCt remains valid for the duration of the connect call.
                 await ConnectAsync(reconnectCt).ConfigureAwait(false);
                 MigrationDiagnostics.IncReconnectSuccess("nyse");
                 return;
