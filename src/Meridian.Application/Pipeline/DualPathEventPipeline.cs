@@ -342,7 +342,7 @@ public sealed class DualPathEventPipeline : IMarketEventPublisher, IBackpressure
     // Consumer loops
     // -------------------------------------------------------------------------
 
-    private async Task ConsumeTradesAsync()
+    private async Task ConsumeTradesAsync(CancellationToken ct = default)
     {
         ThreadingUtilities.SetAboveNormalPriority();
 
@@ -382,7 +382,7 @@ public sealed class DualPathEventPipeline : IMarketEventPublisher, IBackpressure
         }
     }
 
-    private async Task ConsumeQuotesAsync()
+    private async Task ConsumeQuotesAsync(CancellationToken ct = default)
     {
         ThreadingUtilities.SetAboveNormalPriority();
 

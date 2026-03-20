@@ -721,7 +721,7 @@ public sealed class NYSEDataSource : DataSourceBase, IRealtimeDataSource, IHisto
 
     #region WebSocket Message Handling
 
-    private async Task OnWsConnectionLostAsync()
+    private async Task OnWsConnectionLostAsync(CancellationToken ct = default)
     {
         Status = DataSourceStatus.Disconnected;
 

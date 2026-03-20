@@ -84,6 +84,7 @@ Meridian/
 │   │   │   ├── CHANGELOG.md
 │   │   │   └── SKILL.md
 │   │   └── skills_provider.py
+│   ├── settings.json
 │   └── settings.local.json
 ├── .devcontainer/
 │   └── devcontainer.json
@@ -407,6 +408,7 @@ Meridian/
 │   │   ├── documentation-automation.md
 │   │   ├── documentation-contribution-guide.md
 │   │   ├── expanding-scripts.md
+│   │   ├── fsharp-decision-rule.md
 │   │   ├── github-actions-summary.md
 │   │   ├── github-actions-testing.md
 │   │   ├── provider-implementation.md
@@ -480,7 +482,11 @@ Meridian/
 │   │   ├── resilience-patterns.svg
 │   │   ├── storage-architecture.dot
 │   │   ├── storage-architecture.png
-│   │   └── storage-architecture.svg
+│   │   ├── storage-architecture.svg
+│   │   ├── ui-implementation-flow.dot
+│   │   ├── ui-implementation-flow.svg
+│   │   ├── ui-navigation-map.dot
+│   │   └── ui-navigation-map.svg
 │   ├── docfx/
 │   │   ├── docfx.json
 │   │   └── README.md
@@ -531,7 +537,11 @@ Meridian/
 │   │   ├── assembly-performance-roadmap.md
 │   │   ├── codebase-audit-cleanup-roadmap.md
 │   │   ├── l3-inference-implementation-plan.md
-│   │   └── quant-script-environment-blueprint.md
+│   │   ├── quant-script-environment-blueprint.md
+│   │   ├── readability-refactor-baseline.md
+│   │   ├── readability-refactor-roadmap.md
+│   │   ├── readability-refactor-technical-design-pack.md
+│   │   └── trading-workstation-migration-blueprint.md
 │   ├── providers/
 │   │   ├── alpaca-setup.md
 │   │   ├── backfill-guide.md
@@ -573,9 +583,14 @@ Meridian/
 │   │   ├── maintenance.sh
 │   │   ├── route-maintenance.sh
 │   │   └── setup-ai-agent.sh
-│   └── dev/
-│       ├── desktop-dev.ps1
-│       └── diagnose-uwp-xaml.ps1
+│   ├── dev/
+│   │   ├── desktop-dev.ps1
+│   │   └── diagnose-uwp-xaml.ps1
+│   ├── lib/
+│   │   ├── ui-diagram-generator.mjs
+│   │   └── ui-diagram-generator.test.mjs
+│   ├── compare_benchmarks.py
+│   └── generate-diagrams.mjs
 ├── src/  # Source code
 │   ├── Meridian/
 │   │   ├── Integrations/
@@ -587,6 +602,7 @@ Meridian/
 │   │   │   └── templates/
 │   │   │       ...
 │   │   ├── app.manifest
+│   │   ├── DashboardServerBridge.cs
 │   │   ├── GlobalUsings.cs
 │   │   ├── Meridian.csproj
 │   │   ├── Program.cs
@@ -626,6 +642,10 @@ Meridian/
 │   │   │   ├── ValidateConfigCommand.cs
 │   │   │   └── WalRepairCommand.cs
 │   │   ├── Composition/
+│   │   │   ├── Features/
+│   │   │   │   ...
+│   │   │   ├── Startup/
+│   │   │   │   ...
 │   │   │   ├── CircuitBreakerCallbackRouter.cs
 │   │   │   ├── HostAdapters.cs
 │   │   │   ├── HostStartup.cs
@@ -754,7 +774,8 @@ Meridian/
 │   │   ├── FillModels/
 │   │   │   ├── BarMidpointFillModel.cs
 │   │   │   ├── IFillModel.cs
-│   │   │   └── OrderBookFillModel.cs
+│   │   │   ├── OrderBookFillModel.cs
+│   │   │   └── OrderFillResult.cs
 │   │   ├── Metrics/
 │   │   │   ├── BacktestMetricsEngine.cs
 │   │   │   └── XirrCalculator.cs
@@ -773,11 +794,14 @@ Meridian/
 │   │   │   ├── LedgerAccounts.cs
 │   │   │   ├── LedgerAccountType.cs
 │   │   │   └── LedgerEntry.cs
+│   │   ├── AssetEvent.cs
 │   │   ├── BacktestProgressEvent.cs
 │   │   ├── BacktestRequest.cs
 │   │   ├── BacktestResult.cs
 │   │   ├── CashFlowEntry.cs
 │   │   ├── FillEvent.cs
+│   │   ├── FinancialAccount.cs
+│   │   ├── FinancialAccountSnapshot.cs
 │   │   ├── GlobalUsings.cs
 │   │   ├── IBacktestContext.cs
 │   │   ├── IBacktestStrategy.cs
@@ -788,6 +812,8 @@ Meridian/
 │   │   └── StrategyParameterAttribute.cs
 │   ├── Meridian.Contracts/
 │   │   ├── Api/
+│   │   │   ├── Quality/
+│   │   │   │   ...
 │   │   │   ├── BackfillApiModels.cs
 │   │   │   ├── ClientModels.cs
 │   │   │   ├── ErrorResponse.cs
@@ -858,6 +884,7 @@ Meridian/
 │   │   │   ├── DerivativesConfig.cs
 │   │   │   ├── IConfigurationProvider.cs
 │   │   │   ├── StockSharpConfig.cs
+│   │   │   ├── SyntheticMarketDataConfig.cs
 │   │   │   └── ValidatedConfig.cs
 │   │   ├── Exceptions/
 │   │   │   ├── ConfigurationException.cs
@@ -921,6 +948,8 @@ Meridian/
 │   ├── Meridian.Execution/
 │   │   ├── Adapters/
 │   │   │   └── PaperTradingGateway.cs
+│   │   ├── Exceptions/
+│   │   │   └── UnsupportedOrderRequestException.cs
 │   │   ├── Interfaces/
 │   │   │   ├── IExecutionContext.cs
 │   │   │   ├── ILiveFeedAdapter.cs
@@ -930,6 +959,7 @@ Meridian/
 │   │   │   ├── ExecutionPosition.cs
 │   │   │   ├── IPortfolioState.cs
 │   │   │   ├── OrderAcknowledgement.cs
+│   │   │   ├── OrderGatewayCapabilities.cs
 │   │   │   ├── OrderStatus.cs
 │   │   │   ├── OrderStatusUpdate.cs
 │   │   │   └── OrderType.cs
@@ -951,6 +981,8 @@ Meridian/
 │   │   │   ├── Aggregations.fs
 │   │   │   ├── Imbalance.fs
 │   │   │   └── Spread.fs
+│   │   ├── Canonicalization/
+│   │   │   └── MappingRules.fs
 │   │   ├── Domain/
 │   │   │   ├── Integrity.fs
 │   │   │   ├── MarketEvents.fs
@@ -994,6 +1026,8 @@ Meridian/
 │   │   │   │   ...
 │   │   │   ├── Stooq/
 │   │   │   │   ...
+│   │   │   ├── Synthetic/
+│   │   │   │   ...
 │   │   │   ├── Tiingo/
 │   │   │   │   ...
 │   │   │   ├── TwelveData/
@@ -1030,12 +1064,16 @@ Meridian/
 │   │   ├── GlobalUsings.cs
 │   │   ├── IReadOnlyLedger.cs
 │   │   ├── JournalEntry.cs
+│   │   ├── JournalEntryMetadata.cs
 │   │   ├── Ledger.cs
 │   │   ├── LedgerAccount.cs
 │   │   ├── LedgerAccounts.cs
 │   │   ├── LedgerAccountSummary.cs
 │   │   ├── LedgerAccountType.cs
+│   │   ├── LedgerBalancePoint.cs
 │   │   ├── LedgerEntry.cs
+│   │   ├── LedgerQuery.cs
+│   │   ├── LedgerSnapshot.cs
 │   │   ├── LedgerValidationException.cs
 │   │   └── Meridian.Ledger.csproj
 │   ├── Meridian.Mcp/
@@ -1218,12 +1256,15 @@ Meridian/
 │   │   │   ├── INotificationService.cs
 │   │   │   ├── IOfflineTrackingPersistenceService.cs
 │   │   │   ├── IPendingOperationsQueueService.cs
+│   │   │   ├── IRefreshScheduler.cs
 │   │   │   ├── ISchemaService.cs
 │   │   │   ├── IStatusService.cs
 │   │   │   ├── IThemeService.cs
 │   │   │   ├── IWatchlistService.cs
 │   │   │   └── NavigationTypes.cs
 │   │   ├── Services/
+│   │   │   ├── DataQuality/
+│   │   │   │   ...
 │   │   │   ├── ActivityFeedService.cs
 │   │   │   ├── AdminMaintenanceModels.cs
 │   │   │   ├── AdminMaintenanceServiceBase.cs
@@ -1251,6 +1292,7 @@ Meridian/
 │   │   │   ├── CredentialService.cs
 │   │   │   ├── DataCalendarService.cs
 │   │   │   ├── DataCompletenessService.cs
+│   │   │   ├── DataQualityRefreshCoordinator.cs
 │   │   │   ├── DataQualityServiceBase.cs
 │   │   │   ├── DataSamplingService.cs
 │   │   │   ├── DesktopJsonOptions.cs
@@ -1278,6 +1320,7 @@ Meridian/
 │   │   │   ├── OnboardingTourService.cs
 │   │   │   ├── OperationResult.cs
 │   │   │   ├── OrderBookVisualizationService.cs
+│   │   │   ├── PeriodicRefreshScheduler.cs
 │   │   │   ├── PortablePackagerService.cs
 │   │   │   ├── PortfolioImportService.cs
 │   │   │   ├── ProviderHealthService.cs
@@ -1553,6 +1596,7 @@ Meridian/
 │   │   └── XirrCalculatorTests.cs
 │   ├── Meridian.FSharp.Tests/
 │   │   ├── CalculationTests.fs
+│   │   ├── CanonicalizationTests.fs
 │   │   ├── DomainTests.fs
 │   │   ├── Meridian.FSharp.Tests.fsproj
 │   │   ├── PipelineTests.fs
@@ -1591,6 +1635,8 @@ Meridian/
 │   │   │   ├── Models/
 │   │   │   │   ...
 │   │   │   └── StrongDomainTypeTests.cs
+│   │   ├── Execution/
+│   │   │   └── PaperTradingGatewayTests.cs
 │   │   ├── Infrastructure/
 │   │   │   ├── DataSources/
 │   │   │   │   ...
@@ -1645,6 +1691,9 @@ Meridian/
 │   │   ├── SymbolSearch/
 │   │   │   ├── OpenFigiClientTests.cs
 │   │   │   └── SymbolSearchServiceTests.cs
+│   │   ├── TestData/
+│   │   │   └── Golden/
+│   │   │       ...
 │   │   ├── TestHelpers/
 │   │   │   └── TestMarketEventPublisher.cs
 │   │   ├── GlobalUsings.cs
@@ -1673,6 +1722,7 @@ Meridian/
 │   │   │   ├── CredentialServiceTests.cs
 │   │   │   ├── DataCalendarServiceTests.cs
 │   │   │   ├── DataCompletenessServiceTests.cs
+│   │   │   ├── DataQualityRefreshCoordinatorTests.cs
 │   │   │   ├── DataQualityServiceBaseTests.cs
 │   │   │   ├── DataSamplingServiceTests.cs
 │   │   │   ├── DiagnosticsServiceTests.cs
@@ -1727,10 +1777,15 @@ Meridian/
 │   │   │   ├── TooltipServiceTests.cs
 │   │   │   ├── WatchlistServiceTests.cs
 │   │   │   └── WorkspaceServiceTests.cs
+│   │   ├── ViewModels/
+│   │   │   └── DataQualityViewModelCharacterizationTests.cs
 │   │   ├── GlobalUsings.cs
 │   │   └── Meridian.Wpf.Tests.csproj
+│   ├── scripts/  # Automation scripts
+│   │   └── setup-verification.sh
 │   ├── coverlet.runsettings
 │   ├── Directory.Build.props
+│   ├── setup-script-tests.md
 │   └── xunit.runner.json
 ├── .editorconfig
 ├── .gitignore

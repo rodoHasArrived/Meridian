@@ -522,7 +522,7 @@ public sealed class WebSocketConnectionManager : IAsyncDisposable
         }
     }
 
-    private async Task OnConnectionLostAsync()
+    private async Task OnConnectionLostAsync(CancellationToken ct = default)
     {
         if (ConnectionLost != null)
         {
