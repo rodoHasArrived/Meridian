@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-20 00:02:59 UTC
+> Auto-generated on 2026-03-20 00:09:08 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -324,6 +324,9 @@ Meridian/
 │   │   ├── storage-design.md
 │   │   ├── ui-redesign.md
 │   │   └── why-this-architecture.md
+│   ├── archive/
+│   │   ├── desktop-end-user-improvements.md
+│   │   └── README.md
 │   ├── archived/
 │   │   ├── 2026-02_PR_SUMMARY.md
 │   │   ├── 2026-02_UI_IMPROVEMENTS_SUMMARY.md
@@ -453,7 +456,6 @@ Meridian/
 │   │   ├── 2026-03-brainstorm-next-frontier.md
 │   │   ├── assembly-performance-opportunities.md
 │   │   ├── data-quality-monitoring-evaluation.md
-│   │   ├── desktop-end-user-improvements.md
 │   │   ├── desktop-improvements-executive-summary.md
 │   │   ├── desktop-platform-improvements-implementation-guide.md
 │   │   ├── high-impact-improvement-brainstorm-2026-03.md
