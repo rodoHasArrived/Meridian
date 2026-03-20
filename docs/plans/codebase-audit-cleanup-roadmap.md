@@ -26,7 +26,9 @@ The roadmap is organized into 5 phases, ordered by impact. Phases 1-2 address st
 
 > Fix issues that cause build failures, namespace confusion, or block development.
 
-### 1.1 Migrate MarketDataCollector.* Projects to Meridian.* (L)
+### 1.1 Migrate MarketDataCollector.* Projects to Meridian.* (L) ✅ Complete
+
+**Status:** Completed — the execution/strategies projects, namespaces, project references, and solution entries now use the `Meridian.*` naming throughout source.
 
 **Problem:** `src/MarketDataCollector.Execution/` and `src/MarketDataCollector.Strategies/` reference non-existent projects (`MarketDataCollector.Contracts`, `MarketDataCollector.Core`, `MarketDataCollector.ProviderSdk`, `MarketDataCollector.Backtesting.Sdk`). 22 source files still use the old namespace prefix. These projects cannot build.
 
@@ -57,7 +59,9 @@ grep -r "MarketDataCollector" src/ --include="*.cs" --include="*.csproj" | grep 
 
 ---
 
-### 1.2 Resolve Duplicate Type Names Across Namespaces (M)
+### 1.2 Resolve Duplicate Type Names Across Namespaces (M) ✅ Complete
+
+**Status:** Completed — the ambiguous DTO/UI-facing types have been renamed to `MarketEventDto`, `BackfillResultDto`, and `DiagnosticValidationResult`, and consumers now reference the non-conflicting names.
 
 **Problem:** Three type name collisions have caused repeated CS0104 build failures (documented in ai-known-errors.md):
 
