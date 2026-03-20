@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-20 04:09:39 UTC
+> Auto-generated on 2026-03-20 04:17:08 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -734,6 +734,14 @@ Meridian/
 │   │   ├── Tracing/
 │   │   │   ├── OpenTelemetrySetup.cs
 │   │   │   └── TracedEventMetrics.cs
+│   │   ├── Wizard/
+│   │   │   ├── Core/
+│   │   │   │   ...
+│   │   │   ├── Metadata/
+│   │   │   │   ...
+│   │   │   ├── Steps/
+│   │   │   │   ...
+│   │   │   └── WizardWorkflowFactory.cs
 │   │   ├── GlobalUsings.cs
 │   │   └── Meridian.Application.csproj
 │   ├── Meridian.Backtesting/

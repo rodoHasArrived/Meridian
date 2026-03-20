@@ -763,6 +763,14 @@ Meridian/
 │   │   ├── Tracing/
 │   │   │   ├── OpenTelemetrySetup.cs
 │   │   │   └── TracedEventMetrics.cs
+│   │   ├── Wizard/
+│   │   │   ├── Core/
+│   │   │   │   ...
+│   │   │   ├── Metadata/
+│   │   │   │   ...
+│   │   │   ├── Steps/
+│   │   │   │   ...
+│   │   │   └── WizardWorkflowFactory.cs
 │   │   ├── GlobalUsings.cs
 │   │   └── Meridian.Application.csproj
 │   ├── Meridian.Backtesting/
