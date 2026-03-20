@@ -1,12 +1,12 @@
 # Documentation Health Dashboard
 
 > Auto-generated documentation health report. Do not edit manually.
-> Last updated: 2026-03-20T16:45:02.023346+00:00
+> Last updated: 2026-03-20T17:21:54.458299+00:00
 
 ## Overall Health Score
 
 ```
-  [###########################---] 91/100
+  [###########################---] 90/100
   Rating: Excellent
 ```
 
@@ -15,13 +15,13 @@
 | Metric | Value |
 |--------|-------|
 | Total documentation files | 231 |
-| Total lines | 90,655 |
-| Average file size (lines) | 392.4 |
-| Orphaned files | 45 |
+| Total lines | 90,454 |
+| Average file size (lines) | 391.6 |
+| Orphaned files | 55 |
 | Files without headings | 2 |
 | Stale files (>90 days) | 0 |
 | TODO/FIXME markers | 180 |
-| **Health score** | **91/100** |
+| **Health score** | **90/100** |
 
 ### Score Breakdown
 
@@ -46,10 +46,19 @@ These files lack a Markdown heading, making them harder to navigate:
 
 These files are not linked from any other Markdown file in the repository:
 
+- `.claude/agents/mdc-blueprint.md`
+- `.claude/agents/mdc-cleanup.md`
+- `.claude/agents/mdc-docs.md`
+- `.claude/skills/mdc-blueprint/references/blueprint-patterns.md`
+- `.claude/skills/mdc-blueprint/references/pipeline-position.md`
+- `.claude/skills/mdc-brainstorm/SKILL.md`
 - `.claude/skills/mdc-brainstorm/references/competitive-landscape.md`
 - `.claude/skills/mdc-brainstorm/references/idea-dimensions.md`
 - `.claude/skills/mdc-code-review/agents/grader.md`
+- `.claude/skills/mdc-code-review/references/architecture.md`
 - `.claude/skills/mdc-code-review/references/schemas.md`
+- `.claude/skills/mdc-provider-builder/SKILL.md`
+- `.claude/skills/mdc-test-writer/SKILL.md`
 - `.github/PULL_REQUEST_TEMPLATE.md`
 - `.github/agents/cleanup-specialist.agent.md`
 - `.github/pull_request_template_desktop.md`
@@ -57,16 +66,7 @@ These files are not linked from any other Markdown file in the repository:
 - `AUDIT_REPORT.md`
 - `AUDIT_REPORT_2026_03_20.md`
 - `benchmarks/BOTTLENECK_REPORT.md`
-- `docs/archived/2026-02_PR_SUMMARY.md`
-- `docs/archived/2026-02_UI_IMPROVEMENTS_SUMMARY.md`
-- `docs/archived/2026-02_VISUAL_CODE_EXAMPLES.md`
-- `docs/archived/ARTIFACT_ACTIONS_DOWNGRADE.md`
-- `docs/archived/CHANGES_SUMMARY.md`
-- `docs/archived/CONFIG_CONSOLIDATION_REPORT.md`
-- `docs/archived/CS0101_FIX_SUMMARY.md`
-- `docs/archived/DUPLICATE_CODE_ANALYSIS.md`
-- `docs/archived/IMPROVEMENTS_2026-02.md`
-- ... and 25 more
+- ... and 35 more
 
 ## Trend
 
@@ -74,7 +74,7 @@ These files are not linked from any other Markdown file in the repository:
 
 | Date | Score | Files | Orphans | Stale |
 |------|-------|-------|---------|-------|
-| 2026-03-20 | 91 | 231 | 45 | 0 |
+| 2026-03-20 | 90 | 231 | 55 | 0 |
 
 ---
 

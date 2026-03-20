@@ -4,9 +4,9 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-20 16:44:58 UTC
+> Auto-generated on 2026-03-20 17:21:50 UTC
 
-This document provides an overview of the Meridian repository structure.
+This document provides an overview of the Market Data Collector repository structure.
 
 ## Directory Layout
 
@@ -14,11 +14,46 @@ This document provides an overview of the Meridian repository structure.
 Meridian/
 ├── .claude/
 │   ├── agents/
-│   │   └── ... Claude Code agent definitions
+│   │   ├── mdc-blueprint.md
+│   │   ├── mdc-cleanup.md
+│   │   └── mdc-docs.md
 │   ├── skills/
 │   │   ├── _shared/
 │   │   │   └── project-context.md
-│   │   ├── ... Claude Code skills, references, evals, and scripts
+│   │   ├── mdc-blueprint/
+│   │   │   ├── references/
+│   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
+│   │   │   └── SKILL.md
+│   │   ├── mdc-brainstorm/
+│   │   │   ├── references/
+│   │   │   │   ...
+│   │   │   ├── brainstorm-history.jsonl
+│   │   │   ├── CHANGELOG.md
+│   │   │   └── SKILL.md
+│   │   ├── mdc-code-review/
+│   │   │   ├── agents/
+│   │   │   │   ...
+│   │   │   ├── eval-viewer/
+│   │   │   │   ...
+│   │   │   ├── evals/
+│   │   │   │   ...
+│   │   │   ├── references/
+│   │   │   │   ...
+│   │   │   ├── scripts/  # Automation scripts
+│   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
+│   │   │   └── SKILL.md
+│   │   ├── mdc-provider-builder/
+│   │   │   ├── references/
+│   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
+│   │   │   └── SKILL.md
+│   │   ├── mdc-test-writer/
+│   │   │   ├── references/
+│   │   │   │   ...
+│   │   │   ├── CHANGELOG.md
+│   │   │   └── SKILL.md
 │   │   └── skills_provider.py
 │   ├── settings.json
 │   └── settings.local.json
@@ -30,13 +65,13 @@ Meridian/
 │   │       └── action.yml
 │   ├── agents/
 │   │   ├── adr-generator.agent.md
-│   │   ├── cleanup-specialist.agent.md
-│   │   ├── code-review-agent.md
-│   │   ├── documentation-agent.md
 │   │   ├── blueprint-agent.md
 │   │   ├── brainstorm-agent.md
 │   │   ├── bug-fix-agent.md
 │   │   ├── cleanup-agent.md
+│   │   ├── cleanup-specialist.agent.md
+│   │   ├── code-review-agent.md
+│   │   ├── documentation-agent.md
 │   │   ├── performance-agent.md
 │   │   ├── provider-builder-agent.md
 │   │   └── test-writer-agent.md
