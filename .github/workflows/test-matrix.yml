@@ -108,13 +108,14 @@ jobs:
 
       - name: Upload coverage to Codecov
         if: success()
+        continue-on-error: true
         uses: codecov/codecov-action@v5.5.3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./TestResults/**/coverage.cobertura.xml
           flags: unittests,Linux
           name: codecov-Linux
-          fail_ci_if_error: false
+          fail_ci_if_error: true
 
   # Windows and macOS tests only run on pushes to main (not on PRs) to reduce billing
   test-other-platforms:
