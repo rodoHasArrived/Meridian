@@ -1,34 +1,25 @@
-name: Workflow Results - test-matrix
-description: Address issues found in the test-matrix workflow run
+name: Workflow Results - {workflow_name}
+description: Address issues found in the {workflow_name} workflow run
 # Auto-generated prompt from workflow run analysis
-# Generated: 2026-03-20
-# Source: https://github.com/rodoHasArrived/Meridian/actions/runs/23334831002
-# Run conclusion: unknown
+# Generated: {now}
+# Source: {run_url}
+# Run conclusion: {run_conclusion}
 # Model-agnostic prompt - works with any capable LLM
 messages:
   - role: system
     content: |
-      You are a senior .NET developer analyzing CI/CD workflow results for the Meridian project.
-      The `test-matrix` workflow has completed with status: **unknown**.
+      You are a senior .NET developer analyzing CI/CD workflow results for the Market Data Collector project.
+      The `{workflow_name}` workflow has completed with status: **{run_conclusion}**.
 
       ## Project Context
-      Meridian is a .NET 9.0 C#/F# market data collection system.
+      Market Data Collector is a .NET 9.0 C#/F# market data collection system.
       - Build: `dotnet build -c Release`
       - Test: `dotnet test tests/Meridian.Tests`
       - 14 main projects, 105 test files
 
       ## Findings from Workflow Run
-      ### Build
-      - `2026-03-20T08:31:13.6146667Z ##[error]D:\a\Meridian\Meridian\src\Meridian.Contracts\Configuration\AppConfigDto.cs(693,47): error CS0509: 'ExtendedSymb...`
-      - `2026-03-20T08:31:14.6643152Z ##[error]D:\a\Meridian\Meridian\src\Meridian.Contracts\Configuration\AppConfigDto.cs(693,47): error CS0509: 'ExtendedSymb...`
-      - `2026-03-20T08:27:28.7243570Z ##[error]/Users/runner/work/Meridian/Meridian/src/Meridian.Contracts/Configuration/AppConfigDto.cs(693,47): error CS0509:...`
-      - `2026-03-20T08:27:30.0078990Z ##[error]/Users/runner/work/Meridian/Meridian/src/Meridian.Contracts/Configuration/AppConfigDto.cs(693,47): error CS0509:...`
-      - `2026-03-20T08:31:53.7587250Z ##[error]/home/runner/work/Meridian/Meridian/src/Meridian.Contracts/Configuration/AppConfigDto.cs(693,47): error CS0509: ...`
-
-
-      ## Error Codes
-      - `CS0509`
-
+{findings_text}
+{test_section}{code_section}
       ## Resolution Guidelines
       1. Prioritize failures by severity (errors > warnings)
       2. Check docs/ai/ai-known-errors.md for recurring patterns
@@ -38,12 +29,12 @@ messages:
 
   - role: user
     content: |
-      The `test-matrix` CI workflow needs attention. Analyze the results and help fix the issues.
+      The `{workflow_name}` CI workflow needs attention. Analyze the results and help fix the issues.
 
-      Workflow run: https://github.com/rodoHasArrived/Meridian/actions/runs/23334831002
+      Workflow run: {run_url}
 
       Additional context:
-      {{additional_context}}
+      {{{{additional_context}}}}
 
       Please provide:
       1. Summary of all issues found

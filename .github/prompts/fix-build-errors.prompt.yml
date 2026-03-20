@@ -1,41 +1,15 @@
-name: Fix Build Errors Identified By Ci
-description: Fix build errors identified by CI
-# Auto-generated prompt from workflow results - test-matrix
-# Generated: 2026-03-20
-# Source: https://github.com/rodoHasArrived/Meridian/actions/runs/23334831002
+name: {name}
+description: {description}
+# Auto-generated prompt from workflow results - {workflow_name}
+# Generated: {now}
+# Source: {run_url}
 # Model-agnostic prompt - works with any capable LLM
 messages:
   - role: system
     content: |
-      You are a senior .NET developer troubleshooting build failures in a .NET 9.0 C#/F# project.
+{system_content}
 
-      ## Project Build Context
-      - .NET 9.0 SDK with C# 13 and F# 8.0
-      - Central Package Management (Directory.Packages.props) - never add Version to PackageReference
-      - Cross-platform builds require EnableWindowsTargeting=true
-      - Solution has 14 projects including WPF and UWP desktop apps
-      - Build command: `dotnet build -c Release`
-
-      ## Common Build Error Patterns
-      - NU1008: Version on PackageReference with Central Package Management
-      - NETSDK1100: Missing EnableWindowsTargeting
-      - CS0246/CS0234: Missing using directive or assembly reference
-      - CS8600-CS8604: Nullable reference type warnings treated as errors
-
-      ## Error Codes Found
-      - `CS0509`
-
-      ## Failure Patterns
-      - `2026-03-20T08:31:13.6146667Z ##[error]D:\a\Meridian\Meridian\src\Meridian.Contracts\Configuration\AppConfigDto.cs(693,47): error CS0509: 'ExtendedSymbolConfigDto': cannot derive from sealed type 'Symb...`
-      - `2026-03-20T08:31:14.6643152Z ##[error]D:\a\Meridian\Meridian\src\Meridian.Contracts\Configuration\AppConfigDto.cs(693,47): error CS0509: 'ExtendedSymbolConfigDto': cannot derive from sealed type 'Symb...`
-      - `2026-03-20T08:27:28.7243570Z ##[error]/Users/runner/work/Meridian/Meridian/src/Meridian.Contracts/Configuration/AppConfigDto.cs(693,47): error CS0509: 'ExtendedSymbolConfigDto': cannot derive from sea...`
-      - `2026-03-20T08:27:30.0078990Z ##[error]/Users/runner/work/Meridian/Meridian/src/Meridian.Contracts/Configuration/AppConfigDto.cs(693,47): error CS0509: 'ExtendedSymbolConfigDto': cannot derive from sea...`
-      - `2026-03-20T08:31:53.7587250Z ##[error]/home/runner/work/Meridian/Meridian/src/Meridian.Contracts/Configuration/AppConfigDto.cs(693,47): error CS0509: 'ExtendedSymbolConfigDto': cannot derive from seal...`
-      - `2026-03-20T08:31:55.3202089Z ##[error]/home/runner/work/Meridian/Meridian/src/Meridian.Contracts/Configuration/AppConfigDto.cs(693,47): error CS0509: 'ExtendedSymbolConfigDto': cannot derive from seal...`
-      - `2026-03-20T08:31:14.6638577Z Build FAILED.`
-      - `2026-03-20T08:27:30.0016080Z Build FAILED.`
-      - `2026-03-20T08:31:55.3186553Z Build FAILED.`
-
+{error_context}
       ## Resolution Approach
       1. Read the error messages and stack traces carefully
       2. Identify the root cause (not just symptoms)
@@ -46,15 +20,15 @@ messages:
 
   - role: user
     content: |
-      The CI workflow `test-matrix` has reported failures that need attention.
+      The CI workflow `{workflow_name}` has reported failures that need attention.
 
       Error details:
       ```
-      {{error_details}}
+      {{{{error_details}}}}
       ```
 
       Affected files:
-      {{affected_files}}
+      {{{{affected_files}}}}
 
       Please provide:
       1. Root cause analysis of each failure
