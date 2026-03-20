@@ -1023,6 +1023,7 @@ Meridian/
 │   │   ├── Ledger.cs
 │   │   ├── LedgerAccount.cs
 │   │   ├── LedgerAccounts.cs
+│   │   ├── LedgerAccountSummary.cs
 │   │   ├── LedgerAccountType.cs
 │   │   ├── LedgerEntry.cs
 │   │   ├── LedgerValidationException.cs
@@ -1535,6 +1536,7 @@ Meridian/
 │   ├── Meridian.Backtesting.Tests/
 │   │   ├── FillModelTests.cs
 │   │   ├── GlobalUsings.cs
+│   │   ├── LedgerQueryTests.cs
 │   │   ├── Meridian.Backtesting.Tests.csproj
 │   │   ├── SimulatedPortfolioTests.cs
 │   │   └── XirrCalculatorTests.cs
