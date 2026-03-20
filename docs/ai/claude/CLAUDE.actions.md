@@ -4,7 +4,7 @@ This guide covers the CI/CD pipeline for the Market Data Collector, including wo
 
 ## Workflow Inventory
 
-The project uses 34 GitHub Actions workflows in `.github/workflows/`:
+The project uses 33 GitHub Actions workflows in `.github/workflows/`:
 
 | Workflow | File | Trigger | Purpose |
 |----------|------|---------|---------|
@@ -23,7 +23,6 @@ The project uses 34 GitHub Actions workflows in `.github/workflows/`:
 | Documentation | `documentation.yml` | Push/PRs (docs/source), weekly, issues, manual | Doc generation, structure sync, TODO scan |
 | Labeling | `labeling.yml` | PR opened/edited/reopened, manual | Auto-label based on paths and PR size |
 | Stale | `stale.yml` | Daily (midnight UTC), manual | Stale issue/PR management |
-| Docs Check | `docs-check.yml` | Push/PRs (docs paths) | Documentation link and format validation |
 | Export Project Artifact | `export-project-artifact.yml` | Manual dispatch | Project artifact export |
 | Golden Path Validation | `golden-path-validation.yml` | Manual dispatch | End-to-end smoke validation for the recommended developer path |
 | Build Observability | `build-observability.yml` | Manual dispatch | Build diagnostics, metrics, fingerprints |
@@ -31,7 +30,7 @@ The project uses 34 GitHub Actions workflows in `.github/workflows/`:
 | Makefile Validation | `makefile.yml` | Push/PRs (Makefile/build tooling), manual | Ensures documented make targets stay healthy |
 | Copilot Setup | `copilot-setup-steps.yml` | Called by Copilot | Copilot environment setup |
 | Prompt Generation | `prompt-generation.yml` | Push/PRs (prompt files), manual | AI prompt template generation |
-| Python Package (Conda) | `python-package-conda.yml` | Manual dispatch | Builds and validates the conda-based Python package flow |
+| Python Package (Conda) | `python-package-conda.yml` | Push/PRs (`environment.yml`), manual | Builds and validates the conda-based Python package flow |
 | Ticker Data Collection | `ticker-data-collection.yml` | Scheduled, manual | Automated ticker data collection |
 | Update Diagrams | `update-diagrams.yml` | Push/PRs (source changes), manual | Architecture diagram and UML generation |
 | Skill Evaluations | `skill-evals.yml` | Manual dispatch | Runs Codex skill evaluation scenarios and captures artifacts |

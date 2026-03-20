@@ -8,7 +8,7 @@ A high-performance, self-hosted algorithmic trading platform — **collect**, **
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/license-See%20LICENSE-green)](LICENSE)
 
-[![Build and Release](https://github.com/rodoHasArrived/Meridian/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/rodoHasArrived/Meridian/actions/workflows/dotnet-desktop.yml)
+[![Desktop Builds](https://github.com/rodoHasArrived/Meridian/actions/workflows/desktop-builds.yml/badge.svg)](https://github.com/rodoHasArrived/Meridian/actions/workflows/desktop-builds.yml)
 [![Security](https://github.com/rodoHasArrived/Meridian/actions/workflows/security.yml/badge.svg)](https://github.com/rodoHasArrived/Meridian/actions/workflows/security.yml)
 [![Docker Build](https://github.com/rodoHasArrived/Meridian/actions/workflows/docker.yml/badge.svg)](https://github.com/rodoHasArrived/Meridian/actions/workflows/docker.yml)
 [![Code Quality](https://github.com/rodoHasArrived/Meridian/actions/workflows/code-quality.yml/badge.svg)](https://github.com/rodoHasArrived/Meridian/actions/workflows/code-quality.yml)
@@ -485,7 +485,7 @@ export ALPACA__SECRETKEY=your-secret-key
 
 ## CI/CD and Automation
 
-The repository currently includes **25 GitHub Actions workflows** for automated testing, security, documentation, and deployment:
+The repository currently includes **33 GitHub Actions workflows** for automated testing, security, documentation, and deployment:
 
 - **Build & Release** - Automated builds, cross-platform releases, and reusable build workflow
 - **Security** - CodeQL analysis, dependency auditing, and vulnerability scanning
@@ -570,7 +570,7 @@ docker run -d -p 8080:8080 \
 
 ```
 Meridian/
-├── .github/              # 25 CI/CD workflows, AI prompts, Dependabot
+├── .github/              # 33 CI/CD workflows, AI prompts, Dependabot
 ├── docs/                 # 214 documentation files, ADRs, status tracking, guides
 ├── build/                # Python scripts, Node generators, build automation
 ├── deploy/               # Docker, Kubernetes, systemd, monitoring configs

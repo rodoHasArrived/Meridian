@@ -156,7 +156,7 @@ Meridian/
 ├── config/                  # appsettings.json, appsettings.sample.json
 ├── build/                   # Build tooling (Python, Node, scripts)
 ├── deploy/                  # Docker, k8s, systemd configs
-└── .github/workflows/       # 25+ CI/CD workflows
+└── .github/workflows/       # 33 CI/CD workflows
 ```
 
 Full annotated file tree: [`docs/ai/claude/CLAUDE.structure.md`](docs/ai/claude/CLAUDE.structure.md)
