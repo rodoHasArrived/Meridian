@@ -3,6 +3,7 @@ using Meridian.Contracts.Domain.Enums;
 using Meridian.Contracts.Domain.Events;
 using Meridian.Contracts.Domain.Models;
 using Xunit;
+using MarketEvent = Meridian.Contracts.Domain.Events.MarketEventDto;
 
 namespace Meridian.Tests;
 

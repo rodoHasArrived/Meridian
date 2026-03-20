@@ -1,6 +1,8 @@
 using System.Runtime.CompilerServices;
 using Meridian.Execution.Models;
 using Meridian.Execution.Sdk;
+using GatewayExecutionMode = Meridian.Execution.Models.ExecutionMode;
+using GatewayOrderStatus = Meridian.Execution.Models.OrderStatus;
 
 namespace Meridian.Execution.Adapters;
 
@@ -27,7 +29,7 @@ public sealed class PaperTradingGateway : IOrderGateway
     public string BrokerName => "Paper";
 
     /// <inheritdoc/>
-    public ExecutionMode Mode => ExecutionMode.Paper;
+    public GatewayExecutionMode Mode => GatewayExecutionMode.Paper;
 
     /// <summary>
     /// Creates a new paper trading gateway.
@@ -46,26 +48,27 @@ public sealed class PaperTradingGateway : IOrderGateway
     {
         ArgumentNullException.ThrowIfNull(request);
         ObjectDisposedException.ThrowIf(_disposed, this);
+        var orderId = request.ClientOrderId ?? $"paper-{Guid.NewGuid():N}";
 
         lock (_lock)
         {
-            _workingOrders[request.ClientOrderId] = request;
+            _workingOrders[orderId] = request with { ClientOrderId = orderId };
         }
 
         _logger.LogInformation(
             "Paper order accepted: {ClientOrderId} {Quantity} {Symbol} @ {Type}",
-            request.ClientOrderId, request.Quantity, request.Symbol, request.Type);
+            orderId, request.Quantity, request.Symbol, request.Type);
 
         var ack = new OrderAcknowledgement(
-            OrderId: request.ClientOrderId,
-            ClientOrderId: request.ClientOrderId,
+            OrderId: orderId,
+            ClientOrderId: orderId,
             Symbol: request.Symbol,
-            Status: OrderStatus.Accepted,
+            Status: GatewayOrderStatus.Accepted,
             AcknowledgedAt: DateTimeOffset.UtcNow);
 
         // Use CancellationToken.None so the fill simulation always runs to completion
         // and emits a terminal update, even if the caller cancels after receiving the ack.
-        _ = SimulateFillAsync(request, CancellationToken.None);
+        _ = SimulateFillAsync(request with { ClientOrderId = orderId }, CancellationToken.None);
 
         return Task.FromResult(ack);
     }
@@ -91,7 +94,7 @@ public sealed class PaperTradingGateway : IOrderGateway
                 OrderId: orderId,
                 ClientOrderId: orderId,
                 Symbol: cancelledRequest.Symbol,
-                Status: OrderStatus.Cancelled,
+                Status: GatewayOrderStatus.Cancelled,
                 FilledQuantity: 0,
                 AverageFillPrice: null,
                 RejectReason: null,
@@ -117,10 +120,11 @@ public sealed class PaperTradingGateway : IOrderGateway
     {
         // Yield to allow the caller to receive the acknowledgement before the fill.
         await Task.Yield();
+        var orderId = request.ClientOrderId ?? throw new InvalidOperationException("Paper orders must have a client order id before fill simulation.");
 
         lock (_lock)
         {
-            _workingOrders.Remove(request.ClientOrderId);
+            _workingOrders.Remove(orderId);
         }
 
         // For limit orders use the limit price; for market orders use the scaffold notional price.
@@ -128,11 +132,11 @@ public sealed class PaperTradingGateway : IOrderGateway
         var fillPrice = request.LimitPrice ?? ScaffoldMarketFillPrice;
 
         var fill = new OrderStatusUpdate(
-            OrderId: request.ClientOrderId,
-            ClientOrderId: request.ClientOrderId,
+            OrderId: orderId,
+            ClientOrderId: orderId,
             Symbol: request.Symbol,
-            Status: OrderStatus.Filled,
-            FilledQuantity: Math.Abs(request.Quantity),
+            Status: GatewayOrderStatus.Filled,
+            FilledQuantity: checked((long)decimal.Truncate(decimal.Abs(request.Quantity))),
             AverageFillPrice: fillPrice,
             RejectReason: null,
             Timestamp: DateTimeOffset.UtcNow);

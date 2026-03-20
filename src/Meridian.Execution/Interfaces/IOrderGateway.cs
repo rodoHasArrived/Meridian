@@ -1,5 +1,6 @@
 using Meridian.Execution.Models;
 using Meridian.Execution.Sdk;
+using GatewayExecutionMode = Meridian.Execution.Models.ExecutionMode;
 
 namespace Meridian.Execution.Interfaces;
 
@@ -14,7 +15,7 @@ public interface IOrderGateway : IAsyncDisposable
     string BrokerName { get; }
 
     /// <summary>Indicates whether this gateway routes paper or live orders.</summary>
-    ExecutionMode Mode { get; }
+    GatewayExecutionMode Mode { get; }
 
     /// <summary>
     /// Submits an order to the gateway. Returns an acknowledgement immediately; fills
