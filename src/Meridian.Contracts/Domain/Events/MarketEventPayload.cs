@@ -5,7 +5,7 @@ namespace Meridian.Contracts.Domain.Events;
 
 /// <summary>
 /// Discriminated-union base for all market event payloads.
-/// Every <see cref="MarketEvent"/> carries a non-null payload; heartbeat events use
+/// Every <see cref="MarketEventDto"/> carries a non-null payload; heartbeat events use
 /// <see cref="HeartbeatPayload"/> to eliminate the null-payload special case.
 /// </summary>
 /// <remarks>
