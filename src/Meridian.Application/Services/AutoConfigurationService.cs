@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Meridian.Application.Config;
 using Meridian.Application.Logging;
+using Meridian.Application.Wizard.Metadata;
 using Meridian.Storage;
 using Serilog;
 
@@ -40,101 +41,25 @@ public sealed class AutoConfigurationService
     );
 
     /// <summary>
-    /// Environment variables for each provider.
-    /// </summary>
-    private static readonly Dictionary<string, ProviderCredentialInfo> ProviderCredentials = new()
-    {
-        ["Alpaca"] = new ProviderCredentialInfo(
-            DisplayName: "Alpaca Markets",
-            RequiredEnvVars: new[] { "ALPACA_KEY_ID", "ALPACA_SECRET_KEY" },
-            AlternativeEnvVars: new[] { "MDC_ALPACA_KEY_ID", "MDC_ALPACA_SECRET_KEY" },
-            Capabilities: new[] { "RealTime", "Historical", "Trades", "Quotes" },
-            Priority: 5
-        ),
-        ["Polygon"] = new ProviderCredentialInfo(
-            DisplayName: "Polygon.io",
-            RequiredEnvVars: new[] { "POLYGON_API_KEY" },
-            AlternativeEnvVars: new[] { "MDC_POLYGON_API_KEY" },
-            Capabilities: new[] { "RealTime", "Historical", "Trades", "Quotes", "Aggregates" },
-            Priority: 10
-        ),
-        ["Tiingo"] = new ProviderCredentialInfo(
-            DisplayName: "Tiingo",
-            RequiredEnvVars: new[] { "TIINGO_API_TOKEN" },
-            AlternativeEnvVars: new[] { "TIINGO_TOKEN", "MDC_TIINGO_TOKEN" },
-            Capabilities: new[] { "Historical", "Daily" },
-            Priority: 15
-        ),
-        ["Finnhub"] = new ProviderCredentialInfo(
-            DisplayName: "Finnhub",
-            RequiredEnvVars: new[] { "FINNHUB_API_KEY" },
-            AlternativeEnvVars: new[] { "MDC_FINNHUB_API_KEY" },
-            Capabilities: new[] { "Historical", "Daily", "Fundamentals" },
-            Priority: 18
-        ),
-        ["AlphaVantage"] = new ProviderCredentialInfo(
-            DisplayName: "Alpha Vantage",
-            RequiredEnvVars: new[] { "ALPHA_VANTAGE_API_KEY" },
-            AlternativeEnvVars: new[] { "ALPHAVANTAGE_API_KEY", "MDC_ALPHA_VANTAGE_API_KEY" },
-            Capabilities: new[] { "Historical", "Daily", "Intraday" },
-            Priority: 25
-        ),
-        ["IB"] = new ProviderCredentialInfo(
-            DisplayName: "Interactive Brokers",
-            RequiredEnvVars: Array.Empty<string>(), // IB uses TWS, not API keys
-            AlternativeEnvVars: Array.Empty<string>(),
-            Capabilities: new[] { "RealTime", "Historical", "Trades", "Quotes", "L2Depth" },
-            Priority: 1
-        ),
-        ["NYSE"] = new ProviderCredentialInfo(
-            DisplayName: "NYSE Direct",
-            RequiredEnvVars: new[] { "NYSE_API_KEY" },
-            AlternativeEnvVars: new[] { "MDC_NYSE_API_KEY", "NYSE_API_SECRET" },
-            Capabilities: new[] { "RealTime", "Trades", "Quotes", "L2Depth" },
-            Priority: 3
-        ),
-        ["Yahoo"] = new ProviderCredentialInfo(
-            DisplayName: "Yahoo Finance",
-            RequiredEnvVars: Array.Empty<string>(), // No API key required
-            AlternativeEnvVars: Array.Empty<string>(),
-            Capabilities: new[] { "Historical", "Daily" },
-            Priority: 10
-        ),
-        ["Stooq"] = new ProviderCredentialInfo(
-            DisplayName: "Stooq",
-            RequiredEnvVars: Array.Empty<string>(), // No API key required
-            AlternativeEnvVars: Array.Empty<string>(),
-            Capabilities: new[] { "Historical", "Daily" },
-            Priority: 20
-        ),
-        ["NasdaqDataLink"] = new ProviderCredentialInfo(
-            DisplayName: "Nasdaq Data Link (Quandl)",
-            RequiredEnvVars: new[] { "NASDAQ_API_KEY" },
-            AlternativeEnvVars: new[] { "MDC_NASDAQ_API_KEY", "QUANDL_API_KEY" },
-            Capabilities: new[] { "Historical", "Daily", "AdjustedPrices", "Dividends", "Splits" },
-            Priority: 30
-        )
-    };
-
-    /// <summary>
     /// Detects all available providers based on environment variables.
+    /// Uses <see cref="ProviderRegistry"/> as the single source of provider metadata.
     /// </summary>
     public IReadOnlyList<DetectedProvider> DetectAvailableProviders()
     {
         var providers = new List<DetectedProvider>();
 
-        foreach (var (name, info) in ProviderCredentials)
+        foreach (var descriptor in ProviderRegistry.All)
         {
-            var (hasCredentials, missing) = CheckCredentials(info);
+            var (hasCredentials, missing) = CheckCredentials(descriptor);
 
             providers.Add(new DetectedProvider(
-                Name: name,
-                DisplayName: info.DisplayName,
+                Name: descriptor.Name,
+                DisplayName: descriptor.DisplayName,
                 HasCredentials: hasCredentials,
                 MissingCredentials: missing,
-                IsRecommended: hasCredentials && info.Capabilities.Contains("RealTime"),
-                SuggestedPriority: info.Priority,
-                Capabilities: info.Capabilities
+                IsRecommended: hasCredentials && descriptor.Capabilities.Contains("RealTime"),
+                SuggestedPriority: descriptor.Priority,
+                Capabilities: descriptor.Capabilities
             ));
         }
 
@@ -750,21 +675,21 @@ public sealed class AutoConfigurationService
         };
     }
 
-    private static (bool HasCredentials, string[] Missing) CheckCredentials(ProviderCredentialInfo info)
+    private static (bool HasCredentials, string[] Missing) CheckCredentials(ProviderDescriptor descriptor)
     {
-        if (info.RequiredEnvVars.Length == 0)
+        if (descriptor.RequiredEnvVars.Length == 0)
             return (true, Array.Empty<string>());
 
         var missing = new List<string>();
 
-        foreach (var envVar in info.RequiredEnvVars)
+        foreach (var envVar in descriptor.RequiredEnvVars)
         {
             var value = Environment.GetEnvironmentVariable(envVar);
 
             // Check alternatives if main not set
             if (string.IsNullOrEmpty(value))
             {
-                var altFound = info.AlternativeEnvVars.Any(alt =>
+                var altFound = descriptor.AlternativeEnvVars.Any(alt =>
                     !string.IsNullOrEmpty(Environment.GetEnvironmentVariable(alt)));
 
                 if (!altFound)
@@ -1006,13 +931,6 @@ public sealed class AutoConfigurationService
         };
     }
 
-    private sealed record ProviderCredentialInfo(
-        string DisplayName,
-        string[] RequiredEnvVars,
-        string[] AlternativeEnvVars,
-        string[] Capabilities,
-        int Priority
-    );
 }
 
 /// <summary>

@@ -6,6 +6,7 @@ using Meridian.Application.Monitoring.DataQuality;
 using Meridian.Application.Pipeline;
 using Meridian.Domain.Events;
 using Meridian.Storage;
+using Meridian.Storage.Interfaces;
 using Meridian.Storage.Policies;
 using Meridian.Storage.Sinks;
 using Microsoft.Extensions.DependencyInjection;
