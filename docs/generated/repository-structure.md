@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-20 00:15:39 UTC
+> Auto-generated on 2026-03-20 01:00:41 UTC
 
 This document provides an overview of the Market Data Collector repository structure.
 
@@ -994,6 +994,7 @@ Meridian/
 │   │   ├── Ledger.cs
 │   │   ├── LedgerAccount.cs
 │   │   ├── LedgerAccounts.cs
+│   │   ├── LedgerAccountSummary.cs
 │   │   ├── LedgerAccountType.cs
 │   │   ├── LedgerEntry.cs
 │   │   ├── LedgerValidationException.cs
@@ -1506,6 +1507,7 @@ Meridian/
 │   ├── Meridian.Backtesting.Tests/
 │   │   ├── FillModelTests.cs
 │   │   ├── GlobalUsings.cs
+│   │   ├── LedgerQueryTests.cs
 │   │   ├── Meridian.Backtesting.Tests.csproj
 │   │   ├── SimulatedPortfolioTests.cs
 │   │   └── XirrCalculatorTests.cs

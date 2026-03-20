@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -98,8 +99,8 @@ public partial class MainWindow : Window
 
     private void OnWindowClosing(object? sender, CancelEventArgs e)
     {
-        // Save window state before closing
-        SaveWindowState();
+        // Save window state before closing (fire-and-forget; exceptions handled inside)
+        _ = SaveWindowStateAsync();
 
         // Save workspace session state for next launch
         SaveWorkspaceSession();
@@ -701,8 +702,11 @@ public partial class MainWindow : Window
 
     /// <summary>
     /// Saves the current window position, size, and state to disk.
+    /// Uses source-generated serialization and async file I/O to avoid
+    /// blocking the UI thread during window close. Exceptions are handled
+    /// internally so callers do not need to observe the returned task.
     /// </summary>
-    private void SaveWindowState()
+    private async Task SaveWindowStateAsync()
     {
         try
         {
@@ -722,8 +726,9 @@ public partial class MainWindow : Window
                 Directory.CreateDirectory(dir);
             }
 
-            var json = JsonSerializer.Serialize(state, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(WindowStateFilePath, json);
+            var json = JsonSerializer.Serialize(state, WindowStateJsonContext.Default.PersistedWindowState);
+
+            await File.WriteAllTextAsync(WindowStateFilePath, json).ConfigureAwait(false);
         }
         catch (Exception ex)
         {
@@ -742,7 +747,7 @@ public partial class MainWindow : Window
             if (!File.Exists(WindowStateFilePath)) return;
 
             var json = File.ReadAllText(WindowStateFilePath);
-            var state = JsonSerializer.Deserialize<PersistedWindowState>(json);
+            var state = JsonSerializer.Deserialize(json, WindowStateJsonContext.Default.PersistedWindowState);
             if (state == null) return;
 
             // Validate dimensions are reasonable
@@ -813,6 +818,14 @@ public partial class MainWindow : Window
         public bool IsMaximized { get; set; }
         public DateTime SavedAt { get; set; }
     }
+
+    /// <summary>
+    /// Source-generated JSON context for window state persistence (ADR-014).
+    /// Avoids reflection-based serialization overhead.
+    /// </summary>
+    [JsonSourceGenerationOptions(WriteIndented = true)]
+    [JsonSerializable(typeof(PersistedWindowState))]
+    private sealed partial class WindowStateJsonContext : JsonSerializerContext;
 
     #endregion
 }
