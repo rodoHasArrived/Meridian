@@ -1,7 +1,7 @@
 # Market Data Collector Documentation
 
 **Version:** 1.7.0  
-**Last Updated:** 2026-03-15
+**Last Updated:** 2026-03-20
 
 Welcome to the Market Data Collector documentation. This guide will help you find the information you need, whether you're a developer, operator, or user.
 
@@ -158,9 +158,10 @@ In-depth assessments of architecture, providers, and code quality.
 
 ## Archived Documentation
 
-Historical documentation superseded by newer guides.
+Historical or deprecated documentation superseded by newer guides. Active documents may carry a temporary deprecation banner before they are moved, but the long-term home for those records is always `docs/archived/`.
 
-- [Archived Documentation Index](archived/INDEX.md) — Complete list with context
+- [Archived Documentation Index](archived/INDEX.md) — Complete list with context and replacement pointers
+- [Archived Documentation README](archived/README.md) — Archive policy, categories, and current contents
 
 ---
 
@@ -251,4 +252,4 @@ docs/
 
 ---
 
-*Documentation maintained by core team. Last update: 2026-03-17*
+*Documentation maintained by core team. Last update: 2026-03-20*

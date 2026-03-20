@@ -353,9 +353,6 @@ Meridian/
 │   │   ├── storage-design.md
 │   │   ├── ui-redesign.md
 │   │   └── why-this-architecture.md
-│   ├── archive/
-│   │   ├── desktop-end-user-improvements.md
-│   │   └── README.md
 │   ├── archived/
 │   │   ├── 2026-02_PR_SUMMARY.md
 │   │   ├── 2026-02_UI_IMPROVEMENTS_SUMMARY.md

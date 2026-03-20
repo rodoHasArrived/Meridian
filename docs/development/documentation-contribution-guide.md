@@ -46,6 +46,7 @@ Documentation debt is real. When making code changes:
 - Update related documentation in the same PR
 - Mark deprecated information clearly
 - Archive outdated documents rather than deleting them
+- Use `docs/archived/` as the single home for historical records (do not create parallel `docs/archive/` locations)
 
 ### 4. Make It Findable
 
@@ -158,7 +159,7 @@ Is it a step-by-step guide for end users or operators?
 | Security vulnerabilities, known issues | `security/` |
 | AI assistant guides and known errors | `ai/` |
 | Auto-generated output (do not edit) | `generated/` |
-| Outdated / superseded content | `archived/` |
+| Outdated / superseded content | `archived/` (single canonical archive location) |
 | Diagrams (DOT/Graphviz) | `diagrams/` |
 | UML diagrams (PlantUML) | `diagrams/uml/` |
 

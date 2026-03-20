@@ -437,7 +437,6 @@ Meridian/
 │   │   ├── 2026-03-brainstorm-next-frontier.md
 │   │   ├── assembly-performance-opportunities.md
 │   │   ├── data-quality-monitoring-evaluation.md
-│   │   ├── desktop-end-user-improvements.md
 │   │   ├── desktop-improvements-executive-summary.md
 │   │   ├── desktop-platform-improvements-implementation-guide.md
 │   │   ├── high-impact-improvement-brainstorm-2026-03.md

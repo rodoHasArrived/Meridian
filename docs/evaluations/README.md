@@ -34,7 +34,7 @@ This directory contains in-depth evaluations of architecture components, provide
 | [Desktop Platform Improvements Guide](desktop-platform-improvements-implementation-guide.md) | Implementation guide: test infrastructure, fixture mode, DI modernization |
 | [Desktop Improvements Executive Summary](desktop-improvements-executive-summary.md) | Impact analysis, phase status, quick reference, and success criteria |
 
-**Archived:** [Desktop End-User Improvements](../archive/desktop-end-user-improvements.md) — Comprehensive desktop UX assessment (49 pages, 104 services)
+**Archived:** [Desktop End-User Improvements](../archived/desktop-end-user-improvements.md) — Comprehensive desktop UX assessment retained for historical reference
 
 ## Improvement Proposals & Brainstorms
 
