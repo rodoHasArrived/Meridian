@@ -122,7 +122,11 @@ public class EventPipelineTests : IAsyncLifetime
             enablePeriodicFlush: false,
             consumerCount: 2);
 
-        for (var i = 0; i < 4; i++)
+        // Publish enough events to ensure both consumers get work.
+        // With batchSize:1, _maxAdaptiveBatchSize = 4 (batchSize * 4).
+        // Publishing 10 events guarantees at least one event for each consumer
+        // even if consumer 1 drains a full batch of 4 first.
+        for (var i = 0; i < 10; i++)
         {
             pipeline.TryPublish(CreateTradeEvent($"SYM{i}"));
         }
