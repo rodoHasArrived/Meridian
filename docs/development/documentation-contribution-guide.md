@@ -700,7 +700,7 @@ public void Method1(string param)
 
 If you have questions about documentation standards or suggestions for improvement:
 
-1. Open a [GitHub Discussion](https://github.com/rodoHasArrived/Market-Data-Collector/discussions)
+1. Open a [GitHub Discussion](https://github.com/rodoHasArrived/Meridian/discussions)
 2. Tag it with `documentation`
 3. Reference this guide
 

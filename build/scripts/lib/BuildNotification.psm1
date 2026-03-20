@@ -81,7 +81,7 @@ function Initialize-BuildNotification {
     }
     else {
         $timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
-        $script:BuildState.LogPath = Join-Path $env:TEMP "mdc-build-$timestamp.log"
+        $script:BuildState.LogPath = Join-Path $env:TEMP "meridian-build-$timestamp.log"
     }
 
     Write-BuildLog "Build notification initialized at $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"

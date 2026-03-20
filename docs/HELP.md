@@ -326,8 +326,8 @@ make doctor
 
 ```bash
 # Clone the repository
-git clone https://github.com/rodoHasArrived/Market-Data-Collector.git
-cd Market-Data-Collector
+git clone https://github.com/rodoHasArrived/Meridian.git
+cd Meridian
 
 # Build in Release mode
 dotnet build -c Release
@@ -2181,7 +2181,7 @@ docker-compose up -d
 1. **Check the logs**: Most issues are logged with detailed error messages
 2. **Run diagnostics**: `make doctor` for comprehensive system check
 3. **Review documentation**: Comprehensive docs cover most scenarios
-4. **GitHub Issues**: Report bugs or request features at https://github.com/your-org/Market-Data-Collector/issues
+4. **GitHub Issues**: Report bugs or request features at https://github.com/your-org/Meridian/issues
 
 ### Best Practices
 

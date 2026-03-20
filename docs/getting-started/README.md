@@ -12,7 +12,7 @@ Quick start guide for the Meridian. For comprehensive documentation, see [HELP.m
 ```bash
 # Clone and build
 git clone <repository-url>
-cd Market-Data-Collector
+cd Meridian
 dotnet build
 
 # Run the interactive wizard

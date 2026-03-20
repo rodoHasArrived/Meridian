@@ -165,7 +165,7 @@ Use these when referencing specific abstractions in ideas. File paths are relati
 - **Order book heatmap** — animated L2 order book depth visualization in the web dashboard; visually identify spoofing, iceberg orders
 - **Config diff viewer** — when appsettings.json changes, show a visual diff of what changed and what the system will do differently
 - **Backfill progress UX** — rich progress bars for historical backfill jobs: symbol × date range × provider, with ETA, pause/resume, and error summary
-- **CLI REPL** — `mdc> subscribe AAPL` style interactive shell for power users; tab-completion for symbols and commands
+- **CLI REPL** — `meridian> subscribe AAPL` style interactive shell for power users; tab-completion for symbols and commands
 - **WPF theme system** — light/dark mode toggle plus a theme engine for the desktop app; reduces eye strain during long monitoring sessions and demonstrates UI polish
 - **In-app diagnostics panel** — embedded panel showing pipeline throughput, channel fill levels, GC pause times, and provider connection state; replaces the need to open Grafana for quick checks
 - **Config schema validation with friendly errors** — validate `appsettings.json` on startup against a JSON Schema; surface human-readable error messages in the WPF app instead of cryptic exceptions

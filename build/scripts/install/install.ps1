@@ -610,7 +610,7 @@ function Install-Docker {
     try {
         # Build image
         Write-Info "Building Docker image..."
-        docker build -f $DockerFile -t marketdatacollector:latest $RepoRoot
+        docker build -f $DockerFile -t meridian:latest $RepoRoot
 
         if ($LASTEXITCODE -ne 0) {
             Write-Error "Failed to build Docker image"
@@ -1209,7 +1209,7 @@ function Uninstall-Docker {
 
         # Remove image
         Write-Info "Removing Docker image..."
-        docker rmi marketdatacollector:latest 2>$null
+        docker rmi meridian:latest 2>$null
 
         Write-Success "Uninstallation complete"
         Write-Warning "Data directory (.\data) was preserved. Remove manually if needed."

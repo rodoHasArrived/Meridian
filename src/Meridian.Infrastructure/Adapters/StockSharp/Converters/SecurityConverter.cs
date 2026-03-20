@@ -110,7 +110,7 @@ public static class SecurityConverter
     }
 
     /// <summary>
-    /// Map MDC security type string to StockSharp SecurityTypes enum.
+    /// Map Meridian security type string to StockSharp SecurityTypes enum.
     /// </summary>
     private static SecurityTypes? MapSecurityType(string securityType)
     {

@@ -4,7 +4,7 @@
 
 ### Changed
 - **Project statistics updated** — 868 source files (856 C# + 12 F#), 261 test files, 22 main projects, 33 CI/CD workflows; previous v1.2.0 stats were 779 source files, 15 projects, 27 workflows
-- **Solution layout updated** — added 7 new projects: `Meridian.Backtesting`, `Meridian.Backtesting.Sdk`, `Meridian.Execution`, `Meridian.Execution.Sdk`, `Meridian.Ledger`, `Meridian.Mcp`, `Meridian.McpServer`, `Meridian.Risk`, `Meridian.Strategies`; removed stale `MarketDataCollector.Execution` / `MarketDataCollector.Strategies` references (all projects now use `Meridian.*` namespace)
+- **Solution layout updated** — added 7 new projects: `Meridian.Backtesting`, `Meridian.Backtesting.Sdk`, `Meridian.Execution`, `Meridian.Execution.Sdk`, `Meridian.Ledger`, `Meridian.Mcp`, `Meridian.McpServer`, `Meridian.Risk`, `Meridian.Strategies`; removed stale `Meridian.Execution` / `Meridian.Strategies` references (all projects now use `Meridian.*` namespace)
 - **Dependency graph updated** — added allowed deps for `Backtesting`, `Backtesting.Sdk`, `Execution.Sdk`, `Ledger`, `Risk`, `Mcp/McpServer`; added forbidden rule: `Ledger → any other Meridian project` (zero-dependency leaf)
 - **Provider inventory updated** — added `TwelveData` as 11th historical provider; updated streaming count from "2" to "5" in competitive landscape matrix
 - **ADR table expanded** — added ADR-015 (Strategy Execution Contract: `IOrderGateway` + `IExecutionContext`) and ADR-016 (Four-Pillar Architecture)

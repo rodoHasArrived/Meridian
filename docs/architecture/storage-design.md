@@ -433,11 +433,11 @@ record IntegrityPolicy(
     "targets": [
       {
         "type": "local",
-        "path": "/backup/mdc"
+        "path": "/backup/meridian"
       },
       {
         "type": "s3",
-        "bucket": "mdc-backups",
+        "bucket": "meridian-backups",
         "region": "us-east-1",
         "storage_class": "GLACIER_IR"
       }
@@ -831,7 +831,7 @@ record ReconciliationConfig(
     "tiers": [
       {
         "name": "hot",
-        "path": "/fast-ssd/mdc/hot",
+        "path": "/fast-ssd/meridian/hot",
         "max_age_days": 7,
         "max_size_gb": 100,
         "format": "jsonl",
@@ -839,7 +839,7 @@ record ReconciliationConfig(
       },
       {
         "name": "warm",
-        "path": "/ssd/mdc/warm",
+        "path": "/ssd/meridian/warm",
         "max_age_days": 90,
         "max_size_gb": 500,
         "format": "jsonl.gz",
@@ -847,7 +847,7 @@ record ReconciliationConfig(
       },
       {
         "name": "cold",
-        "path": "/hdd/mdc/cold",
+        "path": "/hdd/meridian/cold",
         "max_age_days": 365,
         "max_size_gb": 2000,
         "format": "parquet",
@@ -855,7 +855,7 @@ record ReconciliationConfig(
       },
       {
         "name": "archive",
-        "path": "s3://mdc-archive",
+        "path": "s3://meridian-archive",
         "max_age_days": null,
         "format": "parquet",
         "compression": "zstd",

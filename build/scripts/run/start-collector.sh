@@ -157,7 +157,7 @@ COLLECTOR_PID_FILE="$RUN_DIR/collector.pid"
 UI_PID_FILE="$RUN_DIR/ui.pid"
 
 echo "==============================================="
-echo " MARKET DATA COLLECTOR – STARTUP"
+echo " MERIDIAN – STARTUP"
 echo "==============================================="
 echo "[INFO] Root: $ROOT_DIR"
 echo "[INFO] Data: $DATA_DIR"

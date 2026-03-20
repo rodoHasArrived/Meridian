@@ -155,7 +155,7 @@ Shows the user journey from first-run to operational:
    - `--test-connectivity` - Network diagnostics
    - `--quick-check` - Fast health check
    - `--dry-run` - Full test without data collection
-5. **Error Handling** - FriendlyErrorFormatter with 24 error codes (MDC-XXX-NNN)
+5. **Error Handling** - FriendlyErrorFormatter with 24 error codes (Meridian-XXX-NNN)
 
 ### CLI Commands Reference
 

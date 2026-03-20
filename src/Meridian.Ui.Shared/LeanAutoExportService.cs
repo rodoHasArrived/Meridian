@@ -353,7 +353,7 @@ public sealed class LeanAutoExportService : BackgroundService
             using var doc = System.Text.Json.JsonDocument.Parse(jsonLine);
             var root = doc.RootElement;
 
-            // Resolve timestamp field (common MDC names: Timestamp, timestamp, Time, time)
+            // Resolve timestamp field (common Meridian names: Timestamp, timestamp, Time, time)
             long millisSinceMidnight = 0;
             if (TryGetJsonTimestamp(root, date, out var ts))
                 millisSinceMidnight = (long)(ts - date).TotalMilliseconds;

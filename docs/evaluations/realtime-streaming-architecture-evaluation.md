@@ -899,7 +899,7 @@ A centralized monitoring infrastructure layer was added to provide structured al
 |--------|-----------|--------|-------------------|
 | SLO-ING-001 | Ingestion | P95 latency ≤ 2 s | 5 s |
 | SLO-ING-002 | Ingestion | Drop rate ≤ 0.1 % | — |
-| SLO-AV-001 | Availability | — (via MdcDown alert) | — |
+| SLO-AV-001 | Availability | — (via MeridianDown alert) | — |
 
 Each SLO entry links to the relevant Prometheus metric, alert rule, and runbook section.
 

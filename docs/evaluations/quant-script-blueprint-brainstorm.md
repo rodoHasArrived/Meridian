@@ -669,7 +669,7 @@ Ideas #2, #4, and #7 all converge on the same insight: **the type system is the 
 
 ### Competitive Signals
 
-QuantConnect Research (their Jupyter-like environment) is the closest comparable. It uses Python, has cell-based execution, and provides `qb.AddEquity("SPY")` + `qb.History(...)` as the data layer. Their weakness: the data layer is cloud-only and requires a QuantConnect account. Meridian's advantage: local data, offline execution, no vendor lock-in. Databento's approach (pure API, no IDE) leaves the scripting experience entirely to Jupyter — MDC can capture that "all-in-one" positioning by having first-class scripting in-app.
+QuantConnect Research (their Jupyter-like environment) is the closest comparable. It uses Python, has cell-based execution, and provides `qb.AddEquity("SPY")` + `qb.History(...)` as the data layer. Their weakness: the data layer is cloud-only and requires a QuantConnect account. Meridian's advantage: local data, offline execution, no vendor lock-in. Databento's approach (pure API, no IDE) leaves the scripting experience entirely to Jupyter — Meridian can capture that "all-in-one" positioning by having first-class scripting in-app.
 
 ### Recommended Sequencing
 

@@ -226,7 +226,7 @@ install_docker() {
     # Build image
     print_info "Building Docker image..."
     cd "$PROJECT_ROOT"
-    docker build -f "$DOCKERFILE" -t marketdatacollector:latest "$PROJECT_ROOT"
+    docker build -f "$DOCKERFILE" -t meridian:latest "$PROJECT_ROOT"
 
     if [ $? -eq 0 ]; then
         print_success "Docker image built successfully"
@@ -359,9 +359,9 @@ uninstall_docker() {
     fi
 
     # Remove image
-    if docker images marketdatacollector:latest -q | grep -q .; then
+    if docker images meridian:latest -q | grep -q .; then
         print_info "Removing Docker image..."
-        docker rmi marketdatacollector:latest
+        docker rmi meridian:latest
     fi
 
     print_success "Uninstallation complete"

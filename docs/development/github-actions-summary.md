@@ -1,6 +1,6 @@
 # GitHub Actions Workflows - Summary
 
-This document provides a curated quick reference for the core GitHub Actions workflows in the Meridian repository.
+This document provides a quick reference for all GitHub Actions workflows in the Meridian repository.
 
 **Last Updated:** 2026-03-20
 **Scope:** Core workflow summary (see `.github/workflows/README.md` for the full current inventory)

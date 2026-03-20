@@ -73,7 +73,7 @@ This guide establishes conventions for organizing code, documentation, and asset
 ### Root Directory Structure
 
 ```
-Market-Data-Collector/
+Meridian/
 ├── .github/           # GitHub-specific files (workflows, actions, templates)
 ├── benchmarks/        # Performance benchmarking projects
 ├── build/            # Build tooling and scripts
