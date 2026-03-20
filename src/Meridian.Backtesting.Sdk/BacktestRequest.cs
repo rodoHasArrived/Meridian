@@ -26,7 +26,8 @@ public sealed record BacktestRequest(
     IReadOnlyList<FinancialAccount>? Accounts = null,
     string DefaultBrokerageAccountId = BacktestDefaults.DefaultBrokerageAccountId,
     string DataRoot = "./data",
-    string? StrategyAssemblyPath = null)
+    string? StrategyAssemblyPath = null,
+    IReadOnlyList<AssetEvent>? AssetEvents = null)
 {
     /// <summary>
     /// Returns the normalized account list, falling back to a single default brokerage account for

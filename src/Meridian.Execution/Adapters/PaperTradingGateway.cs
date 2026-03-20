@@ -4,6 +4,7 @@ using Meridian.Execution.Models;
 using Meridian.Execution.Sdk;
 using GatewayExecutionMode = Meridian.Execution.Models.ExecutionMode;
 using GatewayOrderStatus = Meridian.Execution.Models.OrderStatus;
+using OrderType = Meridian.Execution.Models.OrderType;
 
 namespace Meridian.Execution.Adapters;
 
@@ -114,7 +115,7 @@ public sealed class PaperTradingGateway : IOrderGateway
     {
         ArgumentNullException.ThrowIfNull(request);
 
-        if (!Capabilities.SupportedOrderTypes.Contains(request.Type))
+        if (!Capabilities.SupportedOrderTypes.Contains((OrderType)request.Type))
         {
             return Task.FromResult(new OrderValidationResult(false, $"Order type '{request.Type}' is not supported by the paper gateway."));
         }
@@ -129,12 +130,12 @@ public sealed class PaperTradingGateway : IOrderGateway
             return Task.FromResult(new OrderValidationResult(false, "Order quantity cannot be zero."));
         }
 
-        if ((request.Type is OrderType.Limit or OrderType.StopLimit) && (!request.LimitPrice.HasValue || request.LimitPrice <= 0))
+        if (((OrderType)request.Type is OrderType.Limit or OrderType.StopLimit) && (!request.LimitPrice.HasValue || request.LimitPrice <= 0))
         {
             return Task.FromResult(new OrderValidationResult(false, "Limit and stop-limit orders require a positive limit price."));
         }
 
-        if ((request.Type is OrderType.StopMarket or OrderType.StopLimit) && (!request.StopPrice.HasValue || request.StopPrice <= 0))
+        if (((OrderType)request.Type is OrderType.StopMarket or OrderType.StopLimit) && (!request.StopPrice.HasValue || request.StopPrice <= 0))
         {
             return Task.FromResult(new OrderValidationResult(false, "Stop and stop-limit orders require a positive stop price."));
         }
@@ -198,7 +199,7 @@ public sealed class PaperTradingGateway : IOrderGateway
 
         // For limit orders use the limit price; for market orders use the scaffold notional price.
         // A real implementation would source the fill price from the live feed via ILiveFeedAdapter.
-        var fillPrice = request.Type switch
+        var fillPrice = ((OrderType)request.Type) switch
         {
             OrderType.Limit or OrderType.StopLimit => request.LimitPrice ?? ScaffoldMarketFillPrice,
             OrderType.StopMarket => request.StopPrice ?? ScaffoldMarketFillPrice,

@@ -88,7 +88,7 @@ public sealed class BacktestEngine(
             // Day boundary — close out the previous day and apply any gap-day asset events.
             if (evtDate > currentDay)
             {
-                await AdvanceDaysAsync(currentDay, evtDate, portfolio, ctx, strategy, allSnapshots, allCashFlows, assetEventsByDate, progress, request.From, totalDays, eventsProcessed, ct);
+                await AdvanceDaysAsync(currentDay, evtDate, portfolio, ctx, strategy, pendingOrders, allSnapshots, allCashFlows, assetEventsByDate, progress, request.From, totalDays, eventsProcessed, ct);
                 currentDay = evtDate;
             }
 
@@ -111,11 +111,11 @@ public sealed class BacktestEngine(
         }
 
         // Final day-end for the last processed day and any remaining asset-event-only dates.
-        await ProcessDayEndAsync(currentDay, portfolio, ctx, strategy, allSnapshots, allCashFlows, ct);
+        await ProcessDayEndAsync(currentDay, portfolio, pendingOrders, ctx, strategy, allSnapshots, allCashFlows, ct);
         for (var date = currentDay.AddDays(1); date <= request.To; date = date.AddDays(1))
         {
             ApplyScheduledAssetEvents(date, assetEventsByDate, portfolio, ctx);
-            await ProcessDayEndAsync(date, portfolio, ctx, strategy, allSnapshots, allCashFlows, ct);
+            await ProcessDayEndAsync(date, portfolio, pendingOrders, ctx, strategy, allSnapshots, allCashFlows, ct);
         }
 
         strategy.OnFinished(ctx);
@@ -194,6 +194,7 @@ public sealed class BacktestEngine(
         SimulatedPortfolio portfolio,
         BacktestContext ctx,
         IBacktestStrategy strategy,
+        List<Order> pendingOrders,
         List<PortfolioSnapshot> snapshots,
         List<CashFlowEntry> allCashFlows,
         IReadOnlyDictionary<DateOnly, List<AssetEvent>> assetEventsByDate,
@@ -203,14 +204,14 @@ public sealed class BacktestEngine(
         long eventsProcessed,
         CancellationToken ct)
     {
-        await ProcessDayEndAsync(fromDay, portfolio, ctx, strategy, snapshots, allCashFlows, ct);
+        await ProcessDayEndAsync(fromDay, portfolio, pendingOrders, ctx, strategy, snapshots, allCashFlows, ct);
 
         for (var date = fromDay.AddDays(1); date <= toDay; date = date.AddDays(1))
         {
             ApplyScheduledAssetEvents(date, assetEventsByDate, portfolio, ctx);
 
             if (date < toDay)
-                await ProcessDayEndAsync(date, portfolio, ctx, strategy, snapshots, allCashFlows, ct);
+                await ProcessDayEndAsync(date, portfolio, pendingOrders, ctx, strategy, snapshots, allCashFlows, ct);
 
             var daysElapsed = (date.ToDateTime(TimeOnly.MinValue) - requestFrom.ToDateTime(TimeOnly.MinValue)).Days;
             progress?.Report(new BacktestProgressEvent(
