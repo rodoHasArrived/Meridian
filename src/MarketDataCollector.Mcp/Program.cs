@@ -5,8 +5,9 @@ using Microsoft.Extensions.Logging;
 
 var builder = Host.CreateApplicationBuilder(args);
 
-// MCP servers communicate over stdio; all logging must go to stderr
-builder.Logging.AddConsole(o => o.LogToStandardErrorThreshold = LogLevel.Warning);
+// MCP servers communicate over stdio; stdout is reserved for protocol frames
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole(o => o.LogToStandardErrorThreshold = LogLevel.Trace);
 
 builder.Services.AddSingleton<RepoPathService>();
 
