@@ -78,7 +78,7 @@ Documents are archived when:
 
 | Document | Date Archived | Reason | Current Reference |
 |----------|---------------|--------|-------------------|
-| **desktop-end-user-improvements-shortlist.md** | 2026-03-04 | Subset of full desktop evaluation | [Desktop End-User Improvements](../evaluations/desktop-end-user-improvements.md) |
+| **desktop-end-user-improvements-shortlist.md** | 2026-03-04 | Subset of full desktop evaluation | [Desktop End-User Improvements](../archive/desktop-end-user-improvements.md) |
 
 ### Design Documents
 

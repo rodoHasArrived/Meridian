@@ -186,6 +186,24 @@ def read_lines(path: Path) -> list[str]:
         return []
 
 
+def is_inside_string_literal(line: str, index: int) -> bool:
+    """Return True when the given character index falls within a double-quoted string."""
+    in_string = False
+    escaped = False
+    for i, ch in enumerate(line):
+        if i >= index:
+            break
+        if escaped:
+            escaped = False
+            continue
+        if ch == '\\':
+            escaped = True
+            continue
+        if ch == '"':
+            in_string = not in_string
+    return in_string
+
+
 # ---------------------------------------------------------------------------
 # Analysers
 # ---------------------------------------------------------------------------
@@ -244,9 +262,12 @@ def audit_code(root: Path, report: AuditReport) -> None:
 
         # --- Check: blocking async (.Result / .Wait()) ---
         for i, line in enumerate(lines, 1):
-            if BLOCKING_ASYNC.search(line) and "Task" in line:
+            match = BLOCKING_ASYNC.search(line)
+            if match and "Task" in line:
                 stripped = line.strip()
                 if stripped.startswith("//") or stripped.startswith("*"):
+                    continue
+                if is_inside_string_literal(line, match.start()):
                     continue
                 report.add(Finding(
                     category="blocking-async",

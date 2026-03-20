@@ -6,7 +6,7 @@ public sealed class AdrResources(RepoPathService repo)
     [McpServerResource(UriTemplate = "mdc://adrs", Name = "adr_index",
         Title = "ADR Index — All Architecture Decision Records",
         MimeType = "text/markdown")]
-    [Description("Index of all 14 Architecture Decision Records in the Meridian project.")]
+    [Description("Index of all 17 Architecture Decision Records in the Meridian project.")]
     public string GetAdrIndex()
     {
         if (!Directory.Exists(repo.AdrPath))
