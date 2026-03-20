@@ -197,7 +197,7 @@ public sealed class LedgerQueryTests
     [Fact]
     public void GetJournalEntries_CanFilterByStructuredAuditMetadata()
     {
-        var ledger = new Ledger();
+        var ledger = new BacktestLedger();
         var orderId = Guid.NewGuid();
         var fillId = Guid.NewGuid();
         var t1 = new DateTimeOffset(2024, 1, 2, 14, 30, 0, TimeSpan.Zero);
@@ -235,7 +235,7 @@ public sealed class LedgerQueryTests
     [Fact]
     public void GetRunningBalance_And_SnapshotAsOf_ReconstructHistoricalState()
     {
-        var ledger = new Ledger();
+        var ledger = new BacktestLedger();
         var t1 = new DateTimeOffset(2024, 1, 2, 14, 30, 0, TimeSpan.Zero);
         var t2 = t1.AddMinutes(5);
         var t3 = t2.AddMinutes(5);
@@ -283,7 +283,7 @@ public sealed class LedgerQueryTests
     [Fact]
     public void ScopedAccounts_CanBeSummarizedAndSnapshottedPerFinancialAccount()
     {
-        var ledger = new Ledger();
+        var ledger = new BacktestLedger();
         var t1 = new DateTimeOffset(2024, 1, 2, 14, 30, 0, TimeSpan.Zero);
         var broker1Cash = LedgerAccounts.CashAccount("broker-1");
         var broker2Cash = LedgerAccounts.CashAccount("broker-2");
