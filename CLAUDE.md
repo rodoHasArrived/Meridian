@@ -100,7 +100,7 @@ Meridian/
 ├── tests/                   # 4 test projects, ~4,135 tests
 ├── benchmarks/              # BenchmarkDotNet performance benchmarks
 ├── docs/                    # 214 documentation files
-│   ├── adr/                 # Architecture Decision Records (ADR-001…ADR-015)
+│   ├── adr/                 # Architecture Decision Records (ADR-001…ADR-016)
 │   ├── ai/claude/           # AI sub-documents (see table below)
 │   ├── architecture/        # System design docs
 │   ├── status/              # Production status and roadmap
@@ -227,15 +227,20 @@ Located in `docs/adr/`. Use `[ImplementsAdr("ADR-XXX", "reason")]` on implementi
 |-----|------------|
 | ADR-001 | Provider abstraction — `IMarketDataClient`, `IHistoricalDataProvider` contracts |
 | ADR-002 | Tiered storage — hot/warm/cold architecture |
+| ADR-003 | Monolith-first architecture — reject premature microservice decomposition |
 | ADR-004 | Async patterns — `CancellationToken`, `IAsyncEnumerable` |
 | ADR-005 | Attribute-based discovery — `[DataSource]`, `[ImplementsAdr]` |
 | ADR-006 | Domain events — sealed record wrapper with static factories |
 | ADR-007 | WAL + event pipeline durability |
 | ADR-008 | Multi-format storage — JSONL + Parquet simultaneous writes |
 | ADR-009 | F# type-safe domain with C# interop |
+| ADR-010 | `IHttpClientFactory` — never instantiate `HttpClient` directly |
+| ADR-011 | Centralized configuration — environment variables for credentials |
+| ADR-012 | Unified monitoring — health checks + Prometheus metrics |
 | ADR-013 | Bounded channel pipeline policy — consistent backpressure |
 | ADR-014 | JSON source generators — no-reflection serialization |
 | ADR-015 | Paper trading gateway — risk-free strategy validation for live + backtest parity |
+| ADR-016 | Platform architecture migration — repository-wide mandate |
 
 ---
 
