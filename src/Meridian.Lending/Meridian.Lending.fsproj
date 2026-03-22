@@ -17,14 +17,29 @@
 
   <!-- F# requires explicit file ordering -->
   <ItemGroup>
-    <!-- Event store abstraction and implementations -->
+    <!-- Event store abstraction and implementations (shared by both aggregates) -->
     <Compile Include="EventStore/ILoanEventStore.fs" />
     <Compile Include="EventStore/InMemoryLoanEventStore.fs" />
     <Compile Include="EventStore/PostgresLoanEventStore.fs" />
 
-    <!-- Aggregate wrapper and repository -->
+    <!-- Loan Contract aggregate wrapper and repository -->
     <Compile Include="LoanContractAggregate.fs" />
     <Compile Include="LoanContractRepository.fs" />
+
+    <!-- Loan Servicing aggregate wrapper and repository -->
+    <Compile Include="LoanServicingAggregate.fs" />
+    <Compile Include="LoanServicingRepository.fs" />
+
+    <!-- Outbox: reliable at-least-once downstream delivery -->
+    <Compile Include="Outbox/IOutboxStore.fs" />
+    <Compile Include="Outbox/InMemoryOutboxStore.fs" />
+    <Compile Include="Outbox/PostgresOutboxStore.fs" />
+
+    <!-- Accounting: double-entry journal projector -->
+    <Compile Include="Accounting/LoanAccountingProjector.fs" />
+
+    <!-- Analytics: TimescaleDB daily snapshot and portfolio metrics types -->
+    <Compile Include="Analytics/BenchmarkFixingTypes.fs" />
 
     <!-- Read-model projections -->
     <Compile Include="Projections/LoanProjection.fs" />

@@ -1283,3 +1283,386 @@ module PaymentSchedule =
                     payments
 
                 | AmortizationType.Custom _ -> []
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// LOAN SERVICING AGGREGATE
+// Separate aggregate from the Loan Contract aggregate.
+// Handles operational servicing: payment processing, servicer report ingestion,
+// revision control, and payment confirmation.
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ── Servicer report types ─────────────────────────────────────────────────────
+
+/// Lifecycle status of a servicer report revision.
+[<RequireQualifiedAccess>]
+type ServicerRevisionStatus =
+    /// The most recent authoritative version of this report.
+    | Current
+    /// Superseded by a later revision.
+    | Superseded
+    /// Received but pending review / reconciliation.
+    | UnderReview
+
+/// The format of the servicer report received.
+[<RequireQualifiedAccess>]
+type ServicerReportType =
+    /// Aggregate position-level report: outstanding balances and accruals per loan.
+    | PositionLevel
+    /// Transaction-detail report: line-by-line payment and disbursement history.
+    | TransactionDetail
+    /// Collateral / asset-level report.
+    | CollateralReport
+
+/// A single servicer report received for a loan.
+[<CLIMutable>]
+type ServicerReport = {
+    ReportId: Guid
+    LoanId: Guid
+    ServicerName: string
+    ReportType: ServicerReportType
+    /// The reporting period end date.
+    ReportDate: DateOnly
+    ReceivedAt: DateTimeOffset
+    /// Sequential revision number for this report/period combination.
+    RevisionNumber: int
+    Status: ServicerRevisionStatus
+    /// Raw payload (CSV, JSON, XML, etc.) — stored as opaque text.
+    PayloadJson: string
+}
+
+// ── Payment instruction / confirmation ───────────────────────────────────────
+
+/// Classifies the type of payment to be processed.
+[<RequireQualifiedAccess>]
+type ServicingPaymentType =
+    | ScheduledPrincipal
+    | ScheduledInterest
+    | PrepaymentPrincipal
+    | FeePayment of feeType: string
+    | PikSettlement
+
+/// An instruction issued to or from the servicer to process a specific payment.
+[<CLIMutable>]
+type PaymentInstruction = {
+    InstructionId: Guid
+    LoanId: Guid
+    PaymentType: ServicingPaymentType
+    ExpectedAmount: decimal
+    Currency: Currency
+    ScheduledDate: DateOnly
+    ServicerReference: string option
+    /// Resolved payment intent captured at instruction creation time.
+    ResolvedIntentJson: string option
+}
+
+// ── Servicing lifecycle ───────────────────────────────────────────────────────
+
+/// Current operational status of the servicing relationship.
+[<RequireQualifiedAccess>]
+type ServicingStatus =
+    | NotActivated
+    | Active
+    | OnWatch
+    | Suspended
+    | Terminated
+
+/// Snapshot of servicing aggregate state rebuilt by replaying events.
+[<CLIMutable>]
+type ServicingState = {
+    LoanId: Guid
+    ServicerName: string
+    Status: ServicingStatus
+    /// Servicer reports keyed by ReportId.
+    Reports: ServicerReport list
+    /// Latest revision number among all ingested reports.
+    CurrentRevisionNumber: int
+    /// Payment instructions that have been issued but not yet confirmed or failed.
+    PendingInstructions: PaymentInstruction list
+    LastServicedDate: DateOnly option
+    Version: int64
+}
+
+// ── Servicing event catalog ───────────────────────────────────────────────────
+
+/// All domain events on the Loan Servicing aggregate.
+[<RequireQualifiedAccess>]
+type ServicingEvent =
+    /// Servicing was activated for the loan with the named servicer.
+    | ServicingActivated of loanId: Guid * servicerName: string * date: DateOnly
+    /// A servicer report (position-level or transaction-detail) was ingested.
+    | ServicerReportIngested of report: ServicerReport
+    /// A previously ingested report was superseded by a revised version.
+    /// The old reportId is invalidated; callers should re-project from the new revision.
+    | ServicerReportRevised of
+        originalReportId: Guid *
+        newReport: ServicerReport *
+        reason: string *
+        date: DateOnly
+    /// A payment instruction was issued for processing.
+    | PaymentInstructionIssued of instruction: PaymentInstruction
+    /// A payment instruction was confirmed received by the servicer.
+    | PaymentConfirmed of instructionId: Guid * confirmedAmount: decimal * valueDate: DateOnly
+    /// A payment instruction failed (e.g. NSF, incorrect reference).
+    | PaymentFailed of instructionId: Guid * reason: string * date: DateOnly
+    /// The servicing relationship was transferred to a new servicer.
+    | ServicingTransferred of newServicerName: string * transferDate: DateOnly
+    /// The loan was placed on servicer watch (enhanced monitoring).
+    | PlacedOnWatch of reason: string * date: DateOnly
+    /// Watch status was lifted; servicing returns to normal active status.
+    | WatchLifted of date: DateOnly
+    /// Servicing was suspended (e.g. pending default resolution).
+    | ServicingSuspended of reason: string * date: DateOnly
+    /// Servicing was terminated (loan fully repaid, written off, or sold).
+    | ServicingTerminated of date: DateOnly
+
+// ── Servicing command catalog ─────────────────────────────────────────────────
+
+[<RequireQualifiedAccess>]
+type ServicingCommand =
+    | ActivateServicing of loanId: Guid * servicerName: string * date: DateOnly
+    | IngestServicerReport of report: ServicerReport
+    | ReviseServicerReport of
+        originalReportId: Guid *
+        newReport: ServicerReport *
+        reason: string *
+        date: DateOnly
+    | IssuePaymentInstruction of instruction: PaymentInstruction
+    | ConfirmPayment of instructionId: Guid * confirmedAmount: decimal * valueDate: DateOnly
+    | FailPayment of instructionId: Guid * reason: string * date: DateOnly
+    | TransferServicing of newServicerName: string * transferDate: DateOnly
+    | PlaceOnWatch of reason: string * date: DateOnly
+    | LiftWatch of date: DateOnly
+    | SuspendServicing of reason: string * date: DateOnly
+    | TerminateServicing of date: DateOnly
+
+// ── Servicing aggregate: pure state-transition logic ─────────────────────────
+
+module ServicingAggregate =
+
+    type CommandResult = Result<ServicingEvent list, string>
+
+    [<CompiledName("Evolve")>]
+    let evolve (state: ServicingState option) (event: ServicingEvent) : ServicingState =
+        let bump (s: ServicingState) = { s with Version = s.Version + 1L }
+        match state, event with
+        | None, ServicingEvent.ServicingActivated(loanId, servicer, _) ->
+            { LoanId = loanId
+              ServicerName = servicer
+              Status = ServicingStatus.Active
+              Reports = []
+              CurrentRevisionNumber = 0
+              PendingInstructions = []
+              LastServicedDate = None
+              Version = 1L } : ServicingState
+        | None, _ ->
+            failwith "ServicingActivated must be the first event on a servicing aggregate."
+        | Some s, ServicingEvent.ServicingActivated _ ->
+            failwith "ServicingActivated cannot be applied to an already-activated servicing aggregate."
+        | Some s, ServicingEvent.ServicerReportIngested report ->
+            let newRev = max s.CurrentRevisionNumber report.RevisionNumber
+            bump { s with
+                     Reports = report :: s.Reports
+                     CurrentRevisionNumber = newRev
+                     LastServicedDate = Some report.ReportDate }
+        | Some s, ServicingEvent.ServicerReportRevised(originalId, newReport, _, _) ->
+            let updatedReports =
+                s.Reports
+                |> List.map (fun r ->
+                    if r.ReportId = originalId
+                    then { r with Status = ServicerRevisionStatus.Superseded }
+                    else r)
+            let newRev = max s.CurrentRevisionNumber newReport.RevisionNumber
+            bump { s with
+                     Reports = newReport :: updatedReports
+                     CurrentRevisionNumber = newRev
+                     LastServicedDate = Some newReport.ReportDate }
+        | Some s, ServicingEvent.PaymentInstructionIssued instr ->
+            bump { s with PendingInstructions = instr :: s.PendingInstructions }
+        | Some s, ServicingEvent.PaymentConfirmed(instrId, _, valueDate) ->
+            let remaining = s.PendingInstructions |> List.filter (fun i -> i.InstructionId <> instrId)
+            bump { s with
+                     PendingInstructions = remaining
+                     LastServicedDate = Some valueDate }
+        | Some s, ServicingEvent.PaymentFailed(instrId, _, _) ->
+            let remaining = s.PendingInstructions |> List.filter (fun i -> i.InstructionId <> instrId)
+            bump { s with PendingInstructions = remaining }
+        | Some s, ServicingEvent.ServicingTransferred(newServicer, _) ->
+            bump { s with ServicerName = newServicer }
+        | Some s, ServicingEvent.PlacedOnWatch _ ->
+            bump { s with Status = ServicingStatus.OnWatch }
+        | Some s, ServicingEvent.WatchLifted _ ->
+            bump { s with Status = ServicingStatus.Active }
+        | Some s, ServicingEvent.ServicingSuspended _ ->
+            bump { s with Status = ServicingStatus.Suspended }
+        | Some s, ServicingEvent.ServicingTerminated _ ->
+            bump { s with Status = ServicingStatus.Terminated }
+
+    [<CompiledName("Handle")>]
+    let handle (state: ServicingState option) (command: ServicingCommand) : CommandResult =
+        let requireActive s =
+            match s.Status with
+            | ServicingStatus.Active | ServicingStatus.OnWatch -> Ok ()
+            | other -> Error (sprintf "Servicing is not active (status: %A)." other)
+        let withActive f =
+            match state with
+            | None -> Error "Servicing has not been activated yet."
+            | Some s ->
+                match requireActive s with
+                | Error e -> Error e
+                | Ok () -> f s
+        let withState f =
+            match state with
+            | None -> Error "Servicing has not been activated yet."
+            | Some s -> f s
+        match command with
+        | ServicingCommand.ActivateServicing(loanId, servicer, date) ->
+            match state with
+            | Some _ -> Error "Servicing is already activated."
+            | None ->
+                if System.String.IsNullOrWhiteSpace(servicer) then Error "Servicer name is required."
+                else Ok [ ServicingEvent.ServicingActivated(loanId, servicer, date) ]
+        | ServicingCommand.IngestServicerReport report ->
+            withActive (fun _ ->
+                if report.RevisionNumber < 1 then Error "RevisionNumber must be ≥ 1."
+                else Ok [ ServicingEvent.ServicerReportIngested report ])
+        | ServicingCommand.ReviseServicerReport(origId, newReport, reason, date) ->
+            withActive (fun s ->
+                if not (s.Reports |> List.exists (fun r -> r.ReportId = origId)) then
+                    Error (sprintf "Report %A not found." origId)
+                else
+                    Ok [ ServicingEvent.ServicerReportRevised(origId, newReport, reason, date) ])
+        | ServicingCommand.IssuePaymentInstruction instr ->
+            withActive (fun s ->
+                if instr.ExpectedAmount <= 0m then Error "Payment amount must be positive."
+                elif s.PendingInstructions |> List.exists (fun i -> i.InstructionId = instr.InstructionId) then
+                    Error "Duplicate InstructionId."
+                else Ok [ ServicingEvent.PaymentInstructionIssued instr ])
+        | ServicingCommand.ConfirmPayment(instrId, amount, valueDate) ->
+            withState (fun s ->
+                if amount <= 0m then Error "Confirmed amount must be positive."
+                elif not (s.PendingInstructions |> List.exists (fun i -> i.InstructionId = instrId)) then
+                    Error (sprintf "No pending instruction %A found." instrId)
+                else Ok [ ServicingEvent.PaymentConfirmed(instrId, amount, valueDate) ])
+        | ServicingCommand.FailPayment(instrId, reason, date) ->
+            withState (fun s ->
+                if System.String.IsNullOrWhiteSpace(reason) then Error "Failure reason is required."
+                elif not (s.PendingInstructions |> List.exists (fun i -> i.InstructionId = instrId)) then
+                    Error (sprintf "No pending instruction %A found." instrId)
+                else Ok [ ServicingEvent.PaymentFailed(instrId, reason, date) ])
+        | ServicingCommand.TransferServicing(newServicer, date) ->
+            withState (fun _ ->
+                if System.String.IsNullOrWhiteSpace(newServicer) then Error "New servicer name is required."
+                else Ok [ ServicingEvent.ServicingTransferred(newServicer, date) ])
+        | ServicingCommand.PlaceOnWatch(reason, date) ->
+            withState (fun s ->
+                if s.Status = ServicingStatus.OnWatch then Error "Already on watch."
+                else Ok [ ServicingEvent.PlacedOnWatch(reason, date) ])
+        | ServicingCommand.LiftWatch date ->
+            withState (fun s ->
+                if s.Status <> ServicingStatus.OnWatch then Error "Not currently on watch."
+                else Ok [ ServicingEvent.WatchLifted date ])
+        | ServicingCommand.SuspendServicing(reason, date) ->
+            withState (fun _ -> Ok [ ServicingEvent.ServicingSuspended(reason, date) ])
+        | ServicingCommand.TerminateServicing date ->
+            withState (fun _ -> Ok [ ServicingEvent.ServicingTerminated date ])
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// ACCOUNTING TYPES
+// Pure domain types for double-entry journal entries and cash flows.
+// No I/O — infrastructure implementations live in Meridian.Lending.
+// ═══════════════════════════════════════════════════════════════════════════════
+
+/// Standard chart-of-accounts codes for a direct lending book.
+[<RequireQualifiedAccess>]
+type LoanAccountCode =
+    /// Loan receivable: outstanding principal carried at amortised cost.
+    | LoanReceivable
+    /// Unamortized purchase discount (contra-asset, reduces carrying value).
+    | UnamortizedDiscount
+    /// Unamortized purchase premium (contra-asset, increases carrying value).
+    | UnamortizedPremium
+    /// Accrued interest receivable.
+    | AccruedInterestReceivable
+    /// Accrued commitment fee receivable.
+    | AccruedFeeReceivable
+    /// Cash / nostro account.
+    | Cash
+    /// Interest income recognised for the period.
+    | InterestIncome
+    /// Commitment fee income.
+    | CommitmentFeeIncome
+    /// Discount accretion income (amortization of purchase discount).
+    | DiscountAccretionIncome
+    /// Premium amortization expense (amortization of purchase premium).
+    | PremiumAmortizationExpense
+    /// Provision for credit loss (income statement charge).
+    | ProvisionForCreditLoss
+    /// Allowance for credit loss (balance-sheet contra-asset).
+    | AllowanceForCreditLoss
+    /// Fee income (origination, amendment, etc.).
+    | FeeIncome
+    /// Escrow/suspense — temporary holding account.
+    | Suspense
+
+/// Whether an accounting entry increases or decreases the account balance.
+[<RequireQualifiedAccess>]
+type EntryType = Debit | Credit
+
+/// A single leg of a double-entry journal entry.
+[<CLIMutable>]
+type JournalLeg = {
+    Account: LoanAccountCode
+    EntryType: EntryType
+    Amount: decimal
+    Currency: Currency
+}
+
+/// A balanced double-entry journal entry linked back to its source event.
+[<CLIMutable>]
+type JournalEntry = {
+    EntryId: Guid
+    LoanId: Guid
+    /// Source event sequence number on the Loan Contract aggregate.
+    SourceEventSequence: int64
+    /// Human-readable description of the accounting event.
+    Description: string
+    /// Effective economic date of the journal entry.
+    ValueDate: DateOnly
+    CreatedAt: DateTimeOffset
+    Legs: JournalLeg list
+}
+
+/// Convenience constructor that validates debits = credits.
+module JournalEntry =
+    let create
+        (loanId: Guid)
+        (sequence: int64)
+        (description: string)
+        (valueDate: DateOnly)
+        (legs: JournalLeg list)
+        : Result<JournalEntry, string> =
+        let totalDebits  = legs |> List.filter (fun l -> l.EntryType = EntryType.Debit)  |> List.sumBy _.Amount
+        let totalCredits = legs |> List.filter (fun l -> l.EntryType = EntryType.Credit) |> List.sumBy _.Amount
+        if totalDebits <> totalCredits then
+            Error (sprintf "Journal entry is unbalanced: debits=%.2f credits=%.2f" totalDebits totalCredits)
+        else
+            Ok { EntryId = Guid.NewGuid()
+                 LoanId = loanId
+                 SourceEventSequence = sequence
+                 Description = description
+                 ValueDate = valueDate
+                 CreatedAt = DateTimeOffset.UtcNow
+                 Legs = legs }
+
+/// A single cash flow record linked back to its source event.
+[<CLIMutable>]
+type CashFlow = {
+    CashFlowId: Guid
+    LoanId: Guid
+    SourceEventSequence: int64
+    FlowType: string
+    Amount: decimal
+    Currency: Currency
+    ValueDate: DateOnly
+    CreatedAt: DateTimeOffset
+}
