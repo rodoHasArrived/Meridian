@@ -1259,3 +1259,111 @@ let ``PaymentSchedule.generate respects fromDate and skips past payments`` () =
     // Advance fromDate past the first two payment dates
     let schedule = PaymentSchedule.generate state.Value (DateOnly(2025, 7, 1))
     schedule |> should haveLength 2
+
+// ── PaymentSchedule: TargetBalance ────────────────────────────────────────────
+
+[<Fact>]
+let ``PaymentSchedule TargetBalance makes equal slices and balloon at maturity`` () =
+    let terms = { sampleTerms () with
+                    OriginationDate = DateOnly(2025, 1, 1)
+                    MaturityDate    = DateOnly(2026, 1, 1)
+                    PaymentFrequencyMonths = 3
+                    AmortizationType = AmortizationType.TargetBalance 200_000m
+                    InterestRate = Some 0.08m
+                    CommitmentAmount = 1_000_000m }
+    let state = drawnState 1_000_000m terms
+    let schedule = PaymentSchedule.generate state.Value (DateOnly(2025, 1, 1))
+    schedule |> should haveLength 4
+    // 4 equal slices of (1M - 200k) / 4 = 200k each, then balloon on last payment
+    // First three payments each principal slice: 200_000
+    schedule |> List.take 3 |> List.iter (fun p -> p.PrincipalDue |> should equal 200_000m)
+    // Final payment clears everything (200k slice + 200k balloon = 400k)
+    (List.last schedule).PrincipalDue |> should equal 400_000m
+    (List.last schedule).RemainingPrincipalAfter |> should equal 0m
+
+[<Fact>]
+let ``PaymentSchedule TargetBalance with zero balloon behaves like StraightLine`` () =
+    let terms = { sampleTerms () with
+                    OriginationDate = DateOnly(2025, 1, 1)
+                    MaturityDate    = DateOnly(2026, 1, 1)
+                    PaymentFrequencyMonths = 3
+                    AmortizationType = AmortizationType.TargetBalance 0m
+                    InterestRate = Some 0.08m
+                    CommitmentAmount = 1_000_000m }
+    let state = drawnState 1_000_000m terms
+    let schedule = PaymentSchedule.generate state.Value (DateOnly(2025, 1, 1))
+    schedule |> should haveLength 4
+    // All four payments share principal equally
+    schedule |> List.take 3 |> List.iter (fun p -> p.PrincipalDue |> should equal 250_000m)
+    (List.last schedule).RemainingPrincipalAfter |> should equal 0m
+
+[<Fact>]
+let ``PaymentSchedule TargetBalance accumulates interest on outstanding balance`` () =
+    let terms = { sampleTerms () with
+                    OriginationDate = DateOnly(2025, 1, 1)
+                    MaturityDate    = DateOnly(2026, 1, 1)
+                    PaymentFrequencyMonths = 3
+                    AmortizationType = AmortizationType.TargetBalance 500_000m
+                    InterestRate = Some 0.10m
+                    CommitmentAmount = 1_000_000m }
+    let state = drawnState 1_000_000m terms
+    let schedule = PaymentSchedule.generate state.Value (DateOnly(2025, 1, 1))
+    // Interest should decrease each period as the balance falls
+    let interests = schedule |> List.map (fun p -> p.EstimatedInterest)
+    // First interest > last interest (declining balance)
+    (List.head interests) |> should be (greaterThan (List.last interests))
+
+// ── PaymentSchedule: StepUp ───────────────────────────────────────────────────
+
+[<Fact>]
+let ``PaymentSchedule StepUp ramps principal payment each period`` () =
+    let terms = { sampleTerms () with
+                    OriginationDate = DateOnly(2025, 1, 1)
+                    MaturityDate    = DateOnly(2026, 1, 1)
+                    PaymentFrequencyMonths = 3
+                    AmortizationType = AmortizationType.StepUp(100_000m, 50_000m)
+                    InterestRate = Some 0.08m
+                    CommitmentAmount = 1_000_000m }
+    let state = drawnState 1_000_000m terms
+    // 4 periods: expected principal = 100k, 150k, 200k, 550k (residual)
+    let schedule = PaymentSchedule.generate state.Value (DateOnly(2025, 1, 1))
+    schedule |> should haveLength 4
+    schedule.[0].PrincipalDue |> should equal 100_000m
+    schedule.[1].PrincipalDue |> should equal 150_000m
+    schedule.[2].PrincipalDue |> should equal 200_000m
+    schedule.[3].RemainingPrincipalAfter |> should equal 0m  // residual cleared
+
+[<Fact>]
+let ``PaymentSchedule StepUp clears full balance when step sum exceeds outstanding`` () =
+    let terms = { sampleTerms () with
+                    OriginationDate = DateOnly(2025, 1, 1)
+                    MaturityDate    = DateOnly(2026, 1, 1)
+                    PaymentFrequencyMonths = 3
+                    AmortizationType = AmortizationType.StepUp(400_000m, 200_000m)
+                    InterestRate = Some 0.08m
+                    CommitmentAmount = 500_000m }
+    let state = drawnState 500_000m terms
+    let schedule = PaymentSchedule.generate state.Value (DateOnly(2025, 1, 1))
+    schedule |> should haveLength 4
+    // First payment: 400k; second: 100k (remaining); rest: 0
+    schedule.[0].PrincipalDue |> should equal 400_000m
+    schedule.[0].RemainingPrincipalAfter |> should equal 100_000m
+    schedule.[1].PrincipalDue |> should equal 100_000m   // capped by remaining
+    schedule.[1].RemainingPrincipalAfter |> should equal 0m
+    schedule.[2].PrincipalDue |> should equal 0m
+    schedule.[3].PrincipalDue |> should equal 0m
+
+[<Fact>]
+let ``PaymentSchedule StepUp with zero step behaves like StraightLine`` () =
+    let terms = { sampleTerms () with
+                    OriginationDate = DateOnly(2025, 1, 1)
+                    MaturityDate    = DateOnly(2026, 1, 1)
+                    PaymentFrequencyMonths = 3
+                    AmortizationType = AmortizationType.StepUp(250_000m, 0m)
+                    InterestRate = Some 0.08m
+                    CommitmentAmount = 1_000_000m }
+    let state = drawnState 1_000_000m terms
+    let schedule = PaymentSchedule.generate state.Value (DateOnly(2025, 1, 1))
+    schedule |> should haveLength 4
+    schedule |> List.take 3 |> List.iter (fun p -> p.PrincipalDue |> should equal 250_000m)
+    (List.last schedule).RemainingPrincipalAfter |> should equal 0m

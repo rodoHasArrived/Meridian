@@ -52,6 +52,16 @@ type AmortizationType =
     | StraightLine
     /// Equal total payments (blended principal + interest) each period.
     | Annuity
+    /// Amortises toward a residual balloon balance at maturity.
+    /// The borrower makes equal principal slices calculated over the full outstanding amount,
+    /// and the remaining balloon is settled as a lump sum at the final payment date.
+    /// The balloon value must be non-negative and less than the outstanding principal.
+    | TargetBalance of balloon: decimal
+    /// Ramping principal repayments that increase by a fixed step each period.
+    /// Period 1 pays the initial principal amount; each subsequent period pays
+    /// an additional step amount more than the previous period.
+    /// The final payment clears any remaining balance.
+    | StepUp of initialPrincipal: decimal * stepAmount: decimal
     /// Custom schedule negotiated with the borrower.
     | Custom of description: string
 
@@ -1188,6 +1198,51 @@ module PaymentSchedule =
                             let principalDue =
                                 if i = n - 1 then remaining
                                 else max 0m (min remaining (constantPayment - interest))
+                            let newRemaining = max 0m (remaining - principalDue)
+                            let payment =
+                                { PaymentNumber = i + 1; DueDate = dueDate
+                                  PrincipalDue = principalDue; EstimatedInterest = interest
+                                  TotalDue = principalDue + interest; RemainingPrincipalAfter = newRemaining }
+                            (payment, newRemaining)
+                        ) state.OutstandingPrincipal
+                    payments
+
+                | AmortizationType.TargetBalance balloon ->
+                    // Amortise (outstanding − balloon) in equal slices; balloon is cleared at maturity.
+                    let toAmortize = max 0m (state.OutstandingPrincipal - balloon)
+                    let slicePerPeriod = if n > 0 then toAmortize / decimal n else 0m
+                    let (payments, _) =
+                        indexedPeriods
+                        |> List.mapFold (fun remaining (i, (_, dueDate)) ->
+                            let pd = prevDate i
+                            let principalDue =
+                                if i = n - 1 then remaining  // clear full balance (scheduled + balloon)
+                                else Math.Round(slicePerPeriod, decimals)
+                            let factor = DayCount.accrualFactor terms.DayCountConvention pd dueDate
+                            let interest = remaining * rate * factor
+                            let newRemaining = max 0m (remaining - principalDue)
+                            let payment =
+                                { PaymentNumber = i + 1; DueDate = dueDate
+                                  PrincipalDue = principalDue; EstimatedInterest = interest
+                                  TotalDue = principalDue + interest; RemainingPrincipalAfter = newRemaining }
+                            (payment, newRemaining)
+                        ) state.OutstandingPrincipal
+                    payments
+
+                | AmortizationType.StepUp(initialPrincipal, stepAmount) ->
+                    // Period i (0-based) pays: initialPrincipal + i × stepAmount, floored at 0.
+                    // The last period pays whatever balance remains to clear the loan.
+                    let (payments, _) =
+                        indexedPeriods
+                        |> List.mapFold (fun remaining (i, (_, dueDate)) ->
+                            let pd = prevDate i
+                            let principalDue =
+                                if i = n - 1 then remaining
+                                else
+                                    let scheduled = initialPrincipal + decimal i * stepAmount
+                                    max 0m (min remaining scheduled)
+                            let factor = DayCount.accrualFactor terms.DayCountConvention pd dueDate
+                            let interest = remaining * rate * factor
                             let newRemaining = max 0m (remaining - principalDue)
                             let payment =
                                 { PaymentNumber = i + 1; DueDate = dueDate
