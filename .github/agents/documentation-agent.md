@@ -547,6 +547,7 @@ Meridian/
 │   │   ├── assembly-performance-roadmap.md
 │   │   ├── codebase-audit-cleanup-roadmap.md
 │   │   ├── l3-inference-implementation-plan.md
+│   │   ├── ledger
 │   │   ├── quant-script-environment-blueprint.md
 │   │   ├── readability-refactor-baseline.md
 │   │   ├── readability-refactor-roadmap.md

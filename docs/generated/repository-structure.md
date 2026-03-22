@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-03-21 00:25:27 UTC
+> Auto-generated on 2026-03-22 01:03:43 UTC
 
 This document provides an overview of the Meridian repository structure.
 
@@ -518,6 +518,7 @@ Meridian/
 │   │   ├── assembly-performance-roadmap.md
 │   │   ├── codebase-audit-cleanup-roadmap.md
 │   │   ├── l3-inference-implementation-plan.md
+│   │   ├── ledger
 │   │   ├── quant-script-environment-blueprint.md
 │   │   ├── readability-refactor-baseline.md
 │   │   ├── readability-refactor-roadmap.md
