@@ -34,6 +34,11 @@ let private createLoan () =
     let events = [ LoanEvent.LoanCreated(header, terms) ]
     LoanAggregate.rebuild events
 
+/// Apply a list of events to an existing state snapshot.
+/// Useful in tests to advance state without rerunning the full event sequence.
+let private applyEvents (state: LoanState option) (events: LoanEvent list) : LoanState option =
+    events |> List.fold (fun s e -> Some (LoanAggregate.evolve s e)) state
+
 // ── Currency tests ────────────────────────────────────────────────────────────
 
 [<Fact>]
@@ -231,8 +236,7 @@ let ``HandleCommitLoan succeeds for Pending loan`` () =
 [<Fact>]
 let ``HandleCommitLoan rejects non-Pending loan`` () =
     let state = createLoan ()
-    let events = [ LoanEvent.LoanCommitted(10_000_000m, Currency.USD) ]
-    let committed = events |> List.fold (fun s e -> Some (LoanAggregate.evolve s e)) state
+    let committed = applyEvents state [ LoanEvent.LoanCommitted(10_000_000m, Currency.USD) ]
     let result = LoanAggregate.handleCommit committed 5_000_000m Currency.USD
     match result with
     | Error _ -> ()
@@ -431,7 +435,7 @@ let ``AmendTerms replaces loan terms and bumps version`` () =
     let result = LoanAggregate.handle state (LoanCommand.AmendTerms newTerms)
     match result with
     | Ok events ->
-        let newState = events |> List.fold (fun s e -> Some (LoanAggregate.evolve s e)) state
+        let newState = applyEvents state events
         newState.Value.Terms.CommitmentAmount |> should equal 20_000_000m
         newState.Value.Terms.SpreadBps |> should equal (Some 400m)
     | Error msg -> failwith $"Unexpected error: {msg}"
@@ -624,3 +628,314 @@ let ``Full PIK loan lifecycle: drawdown then PIK capitalisation then close`` () 
     state.Value.Status |> should equal LoanStatus.Closed
     state.Value.OutstandingPrincipal |> should equal 0m
     state.Value.AccruedInterestUnpaid |> should equal 0m
+
+// ── Collateral ─────────────────────────────────────────────────────────────────
+
+let private sampleCollateral (value: decimal) : Collateral =
+    { CollateralId = Guid.NewGuid()
+      CollateralType = CollateralType.RealEstate
+      Description = "Office building, Chicago IL"
+      EstimatedValue = value
+      Currency = Currency.USD
+      AppraisalDate = DateOnly(2025, 1, 10) }
+
+[<Fact>]
+let ``CollateralAdded appends collateral and bumps version`` () =
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanCommitted(10_000_000m, Currency.USD) ]
+        |> LoanAggregate.rebuild
+    let c = sampleCollateral 8_000_000m
+    let newState = LoanAggregate.evolve state (LoanEvent.CollateralAdded(c, DateOnly(2025, 1, 20)))
+    newState.Collateral |> should haveLength 1
+    newState.Collateral.[0].EstimatedValue |> should equal 8_000_000m
+
+[<Fact>]
+let ``CollateralReleased removes collateral by id`` () =
+    let c = sampleCollateral 8_000_000m
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanCommitted(10_000_000m, Currency.USD)
+          LoanEvent.CollateralAdded(c, DateOnly(2025, 1, 20)) ]
+        |> LoanAggregate.rebuild
+    let newState = LoanAggregate.evolve state (LoanEvent.CollateralReleased(c.CollateralId, DateOnly(2025, 6, 1)))
+    newState.Collateral |> should haveLength 0
+
+[<Fact>]
+let ``CollateralRevalued updates estimated value`` () =
+    let c = sampleCollateral 8_000_000m
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.CollateralAdded(c, DateOnly(2025, 1, 20)) ]
+        |> LoanAggregate.rebuild
+    let newState = LoanAggregate.evolve state (LoanEvent.CollateralRevalued(c.CollateralId, 7_500_000m, DateOnly(2025, 7, 1)))
+    newState.Collateral.[0].EstimatedValue |> should equal 7_500_000m
+
+[<Fact>]
+let ``AddCollateral command rejects closed loan`` () =
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanClosed(DateOnly(2028, 1, 15)) ]
+        |> LoanAggregate.rebuild
+    let result = LoanAggregate.handle state (LoanCommand.AddCollateral(sampleCollateral 1_000_000m, DateOnly(2028, 2, 1)))
+    match result with
+    | Error msg -> msg |> should equal "Cannot add collateral to a closed loan."
+    | Ok _ -> failwith "Expected error"
+
+[<Fact>]
+let ``AddCollateral command rejects non-positive value`` () =
+    let state = createLoan ()
+    let badCollateral = { sampleCollateral 0m with EstimatedValue = 0m }
+    let result = LoanAggregate.handle state (LoanCommand.AddCollateral(badCollateral, DateOnly(2025, 2, 1)))
+    match result with
+    | Error msg -> msg |> should equal "Collateral estimated value must be positive."
+    | Ok _ -> failwith "Expected error"
+
+[<Fact>]
+let ``ReleaseCollateral command rejects unknown collateral id`` () =
+    let state = createLoan ()
+    let result = LoanAggregate.handle state (LoanCommand.ReleaseCollateral(Guid.NewGuid(), DateOnly(2025, 6, 1)))
+    match result with
+    | Error msg -> msg |> should equal "Collateral item not found."
+    | Ok _ -> failwith "Expected error"
+
+[<Fact>]
+let ``RevalueCollateral command rejects non-positive value`` () =
+    let c = sampleCollateral 5_000_000m
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.CollateralAdded(c, DateOnly(2025, 1, 20)) ]
+        |> LoanAggregate.rebuild
+    let result = LoanAggregate.handle state (LoanCommand.RevalueCollateral(c.CollateralId, 0m, DateOnly(2025, 7, 1)))
+    match result with
+    | Error msg -> msg |> should equal "Revalued collateral value must be positive."
+    | Ok _ -> failwith "Expected error"
+
+// ── Loan statuses: NonPerforming, Default, Workout ─────────────────────────────
+
+[<Fact>]
+let ``MarkNonPerforming transitions Active loan to NonPerforming`` () =
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanCommitted(10_000_000m, Currency.USD)
+          LoanEvent.DrawdownExecuted(5_000_000m, Currency.USD, DateOnly(2025, 2, 1)) ]
+        |> LoanAggregate.rebuild
+    let result = LoanAggregate.handle state (LoanCommand.MarkNonPerforming(DateOnly(2025, 8, 1)))
+    match result with
+    | Ok events ->
+        let newState = applyEvents state events
+        newState.Value.Status |> should equal LoanStatus.NonPerforming
+    | Error msg -> failwith $"Unexpected error: {msg}"
+
+[<Fact>]
+let ``DeclareDefault transitions to Default status`` () =
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanCommitted(10_000_000m, Currency.USD)
+          LoanEvent.DrawdownExecuted(5_000_000m, Currency.USD, DateOnly(2025, 2, 1))
+          LoanEvent.LoanMarkedNonPerforming(DateOnly(2025, 8, 1)) ]
+        |> LoanAggregate.rebuild
+    let result = LoanAggregate.handle state (LoanCommand.DeclareDefault(DateOnly(2025, 9, 1), "Missed three consecutive payments"))
+    match result with
+    | Ok events ->
+        let newState = applyEvents state events
+        newState.Value.Status |> should equal LoanStatus.Default
+    | Error msg -> failwith $"Unexpected error: {msg}"
+
+[<Fact>]
+let ``DeclareDefault rejects empty reason`` () =
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanCommitted(10_000_000m, Currency.USD) ]
+        |> LoanAggregate.rebuild
+    let result = LoanAggregate.handle state (LoanCommand.DeclareDefault(DateOnly(2025, 9, 1), "   "))
+    match result with
+    | Error msg -> msg |> should equal "Default reason must be provided."
+    | Ok _ -> failwith "Expected error"
+
+[<Fact>]
+let ``DeclareDefault rejects already-closed loan`` () =
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanClosed(DateOnly(2028, 1, 15)) ]
+        |> LoanAggregate.rebuild
+    let result = LoanAggregate.handle state (LoanCommand.DeclareDefault(DateOnly(2028, 2, 1), "Some reason"))
+    match result with
+    | Error msg -> msg |> should equal "Loan is already closed."
+    | Ok _ -> failwith "Expected error"
+
+[<Fact>]
+let ``CureDefault returns loan to Active status`` () =
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanCommitted(10_000_000m, Currency.USD)
+          LoanEvent.DrawdownExecuted(5_000_000m, Currency.USD, DateOnly(2025, 2, 1))
+          LoanEvent.LoanDefaulted(DateOnly(2025, 9, 1), "Missed payments") ]
+        |> LoanAggregate.rebuild
+    let result = LoanAggregate.handle state (LoanCommand.CureDefault(DateOnly(2025, 11, 1)))
+    match result with
+    | Ok events ->
+        let newState = applyEvents state events
+        newState.Value.Status |> should equal LoanStatus.Active
+    | Error msg -> failwith $"Unexpected error: {msg}"
+
+[<Fact>]
+let ``CureDefault rejects loan that is not in default`` () =
+    let state = createLoan ()
+    let result = LoanAggregate.handle state (LoanCommand.CureDefault(DateOnly(2025, 11, 1)))
+    match result with
+    | Error msg -> msg |> should equal "Loan is not in default."
+    | Ok _ -> failwith "Expected error"
+
+[<Fact>]
+let ``PlaceInWorkout transitions Default loan to Workout`` () =
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanCommitted(10_000_000m, Currency.USD)
+          LoanEvent.DrawdownExecuted(5_000_000m, Currency.USD, DateOnly(2025, 2, 1))
+          LoanEvent.LoanDefaulted(DateOnly(2025, 9, 1), "Non-payment") ]
+        |> LoanAggregate.rebuild
+    let result = LoanAggregate.handle state (LoanCommand.PlaceInWorkout(DateOnly(2025, 10, 1)))
+    match result with
+    | Ok events ->
+        let newState = applyEvents state events
+        newState.Value.Status |> should equal LoanStatus.Workout
+    | Error msg -> failwith $"Unexpected error: {msg}"
+
+[<Fact>]
+let ``PlaceInWorkout rejects Active loan`` () =
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanCommitted(10_000_000m, Currency.USD)
+          LoanEvent.DrawdownExecuted(5_000_000m, Currency.USD, DateOnly(2025, 2, 1)) ]
+        |> LoanAggregate.rebuild
+    let result = LoanAggregate.handle state (LoanCommand.PlaceInWorkout(DateOnly(2025, 10, 1)))
+    match result with
+    | Error msg -> msg |> should haveSubstring "Default or NonPerforming"
+    | Ok _ -> failwith "Expected error"
+
+[<Fact>]
+let ``WriteOffLoan reduces outstanding principal`` () =
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanCommitted(10_000_000m, Currency.USD)
+          LoanEvent.DrawdownExecuted(5_000_000m, Currency.USD, DateOnly(2025, 2, 1))
+          LoanEvent.LoanDefaulted(DateOnly(2025, 9, 1), "Non-payment")
+          LoanEvent.LoanWrittenOff(5_000_000m, DateOnly(2026, 1, 1)) ]
+        |> LoanAggregate.rebuild
+    state.Value.OutstandingPrincipal |> should equal 0m
+
+[<Fact>]
+let ``WriteOffLoan rejects amount exceeding outstanding principal`` () =
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanCommitted(10_000_000m, Currency.USD)
+          LoanEvent.DrawdownExecuted(3_000_000m, Currency.USD, DateOnly(2025, 2, 1)) ]
+        |> LoanAggregate.rebuild
+    let result = LoanAggregate.handle state (LoanCommand.WriteOffLoan(5_000_000m, DateOnly(2026, 1, 1)))
+    match result with
+    | Error msg -> msg |> should haveSubstring "outstanding principal"
+    | Ok _ -> failwith "Expected error"
+
+// ── LoanService metrics ────────────────────────────────────────────────────────
+
+[<Fact>]
+let ``LoanService.totalCollateralValue sums all pledged items`` () =
+    let c1 = sampleCollateral 4_000_000m
+    let c2 = { sampleCollateral 3_000_000m with CollateralType = CollateralType.Equipment }
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.CollateralAdded(c1, DateOnly(2025, 1, 20))
+          LoanEvent.CollateralAdded(c2, DateOnly(2025, 1, 21)) ]
+        |> LoanAggregate.rebuild
+    LoanService.totalCollateralValue state.Value |> should equal 7_000_000m
+
+[<Fact>]
+let ``LoanService.loanToValue returns None when no collateral`` () =
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanCommitted(10_000_000m, Currency.USD)
+          LoanEvent.DrawdownExecuted(5_000_000m, Currency.USD, DateOnly(2025, 2, 1)) ]
+        |> LoanAggregate.rebuild
+    LoanService.loanToValue state.Value |> should equal None
+
+[<Fact>]
+let ``LoanService.loanToValue computes principal over collateral`` () =
+    let c = sampleCollateral 10_000_000m
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanCommitted(10_000_000m, Currency.USD)
+          LoanEvent.DrawdownExecuted(5_000_000m, Currency.USD, DateOnly(2025, 2, 1))
+          LoanEvent.CollateralAdded(c, DateOnly(2025, 1, 20)) ]
+        |> LoanAggregate.rebuild
+    LoanService.loanToValue state.Value |> should equal (Some 0.5m)
+
+[<Fact>]
+let ``LoanService.collateralCoverageRatio returns None when principal is zero`` () =
+    let state = createLoan ()
+    LoanService.collateralCoverageRatio state.Value |> should equal None
+
+[<Fact>]
+let ``LoanService.collateralCoverageRatio is inverse of loanToValue`` () =
+    let c = sampleCollateral 10_000_000m
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanCommitted(10_000_000m, Currency.USD)
+          LoanEvent.DrawdownExecuted(5_000_000m, Currency.USD, DateOnly(2025, 2, 1))
+          LoanEvent.CollateralAdded(c, DateOnly(2025, 1, 20)) ]
+        |> LoanAggregate.rebuild
+    LoanService.collateralCoverageRatio state.Value |> should equal (Some 2m)
+
+[<Fact>]
+let ``LoanService.undrawnBalance is commitment minus outstanding`` () =
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanCommitted(10_000_000m, Currency.USD)
+          LoanEvent.DrawdownExecuted(4_000_000m, Currency.USD, DateOnly(2025, 2, 1)) ]
+        |> LoanAggregate.rebuild
+    LoanService.undrawnBalance state.Value |> should equal 6_000_000m
+
+[<Fact>]
+let ``LoanService.carryingValue equals principal adjusted for discount`` () =
+    let terms = { sampleTerms () with PurchasePrice = Some 0.95m }  // 500_000 discount
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), terms)
+          LoanEvent.LoanCommitted(10_000_000m, Currency.USD)
+          LoanEvent.DrawdownExecuted(10_000_000m, Currency.USD, DateOnly(2025, 2, 1)) ]
+        |> LoanAggregate.rebuild
+    // CarryingValue = 10_000_000 + 0 (no premium) - 500_000 = 9_500_000
+    LoanService.carryingValue state.Value |> should equal 9_500_000m
+
+[<Fact>]
+let ``LoanService.isDistressed returns true for Default status`` () =
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanDefaulted(DateOnly(2025, 9, 1), "Non-payment") ]
+        |> LoanAggregate.rebuild
+    LoanService.isDistressed state.Value |> should equal true
+
+[<Fact>]
+let ``LoanService.isDistressed returns false for Active status`` () =
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanCommitted(10_000_000m, Currency.USD)
+          LoanEvent.DrawdownExecuted(5_000_000m, Currency.USD, DateOnly(2025, 2, 1)) ]
+        |> LoanAggregate.rebuild
+    LoanService.isDistressed state.Value |> should equal false
+
+[<Fact>]
+let ``LoanService.isEconomicallyActive returns false for Closed loan`` () =
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanClosed(DateOnly(2028, 1, 15)) ]
+        |> LoanAggregate.rebuild
+    LoanService.isEconomicallyActive state.Value |> should equal false
+
+[<Fact>]
+let ``LoanService.isEconomicallyActive returns true for drawn active loan`` () =
+    let state =
+        [ LoanEvent.LoanCreated(sampleHeader (), sampleTerms ())
+          LoanEvent.LoanCommitted(10_000_000m, Currency.USD)
+          LoanEvent.DrawdownExecuted(5_000_000m, Currency.USD, DateOnly(2025, 2, 1)) ]
+        |> LoanAggregate.rebuild
+    LoanService.isEconomicallyActive state.Value |> should equal true

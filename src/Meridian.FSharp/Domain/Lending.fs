@@ -133,6 +133,12 @@ type LoanStatus =
     | Committed
     /// Funds have been drawn; loan is active and accruing.
     | Active
+    /// Borrower has missed one or more payments; formal default has not yet been declared.
+    | NonPerforming
+    /// Borrower has formally defaulted; recovery or enforcement proceedings may be initiated.
+    | Default
+    /// Loan is in active workout / recovery proceedings following default or non-performance.
+    | Workout
     /// Loan fully repaid and closed.
     | Closed
 
@@ -152,6 +158,41 @@ type RestructuringType =
     | PIKConversion
     /// Comprehensive restructuring combining multiple modifications.
     | Full
+
+// ── Collateral types ──────────────────────────────────────────────────────────
+
+/// Classifies the type of asset pledged as security for a loan.
+[<RequireQualifiedAccess>]
+type CollateralType =
+    /// Commercial or residential real estate.
+    | RealEstate
+    /// Machinery, vehicles, or other physical equipment.
+    | Equipment
+    /// Raw materials, work-in-progress, or finished goods.
+    | Inventory
+    /// Trade receivables or other accounts receivable.
+    | AccountsReceivable
+    /// Publicly or privately held securities or financial instruments.
+    | FinancialInstrument
+    /// Any other collateral type not covered above.
+    | Other of description: string
+
+/// A unit of collateral pledged as security against a direct lending loan.
+[<CLIMutable>]
+type Collateral = {
+    /// Unique identifier for this collateral position.
+    CollateralId: Guid
+    /// Type of the collateral asset.
+    CollateralType: CollateralType
+    /// Human-readable description of the specific collateral item.
+    Description: string
+    /// Appraised / estimated market value at the most recent valuation.
+    EstimatedValue: decimal
+    /// Currency in which the estimated value is expressed.
+    Currency: Currency
+    /// Date of the most recent appraisal or valuation.
+    AppraisalDate: DateOnly
+}
 
 // ── Core records ─────────────────────────────────────────────────────────────
 
@@ -220,6 +261,8 @@ type LoanState = {
     /// Remaining unamortized purchase premium (expense to be amortised over loan life).
     /// Positive means the loan was acquired above par; decreases as PremiumAmortized events are applied.
     UnamortizedPremium: decimal
+    /// Collateral items currently pledged against the loan.
+    Collateral: Collateral list
     /// Monotonically increasing version counter (one per event applied).
     Version: int64
 }
@@ -271,6 +314,24 @@ type LoanEvent =
     /// A portion of the purchase premium was amortised as expense.
     /// Reduces UnamortizedPremium.
     | PremiumAmortized of amount: decimal * date: DateOnly
+    // ── Collateral ──────────────────────────────────────────────────────────
+    /// A new collateral item was pledged against the loan.
+    | CollateralAdded of collateral: Collateral * date: DateOnly
+    /// A collateral item was released; the lien over that asset was discharged.
+    | CollateralReleased of collateralId: Guid * date: DateOnly
+    /// An existing collateral item was revalued to a new estimated market value.
+    | CollateralRevalued of collateralId: Guid * newValue: decimal * date: DateOnly
+    // ── Default & recovery ──────────────────────────────────────────────────
+    /// The loan was classified as non-performing (missed payment(s); no formal default yet).
+    | LoanMarkedNonPerforming of date: DateOnly
+    /// The borrower formally defaulted; loan status moves to Default.
+    | LoanDefaulted of date: DateOnly * reason: string
+    /// A previously declared default was cured; loan returns to Active status.
+    | DefaultCured of date: DateOnly
+    /// The loan was placed into active workout / recovery proceedings.
+    | LoanPlacedInWorkout of date: DateOnly
+    /// The remaining outstanding balance was written off as a credit loss.
+    | LoanWrittenOff of amount: decimal * date: DateOnly
 
 // ── Command catalog ────────────────────────────────────────────────────────────
 
@@ -312,6 +373,22 @@ type LoanCommand =
     | AmortizeDiscount of amount: decimal * date: DateOnly
     /// Amortise a portion of the purchase premium as an expense.
     | AmortizePremium of amount: decimal * date: DateOnly
+    /// Pledge a new collateral item against the loan.
+    | AddCollateral of collateral: Collateral * date: DateOnly
+    /// Release (discharge the lien over) a pledged collateral item.
+    | ReleaseCollateral of collateralId: Guid * date: DateOnly
+    /// Update the estimated market value of an existing collateral item.
+    | RevalueCollateral of collateralId: Guid * newValue: decimal * date: DateOnly
+    /// Mark the loan as non-performing (missed payments, no formal default yet).
+    | MarkNonPerforming of date: DateOnly
+    /// Declare a formal default on the loan.
+    | DeclareDefault of date: DateOnly * reason: string
+    /// Cure a previously declared default.
+    | CureDefault of date: DateOnly
+    /// Place the loan into active workout / recovery proceedings.
+    | PlaceInWorkout of date: DateOnly
+    /// Write off the outstanding balance (or a portion) as a credit loss.
+    | WriteOffLoan of amount: decimal * date: DateOnly
 
 // ── Aggregate: pure state-transition logic ────────────────────────────────────
 
@@ -350,6 +427,7 @@ module LoanAggregate =
               AccruedCommitmentFeeUnpaid = 0m
               UnamortizedDiscount = discount
               UnamortizedPremium = premium
+              Collateral = []
               Version = 1L }
         | None, _ ->
             failwith "Cannot apply event to an uninitialized loan (LoanCreated must be first)."
@@ -395,6 +473,25 @@ module LoanAggregate =
             bumpVersion { s with UnamortizedDiscount = max 0m (s.UnamortizedDiscount - amount) }
         | Some s, LoanEvent.PremiumAmortized(amount, _) ->
             bumpVersion { s with UnamortizedPremium = max 0m (s.UnamortizedPremium - amount) }
+        // ── Collateral ─────────────────────────────────────────────────────
+        | Some s, LoanEvent.CollateralAdded(collateral, _) ->
+            bumpVersion { s with Collateral = collateral :: s.Collateral }
+        | Some s, LoanEvent.CollateralReleased(collateralId, _) ->
+            bumpVersion { s with Collateral = s.Collateral |> List.filter (fun c -> c.CollateralId <> collateralId) }
+        | Some s, LoanEvent.CollateralRevalued(collateralId, newValue, _) ->
+            let updated = s.Collateral |> List.map (fun c -> if c.CollateralId = collateralId then { c with EstimatedValue = newValue } else c)
+            bumpVersion { s with Collateral = updated }
+        // ── Default & recovery ─────────────────────────────────────────────
+        | Some s, LoanEvent.LoanMarkedNonPerforming _ ->
+            bumpVersion { s with Status = LoanStatus.NonPerforming }
+        | Some s, LoanEvent.LoanDefaulted _ ->
+            bumpVersion { s with Status = LoanStatus.Default }
+        | Some s, LoanEvent.DefaultCured _ ->
+            bumpVersion { s with Status = LoanStatus.Active }
+        | Some s, LoanEvent.LoanPlacedInWorkout _ ->
+            bumpVersion { s with Status = LoanStatus.Workout }
+        | Some s, LoanEvent.LoanWrittenOff(amount, _) ->
+            bumpVersion { s with OutstandingPrincipal = max 0m (s.OutstandingPrincipal - amount) }
 
     /// Rebuild aggregate state from a sequence of events.
     [<CompiledName("Rebuild")>]
@@ -576,3 +673,103 @@ module LoanAggregate =
             | Some s when amount > s.UnamortizedPremium ->
                 Error $"Premium amortisation of {amount} exceeds unamortized premium of {s.UnamortizedPremium}."
             | Some _ -> Ok [ LoanEvent.PremiumAmortized(amount, date) ]
+        | LoanCommand.AddCollateral(collateral, date) ->
+            match state with
+            | None -> Error "Loan does not exist."
+            | Some s when s.Status = LoanStatus.Closed -> Error "Cannot add collateral to a closed loan."
+            | Some s when collateral.EstimatedValue <= 0m -> Error "Collateral estimated value must be positive."
+            | Some _ -> Ok [ LoanEvent.CollateralAdded(collateral, date) ]
+        | LoanCommand.ReleaseCollateral(collateralId, date) ->
+            match state with
+            | None -> Error "Loan does not exist."
+            | Some s when not (s.Collateral |> List.exists (fun c -> c.CollateralId = collateralId)) ->
+                Error "Collateral item not found."
+            | Some _ -> Ok [ LoanEvent.CollateralReleased(collateralId, date) ]
+        | LoanCommand.RevalueCollateral(collateralId, newValue, date) ->
+            match state with
+            | None -> Error "Loan does not exist."
+            | Some s when newValue <= 0m -> Error "Revalued collateral value must be positive."
+            | Some s when not (s.Collateral |> List.exists (fun c -> c.CollateralId = collateralId)) ->
+                Error "Collateral item not found."
+            | Some _ -> Ok [ LoanEvent.CollateralRevalued(collateralId, newValue, date) ]
+        | LoanCommand.MarkNonPerforming date ->
+            match state with
+            | None -> Error "Loan does not exist."
+            | Some s when s.Status = LoanStatus.Closed -> Error "Loan is already closed."
+            | Some s when s.Status = LoanStatus.Default -> Error "Loan is already in default."
+            | Some s when s.Status = LoanStatus.NonPerforming -> Error "Loan is already non-performing."
+            | Some _ -> Ok [ LoanEvent.LoanMarkedNonPerforming date ]
+        | LoanCommand.DeclareDefault(date, reason) ->
+            match state with
+            | None -> Error "Loan does not exist."
+            | Some s when s.Status = LoanStatus.Closed -> Error "Loan is already closed."
+            | Some s when s.Status = LoanStatus.Default -> Error "Loan is already in default."
+            | Some s when String.IsNullOrWhiteSpace(reason) -> Error "Default reason must be provided."
+            | Some _ -> Ok [ LoanEvent.LoanDefaulted(date, reason) ]
+        | LoanCommand.CureDefault date ->
+            match state with
+            | None -> Error "Loan does not exist."
+            | Some s when s.Status <> LoanStatus.Default -> Error "Loan is not in default."
+            | Some _ -> Ok [ LoanEvent.DefaultCured date ]
+        | LoanCommand.PlaceInWorkout date ->
+            match state with
+            | None -> Error "Loan does not exist."
+            | Some s when s.Status <> LoanStatus.Default && s.Status <> LoanStatus.NonPerforming ->
+                Error "Loan must be in Default or NonPerforming status to be placed in Workout."
+            | Some _ -> Ok [ LoanEvent.LoanPlacedInWorkout date ]
+        | LoanCommand.WriteOffLoan(amount, date) ->
+            match state with
+            | None -> Error "Loan does not exist."
+            | Some s when amount <= 0m -> Error "Write-off amount must be positive."
+            | Some s when amount > s.OutstandingPrincipal ->
+                Error $"Write-off of {amount} exceeds outstanding principal of {s.OutstandingPrincipal}."
+            | Some _ -> Ok [ LoanEvent.LoanWrittenOff(amount, date) ]
+
+// ── Domain service helpers (pure, no I/O) ─────────────────────────────────────
+
+/// Pure helper functions for computing loan-level metrics and status queries.
+/// All functions are deterministic given a <see cref="LoanState"/> — no I/O or side effects.
+module LoanService =
+
+    /// Sums the estimated values of all collateral items currently pledged.
+    [<CompiledName("TotalCollateralValue")>]
+    let totalCollateralValue (state: LoanState) : decimal =
+        state.Collateral |> List.sumBy (fun c -> c.EstimatedValue)
+
+    /// Loan-to-value ratio: OutstandingPrincipal / TotalCollateralValue.
+    /// Returns None when there is no pledged collateral or total collateral value is zero.
+    [<CompiledName("LoanToValue")>]
+    let loanToValue (state: LoanState) : decimal option =
+        let cv = totalCollateralValue state
+        if cv = 0m then None
+        else Some (state.OutstandingPrincipal / cv)
+
+    /// Collateral coverage ratio: TotalCollateralValue / OutstandingPrincipal.
+    /// Returns None when outstanding principal is zero (loan fully repaid).
+    [<CompiledName("CollateralCoverageRatio")>]
+    let collateralCoverageRatio (state: LoanState) : decimal option =
+        if state.OutstandingPrincipal = 0m then None
+        else Some (totalCollateralValue state / state.OutstandingPrincipal)
+
+    /// Undrawn balance: CommitmentAmount − OutstandingPrincipal (floored at zero).
+    [<CompiledName("UndrawnBalance")>]
+    let undrawnBalance (state: LoanState) : decimal =
+        max 0m (state.Terms.CommitmentAmount - state.OutstandingPrincipal)
+
+    /// Net carrying value of the loan on the books:
+    /// OutstandingPrincipal + UnamortizedPremium − UnamortizedDiscount.
+    [<CompiledName("CarryingValue")>]
+    let carryingValue (state: LoanState) : decimal =
+        state.OutstandingPrincipal + state.UnamortizedPremium - state.UnamortizedDiscount
+
+    /// Returns true if the loan is in a distressed status (NonPerforming, Default, or Workout).
+    [<CompiledName("IsDistressed")>]
+    let isDistressed (state: LoanState) : bool =
+        match state.Status with
+        | LoanStatus.NonPerforming | LoanStatus.Default | LoanStatus.Workout -> true
+        | _ -> false
+
+    /// Returns true if the loan has funds drawn and has not been closed.
+    [<CompiledName("IsEconomicallyActive")>]
+    let isEconomicallyActive (state: LoanState) : bool =
+        state.Status <> LoanStatus.Closed && state.OutstandingPrincipal > 0m
