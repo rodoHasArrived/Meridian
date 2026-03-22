@@ -195,6 +195,128 @@ let private runAnnuityDemo () =
     section "  Payment schedule (Annuity — equal total payment)"
     state |> Option.iter (fun s -> printSchedule s (DateOnly(2025, 1, 1)))
 
+// ── Scenario 4 — Ledger posting and reconciliation ────────────────────────────
+
+/// Records a balanced double-entry journal entry for a loan lifecycle event and
+/// returns the updated ledger.
+///
+/// Chart of accounts used:
+///   LoanReceivable  (Asset)      — outstanding principal owed by borrower
+///   CashAccount     (Asset)      — cash movements in/out
+///   InterestIncome  (Revenue)    — earned interest income
+///   DiscountIncome  (Revenue)    — periodic discount amortization income
+///   UnrealizedDiscount (Liability) — balance sheet carrying-value adjustment
+let private runLedgerDemo () =
+    section "Scenario 4 — Double-entry ledger posting + reconciliation"
+
+    // ── chart of accounts ─────────────────────────────────────────────────────
+    let loanReceivable  = Meridian.Ledger.LedgerAccount("LoanReceivable",  Meridian.Ledger.LedgerAccountType.Asset)
+    let cashAccount     = Meridian.Ledger.LedgerAccount("Cash",            Meridian.Ledger.LedgerAccountType.Asset)
+    let interestIncome  = Meridian.Ledger.LedgerAccount("InterestIncome",  Meridian.Ledger.LedgerAccountType.Revenue)
+    let discountIncome  = Meridian.Ledger.LedgerAccount("DiscountIncome",  Meridian.Ledger.LedgerAccountType.Revenue)
+    let unamDiscount    = Meridian.Ledger.LedgerAccount("UnamortizedDiscount", Meridian.Ledger.LedgerAccountType.Asset)
+
+    let ledger = Meridian.Ledger.Ledger()
+    let ts (y,m,d) = DateTimeOffset(DateOnly(y,m,d).ToDateTime(TimeOnly.MinValue))
+
+    // Helper: build a balanced journal entry with N debit/credit pairs
+    let post (desc: string) (timestamp: DateTimeOffset) (lines: (Meridian.Ledger.LedgerAccount * decimal * decimal) list) =
+        let jeId = Guid.NewGuid()
+        let ledgerLines =
+            lines
+            |> List.map (fun (acct, debit, credit) ->
+                Meridian.Ledger.LedgerEntry(Guid.NewGuid(), jeId, timestamp, acct, debit, credit, desc))
+            |> List.toArray
+            :> System.Collections.Generic.IReadOnlyList<Meridian.Ledger.LedgerEntry>
+        ledger.Post(Meridian.Ledger.JournalEntry(jeId, timestamp, desc, ledgerLines))
+
+    // Event 1 — Loan funded: borrow receives $10M cash; we record receivable
+    //   Dr LoanReceivable  10,000,000
+    //   Cr Cash            10,000,000  (cash disbursed)
+    //   Dr UnamortizedDiscount  300,000  (3% discount at purchase price 0.97)
+    //   Cr Cash                 300,000  (net cash out = 9,700,000 — simplified as two entries)
+    let t1 = ts (2025,1,15)
+    post "Loan drawdown — principal disbursed" t1
+        [ loanReceivable,  10_000_000m, 0m
+          cashAccount,     0m, 10_000_000m ]
+    post "Purchase discount recognized at origination" t1
+        [ unamDiscount,  300_000m, 0m
+          cashAccount,   0m, 300_000m ]
+
+    printfn "  After origination:"
+    printfn "  %-35s %14M" "  LoanReceivable" (ledger.GetBalance loanReceivable)
+    printfn "  %-35s %14M" "  UnamortizedDiscount" (ledger.GetBalance unamDiscount)
+    printfn "  %-35s %14M" "  Cash (net)" (ledger.GetBalance cashAccount)
+
+    // Event 2 — Q1 interest accrual $87,500
+    //   Dr Cash            87,500
+    //   Cr InterestIncome  87,500
+    let t2 = ts (2025,4,15)
+    post "Q1 interest payment received" t2
+        [ cashAccount,    87_500m, 0m
+          interestIncome, 0m, 87_500m ]
+
+    // Event 3 — Q1 discount amortization $25,000 (straight-line over 12 periods)
+    //   Dr DiscountIncome (contra-asset reduces discount balance → revenue effect)
+    //   Cr UnamortizedDiscount
+    post "Q1 discount amortization" t2
+        [ discountIncome, 25_000m, 0m
+          unamDiscount,   0m, 25_000m ]
+
+    printfn ""
+    printfn "  After Q1:"
+    printfn "  %-35s %14M" "  LoanReceivable" (ledger.GetBalance loanReceivable)
+    printfn "  %-35s %14M" "  UnamortizedDiscount (net)" (ledger.GetBalance unamDiscount)
+    printfn "  %-35s %14M" "  InterestIncome" (ledger.GetBalance interestIncome)
+    printfn "  %-35s %14M" "  DiscountIncome" (ledger.GetBalance discountIncome)
+    printfn "  %-35s %14M" "  Cash (net)" (ledger.GetBalance cashAccount)
+
+    // Event 4 — Loan repaid at maturity
+    let t3 = ts (2028,1,15)
+    post "Principal repayment at maturity" t3
+        [ cashAccount,     10_000_000m, 0m
+          loanReceivable,  0m, 10_000_000m ]
+
+    printfn ""
+    printfn "  After repayment:"
+    printfn "  %-35s %14M" "  LoanReceivable" (ledger.GetBalance loanReceivable)
+    printfn "  %-35s %14M" "  Cash (net)" (ledger.GetBalance cashAccount)
+
+    // ── Reconciliation — trial balance ────────────────────────────────────────
+    printfn ""
+    section "  Trial balance reconciliation"
+
+    let tb = ledger.TrialBalance()
+    printfn "  %-35s %14s  %14s" "Account" "Debit" "Credit"
+    printfn "  %s" (String.replicate 65 "·")
+
+    let mutable totalDr = 0m
+    let mutable totalCr = 0m
+    for kvp in tb do
+        let bal = kvp.Value
+        if bal >= 0m then
+            printfn "  %-35s %14M  %14s" kvp.Key.Name bal ""
+            totalDr <- totalDr + bal
+        else
+            printfn "  %-35s %14s  %14M" kvp.Key.Name "" (-bal)
+            totalCr <- totalCr + (-bal)
+
+    printfn "  %s" (String.replicate 65 "─")
+    printfn "  %-35s %14M  %14M" "TOTALS" totalDr totalCr
+
+    // Verify double-entry integrity: total debits must equal total credits in the raw journal
+    let rawDebits  = ledger.Journal |> Seq.collect (fun j -> j.Lines) |> Seq.sumBy (fun l -> l.Debit)
+    let rawCredits = ledger.Journal |> Seq.collect (fun j -> j.Lines) |> Seq.sumBy (fun l -> l.Credit)
+    let balanced   = rawDebits = rawCredits
+    printfn ""
+    printfn "  Journal entries posted : %d" ledger.Journal.Count
+    printfn "  Total raw debits       : %M" rawDebits
+    printfn "  Total raw credits      : %M" rawCredits
+    printfn "  Ledger balanced        : %s" (if balanced then "✓ YES" else "✗ NO — DISCREPANCY DETECTED")
+
+    if not balanced then
+        failwith "Ledger reconciliation failed — debits do not equal credits"
+
 // ── Entry point ──────────────────────────────────────────────────────────────
 
 [<EntryPoint>]
@@ -214,6 +336,8 @@ let main _ =
         runStraightLineDemo ()
         printfn ""
         runAnnuityDemo ()
+        printfn ""
+        runLedgerDemo ()
         hr ()
         printfn "  Demo complete."
         0
