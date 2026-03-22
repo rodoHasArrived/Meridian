@@ -3,6 +3,7 @@ using Microsoft.FSharp.Collections;
 using FSharpLending = Meridian.FSharp.Domain.Lending;
 using LendingRepo = Meridian.Lending.LoanContractRepository;
 using LendingStore = Meridian.Lending.EventStore.ILoanEventStore;
+using LoanProjector = Meridian.Lending.Projections.PostgresLoanPositionProjector;
 
 namespace Meridian.Application.Lending;
 
@@ -15,6 +16,7 @@ namespace Meridian.Application.Lending;
 public sealed class PostgresLendingService : ILendingService
 {
     private readonly LendingStore.ILoanEventStore _store;
+    private readonly string _connectionString;
     private readonly ILogger<PostgresLendingService> _logger;
 
     /// <summary>Maximum number of optimistic-concurrency retries per command.</summary>
@@ -22,9 +24,11 @@ public sealed class PostgresLendingService : ILendingService
 
     public PostgresLendingService(
         LendingStore.ILoanEventStore store,
+        string connectionString,
         ILogger<PostgresLendingService> logger)
     {
         _store = store;
+        _connectionString = connectionString;
         _logger = logger;
     }
 
@@ -93,5 +97,5 @@ public sealed class PostgresLendingService : ILendingService
 
     /// <inheritdoc/>
     public IReadOnlyList<Guid> GetAllLoanIds() =>
-        Array.Empty<Guid>(); // Full scan is supported; omitted for now to avoid table-scan queries.
+        LoanProjector.getAllLoanIds(_connectionString).ToArray();
 }

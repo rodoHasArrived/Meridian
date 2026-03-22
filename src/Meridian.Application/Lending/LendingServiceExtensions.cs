@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using InMemoryStore = Meridian.Lending.EventStore.InMemoryLoanEventStore;
 using PostgresStore = Meridian.Lending.EventStore.PostgresLoanEventStore;
@@ -25,6 +26,10 @@ public static class LendingServiceExtensions
     {
         services.AddSingleton<LendingStore.ILoanEventStore>(_ => new InMemoryStore.InMemoryLoanEventStore());
         services.AddSingleton<ILendingService, InMemoryLendingService>();
+        services.AddSingleton<ILoanQueryService>(sp =>
+            new InMemoryLoanQueryService(
+                sp.GetRequiredService<ILendingService>(),
+                sp.GetRequiredService<LendingStore.ILoanEventStore>()));
         return services;
     }
 
@@ -46,7 +51,16 @@ public static class LendingServiceExtensions
     {
         services.AddSingleton<LendingStore.ILoanEventStore>(
             _ => new PostgresStore.PostgresLoanEventStore(connectionString));
-        services.AddSingleton<ILendingService, PostgresLendingService>();
+        services.AddSingleton<ILendingService>(sp =>
+            new PostgresLendingService(
+                sp.GetRequiredService<LendingStore.ILoanEventStore>(),
+                connectionString,
+                sp.GetRequiredService<ILogger<PostgresLendingService>>()));
+        services.AddSingleton<ILoanQueryService>(sp =>
+            new PostgresLoanQueryService(
+                sp.GetRequiredService<LendingStore.ILoanEventStore>(),
+                connectionString,
+                sp.GetRequiredService<ILogger<PostgresLoanQueryService>>()));
         return services;
     }
 
@@ -85,12 +99,29 @@ public static class LendingServiceExtensions
         });
 
         services.AddSingleton<ILendingService>(sp =>
+            {
+                var opts = sp.GetRequiredService<IOptions<LendingStorageOptions>>().Value;
+                if (opts.UsePostgres)
+                    return new PostgresLendingService(
+                        sp.GetRequiredService<LendingStore.ILoanEventStore>(),
+                        opts.ConnectionString!,
+                        sp.GetRequiredService<ILogger<PostgresLendingService>>());
+
+                return ActivatorUtilities.CreateInstance<InMemoryLendingService>(sp);
+            });
+
+        services.AddSingleton<ILoanQueryService>(sp =>
         {
             var opts = sp.GetRequiredService<IOptions<LendingStorageOptions>>().Value;
             if (opts.UsePostgres)
-                return ActivatorUtilities.CreateInstance<PostgresLendingService>(sp);
+                return (ILoanQueryService)new PostgresLoanQueryService(
+                    sp.GetRequiredService<LendingStore.ILoanEventStore>(),
+                    opts.ConnectionString!,
+                    sp.GetRequiredService<ILogger<PostgresLoanQueryService>>());
 
-            return ActivatorUtilities.CreateInstance<InMemoryLendingService>(sp);
+            return new InMemoryLoanQueryService(
+                sp.GetRequiredService<ILendingService>(),
+                sp.GetRequiredService<LendingStore.ILoanEventStore>());
         });
 
         return services;
