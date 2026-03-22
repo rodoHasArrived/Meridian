@@ -1,0 +1,290 @@
+# Direct Lending Unified Ledger – Expanded Architecture
+
+## 1. Problem Statement & Goals  
+Direct lending loans involve commitments, drawdowns, amortizing principal and interest (fixed or floating), and fees. We need a system that provides **complete auditability** and **traceability** of all cash flows and accruals. In practice this means recording every business event (e.g. `LoanCommitted`, `DrawdownExecuted`, `InterestAccrued`, etc.) in an immutable log【24†L150-L158】. Event Sourcing inherently provides this: events are **append-only and immutable**【24†L150-L158】, guaranteeing a full history. Key goals are:  
+- **Audit trail:** Every state change is an event that can be re-played. (“Append-only operations…events are never modified or deleted.”【24†L150-L158】).  
+- **Projection lineage:** Each cashflow projection notes exactly *which loan version and data* it used, so users can query “what we thought would happen as of last Friday’s terms.”  
+- **Accrual correctness:** Interest and fee accruals must be computed (daily/monthly) and posted as events, ensuring expenses/income are recognized even if cash has not moved.  
+- **Performance:** Queries (e.g. “current outstanding”, “next cashflows”) must be fast. We use TimescaleDB hypertables for large time-series (rates, historical flows) with appropriate indexing【32†L373-L381】【18†L874-L880】.  
+- **Extensibility:** While focused on term loans now, the model (loan definition → projection → actuals → reconciliation → accounting) should be reusable for bonds, swaps, etc.  
+
+We assume Postgres with TimescaleDB extension, and F# with an event-sourcing library (Sharpino) to implement the domain logic.  
+
+## 2. Domain Model (F#)  
+We model loans and events with **strong types** (F# Discriminated Unions and records). This prevents invalid states (e.g. repaying more than outstanding). For example, a fixed/float loan’s key terms:  
+
+```fsharp
+/// Loan (Direct Lending) terms
+type DirectLendingTerms = {
+    OriginationDate: DateOnly
+    MaturityDate: DateOnly
+    CommitmentAmount: decimal
+    CommitmentFeeRate: decimal option
+    InterestRate: decimal option
+    InterestIndex: string option
+    SpreadBps: decimal option
+    PaymentFrequency: int
+    AmortizationSchedule: string option
+    CovenantsJson: string option
+}
+```
+
+Each loan is an aggregate (with a unique `SecurityId`) that evolves by **events**. Example events:  
+```fsharp
+type LoanEvent =
+  | LoanCreated of Header * Terms
+  | LoanCommitted of amount:decimal * Currency:Currency
+  | DrawdownExecuted of amount:decimal * Currency:Currency * Date:DateOnly
+  | InterestRateReset of NewIndex:string * NewSpreadBps:decimal
+  | InterestAccrued of amount:decimal * Date:DateOnly
+  | PrincipalRepaid of amount:decimal * Date:DateOnly
+  | FeeCharged of FeeType:string * amount:decimal * Date:DateOnly
+  | LoanClosed of Date:DateOnly
+```
+A **command** (e.g. `CreateLoan`, `RecordDrawdown`) is validated against the current state; if valid, the command handler produces one or more events. Those events are then persisted to the event store.  This follows the standard event-sourcing pattern: a command handler returns an `Ok newState, [events]` and the events are **appended** to the store【10†L55-L60】【10†L107-L110】.  
+
+Sharpino (our F# library) requires aggregate events to implement a `Process` interface, and it will automatically apply them in order to rebuild state. By default Sharpino takes a snapshot of an aggregate every N events【10†L107-L110】, so that on restart it can load the latest snapshot and only apply the newer events. This snapshotting dramatically speeds up reconstruction of long-lived aggregates【10†L107-L110】【24†L253-L262】.  
+
+**Alternative approaches:** One could use a relational model with audit columns or use SQL **temporal tables**. Temporal tables in Postgres (via an extension) automatically store historical row versions, but they capture only full record states, not the *business events* or context【29†L29-L37】【29†L63-L71】. They also don’t preserve ordering across tables or the intent behind changes【29†L63-L71】. In contrast, event sourcing keeps rich, domain-specific events (“LoanCommitted”, not just *state:comitted=true*)【24†L150-L158】. Other options include specialized ledger databases (e.g. Amazon QLDB or blockchain-based ledgers), but those add complexity and rarely fit loan accounting nuances. 
+
+## 3. SQL Schema & Indexing  
+We use PostgreSQL + TimescaleDB. The **core loan data** uses relational tables (for querying and integrity) with some JSONB for flexibility. Example:
+
+```sql
+CREATE TABLE security (
+    security_id    UUID PRIMARY KEY,
+    security_type  TEXT NOT NULL,
+    status         TEXT NOT NULL,
+    base_currency  TEXT NOT NULL,
+    name           TEXT NOT NULL,
+    effective_date DATE NOT NULL,
+    maturity_date  DATE,
+    version_no     BIGINT NOT NULL DEFAULT 0,
+    created_at     TIMESTAMPTZ NOT NULL DEFAULT now(),
+    updated_at     TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX ON security(status);
+```
+
+```sql
+CREATE TABLE direct_lending_terms (
+    security_id        UUID PRIMARY KEY REFERENCES security(security_id),
+    origination_date   DATE NOT NULL,
+    maturity_date      DATE NOT NULL,
+    commitment_amount  NUMERIC(24,2) NOT NULL,
+    commitment_fee_rate NUMERIC(10,6),
+    interest_rate      NUMERIC(10,6),
+    interest_index     TEXT,
+    spread_bps         NUMERIC(10,2),
+    payment_freq_months INT NOT NULL,
+    amortization_type  TEXT NOT NULL,
+    covenants_json     JSONB,
+    valid_from_event_id UUID NOT NULL,
+    created_at         TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX ON direct_lending_terms(interest_index, spread_bps);
+```
+
+- We **normalize** key numeric fields for fast queries (e.g. “loans with interest_rate > 5%”). 
+- **Flex fields:** Other clauses (collaterals, covenants) can go in `covenants_json`. 
+- As an alternative, one *could* store the entire terms record in a JSONB column; this provides maximal flexibility (no DDL needed for new fields) but makes indexing and filtering harder. For a stable domain like loans, the normalized approach is preferable for performance and clarity.  
+
+### Event Store Table  
+Sharpino uses a Postgres event store (one table per aggregate type). A simplified schema:
+```sql
+CREATE TABLE event_store (
+    event_id       UUID PRIMARY KEY,
+    aggregate_type TEXT NOT NULL,
+    aggregate_id   UUID NOT NULL,
+    event_type     TEXT NOT NULL,
+    event_version  BIGINT NOT NULL,
+    event_time     TIMESTAMPTZ NOT NULL,
+    payload        JSONB NOT NULL
+);
+CREATE UNIQUE INDEX ON event_store(aggregate_type, aggregate_id, event_version);
+```
+Every `LoanEvent` (F# DU case) is serialized (typically to JSON) and written here. This append-only log guarantees immutability【24†L150-L158】. If needed, we could use binary serialization for efficiency (Sharpino supports that), but JSON is human-readable for debugging【4†L139-L147】【4†L179-L182】.  
+
+### Projection Tables  
+Each projection run (calculating the cashflow schedule) is stored to allow history and auditing. For example:
+```sql
+CREATE TABLE projection_run (
+    projection_run_id  UUID PRIMARY KEY,
+    security_id        UUID NOT NULL REFERENCES security(security_id),
+    security_version   BIGINT NOT NULL,
+    projection_time    TIMESTAMPTZ NOT NULL,
+    projection_as_of   DATE NOT NULL,
+    terms_hash         TEXT NOT NULL,
+    trigger_event_id   UUID NOT NULL,  -- which event caused this run
+    status             TEXT NOT NULL
+);
+CREATE INDEX ON projection_run(security_id, projection_time);
+```
+```sql
+CREATE TABLE projected_cash_flow (
+    projected_flow_id  UUID PRIMARY KEY,
+    projection_run_id  UUID NOT NULL REFERENCES projection_run(projection_run_id),
+    flow_type          TEXT NOT NULL,  -- 'Interest','Principal','Fee',etc.
+    due_date           DATE NOT NULL,
+    amount             NUMERIC(24,2) NOT NULL,
+    currency           TEXT NOT NULL,
+    notes              TEXT[],
+    created_at         TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX ON projected_cash_flow(due_date);
+```
+- We **version projections**: each run gets a new `projection_run_id` and increments `projection_time`. Old runs are kept (no overwrite) for audit. 
+- The `trigger_event_id` ties the run to the event (e.g. interest rate change, drawdown) that caused recalculation. This satisfies the “explicit lineage” requirement.  
+
+### Time-Series Data (TimescaleDB)  
+Loan analytics often use time-series data (interest index fixings, interest accrual snapshots, principal outstanding over time). We use TimescaleDB hypertables for these. For example:
+```sql
+CREATE TABLE index_fixings (
+    fixing_date DATE NOT NULL,
+    index_name  TEXT NOT NULL,
+    rate        NUMERIC(10,6) NOT NULL,
+    source      TEXT,
+    PRIMARY KEY(index_name, fixing_date)
+);
+SELECT create_hypertable('index_fixings','fixing_date');
+-- Automatically drop data older than 5 years, compress after 90 days:
+SELECT add_retention_policy('index_fixings', INTERVAL '5 years');
+SELECT add_compression_policy('index_fixings', INTERVAL '90 days');
+```
+Timescale allows very efficient querying and aggregation over time. Enabling compression on older chunks can **reduce storage by ~90%** with minimal performance impact【16†L145-L153】. For example, converting raw rows to a columnar format and LZ4 compression yields dramatic space savings. Retention policies (`add_retention_policy`) let us “just drop entire chunks” of old data instantly【18†L874-L880】 (no slow DELETE).  
+
+*Comparison:*  A pure PostgreSQL partition could also work, but would require manual maintenance and doesn’t natively compress or do automatic analytics. InfluxDB or Prometheus are alternative TSDBs, but they lack full SQL and relational query capabilities. TimescaleDB, being SQL-based, gives the best of both worlds【32†L373-L381】. TigerData’s benchmark notes Timescale is a SQL-native TSDB with automatic partitioning, compression, and continuous aggregates【32†L373-L381】, exactly matching our needs.  
+
+### Reconciliation Tables  
+We match projected flows to actual cash. Tables might include:
+```sql
+CREATE TABLE reconciliation_run (
+    run_id        UUID PRIMARY KEY,
+    security_id   UUID NOT NULL,
+    projection_run_id UUID REFERENCES projection_run(projection_run_id),
+    run_date      TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE TABLE reconciliation_result (
+    reconcile_id   UUID PRIMARY KEY,
+    run_id         UUID NOT NULL REFERENCES reconciliation_run(run_id),
+    projected_flow_id UUID REFERENCES projected_cash_flow(projected_flow_id),
+    cash_txn_id    UUID REFERENCES cash_transaction(cash_txn_id),
+    status         TEXT NOT NULL,  -- Matched/Short/Late, etc.
+    expected_amount NUMERIC(24,2),
+    actual_amount   NUMERIC(24,2),
+    expected_date   DATE,
+    actual_date     DATE,
+    variance        NUMERIC(24,2),
+    notes          TEXT[]
+);
+CREATE INDEX ON reconciliation_result(status);
+```
+Each *ReconciliationResult* links one projected flow (or multiple, via an allocation table if needed) with an actual transaction. Exceptions (unmatched or partial payments) can be stored in a separate `reconciliation_exception` table for investigation.
+
+## 4. Event Catalog (Direct Lending)  
+We define all relevant domain events (append-only). Examples include:  
+- **Credit Events:**  
+  - `LoanCreated(SecurityHeader, DirectLendingTerms)` – New loan contract.  
+  - `LoanCommitted(amount, currency)` – Borrower’s credit line formally committed (often zero if fully available).  
+  - `DrawdownExecuted(amount, currency, date)` – Borrower draws funds, increasing outstanding principal.  
+  - `PrincipalRepaid(amount, date)` – Borrower makes a principal repayment or prepayment.  
+- **Interest/Fee Events:**  
+  - `InterestAccrued(amount, date)` – Periodic accrual of interest (no cash yet, just accounting entry).  
+  - `InterestPaid(amount, date)` – Actual interest payment received (often captured via cash transaction).  
+  - `CommitmentFeeAccrued(amount, date)` – Accrual of unused-commitment fee (for undrawn balance).  
+  - `FeeCharged(feeType, amount, date)` – One-time fees (origination, late fee, etc.).  
+- **Terms Changes:**  
+  - `InterestRateReset(newIndex, newSpreadBps)` – Floating-rate reset (triggers new projection).  
+  - `TermsAmended(…)` – Any other term change (maturity, amortization, etc.).  
+- **Lifecycle Events:**  
+  - `LoanClosed(date)` – Loan fully paid off or terminated.  
+
+These events **describe “what happened”** in past tense (e.g. `DrawdownExecuted`), not commands. This aligns with DDD best practices【24†L150-L158】. Each event is immediately written to the store and also handled to update read models (projections, balances).  
+
+For example, when `DrawdownExecuted` is processed:  
+- We update the loan’s state in-memory (increase principal).  
+- Write a row in the `cash_transaction` table to record the cash inflow.  
+- Potentially **trigger a new projection** (since outstanding principal changed). The `ProjectionLineage` for that run will record the `event_id` of this drawdown as its trigger.  
+
+**Alternate designs:** Instead of explicit accrual events, one might compute accruals on-the-fly at month-end. However, recording accruals as events provides auditability and allows matching exactly “accrual on each day.” If needed, one could leverage the TimeDimension approach in Postgres (the `temporal_tables` plugin) to track daily states【29†L29-L37】, but this gives only the balances, not the interest formulas. Event-based accruals give full traceability and can be reported independently.  
+
+## 5. Services & Architecture  
+We partition the system into focused services/modules, communicating via events/commands:
+
+- **Security Master (Domain Service):** Handles loan creation and term amendments. Receives commands like `CreateLoan`, `AmendLoanTerms`, and emits domain events (`LoanCreated`, `TermsAmended`, etc.). Keeps the *current version* of each loan and ensures validity. Uses Sharpino’s aggregates to maintain in-memory state (with snapshots) for each loan.
+
+- **Projection Engine:** Listens for triggers (`ProjectionRequested`, `DrawdownExecuted`, `InterestRateReset`, etc.). Fetches current loan terms and index data, then computes the amortization and interest schedule (e.g. using QuantLib/QLNet or custom code). Writes a new `projection_run` and its `projected_cash_flow` rows, and emits `ProjectionGenerated`. This follows a CQRS/read-model pattern: the projections are materialized views of future cash flows【24†L219-L228】. Each run is tagged with the `security_version` and `trigger_event_id` for traceability.
+
+- **Transaction Ledger Service:** Records actual cash movements. It subscribes to events or external feeds (bank statements) and creates `CashTransaction` records. For example, on `DrawdownExecuted`, it inserts a cash_txn (cash in to the company). On actual payment receipts, it creates a cash_txn and emits events like `InterestPaid`. It also manages accruals: a daily or monthly job can issue `AccrueInterest` commands, leading to `InterestAccrued` events. Each transaction/event includes unique IDs to ensure idempotency (e.g. using a unique `external_ref` or event ID).
+
+- **Reconciliation Service:** Matches projections to actuals. It can run nightly or on-demand for each loan: fetch all projected flows and actual cash txns for a run, then apply matching rules (exact match by reference, or tolerance-based matching). Results are written to `reconciliation_result`. Unmatched items generate exceptions. This service can use F# logic to implement heuristic matching; no specific external source is needed here, but the principle is a standard reconciliation routine.
+
+- **Accounting/GL Posting:** Once transactions and accruals are recorded, this service generates double-entry journal entries (e.g. Dr Interest Receivable, Cr Interest Income for accruals). It might batch entries per period. This could integrate with an ERP (via API or file). The key is that each journal line has links back to the source event or txn for audit.
+
+- **Reference Data Service:** Maintains market data (index fixings, FX rates) in Timescale tables. Provides APIs or queries to projection engine. Bulk loader endpoints ingest feeds into `index_fixings`.
+
+- **API Layer (REST):** Giraffe or another F# web framework exposes endpoints for commands and queries (loan creation, manual drawdowns, manual reconciliations, etc.). Read APIs can retrieve loan state, projection runs, and reconciliation status. Endpoints use optimistic concurrency (Sharpino expects a version or event count). Long-running operations (reprojection) are async: the API returns a task ID, and the client can poll status or get a callback.
+
+**Inter-service communication:** Most actions trigger events in the store. A lightweight message bus (or simply database triggers/functions) can notify other services of new events. For example, after the `SecurityMaster` writes a `LoanCreated` event, a projection can be automatically requested. Sharpino’s built-in event handlers or an external message queue can handle that. The design resembles CQRS + ES, where the write-side (commands→events) is separated from read-side (projections)【24†L219-L228】.
+
+## 6. APIs & Integration  
+Key REST endpoints might include:  
+- **POST /loans** – Create a loan (body: header + terms). Returns `loanId`.  
+- **PUT /loans/{id}** – Amend loan terms.  
+- **POST /loans/{id}/activate**, `/close` – Change status.  
+- **POST /loans/{id}/drawdowns** – Record a drawdown (`amount`, `date`, etc.). Generates `DrawdownExecuted`.  
+- **POST /loans/{id}/payments** – Record a payment (with type *principal* or *interest*).  
+- **POST /loans/{id}/accrue** – (Admin) Force accrual for a date. Generates `InterestAccrued` etc.  
+- **POST /loans/{id}/projections** – Trigger a new projection run (optional parameters: asOf date, marketData date). Returns a projectionRunId.  
+- **GET /loans/{id}/projected-cashflows** – List latest projected flows or all runs.  
+- **POST /loans/{id}/reconcile** – Trigger reconciliation (latest projections).  
+- **GET /reconciliation/{runId}** – View results/exceptions.  
+
+Each command should ideally return a request ID (often the EventId) so clients can track completion. All commands are *idempotent* via unique IDs: e.g. if the same drawdown request is sent twice with the same externalRef, the second attempt is ignored or recognized as duplicate. Sharpino’s optimistic concurrency (each aggregate has a version) prevents lost updates. For async tasks, endpoints can return a 202 Accepted with a `Location: /tasks/{taskId}` for status polling.
+
+## 7. Data Versioning, Audit & Replay  
+Because we keep **all events** and **all projection runs**, any past state can be reconstructed. For example, to answer “what were projected cash flows as of 2026-01-31?”, we find the projection_run with that asOf or the last one before that date. We can even *replay events* up to a past date to rebuild the loan’s terms as of that date. Sharpino supports replaying a stream of events from the beginning (optionally using snapshots) to rebuild state【10†L107-L110】【24†L253-L262】. 
+
+**Lineage metadata:** Each `projection_run` row stores `security_version`, `trigger_event_id`, and timestamps (projection_time, projection_as_of, market_data_as_of). This makes it easy to query “projection results generated by Event X” or “state at version Y”. We can expose SQL views like `v_projected_flows_as_of(date)` that pick the latest run on or before that date.
+
+**Retention:** For performance, we keep raw events and projections indefinitely (they’re relatively compact). Timescale hypertables (e.g. index fixings, price series, accrual snapshots) use retention policies to purge old data (e.g. drop older than 3–5 years)【18†L874-L880】. This is done via automated jobs (`add_retention_policy`) which simply DROP old chunks, avoiding slow `DELETE`.
+
+**Continuous Aggregates:** For summary queries (e.g. daily outstanding principal), we can create Timescale continuous aggregates. For instance, a materialized view that buckets interest accrual by day. These can be configured to refresh automatically and even be compressed【18†L874-L880】. This reduces load on the detailed tables for reporting.
+
+## 8. Performance & Optimization  
+- **Hypertable chunking:** Partition time-series tables (fixings, accruals) into daily or weekly chunks. Smaller chunks compress faster【16†L213-L222】. Ensure chunk size is balanced: not too small (overhead) nor too large (slow queries).  
+- **Compression:** Enable TimescaleDB native compression on older data. In tests, compressing a “logs” table dropped storage by ~90% with minimal query impact【16†L145-L153】. For loan data (where append-only and mostly historical), compression makes sense. For example, after 30 or 90 days compress each chunk.  
+- **Indexes:** Create B-tree indexes on common query columns: e.g. `(security_id, status)`, `(due_date)`, `(settlement_date)` on cash transactions, etc. Timescale will automatically create “compressed” indexes for hypertables when you compress, ensuring queries remain fast.  
+- **Materialized Views:** For expensive joins (e.g. current balance = sum(drawdowns)-sum(repayments)), use materialized views or cached aggregates. For example:  
+  ```sql
+  CREATE MATERIALIZED VIEW v_outstanding AS
+  SELECT 
+    security_id,
+    SUM(CASE WHEN type='Drawdown' THEN amount ELSE 0 END)
+    - SUM(CASE WHEN type='PrincipalRepayment' THEN amount ELSE 0 END)
+    AS outstanding
+  FROM cash_transaction
+  GROUP BY security_id;
+  ```  
+  Refresh this nightly (or use a continuous aggregate) to speed up dashboards.  
+- **Caching:** Sharpino caches aggregate state (latest snapshot) in memory, minimizing DB reads【10†L107-L110】. We can also use a read-cache (e.g. Redis) for high-traffic queries like “loan summary”.  
+- **Connection Pooling:** Use a robust pool (e.g. Npgsql pool) and batch writes when loading many projection rows (e.g. via `COPY` or batched INSERT).  
+- **Query tuning:** For Timescale, follow best practices: keep active chunk indexes in memory (enough RAM to hold a few chunks of indexes)【32†L373-L381】, and choose sensible `chunk_time_interval`. 
+
+## 9. Operational Considerations  
+- **Backfill:** On rollout, replay all historical loan events (from legacy system) through our projection engine to populate `projection_run` and accruals. Similarly, load historical cash data into `cash_transaction`.  
+- **Monitoring:** Track key metrics (event processing lag, projection job failures, reconciliation exceptions). Alert if events back up or if balances don’t tie.  
+- **Replays & Fixes:** If data corrections occur (e.g. a term was wrong), we can append a corrective event or adjust via a new event (never editing history). Then replay projections from that event onward. Sharpino’s snapshotting means we may rebuild only from the last snapshot for efficiency【10†L107-L110】.  
+- **Testing:** Write unit tests for financial logic (interest formulas, accrual calculation). Use integration tests with an in-memory or test Postgres for Sharpino.  
+- **Data Migrations:** Use migration tools (dbmate or Flyway) for schema changes. If our aggregate definitions evolve, Sharpino supports “upcasting” events to new types (see Sharpino docs on upcasting【10†L55-L60】).  
+- **Idempotency:** Every external command should include a unique ID. The event store’s uniqueness constraint on `(aggregate_id, event_version)` and the cash_transaction’s unique reference ensure that replays of the same command don’t double-book.  
+
+## 10. Roadmap & Alternatives  
+
+- **Phase 1 (Core Direct Lending):** As above – implement term loans with fixed/floating interest, simple amortization, fees, accruals, and reconciliation.  
+- **Phase 2 (Enhancements):** Add features like partial prepayments, interest rate caps/floors, drawdown schedules, penalty fees. Enhance reconciliation to handle partial allocations and multi-currency loans. Integrate with an accounting system (ERP).  
+- **Phase 3 (New Asset Classes):** Reuse the same pattern (security definition → projection → transaction → reconciliation) for bonds, deposits, or simple swaps. For example, a bond has coupons and principal redemption (modeled as projected flows) just like a loan. The F# model can be extended with new DU cases for 
+
+In summary, this architecture uses **event sourcing** for an immutable audit log【24†L150-L158】, **domain-driven types** (F# DUs) for correctness, **TimescaleDB** for scalable time-series (with retention/compression to save ~90% of space【16†L145-L153】), and clear service boundaries (security, projection, ledger, reconciliation). All projected cash flows and actual transactions are stored with full versioning, so every number is traceable back to the source event. This meets the goals of auditability, lineage, accuracy, and performance laid out above.  
+
+*Sources:* Event sourcing patterns【24†L150-L158】【10†L55-L60】; Sharpino (F# ES library) internals【10†L107-L110】; TimescaleDB features (hypertables, compression, retention)【16†L145-L153】【18†L874-L880】【32†L373-L381】; Temporal vs Event Sourcing【29†L29-L37】【29†L63-L71】.
