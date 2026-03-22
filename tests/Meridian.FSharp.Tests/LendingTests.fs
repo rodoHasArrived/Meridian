@@ -26,7 +26,12 @@ let private sampleTerms () : DirectLendingTerms =
       AmortizationType = AmortizationType.BulletMaturity
       DayCountConvention = DayCountConvention.Actual360
       PurchasePrice = None
-      CovenantsJson = None }
+      CovenantsJson = None
+      InterestOnlyMonths = 0
+      GracePeriodDays = None
+      EffectiveRateFloor = None
+      EffectiveRateCap = None
+      PrepaymentPenaltyRate = None }
 
 let private createLoan () =
     let header = sampleHeader ()
@@ -1513,3 +1518,260 @@ let ``CreditRating.TryParse returns None for unknown codes`` () =
 let ``CreditRating.Parse still throws for unknown code`` () =
     (fun () -> CreditRating.Parse("ZZZ") |> ignore)
     |> should throw typeof<Exception>
+
+// ── Interest-only periods ──────────────────────────────────────────────────────
+
+[<Fact>]
+let ``PaymentSchedule IO period: StraightLine all periods IO returns zero principal`` () =
+    // 3-year loan, 12 months IO, quarterly payments → first 4 payments are IO
+    let terms = { sampleTerms () with
+                    InterestRate = Some 0.08m
+                    InterestIndex = None; SpreadBps = None
+                    AmortizationType = AmortizationType.StraightLine
+                    InterestOnlyMonths = 12 }
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), terms)
+                   LoanEvent.DrawdownExecuted(1_000_000m, Currency.USD, DateOnly(2025, 1, 15)) ]
+    let state = LoanAggregate.rebuild events |> Option.get
+    let schedule = PaymentSchedule.generate state (DateOnly(2025, 1, 1))
+    let ioPeriods = schedule |> List.filter (fun p -> p.DueDate <= DateOnly(2026, 1, 15))
+    ioPeriods |> List.forall (fun p -> p.PrincipalDue = 0m) |> should equal true
+
+[<Fact>]
+let ``PaymentSchedule IO period: amortizing periods after IO have non-zero principal`` () =
+    let terms = { sampleTerms () with
+                    InterestRate = Some 0.08m
+                    InterestIndex = None; SpreadBps = None
+                    AmortizationType = AmortizationType.StraightLine
+                    InterestOnlyMonths = 12 }
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), terms)
+                   LoanEvent.DrawdownExecuted(1_200_000m, Currency.USD, DateOnly(2025, 1, 15)) ]
+    let state = LoanAggregate.rebuild events |> Option.get
+    let schedule = PaymentSchedule.generate state (DateOnly(2025, 1, 1))
+    let amortPeriods = schedule |> List.filter (fun p -> p.DueDate > DateOnly(2026, 1, 15))
+    amortPeriods |> List.isEmpty |> should equal false
+    amortPeriods |> List.forall (fun p -> p.PrincipalDue > 0m) |> should equal true
+
+[<Fact>]
+let ``PaymentSchedule IO period: full balance cleared at maturity for Bullet with IO`` () =
+    let terms = { sampleTerms () with
+                    InterestRate = Some 0.06m
+                    InterestIndex = None; SpreadBps = None
+                    AmortizationType = AmortizationType.BulletMaturity
+                    InterestOnlyMonths = 24 }
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), terms)
+                   LoanEvent.DrawdownExecuted(500_000m, Currency.USD, DateOnly(2025, 1, 15)) ]
+    let state = LoanAggregate.rebuild events |> Option.get
+    let schedule = PaymentSchedule.generate state (DateOnly(2025, 1, 1))
+    // All non-last payments have zero principal; last clears full balance
+    let nonLast = schedule |> List.take (schedule.Length - 1)
+    nonLast |> List.forall (fun p -> p.PrincipalDue = 0m) |> should equal true
+    schedule |> List.last |> (fun p -> p.PrincipalDue) |> should equal 500_000m
+
+[<Fact>]
+let ``PaymentSchedule IO period: zero IO months behaves identically to no IO`` () =
+    // Ensures the default (0) doesn't alter existing schedule behaviour
+    let terms = { sampleTerms () with
+                    InterestRate = Some 0.08m
+                    InterestIndex = None; SpreadBps = None
+                    AmortizationType = AmortizationType.StraightLine
+                    InterestOnlyMonths = 0 }
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), terms)
+                   LoanEvent.DrawdownExecuted(1_200_000m, Currency.USD, DateOnly(2025, 1, 15)) ]
+    let state = LoanAggregate.rebuild events |> Option.get
+    let schedule = PaymentSchedule.generate state (DateOnly(2025, 1, 1))
+    // Every payment should have principal > 0 (StraightLine, no IO)
+    schedule |> List.forall (fun p -> p.PrincipalDue > 0m) |> should equal true
+
+[<Fact>]
+let ``PaymentSchedule IO period: Annuity with IO has zero principal during IO window`` () =
+    let terms = { sampleTerms () with
+                    InterestRate = Some 0.07m
+                    InterestIndex = None; SpreadBps = None
+                    AmortizationType = AmortizationType.Annuity
+                    InterestOnlyMonths = 6 }
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), terms)
+                   LoanEvent.DrawdownExecuted(800_000m, Currency.USD, DateOnly(2025, 1, 15)) ]
+    let state = LoanAggregate.rebuild events |> Option.get
+    let schedule = PaymentSchedule.generate state (DateOnly(2025, 1, 1))
+    let ioEnd = DateOnly(2025, 7, 15)
+    let ioPeriods = schedule |> List.filter (fun p -> p.DueDate <= ioEnd)
+    ioPeriods |> List.isEmpty |> should equal false
+    ioPeriods |> List.forall (fun p -> p.PrincipalDue = 0m) |> should equal true
+
+// ── validateTermsFields: new fields ───────────────────────────────────────────
+
+[<Fact>]
+let ``CreateLoan rejects negative InterestOnlyMonths`` () =
+    let terms = { sampleTerms () with InterestOnlyMonths = -1 }
+    match LoanAggregate.handle None (LoanCommand.CreateLoan(sampleHeader(), terms)) with
+    | Error msg -> msg |> should equal "InterestOnlyMonths must be non-negative."
+    | Ok _ -> failwith "Expected error"
+
+[<Fact>]
+let ``CreateLoan rejects negative GracePeriodDays`` () =
+    let terms = { sampleTerms () with GracePeriodDays = Some -1 }
+    match LoanAggregate.handle None (LoanCommand.CreateLoan(sampleHeader(), terms)) with
+    | Error msg -> msg |> should equal "GracePeriodDays must be non-negative."
+    | Ok _ -> failwith "Expected error"
+
+[<Fact>]
+let ``CreateLoan rejects negative EffectiveRateFloor`` () =
+    let terms = { sampleTerms () with EffectiveRateFloor = Some -0.01m }
+    match LoanAggregate.handle None (LoanCommand.CreateLoan(sampleHeader(), terms)) with
+    | Error msg -> msg |> should equal "EffectiveRateFloor must be non-negative."
+    | Ok _ -> failwith "Expected error"
+
+[<Fact>]
+let ``CreateLoan rejects cap below floor`` () =
+    let terms = { sampleTerms () with EffectiveRateFloor = Some 0.05m; EffectiveRateCap = Some 0.03m }
+    match LoanAggregate.handle None (LoanCommand.CreateLoan(sampleHeader(), terms)) with
+    | Error msg -> msg |> should equal "EffectiveRateCap must be >= EffectiveRateFloor."
+    | Ok _ -> failwith "Expected error"
+
+[<Fact>]
+let ``CreateLoan rejects negative PrepaymentPenaltyRate`` () =
+    let terms = { sampleTerms () with PrepaymentPenaltyRate = Some -0.01m }
+    match LoanAggregate.handle None (LoanCommand.CreateLoan(sampleHeader(), terms)) with
+    | Error msg -> msg |> should equal "PrepaymentPenaltyRate must be non-negative."
+    | Ok _ -> failwith "Expected error"
+
+// ── Rate floor / cap ──────────────────────────────────────────────────────────
+
+[<Fact>]
+let ``InterestCalculator respects rate floor for floating-rate loan`` () =
+    // SOFR spread of 50 bps → raw rate 0.005. Floor is 0.02, so effective = 0.02
+    let terms = { sampleTerms () with
+                    InterestRate = None; InterestIndex = Some "SOFR"; SpreadBps = Some 50m
+                    EffectiveRateFloor = Some 0.02m; EffectiveRateCap = None }
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), terms)
+                   LoanEvent.DrawdownExecuted(1_000_000m, Currency.USD, DateOnly(2025, 1, 15)) ]
+    let state = LoanAggregate.rebuild events |> Option.get
+    let periodStart = DateOnly(2025, 1, 15)
+    let periodEnd   = DateOnly(2025, 4, 15)
+    let interest = InterestCalculator.estimateInterest state periodStart periodEnd
+    // Expected: 1_000_000 × 0.02 × (90/360)
+    let expected = 1_000_000m * 0.02m * (90m / 360m)
+    interest |> should (equalWithin 1m) expected
+
+[<Fact>]
+let ``InterestCalculator respects rate cap for high-spread loan`` () =
+    // Spread of 2000 bps → raw rate 0.20. Cap is 0.15, so effective = 0.15
+    let terms = { sampleTerms () with
+                    InterestRate = None; InterestIndex = Some "SOFR"; SpreadBps = Some 2000m
+                    EffectiveRateFloor = None; EffectiveRateCap = Some 0.15m }
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), terms)
+                   LoanEvent.DrawdownExecuted(1_000_000m, Currency.USD, DateOnly(2025, 1, 15)) ]
+    let state = LoanAggregate.rebuild events |> Option.get
+    let interest = InterestCalculator.estimateInterest state (DateOnly(2025, 1, 15)) (DateOnly(2025, 4, 15))
+    let expected = 1_000_000m * 0.15m * (90m / 360m)
+    interest |> should (equalWithin 1m) expected
+
+// ── LoanService: new helpers ──────────────────────────────────────────────────
+
+[<Fact>]
+let ``LoanService.effectiveRate returns floored rate`` () =
+    let terms = { sampleTerms () with SpreadBps = Some 50m; EffectiveRateFloor = Some 0.03m }
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), terms) ]
+    let state = LoanAggregate.rebuild events |> Option.get
+    LoanService.effectiveRate state |> should equal 0.03m
+
+[<Fact>]
+let ``LoanService.effectiveRate returns capped rate`` () =
+    let terms = { sampleTerms () with SpreadBps = Some 2000m; EffectiveRateCap = Some 0.12m }
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), terms) ]
+    let state = LoanAggregate.rebuild events |> Option.get
+    LoanService.effectiveRate state |> should equal 0.12m
+
+[<Fact>]
+let ``LoanService.estimatePrepaymentPenalty returns zero when no rate`` () =
+    let state = createLoan () |> Option.get
+    LoanService.estimatePrepaymentPenalty state |> should equal 0m
+
+[<Fact>]
+let ``LoanService.estimatePrepaymentPenalty scales with outstanding principal`` () =
+    let terms = { sampleTerms () with PrepaymentPenaltyRate = Some 0.02m }
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), terms)
+                   LoanEvent.DrawdownExecuted(500_000m, Currency.USD, DateOnly(2025, 2, 1)) ]
+    let state = LoanAggregate.rebuild events |> Option.get
+    LoanService.estimatePrepaymentPenalty state |> should equal 10_000m
+
+[<Fact>]
+let ``LoanService.isWithinGracePeriod returns false when no grace period set`` () =
+    let state = createLoan () |> Option.get
+    let due = DateOnly(2025, 4, 15)
+    LoanService.isWithinGracePeriod state due (DateOnly(2025, 4, 20)) |> should equal false
+
+[<Fact>]
+let ``LoanService.isWithinGracePeriod returns true when payment is within grace window`` () =
+    let terms = { sampleTerms () with GracePeriodDays = Some 5 }
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), terms) ]
+    let state = LoanAggregate.rebuild events |> Option.get
+    let due = DateOnly(2025, 4, 15)
+    LoanService.isWithinGracePeriod state due (DateOnly(2025, 4, 19)) |> should equal true
+    LoanService.isWithinGracePeriod state due (DateOnly(2025, 4, 20)) |> should equal true
+
+[<Fact>]
+let ``LoanService.isWithinGracePeriod returns false when payment exceeds grace window`` () =
+    let terms = { sampleTerms () with GracePeriodDays = Some 5 }
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), terms) ]
+    let state = LoanAggregate.rebuild events |> Option.get
+    let due = DateOnly(2025, 4, 15)
+    LoanService.isWithinGracePeriod state due (DateOnly(2025, 4, 21)) |> should equal false
+
+[<Fact>]
+let ``LoanService.isWithinGracePeriod returns false when payment is on or before due date`` () =
+    let terms = { sampleTerms () with GracePeriodDays = Some 10 }
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), terms) ]
+    let state = LoanAggregate.rebuild events |> Option.get
+    let due = DateOnly(2025, 4, 15)
+    LoanService.isWithinGracePeriod state due (DateOnly(2025, 4, 15)) |> should equal false
+    LoanService.isWithinGracePeriod state due (DateOnly(2025, 4, 10)) |> should equal false
+
+[<Fact>]
+let ``LoanService.isInterestOnlyPeriod returns true within IO window`` () =
+    let terms = { sampleTerms () with InterestOnlyMonths = 12 }
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), terms) ]
+    let state = LoanAggregate.rebuild events |> Option.get
+    LoanService.isInterestOnlyPeriod state (DateOnly(2025, 7, 15)) |> should equal true
+    LoanService.isInterestOnlyPeriod state (DateOnly(2026, 1, 15)) |> should equal true
+
+[<Fact>]
+let ``LoanService.isInterestOnlyPeriod returns false outside IO window`` () =
+    let terms = { sampleTerms () with InterestOnlyMonths = 12 }
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), terms) ]
+    let state = LoanAggregate.rebuild events |> Option.get
+    LoanService.isInterestOnlyPeriod state (DateOnly(2026, 4, 15)) |> should equal false
+
+// ── ChargePrepaymentPenalty command ───────────────────────────────────────────
+
+[<Fact>]
+let ``ChargePrepaymentPenalty produces PrepaymentPenaltyCharged event`` () =
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), sampleTerms())
+                   LoanEvent.DrawdownExecuted(1_000_000m, Currency.USD, DateOnly(2025, 2, 1)) ]
+    let state = LoanAggregate.rebuild events |> Option.get |> Some
+    match LoanAggregate.handle state (LoanCommand.ChargePrepaymentPenalty(10_000m, DateOnly(2025, 6, 1))) with
+    | Ok evts ->
+        evts |> should haveLength 1
+        match evts.[0] with
+        | LoanEvent.PrepaymentPenaltyCharged(amount, date) ->
+            amount |> should equal 10_000m
+            date |> should equal (DateOnly(2025, 6, 1))
+        | other -> failwith $"Expected PrepaymentPenaltyCharged, got {other}"
+    | Error msg -> failwith $"Expected Ok but got: {msg}"
+
+[<Fact>]
+let ``ChargePrepaymentPenalty rejects zero or negative amount`` () =
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), sampleTerms()) ]
+    let state = LoanAggregate.rebuild events |> Option.get |> Some
+    match LoanAggregate.handle state (LoanCommand.ChargePrepaymentPenalty(0m, DateOnly(2025, 6, 1))) with
+    | Error msg -> msg |> should equal "Prepayment penalty amount must be positive."
+    | Ok _ -> failwith "Expected error"
+
+[<Fact>]
+let ``ChargePrepaymentPenalty rejects on closed loan`` () =
+    let events = [ LoanEvent.LoanCreated(sampleHeader(), sampleTerms())
+                   LoanEvent.LoanClosed(DateOnly(2025, 12, 31)) ]
+    let state = LoanAggregate.rebuild events |> Option.get |> Some
+    match LoanAggregate.handle state (LoanCommand.ChargePrepaymentPenalty(5_000m, DateOnly(2026, 1, 1))) with
+    | Error msg -> msg |> should equal "Cannot charge penalty on a closed loan."
+    | Ok _ -> failwith "Expected error"

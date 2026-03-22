@@ -34,7 +34,12 @@ public sealed class InMemoryLendingServiceTests
         FSharpLending.AmortizationType.BulletMaturity,
         FSharpLending.DayCountConvention.Actual360,
         FSharpOption<decimal>.None,            // PurchasePrice
-        FSharpOption<string>.None);            // CovenantsJson
+        FSharpOption<string>.None,             // CovenantsJson
+        0,                                     // InterestOnlyMonths
+        FSharpOption<int>.None,                // GracePeriodDays
+        FSharpOption<decimal>.None,            // EffectiveRateFloor
+        FSharpOption<decimal>.None,            // EffectiveRateCap
+        FSharpOption<decimal>.None);           // PrepaymentPenaltyRate
 
     // ── GetState on unknown loan ───────────────────────────────────────────────
 
@@ -227,7 +232,12 @@ public sealed class InMemoryLendingServiceTests
             FSharpLending.AmortizationType.BulletMaturity,
             FSharpLending.DayCountConvention.Actual360,
             FSharpOption<decimal>.None,
-            FSharpOption<string>.None);
+            FSharpOption<string>.None,
+            0,
+            FSharpOption<int>.None,
+            FSharpOption<decimal>.None,
+            FSharpOption<decimal>.None,
+            FSharpOption<decimal>.None);
 
         var result = svc.Handle(id, FSharpLending.LoanCommand.NewAmendTerms(badTerms));
 

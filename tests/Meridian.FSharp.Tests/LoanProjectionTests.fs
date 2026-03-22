@@ -27,7 +27,12 @@ let private makeTerms () : DirectLendingTerms =
       AmortizationType        = AmortizationType.BulletMaturity
       DayCountConvention      = DayCountConvention.Actual360
       PurchasePrice           = None
-      CovenantsJson           = None }
+      CovenantsJson           = None
+      InterestOnlyMonths      = 0
+      GracePeriodDays         = None
+      EffectiveRateFloor      = None
+      EffectiveRateCap        = None
+      PrepaymentPenaltyRate   = None }
 
 let private createState (extraEvents: LoanEvent list) : LoanState =
     let initial = [ LoanEvent.LoanCreated(makeHeader(), makeTerms()) ]

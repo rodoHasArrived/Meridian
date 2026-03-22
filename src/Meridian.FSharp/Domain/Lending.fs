@@ -365,6 +365,22 @@ type DirectLendingTerms = {
     PurchasePrice: decimal option
     /// Covenant details serialized as JSON (optional).
     CovenantsJson: string option
+    /// Number of calendar months from origination during which only interest (no principal) is due.
+    /// 0 means there is no interest-only period and principal amortisation begins immediately.
+    InterestOnlyMonths: int
+    /// Number of calendar days after a scheduled payment date within which the borrower may pay
+    /// without the payment being classified as late or triggering a default notice.
+    /// None means no contractual grace period is specified.
+    GracePeriodDays: int option
+    /// Minimum annual effective interest rate (floor) applied when computing floating-rate interest.
+    /// None means no floor is in effect. Expressed as a decimal (e.g. 0.02 for 2%).
+    EffectiveRateFloor: decimal option
+    /// Maximum annual effective interest rate (cap) applied when computing floating-rate interest.
+    /// None means no cap is in effect. Expressed as a decimal (e.g. 0.12 for 12%).
+    EffectiveRateCap: decimal option
+    /// Fraction of outstanding principal charged as a penalty on voluntary prepayment.
+    /// None means no prepayment penalty applies. Expressed as a decimal (e.g. 0.01 for 1%).
+    PrepaymentPenaltyRate: decimal option
 }
 
 /// Snapshot of loan aggregate state rebuilt by replaying events.
@@ -463,6 +479,10 @@ type LoanEvent =
     | LoanPlacedInWorkout of date: DateOnly
     /// The remaining outstanding balance was written off as a credit loss.
     | LoanWrittenOff of amount: decimal * date: DateOnly
+    // ── Prepayment ───────────────────────────────────────────────────────────────
+    /// A prepayment penalty fee was charged on a voluntary early principal repayment.
+    /// Amount is typically calculated as PrepaymentPenaltyRate × outstanding principal at the time.
+    | PrepaymentPenaltyCharged of amount: decimal * date: DateOnly
     // ── Credit rating ────────────────────────────────────────────────────────
     /// A credit rating was assigned or updated by a named rater (e.g. internal credit team or rating agency).
     | LoanRiskRated of rating: CreditRating * rater: string * date: DateOnly
@@ -532,6 +552,9 @@ type LoanCommand =
     | PlaceInWorkout of date: DateOnly
     /// Write off the outstanding balance (or a portion) as a credit loss.
     | WriteOffLoan of amount: decimal * date: DateOnly
+    /// Charge a prepayment penalty on a voluntary early principal repayment.
+    /// The amount must be positive and is typically calculated as PrepaymentPenaltyRate × outstanding principal.
+    | ChargePrepaymentPenalty of amount: decimal * date: DateOnly
     /// Assign or update the credit rating on the loan.
     | AssignCreditRating of rating: CreditRating * rater: string * date: DateOnly
     /// Add a structured financial covenant to the loan.
@@ -564,7 +587,24 @@ module LoanAggregate =
             Some "Maturity date must be after origination date."
         elif terms.PaymentFrequencyMonths <= 0 then
             Some "PaymentFrequencyMonths must be positive."
+        elif terms.InterestOnlyMonths < 0 then
+            Some "InterestOnlyMonths must be non-negative."
         else
+            match terms.GracePeriodDays with
+            | Some g when g < 0 -> Some "GracePeriodDays must be non-negative."
+            | _ ->
+            match terms.EffectiveRateFloor with
+            | Some f when f < 0m -> Some "EffectiveRateFloor must be non-negative."
+            | _ ->
+            match terms.EffectiveRateCap with
+            | Some c when c < 0m -> Some "EffectiveRateCap must be non-negative."
+            | _ ->
+            match terms.EffectiveRateFloor, terms.EffectiveRateCap with
+            | Some f, Some c when c < f -> Some "EffectiveRateCap must be >= EffectiveRateFloor."
+            | _ ->
+            match terms.PrepaymentPenaltyRate with
+            | Some r when r < 0m -> Some "PrepaymentPenaltyRate must be non-negative."
+            | _ ->
             match terms.PurchasePrice with
             | Some p when p <= 0m -> Some "PurchasePrice must be positive."
             | _ ->
@@ -668,6 +708,11 @@ module LoanAggregate =
             bumpVersion { s with Status = LoanStatus.Workout }
         | Some s, LoanEvent.LoanWrittenOff(amount, _) ->
             bumpVersion { s with OutstandingPrincipal = max 0m (s.OutstandingPrincipal - amount) }
+        // ── Prepayment penalty ─────────────────────────────────────────────
+        | Some s, LoanEvent.PrepaymentPenaltyCharged(amount, _) ->
+            // The penalty is a fee charge; record it in AccruedInterestUnpaid as a general fee balance
+            // until paid. No principal change.
+            bumpVersion { s with AccruedInterestUnpaid = s.AccruedInterestUnpaid + amount }
         // ── Credit rating ──────────────────────────────────────────────────
         | Some s, LoanEvent.LoanRiskRated(rating, _, _) ->
             bumpVersion { s with CreditRating = Some rating }
@@ -924,6 +969,12 @@ module LoanAggregate =
             | Some s when amount > s.OutstandingPrincipal ->
                 Error $"Write-off of {amount} exceeds outstanding principal of {s.OutstandingPrincipal}."
             | Some _ -> Ok [ LoanEvent.LoanWrittenOff(amount, date) ]
+        | LoanCommand.ChargePrepaymentPenalty(amount, date) ->
+            match state with
+            | None -> Error "Loan does not exist."
+            | Some s when s.Status = LoanStatus.Closed -> Error "Cannot charge penalty on a closed loan."
+            | Some _ when amount <= 0m -> Error "Prepayment penalty amount must be positive."
+            | Some _ -> Ok [ LoanEvent.PrepaymentPenaltyCharged(amount, date) ]
         | LoanCommand.AssignCreditRating(rating, rater, date) ->
             match state with
             | None -> Error "Loan does not exist."
@@ -1007,6 +1058,54 @@ module LoanService =
     let isEconomicallyActive (state: LoanState) : bool =
         state.Status <> LoanStatus.Closed && state.OutstandingPrincipal > 0m
 
+    /// Returns the effective annual interest rate, respecting any floor/cap on the loan terms.
+    /// If neither rate nor spread is configured, returns 0.
+    [<CompiledName("EffectiveRate")>]
+    let effectiveRate (state: LoanState) : decimal =
+        let raw =
+            match state.Terms.InterestRate with
+            | Some r -> r
+            | None ->
+                match state.Terms.SpreadBps with
+                | Some bps -> bps / 10_000m
+                | None -> 0m
+        let floored =
+            match state.Terms.EffectiveRateFloor with
+            | Some f -> max raw f
+            | None   -> raw
+        match state.Terms.EffectiveRateCap with
+        | Some c -> min floored c
+        | None   -> floored
+
+    /// Estimates the prepayment penalty on the current outstanding principal,
+    /// based on the <c>PrepaymentPenaltyRate</c> configured in the loan terms.
+    /// Returns 0 when no prepayment penalty is configured or the loan is fully repaid.
+    [<CompiledName("EstimatePrepaymentPenalty")>]
+    let estimatePrepaymentPenalty (state: LoanState) : decimal =
+        match state.Terms.PrepaymentPenaltyRate with
+        | None -> 0m
+        | Some rate -> state.OutstandingPrincipal * rate
+
+    /// Returns true when <paramref name="paymentDate"/> is within the contractual grace period
+    /// after <paramref name="dueDate"/>. A payment made on or before dueDate is never late.
+    /// Returns false when no grace period is configured on the loan terms.
+    [<CompiledName("IsWithinGracePeriod")>]
+    let isWithinGracePeriod (state: LoanState) (dueDate: DateOnly) (paymentDate: DateOnly) : bool =
+        if paymentDate <= dueDate then false
+        else
+            match state.Terms.GracePeriodDays with
+            | None -> false
+            | Some days -> paymentDate <= dueDate.AddDays(days)
+
+    /// Returns true when <paramref name="paymentDate"/> is within the interest-only window
+    /// for this loan (i.e. originationDate + InterestOnlyMonths).
+    [<CompiledName("IsInterestOnlyPeriod")>]
+    let isInterestOnlyPeriod (state: LoanState) (paymentDate: DateOnly) : bool =
+        if state.Terms.InterestOnlyMonths <= 0 then false
+        else
+            let ioEnd = state.Terms.OriginationDate.AddMonths(state.Terms.InterestOnlyMonths)
+            paymentDate <= ioEnd
+
 // ── Accrual period ────────────────────────────────────────────────────────────
 
 /// A single interest or fee accrual period with pre-computed day count metrics.
@@ -1049,13 +1148,22 @@ module InterestCalculator =
         if state.OutstandingPrincipal = 0m then 0m
         else
             let factor = DayCount.accrualFactor state.Terms.DayCountConvention periodStart periodEnd
-            let annualRate =
+            let rawRate =
                 match state.Terms.InterestRate with
                 | Some r -> r
                 | None ->
                     match state.Terms.SpreadBps with
                     | Some bps -> bps / 10_000m
                     | None -> 0m
+            // Apply rate floor and cap when configured (relevant for floating-rate loans).
+            let annualRate =
+                let floored =
+                    match state.Terms.EffectiveRateFloor with
+                    | Some f -> max rawRate f
+                    | None   -> rawRate
+                match state.Terms.EffectiveRateCap with
+                | Some c -> min floored c
+                | None   -> floored
             state.OutstandingPrincipal * annualRate * factor
 
     /// Estimates the commitment fee on the undrawn balance for [periodStart, periodEnd).
@@ -1146,8 +1254,29 @@ module PaymentSchedule =
             | Some bps -> bps / 10_000m
             | None -> 0m
 
+    /// Returns the effective annual rate, applying any floor/cap configured on the loan terms.
+    let private effectiveRate (terms: DirectLendingTerms) : decimal =
+        let raw =
+            match terms.InterestRate with
+            | Some r -> r
+            | None ->
+                match terms.SpreadBps with
+                | Some bps -> bps / 10_000m
+                | None -> 0m
+        let floored =
+            match terms.EffectiveRateFloor with
+            | Some f -> max raw f
+            | None   -> raw
+        match terms.EffectiveRateCap with
+        | Some c -> min floored c
+        | None   -> floored
+
     /// Generates a payment schedule from <paramref name="fromDate"/> to loan maturity
     /// using the loan's amortisation type and day count convention.
+    ///
+    /// Interest-only periods: when <c>InterestOnlyMonths > 0</c>, no principal is
+    /// due on any payment date that falls within the IO window (originationDate + IO months).
+    /// Principal amortisation begins on the first payment date after the IO window ends.
     ///
     /// Returns an empty list when:
     /// - the loan is closed or <paramref name="fromDate"/> is at or past maturity;
@@ -1168,18 +1297,28 @@ module PaymentSchedule =
             let n = periods.Length
             if n = 0 then []
             else
-                let rate = annualRate terms
+                let rate = effectiveRate terms
                 let decimals = currencyDecimalPlaces state.Header.BaseCurrency
                 let indexedPeriods = periods |> List.mapi (fun i x -> (i, x))
                 let prevDate (i: int) =
                     if i = 0 then fromDate else snd periods.[i - 1]
+                // The interest-only window ends at this date (exclusive).
+                let ioEnd = terms.OriginationDate.AddMonths(terms.InterestOnlyMonths)
+                // True when a payment date still falls within the IO window.
+                let isIoPeriod (dueDate: DateOnly) = terms.InterestOnlyMonths > 0 && dueDate <= ioEnd
+                // Number of amortizing (non-IO) periods in the remaining schedule.
+                let amortizingCount = periods |> List.filter (fun (_, d) -> not (isIoPeriod d)) |> List.length
                 match terms.AmortizationType with
                 | AmortizationType.BulletMaturity ->
                     let principal = state.OutstandingPrincipal
                     periods |> List.mapi (fun i (_, dueDate) ->
                         let pd = prevDate i
                         let isLast = i = n - 1
-                        let principalDue = if isLast then principal else 0m
+                        // IO periods have zero principal; maturity clears the balance.
+                        let principalDue =
+                            if isIoPeriod dueDate then 0m
+                            elif isLast then principal
+                            else 0m
                         let factor = DayCount.accrualFactor terms.DayCountConvention pd dueDate
                         let interest = principal * rate * factor
                         let remaining = principal - principalDue
@@ -1188,14 +1327,16 @@ module PaymentSchedule =
                           TotalDue = principalDue + interest; RemainingPrincipalAfter = remaining })
 
                 | AmortizationType.StraightLine ->
-                    let principalPerPeriod = state.OutstandingPrincipal / decimal n
+                    let na = max 1 amortizingCount
+                    let principalPerPeriod = state.OutstandingPrincipal / decimal na
                     let (payments, _) =
                         indexedPeriods
                         |> List.mapFold (fun remaining (i, (_, dueDate)) ->
                             let pd = prevDate i
-                            // Last payment clears residual to absorb accumulated rounding error
+                            let isLast = i = n - 1
                             let principalDue =
-                                if i = n - 1 then remaining
+                                if isIoPeriod dueDate then 0m
+                                elif isLast then remaining
                                 else Math.Round(principalPerPeriod, decimals)
                             let factor = DayCount.accrualFactor terms.DayCountConvention pd dueDate
                             let interest = remaining * rate * factor
@@ -1215,18 +1356,20 @@ module PaymentSchedule =
                     let periodsPerYear = 12m / decimal terms.PaymentFrequencyMonths
                     let perPeriodRate = rate / periodsPerYear
                     let pv = state.OutstandingPrincipal
-                    let nd = decimal n
+                    let na = decimal (max 1 amortizingCount)
                     let constantPayment =
-                        if perPeriodRate = 0m then pv / nd
-                        else pv * perPeriodRate / (1m - dpow (1m + perPeriodRate) (-nd))
+                        if perPeriodRate = 0m then pv / na
+                        else pv * perPeriodRate / (1m - dpow (1m + perPeriodRate) (-na))
                     let (payments, _) =
                         indexedPeriods
                         |> List.mapFold (fun remaining (i, (_, dueDate)) ->
                             let pd = prevDate i
                             let factor = DayCount.accrualFactor terms.DayCountConvention pd dueDate
                             let interest = remaining * rate * factor
+                            let isLast = i = n - 1
                             let principalDue =
-                                if i = n - 1 then remaining
+                                if isIoPeriod dueDate then 0m
+                                elif isLast then remaining
                                 else max 0m (min remaining (constantPayment - interest))
                             let newRemaining = max 0m (remaining - principalDue)
                             let payment =
@@ -1240,13 +1383,16 @@ module PaymentSchedule =
                 | AmortizationType.TargetBalance balloon ->
                     // Amortise (outstanding − balloon) in equal slices; balloon is cleared at maturity.
                     let toAmortize = max 0m (state.OutstandingPrincipal - balloon)
-                    let slicePerPeriod = if n > 0 then toAmortize / decimal n else 0m
+                    let na = max 1 amortizingCount
+                    let slicePerPeriod = if na > 0 then toAmortize / decimal na else 0m
                     let (payments, _) =
                         indexedPeriods
                         |> List.mapFold (fun remaining (i, (_, dueDate)) ->
                             let pd = prevDate i
+                            let isLast = i = n - 1
                             let principalDue =
-                                if i = n - 1 then remaining  // clear full balance (scheduled + balloon)
+                                if isIoPeriod dueDate then 0m
+                                elif isLast then remaining
                                 else Math.Round(slicePerPeriod, decimals)
                             let factor = DayCount.accrualFactor terms.DayCountConvention pd dueDate
                             let interest = remaining * rate * factor
@@ -1262,15 +1408,18 @@ module PaymentSchedule =
                 | AmortizationType.StepUp(initialPrincipal, stepAmount) ->
                     // Period i (0-based) pays: initialPrincipal + i × stepAmount, floored at 0.
                     // The last period pays whatever balance remains to clear the loan.
-                    let (payments, _) =
+                    // IO periods do not count toward the step index so the ramp is not consumed.
+                    let (payments, (_, _)) =
                         indexedPeriods
-                        |> List.mapFold (fun remaining (i, (_, dueDate)) ->
+                        |> List.mapFold (fun (remaining, stepIdx) (i, (_, dueDate)) ->
                             let pd = prevDate i
-                            let principalDue =
-                                if i = n - 1 then remaining
+                            let isLast = i = n - 1
+                            let principalDue, nextStepIdx =
+                                if isIoPeriod dueDate then (0m, stepIdx)
+                                elif isLast then (remaining, stepIdx + 1)
                                 else
-                                    let scheduled = initialPrincipal + decimal i * stepAmount
-                                    max 0m (min remaining scheduled)
+                                    let scheduled = initialPrincipal + decimal stepIdx * stepAmount
+                                    (max 0m (min remaining scheduled), stepIdx + 1)
                             let factor = DayCount.accrualFactor terms.DayCountConvention pd dueDate
                             let interest = remaining * rate * factor
                             let newRemaining = max 0m (remaining - principalDue)
@@ -1278,8 +1427,8 @@ module PaymentSchedule =
                                 { PaymentNumber = i + 1; DueDate = dueDate
                                   PrincipalDue = principalDue; EstimatedInterest = interest
                                   TotalDue = principalDue + interest; RemainingPrincipalAfter = newRemaining }
-                            (payment, newRemaining)
-                        ) state.OutstandingPrincipal
+                            (payment, (newRemaining, nextStepIdx))
+                        ) (state.OutstandingPrincipal, 0)
                     payments
 
                 | AmortizationType.Custom _ -> []

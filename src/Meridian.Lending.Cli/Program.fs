@@ -78,7 +78,12 @@ let private runBulletDemo () =
           AmortizationType         = AmortizationType.BulletMaturity
           DayCountConvention       = DayCountConvention.Actual360
           PurchasePrice            = Some 0.97m       // 3 % discount
-          CovenantsJson            = None }
+          CovenantsJson            = None
+          InterestOnlyMonths       = 0
+          GracePeriodDays          = None
+          EffectiveRateFloor       = None
+          EffectiveRateCap         = None
+          PrepaymentPenaltyRate    = None }
 
     let mutable state : LoanState option = None
 
@@ -127,7 +132,12 @@ let private runStraightLineDemo () =
           AmortizationType         = AmortizationType.StraightLine
           DayCountConvention       = DayCountConvention.Actual365Fixed
           PurchasePrice            = None
-          CovenantsJson            = None }
+          CovenantsJson            = None
+          InterestOnlyMonths       = 0
+          GracePeriodDays          = None
+          EffectiveRateFloor       = None
+          EffectiveRateCap         = None
+          PrepaymentPenaltyRate    = None }
 
     let collateral : Collateral =
         { CollateralId    = Guid.NewGuid()
@@ -178,7 +188,12 @@ let private runAnnuityDemo () =
           AmortizationType         = AmortizationType.Annuity
           DayCountConvention       = DayCountConvention.Thirty360
           PurchasePrice            = None
-          CovenantsJson            = None }
+          CovenantsJson            = None
+          InterestOnlyMonths       = 0
+          GracePeriodDays          = None
+          EffectiveRateFloor       = None
+          EffectiveRateCap         = None
+          PrepaymentPenaltyRate    = None }
 
     let header : LoanHeader =
         { SecurityId      = Guid.NewGuid()

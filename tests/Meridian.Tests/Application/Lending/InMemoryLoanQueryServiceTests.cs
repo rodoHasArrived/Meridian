@@ -39,7 +39,12 @@ public sealed class InMemoryLoanQueryServiceTests
         FSharpLending.AmortizationType.BulletMaturity,
         FSharpLending.DayCountConvention.Actual360,
         FSharpOption<decimal>.None,
-        FSharpOption<string>.None);
+        FSharpOption<string>.None,
+        0,                                     // InterestOnlyMonths
+        FSharpOption<int>.None,                // GracePeriodDays
+        FSharpOption<decimal>.None,            // EffectiveRateFloor
+        FSharpOption<decimal>.None,            // EffectiveRateCap
+        FSharpOption<decimal>.None);           // PrepaymentPenaltyRate
 
     private static Guid CreateLoan(InMemoryLendingService svc, decimal commitment = 1_000_000m)
     {

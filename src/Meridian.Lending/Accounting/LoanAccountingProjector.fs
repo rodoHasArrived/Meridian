@@ -159,6 +159,15 @@ let project
                       credit LoanAccountCode.LoanReceivable         amount baseCurrency ]
         withEntry je
 
+    // ── Prepayment penalty: Dr Cash / Cr FeeIncome ─────────────────────────
+    | LoanEvent.PrepaymentPenaltyCharged(amount, date) ->
+        let je = entry loanId sequenceNumber
+                    "Prepayment penalty charged" date
+                    [ debit  LoanAccountCode.Cash      amount baseCurrency
+                      credit LoanAccountCode.FeeIncome amount baseCurrency ]
+        let cf = cashFlow loanId sequenceNumber "PrepaymentPenaltyReceipt" amount baseCurrency date
+        withEntryAndCash je cf
+
     // ── Fee charged: Dr Cash / Cr FeeIncome ────────────────────────────────
     | LoanEvent.FeeCharged(feeType, amount, date) ->
         let je = entry loanId sequenceNumber
