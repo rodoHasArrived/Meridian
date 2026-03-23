@@ -2461,6 +2461,7 @@ This section is auto-updated by the `readme-tree.yml` workflow on pushes to `mai
 │   │   │   │   ├── DualPathEventPipelineTests.cs
 │   │   │   │   ├── EventPipelineMetricsTests.cs
 │   │   │   │   ├── EventPipelineTests.cs
+│   │   │   │   ├── EventPipelineTracingTests.cs
 │   │   │   │   ├── FSharpEventValidatorTests.cs
 │   │   │   │   ├── GoldenMasterPipelineReplayTests.cs
 │   │   │   │   ├── HotPathBatchSerializerTests.cs
@@ -2722,7 +2723,7 @@ This section is auto-updated by the `readme-tree.yml` workflow on pushes to `mai
 │   └── xunit.runner.json
 └── tree.bak
 
-317 directories, 1829 files
+317 directories, 1830 files
 ```
 <!-- readme-tree end -->
 
