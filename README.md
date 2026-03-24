@@ -2567,6 +2567,7 @@ This section is auto-updated by the `readme-tree.yml` workflow on pushes to `mai
 │   │   │   │   ├── IBSimulationClientContractTests.cs
 │   │   │   │   ├── IBSimulationClientTests.cs
 │   │   │   │   ├── MarketDataClientContractTests.cs
+│   │   │   │   ├── NYSEDatasetCoverageTests.cs
 │   │   │   │   ├── NYSEMessageParsingTests.cs
 │   │   │   │   ├── PolygonMarketDataClientTests.cs
 │   │   │   │   ├── PolygonMessageParsingTests.cs
@@ -2656,7 +2657,8 @@ This section is auto-updated by the `readme-tree.yml` workflow on pushes to `mai
 │   │   ├── TestCollections.cs
 │   │   ├── TestData
 │   │   │   └── Golden
-│   │   │       └── alpaca-quote-pipeline.json
+│   │   │       ├── alpaca-quote-pipeline.json
+│   │   │       └── nyse-feed-sample.json
 │   │   └── TestHelpers
 │   │       ├── PolygonStubClient.cs
 │   │       └── TestMarketEventPublisher.cs
@@ -2750,7 +2752,7 @@ This section is auto-updated by the `readme-tree.yml` workflow on pushes to `mai
 │   └── xunit.runner.json
 └── tree.bak
 
-323 directories, 1851 files
+323 directories, 1853 files
 ```
 <!-- readme-tree end -->
 
