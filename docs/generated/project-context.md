@@ -1,6 +1,6 @@
 # Meridian Project Context
 
-**Generated:** 2026-03-23 23:05:58 UTC
+**Generated:** 2026-03-24 09:04:27 UTC
 **Source:** Auto-generated from code annotations
 
 ## Key Interfaces
