@@ -872,6 +872,14 @@ This section is auto-updated by the `readme-tree.yml` workflow on pushes to `mai
 │   │   │       └── datasources
 │   │   │           └── datasources.yml
 │   │   └── prometheus.yml
+│   ├── sql
+│   │   └── lending
+│   │       ├── V1__loan_contract_events.sql
+│   │       ├── V2__loan_positions.sql
+│   │       ├── V3__loan_servicing_events.sql
+│   │       ├── V4__outbox.sql
+│   │       ├── V5__accounting.sql
+│   │       └── V6__timescale_analytics.sql
 │   └── systemd
 │       └── meridian.service
 ├── docs
@@ -1247,6 +1255,7 @@ This section is auto-updated by the `readme-tree.yml` workflow on pushes to `mai
 │   │   │   │   ├── DiagnosticsFeatureRegistration.cs
 │   │   │   │   ├── HttpClientFeatureRegistration.cs
 │   │   │   │   ├── IServiceFeatureRegistration.cs
+│   │   │   │   ├── LendingFeatureRegistration.cs
 │   │   │   │   ├── MaintenanceFeatureRegistration.cs
 │   │   │   │   ├── PipelineFeatureRegistration.cs
 │   │   │   │   ├── ProviderFeatureRegistration.cs
@@ -1292,6 +1301,16 @@ This section is auto-updated by the `readme-tree.yml` workflow on pushes to `mai
 │   │   │   └── HtmlTemplates.cs
 │   │   ├── Indicators
 │   │   │   └── TechnicalIndicatorService.cs
+│   │   ├── Lending
+│   │   │   ├── ILendingService.cs
+│   │   │   ├── ILoanQueryService.cs
+│   │   │   ├── InMemoryLendingService.cs
+│   │   │   ├── InMemoryLoanQueryService.cs
+│   │   │   ├── LendingServiceExtensions.cs
+│   │   │   ├── LendingStorageOptions.cs
+│   │   │   ├── LoanSummaryDto.cs
+│   │   │   ├── PostgresLendingService.cs
+│   │   │   └── PostgresLoanQueryService.cs
 │   │   ├── Meridian.Application.csproj
 │   │   ├── Monitoring
 │   │   │   ├── BackpressureAlertService.cs
@@ -1722,6 +1741,7 @@ This section is auto-updated by the `readme-tree.yml` workflow on pushes to `mai
 │   │   │   ├── DerivedData.fs
 │   │   │   ├── Instruments.fs
 │   │   │   ├── Integrity.fs
+│   │   │   ├── Lending.fs
 │   │   │   ├── MarketEvents.fs
 │   │   │   ├── MeasuredData.fs
 │   │   │   └── Sides.fs
@@ -1876,6 +1896,30 @@ This section is auto-updated by the `readme-tree.yml` workflow on pushes to `mai
 │   │   ├── LedgerValidationException.cs
 │   │   ├── LedgerWriter.cs
 │   │   └── Meridian.Ledger.csproj
+│   ├── Meridian.Lending
+│   │   ├── Accounting
+│   │   │   └── LoanAccountingProjector.fs
+│   │   ├── Analytics
+│   │   │   └── BenchmarkFixingTypes.fs
+│   │   ├── EventStore
+│   │   │   ├── ILoanEventStore.fs
+│   │   │   ├── InMemoryLoanEventStore.fs
+│   │   │   └── PostgresLoanEventStore.fs
+│   │   ├── LoanContractAggregate.fs
+│   │   ├── LoanContractRepository.fs
+│   │   ├── LoanServicingAggregate.fs
+│   │   ├── LoanServicingRepository.fs
+│   │   ├── Meridian.Lending.fsproj
+│   │   ├── Outbox
+│   │   │   ├── IOutboxStore.fs
+│   │   │   ├── InMemoryOutboxStore.fs
+│   │   │   └── PostgresOutboxStore.fs
+│   │   └── Projections
+│   │       ├── LoanProjection.fs
+│   │       └── PostgresLoanPositionProjector.fs
+│   ├── Meridian.Lending.Cli
+│   │   ├── Meridian.Lending.Cli.fsproj
+│   │   └── Program.fs
 │   ├── Meridian.Mcp
 │   │   ├── GlobalUsings.cs
 │   │   ├── Meridian.Mcp.csproj
@@ -2406,6 +2450,8 @@ This section is auto-updated by the `readme-tree.yml` workflow on pushes to `mai
 │   │   ├── CanonicalizationTests.fs
 │   │   ├── DomainTests.fs
 │   │   ├── InstrumentsTests.fs
+│   │   ├── LendingTests.fs
+│   │   ├── LoanProjectionTests.fs
 │   │   ├── Meridian.FSharp.Tests.fsproj
 │   │   ├── PipelineTests.fs
 │   │   └── ValidationTests.fs
@@ -2461,6 +2507,9 @@ This section is auto-updated by the `readme-tree.yml` workflow on pushes to `mai
 │   │   │   │   └── OAuthTokenTests.cs
 │   │   │   ├── Indicators
 │   │   │   │   └── TechnicalIndicatorServiceTests.cs
+│   │   │   ├── Lending
+│   │   │   │   ├── InMemoryLendingServiceTests.cs
+│   │   │   │   └── InMemoryLoanQueryServiceTests.cs
 │   │   │   ├── Monitoring
 │   │   │   │   ├── BackpressureAlertServiceTests.cs
 │   │   │   │   ├── BadTickFilterTests.cs
@@ -2752,7 +2801,7 @@ This section is auto-updated by the `readme-tree.yml` workflow on pushes to `mai
 │   └── xunit.runner.json
 └── tree.bak
 
-323 directories, 1853 files
+334 directories, 1891 files
 ```
 <!-- readme-tree end -->
 
