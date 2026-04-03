@@ -1606,7 +1606,8 @@ This section is auto-updated by the `readme-tree.yml` workflow on pushes to `mai
 │   │   │   ├── ISecurityMasterService.cs
 │   │   │   ├── InstrumentId.cs
 │   │   │   ├── InstrumentKind.cs
-│   │   │   └── InstrumentRecord.cs
+│   │   │   ├── InstrumentRecord.cs
+│   │   │   └── MarketCapTier.cs
 │   │   ├── Session
 │   │   │   └── CollectionSession.cs
 │   │   └── Store
@@ -2801,7 +2802,7 @@ This section is auto-updated by the `readme-tree.yml` workflow on pushes to `mai
 │   └── xunit.runner.json
 └── tree.bak
 
-334 directories, 1891 files
+334 directories, 1892 files
 ```
 <!-- readme-tree end -->
 
