@@ -302,6 +302,144 @@ public sealed class SecurityMasterServiceTests : IAsyncDisposable
         resolved.Should().Be(id);
     }
 
+    // ── Provider-specific external IDs ───────────────────────────────────────
+
+    [Fact]
+    public async Task RegisterAsync_WithProviderSpecificIds_AllIdTypesAreIndexed()
+    {
+        var reg = new InstrumentRegistration
+        {
+            Kind          = InstrumentKind.Equity,
+            DisplaySymbol = "AAPL",
+            Currency      = "USD",
+            ExternalIds   =
+            [
+                new ExternalId { IdType = ExternalIdType.Isin,              IdValue = "US0231351067",          Source = "test" },
+                new ExternalId { IdType = ExternalIdType.YahooFinanceTicker, IdValue = "AAPL",                 Source = "yahoo" },
+                new ExternalId { IdType = ExternalIdType.StooqTicker,        IdValue = "aapl.us",              Source = "stooq" },
+                new ExternalId { IdType = ExternalIdType.TiingoTicker,       IdValue = "aapl",                 Source = "tiingo" },
+                new ExternalId { IdType = ExternalIdType.AlphaVantageTicker, IdValue = "AAPL",                 Source = "alphavantage" },
+                new ExternalId { IdType = ExternalIdType.FinnhubTicker,      IdValue = "AAPL",                 Source = "finnhub" },
+                new ExternalId { IdType = ExternalIdType.TwelveDataTicker,   IdValue = "AAPL",                 Source = "twelvedata" },
+                new ExternalId { IdType = ExternalIdType.NasdaqDataLinkCode, IdValue = "WIKI/AAPL",            Source = "nasdaq" },
+                new ExternalId { IdType = ExternalIdType.RefinitivRic,       IdValue = "AAPL.OQ",              Source = "refinitiv" },
+                new ExternalId { IdType = ExternalIdType.CompositeFigi,      IdValue = "BBG000B9XRY4",         Source = "openfigi" },
+                new ExternalId { IdType = ExternalIdType.ShareClassFigi,     IdValue = "BBG001S5N8V8",         Source = "openfigi" },
+                new ExternalId { IdType = ExternalIdType.Lei,                IdValue = "HWUPKR0MPOU8FGXBT394", Source = "gleif" },
+                new ExternalId { IdType = ExternalIdType.Cik,                IdValue = "320193",               Source = "sec" },
+            ],
+        };
+
+        var id = await _sut.RegisterAsync(reg);
+
+        var externalIds = await _sut.GetExternalIdsAsync(id);
+        externalIds.Should().HaveCount(13);
+        externalIds.Should().Contain(e => e.IdType == ExternalIdType.YahooFinanceTicker && e.IdValue == "AAPL");
+        externalIds.Should().Contain(e => e.IdType == ExternalIdType.StooqTicker        && e.IdValue == "aapl.us");
+        externalIds.Should().Contain(e => e.IdType == ExternalIdType.CompositeFigi      && e.IdValue == "BBG000B9XRY4");
+        externalIds.Should().Contain(e => e.IdType == ExternalIdType.Lei                && e.IdValue == "HWUPKR0MPOU8FGXBT394");
+        externalIds.Should().Contain(e => e.IdType == ExternalIdType.Cik                && e.IdValue == "320193");
+    }
+
+    [Fact]
+    public async Task ResolveAsync_ByProviderSpecificId_ReturnsCorrectInstrument()
+    {
+        var reg = new InstrumentRegistration
+        {
+            Kind          = InstrumentKind.Equity,
+            DisplaySymbol = "AAPL",
+            Currency      = "USD",
+            ExternalIds   =
+            [
+                new ExternalId { IdType = ExternalIdType.Isin,              IdValue = "US0231351067", Source = "test" },
+                new ExternalId { IdType = ExternalIdType.YahooFinanceTicker, IdValue = "AAPL",        Source = "yahoo" },
+                new ExternalId { IdType = ExternalIdType.FinnhubTicker,      IdValue = "AAPL",        Source = "finnhub" },
+                new ExternalId { IdType = ExternalIdType.RefinitivRic,       IdValue = "AAPL.OQ",     Source = "refinitiv" },
+            ],
+        };
+        var id = await _sut.RegisterAsync(reg);
+
+        var resolvedByYahoo    = await _sut.ResolveAsync("AAPL",    ExternalIdType.YahooFinanceTicker, "yahoo");
+        var resolvedByFinnhub  = await _sut.ResolveAsync("AAPL",    ExternalIdType.FinnhubTicker,      "finnhub");
+        var resolvedByRefinitiv = await _sut.ResolveAsync("AAPL.OQ", ExternalIdType.RefinitivRic,       "refinitiv");
+
+        resolvedByYahoo.Should().Be(id);
+        resolvedByFinnhub.Should().Be(id);
+        resolvedByRefinitiv.Should().Be(id);
+    }
+
+    // ── Classification & reference data ──────────────────────────────────────
+
+    [Fact]
+    public async Task RegisterAsync_WithClassificationFields_FieldsArePersisted()
+    {
+        var reg = new InstrumentRegistration
+        {
+            Kind          = InstrumentKind.Equity,
+            DisplaySymbol = "AAPL",
+            Currency      = "USD",
+            Country       = "US",
+            Sector        = "Information Technology",
+            Industry      = "Technology Hardware, Storage & Peripherals",
+            Description   = "Apple Inc. designs, manufactures, and markets consumer electronics.",
+            MarketCapTier = MarketCapTier.LargeCap,
+            IssuerName    = "Apple Inc.",
+            ExternalIds   = [new ExternalId { IdType = ExternalIdType.Isin, IdValue = "US0231351067", Source = "test" }],
+        };
+
+        var id = await _sut.RegisterAsync(reg);
+        var record = await _sut.GetByIdAsync(id);
+
+        record.Should().NotBeNull();
+        record!.Country.Should().Be("US");
+        record.Sector.Should().Be("Information Technology");
+        record.Industry.Should().Be("Technology Hardware, Storage & Peripherals");
+        record.Description.Should().StartWith("Apple Inc.");
+        record.MarketCapTier.Should().Be(MarketCapTier.LargeCap);
+    }
+
+    [Fact]
+    public async Task RegisterAsync_WithoutClassificationFields_FieldsAreNull()
+    {
+        var id = await _sut.RegisterAsync(EquityRegistration("AAPL", "US0231351067"));
+        var record = await _sut.GetByIdAsync(id);
+
+        record.Should().NotBeNull();
+        record!.Country.Should().BeNull();
+        record.Sector.Should().BeNull();
+        record.Industry.Should().BeNull();
+        record.Description.Should().BeNull();
+        record.MarketCapTier.Should().BeNull();
+    }
+
+    [Fact]
+    public async Task Persist_AndReload_RestoresClassificationFields()
+    {
+        var reg = new InstrumentRegistration
+        {
+            Kind          = InstrumentKind.Equity,
+            DisplaySymbol = "MSFT",
+            Currency      = "USD",
+            Country       = "US",
+            Sector        = "Information Technology",
+            Industry      = "Systems Software",
+            MarketCapTier = MarketCapTier.LargeCap,
+            ExternalIds   = [new ExternalId { IdType = ExternalIdType.Isin, IdValue = "US5949181045", Source = "test" }],
+        };
+        var id = await _sut.RegisterAsync(reg);
+
+        await using var reloaded = new SecurityMasterService(
+            _tempFile, NullLogger<SecurityMasterService>.Instance);
+        await reloaded.LoadAsync();
+
+        var record = await reloaded.GetByIdAsync(id);
+        record.Should().NotBeNull();
+        record!.Country.Should().Be("US");
+        record.Sector.Should().Be("Information Technology");
+        record.Industry.Should().Be("Systems Software");
+        record.MarketCapTier.Should().Be(MarketCapTier.LargeCap);
+    }
+
     // ── Helpers ──────────────────────────────────────────────────────────────
 
     private static InstrumentRegistration EquityRegistration(string symbol, string isin) =>
