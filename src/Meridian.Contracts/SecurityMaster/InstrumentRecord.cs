@@ -71,6 +71,31 @@ public sealed record InstrumentRecord
     /// <summary>Forward settlement date. Null = spot (T+2). Relevant for FxPair.</summary>
     public DateOnly? FxSettlementDate { get; init; }
 
+    // ── Classification & reference data ──────────────────────────────────
+    /// <summary>ISO 3166-1 alpha-2 domicile country code (e.g. "US", "GB", "DE").</summary>
+    public string? Country { get; init; }
+
+    /// <summary>
+    /// High-level sector classification (e.g. GICS sector: "Information Technology", "Health Care").
+    /// Relevant primarily for Equity, FixedIncome.
+    /// </summary>
+    public string? Sector { get; init; }
+
+    /// <summary>
+    /// Industry sub-classification within the sector (e.g. GICS industry: "Software", "Semiconductors").
+    /// Relevant primarily for Equity, FixedIncome.
+    /// </summary>
+    public string? Industry { get; init; }
+
+    /// <summary>Short human-readable description of the instrument or issuer.</summary>
+    public string? Description { get; init; }
+
+    /// <summary>
+    /// Broad market-cap tier. Relevant for Equity.
+    /// Null if not applicable or not yet classified.
+    /// </summary>
+    public MarketCapTier? MarketCapTier { get; init; }
+
     // ── Lifecycle ─────────────────────────────────────────────────────────
     public bool IsActive { get; init; } = true;
     public DateTimeOffset RegisteredAt { get; init; }
@@ -106,4 +131,16 @@ public sealed record InstrumentRegistration
     public string? BaseCurrency { get; init; }
     public string? QuoteCurrency { get; init; }
     public DateOnly? FxSettlementDate { get; init; }
+
+    // ── Classification & reference data ──────────────────────────────────
+    /// <summary>ISO 3166-1 alpha-2 domicile country code (e.g. "US", "GB").</summary>
+    public string? Country { get; init; }
+    /// <summary>High-level sector classification (e.g. "Information Technology").</summary>
+    public string? Sector { get; init; }
+    /// <summary>Industry sub-classification within the sector (e.g. "Software").</summary>
+    public string? Industry { get; init; }
+    /// <summary>Short human-readable description of the instrument or issuer.</summary>
+    public string? Description { get; init; }
+    /// <summary>Broad market-cap tier. Relevant for Equity.</summary>
+    public MarketCapTier? MarketCapTier { get; init; }
 }

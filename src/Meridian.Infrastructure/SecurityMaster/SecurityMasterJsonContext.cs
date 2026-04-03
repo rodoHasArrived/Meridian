@@ -26,6 +26,7 @@ namespace Meridian.Infrastructure.SecurityMaster;
 [JsonSerializable(typeof(ExerciseStyle))]
 [JsonSerializable(typeof(SettlementType))]
 [JsonSerializable(typeof(OptionSide))]
+[JsonSerializable(typeof(MarketCapTier))]
 internal partial class SecurityMasterJsonContext : JsonSerializerContext
 {
 }

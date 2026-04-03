@@ -13,7 +13,7 @@ public enum ExternalIdType
     Cusip = 2,
     /// <summary>SEDOL (London Stock Exchange) — e.g. "B7TL820".</summary>
     Sedol = 3,
-    /// <summary>FIGI (Financial Instrument Global Identifier) — e.g. "BBG000B9XRY4".</summary>
+    /// <summary>FIGI (Financial Instrument Global Identifier, exchange-level) — uniquely identifies a listing on a specific exchange — e.g. "BBG000B9XRY4".</summary>
     Figi = 4,
     /// <summary>OCC option symbol — e.g. "SPX   240119C04500000".</summary>
     OccSymbol = 5,
@@ -27,6 +27,33 @@ public enum ExternalIdType
     AlpacaSymbol = 9,
     /// <summary>Exchange-local ticker (e.g. NYSE, NASDAQ native symbol).</summary>
     ExchangeTicker = 10,
+
+    // ── Additional data-provider specific identifiers ─────────────────────
+
+    /// <summary>Yahoo Finance ticker — e.g. "AAPL", "BTC-USD", "^GSPC".</summary>
+    YahooFinanceTicker = 11,
+    /// <summary>Stooq ticker — e.g. "aapl.us", "^spx".</summary>
+    StooqTicker = 12,
+    /// <summary>Tiingo ticker — e.g. "aapl".</summary>
+    TiingoTicker = 13,
+    /// <summary>Alpha Vantage symbol — e.g. "AAPL", "EUR/USD".</summary>
+    AlphaVantageTicker = 14,
+    /// <summary>Finnhub symbol — e.g. "AAPL", "BINANCE:BTCUSDT".</summary>
+    FinnhubTicker = 15,
+    /// <summary>Twelve Data symbol — e.g. "AAPL", "EUR/USD".</summary>
+    TwelveDataTicker = 16,
+    /// <summary>Nasdaq Data Link (formerly Quandl) dataset code — e.g. "WIKI/AAPL".</summary>
+    NasdaqDataLinkCode = 17,
+    /// <summary>Refinitiv / LSEG RIC (Reuters Instrument Code) — e.g. "AAPL.OQ".</summary>
+    RefinitivRic = 18,
+    /// <summary>OpenFIGI composite FIGI — groups all exchange listings of the same security across all markets (exchange-agnostic).</summary>
+    CompositeFigi = 19,
+    /// <summary>OpenFIGI share-class FIGI — identifies the share class of a security irrespective of exchange or market centre.</summary>
+    ShareClassFigi = 20,
+    /// <summary>Legal Entity Identifier (LEI, ISO 17442) — e.g. "HWUPKR0MPOU8FGXBT394".</summary>
+    Lei = 21,
+    /// <summary>SEC Central Index Key (CIK) — e.g. "320193" for Apple Inc.</summary>
+    Cik = 22,
 }
 
 /// <summary>
