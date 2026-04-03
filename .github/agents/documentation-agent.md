@@ -919,7 +919,8 @@ Meridian/
 │   │   │   ├── InstrumentId.cs
 │   │   │   ├── InstrumentKind.cs
 │   │   │   ├── InstrumentRecord.cs
-│   │   │   └── ISecurityMasterService.cs
+│   │   │   ├── ISecurityMasterService.cs
+│   │   │   └── MarketCapTier.cs
 │   │   ├── Session/
 │   │   │   └── CollectionSession.cs
 │   │   ├── Store/
