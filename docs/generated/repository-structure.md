@@ -4,7 +4,7 @@
 
 # Repository Structure
 
-> Auto-generated on 2026-04-03 08:22:29 UTC
+> Auto-generated on 2026-04-06 04:06:46 UTC
 
 This document provides an overview of the Meridian repository structure.
 
